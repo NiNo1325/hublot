@@ -51,10 +51,35 @@ oublie une tranche d'âge, ou n'a pas d'animation enregistrée.
 
 ## Narration
 
-La voix passe par `speechSynthesis`, natif du navigateur : aucune clé d'API,
-aucun coût, fonctionne hors ligne. Quand la voix est absente ou défaillante, la
-carte bascule automatiquement en lecture minutée — le texte défile et
-l'animation continue. L'enfant n'est jamais bloqué devant un écran figé.
+La voix est **préenregistrée**, pas synthétisée dans le navigateur : un fichier
+`.mp3` par beat, généré par l'API TTS de Gemini (voix Callirrhoe) et servi en
+statique depuis `public/audio/`. Qualité identique sur tous les appareils,
+aucun coût à l'exécution, fonctionne hors ligne.
+
+Le premier essai reposait sur `speechSynthesis`. C'était gratuit, mais la voix
+était robotique et sa qualité variait d'un appareil à l'autre — rédhibitoire
+pour un produit où l'enfant doit *écouter* pour comprendre. L'audio
+préenregistré a un bénéfice technique en prime : la pause reprend exactement où
+elle s'est arrêtée, ce que l'API de synthèse ne permettait pas de façon fiable.
+
+### Générer l'audio
+
+```bash
+npm run audio               # ne régénère que ce qui a changé
+npm run voix:echantillons   # compare plusieurs voix sur un même texte
+```
+
+Les deux scripts lisent `GEMINI_API_KEY` depuis `.env.local`, qui n'est **pas**
+suivi par git. La clé ne sert qu'à la génération locale : elle n'est jamais
+déployée, seuls les fichiers produits le sont.
+
+`public/audio/manifeste.json` mémorise l'empreinte du texte, de la voix et du
+modèle pour chaque beat. Modifier une phrase suffit à faire régénérer ce seul
+fichier au prochain passage.
+
+Si un fichier manque ou que le réseau lâche, la carte bascule en lecture
+minutée : le texte défile et l'animation continue. L'enfant n'est jamais bloqué
+devant un écran figé.
 
 ## Vie privée
 

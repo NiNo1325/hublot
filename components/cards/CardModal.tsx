@@ -5,7 +5,7 @@ import type { AgeRange, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { animationRegistry } from '@/components/animations/registry';
 import { useReducedMotion } from '@/components/animations/shared/useReducedMotion';
-import { useSpeech } from '@/components/narration/useSpeech';
+import { useNarration } from '@/components/narration/useNarration';
 import { NarrationControls } from '@/components/narration/NarrationControls';
 
 /**
@@ -38,7 +38,11 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
   const prefersReducedMotion = useReducedMotion();
 
   const beats = card.content.fr.explanation[ageRange].beats;
-  const { state, play, pause, resume, replay } = useSpeech(beats);
+  const { state, play, pause, resume, replay } = useNarration(
+    card.id,
+    ageRange,
+    beats,
+  );
 
   const Animation = animationRegistry[card.animationId];
   const style = domainStyles[card.domainId];
@@ -51,21 +55,6 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
     const dialog = dialogRef.current;
     if (dialog && !dialog.open) dialog.showModal();
   }, []);
-
-  /*
-    La narration démarre seule dès que la voix est prête : ouvrir une carte doit
-    suffire à ce qu'elle se raconte. Safari peut refuser ce premier `speak()`
-    hors geste utilisateur — le bouton « Écouter » reste alors le filet, et
-    `demarrageAutoRef` garantit qu'on ne relance pas par-dessus une lecture que
-    l'enfant a mise en pause.
-  */
-  const demarrageAutoRef = useRef(false);
-  useEffect(() => {
-    if (state.status === 'pret' && !demarrageAutoRef.current) {
-      demarrageAutoRef.current = true;
-      play(0);
-    }
-  }, [state.status, play]);
 
   return (
     <dialog

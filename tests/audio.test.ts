@@ -19,6 +19,7 @@ import { AGE_RANGES } from '@/lib/types';
  * alors les fichiers, et échouera s'ils manquent toujours.
  */
 const EN_ATTENTE_AUDIO = new Set([
+  // Vague 1
   'les-volcans',
   'les-phases-de-la-lune',
   'le-coeur-et-le-sang',
@@ -27,6 +28,15 @@ const EN_ATTENTE_AUDIO = new Set([
   'comment-vole-un-avion',
   'comment-marche-internet',
   'les-fractales',
+  // Vague 2
+  'pourquoi-la-terre-tremble',
+  'pourquoi-il-y-a-des-saisons',
+  'les-microbes',
+  'pourquoi-on-voit-les-couleurs',
+  'ou-va-le-sucre-dans-leau',
+  'les-leviers',
+  'quest-ce-quun-programme',
+  'le-hasard',
 ]);
 
 const cas = cards

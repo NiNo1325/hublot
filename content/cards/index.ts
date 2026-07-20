@@ -2,27 +2,35 @@ import type { ScienceCard } from '@/lib/types';
 
 import { card as cycleDeLEau } from './sciences-de-la-terre/cycle-de-leau';
 import { card as lesVolcans } from './sciences-de-la-terre/les-volcans';
+import { card as pourquoiLaTerreTremble } from './sciences-de-la-terre/pourquoi-la-terre-tremble';
 
 import { card as jourEtNuit } from './astronomie/jour-et-nuit';
 import { card as lesPhasesDeLaLune } from './astronomie/les-phases-de-la-lune';
+import { card as pourquoiIlYADesSaisons } from './astronomie/pourquoi-il-y-a-des-saisons';
 
 import { card as commentPoussentLesPlantes } from './biologie/comment-poussent-les-plantes';
 import { card as leCoeurEtLeSang } from './biologie/le-coeur-et-le-sang';
+import { card as lesMicrobes } from './biologie/les-microbes';
 
 import { card as pourquoiToutTombe } from './physique/pourquoi-tout-tombe';
 import { card as lesAimants } from './physique/les-aimants';
+import { card as pourquoiOnVoitLesCouleurs } from './physique/pourquoi-on-voit-les-couleurs';
 
 import { card as leVolcanDeVinaigre } from './chimie/le-volcan-de-vinaigre';
 import { card as lesEtatsDeLaMatiere } from './chimie/les-etats-de-la-matiere';
+import { card as ouVaLeSucreDansLeau } from './chimie/ou-va-le-sucre-dans-leau';
 
 import { card as pourquoiLesPontsTiennent } from './ingenierie/pourquoi-les-ponts-tiennent';
 import { card as commentVoleUnAvion } from './ingenierie/comment-vole-un-avion';
+import { card as lesLeviers } from './ingenierie/les-leviers';
 
 import { card as commentCompteUnOrdinateur } from './informatique/comment-compte-un-ordinateur';
 import { card as commentMarcheInternet } from './informatique/comment-marche-internet';
+import { card as questCeQuunProgramme } from './informatique/quest-ce-quun-programme';
 
 import { card as laSymetrie } from './mathematiques/la-symetrie';
 import { card as lesFractales } from './mathematiques/les-fractales';
+import { card as leHasard } from './mathematiques/le-hasard';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -38,18 +46,26 @@ import { card as lesFractales } from './mathematiques/les-fractales';
 export const cards: ScienceCard[] = [
   cycleDeLEau,
   lesVolcans,
+  pourquoiLaTerreTremble,
   jourEtNuit,
   lesPhasesDeLaLune,
+  pourquoiIlYADesSaisons,
   commentPoussentLesPlantes,
   leCoeurEtLeSang,
+  lesMicrobes,
   pourquoiToutTombe,
   lesAimants,
+  pourquoiOnVoitLesCouleurs,
   leVolcanDeVinaigre,
   lesEtatsDeLaMatiere,
+  ouVaLeSucreDansLeau,
   pourquoiLesPontsTiennent,
   commentVoleUnAvion,
+  lesLeviers,
   commentCompteUnOrdinateur,
   commentMarcheInternet,
+  questCeQuunProgramme,
   laSymetrie,
   lesFractales,
+  leHasard,
 ];

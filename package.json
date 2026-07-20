@@ -13,7 +13,8 @@
     "audio": "tsx --env-file=.env.local scripts/generer-audio.mjs",
     "voix:modeles": "tsx --env-file=.env.local scripts/comparer-modeles.mjs",
     "audio:batch": "tsx --env-file=.env.local scripts/generer-audio-batch.mjs",
-    "audit:illustrations": "tsx scripts/auditer-illustrations.mjs"
+    "audit:illustrations": "tsx scripts/auditer-illustrations.mjs",
+    "quiz:couverture": "tsx scripts/couverture-quiz.mjs"
   },
   "dependencies": {
     "next": "16.2.10",

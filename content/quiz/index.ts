@@ -1,5 +1,8 @@
 import type { AgeRange, QuizQuestion } from '@/lib/types';
 import { quiz as sciencesDeLaTerre } from './sciences-de-la-terre';
+import { quiz as astronomie } from './astronomie';
+import { quiz as biologie } from './biologie';
+import { quiz as physique } from './physique';
 
 /**
  * Banque de questions, groupée par domaine.
@@ -12,7 +15,12 @@ import { quiz as sciencesDeLaTerre } from './sciences-de-la-terre';
  * il ne propose que les cartes couvertes, et un test signale l'écart plutôt que
  * de le laisser passer silencieusement.
  */
-export const quizCartes = [...sciencesDeLaTerre];
+export const quizCartes = [
+  ...sciencesDeLaTerre,
+  ...astronomie,
+  ...biologie,
+  ...physique,
+];
 
 const parCarte = new Map(quizCartes.map((q) => [q.cardId, q]));
 

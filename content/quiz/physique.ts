@@ -1,0 +1,222 @@
+import type { QuizCarte } from '@/lib/types';
+
+/**
+ * Questions du domaine « La physique ».
+ *
+ * Les propositions fausses sont les intuitions courantes que les cartes
+ * démentent : les objets lourds qui tomberaient plus vite, les aimants qui
+ * attireraient tous les métaux, la couleur contenue dans l'objet, le son qui
+ * voyagerait dans le vide.
+ */
+export const quiz: QuizCarte[] = [
+  {
+    cardId: 'pourquoi-tout-tombe',
+    questions: {
+      '3-5': [
+        {
+          id: 'plume-bille',
+          question: 'Pourquoi une plume tombe-t-elle plus lentement ?',
+          reponses: [
+            { texte: "Parce que l'air la freine", icone: '💨', correcte: true },
+            { texte: 'Parce qu’elle est trop légère', icone: '🪶' },
+          ],
+          explication: "C'est l'air qui la ralentit, comme un petit parachute.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'lune-marteau',
+          question: 'Sur la Lune, un marteau et une plume lâchés ensemble…',
+          reponses: [
+            { texte: 'Touchent le sol en même temps', icone: '🌙', correcte: true },
+            { texte: 'Le marteau arrive largement avant', icone: '🔨' },
+            { texte: 'Ne tombent pas du tout', icone: '🚫' },
+          ],
+          explication:
+            'Des astronautes l’ont vérifié en 1971 : sans air, tout tombe à la même vitesse.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'attraction-reciproque',
+          question: 'La Terre t’attire. Est-ce que tu attires la Terre ?',
+          reponses: [
+            { texte: 'Oui, avec exactement la même force', icone: '⚖️', correcte: true },
+            { texte: 'Non, seuls les gros objets attirent', icone: '🌍' },
+            { texte: 'Oui, mais des millions de fois moins fort', icone: '🤏' },
+          ],
+          explication:
+            'L’attraction est réciproque et égale. C’est ta masse minuscule qui fait que tu bouges, pas la Terre.',
+        },
+      ],
+    },
+  },
+  {
+    cardId: 'les-aimants',
+    questions: {
+      '3-5': [
+        {
+          id: 'canette',
+          question: 'Un aimant colle-t-il sur une canette de boisson ?',
+          reponses: [
+            { texte: 'Non, il ne tient pas', icone: '🥤', correcte: true },
+            { texte: 'Oui, c’est du métal', icone: '🧲' },
+          ],
+          explication: 'L’aimant n’attire pas tous les métaux : l’aluminium ne colle pas.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'quels-metaux',
+          question: 'Quels matériaux un aimant attire-t-il ?',
+          reponses: [
+            { texte: 'Le fer, le nickel et le cobalt', icone: '🧲', correcte: true },
+            { texte: 'Tous les métaux', icone: '🪙' },
+            { texte: 'Tout ce qui brille', icone: '✨' },
+          ],
+          explication:
+            'L’aluminium et le cuivre ne réagissent pas : « métal » ne veut pas dire « attiré par un aimant ».',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'couper-aimant',
+          question: 'Que se passe-t-il si on coupe un aimant en deux ?',
+          reponses: [
+            { texte: 'On obtient deux aimants à deux pôles', icone: '🧲', correcte: true },
+            { texte: 'On sépare le pôle nord du pôle sud', icone: '✂️' },
+            { texte: 'Il perd son magnétisme', icone: '🚫' },
+          ],
+          explication:
+            'On n’a jamais observé de pôle isolé : chaque morceau retrouve aussitôt un nord et un sud.',
+        },
+      ],
+    },
+  },
+  {
+    cardId: 'pourquoi-on-voit-les-couleurs',
+    questions: {
+      '3-5': [
+        {
+          id: 'noir-couleur',
+          question: 'Dans le noir complet, vois-tu les couleurs ?',
+          reponses: [
+            { texte: 'Non, il n’y en a plus', icone: '🌑', correcte: true },
+            { texte: 'Oui, elles restent pareilles', icone: '🌈' },
+          ],
+          explication: 'Sans lumière, il n’y a pas de couleur du tout.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'pomme-rouge',
+          question: 'Pourquoi une pomme est-elle rouge ?',
+          reponses: [
+            { texte: 'Elle renvoie le rouge et absorbe le reste', icone: '🍎', correcte: true },
+            { texte: 'Le rouge est contenu dans sa peau', icone: '🎨' },
+            { texte: 'Elle fabrique de la lumière rouge', icone: '💡' },
+          ],
+          explication:
+            'La couleur n’est pas dans l’objet : elle dépend de la lumière reçue et de ce qu’il renvoie.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'arc-en-ciel',
+          question: 'Qu’est-ce qui sépare les couleurs dans un arc-en-ciel ?',
+          reponses: [
+            { texte: 'Chaque couleur est déviée d’un angle différent', icone: '🌈', correcte: true },
+            { texte: 'Les gouttes filtrent certaines couleurs', icone: '💧' },
+            { texte: 'Le Soleil émet les couleurs séparément', icone: '☀️' },
+          ],
+          explication:
+            'C’est la dispersion : l’indice de réfraction dépend de la longueur d’onde, d’où la séparation.',
+        },
+      ],
+    },
+  },
+  {
+    cardId: 'comment-voyage-le-son',
+    questions: {
+      '3-5': [
+        {
+          id: 'son-espace',
+          question: 'Entend-on du bruit dans l’espace ?',
+          reponses: [
+            { texte: 'Non, c’est le silence', icone: '🤫', correcte: true },
+            { texte: 'Oui, comme sur Terre', icone: '🔊' },
+          ],
+          explication: 'Sans air, rien ne peut vibrer : il n’y a aucun son.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'son-besoin',
+          question: 'De quoi le son a-t-il besoin pour voyager ?',
+          reponses: [
+            { texte: 'De matière, comme l’air ou l’eau', icone: '💨', correcte: true },
+            { texte: 'De rien, il voyage partout', icone: '🚀' },
+            { texte: 'De lumière', icone: '💡' },
+          ],
+          explication:
+            'Le son est une vibration de la matière. Dans le vide, les explosions des films seraient silencieuses.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'vitesse-milieu',
+          question: 'Où le son va-t-il le plus vite ?',
+          reponses: [
+            { texte: 'Dans l’acier', icone: '🔩', correcte: true },
+            { texte: 'Dans l’air', icone: '💨' },
+            { texte: 'Dans le vide', icone: '🌌' },
+          ],
+          explication:
+            'Plus le milieu est rigide, plus le son est rapide : plus de cinq mille mètres par seconde dans l’acier.',
+        },
+      ],
+    },
+  },
+  {
+    cardId: 'lelectricite',
+    questions: {
+      '3-5': [
+        {
+          id: 'circuit-coupe',
+          question: 'Si on coupe le fil, que fait l’ampoule ?',
+          reponses: [
+            { texte: 'Elle s’éteint', icone: '🌑', correcte: true },
+            { texte: 'Elle brille plus fort', icone: '💡' },
+          ],
+          explication: 'Le courant a besoin d’une boucle complète pour circuler.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'vitesse-electrons',
+          question: 'À quelle vitesse les électrons avancent-ils dans un fil ?',
+          reponses: [
+            { texte: 'Très lentement, quelques millimètres par seconde', icone: '🐌', correcte: true },
+            { texte: 'À la vitesse de la lumière', icone: '⚡' },
+            { texte: 'À la vitesse du son', icone: '🔊' },
+          ],
+          explication:
+            'C’est la poussée qui se transmet vite, pas les électrons — comme l’eau d’un tuyau déjà plein.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'sens-courant',
+          question: 'Dans quel sens les électrons circulent-ils vraiment ?',
+          reponses: [
+            { texte: 'Du moins vers le plus, à l’inverse de la convention', icone: '🔄', correcte: true },
+            { texte: 'Du plus vers le moins, comme la convention', icone: '➡️' },
+            { texte: 'Dans les deux sens à la fois', icone: '↔️' },
+          ],
+          explication:
+            'Le sens conventionnel a été fixé avant la découverte de l’électron. On l’a gardé : il ne change aucun calcul.',
+        },
+      ],
+    },
+  },
+];

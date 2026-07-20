@@ -38,7 +38,7 @@ export function MicrobesAnimation({
       {/* Silhouette : le microbiote vit surtout à l'intérieur */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <ellipse cx="150" cy="128" rx="86" ry="66" fill="#1b2a4a" stroke="#2c3f66" strokeWidth="2" />
-        <text x="102" y="212" fill="#b9c4da" fontSize="12" fontFamily="sans-serif">
+        <text x="102" y="212" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           des milliers de milliards en toi
         </text>
       </g>
@@ -57,7 +57,7 @@ export function MicrobesAnimation({
             </ellipse>
           </g>
         ))}
-        <text x="252" y="164" fill="#a3e635" fontSize="12" fontFamily="sans-serif">
+        <text x="163" y="164" fill="#a3e635" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           utiles : la grande majorité
         </text>
       </g>
@@ -73,7 +73,7 @@ export function MicrobesAnimation({
             transform={`rotate(${i * 60} 286 196)`}
           />
         ))}
-        <text x="302" y="200" fill="#fb7185" fontSize="12" fontFamily="sans-serif">
+        <text x="205" y="200" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           quelques-uns seulement
         </text>
       </g>

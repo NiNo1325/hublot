@@ -80,7 +80,7 @@ export function PhasesLuneAnimation({
           </g>
         ))}
         <circle cx="284" cy="192" r="16" fill="#f5f0e6" />
-        <text x="266" y="222" fill="#b9c4da" fontSize="12" fontFamily="sans-serif">
+        <text x="239" y="222" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           vu depuis la Terre
         </text>
       </g>

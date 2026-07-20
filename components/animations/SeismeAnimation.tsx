@@ -46,7 +46,7 @@ export function SeismeAnimation({
           <line x1="310" y1="204" x2="250" y2="204" stroke="#ffb627" strokeWidth="5" />
           <path d="M256 196 L238 204 L256 212 Z" fill="#ffb627" />
         </g>
-        <text x="112" y="156" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+        <text x="112" y="156" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           ça pousse, ça se bloque
         </text>
       </g>
@@ -79,7 +79,7 @@ export function SeismeAnimation({
           </circle>
         ))}
         <circle cx="200" cy="182" r="5" fill="#fb7185" />
-        <text x="212" y="186" fill="#fb7185" fontSize="11" fontFamily="sans-serif">foyer</text>
+        <text x="212" y="186" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">foyer</text>
       </g>
 
       {/* Bâtiments : ce sont eux qui font le danger */}

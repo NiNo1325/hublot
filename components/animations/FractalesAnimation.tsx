@@ -70,7 +70,7 @@ export function FractalesAnimation({
             <path key={i} d={b.d} stroke="#ffb627" strokeWidth="1.4" fill="none" strokeLinecap="round" />
           ))}
         </g>
-        <text x="228" y="168" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+        <text x="228" y="168" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           la partie = le tout
         </text>
       </g>
@@ -80,17 +80,17 @@ export function FractalesAnimation({
         <text x="266" y="60" fontSize="26">🫁</text>
         <text x="304" y="60" fontSize="26">❄️</text>
         <text x="342" y="60" fontSize="26">🥦</text>
-        <text x="262" y="84" fill="#b9c4da" fontSize="12" fontFamily="sans-serif">
+        <text x="205" y="84" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           partout dans la nature
         </text>
       </g>
 
       {/* La limite : le réel s'arrête, le modèle non. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="240" y="214" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="220" y="214" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           la nature s&apos;arrête,
         </text>
-        <text x="240" y="232" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="211" y="232" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           les maths continuent
         </text>
       </g>

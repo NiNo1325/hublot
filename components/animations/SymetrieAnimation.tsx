@@ -84,14 +84,14 @@ export function SymetrieAnimation({
             />
           )}
         </g>
-        <text x="278" y="150" fill="#7dd3fc" fontSize="13" fontFamily="sans-serif">
+        <text x="278" y="150" fill="#7dd3fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           six axes
         </text>
       </g>
 
       {/* L'écart au modèle, mesuré. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="240" y="196" fill="#b9c4da" fontSize="14" fontFamily="sans-serif">
+        <text x="175" y="196" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           jamais exactement pareil
         </text>
       </g>

@@ -76,7 +76,7 @@ export function CirculationAnimation({
             <circle cx={cx} cy={cy} r="4" fill="#7dd3fc" />
           </g>
         ))}
-        <text x="292" y="176" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
+        <text x="292" y="176" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           O₂ livré
         </text>
       </g>

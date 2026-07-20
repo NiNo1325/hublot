@@ -43,8 +43,8 @@ export function AirAnimation({
         <circle cx="316" cy="70" r="26" fill="none" stroke="#fb7185" strokeWidth="3" />
         <path d="M316 96 l-4 12 h8 z" fill="#fb7185" />
         <rect x="274" y="112" width="84" height="30" rx="6" fill="#1b2a4a" stroke="#2c3f66" strokeWidth="2" />
-        <text x="284" y="133" fill="#34d399" fontSize="15" fontFamily="monospace">1,2 g/L</text>
-        <text x="272" y="164" fill="#b9c4da" fontSize="11" fontFamily="sans-serif">
+        <text x="284" y="133" fill="#34d399" fontSize="18" fontFamily="var(--font-atkinson), monospace">1,2 g/L</text>
+        <text x="230" y="164" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;air pèse vraiment
         </text>
       </g>
@@ -54,9 +54,9 @@ export function AirAnimation({
         <rect x="30" y="152" width="222" height="26" rx="4" fill="#6366f1" />
         <rect x="252" y="152" width="60" height="26" rx="4" fill="#38bdf8" />
         <rect x="312" y="152" width="10" height="26" rx="2" fill="#f5f0e6" />
-        <text x="92" y="170" fill="#f5f0e6" fontSize="13" fontFamily="sans-serif">azote 78 %</text>
-        <text x="256" y="170" fill="#0f1b33" fontSize="12" fontFamily="sans-serif">O₂ 21 %</text>
-        <text x="30" y="198" fill="#b9c4da" fontSize="11" fontFamily="sans-serif">
+        <text x="92" y="170" fill="#f5f0e6" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">azote 78 %</text>
+        <text x="256" y="170" fill="#0f1b33" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">O₂ 21 %</text>
+        <text x="30" y="198" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;oxygène n&apos;en est qu&apos;un cinquième
         </text>
       </g>
@@ -69,7 +69,7 @@ export function AirAnimation({
             <path d={`M${x - 5} 212 L${x} 224 L${x + 5} 212 Z`} fill="#ffb627" />
           </g>
         ))}
-        <text x="300" y="222" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+        <text x="247" y="222" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           ça appuie sur toi
         </text>
       </g>

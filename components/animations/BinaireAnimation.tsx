@@ -50,7 +50,7 @@ export function BinaireAnimation({
             key={i}
             x={92 + i * 58} y="136"
             fill={bit ? '#22d3ee' : '#6b7280'}
-            fontSize="30" fontFamily="monospace" textAnchor="middle"
+            fontSize="30" fontFamily="var(--font-atkinson), monospace" textAnchor="middle"
           >
             {bit}
           </text>
@@ -63,12 +63,12 @@ export function BinaireAnimation({
           <text
             key={poids}
             x={92 + i * 58} y="166"
-            fill="#b9c4da" fontSize="16" fontFamily="monospace" textAnchor="middle"
+            fill="#b9c4da" fontSize="18" fontFamily="var(--font-atkinson), monospace" textAnchor="middle"
           >
             {poids}
           </text>
         ))}
-        <text x="92" y="196" fill="#f5f0e6" fontSize="17" fontFamily="monospace">
+        <text x="92" y="196" fill="#f5f0e6" fontSize="17" fontFamily="var(--font-atkinson), monospace">
           8 + 2 + 1 = 11
         </text>
       </g>
@@ -93,7 +93,7 @@ export function BinaireAnimation({
             </rect>
           );
         })}
-        <text x="288" y="130" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="288" y="130" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           une image
         </text>
       </g>

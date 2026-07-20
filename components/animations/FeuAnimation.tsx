@@ -30,10 +30,10 @@ export function FeuAnimation({
           fill="none" stroke="#fb923c" strokeWidth="3"
           style={{ opacity: etouffe ? 0.25 : 1, transition: 'opacity 600ms ease' }}
         />
-        <text x="66" y="46" fill="#fb923c" fontSize="12" fontFamily="sans-serif">chaleur</text>
-        <text x="4" y="186" fill="#fb923c" fontSize="12" fontFamily="sans-serif">bois</text>
+        <text x="66" y="46" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">chaleur</text>
+        <text x="4" y="186" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">bois</text>
         <text
-          x="128" y="186" fill="#38bdf8" fontSize="12" fontFamily="sans-serif"
+          x="128" y="186" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif"
           style={{ opacity: etouffe ? 0.2 : 1, transition: 'opacity 600ms ease' }}
         >
           oxygène
@@ -57,14 +57,14 @@ export function FeuAnimation({
           x="228" y={etouffe ? 116 : 74} width="112" height="12" rx="4" fill="#94a3b8"
           style={{ transition: 'y 700ms ease' }}
         />
-        <text x="230" y="216" fill="#94a3b8" fontSize="12" fontFamily="sans-serif">
+        <text x="180" y="216" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           sans oxygène, ça s&apos;arrête
         </text>
       </g>
 
       {/* Le feu n'est pas une matière */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="26" y="216" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="18" y="216" fill="#b9c4da" fontSize="15" fontFamily="var(--font-atkinson), sans-serif">
           le feu n&apos;est pas une chose : c&apos;est une réaction
         </text>
       </g>

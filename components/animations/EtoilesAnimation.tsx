@@ -39,7 +39,7 @@ export function EtoilesAnimation({
       {/* Notre Soleil : la même chose, mais proche */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <circle cx="66" cy="180" r="26" fill="#ffb627" />
-        <text x="26" y="222" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+        <text x="26" y="222" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           notre Soleil, tout près
         </text>
       </g>
@@ -53,7 +53,7 @@ export function EtoilesAnimation({
             <animateMotion dur="3.6s" repeatCount="indefinite" path="M330 160 L134 160" />
           )}
         </circle>
-        <text x="150" y="146" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
+        <text x="150" y="146" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           la lumière voyage des années
         </text>
       </g>
@@ -61,10 +61,10 @@ export function EtoilesAnimation({
       {/* On voit le passé */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <path d="M112 176 q-10 12 0 24 q10 -12 0 -24 z" fill="#b9c4da" />
-        <text x="126" y="200" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="121" y="200" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           tu la vois telle qu&apos;elle était
         </text>
-        <text x="126" y="218" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="126" y="218" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           il y a des années
         </text>
       </g>

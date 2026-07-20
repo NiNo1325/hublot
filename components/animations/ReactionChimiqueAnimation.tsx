@@ -74,7 +74,7 @@ export function ReactionChimiqueAnimation({
             )}
           </circle>
         ))}
-        <text x="252" y="150" fill="#e0f2fe" fontSize="15" fontFamily="sans-serif">
+        <text x="252" y="150" fill="#e0f2fe" fontSize="18" fontFamily="var(--font-atkinson), sans-serif">
           CO₂
         </text>
       </g>

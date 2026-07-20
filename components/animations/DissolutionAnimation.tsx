@@ -71,10 +71,10 @@ export function DissolutionAnimation({
       {/* Balance : même masse avant et après */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <rect x="242" y="150" width="118" height="46" rx="8" fill="#1b2a4a" stroke="#2c3f66" strokeWidth="2.5" />
-        <text x="258" y="180" fill="#34d399" fontSize="22" fontFamily="monospace">
+        <text x="258" y="180" fill="#34d399" fontSize="22" fontFamily="var(--font-atkinson), monospace">
           110 g
         </text>
-        <text x="240" y="140" fill="#34d399" fontSize="12" fontFamily="sans-serif">
+        <text x="196" y="140" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           avant et après : pareil
         </text>
       </g>
@@ -91,7 +91,7 @@ export function DissolutionAnimation({
             )}
           </circle>
         ))}
-        <text x="238" y="222" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+        <text x="171" y="222" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;eau part, le sucre reste
         </text>
       </g>

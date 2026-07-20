@@ -59,25 +59,25 @@ export function EngrenagesAnimation({
       {/* Petit pignon : 10 dents, rapide */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <Roue cx={126} cy={120} rayon={38} dents={10} couleur="#fb923c" duree={3} inverse={false} anime={anime} />
-        <text x="98" y="192" fill="#fb923c" fontSize="12" fontFamily="sans-serif">10 dents</text>
+        <text x="98" y="192" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">10 dents</text>
       </g>
 
       {/* Grande roue : 30 dents, trois fois plus lente, sens inverse */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <Roue cx={248} cy={120} rayon={72} dents={30} couleur="#38bdf8" duree={9} inverse anime={anime} />
-        <text x="222" y="212" fill="#38bdf8" fontSize="12" fontFamily="sans-serif">30 dents</text>
+        <text x="222" y="212" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">30 dents</text>
       </g>
 
       {/* Le rapport */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
-        <text x="20" y="34" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="20" y="34" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           3 tours du petit = 1 tour du grand
         </text>
       </g>
 
       {/* Le compromis, identique à celui du levier */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="20" y="58" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+        <text x="20" y="58" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           3 fois plus lent, 3 fois plus fort
         </text>
       </g>

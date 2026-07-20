@@ -28,7 +28,7 @@ export function AlgorithmeAnimation({
         <rect x="18" y="44" width="140" height="150" rx="10" fill="#1b2a4a" stroke="#22d3ee" strokeWidth="2.5" />
         {INSTRUCTIONS.map((mot, i) => (
           <g key={i}>
-            <text x="34" y={78 + i * 32} fill="#67e8f9" fontSize="15" fontFamily="monospace">
+            <text x="34" y={78 + i * 32} fill="#67e8f9" fontSize="18" fontFamily="var(--font-atkinson), monospace">
               {i + 1}. {mot}
             </text>
             {/* Surlignage de l'instruction courante, phase « ordre ». */}
@@ -80,7 +80,7 @@ export function AlgorithmeAnimation({
                 )}
               </path>
             ))}
-            <text x="238" y="222" fill="#fb7185" fontSize="12" fontFamily="sans-serif">
+            <text x="69" y="222" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
               il fait ce qui est écrit, rien d&apos;autre
             </text>
           </>

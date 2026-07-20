@@ -12,7 +12,7 @@ function Terre({ x, y }: { x: number; y: number }) {
       <circle r="26" fill="#2563eb" />
       <path d="M-26 0 A26 26 0 0 1 26 0 Z" fill="#38bdf8" />
       <line x1="0" y1="-36" x2="0" y2="36" stroke="#f5f0e6" strokeWidth="2" strokeDasharray="4 4" />
-      <text x="-6" y="-14" fill="#0f1b33" fontSize="11" fontFamily="sans-serif">N</text>
+      <text x="-6" y="-14" fill="#0f1b33" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">N</text>
     </g>
   );
 }
@@ -52,7 +52,7 @@ export function SaisonsAnimation({
             )}
           </line>
         ))}
-        <text x="26" y="182" fill="#ffb627" fontSize="11" fontFamily="sans-serif">
+        <text x="26" y="182" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           été : rayons droits
         </text>
       </g>
@@ -70,21 +70,21 @@ export function SaisonsAnimation({
             )}
           </line>
         ))}
-        <text x="268" y="182" fill="#7dd3fc" fontSize="11" fontFamily="sans-serif">
+        <text x="196" y="182" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           hiver : rayons en biais
         </text>
       </g>
 
       {/* L'axe conserve sa direction sur toute l'orbite */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
-        <text x="130" y="30" fill="#b9c4da" fontSize="12" fontFamily="sans-serif">
+        <text x="69" y="30" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;axe garde toujours la même direction
         </text>
       </g>
 
       {/* La distance n'explique rien : elle varie à peine, et à contretemps. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="96" y="216" fill="#fb7185" fontSize="13" fontFamily="sans-serif">
+        <text x="94" y="216" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           la distance ne change presque pas
         </text>
         {phase === 3 && (

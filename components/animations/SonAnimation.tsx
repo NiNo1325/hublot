@@ -59,7 +59,7 @@ export function SonAnimation({
             ))}
           </g>
         ))}
-        <text x="120" y="90" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
+        <text x="120" y="90" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;air se serre et se desserre
         </text>
       </g>
@@ -80,7 +80,7 @@ export function SonAnimation({
       {/* Le vide : plus de matière, plus de son */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <rect x="88" y="60" width="228" height="124" rx="12" fill="none" stroke="#fb7185" strokeWidth="2.5" strokeDasharray="7 7" />
-        <text x="140" y="212" fill="#fb7185" fontSize="14" fontFamily="sans-serif">
+        <text x="140" y="212" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           sans air : aucun son
         </text>
       </g>

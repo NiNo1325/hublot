@@ -51,20 +51,20 @@ export function ApesanteurAnimation({
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <line x1="300" y1="70" x2="300" y2="128" stroke="#ffb627" strokeWidth="4" />
         <path d="M292 120 L300 138 L308 120 Z" fill="#ffb627" />
-        <text x="256" y="58" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+        <text x="247" y="58" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           la gravité est là
         </text>
-        <text x="256" y="74" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+        <text x="256" y="74" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           à 90 %
         </text>
       </g>
 
       {/* Ils tombent ensemble */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
-        <text x="26" y="112" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
+        <text x="26" y="112" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           ils tombent…
         </text>
-        <text x="26" y="130" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
+        <text x="26" y="130" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           la station aussi
         </text>
       </g>
@@ -72,7 +72,7 @@ export function ApesanteurAnimation({
       {/* L'orbite : une chute qui manque la Terre */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <circle cx="200" cy="300" r="238" fill="none" stroke="#2c3f66" strokeWidth="2" strokeDasharray="6 8" />
-        <text x="112" y="222" fill="#b9c4da" fontSize="12" fontFamily="sans-serif">
+        <text x="61" y="222" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           si vite qu&apos;ils ratent toujours la Terre
         </text>
       </g>

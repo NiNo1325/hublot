@@ -31,7 +31,7 @@ export function ElectriciteAnimation({
       {/* La pile */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <rect x="176" y="158" width="48" height="36" rx="5" fill="#1b2a4a" stroke="#ffb627" strokeWidth="3" />
-        <text x="184" y="182" fill="#ffb627" fontSize="16" fontFamily="monospace">+ −</text>
+        <text x="184" y="182" fill="#ffb627" fontSize="18" fontFamily="var(--font-atkinson), monospace">+ −</text>
       </g>
 
       {/* Interrupteur, ouvert à la phase 2 */}
@@ -57,7 +57,7 @@ export function ElectriciteAnimation({
             )}
           </circle>
         ))}
-        <text x="240" y="212" fill="#38bdf8" fontSize="11" fontFamily="sans-serif">
+        <text x="120" y="212" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           les électrons avancent lentement
         </text>
       </g>
@@ -75,7 +75,7 @@ export function ElectriciteAnimation({
         </circle>
         <path d="M202 98 h16 v8 h-16 z" fill="#b9c4da" />
         {!ouvert && phase === 3 && (
-          <text x="248" y="44" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+          <text x="171" y="44" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
             ça chauffe, donc ça brille
           </text>
         )}

@@ -44,7 +44,7 @@ export function GraviteAnimation({
             <path d={`M${x - 7} 124 L${x} 136 L${x + 7} 124 Z`} fill="#38bdf8" />
           </g>
         ))}
-        <text x="150" y="58" fill="#7dd3fc" fontSize="14" fontFamily="sans-serif">
+        <text x="150" y="58" fill="#7dd3fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           la Terre attire
         </text>
       </g>
@@ -69,7 +69,7 @@ export function GraviteAnimation({
             />
           )}
         </path>
-        <text x="286" y="34" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="58" y="34" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           {sansAir ? 'sans air' : "avec l'air"}
         </text>
       </g>

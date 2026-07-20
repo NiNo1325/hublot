@@ -30,18 +30,18 @@ export function InfiniAnimation({
           <text
             key={n}
             x={40 + i * 46} y="60"
-            fill="#f5f0e6" fontSize="22" fontFamily="monospace"
+            fill="#f5f0e6" fontSize="22" fontFamily="var(--font-atkinson), monospace"
           >
             {n}
           </text>
         ))}
-        <text x="270" y="60" fill="#b9c4da" fontSize="22" fontFamily="monospace">…</text>
-        <text x="304" y="60" fill="#ffb627" fontSize="22" fontFamily="monospace">+1</text>
+        <text x="270" y="60" fill="#b9c4da" fontSize="22" fontFamily="var(--font-atkinson), monospace">…</text>
+        <text x="304" y="60" fill="#ffb627" fontSize="22" fontFamily="var(--font-atkinson), monospace">+1</text>
       </g>
 
       {/* L'infini n'est pas un nombre */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
-        <text x="40" y="102" fill="#a5b4fc" fontSize="15" fontFamily="sans-serif">
+        <text x="13" y="102" fill="#a5b4fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           jamais de dernier : ce n&apos;est pas un nombre
         </text>
       </g>
@@ -50,8 +50,8 @@ export function InfiniAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         {entiers.map((n, i) => (
           <g key={n}>
-            <text x={40 + i * 66} y="146" fill="#f5f0e6" fontSize="18" fontFamily="monospace">{n}</text>
-            <text x={40 + i * 66} y="196" fill="#34d399" fontSize="18" fontFamily="monospace">{n * 2}</text>
+            <text x={40 + i * 66} y="146" fill="#f5f0e6" fontSize="18" fontFamily="var(--font-atkinson), monospace">{n}</text>
+            <text x={40 + i * 66} y="196" fill="#34d399" fontSize="18" fontFamily="var(--font-atkinson), monospace">{n * 2}</text>
             <line
               x1={46 + i * 66} y1="152" x2={46 + i * 66} y2="182"
               stroke="#34d399" strokeWidth="2"
@@ -62,14 +62,14 @@ export function InfiniAnimation({
             </line>
           </g>
         ))}
-        <text x="240" y="172" fill="#34d399" fontSize="12" fontFamily="sans-serif">
+        <text x="146" y="172" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           autant de pairs que d&apos;entiers
         </text>
       </g>
 
       {/* Des infinis plus grands que d'autres */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="40" y="226" fill="#c4b5fd" fontSize="13" fontFamily="sans-serif">
+        <text x="28" y="226" fill="#c4b5fd" fontSize="14" fontFamily="var(--font-atkinson), sans-serif">
           et certains infinis sont plus grands que d&apos;autres
         </text>
       </g>

@@ -554,5 +554,1369 @@
   "le-vent/6-8/vent": {
     "empreinte": "bb0f874a87c7b428",
     "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-vent/9-12/chaud": {
+    "empreinte": "c3de25cc04a4d767",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-vent/9-12/monte": {
+    "empreinte": "4680eb0479e135e7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-vent/9-12/remplace": {
+    "empreinte": "7d5ea223b34331e4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-vent/9-12/vent": {
+    "empreinte": "d30baa0551fb8478",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/3-5/lune-eclairee": {
+    "empreinte": "33d79db7100a5f65",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/3-5/moitie": {
+    "empreinte": "80d0e8ea024f248f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/3-5/tour": {
+    "empreinte": "3016def11df40b27",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/3-5/formes": {
+    "empreinte": "a1e6717643f5dd0a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/6-8/lune-eclairee": {
+    "empreinte": "14fb8df0fab03ba9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/6-8/moitie": {
+    "empreinte": "2a19d48fd1f2646f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/6-8/tour": {
+    "empreinte": "ce411b37f3a1f368",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/6-8/formes": {
+    "empreinte": "e9b6e928caf1d13f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/9-12/lune-eclairee": {
+    "empreinte": "4abd2c7e220b774b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/9-12/moitie": {
+    "empreinte": "3e69f28393ca3708",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/9-12/tour": {
+    "empreinte": "d4d7a48cf60dd567",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/9-12/formes": {
+    "empreinte": "072bc2d568547e6d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/3-5/inclinaison": {
+    "empreinte": "887b9448359c07e6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/3-5/ete": {
+    "empreinte": "673ac3edf32aae59",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/3-5/hiver": {
+    "empreinte": "bd070bb962cbd219",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/3-5/distance": {
+    "empreinte": "265043031a3d41a0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/6-8/inclinaison": {
+    "empreinte": "59c8defa658b1803",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/6-8/ete": {
+    "empreinte": "86b4d71e435c848b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/6-8/hiver": {
+    "empreinte": "05da871879e41b49",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/6-8/distance": {
+    "empreinte": "167c399feb4bf344",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/9-12/inclinaison": {
+    "empreinte": "35592ad29ccfb0e0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/9-12/ete": {
+    "empreinte": "87fd8f43b13e3b91",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/9-12/hiver": {
+    "empreinte": "ae906ba3ecde79e9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/9-12/distance": {
+    "empreinte": "1081afbd915ab5f0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/3-5/soleils": {
+    "empreinte": "c94da51dc33681f5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/3-5/notre-soleil": {
+    "empreinte": "19330285e52b8a97",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/3-5/voyage": {
+    "empreinte": "497af5102cfb89c7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/3-5/passe": {
+    "empreinte": "ac8ed3141e12fce4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/6-8/soleils": {
+    "empreinte": "27b13c183dff5b50",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/6-8/notre-soleil": {
+    "empreinte": "1a5a63473fb8bae1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/6-8/voyage": {
+    "empreinte": "b4ca5496170d8209",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/6-8/passe": {
+    "empreinte": "c67f8aa77cb87c79",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/9-12/soleils": {
+    "empreinte": "0a24722cc360ea29",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/9-12/notre-soleil": {
+    "empreinte": "e2d47340c002ffd1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/9-12/voyage": {
+    "empreinte": "2f1ff134e936b74a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/9-12/passe": {
+    "empreinte": "19946e905ae79fa2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/3-5/flotte": {
+    "empreinte": "e00c55ae00a10dd5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/3-5/gravite-existe": {
+    "empreinte": "5babe1023e94992c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/3-5/chute": {
+    "empreinte": "55be31ccf16f5ae0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/3-5/orbite": {
+    "empreinte": "818ef99aa6e7445e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/6-8/flotte": {
+    "empreinte": "49ad238a8625f659",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/6-8/gravite-existe": {
+    "empreinte": "aa920b2be3aaf2fc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/6-8/chute": {
+    "empreinte": "60f4509399141263",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/6-8/orbite": {
+    "empreinte": "ea209e43aa80a483",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/9-12/flotte": {
+    "empreinte": "561ef0b495e05887",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/9-12/gravite-existe": {
+    "empreinte": "f9a5271720db3705",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/9-12/chute": {
+    "empreinte": "10a903ec943e856e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/9-12/orbite": {
+    "empreinte": "5dcc751061b9d9db",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/3-5/pompe": {
+    "empreinte": "64eac26c07fba00c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/3-5/aller": {
+    "empreinte": "2f375961dcfd4087",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/3-5/livraison": {
+    "empreinte": "66afa4ea6d0feffc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/3-5/retour": {
+    "empreinte": "745d218456db047b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/6-8/pompe": {
+    "empreinte": "34b9fc83279fd5b3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/6-8/aller": {
+    "empreinte": "8971e3d8b0a772bb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/6-8/livraison": {
+    "empreinte": "9c76fe67ec93bc9c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/6-8/retour": {
+    "empreinte": "03175a96863c9364",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/9-12/pompe": {
+    "empreinte": "8bfddc923a8d4510",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/9-12/aller": {
+    "empreinte": "010fe101fdf420a9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/9-12/livraison": {
+    "empreinte": "1afcc857b840fcbd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/9-12/retour": {
+    "empreinte": "5f2cf5df0a666187",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/3-5/invisible": {
+    "empreinte": "146759f881e87d2e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/3-5/partout": {
+    "empreinte": "c23d8f4a0801fa29",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/3-5/utiles": {
+    "empreinte": "8a461f24fad118e1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/3-5/certains": {
+    "empreinte": "a47a668d28373fc6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/6-8/invisible": {
+    "empreinte": "19353dd32dbdd5a4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/6-8/partout": {
+    "empreinte": "2ce8b9f61226e28b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/6-8/utiles": {
+    "empreinte": "bab5279a7bd16a5f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/6-8/certains": {
+    "empreinte": "1af5440fcce78c78",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/9-12/invisible": {
+    "empreinte": "1b2396c3d3e90f3d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/9-12/partout": {
+    "empreinte": "8e4f2ee5e15006b1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/9-12/utiles": {
+    "empreinte": "e551ab4d1cc751a4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/9-12/certains": {
+    "empreinte": "56d25f906e966e96",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/3-5/repos": {
+    "empreinte": "f00762a973ca9d76",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/3-5/memoire": {
+    "empreinte": "7e3b3b54258065bb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/3-5/grandir": {
+    "empreinte": "2da359d4f081a66d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/3-5/reves": {
+    "empreinte": "3bb75284147c265e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/6-8/repos": {
+    "empreinte": "edd8cd69f817be84",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/6-8/memoire": {
+    "empreinte": "11518ddafaa00643",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/6-8/grandir": {
+    "empreinte": "a78d86b74036a6e3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/6-8/reves": {
+    "empreinte": "5951bb122de4b1a9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/9-12/repos": {
+    "empreinte": "6a2f2d6663752eca",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/9-12/memoire": {
+    "empreinte": "a3e5b77b5d85079b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/9-12/grandir": {
+    "empreinte": "f7131f4c99ceec7d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/9-12/reves": {
+    "empreinte": "8bf02dff8c93474d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/3-5/notice": {
+    "empreinte": "be66b1ccb26555b7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/3-5/moitie": {
+    "empreinte": "206d7f3094b8a513",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/3-5/combinaison": {
+    "empreinte": "10d6cdf2ea828e32",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/3-5/unique": {
+    "empreinte": "d7ec9f2ec66bd29f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/6-8/notice": {
+    "empreinte": "0ad87c5c08087a2d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/6-8/moitie": {
+    "empreinte": "263ead3ac3940159",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/6-8/combinaison": {
+    "empreinte": "59217cc5c5818973",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/6-8/unique": {
+    "empreinte": "9ffc384730e0fb0b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/9-12/notice": {
+    "empreinte": "b20ecedc4a7ed1a9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/9-12/moitie": {
+    "empreinte": "171f071bb8a29c30",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/9-12/combinaison": {
+    "empreinte": "ff898604ca9af4db",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/9-12/unique": {
+    "empreinte": "cdc40034a4922e53",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/3-5/attraction": {
+    "empreinte": "ed7b8fe5e69fb74d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/3-5/poles": {
+    "empreinte": "a6038d6f7d11d4cc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/3-5/pas-tout": {
+    "empreinte": "a5bc6faf4cf1a183",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/3-5/boussole": {
+    "empreinte": "3b7c184ac6805148",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/6-8/attraction": {
+    "empreinte": "138ea98ee2ece953",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/6-8/poles": {
+    "empreinte": "9533920f0c24efe1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/6-8/pas-tout": {
+    "empreinte": "b402f527262539d0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/6-8/boussole": {
+    "empreinte": "b067493459c50b5e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/9-12/attraction": {
+    "empreinte": "a8f74e63d693bdb2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/9-12/poles": {
+    "empreinte": "3fb3987d3a0cec94",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/9-12/pas-tout": {
+    "empreinte": "bd3e88d94fbc16d7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/9-12/boussole": {
+    "empreinte": "b2e56dcf4860c7db",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/3-5/lumiere-blanche": {
+    "empreinte": "62d8df669086c002",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/3-5/decomposition": {
+    "empreinte": "71173a648174eb05",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/3-5/absorption": {
+    "empreinte": "8c26f0f5ecb98268",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/3-5/noir": {
+    "empreinte": "436fe32de4f9544d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/6-8/lumiere-blanche": {
+    "empreinte": "f620b549cbd99908",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/6-8/decomposition": {
+    "empreinte": "0559da92cb9188cf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/6-8/absorption": {
+    "empreinte": "0f4570eaac9809ed",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/6-8/noir": {
+    "empreinte": "73984b105f8767cb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/9-12/lumiere-blanche": {
+    "empreinte": "57da01eb8e9347da",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/9-12/decomposition": {
+    "empreinte": "641c5db1a692d638",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/9-12/absorption": {
+    "empreinte": "cb6f21250584ce51",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/9-12/noir": {
+    "empreinte": "4fa818c5f5fb5013",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/3-5/vibration": {
+    "empreinte": "38b59cce5afe17b4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/3-5/air": {
+    "empreinte": "0cdf1b296c8bbf02",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/3-5/oreille": {
+    "empreinte": "3f342858058e761b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/3-5/vide": {
+    "empreinte": "2e293def062d717f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/6-8/vibration": {
+    "empreinte": "bacb133918c065b0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/6-8/air": {
+    "empreinte": "272d596638ba1e6c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/6-8/oreille": {
+    "empreinte": "fa00de3c79ec54a1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/6-8/vide": {
+    "empreinte": "d820c4fba187d478",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/9-12/vibration": {
+    "empreinte": "010ea881ce303c67",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/9-12/air": {
+    "empreinte": "bc1ca043e3302683",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/9-12/oreille": {
+    "empreinte": "ba99415f73842abc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/9-12/vide": {
+    "empreinte": "50ee4943ebd00f2c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/3-5/circuit": {
+    "empreinte": "4e8edc81c9360fad",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/3-5/boucle": {
+    "empreinte": "11133312ad10165a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/3-5/electrons": {
+    "empreinte": "68c3eaea6dea329f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/3-5/chaleur": {
+    "empreinte": "74b0019fb6fbce7d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/6-8/circuit": {
+    "empreinte": "7ee8cf3a88b8ab3c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/6-8/boucle": {
+    "empreinte": "9286d64869e41c04",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/6-8/electrons": {
+    "empreinte": "b35bc67bcdfc5a4f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/6-8/chaleur": {
+    "empreinte": "bae3b37afb6bb632",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/9-12/circuit": {
+    "empreinte": "612e218be1ee75ef",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/9-12/boucle": {
+    "empreinte": "bc17158f11fc7600",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/9-12/electrons": {
+    "empreinte": "e3e7c9eb75b0e5e4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/9-12/chaleur": {
+    "empreinte": "73ddab2733824996",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/3-5/solide": {
+    "empreinte": "97aa52e0faeeb820",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/3-5/liquide": {
+    "empreinte": "fab38de10e2dda18",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/3-5/gaz": {
+    "empreinte": "5c518ea4f5af9baf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/3-5/reversible": {
+    "empreinte": "593f3cffc0061211",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/6-8/solide": {
+    "empreinte": "c4fa7c74ac6f5e22",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/6-8/liquide": {
+    "empreinte": "f4f5a2a56311a01b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/6-8/gaz": {
+    "empreinte": "c72721e8a3f62cd9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/6-8/reversible": {
+    "empreinte": "7e3f60755bd822e0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/9-12/solide": {
+    "empreinte": "df015fc388008d6a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/9-12/liquide": {
+    "empreinte": "c0cfd324f035c9f0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/9-12/gaz": {
+    "empreinte": "e8a0bd9b33eb0960",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/9-12/reversible": {
+    "empreinte": "4efdad1befa1469b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/3-5/avant": {
+    "empreinte": "33c8b08ceea55257",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/3-5/melange": {
+    "empreinte": "7b737c6bdc864393",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/3-5/toujours-la": {
+    "empreinte": "9e2e4144fa65d2ce",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/3-5/retour": {
+    "empreinte": "92821e29b29aa3b9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/6-8/avant": {
+    "empreinte": "7c888801d8662331",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/6-8/melange": {
+    "empreinte": "b96422ccaecb2b3c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/6-8/toujours-la": {
+    "empreinte": "6bf431c9c2391356",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/6-8/retour": {
+    "empreinte": "e9bb4b68da136a4f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/9-12/avant": {
+    "empreinte": "58f39bc64eebf6a2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/9-12/melange": {
+    "empreinte": "1cba9d73dc94339e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/9-12/toujours-la": {
+    "empreinte": "194b0b603d36f281",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/9-12/retour": {
+    "empreinte": "28aba197b15c9b77",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/3-5/invisible": {
+    "empreinte": "007bb2918e4ed1e2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/3-5/matiere": {
+    "empreinte": "a5f666c48910c9d5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/3-5/melange": {
+    "empreinte": "bfe7a8389ee5cdb4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/3-5/pression": {
+    "empreinte": "6d1781d9ea9f5709",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/6-8/invisible": {
+    "empreinte": "89823e601b5b48a1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/6-8/matiere": {
+    "empreinte": "34620e95df540b75",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/6-8/melange": {
+    "empreinte": "df13e651b4bb0727",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/6-8/pression": {
+    "empreinte": "8201a2ba3957a219",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/9-12/invisible": {
+    "empreinte": "d01ee99792b27f5b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/9-12/matiere": {
+    "empreinte": "ff9be3ea0fc87044",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/9-12/melange": {
+    "empreinte": "8a3afa9458c24136",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/9-12/pression": {
+    "empreinte": "8aa8f864709b2005",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/3-5/trois": {
+    "empreinte": "99cf6fef633fa9df",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/3-5/reaction": {
+    "empreinte": "2b2d0f7368320db0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/3-5/etouffer": {
+    "empreinte": "f5bcc09369c79a59",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/3-5/pas-chose": {
+    "empreinte": "a02ac41681e3d468",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/6-8/trois": {
+    "empreinte": "6ae4539e03c0d3fc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/6-8/reaction": {
+    "empreinte": "0ce319584496dbb5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/6-8/etouffer": {
+    "empreinte": "720f187cdd631f7f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/6-8/pas-chose": {
+    "empreinte": "913395665a34193b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/9-12/trois": {
+    "empreinte": "35091782c05b91b3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/9-12/reaction": {
+    "empreinte": "5ba04adbe6d8780d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/9-12/etouffer": {
+    "empreinte": "8992e8b5e81a864e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/9-12/pas-chose": {
+    "empreinte": "24d6b8ac266ff174",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/3-5/vitesse": {
+    "empreinte": "bed539dca7b7e967",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/3-5/aile": {
+    "empreinte": "371f1b379693a4ee",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/3-5/reaction": {
+    "empreinte": "8ff930ff56bfaa33",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/3-5/main": {
+    "empreinte": "33466d2607f03d29",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/6-8/vitesse": {
+    "empreinte": "a9a19cb426a8108e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/6-8/aile": {
+    "empreinte": "ba01a66bb836d2ee",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/6-8/reaction": {
+    "empreinte": "781531bcbfcf4e3a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/6-8/main": {
+    "empreinte": "1cc3b4ef65726845",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/9-12/vitesse": {
+    "empreinte": "e59187d6b45d4f9e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/9-12/aile": {
+    "empreinte": "d7d34d9c90af2bc4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/9-12/reaction": {
+    "empreinte": "471c5fecf9f75dd6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/9-12/main": {
+    "empreinte": "660c76d8b3570a7a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/3-5/lourd": {
+    "empreinte": "8b9471c36e5b1513",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/3-5/barre": {
+    "empreinte": "abc4df9e5f425254",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/3-5/distance": {
+    "empreinte": "755de892e6678dfe",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/3-5/echange": {
+    "empreinte": "6c5f47e098f86cb0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/6-8/lourd": {
+    "empreinte": "472114ceb2d98d41",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/6-8/barre": {
+    "empreinte": "2da97182ffa5ce09",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/6-8/distance": {
+    "empreinte": "520673a4eb94c0a4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/6-8/echange": {
+    "empreinte": "602aeabe188004f3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/9-12/lourd": {
+    "empreinte": "ea081d60c84fc6c8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/9-12/barre": {
+    "empreinte": "b2154927253eae25",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/9-12/distance": {
+    "empreinte": "40d12b3f3f7b6117",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/9-12/echange": {
+    "empreinte": "f55464c4ae9300f0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/3-5/dents": {
+    "empreinte": "c5b02e8b281a55e6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/3-5/sens": {
+    "empreinte": "a9a66a77c972d665",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/3-5/vitesse": {
+    "empreinte": "f9ed3416d47d020a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/3-5/echange": {
+    "empreinte": "27f048b1813d0665",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/6-8/dents": {
+    "empreinte": "83b4209061788956",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/6-8/sens": {
+    "empreinte": "98fd1ff022a5ac3a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/6-8/vitesse": {
+    "empreinte": "2eedbdca15ab3c4e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/6-8/echange": {
+    "empreinte": "7ebe1e4ba8cfd2dc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/9-12/dents": {
+    "empreinte": "c0cc6e8585c6ad31",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/9-12/sens": {
+    "empreinte": "46d49be78b2c4d10",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/9-12/vitesse": {
+    "empreinte": "4a789ca3475570f9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/9-12/echange": {
+    "empreinte": "7c8006580b727e4c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/3-5/lourd": {
+    "empreinte": "c12a02bf7f16af8d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/3-5/boule": {
+    "empreinte": "aa91a7c13c239b9d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/3-5/creux": {
+    "empreinte": "e8bee5ce401220a4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/3-5/place": {
+    "empreinte": "2dcbacc5918dcaf5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/6-8/lourd": {
+    "empreinte": "e7dac0b2f7c02ddf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/6-8/boule": {
+    "empreinte": "4e9c8677957d1ab5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/6-8/creux": {
+    "empreinte": "7be2d86926725fa4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/6-8/place": {
+    "empreinte": "91e9c988b36aad9a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/9-12/lourd": {
+    "empreinte": "9fa3b188da1d55b9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/9-12/boule": {
+    "empreinte": "540d70bcee2f4fdf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/9-12/creux": {
+    "empreinte": "6227924d949011f2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/9-12/place": {
+    "empreinte": "bd44153605dd00a3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/3-5/decoupage": {
+    "empreinte": "5533e0ebda70ef89",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/3-5/voyage": {
+    "empreinte": "b7411e5efe240230",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/3-5/cables": {
+    "empreinte": "ca269632e2147405",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/3-5/reassemblage": {
+    "empreinte": "4c4989f33cdb09bc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/6-8/decoupage": {
+    "empreinte": "6d6d48942a6e2cbc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/6-8/voyage": {
+    "empreinte": "add09cdf549effea",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/6-8/cables": {
+    "empreinte": "a02440f6d73760f0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/6-8/reassemblage": {
+    "empreinte": "9b8bf23a4eb7d9c8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/9-12/decoupage": {
+    "empreinte": "8d628be136cd817f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/9-12/voyage": {
+    "empreinte": "d90817a531b66047",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/9-12/cables": {
+    "empreinte": "988999808a70c7d8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/9-12/reassemblage": {
+    "empreinte": "774b8e3ac71fc119",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/3-5/recette": {
+    "empreinte": "abb8d101b57d6eac",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/3-5/ordre": {
+    "empreinte": "70623e57cd8924f2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/3-5/exact": {
+    "empreinte": "9b994efda3ab1dc7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/3-5/bug": {
+    "empreinte": "b10eccc5d73e97bb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/6-8/recette": {
+    "empreinte": "ccdcfc124a31774d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/6-8/ordre": {
+    "empreinte": "0508edae54ad7cbe",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/6-8/exact": {
+    "empreinte": "39a55fe06fdfe813",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/6-8/bug": {
+    "empreinte": "c466e6b0251c4004",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/9-12/recette": {
+    "empreinte": "7e823e9cb2e6d0b5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/9-12/ordre": {
+    "empreinte": "b97a5c27348516c0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/9-12/exact": {
+    "empreinte": "ef7ad8b4b52a6231",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/9-12/bug": {
+    "empreinte": "78d687e0e4d04b43",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/3-5/deux-memoires": {
+    "empreinte": "03334193ee484005",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/3-5/vive": {
+    "empreinte": "f765f1e874e3f7e6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/3-5/stockage": {
+    "empreinte": "89d2e4ddc2c8c098",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/3-5/enregistrer": {
+    "empreinte": "8d4bfc27365f1e8e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/6-8/deux-memoires": {
+    "empreinte": "6529496a2d595544",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/6-8/vive": {
+    "empreinte": "8d743451d6bb3a69",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/6-8/stockage": {
+    "empreinte": "c46826246b69d0c1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/6-8/enregistrer": {
+    "empreinte": "e3120a3d02d98a72",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/9-12/deux-memoires": {
+    "empreinte": "c92420d366144cdd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/9-12/vive": {
+    "empreinte": "29051a62a9146d5a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/9-12/stockage": {
+    "empreinte": "0ed5fa4e75a2cf07",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/9-12/enregistrer": {
+    "empreinte": "e669cece4b247d7a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/3-5/exemples": {
+    "empreinte": "8293b90014b7c574",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/3-5/erreurs": {
+    "empreinte": "5f79c50d28ae3948",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/3-5/ajuste": {
+    "empreinte": "f47c35eaa43ae58e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/3-5/comprend-pas": {
+    "empreinte": "1d76e6927e0d5301",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/6-8/exemples": {
+    "empreinte": "64201898b29299cf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/6-8/erreurs": {
+    "empreinte": "80368d8415edf776",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/6-8/ajuste": {
+    "empreinte": "69ce56d6ff3f0a46",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/6-8/comprend-pas": {
+    "empreinte": "ac928ec6b081199a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/9-12/exemples": {
+    "empreinte": "680e26c22a9bb1e5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/9-12/erreurs": {
+    "empreinte": "48682396b99693e8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/9-12/ajuste": {
+    "empreinte": "73c3c55d02e0a0cf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/9-12/comprend-pas": {
+    "empreinte": "1bcc265b14515d80",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/9-12/presque": {
+    "empreinte": "4981bf3f476f2e75",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/3-5/motif": {
+    "empreinte": "724a09f7f8f23ddd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/3-5/repetition": {
+    "empreinte": "1ffb4537293e28ea",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/3-5/nature": {
+    "empreinte": "4592b45b23f85016",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/3-5/limite": {
+    "empreinte": "881dcd8a7f06ce29",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/6-8/motif": {
+    "empreinte": "3efb080d7dc22b14",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/6-8/repetition": {
+    "empreinte": "7f8d20f1582d747a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/6-8/nature": {
+    "empreinte": "9a1ac07c1e107088",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/6-8/limite": {
+    "empreinte": "9f64537e946da8c8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/9-12/motif": {
+    "empreinte": "704afbda6ea8aeca",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/9-12/repetition": {
+    "empreinte": "5a6f4079b29a70e1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/9-12/nature": {
+    "empreinte": "7c33a81f87154a60",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/9-12/limite": {
+    "empreinte": "b286ffa70f2dc37b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/3-5/lancer": {
+    "empreinte": "955e92f8c6b33996",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/3-5/memoire": {
+    "empreinte": "b4b3012866d3a719",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/3-5/chance-egale": {
+    "empreinte": "bf99a02c5f142b24",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/3-5/beaucoup": {
+    "empreinte": "3b418a3fe8608697",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/6-8/lancer": {
+    "empreinte": "4f7efc38a738f7ae",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/6-8/memoire": {
+    "empreinte": "e493cda25e30829d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/6-8/chance-egale": {
+    "empreinte": "254d34a87c6e1a5e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/6-8/beaucoup": {
+    "empreinte": "0d6721daec472d49",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/9-12/lancer": {
+    "empreinte": "20b32db738515711",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/9-12/memoire": {
+    "empreinte": "fd5b7b8889d24dd3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/9-12/chance-egale": {
+    "empreinte": "fb3d137998abfbc4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/9-12/beaucoup": {
+    "empreinte": "df7c6b1a1731414e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/3-5/compter": {
+    "empreinte": "e9061ac33cb0496c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/3-5/jamais-fini": {
+    "empreinte": "6bdb837c85cc07e9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/3-5/pas-un-nombre": {
+    "empreinte": "a7af7b65fb08fe5f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/3-5/entre": {
+    "empreinte": "42de7c7c83a42e15",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/6-8/compter": {
+    "empreinte": "225e5a85a30e7daf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/6-8/jamais-fini": {
+    "empreinte": "2404f4e96fd260eb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/6-8/pas-un-nombre": {
+    "empreinte": "7c27e38ca70b1972",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/6-8/entre": {
+    "empreinte": "548134ca40eed291",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/9-12/compter": {
+    "empreinte": "779d0b192f9ba677",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/9-12/jamais-fini": {
+    "empreinte": "924e843608e630b5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/9-12/pas-un-nombre": {
+    "empreinte": "c8f5f268ba6c1a48",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/9-12/entre": {
+    "empreinte": "e3537804785f85b8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/3-5/rien": {
+    "empreinte": "e4e8a39f4bf6c961",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/3-5/place": {
+    "empreinte": "28731386c3f78ef3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/3-5/invention": {
+    "empreinte": "9074d6bb74dd5820",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/3-5/division": {
+    "empreinte": "35cf2d2a7c450636",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/6-8/rien": {
+    "empreinte": "a7b2272bee12502d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/6-8/place": {
+    "empreinte": "2047af1728b96212",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/6-8/invention": {
+    "empreinte": "744e0e1a1907912a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/6-8/division": {
+    "empreinte": "6029d260b1538a52",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/9-12/rien": {
+    "empreinte": "15acbe80ff9c66c7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/9-12/place": {
+    "empreinte": "71badf23c148b2c7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/9-12/invention": {
+    "empreinte": "3f979dd3c9b0f097",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/9-12/division": {
+    "empreinte": "440f1f7ed4bb0a5c",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

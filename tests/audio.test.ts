@@ -18,37 +18,7 @@ import { AGE_RANGES } from '@/lib/types';
  * `npm run audio` réussi, retirer l'entrée correspondante — le test vérifiera
  * alors les fichiers, et échouera s'ils manquent toujours.
  */
-const EN_ATTENTE_AUDIO = new Set([
-  'le-vent',
-  'les-phases-de-la-lune',
-  'pourquoi-il-y-a-des-saisons',
-  'les-etoiles',
-  'pourquoi-les-astronautes-flottent',
-  'le-coeur-et-le-sang',
-  'les-microbes',
-  'pourquoi-on-dort',
-  'pourquoi-on-ressemble-a-ses-parents',
-  'les-aimants',
-  'pourquoi-on-voit-les-couleurs',
-  'comment-voyage-le-son',
-  'lelectricite',
-  'les-etats-de-la-matiere',
-  'ou-va-le-sucre-dans-leau',
-  'de-quoi-est-fait-lair',
-  'le-feu',
-  'comment-vole-un-avion',
-  'les-leviers',
-  'les-engrenages',
-  'pourquoi-les-bateaux-flottent',
-  'comment-marche-internet',
-  'quest-ce-quun-programme',
-  'comment-un-ordinateur-se-souvient',
-  'comment-une-machine-apprend',
-  'les-fractales',
-  'le-hasard',
-  'linfini',
-  'le-zero',
-]);
+const EN_ATTENTE_AUDIO = new Set<string>([]);
 
 const cas = cards
   .filter((carte) => !EN_ATTENTE_AUDIO.has(carte.id))

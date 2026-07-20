@@ -37,6 +37,15 @@ const EN_ATTENTE_AUDIO = new Set([
   'les-leviers',
   'quest-ce-quun-programme',
   'le-hasard',
+  // Vague 3
+  'les-fossiles',
+  'les-etoiles',
+  'pourquoi-on-dort',
+  'comment-voyage-le-son',
+  'de-quoi-est-fait-lair',
+  'les-engrenages',
+  'comment-un-ordinateur-se-souvient',
+  'linfini',
 ]);
 
 const cas = cards

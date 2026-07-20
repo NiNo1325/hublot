@@ -27,6 +27,15 @@ import { LeviersAnimation } from './LeviersAnimation';
 import { AlgorithmeAnimation } from './AlgorithmeAnimation';
 import { HasardAnimation } from './HasardAnimation';
 
+import { SonAnimation } from './SonAnimation';
+import { EtoilesAnimation } from './EtoilesAnimation';
+import { FossilesAnimation } from './FossilesAnimation';
+import { SommeilAnimation } from './SommeilAnimation';
+import { AirAnimation } from './AirAnimation';
+import { EngrenagesAnimation } from './EngrenagesAnimation';
+import { MemoireAnimation } from './MemoireAnimation';
+import { InfiniAnimation } from './InfiniAnimation';
+
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
   activeBeatId: string | null;
@@ -67,4 +76,12 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   leviers: LeviersAnimation,
   algorithme: AlgorithmeAnimation,
   hasard: HasardAnimation,
+  son: SonAnimation,
+  etoiles: EtoilesAnimation,
+  fossiles: FossilesAnimation,
+  sommeil: SommeilAnimation,
+  air: AirAnimation,
+  engrenages: EngrenagesAnimation,
+  memoire: MemoireAnimation,
+  infini: InfiniAnimation,
 };

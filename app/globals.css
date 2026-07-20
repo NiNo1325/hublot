@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
+/*
+  Direction visuelle : « le hublot lumineux ».
+  Fond encre profond, cartes rondes qui s'allument comme des lucarnes.
+  L'app est en thème sombre unique — pas de bascule clair/sombre : le contraste
+  entre les hublots colorés et le fond encre est le cœur de l'identité.
+*/
+@theme {
+  --color-encre: #0f1b33;
+  --color-encre-clair: #1b2a4a;
+  --color-encre-bord: #2c3f66;
+  --color-craie: #f5f0e6;
+  --color-craie-douce: #b9c4da;
+  --color-soleil: #ffb627;
+
+  --font-display: var(--font-fredoka);
+  --font-sans: var(--font-atkinson);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-encre);
+  color: var(--color-craie);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/*
+  Focus visible sur toute l'app. Les enfants n'utilisent pas le clavier, mais
+  les parents et les technologies d'assistance en dépendent.
+*/
+:focus-visible {
+  outline: 3px solid var(--color-soleil);
+  outline-offset: 4px;
+}
+
+/*
+  L'animation est le cœur du produit : en reduced-motion on ne supprime pas le
+  visuel, on remplace les déplacements par des fondus. Les composants
+  d'animation lisent la préférence via `useReducedMotion` et adaptent leur
+  rendu ; cette règle ne neutralise que les transitions décoratives.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+  Le halo d'un hublot au survol. En CSS plutôt qu'en classe Tailwind : une
+  ombre portée colorée en `group-hover` n'est pas exprimable proprement avec
+  les utilitaires.
+*/
+.halo-soleil {
+  transition: box-shadow 250ms ease;
+}
+.group:hover .halo-soleil,
+.group:focus-visible .halo-soleil {
+  box-shadow: 0 0 42px rgba(255, 182, 39, 0.45);
+}
+
+/* Allumage en séquence des hublots au chargement de la grille. */
+@keyframes allumage {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

@@ -46,6 +46,15 @@ const EN_ATTENTE_AUDIO = new Set([
   'les-engrenages',
   'comment-un-ordinateur-se-souvient',
   'linfini',
+  // Vague 4
+  'le-vent',
+  'pourquoi-les-astronautes-flottent',
+  'pourquoi-on-ressemble-a-ses-parents',
+  'lelectricite',
+  'le-feu',
+  'pourquoi-les-bateaux-flottent',
+  'comment-une-machine-apprend',
+  'le-zero',
 ]);
 
 const cas = cards

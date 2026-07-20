@@ -36,6 +36,15 @@ import { EngrenagesAnimation } from './EngrenagesAnimation';
 import { MemoireAnimation } from './MemoireAnimation';
 import { InfiniAnimation } from './InfiniAnimation';
 
+import { ApesanteurAnimation } from './ApesanteurAnimation';
+import { ElectriciteAnimation } from './ElectriciteAnimation';
+import { VentAnimation } from './VentAnimation';
+import { HerediteAnimation } from './HerediteAnimation';
+import { FeuAnimation } from './FeuAnimation';
+import { FlottaisonAnimation } from './FlottaisonAnimation';
+import { ApprentissageAnimation } from './ApprentissageAnimation';
+import { ZeroAnimation } from './ZeroAnimation';
+
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
   activeBeatId: string | null;
@@ -84,4 +93,12 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   engrenages: EngrenagesAnimation,
   memoire: MemoireAnimation,
   infini: InfiniAnimation,
+  apesanteur: ApesanteurAnimation,
+  electricite: ElectriciteAnimation,
+  vent: VentAnimation,
+  heredite: HerediteAnimation,
+  feu: FeuAnimation,
+  flottaison: FlottaisonAnimation,
+  apprentissage: ApprentissageAnimation,
+  zero: ZeroAnimation,
 };

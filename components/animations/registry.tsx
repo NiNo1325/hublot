@@ -9,6 +9,14 @@ import { ReactionChimiqueAnimation } from './ReactionChimiqueAnimation';
 import { StructuresAnimation } from './StructuresAnimation';
 import { BinaireAnimation } from './BinaireAnimation';
 import { SymetrieAnimation } from './SymetrieAnimation';
+import { PhasesLuneAnimation } from './PhasesLuneAnimation';
+import { VolcanAnimation } from './VolcanAnimation';
+import { CirculationAnimation } from './CirculationAnimation';
+import { AimantsAnimation } from './AimantsAnimation';
+import { EtatsMatiereAnimation } from './EtatsMatiereAnimation';
+import { PortanceAnimation } from './PortanceAnimation';
+import { InternetAnimation } from './InternetAnimation';
+import { FractalesAnimation } from './FractalesAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -34,4 +42,12 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   structures: StructuresAnimation,
   binaire: BinaireAnimation,
   symetrie: SymetrieAnimation,
+  'phases-lune': PhasesLuneAnimation,
+  volcan: VolcanAnimation,
+  circulation: CirculationAnimation,
+  aimants: AimantsAnimation,
+  'etats-matiere': EtatsMatiereAnimation,
+  portance: PortanceAnimation,
+  internet: InternetAnimation,
+  fractales: FractalesAnimation,
 };

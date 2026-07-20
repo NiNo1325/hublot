@@ -10,7 +10,9 @@ export const card: ScienceCard = {
   id: 'le-volcan-de-vinaigre',
   domainId: 'chimie',
   animationId: 'reaction-chimique',
-  thumbnail: '🌋',
+  // Pas de 🌋 ici : le vrai volcan porte déjà cet emoji, et deux hublots
+  // identiques dans la grille rendraient les cartes indistinguables.
+  thumbnail: '🧪',
   content: {
     fr: {
       title: {

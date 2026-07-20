@@ -54,18 +54,32 @@ export function DiscoverView({ cards, domains }: DiscoverViewProps) {
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">
           Qu&apos;est-ce qui t&apos;intéresse&nbsp;?
         </h1>
-        {/*
-          Discret mais toujours accessible : c'est en général un adulte qui
-          change le niveau, souvent pour un deuxième enfant. Le libellé rappelle
-          le réglage courant, ce qui évite d'ouvrir l'écran pour le vérifier.
-        */}
-        <button
-          type="button"
-          onClick={() => router.push('/?changer=1')}
-          className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-        >
-          Niveau&nbsp;: {ageRange} ans — changer
-        </button>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          {/*
+            Retour au menu, à taille tactile pleine : sans lui, on ne pouvait
+            plus quitter les cartes une fois entré. L'icône maison se comprend
+            sans savoir lire.
+          */}
+          <button
+            type="button"
+            onClick={() => router.push('/')}
+            className="flex min-h-12 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+          >
+            <span aria-hidden="true">🏠</span> Menu
+          </button>
+          {/*
+            Le niveau est plutôt réglé par un adulte, souvent pour un deuxième
+            enfant. Le libellé rappelle le réglage courant, ce qui évite
+            d'ouvrir l'écran pour le vérifier.
+          */}
+          <button
+            type="button"
+            onClick={() => router.push('/?changer=1')}
+            className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+          >
+            Niveau&nbsp;: {ageRange} ans — changer
+          </button>
+        </div>
       </header>
 
       <DomainFilter

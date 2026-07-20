@@ -49,6 +49,18 @@ trois niveaux. Un test le vérifie.
 `npm test` échoue si une carte est incomplète, référence un domaine inconnu,
 oublie une tranche d'âge, ou n'a pas d'animation enregistrée.
 
+### Livrer une carte avant son audio
+
+Le quota TTS est journalier (environ cent générations, soit huit cartes). Une
+carte peut donc être livrée avant sa voix : elle bascule en lecture minutée et
+reste utilisable.
+
+Pour que le garde-fou reste utile, l'attente doit être déclarée dans
+`EN_ATTENTE_AUDIO`, en tête de [`tests/audio.test.ts`](tests/audio.test.ts).
+Toute carte absente de cette liste doit avoir son audio complet. Après un
+`npm run audio` réussi, retirer l'entrée — un test vérifie précisément qu'on ne
+laisse pas traîner dans cette liste une carte dont l'audio existe déjà.
+
 ## Narration
 
 La voix est **préenregistrée**, pas synthétisée dans le navigateur : un fichier

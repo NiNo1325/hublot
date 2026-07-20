@@ -66,6 +66,16 @@ body {
   box-shadow: 0 0 42px rgba(255, 182, 39, 0.45);
 }
 
+/*
+  Battement du cœur. En CSS plutôt qu'en `animateTransform` SVG, dont le
+  `scale` opère depuis l'origine du repère et déplacerait la forme.
+*/
+@keyframes battement {
+  0%, 100% { transform: scale(1); }
+  18% { transform: scale(1.13); }
+  36% { transform: scale(1); }
+}
+
 /* Allumage en séquence des hublots au chargement de la grille. */
 @keyframes allumage {
   from {

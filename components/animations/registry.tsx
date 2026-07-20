@@ -18,6 +18,15 @@ import { PortanceAnimation } from './PortanceAnimation';
 import { InternetAnimation } from './InternetAnimation';
 import { FractalesAnimation } from './FractalesAnimation';
 
+import { SaisonsAnimation } from './SaisonsAnimation';
+import { SeismeAnimation } from './SeismeAnimation';
+import { MicrobesAnimation } from './MicrobesAnimation';
+import { CouleursAnimation } from './CouleursAnimation';
+import { DissolutionAnimation } from './DissolutionAnimation';
+import { LeviersAnimation } from './LeviersAnimation';
+import { AlgorithmeAnimation } from './AlgorithmeAnimation';
+import { HasardAnimation } from './HasardAnimation';
+
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
   activeBeatId: string | null;
@@ -50,4 +59,12 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   portance: PortanceAnimation,
   internet: InternetAnimation,
   fractales: FractalesAnimation,
+  saisons: SaisonsAnimation,
+  seisme: SeismeAnimation,
+  microbes: MicrobesAnimation,
+  couleurs: CouleursAnimation,
+  dissolution: DissolutionAnimation,
+  leviers: LeviersAnimation,
+  algorithme: AlgorithmeAnimation,
+  hasard: HasardAnimation,
 };

@@ -76,6 +76,19 @@ body {
   36% { transform: scale(1); }
 }
 
+/* Pièce lancée en l'air. */
+@keyframes lancer-piece {
+  0%, 100% { transform: translateY(0) rotateX(0deg); }
+  50% { transform: translateY(-22px) rotateX(540deg); }
+}
+
+/* Secousse d'un bâtiment pendant un séisme. */
+@keyframes secousse {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-2px) rotate(-0.8deg); }
+  75% { transform: translateX(2px) rotate(0.8deg); }
+}
+
 /* Allumage en séquence des hublots au chargement de la grille. */
 @keyframes allumage {
   from {

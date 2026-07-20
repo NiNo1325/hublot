@@ -29,7 +29,7 @@ export function VolcanAnimation({
       {/* Manteau : la roche fond en profondeur */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <path d="M0 214 h400 v26 H0 Z" fill="#7f1d1d" />
-        <text x="12" y="232" fill="#fca5a5" fontSize="12" fontFamily="sans-serif">
+        <text x="12" y="232" fill="#fca5a5" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           roche fondue
         </text>
       </g>

@@ -27,7 +27,7 @@ export function HasardAnimation({
           animation: anime && phase === 0 ? 'lancer-piece 1.4s ease-in-out infinite' : undefined,
         }}>
           <circle cx="68" cy="76" r="26" fill="#ffb627" />
-          <text x="60" y="84" fill="#0f1b33" fontSize="20" fontFamily="monospace">P</text>
+          <text x="60" y="84" fill="#0f1b33" fontSize="20" fontFamily="var(--font-atkinson), monospace">P</text>
         </g>
       </g>
 
@@ -36,10 +36,10 @@ export function HasardAnimation({
         {SERIE.map((f, i) => (
           <g key={i}>
             <circle cx={136 + i * 42} cy="76" r="17" fill="#ffb627" opacity="0.55" />
-            <text x={130 + i * 42} y="82" fill="#0f1b33" fontSize="15" fontFamily="monospace">{f}</text>
+            <text x={130 + i * 42} y="82" fill="#0f1b33" fontSize="18" fontFamily="var(--font-atkinson), monospace">{f}</text>
           </g>
         ))}
-        <text x="132" y="122" fill="#b9c4da" fontSize="12" fontFamily="sans-serif">
+        <text x="129" y="122" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           cinq piles de suite… et alors ?
         </text>
       </g>
@@ -47,12 +47,12 @@ export function HasardAnimation({
       {/* Le lancer suivant : toujours moitié-moitié */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <circle cx="346" cy="76" r="20" fill="none" stroke="#f5f0e6" strokeWidth="2.5" strokeDasharray="5 5" />
-        <text x="336" y="83" fill="#f5f0e6" fontSize="18" fontFamily="monospace">?</text>
+        <text x="336" y="83" fill="#f5f0e6" fontSize="18" fontFamily="var(--font-atkinson), monospace">?</text>
         <rect x="150" y="146" width="100" height="22" rx="4" fill="#38bdf8" />
         <rect x="250" y="146" width="100" height="22" rx="4" fill="#fb7185" />
-        <text x="176" y="162" fill="#0f1b33" fontSize="13" fontFamily="sans-serif">pile 50 %</text>
-        <text x="272" y="162" fill="#0f1b33" fontSize="13" fontFamily="sans-serif">face 50 %</text>
-        <text x="150" y="190" fill="#b9c4da" fontSize="12" fontFamily="sans-serif">
+        <text x="176" y="162" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">pile 50 %</text>
+        <text x="272" y="162" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">face 50 %</text>
+        <text x="150" y="190" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           la pièce n&apos;a pas de mémoire
         </text>
       </g>
@@ -69,7 +69,7 @@ export function HasardAnimation({
             <animate attributeName="stroke-dasharray" values="0 400; 400 0" dur="2.4s" fill="freeze" />
           )}
         </path>
-        <text x="292" y="188" fill="#34d399" fontSize="11" fontFamily="sans-serif">50 %</text>
+        <text x="292" y="188" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">50 %</text>
       </g>
     </svg>
   );

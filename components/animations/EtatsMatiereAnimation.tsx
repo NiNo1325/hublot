@@ -36,7 +36,7 @@ export function EtatsMatiereAnimation({
             </circle>
           )),
         )}
-        <text x="42" y="186" fill="#7dd3fc" fontSize="13" fontFamily="sans-serif">solide</text>
+        <text x="42" y="186" fill="#7dd3fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">solide</text>
       </g>
 
       {/* Liquide : même densité, mais les particules glissent */}
@@ -55,7 +55,7 @@ export function EtatsMatiereAnimation({
             </circle>
           )),
         )}
-        <text x="168" y="186" fill="#38bdf8" fontSize="13" fontFamily="sans-serif">liquide</text>
+        <text x="168" y="186" fill="#38bdf8" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">liquide</text>
       </g>
 
       {/* Gaz : dispersé, invisible — le nuage blanc n'en est pas */}
@@ -71,7 +71,7 @@ export function EtatsMatiereAnimation({
             )}
           </circle>
         ))}
-        <text x="292" y="186" fill="#bae6fd" fontSize="13" fontFamily="sans-serif">gaz (invisible)</text>
+        <text x="256" y="186" fill="#bae6fd" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">gaz (invisible)</text>
       </g>
 
       {/* Réversibilité : rien ne se perd */}
@@ -79,7 +79,7 @@ export function EtatsMatiereAnimation({
         <path d="M126 210 h146" stroke="#ffb627" strokeWidth="3" strokeLinecap="round" />
         <path d="M266 204 l8 6 l-8 6" fill="none" stroke="#ffb627" strokeWidth="3" strokeLinecap="round" />
         <path d="M132 204 l-8 6 l8 6" fill="none" stroke="#ffb627" strokeWidth="3" strokeLinecap="round" />
-        <text x="128" y="232" fill="#ffb627" fontSize="13" fontFamily="sans-serif">
+        <text x="128" y="232" fill="#ffb627" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           rien ne se perd, tout revient
         </text>
       </g>

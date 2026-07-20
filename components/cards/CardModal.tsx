@@ -62,19 +62,33 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
       onClose={onClose}
       onCancel={onClose}
       aria-labelledby="titre-carte"
-      className="m-auto max-h-[92vh] w-[min(44rem,92vw)] overflow-y-auto rounded-[2rem] border-4 bg-encre p-0 text-craie backdrop:bg-encre/80"
+      /*
+        Plein écran sur mobile, fenêtre centrée à partir du format tablette.
+        Sur un téléphone, les marges d'une modale flottante coûtaient une
+        soixantaine de pixels de largeur — pris directement sur l'illustration,
+        puisque c'est elle qui contraint le rapport hauteur/largeur.
+      */
+      className="m-0 h-full max-h-none w-full max-w-none overflow-y-auto border-0 bg-encre p-0 text-craie backdrop:bg-encre/80 sm:m-auto sm:h-auto sm:max-h-[92vh] sm:w-[min(44rem,92vw)] sm:rounded-[2rem] sm:border-4"
       style={{ borderColor: style.teinte }}
     >
-      <div className="flex flex-col gap-6 p-6 sm:p-8">
-        <header className="flex items-start justify-between gap-4">
-          <h2 id="titre-carte" className="font-display text-3xl font-semibold">
+      {/*
+        Contenu centré verticalement sur mobile : la modale occupant tout
+        l'écran, aligner en haut laissait un vide sous le texte et repoussait
+        les commandes hors de portée du pouce.
+      */}
+      <div className="flex min-h-full flex-col justify-center gap-4 p-4 sm:justify-start sm:gap-6 sm:p-8">
+        <header className="flex items-start justify-between gap-3">
+          <h2
+            id="titre-carte"
+            className="font-display text-xl font-semibold sm:text-3xl"
+          >
             {card.content.fr.title[ageRange]}
           </h2>
           {/* Toujours visible, taille tactile pleine, jamais masqué pendant la lecture. */}
           <button
             type="button"
             onClick={() => dialogRef.current?.close()}
-            className="flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-2xl transition-colors hover:border-soleil hover:text-soleil"
+            className="flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-xl transition-colors hover:border-soleil hover:text-soleil sm:h-14 sm:w-14 sm:text-2xl"
           >
             <span aria-hidden="true">✕</span>
             <span className="sr-only">Fermer la carte</span>
@@ -107,18 +121,18 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
         </div>
 
         {/*
-          Le texte reste dans le DOM pour tous les âges — lecteurs d'écran et
-          parents qui lisent par-dessus l'épaule. `aria-live` annonce le beat
-          courant sans exiger que l'utilisateur cherche où le texte a changé.
-        */}
-        {/*
           Un seul beat à l'écran à la fois, y compris avant le démarrage : les
           afficher tous formerait un mur de texte, décourageant pour un enfant
           et incohérent avec une narration qui progresse phrase après phrase.
           `aria-live` annonce chaque changement aux lecteurs d'écran.
+
+          Le texte est volontairement plus discret que l'illustration : il
+          accompagne la narration, il ne la remplace pas. Sur mobile, un texte
+          à la même échelle que sur grand écran reléguait l'animation au rang
+          de vignette.
         */}
-        <div aria-live="polite" className="min-h-24">
-          <p className="text-lg leading-relaxed sm:text-xl">
+        <div aria-live="polite" className="min-h-20 sm:min-h-24">
+          <p className="text-base leading-relaxed text-craie/90 sm:text-xl sm:text-craie">
             {beats[Math.max(0, state.activeIndex)].text}
           </p>
         </div>

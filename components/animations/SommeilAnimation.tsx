@@ -45,7 +45,7 @@ export function SommeilAnimation({
             )}
           </circle>
         ))}
-        <text x="150" y="112" fill="#a5b4fc" fontSize="12" fontFamily="sans-serif">
+        <text x="150" y="112" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           le cerveau travaille
         </text>
       </g>
@@ -62,7 +62,7 @@ export function SommeilAnimation({
             </rect>
           </g>
         ))}
-        <text x="256" y="94" fill="#34d399" fontSize="12" fontFamily="sans-serif">
+        <text x="188" y="94" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           les souvenirs se rangent
         </text>
       </g>
@@ -70,7 +70,7 @@ export function SommeilAnimation({
       {/* Réparation du corps */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <path d="M300 140 l10 -18 l10 18 l18 4 l-14 14 l4 18 l-18 -10 l-18 10 l4 -18 l-14 -14 z" fill="#a3e635" opacity="0.9" />
-        <text x="262" y="196" fill="#a3e635" fontSize="12" fontFamily="sans-serif">
+        <text x="239" y="196" fill="#a3e635" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           le corps se répare
         </text>
       </g>
@@ -84,7 +84,7 @@ export function SommeilAnimation({
             )}
           </circle>
         ))}
-        <text x="186" y="46" fill="#c4b5fd" fontSize="13" fontFamily="sans-serif">
+        <text x="186" y="46" fill="#c4b5fd" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           et parfois, on rêve
         </text>
       </g>

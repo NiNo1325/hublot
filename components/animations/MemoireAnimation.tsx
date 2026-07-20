@@ -25,7 +25,7 @@ export function MemoireAnimation({
       {/* Mémoire vive : rapide, volatile */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <rect x="30" y="58" width="146" height="110" rx="10" fill="#1b2a4a" stroke="#22d3ee" strokeWidth="2.5" />
-        <text x="46" y="46" fill="#22d3ee" fontSize="13" fontFamily="sans-serif">mémoire vive</text>
+        <text x="46" y="46" fill="#22d3ee" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">mémoire vive</text>
         {Array.from({ length: 6 }).map((_, i) => (
           <rect
             key={i}
@@ -38,7 +38,7 @@ export function MemoireAnimation({
             )}
           </rect>
         ))}
-        <text x="42" y="188" fill="#b9c4da" fontSize="11" fontFamily="sans-serif">
+        <text x="42" y="188" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           rapide, mais oublie tout
         </text>
       </g>
@@ -46,7 +46,7 @@ export function MemoireAnimation({
       {/* Stockage : lent, permanent */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <rect x="224" y="58" width="146" height="110" rx="10" fill="#1b2a4a" stroke="#34d399" strokeWidth="2.5" />
-        <text x="248" y="46" fill="#34d399" fontSize="13" fontFamily="sans-serif">stockage</text>
+        <text x="248" y="46" fill="#34d399" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">stockage</text>
         {Array.from({ length: 6 }).map((_, i) => (
           <rect
             key={i}
@@ -54,7 +54,7 @@ export function MemoireAnimation({
             width="30" height="30" rx="4" fill="#34d399" opacity="0.85"
           />
         ))}
-        <text x="238" y="188" fill="#b9c4da" fontSize="11" fontFamily="sans-serif">
+        <text x="213" y="188" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           lent, mais garde tout
         </text>
       </g>
@@ -67,7 +67,7 @@ export function MemoireAnimation({
 
       {/* Coupure de courant */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="66" y="216" fill="#fb7185" fontSize="13" fontFamily="sans-serif">
+        <text x="31" y="216" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           plus de courant : tout s&apos;efface à gauche
         </text>
       </g>

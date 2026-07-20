@@ -32,7 +32,7 @@ export function FlottaisonAnimation({
             <animate attributeName="cy" values="90;208" dur="2.6s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="46" y="228" fill="#94a3b8" fontSize="12" fontFamily="sans-serif">
+        <text x="46" y="228" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           en boule : coule
         </text>
       </g>
@@ -44,7 +44,7 @@ export function FlottaisonAnimation({
             <animate attributeName="opacity" values="0.9;1;0.9" dur="2.4s" repeatCount="indefinite" />
           )}
         </path>
-        <text x="196" y="84" fill="#34d399" fontSize="12" fontFamily="sans-serif">
+        <text x="196" y="84" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           en coque : flotte
         </text>
       </g>
@@ -57,13 +57,13 @@ export function FlottaisonAnimation({
             <path d={`M${x - 6} 152 L${x} 138 L${x + 6} 152 Z`} fill="#7dd3fc" />
           </g>
         ))}
-        <text x="312" y="164" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
+        <text x="312" y="164" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;eau
         </text>
-        <text x="312" y="180" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
+        <text x="312" y="180" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           repousse
         </text>
-        <text x="150" y="34" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="103" y="34" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           ce qui compte : la place occupée
         </text>
       </g>

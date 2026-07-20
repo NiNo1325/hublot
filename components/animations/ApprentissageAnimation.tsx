@@ -27,10 +27,10 @@ export function ApprentissageAnimation({
         {[0, 1, 2, 3].map((i) => (
           <g key={i}>
             <rect x={22 + i * 34} y="42" width="28" height="28" rx="5" fill="#1b2a4a" stroke="#22d3ee" strokeWidth="2" />
-            <text x={30 + i * 34} y="62" fontSize="15">🐱</text>
+            <text x={30 + i * 34} y="62" fontSize="18">🐱</text>
           </g>
         ))}
-        <text x="22" y="94" fill="#22d3ee" fontSize="11" fontFamily="sans-serif">
+        <text x="22" y="94" fill="#22d3ee" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           des milliers d&apos;exemples
         </text>
       </g>
@@ -48,7 +48,7 @@ export function ApprentissageAnimation({
             )}
           </circle>
         ))}
-        <text x="176" y="128" fill="#a5b4fc" fontSize="11" fontFamily="sans-serif">
+        <text x="176" y="128" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           des réglages qu&apos;on ajuste
         </text>
       </g>
@@ -65,7 +65,7 @@ export function ApprentissageAnimation({
             <animate attributeName="stroke-dasharray" values="0 200; 200 0" dur="2.2s" fill="freeze" />
           )}
         </path>
-        <text x="296" y="132" fill="#fb7185" fontSize="11" fontFamily="sans-serif">
+        <text x="264" y="132" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;erreur baisse
         </text>
       </g>
@@ -73,10 +73,10 @@ export function ApprentissageAnimation({
       {/* Elle ne comprend pas */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <rect x="34" y="158" width="332" height="58" rx="10" fill="#1b2a4a" stroke="#fb7185" strokeWidth="2" />
-        <text x="52" y="184" fill="#f5f0e6" fontSize="13" fontFamily="sans-serif">
+        <text x="10" y="184" fill="#f5f0e6" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           elle trouve des régularités dans des chiffres
         </text>
-        <text x="52" y="204" fill="#fb7185" fontSize="13" fontFamily="sans-serif">
+        <text x="52" y="204" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           elle ne sait pas ce qu&apos;est un chat
         </text>
       </g>

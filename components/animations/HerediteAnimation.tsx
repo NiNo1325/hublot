@@ -35,7 +35,7 @@ export function HerediteAnimation({
             </g>
           );
         })}
-        <text x="22" y="232" fill="#a5b4fc" fontSize="12" fontFamily="sans-serif">ton ADN</text>
+        <text x="22" y="232" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">ton ADN</text>
       </g>
 
       {/* Les deux parents */}
@@ -46,7 +46,7 @@ export function HerediteAnimation({
         ].map(({ x, couleur, label }) => (
           <g key={x}>
             <circle cx={x} cy="52" r="20" fill={couleur} opacity="0.9" />
-            <text x={x - 26} y="88" fill={couleur} fontSize="12" fontFamily="sans-serif">{label}</text>
+            <text x={x - 26} y="88" fill={couleur} fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{label}</text>
           </g>
         ))}
         <line x1="160" y1="76" x2="230" y2="128" stroke="#2c3f66" strokeWidth="2.5" />
@@ -66,14 +66,14 @@ export function HerediteAnimation({
             )}
           </circle>
         ))}
-        <text x="264" y="154" fill="#b9c4da" fontSize="11" fontFamily="sans-serif">
+        <text x="163" y="154" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           moitié-moitié, sans mélange
         </text>
       </g>
 
       {/* Unicité */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="128" y="216" fill="#c4b5fd" fontSize="13" fontFamily="sans-serif">
+        <text x="112" y="216" fill="#c4b5fd" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           une combinaison unique au monde
         </text>
       </g>

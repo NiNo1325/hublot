@@ -59,7 +59,7 @@ export function CouleursAnimation({
           <>
             <line x1="286" y1="150" x2="238" y2="150" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" />
             <path d="M244 142 L230 150 L244 158 Z" fill="#ef4444" />
-            <text x="216" y="182" fill="#ef4444" fontSize="12" fontFamily="sans-serif">
+            <text x="216" y="182" fill="#ef4444" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
               seul le rouge repart
             </text>
           </>
@@ -68,7 +68,7 @@ export function CouleursAnimation({
 
       {/* Sans lumière, pas de couleur */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="120" y="220" fill="#b9c4da" fontSize="13" fontFamily="sans-serif">
+        <text x="120" y="220" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           sans lumière, aucune couleur
         </text>
       </g>

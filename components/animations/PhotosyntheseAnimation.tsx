@@ -80,7 +80,7 @@ export function PhotosyntheseAnimation({
             </circle>
           </g>
         ))}
-        <text x="316" y="80" fill="#9ca3af" fontSize="15" fontFamily="sans-serif">
+        <text x="316" y="80" fill="#9ca3af" fontSize="18" fontFamily="var(--font-atkinson), sans-serif">
           CO₂
         </text>
       </g>
@@ -112,7 +112,7 @@ export function PhotosyntheseAnimation({
             )}
           </circle>
         ))}
-        <text x="96" y="34" fill="#7dd3fc" fontSize="15" fontFamily="sans-serif">
+        <text x="96" y="34" fill="#7dd3fc" fontSize="18" fontFamily="var(--font-atkinson), sans-serif">
           O₂
         </text>
       </g>

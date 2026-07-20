@@ -26,7 +26,7 @@ export function InternetAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <path d="M0 150 h400 v90 H0 Z" fill="#0c2a4d" />
         <path d="M0 150 q25 -8 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 v8 H0 Z" fill="#123a66" />
-        <text x="150" y="230" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
+        <text x="150" y="230" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           câbles sous l&apos;océan
         </text>
       </g>
@@ -80,7 +80,7 @@ export function InternetAnimation({
             )}
           </rect>
         ))}
-        <text x="306" y="124" fill="#34d399" fontSize="12" fontFamily="sans-serif">
+        <text x="239" y="124" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           remis dans l&apos;ordre
         </text>
       </g>

@@ -42,14 +42,14 @@ export function AimantsAnimation({
         <g>
           <rect x="188" y="60" width="44" height="20" fill="#fb7185" />
           <rect x="232" y="60" width="44" height="20" fill="#f5f0e6" />
-          <text x="204" y="75" fill="#0f1b33" fontSize="13" fontFamily="sans-serif">N</text>
-          <text x="250" y="75" fill="#0f1b33" fontSize="13" fontFamily="sans-serif">S</text>
+          <text x="204" y="75" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">N</text>
+          <text x="250" y="75" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">S</text>
         </g>
         <g>
           <rect x="292" y="60" width="44" height="20" fill="#f5f0e6" />
           <rect x="336" y="60" width="44" height="20" fill="#fb7185" />
-          <text x="308" y="75" fill="#0f1b33" fontSize="13" fontFamily="sans-serif">S</text>
-          <text x="354" y="75" fill="#0f1b33" fontSize="13" fontFamily="sans-serif">N</text>
+          <text x="308" y="75" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">S</text>
+          <text x="354" y="75" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">N</text>
           {anime && phase === 1 && (
             <animateTransform
               attributeName="transform" type="translate"
@@ -57,7 +57,7 @@ export function AimantsAnimation({
             />
           )}
         </g>
-        <text x="248" y="46" fill="#b9c4da" fontSize="12" fontFamily="sans-serif">
+        <text x="137" y="46" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           pôles opposés : ils s&apos;attirent
         </text>
       </g>
@@ -68,11 +68,11 @@ export function AimantsAnimation({
       */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <rect x="206" y="118" width="30" height="52" rx="6" fill="#94a3b8" />
-        <text x="196" y="188" fill="#94a3b8" fontSize="12" fontFamily="sans-serif">
+        <text x="196" y="188" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           aluminium : rien
         </text>
         <rect x="292" y="118" width="30" height="52" rx="6" fill="#64748b" />
-        <text x="288" y="188" fill="#34d399" fontSize="12" fontFamily="sans-serif">
+        <text x="288" y="188" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           fer : attiré
         </text>
         <path d="M276 144 h-28" stroke="#34d399" strokeWidth="3" strokeLinecap="round" />

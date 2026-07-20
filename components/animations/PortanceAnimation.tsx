@@ -47,11 +47,8 @@ export function PortanceAnimation({
             )}
           </path>
         ))}
-        <text x="20" y="66" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
+        <text x="20" y="66" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;air arrive
-        </text>
-        <text x="286" y="200" fill="#7dd3fc" fontSize="12" fontFamily="sans-serif">
-          et repart vers le bas
         </text>
       </g>
 
@@ -60,14 +57,14 @@ export function PortanceAnimation({
         <g>
           <line x1="200" y1="104" x2="200" y2="44" stroke="#34d399" strokeWidth="5" />
           <path d="M192 52 L200 34 L208 52 Z" fill="#34d399" />
-          <text x="210" y="46" fill="#34d399" fontSize="13" fontFamily="sans-serif">
+          <text x="96" y="24" fill="#34d399" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
             l&apos;aile est poussée en haut
           </text>
         </g>
         <g>
           <line x1="240" y1="132" x2="240" y2="186" stroke="#fb7185" strokeWidth="5" />
           <path d="M232 178 L240 196 L248 178 Z" fill="#fb7185" />
-          <text x="250" y="176" fill="#fb7185" fontSize="13" fontFamily="sans-serif">
+          <text x="104" y="228" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
             l&apos;air est poussé en bas
           </text>
         </g>
@@ -75,11 +72,11 @@ export function PortanceAnimation({
 
       {/* Vol inversé : réfutation de l'explication par la forme seule. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <g transform="translate(78 196) scale(1 -1)">
+        <g transform="translate(60 186) scale(1 -1)">
           <path d="M-34 0 l40 -9 l30 0 l-6 9 z" fill="#ffb627" />
           <path d="M-6 -2 l10 -16 l8 0 l-4 16 z" fill="#ffb627" />
         </g>
-        <text x="118" y="214" fill="#ffb627" fontSize="12" fontFamily="sans-serif">
+        <text x="14" y="204" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           sur le dos, ça vole aussi
         </text>
       </g>

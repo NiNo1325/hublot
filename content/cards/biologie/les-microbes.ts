@@ -66,7 +66,7 @@ export const card: ScienceCard = {
             },
             {
               id: 'partout',
-              text: "Ton microbiote intestinal compte de l'ordre de cent mille milliards de bactéries, pour un poids d'environ deux kilogrammes. Il abrite plus de gènes que ton propre génome, et sa composition varie d'une personne à l'autre.",
+              text: "Ton microbiote intestinal compte environ quarante mille milliards de bactéries, pour un poids d'à peine deux cents grammes. On lit souvent qu'il pèserait deux kilos : c'est une estimation ancienne, corrigée depuis. Il abrite pourtant bien plus de gènes que ton propre génome.",
             },
             {
               id: 'utiles',

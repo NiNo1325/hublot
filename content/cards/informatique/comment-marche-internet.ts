@@ -75,7 +75,7 @@ export const card: ScienceCard = {
             },
             {
               id: 'reassemblage',
-              text: "Le protocole TCP réordonne les paquets, détecte les manquants et les redemande, garantissant l'intégrité du message. La latence reste limitée par la vitesse de la lumière dans la fibre : environ soixante millisecondes suffisent pour un aller Paris–New York.",
+              text: "Le protocole TCP réordonne les paquets, détecte les manquants et les redemande, garantissant l'intégrité du message. La latence reste limitée par la vitesse de la lumière dans la fibre, où elle se propage à environ deux cent mille kilomètres par seconde : il faut une trentaine de millisecondes pour un aller Paris–New York, une soixantaine pour l'aller-retour.",
             },
           ],
         },

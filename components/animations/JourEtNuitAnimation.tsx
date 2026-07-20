@@ -71,17 +71,34 @@ export function JourEtNuitAnimation({
           fill="#38bdf8"
           style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}
         />
-        {/* Continent, pour rendre la rotation perceptible. */}
+        {/*
+          Les continents rendent la rotation perceptible. Ils sont écartés du
+          centre — près de l'axe, ils pivoteraient sur place sans qu'on voie
+          rien — et regroupés sous une rotation unique : des masses qui
+          tourneraient indépendamment n'auraient aucun sens.
+        */}
         <g style={{ opacity: phase === 0 || phase === 3 ? 1 : 0.45, transition: 'opacity 600ms ease' }}>
-          <ellipse cx="250" cy="100" rx="26" ry="16" fill="#1f6f4e">
+          <g>
+            <path
+              d="M212 78 q26 -12 44 2 q14 12 2 24 q-20 14 -40 4 q-16 -12 -6 -30 z"
+              fill="#1f6f4e"
+            />
+            <path
+              d="M268 140 q22 -6 30 10 q6 16 -12 22 q-20 6 -28 -10 q-6 -14 10 -22 z"
+              fill="#1f6f4e"
+            />
+            <path
+              d="M206 148 q18 -8 24 6 q4 12 -10 16 q-16 4 -20 -8 q-2 -10 6 -14 z"
+              fill="#256b52"
+            />
             {anime && (
               <animateTransform
                 attributeName="transform" type="rotate"
                 from="0 250 120" to="360 250 120"
-                dur="9s" repeatCount="indefinite"
+                dur="12s" repeatCount="indefinite"
               />
             )}
-          </ellipse>
+          </g>
         </g>
       </g>
       <circle cx="250" cy="120" r="70" fill="none" stroke="#2c3f66" strokeWidth="3" />

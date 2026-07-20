@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import type { AgeRange } from '@/lib/types';
 import { useAgeRange } from './useAgeRange';
 
@@ -40,10 +40,18 @@ export function AgeGate() {
   const router = useRouter();
   const { ageRange, status, chooseAgeRange } = useAgeRange();
 
-  // Visiteur de retour : on saute l'écran d'âge.
+  /*
+    Venir changer d'âge est une demande explicite : sans ce drapeau, la
+    redirection « visiteur de retour » renverrait aussitôt vers la grille et
+    rendrait le changement impossible.
+  */
+  const changementDemande = useSearchParams().get('changer') === '1';
+
   useEffect(() => {
-    if (status === 'pret' && ageRange) router.replace('/decouvrir');
-  }, [status, ageRange, router]);
+    if (status === 'pret' && ageRange && !changementDemande) {
+      router.replace('/decouvrir');
+    }
+  }, [status, ageRange, changementDemande, router]);
 
   function choisir(range: AgeRange) {
     chooseAgeRange(range);
@@ -78,9 +86,18 @@ export function AgeGate() {
               onClick={() => choisir(range)}
               className="group flex cursor-pointer flex-col items-center gap-4 rounded-3xl p-2 transition-transform duration-150 hover:scale-105 active:scale-95"
             >
-              <span className="sr-only">{label}</span>
+              <span className="sr-only">
+                {label}
+                {range === ageRange ? ' (choix actuel)' : ''}
+              </span>
               <span
-                className="halo-soleil flex items-end justify-center overflow-hidden rounded-full border-4 border-encre-bord bg-encre-clair text-craie-douce transition-colors group-hover:border-soleil group-hover:text-soleil"
+                className={`halo-soleil flex items-end justify-center overflow-hidden rounded-full border-4 bg-encre-clair transition-colors group-hover:border-soleil group-hover:text-soleil ${
+                  // En mode changement, le choix courant est marqué : sans
+                  // repère, on ne sait pas ce qu'on est en train de modifier.
+                  range === ageRange && changementDemande
+                    ? 'border-soleil text-soleil'
+                    : 'border-encre-bord text-craie-douce'
+                }`}
                 style={{ width: diametre, height: diametre }}
               >
                 <span
@@ -100,6 +117,17 @@ export function AgeGate() {
           </li>
         ))}
       </ul>
+
+      {/* Sortie de secours : on doit pouvoir renoncer sans rien changer. */}
+      {changementDemande && ageRange && (
+        <button
+          type="button"
+          onClick={() => router.push('/decouvrir')}
+          className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-6 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+        >
+          Revenir aux cartes
+        </button>
+      )}
     </main>
   );
 }

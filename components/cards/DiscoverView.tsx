@@ -50,10 +50,22 @@ export function DiscoverView({ cards, domains }: DiscoverViewProps) {
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-10 px-6 py-10">
-      <header className="text-center">
+      <header className="flex flex-col items-center gap-4">
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">
           Qu&apos;est-ce qui t&apos;intéresse&nbsp;?
         </h1>
+        {/*
+          Discret mais toujours accessible : c'est en général un adulte qui
+          change le niveau, souvent pour un deuxième enfant. Le libellé rappelle
+          le réglage courant, ce qui évite d'ouvrir l'écran pour le vérifier.
+        */}
+        <button
+          type="button"
+          onClick={() => router.push('/?changer=1')}
+          className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+        >
+          Niveau&nbsp;: {ageRange} ans — changer
+        </button>
       </header>
 
       <DomainFilter

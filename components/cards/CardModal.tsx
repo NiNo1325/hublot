@@ -111,22 +111,16 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
           parents qui lisent par-dessus l'épaule. `aria-live` annonce le beat
           courant sans exiger que l'utilisateur cherche où le texte a changé.
         */}
+        {/*
+          Un seul beat à l'écran à la fois, y compris avant le démarrage : les
+          afficher tous formerait un mur de texte, décourageant pour un enfant
+          et incohérent avec une narration qui progresse phrase après phrase.
+          `aria-live` annonce chaque changement aux lecteurs d'écran.
+        */}
         <div aria-live="polite" className="min-h-24">
-          {beats.map((beat, index) => (
-            <p
-              key={beat.id}
-              className="text-lg leading-relaxed transition-opacity duration-500 sm:text-xl"
-              style={{
-                opacity: state.activeIndex === -1 || state.activeIndex === index ? 1 : 0.3,
-                display:
-                  state.activeIndex === -1 || state.activeIndex === index
-                    ? 'block'
-                    : 'none',
-              }}
-            >
-              {beat.text}
-            </p>
-          ))}
+          <p className="text-lg leading-relaxed sm:text-xl">
+            {beats[Math.max(0, state.activeIndex)].text}
+          </p>
         </div>
 
         <NarrationControls

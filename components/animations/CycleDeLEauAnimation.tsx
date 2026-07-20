@@ -1,6 +1,7 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { miseEnScene } from './shared/phases';
 
 /**
  * Les quatre phases correspondent aux `id` de beats de la carte. Chaque phase
@@ -8,26 +9,13 @@ import type { CardAnimationProps } from './registry';
  * que le regard de l'enfant suit ce que la voix raconte.
  */
 const PHASES = ['evaporation', 'condensation', 'precipitation', 'ruissellement'] as const;
-type Phase = (typeof PHASES)[number];
-
-function indexDePhase(beatId: string | null): number {
-  const i = PHASES.indexOf(beatId as Phase);
-  return i === -1 ? -1 : i;
-}
 
 export function CycleDeLEauAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
 }: CardAnimationProps) {
-  const phase = indexDePhase(activeBeatId);
-  const auRepos = phase === -1;
-
-  /** Opacité d'un élément selon qu'il appartient ou non à la phase courante. */
-  const miseEnAvant = (indexPhase: number) => {
-    if (auRepos) return 0.55;
-    return phase === indexPhase ? 1 : 0.2;
-  };
+  const { phase, auRepos, opacite } = miseEnScene(PHASES, activeBeatId);
 
   const anime = isPlaying && !prefersReducedMotion;
 
@@ -53,7 +41,7 @@ export function CycleDeLEauAnimation({
 
       {/* Soleil — moteur de l'évaporation */}
       <g
-        style={{ opacity: miseEnAvant(0), transition: 'opacity 600ms ease' }}
+        style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}
         transform="translate(58 54)"
       >
         <circle r="26" fill="#ffb627" />
@@ -84,7 +72,7 @@ export function CycleDeLEauAnimation({
       </g>
 
       {/* Vapeur qui monte de la mer */}
-      <g style={{ opacity: miseEnAvant(0), transition: 'opacity 600ms ease' }}>
+      <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         {[130, 170, 210].map((x, i) => (
           <circle key={x} cx={x} cy="186" r="5" fill="#7dd3fc">
             {anime && (
@@ -112,7 +100,7 @@ export function CycleDeLEauAnimation({
       {/* Nuage — la condensation le fait grossir */}
       <g
         style={{
-          opacity: phase >= 1 || auRepos ? miseEnAvant(1) : 0.15,
+          opacity: phase >= 1 || auRepos ? opacite(1) : 0.15,
           transform: `scale(${phase >= 1 ? 1 : 0.82})`,
           transformOrigin: '250px 88px',
           transition: 'opacity 600ms ease, transform 900ms ease',
@@ -125,7 +113,7 @@ export function CycleDeLEauAnimation({
       </g>
 
       {/* Pluie */}
-      <g style={{ opacity: miseEnAvant(2), transition: 'opacity 600ms ease' }}>
+      <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         {[228, 252, 276].map((x, i) => (
           <path
             key={x}
@@ -149,7 +137,7 @@ export function CycleDeLEauAnimation({
       </g>
 
       {/* Ruissellement : la colline ramène l'eau vers la mer */}
-      <g style={{ opacity: miseEnAvant(3), transition: 'opacity 600ms ease' }}>
+      <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <path d="M400 192 L400 118 Q340 148 300 192 Z" fill="#1f6f4e" />
         <path
           d="M366 136 Q350 166 330 192"

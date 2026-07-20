@@ -49,8 +49,14 @@ export function useNarration(
   /** Garde le prochain fichier en cache HTTP pour éviter un blanc entre beats. */
   const prechargeRef = useRef<HTMLAudioElement | null>(null);
   const minuterieRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  /** Ignore les événements tardifs d'un beat abandonné ou d'une carte fermée. */
-  const annuleRef = useRef(false);
+  /*
+    Jeton de session. Un simple booléen ne suffit pas : au remontage il est
+    remis à zéro, si bien que les callbacks d'une lecture abandonnée passent le
+    test et écrasent l'état de la lecture en cours. Chaque démarrage incrémente
+    ce compteur ; un callback ne s'applique que si son jeton est encore
+    l'actuel.
+  */
+  const sessionRef = useRef(0);
 
   const arreterMinuterie = useCallback(() => {
     if (minuterieRef.current) {
@@ -60,7 +66,7 @@ export function useNarration(
   }, []);
 
   const stop = useCallback(() => {
-    annuleRef.current = true;
+    sessionRef.current += 1;
     arreterMinuterie();
     const audio = audioRef.current;
     if (audio) {
@@ -77,6 +83,8 @@ export function useNarration(
 
   const jouerBeat = useCallback(
     (index: number, silencieux: boolean) => {
+      const session = sessionRef.current;
+
       if (index >= beats.length) {
         setStatus(silencieux ? 'silencieux' : 'termine');
         setActiveIndex(beats.length - 1);
@@ -89,7 +97,7 @@ export function useNarration(
 
       if (silencieux) {
         minuterieRef.current = setTimeout(() => {
-          if (!annuleRef.current) jouerBeatRef.current?.(index + 1, true);
+          if (session === sessionRef.current) jouerBeatRef.current?.(index + 1, true);
         }, DUREE_BEAT_SILENCIEUX_MS);
         return;
       }
@@ -107,11 +115,11 @@ export function useNarration(
 
       audio.src = urlBeat(cardId, age, beats[index].id);
       audio.onended = () => {
-        if (annuleRef.current) return;
+        if (session !== sessionRef.current) return;
         jouerBeatRef.current?.(index + 1, false);
       };
       audio.onerror = () => {
-        if (annuleRef.current || traite) return;
+        if (session !== sessionRef.current || traite) return;
         traite = true;
         // Fichier absent ou réseau coupé : la carte continue en minuté plutôt
         // que de laisser l'enfant devant une animation figée.
@@ -121,12 +129,12 @@ export function useNarration(
 
       audio.play().then(
         () => {
-          if (annuleRef.current || traite) return;
+          if (session !== sessionRef.current || traite) return;
           traite = true;
           setStatus('lecture');
         },
         () => {
-          if (annuleRef.current || traite) return;
+          if (session !== sessionRef.current || traite) return;
           traite = true;
           /*
             Lecture refusée faute de geste utilisateur récent. On ne bascule
@@ -161,7 +169,7 @@ export function useNarration(
   */
   useEffect(() => {
     audioRef.current = new Audio();
-    annuleRef.current = false;
+    sessionRef.current += 1;
 
     if (demarrageAuto) jouerBeatRef.current?.(0, false);
 
@@ -171,7 +179,7 @@ export function useNarration(
         audio.pause();
         audio.removeAttribute('src');
       }
-      annuleRef.current = true;
+      sessionRef.current += 1;
       audioRef.current = null;
       prechargeRef.current = null;
     };
@@ -180,7 +188,7 @@ export function useNarration(
 
   const play = useCallback(
     (depuis = 0) => {
-      annuleRef.current = false;
+      sessionRef.current += 1;
       arreterMinuterie();
       setEstTermine(false);
       jouerBeatRef.current?.(depuis, status === 'silencieux');

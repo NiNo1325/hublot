@@ -2,6 +2,13 @@
 
 import type { ComponentType } from 'react';
 import { CycleDeLEauAnimation } from './CycleDeLEauAnimation';
+import { JourEtNuitAnimation } from './JourEtNuitAnimation';
+import { PhotosyntheseAnimation } from './PhotosyntheseAnimation';
+import { GraviteAnimation } from './GraviteAnimation';
+import { ReactionChimiqueAnimation } from './ReactionChimiqueAnimation';
+import { StructuresAnimation } from './StructuresAnimation';
+import { BinaireAnimation } from './BinaireAnimation';
+import { SymetrieAnimation } from './SymetrieAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -20,4 +27,11 @@ export interface CardAnimationProps {
  */
 export const animationRegistry: Record<string, ComponentType<CardAnimationProps>> = {
   'cycle-de-leau': CycleDeLEauAnimation,
+  'jour-et-nuit': JourEtNuitAnimation,
+  photosynthese: PhotosyntheseAnimation,
+  gravite: GraviteAnimation,
+  'reaction-chimique': ReactionChimiqueAnimation,
+  structures: StructuresAnimation,
+  binaire: BinaireAnimation,
+  symetrie: SymetrieAnimation,
 };

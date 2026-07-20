@@ -49,3 +49,6 @@ next-env.d.ts
 
 # Echantillons audio de travail
 echantillons-voix/
+
+# Planches de contrôle des illustrations
+planches/

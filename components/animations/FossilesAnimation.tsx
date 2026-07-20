@@ -76,10 +76,10 @@ export function FossilesAnimation({
 
       {/* La rareté : presque tout disparaît sans trace */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="205" y="36" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="188" y="34" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           presque tout disparaît
         </text>
-        <text x="188" y="54" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="188" y="58" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           un fossile est un hasard
         </text>
       </g>

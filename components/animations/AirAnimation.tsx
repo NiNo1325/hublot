@@ -44,7 +44,7 @@ export function AirAnimation({
         <path d="M316 96 l-4 12 h8 z" fill="#fb7185" />
         <rect x="274" y="112" width="84" height="30" rx="6" fill="#1b2a4a" stroke="#2c3f66" strokeWidth="2" />
         <text x="284" y="133" fill="#34d399" fontSize="18" fontFamily="var(--font-atkinson), monospace">1,2 g/L</text>
-        <text x="230" y="164" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="180" y="112" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;air pèse vraiment
         </text>
       </g>

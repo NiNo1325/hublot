@@ -48,7 +48,7 @@ export function ApprentissageAnimation({
             )}
           </circle>
         ))}
-        <text x="176" y="128" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="168" y="158" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           des réglages qu&apos;on ajuste
         </text>
       </g>
@@ -76,7 +76,7 @@ export function ApprentissageAnimation({
         <text x="10" y="184" fill="#f5f0e6" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           elle trouve des régularités dans des chiffres
         </text>
-        <text x="52" y="204" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="52" y="210" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           elle ne sait pas ce qu&apos;est un chat
         </text>
       </g>

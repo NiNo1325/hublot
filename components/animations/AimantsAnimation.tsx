@@ -72,7 +72,7 @@ export function AimantsAnimation({
           aluminium : rien
         </text>
         <rect x="292" y="118" width="30" height="52" rx="6" fill="#64748b" />
-        <text x="288" y="188" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="284" y="212" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           fer : attiré
         </text>
         <path d="M276 144 h-28" stroke="#34d399" strokeWidth="3" strokeLinecap="round" />

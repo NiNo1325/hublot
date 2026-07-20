@@ -39,8 +39,8 @@ export function EtoilesAnimation({
       {/* Notre Soleil : la même chose, mais proche */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <circle cx="66" cy="180" r="26" fill="#ffb627" />
-        <text x="26" y="222" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          notre Soleil, tout près
+        <text x="18" y="222" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+          notre Soleil
         </text>
       </g>
 

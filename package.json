@@ -12,7 +12,8 @@
     "voix:echantillons": "tsx --env-file=.env.local scripts/echantillons-voix.mjs",
     "audio": "tsx --env-file=.env.local scripts/generer-audio.mjs",
     "voix:modeles": "tsx --env-file=.env.local scripts/comparer-modeles.mjs",
-    "audio:batch": "tsx --env-file=.env.local scripts/generer-audio-batch.mjs"
+    "audio:batch": "tsx --env-file=.env.local scripts/generer-audio-batch.mjs",
+    "audit:illustrations": "tsx scripts/auditer-illustrations.mjs"
   },
   "dependencies": {
     "next": "16.2.10",
@@ -27,6 +28,7 @@
     "@vitejs/plugin-react": "^6.0.3",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "playwright": "^1.61.1",
     "tailwindcss": "^4",
     "tsx": "^4.23.1",
     "typescript": "^5",

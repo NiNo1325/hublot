@@ -38,7 +38,7 @@ export function MicrobesAnimation({
       {/* Silhouette : le microbiote vit surtout à l'intérieur */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <ellipse cx="150" cy="128" rx="86" ry="66" fill="#1b2a4a" stroke="#2c3f66" strokeWidth="2" />
-        <text x="102" y="212" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="102" y="232" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           des milliers de milliards en toi
         </text>
       </g>

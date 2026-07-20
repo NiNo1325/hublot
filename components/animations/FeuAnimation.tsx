@@ -57,7 +57,7 @@ export function FeuAnimation({
           x="228" y={etouffe ? 116 : 74} width="112" height="12" rx="4" fill="#94a3b8"
           style={{ transition: 'y 700ms ease' }}
         />
-        <text x="180" y="216" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="196" y="196" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           sans oxygène, ça s&apos;arrête
         </text>
       </g>

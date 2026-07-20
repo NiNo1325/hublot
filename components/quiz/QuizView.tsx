@@ -149,10 +149,10 @@ export function QuizView({ cards }: QuizViewProps) {
           </button>
           <button
             type="button"
-            onClick={() => router.push('/decouvrir')}
+            onClick={() => router.push('/')}
             className="min-h-16 cursor-pointer rounded-full border-2 border-encre-bord px-8 font-display text-lg text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
           >
-            Retour aux cartes
+            Retour au menu
           </button>
         </div>
       </main>
@@ -172,10 +172,10 @@ export function QuizView({ cards }: QuizViewProps) {
         </span>
         <button
           type="button"
-          onClick={() => router.push('/decouvrir')}
-          className="min-h-11 cursor-pointer rounded-full border-2 border-encre-bord px-4 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+          onClick={() => router.push('/')}
+          className="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-4 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
         >
-          Quitter
+          <span aria-hidden="true">🏠</span> Menu
         </button>
       </header>
 

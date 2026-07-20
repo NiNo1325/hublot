@@ -52,6 +52,36 @@ export interface CardContent {
   explanation: Record<AgeRange, CardExplanation>;
 }
 
+/**
+ * Une proposition de réponse.
+ *
+ * Les propositions fausses ne sont pas des pièges arbitraires : ce sont les
+ * idées reçues que la carte corrige — le sang bleu, l'ombre de la Terre sur la
+ * Lune, les objets lourds qui tombent plus vite. Se tromper devient alors
+ * l'occasion de rectifier une croyance réelle, et non de perdre des points.
+ */
+export interface QuizReponse {
+  texte: string;
+  /** Emoji affiché à la place du texte pour les non-lecteurs. */
+  icone: string;
+  correcte?: boolean;
+}
+
+export interface QuizQuestion {
+  /** Identifiant stable, utilisé pour le nom du fichier audio. */
+  id: string;
+  question: string;
+  reponses: QuizReponse[];
+  /** Rappelé après la réponse, juste ou fausse. */
+  explication: string;
+}
+
+/** Questions d'une carte, déclinées par tranche d'âge comme les explications. */
+export interface QuizCarte {
+  cardId: string;
+  questions: Record<AgeRange, QuizQuestion[]>;
+}
+
 export interface ScienceCard {
   /** Slug unique, sert aussi de clé React. */
   id: string;

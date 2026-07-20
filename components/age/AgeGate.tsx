@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { AgeRange } from '@/lib/types';
 import { useAgeRange } from './useAgeRange';
@@ -47,20 +46,59 @@ export function AgeGate() {
   */
   const changementDemande = useSearchParams().get('changer') === '1';
 
-  useEffect(() => {
-    if (status === 'pret' && ageRange && !changementDemande) {
-      router.replace('/decouvrir');
-    }
-  }, [status, ageRange, changementDemande, router]);
-
   function choisir(range: AgeRange) {
     chooseAgeRange(range);
-    router.push('/decouvrir');
+    router.push('/');
   }
 
   // Pendant la lecture du stockage, on ne rend rien : afficher le sélecteur
   // puis le remplacer aussitôt ferait clignoter l'écran à chaque retour.
   if (status === 'chargement') return null;
+
+  /*
+    Visiteur connu : l'accueil devient le menu du jeu. Une redirection
+    automatique vers les cartes, comme auparavant, rendait le quizz
+    inatteignable depuis cet écran.
+  */
+  if (ageRange && !changementDemande) {
+    return (
+      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-10 px-6 py-12 text-center">
+        <div>
+          <h1 className="font-display text-4xl font-semibold text-craie sm:text-5xl">
+            Hublot
+          </h1>
+          <p className="mt-3 text-craie-douce">Qu&apos;est-ce qu&apos;on fait&nbsp;?</p>
+        </div>
+
+        <div className="flex w-full max-w-sm flex-col gap-4">
+          <button
+            type="button"
+            onClick={() => router.push('/decouvrir')}
+            className="flex min-h-20 cursor-pointer items-center justify-center gap-4 rounded-3xl border-4 border-encre-bord bg-encre-clair px-6 font-display text-2xl text-craie transition-transform hover:scale-105 hover:border-soleil active:scale-95"
+          >
+            <span aria-hidden="true">🔭</span>
+            Découvrir
+          </button>
+          <button
+            type="button"
+            onClick={() => router.push('/quizz')}
+            className="flex min-h-20 cursor-pointer items-center justify-center gap-4 rounded-3xl border-4 border-soleil bg-soleil/10 px-6 font-display text-2xl text-soleil transition-transform hover:scale-105 active:scale-95"
+          >
+            <span aria-hidden="true">🎯</span>
+            Jouer au quizz
+          </button>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => router.push('/?changer=1')}
+          className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+        >
+          Niveau&nbsp;: {ageRange} ans — changer
+        </button>
+      </main>
+    );
+  }
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-12 px-6 py-12">

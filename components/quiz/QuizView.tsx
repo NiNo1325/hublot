@@ -1,11 +1,12 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { AgeRange, QuizQuestion, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from './useCartesVues';
+import { useQuizAudio } from './useQuizAudio';
 import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
 
 interface QuizViewProps {
@@ -48,10 +49,27 @@ export function QuizView({ cards }: QuizViewProps) {
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
 
+  const { jouer, arreter, enLecture } = useQuizAudio(ageRange ?? '6-8');
   const [serie, setSerie] = useState<Tirage[] | null>(null);
   const [index, setIndex] = useState(0);
   const [choisie, setChoisie] = useState<number | null>(null);
   const [reussies, setReussies] = useState(0);
+
+  const tirageCourant = serie?.[index] ?? null;
+
+  /*
+    Les non-lecteurs ont besoin d'entendre l'énoncé et ses propositions pour
+    pouvoir choisir : la lecture démarre seule pour eux. Les plus grands lisent
+    déjà le texte et disposent d'un bouton.
+  */
+  const questionEnonceeRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!tirageCourant || ageRange !== '3-5') return;
+    const repere = `${tirageCourant.carte.id}/${tirageCourant.question.id}`;
+    if (questionEnonceeRef.current === repere) return;
+    questionEnonceeRef.current = repere;
+    jouer(tirageCourant.carte.id, tirageCourant.question.id, 'question');
+  }, [tirageCourant, ageRange, jouer]);
 
   /* Propositions mélangées une fois par question, jamais à chaque rendu. */
   const propositions = useMemo(() => {
@@ -180,12 +198,26 @@ export function QuizView({ cards }: QuizViewProps) {
       </header>
 
       <div
-        className="rounded-3xl border-2 p-5"
+        className="flex items-start gap-4 rounded-3xl border-2 p-5"
         style={{ borderColor: style.teinte, boxShadow: `0 0 30px ${style.halo}` }}
       >
-        <p className="font-display text-xl leading-snug sm:text-2xl">
+        <p className="flex-1 font-display text-xl leading-snug sm:text-2xl">
           {tirage.question.question}
         </p>
+        <button
+          type="button"
+          onClick={() =>
+            enLecture
+              ? arreter()
+              : jouer(tirage.carte.id, tirage.question.id, 'question')
+          }
+          className="flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-xl transition-colors hover:border-soleil hover:text-soleil"
+        >
+          <span aria-hidden="true">{enLecture ? '⏸' : '🔊'}</span>
+          <span className="sr-only">
+            {enLecture ? 'Arrêter la lecture' : 'Écouter la question'}
+          </span>
+        </button>
       </div>
 
       <ul className="flex flex-col gap-3">
@@ -200,6 +232,7 @@ export function QuizView({ cards }: QuizViewProps) {
                 onClick={() => {
                   setChoisie(i);
                   if (reponse.correcte) setReussies((n) => n + 1);
+                  jouer(tirage.carte.id, tirage.question.id, 'explication');
                 }}
                 className="flex min-h-20 w-full cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 text-left transition-transform hover:scale-[1.02] active:scale-95 disabled:cursor-default disabled:hover:scale-100"
                 style={{

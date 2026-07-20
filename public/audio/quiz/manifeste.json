@@ -1,0 +1,962 @@
+{
+  "cycle-de-leau/3-5/ou-va-leau-question": {
+    "empreinte": "9a068839cfecfc84",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/3-5/ou-va-leau-explication": {
+    "empreinte": "c93b285f88bfee35",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/6-8/nuage-fait-de-question": {
+    "empreinte": "32892e8c521fb103",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/6-8/nuage-fait-de-explication": {
+    "empreinte": "0dc9c4d8c13019af",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/9-12/quantite-eau-question": {
+    "empreinte": "2a17590692ef0ffa",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/9-12/quantite-eau-explication": {
+    "empreinte": "5832a7dca0c0f8ec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-volcans/3-5/lave-quoi-question": {
+    "empreinte": "21a809d81f753aee",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-volcans/3-5/lave-quoi-explication": {
+    "empreinte": "a5e375df29f8c3af",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-volcans/6-8/pourquoi-monte-question": {
+    "empreinte": "d53fd6cbb1b09e66",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-volcans/6-8/pourquoi-monte-explication": {
+    "empreinte": "69bc5718d4d16542",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-volcans/9-12/explosif-question": {
+    "empreinte": "7a24edb2af2ab642",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-volcans/9-12/explosif-explication": {
+    "empreinte": "45973936d32142d2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-terre-tremble/3-5/sol-morceaux-question": {
+    "empreinte": "27af8abf60ce427d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-terre-tremble/3-5/sol-morceaux-explication": {
+    "empreinte": "72adbae70f3fce82",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-terre-tremble/6-8/sol-souvre-question": {
+    "empreinte": "bb78f5090cb7c75d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-terre-tremble/6-8/sol-souvre-explication": {
+    "empreinte": "a96df38b9fb9835f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-terre-tremble/9-12/ondes-p-s-question": {
+    "empreinte": "942a1a3e70375d38",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-terre-tremble/9-12/ondes-p-s-explication": {
+    "empreinte": "06a12361aa985123",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fossiles/3-5/fossile-rare-question": {
+    "empreinte": "d3234b91d0a16785",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fossiles/3-5/fossile-rare-explication": {
+    "empreinte": "9f955ef5299b620c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fossiles/6-8/os-ou-pierre-question": {
+    "empreinte": "9e7469386031fbdf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fossiles/6-8/os-ou-pierre-explication": {
+    "empreinte": "1abad368c130271c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fossiles/9-12/absence-preuve-question": {
+    "empreinte": "ad3d1b1769dc9464",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fossiles/9-12/absence-preuve-explication": {
+    "empreinte": "69faa31f2939e8b0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-vent/3-5/air-chaud-question": {
+    "empreinte": "57e23a5bb52eb340",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-vent/3-5/air-chaud-explication": {
+    "empreinte": "3d03b828e1983c8b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-vent/6-8/origine-vent-question": {
+    "empreinte": "2a92cbdf61cff96f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-vent/6-8/origine-vent-explication": {
+    "empreinte": "e40cad7d28cd49e7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-vent/9-12/coriolis-question": {
+    "empreinte": "1386aea37ec567b8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-vent/9-12/coriolis-explication": {
+    "empreinte": "cbf2db18b6d45946",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/3-5/qui-tourne-question": {
+    "empreinte": "13b6de2755ccc19d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/3-5/qui-tourne-explication": {
+    "empreinte": "395238633c11ac9f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/6-8/duree-tour-question": {
+    "empreinte": "9cb3489cdd628ac7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/6-8/duree-tour-explication": {
+    "empreinte": "e491ad7131f3be60",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/9-12/terminateur-question": {
+    "empreinte": "cf015f864e635577",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/9-12/terminateur-explication": {
+    "empreinte": "f77a976d19b74993",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/3-5/lune-lumiere-question": {
+    "empreinte": "5803cdbf3aec9140",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/3-5/lune-lumiere-explication": {
+    "empreinte": "3ffd099cb726f08d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/6-8/cause-phases-question": {
+    "empreinte": "3931b96d01412504",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/6-8/cause-phases-explication": {
+    "empreinte": "2672cf59756fe727",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/9-12/face-cachee-question": {
+    "empreinte": "d9809e06c385caec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-phases-de-la-lune/9-12/face-cachee-explication": {
+    "empreinte": "020e2570a0ee34de",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/3-5/terre-penchee-question": {
+    "empreinte": "0fb7bd60fa0a7c2f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/3-5/terre-penchee-explication": {
+    "empreinte": "1c61d114ce77fe7f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/6-8/distance-saisons-question": {
+    "empreinte": "5b81826c946a5fb5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/6-8/distance-saisons-explication": {
+    "empreinte": "db7d5da42092d8f0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/9-12/hemispheres-opposes-question": {
+    "empreinte": "a9f79425f8d4cba6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-il-y-a-des-saisons/9-12/hemispheres-opposes-explication": {
+    "empreinte": "b9bdecae549cf48e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/3-5/etoile-quoi-question": {
+    "empreinte": "a9576185c56d6250",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/3-5/etoile-quoi-explication": {
+    "empreinte": "b38f17668d103a2f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/6-8/voir-le-passe-question": {
+    "empreinte": "81cb327f81f42660",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/6-8/voir-le-passe-explication": {
+    "empreinte": "5da257aeb6f01f2a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/9-12/annee-lumiere-question": {
+    "empreinte": "25a911cb6f502c50",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles/9-12/annee-lumiere-explication": {
+    "empreinte": "3b237a694c2bfc8f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/3-5/pourquoi-flotte-question": {
+    "empreinte": "b3cb142e4d98b006",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/3-5/pourquoi-flotte-explication": {
+    "empreinte": "76fe8c537745228b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/6-8/gravite-espace-question": {
+    "empreinte": "6cfd401237d58f74",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/6-8/gravite-espace-explication": {
+    "empreinte": "e8a413ff261e8054",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/9-12/orbite-definition-question": {
+    "empreinte": "3e7600b5ab0535d0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-astronautes-flottent/9-12/orbite-definition-explication": {
+    "empreinte": "973a9edf7263901a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/3-5/plante-nourriture-question": {
+    "empreinte": "1a8a47c9fa389799",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/3-5/plante-nourriture-explication": {
+    "empreinte": "2a6b7a4fed7f926d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/6-8/gaz-rejete-question": {
+    "empreinte": "79d4588bd7d040d0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/6-8/gaz-rejete-explication": {
+    "empreinte": "f84a3a2ecb7c1c99",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/9-12/masse-arbre-question": {
+    "empreinte": "275efea8daa0a183",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/9-12/masse-arbre-explication": {
+    "empreinte": "6f10effb0663ad46",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/3-5/coeur-role-question": {
+    "empreinte": "d75631403252c384",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/3-5/coeur-role-explication": {
+    "empreinte": "be4080ea1385892f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/6-8/sang-bleu-question": {
+    "empreinte": "4e448aa1adde3581",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/6-8/sang-bleu-explication": {
+    "empreinte": "9c586da8462c1e52",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/9-12/echange-capillaires-question": {
+    "empreinte": "3e6e5cf997da531e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-coeur-et-le-sang/9-12/echange-capillaires-explication": {
+    "empreinte": "602a8f0884aeb272",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/3-5/microbes-gentils-question": {
+    "empreinte": "d96340bfbdf42a78",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/3-5/microbes-gentils-explication": {
+    "empreinte": "c441781d81f2ba79",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/6-8/microbiote-role-question": {
+    "empreinte": "fe532a2ffc0e9e33",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/6-8/microbiote-role-explication": {
+    "empreinte": "64d783d687930235",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/9-12/penicilline-question": {
+    "empreinte": "250c2282a881ce88",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-microbes/9-12/penicilline-explication": {
+    "empreinte": "12c74fe7069bc086",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/3-5/cerveau-nuit-question": {
+    "empreinte": "b8f8acb139abf812",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/3-5/cerveau-nuit-explication": {
+    "empreinte": "f563c38a24a9a8d4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/6-8/sommeil-memoire-question": {
+    "empreinte": "75c7e6a06a01fbfd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/6-8/sommeil-memoire-explication": {
+    "empreinte": "218d12d64663d950",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/9-12/glymphatique-question": {
+    "empreinte": "8d5a5a6ee678278e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-dort/9-12/glymphatique-explication": {
+    "empreinte": "796b144034d19eae",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/3-5/moitie-moitie-question": {
+    "empreinte": "51247c43035c8bba",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/3-5/moitie-moitie-explication": {
+    "empreinte": "ba6085c49e48fd2b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/6-8/saut-generation-question": {
+    "empreinte": "bac5e3430ce92e3a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/6-8/saut-generation-explication": {
+    "empreinte": "aec594f49fb04cc4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/9-12/mendel-darwin-question": {
+    "empreinte": "a7a78c8e2f4680f2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-ressemble-a-ses-parents/9-12/mendel-darwin-explication": {
+    "empreinte": "468cca3b4bc5400a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/3-5/plume-bille-question": {
+    "empreinte": "1e2c31bcd0aecfcf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/3-5/plume-bille-explication": {
+    "empreinte": "deb4e26c3cbbfba7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/6-8/lune-marteau-question": {
+    "empreinte": "b46e32c94f0a2e77",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/6-8/lune-marteau-explication": {
+    "empreinte": "47cbdd40c1a8b2b1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/9-12/attraction-reciproque-question": {
+    "empreinte": "0af9bd0a803a64b4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/9-12/attraction-reciproque-explication": {
+    "empreinte": "5e1d6b03514b8744",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/3-5/canette-question": {
+    "empreinte": "dc675158a4aa41ed",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/3-5/canette-explication": {
+    "empreinte": "b9786d4b2a70fe08",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/6-8/quels-metaux-question": {
+    "empreinte": "9a5b3395596a4d23",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/6-8/quels-metaux-explication": {
+    "empreinte": "116d400823914ebb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/9-12/couper-aimant-question": {
+    "empreinte": "f3c84e0cdb1186b0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-aimants/9-12/couper-aimant-explication": {
+    "empreinte": "50921fdf70812c61",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/3-5/noir-couleur-question": {
+    "empreinte": "6ab90c75ccc2a7f3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/3-5/noir-couleur-explication": {
+    "empreinte": "bedd59d1505b15da",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/6-8/pomme-rouge-question": {
+    "empreinte": "98c6debd55b7a7c5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/6-8/pomme-rouge-explication": {
+    "empreinte": "9918655b55f3dfa7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/9-12/arc-en-ciel-question": {
+    "empreinte": "24ef9ed031907f4f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-on-voit-les-couleurs/9-12/arc-en-ciel-explication": {
+    "empreinte": "de5ead87b08e57c5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/3-5/son-espace-question": {
+    "empreinte": "a8ea41924381027f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/3-5/son-espace-explication": {
+    "empreinte": "4186eb0836587987",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/6-8/son-besoin-question": {
+    "empreinte": "a34b53f7f757fe6b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/6-8/son-besoin-explication": {
+    "empreinte": "e52c1b7cbc905827",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/9-12/vitesse-milieu-question": {
+    "empreinte": "f87d4472e98ebb92",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-voyage-le-son/9-12/vitesse-milieu-explication": {
+    "empreinte": "1b10f4754982ebf0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/3-5/circuit-coupe-question": {
+    "empreinte": "0a04989c2d1b287e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/3-5/circuit-coupe-explication": {
+    "empreinte": "c3e91aac2180a5b1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/6-8/vitesse-electrons-question": {
+    "empreinte": "cabb33da90cec220",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/6-8/vitesse-electrons-explication": {
+    "empreinte": "7fd7759d5117fc4c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/9-12/sens-courant-question": {
+    "empreinte": "c7e372d908779271",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lelectricite/9-12/sens-courant-explication": {
+    "empreinte": "6bc457f316a10cdd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/3-5/mousse-chaude-question": {
+    "empreinte": "7a69be3b4ed4149f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/3-5/mousse-chaude-explication": {
+    "empreinte": "56acccdb6ffe617f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/6-8/gaz-bulles-question": {
+    "empreinte": "95de40a25745f7ec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/6-8/gaz-bulles-explication": {
+    "empreinte": "649438ae12a38d7b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/9-12/melange-ou-reaction-question": {
+    "empreinte": "38d0dc623d78f1a8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/9-12/melange-ou-reaction-explication": {
+    "empreinte": "730b7f86e7173db8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/3-5/glacon-fondu-question": {
+    "empreinte": "4f2f62befdc56c3a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/3-5/glacon-fondu-explication": {
+    "empreinte": "d92e79c531644f78",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/6-8/vapeur-invisible-question": {
+    "empreinte": "13474fd3d8eaa906",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/6-8/vapeur-invisible-explication": {
+    "empreinte": "4224cf7e1125f837",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/9-12/temperature-palier-question": {
+    "empreinte": "a3941ff47de9a49e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etats-de-la-matiere/9-12/temperature-palier-explication": {
+    "empreinte": "16e0dfaaae6208a6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/3-5/sucre-cache-question": {
+    "empreinte": "06c292026e3f31a6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/3-5/sucre-cache-explication": {
+    "empreinte": "ed0d1d7a31c2ce58",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/6-8/fondre-ou-dissoudre-question": {
+    "empreinte": "400a6a462d46eba7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/6-8/fondre-ou-dissoudre-explication": {
+    "empreinte": "6f72af5b88e89959",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/9-12/masse-solution-question": {
+    "empreinte": "c933c8f6904df9a0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "ou-va-le-sucre-dans-leau/9-12/masse-solution-explication": {
+    "empreinte": "dae89fa4cf37ff9e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/3-5/air-existe-question": {
+    "empreinte": "4502ccf5e43b842a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/3-5/air-existe-explication": {
+    "empreinte": "b700bca140003830",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/6-8/gaz-majoritaire-question": {
+    "empreinte": "825f8f9ac2af3bf0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/6-8/gaz-majoritaire-explication": {
+    "empreinte": "ed329666a367586c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/9-12/paille-pression-question": {
+    "empreinte": "c280e35be5fbd96d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "de-quoi-est-fait-lair/9-12/paille-pression-explication": {
+    "empreinte": "a86da36da56e5f31",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/3-5/couvercle-question": {
+    "empreinte": "5632c82ff1d1212f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/3-5/couvercle-explication": {
+    "empreinte": "4a08feb05cfee580",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/6-8/triangle-feu-question": {
+    "empreinte": "ff4fc8df2fcdfc33",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/6-8/triangle-feu-explication": {
+    "empreinte": "1656d2075e548db2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/9-12/flamme-au-dessus-question": {
+    "empreinte": "9927bd26b31404dd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-feu/9-12/flamme-au-dessus-explication": {
+    "empreinte": "19479d0e4a8e2554",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/3-5/forme-solide-question": {
+    "empreinte": "1b732c7cd8632633",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/3-5/forme-solide-explication": {
+    "empreinte": "9c1f2d5c9d5fea92",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/6-8/pourquoi-triangle-question": {
+    "empreinte": "3b56422fea0807ff",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/6-8/pourquoi-triangle-explication": {
+    "empreinte": "2b699c7f02458929",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/9-12/arc-poussee-question": {
+    "empreinte": "54f6654a0b01dbc2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/9-12/arc-poussee-explication": {
+    "empreinte": "3c768c4014f8c44f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/3-5/aile-pousse-question": {
+    "empreinte": "938a803e84d9fcc8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/3-5/aile-pousse-explication": {
+    "empreinte": "4c3e2dda83adb486",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/6-8/vol-inverse-question": {
+    "empreinte": "f7e5748609bedec6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/6-8/vol-inverse-explication": {
+    "empreinte": "7f502f2451b4c777",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/9-12/temps-transit-question": {
+    "empreinte": "84def67472bcbb77",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-vole-un-avion/9-12/temps-transit-explication": {
+    "empreinte": "57557ab9080862ce",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/3-5/ou-appuyer-question": {
+    "empreinte": "bb8757b9696ebfc4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/3-5/ou-appuyer-explication": {
+    "empreinte": "fe6bdd49ed4193ca",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/6-8/gain-perte-question": {
+    "empreinte": "f7b17ed5461d7158",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/6-8/gain-perte-explication": {
+    "empreinte": "f91fdb834e7eca9e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/9-12/moment-force-question": {
+    "empreinte": "4ac8b83e6e3cdedc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-leviers/9-12/moment-force-explication": {
+    "empreinte": "d04e73402aee126c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/3-5/sens-roues-question": {
+    "empreinte": "55ac87e10c2a007d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/3-5/sens-roues-explication": {
+    "empreinte": "c54dd770e1ff6fb3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/6-8/rapport-dents-explication": {
+    "empreinte": "37dbd382b14de8ed",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/9-12/puissance-conservee-question": {
+    "empreinte": "ad714988adb4c3ac",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/9-12/puissance-conservee-explication": {
+    "empreinte": "c0e0434f66c4b4f4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/3-5/pate-forme-question": {
+    "empreinte": "01e70744ca97102a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/3-5/pate-forme-explication": {
+    "empreinte": "6779e1dc8d246b4b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/6-8/lourd-flotte-question": {
+    "empreinte": "e714d1a5719669db",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/6-8/lourd-flotte-explication": {
+    "empreinte": "0e661645b6bcd707",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/9-12/archimede-question": {
+    "empreinte": "6ab16bf98af0d253",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-bateaux-flottent/9-12/archimede-explication": {
+    "empreinte": "3996f5a0fff5bce8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/3-5/deux-etats-question": {
+    "empreinte": "144fe16e00c3208a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/3-5/deux-etats-explication": {
+    "empreinte": "296cb87d358d24a0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/6-8/combien-chiffres-question": {
+    "empreinte": "9c3b335baa4d82e1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/6-8/combien-chiffres-explication": {
+    "empreinte": "5962b99fa3c94b11",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/9-12/pourquoi-binaire-question": {
+    "empreinte": "f7b102f9471f8c83",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/9-12/pourquoi-binaire-explication": {
+    "empreinte": "f987594a8ddb15d6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/3-5/ou-passent-messages-question": {
+    "empreinte": "46dea51407300143",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/3-5/ou-passent-messages-explication": {
+    "empreinte": "8a5f7ec473a8bc0c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/6-8/le-cloud-question": {
+    "empreinte": "719af0964fcf6422",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/6-8/le-cloud-explication": {
+    "empreinte": "add086043c77cb28",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/9-12/paquets-chemins-question": {
+    "empreinte": "ba576c5d56c4bf3c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-internet/9-12/paquets-chemins-explication": {
+    "empreinte": "8376563dba31b409",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/3-5/ordre-important-question": {
+    "empreinte": "3dbfb5a1ae4c3e72",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/3-5/ordre-important-explication": {
+    "empreinte": "a032eac7701fedb1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/6-8/origine-bug-question": {
+    "empreinte": "7a490e89c96c0d7d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/6-8/origine-bug-explication": {
+    "empreinte": "28d31bc3605af609",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/9-12/dichotomie-question": {
+    "empreinte": "e3c08ea54935a727",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "quest-ce-quun-programme/9-12/dichotomie-explication": {
+    "empreinte": "1646ccbcf87b6e27",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/3-5/enregistrer-question": {
+    "empreinte": "1c2a423425e18cec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/3-5/enregistrer-explication": {
+    "empreinte": "90c56e0eca18a140",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/6-8/memoire-vive-question": {
+    "empreinte": "8ce2471590fdb18f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/6-8/memoire-vive-explication": {
+    "empreinte": "cd55b3b87bf58a43",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/9-12/hierarchie-question": {
+    "empreinte": "64075f6dcd935335",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-un-ordinateur-se-souvient/9-12/hierarchie-explication": {
+    "empreinte": "55e8fdcf0604cf79",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/3-5/machine-comprend-question": {
+    "empreinte": "22051ad8f9406fe2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/3-5/machine-comprend-explication": {
+    "empreinte": "d2cee69a5a665806",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/6-8/apprentissage-methode-question": {
+    "empreinte": "29080eea7ec9bdac",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/6-8/apprentissage-methode-explication": {
+    "empreinte": "70ff8fba9f188217",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/9-12/biais-donnees-question": {
+    "empreinte": "60c2051390fd0788",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-une-machine-apprend/9-12/biais-donnees-explication": {
+    "empreinte": "fd47a6ed71214fe4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/3-5/papillon-ailes-question": {
+    "empreinte": "02db41abdfa34f15",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/3-5/papillon-ailes-explication": {
+    "empreinte": "673b0617b74c4d92",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/6-8/flocon-axes-question": {
+    "empreinte": "c50161953481e84c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/6-8/flocon-axes-explication": {
+    "empreinte": "64bff0816e65c8a7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/9-12/symetrie-rotation-question": {
+    "empreinte": "5cdeae377e076700",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/9-12/symetrie-rotation-explication": {
+    "empreinte": "c43fa9975d7b5c65",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/3-5/fougere-parties-question": {
+    "empreinte": "3a3cc4acf4a9201f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/3-5/fougere-parties-explication": {
+    "empreinte": "10682ab4b62a4f07",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/6-8/poumons-surface-question": {
+    "empreinte": "8d65f49602451180",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/6-8/poumons-surface-explication": {
+    "empreinte": "00c3e98cf8a53529",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/9-12/longueur-cote-question": {
+    "empreinte": "f17f4aae8a95d01a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-fractales/9-12/longueur-cote-explication": {
+    "empreinte": "787950759e3a83cf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/3-5/piece-memoire-question": {
+    "empreinte": "614f32b688dee2ee",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/3-5/piece-memoire-explication": {
+    "empreinte": "7a146f4c107addb1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/6-8/erreur-parieur-question": {
+    "empreinte": "9a95f4da9504f6b2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/6-8/erreur-parieur-explication": {
+    "empreinte": "1c65e17705cf36d8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/9-12/loi-grands-nombres-question": {
+    "empreinte": "6337e71cc03f73b3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-hasard/9-12/loi-grands-nombres-explication": {
+    "empreinte": "818217906a0c93b3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/3-5/dernier-nombre-question": {
+    "empreinte": "3e88c0f8838b74c1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/3-5/dernier-nombre-explication": {
+    "empreinte": "6ac4890e5602c612",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/6-8/pairs-entiers-question": {
+    "empreinte": "7d468e804f55d1f9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/6-8/pairs-entiers-explication": {
+    "empreinte": "5a814cdf295758ba",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/9-12/infinis-tailles-question": {
+    "empreinte": "3afdf3450c314b50",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "linfini/9-12/infinis-tailles-explication": {
+    "empreinte": "37da22c761e80c07",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/3-5/zero-utile-question": {
+    "empreinte": "f502a09a7a365e1f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/3-5/zero-utile-explication": {
+    "empreinte": "5c04bdb40248e5c0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/6-8/diviser-par-zero-question": {
+    "empreinte": "4d25f98b606616ff",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/6-8/diviser-par-zero-explication": {
+    "empreinte": "62ceac408cadda69",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/9-12/zero-histoire-question": {
+    "empreinte": "e92768668cb29fc5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-zero/9-12/zero-histoire-explication": {
+    "empreinte": "50de83cbf0f3172e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-engrenages/6-8/rapport-dents-question": {
+    "empreinte": "fe040e3c5ed20392",
+    "modele": "gemini-3.1-flash-tts-preview"
+  }
+}

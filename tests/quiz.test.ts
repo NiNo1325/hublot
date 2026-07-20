@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { quizCartes } from '@/content/quiz';
 import { cards } from '@/content/cards';
@@ -63,4 +64,30 @@ describe('intégrité du quizz', () => {
       }
     },
   );
+
+  /*
+    L'audio du quizz est généré hors ligne par `npm run audio:quiz`. Une
+    question muette au niveau 3-5 ans est un vrai problème : les non-lecteurs
+    ne pourraient pas jouer. Deux fichiers par question, l'énoncé et
+    l'explication.
+  */
+  const fichiersAudio = quizCartes.flatMap((quiz) =>
+    AGE_RANGES.flatMap((age) =>
+      quiz.questions[age].flatMap((question) =>
+        (['question', 'explication'] as const).map(
+          (partie) =>
+            [
+              `${quiz.cardId}/${age}/${question.id}-${partie}`,
+              `public/audio/quiz/${quiz.cardId}/${age}/${question.id}-${partie}.mp3`,
+            ] as const,
+        ),
+      ),
+    ),
+  );
+
+  it.each(fichiersAudio)('audio %s présent', (_libelle, chemin) => {
+    expect(existsSync(chemin), `manquant : ${chemin} — lance « npm run audio:quiz »`).toBe(
+      true,
+    );
+  });
 });

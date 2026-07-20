@@ -10,7 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "voix:echantillons": "tsx --env-file=.env.local scripts/echantillons-voix.mjs",
-    "audio": "tsx --env-file=.env.local scripts/generer-audio.mjs"
+    "audio": "tsx --env-file=.env.local scripts/generer-audio.mjs",
+    "voix:modeles": "tsx --env-file=.env.local scripts/comparer-modeles.mjs"
   },
   "dependencies": {
     "next": "16.2.10",

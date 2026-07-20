@@ -1,97 +1,382 @@
 {
-  "cycle-de-leau/3-5/evaporation": "6e234ed895139c47",
-  "cycle-de-leau/3-5/condensation": "bee43031a1d76532",
-  "cycle-de-leau/3-5/precipitation": "db2990a85760d15c",
-  "cycle-de-leau/3-5/ruissellement": "22f28f966572ce4b",
-  "cycle-de-leau/6-8/evaporation": "8131a20c61fc2bbc",
-  "cycle-de-leau/6-8/condensation": "ba36eedbd181879d",
-  "cycle-de-leau/6-8/precipitation": "0d2a6c060f54effc",
-  "cycle-de-leau/6-8/ruissellement": "85bd6e5cd6c79bbb",
-  "cycle-de-leau/9-12/evaporation": "53c9a4207273928d",
-  "cycle-de-leau/9-12/condensation": "5ee49cbac418e2a1",
-  "cycle-de-leau/9-12/precipitation": "fb63eb44dd30c13f",
-  "cycle-de-leau/9-12/ruissellement": "ac1bb022f7351e7f",
-  "jour-et-nuit/3-5/terre-tourne": "e85fb34b177e4a96",
-  "jour-et-nuit/3-5/cote-eclaire": "ca440d1e87a4c66d",
-  "jour-et-nuit/3-5/cote-sombre": "f3390015d975d1a3",
-  "jour-et-nuit/3-5/cycle": "ddffd62bad076356",
-  "jour-et-nuit/6-8/terre-tourne": "15483695ce45d624",
-  "jour-et-nuit/6-8/cote-eclaire": "2486ab0c0ed8181b",
-  "jour-et-nuit/6-8/cote-sombre": "dd219b481433fd14",
-  "jour-et-nuit/6-8/cycle": "6ed8d5deae78768a",
-  "jour-et-nuit/9-12/terre-tourne": "76fb4b4d485a9ad0",
-  "jour-et-nuit/9-12/cote-eclaire": "53510684fd52714b",
-  "jour-et-nuit/9-12/cote-sombre": "a995e33370467a00",
-  "jour-et-nuit/9-12/cycle": "7439720ad0e71dc0",
-  "comment-poussent-les-plantes/3-5/lumiere": "aaf8957a43341d66",
-  "comment-poussent-les-plantes/3-5/eau": "c4196fca52ac63d0",
-  "comment-poussent-les-plantes/3-5/fabrication": "38fa3bcf67c6e70a",
-  "comment-poussent-les-plantes/3-5/oxygene": "c0c46801e6431486",
-  "comment-poussent-les-plantes/6-8/lumiere": "025c2241a3a71e4e",
-  "comment-poussent-les-plantes/6-8/eau": "cf5f0d60143381ad",
-  "comment-poussent-les-plantes/6-8/fabrication": "36991a4883c37fcc",
-  "comment-poussent-les-plantes/6-8/oxygene": "8bf68ec730bdab2f",
-  "comment-poussent-les-plantes/9-12/lumiere": "428c64fd86d54319",
-  "comment-poussent-les-plantes/9-12/eau": "3fd3f88177dd3e4f",
-  "comment-poussent-les-plantes/9-12/fabrication": "6eec4d2b4604d238",
-  "comment-poussent-les-plantes/9-12/oxygene": "cb33d4b4689a718c",
-  "pourquoi-tout-tombe/3-5/chute": "b2e1ee0b0176c0d2",
-  "pourquoi-tout-tombe/3-5/attraction": "99cc5821c7ef7a3b",
-  "pourquoi-tout-tombe/3-5/plume": "853a0fc15ce3b2e1",
-  "pourquoi-tout-tombe/3-5/lune": "691af8d2cfa0b3b6",
-  "pourquoi-tout-tombe/6-8/chute": "915a3ffad30408b6",
-  "pourquoi-tout-tombe/6-8/attraction": "701ed98d60cf8fbd",
-  "pourquoi-tout-tombe/6-8/plume": "292e1fc5dc7899ef",
-  "pourquoi-tout-tombe/6-8/lune": "84d93501cc585f42",
-  "pourquoi-tout-tombe/9-12/chute": "64aededa0239ae9f",
-  "pourquoi-tout-tombe/9-12/attraction": "ab7ee2d461b190b3",
-  "pourquoi-tout-tombe/9-12/plume": "4865012ef8c7e015",
-  "pourquoi-tout-tombe/9-12/lune": "ab54ceade385d2b7",
-  "le-volcan-de-vinaigre/3-5/melange": "604a015289c54c56",
-  "le-volcan-de-vinaigre/3-5/reaction": "541d6528128ad396",
-  "le-volcan-de-vinaigre/3-5/gaz": "24d5f073d404a7f4",
-  "le-volcan-de-vinaigre/3-5/mousse": "e722c051f2847913",
-  "le-volcan-de-vinaigre/6-8/melange": "7cc75f2ebb0b2c73",
-  "le-volcan-de-vinaigre/6-8/reaction": "3e4a6ac0e7566aef",
-  "le-volcan-de-vinaigre/6-8/gaz": "1fc5b7418fee4977",
-  "le-volcan-de-vinaigre/6-8/mousse": "a799c2b971875fd3",
-  "le-volcan-de-vinaigre/9-12/melange": "3690f54ab076e21a",
-  "le-volcan-de-vinaigre/9-12/reaction": "943c7e5dad470251",
-  "le-volcan-de-vinaigre/9-12/gaz": "409df071401b4dcb",
-  "le-volcan-de-vinaigre/9-12/mousse": "c1fab8daf6e76480",
-  "pourquoi-les-ponts-tiennent/3-5/poids": "1c0a0deca28180eb",
-  "pourquoi-les-ponts-tiennent/3-5/carre": "6b1c0da900db8b4f",
-  "pourquoi-les-ponts-tiennent/3-5/triangle": "fdf44a8bf2cf81fb",
-  "pourquoi-les-ponts-tiennent/3-5/repartition": "db4911424e94e279",
-  "pourquoi-les-ponts-tiennent/6-8/poids": "12b445f4f234daf8",
-  "pourquoi-les-ponts-tiennent/6-8/carre": "b18eaad3e5cc9c65",
-  "pourquoi-les-ponts-tiennent/6-8/triangle": "b00e93d1dc33b0cb",
-  "pourquoi-les-ponts-tiennent/6-8/repartition": "8a860193a3cce2df",
-  "pourquoi-les-ponts-tiennent/9-12/poids": "f2b58ab5af7f4ef0",
-  "pourquoi-les-ponts-tiennent/9-12/carre": "f32e61785be3b077",
-  "pourquoi-les-ponts-tiennent/9-12/triangle": "1dc5308b1e2f31d0",
-  "pourquoi-les-ponts-tiennent/9-12/repartition": "7bd04821508c5d1f",
-  "comment-compte-un-ordinateur/3-5/interrupteurs": "fae18c14e81dedc1",
-  "comment-compte-un-ordinateur/3-5/deux-chiffres": "0c93d334fb8d9ac4",
-  "comment-compte-un-ordinateur/3-5/combinaisons": "e0c84ef2fd20f21b",
-  "comment-compte-un-ordinateur/3-5/tout-est-nombre": "f04bae043d8985a5",
-  "comment-compte-un-ordinateur/6-8/interrupteurs": "dbfcc11245779ac7",
-  "comment-compte-un-ordinateur/6-8/deux-chiffres": "c9379919d316e558",
-  "comment-compte-un-ordinateur/6-8/combinaisons": "7f8a370b574c70d2",
-  "comment-compte-un-ordinateur/6-8/tout-est-nombre": "c478e9d0f028bc12",
-  "comment-compte-un-ordinateur/9-12/interrupteurs": "6b6f5e637c68a88b",
-  "comment-compte-un-ordinateur/9-12/deux-chiffres": "6e9ffb6c3383059e",
-  "comment-compte-un-ordinateur/9-12/combinaisons": "4b8f486fb00a5893",
-  "comment-compte-un-ordinateur/9-12/tout-est-nombre": "d60acc6c390a1296",
-  "la-symetrie/3-5/miroir": "0bee9501b90e2fdf",
-  "la-symetrie/3-5/pliage": "56dff894d7aa8b16",
-  "la-symetrie/3-5/nature": "9ed4f820aa0e7779",
-  "la-symetrie/3-5/presque": "17ecb56abaea4ad7",
-  "la-symetrie/6-8/miroir": "d32c69a9457050cf",
-  "la-symetrie/6-8/pliage": "f3d58f7ff0312728",
-  "la-symetrie/6-8/nature": "38f58ca484bd8c6f",
-  "la-symetrie/6-8/presque": "5935fad11042eb19",
-  "la-symetrie/9-12/miroir": "c8fc2d7380c88b90",
-  "la-symetrie/9-12/pliage": "e71cc47438ddae38",
-  "la-symetrie/9-12/nature": "0351d2ea8b362b56"
+  "cycle-de-leau/3-5/evaporation": {
+    "empreinte": "33bdcd2bbe6a1b91",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/3-5/condensation": {
+    "empreinte": "3ed3a6204c280b9d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/3-5/precipitation": {
+    "empreinte": "48efd8ce378d4e56",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/3-5/ruissellement": {
+    "empreinte": "eca80502801acb0e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/6-8/evaporation": {
+    "empreinte": "6ad1b25e4274ab93",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/6-8/condensation": {
+    "empreinte": "01b44ebce2a6a11b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/6-8/precipitation": {
+    "empreinte": "8232d1eb410e8b6b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/6-8/ruissellement": {
+    "empreinte": "f851007278d5136b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/9-12/evaporation": {
+    "empreinte": "5bc6e85b09116267",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/9-12/condensation": {
+    "empreinte": "a959dd7bce353faf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/9-12/precipitation": {
+    "empreinte": "08c999a7b0aba45f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "cycle-de-leau/9-12/ruissellement": {
+    "empreinte": "045b925a14fc6b05",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/3-5/terre-tourne": {
+    "empreinte": "54464450f37782c3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/3-5/cote-eclaire": {
+    "empreinte": "a79be970fe61b1c7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/3-5/cote-sombre": {
+    "empreinte": "d225e859c938ef10",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/3-5/cycle": {
+    "empreinte": "6ff4941c12f4d6ce",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/6-8/terre-tourne": {
+    "empreinte": "b394ae330f4ca244",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/6-8/cote-eclaire": {
+    "empreinte": "9d65bf0db283f635",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/6-8/cote-sombre": {
+    "empreinte": "637e78413ef27038",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/6-8/cycle": {
+    "empreinte": "3df9abc150fee06d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/9-12/terre-tourne": {
+    "empreinte": "9be737f059256879",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/9-12/cote-eclaire": {
+    "empreinte": "d13a6b290332d6e3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/9-12/cote-sombre": {
+    "empreinte": "d30ed0b87f7d8805",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "jour-et-nuit/9-12/cycle": {
+    "empreinte": "51a953c866f13643",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/3-5/lumiere": {
+    "empreinte": "bc234fc962aaf897",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/3-5/eau": {
+    "empreinte": "7d2ade77837c9d72",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/3-5/fabrication": {
+    "empreinte": "1120c0461d3f1734",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/3-5/oxygene": {
+    "empreinte": "87ece77a8a9bb024",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/6-8/lumiere": {
+    "empreinte": "a88ebfde96c8ac75",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/6-8/eau": {
+    "empreinte": "8fb318f3ee16e3cf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/6-8/fabrication": {
+    "empreinte": "ec4a185976e6605b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/6-8/oxygene": {
+    "empreinte": "831e25bc5a0dca2e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/9-12/lumiere": {
+    "empreinte": "c8c74aa5f7374a3c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/9-12/eau": {
+    "empreinte": "c8501f9f43793a31",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/9-12/fabrication": {
+    "empreinte": "8fc46842361bcb26",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-poussent-les-plantes/9-12/oxygene": {
+    "empreinte": "44156148a83def7f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/3-5/chute": {
+    "empreinte": "95a9af21c387a3ae",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/3-5/attraction": {
+    "empreinte": "c63bb03d329a07cd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/3-5/plume": {
+    "empreinte": "ce043fb5aee8c322",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/3-5/lune": {
+    "empreinte": "a53bffe1ebaf0efd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/6-8/chute": {
+    "empreinte": "041483228041ec52",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/6-8/attraction": {
+    "empreinte": "b36e2c4e9fef465b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/6-8/plume": {
+    "empreinte": "c4d22980569f1e9e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/6-8/lune": {
+    "empreinte": "6aac23282b1cbc67",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/9-12/chute": {
+    "empreinte": "31e4ee6ff9320266",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/9-12/attraction": {
+    "empreinte": "b611fa549098f63c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/9-12/plume": {
+    "empreinte": "46b72076554e5c26",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-tout-tombe/9-12/lune": {
+    "empreinte": "df8443eac1d0db23",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/3-5/melange": {
+    "empreinte": "768cdc8053c684f4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/3-5/reaction": {
+    "empreinte": "e4fbdd1253ad09fd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/3-5/gaz": {
+    "empreinte": "89665c9027715fed",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/3-5/mousse": {
+    "empreinte": "a090ce6ce49064b2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/6-8/melange": {
+    "empreinte": "16f7e09dd071c334",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/6-8/reaction": {
+    "empreinte": "e276ce5f73dc2a7c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/6-8/gaz": {
+    "empreinte": "60025a3e9d797423",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/6-8/mousse": {
+    "empreinte": "56acf4a3b8e993f3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/9-12/melange": {
+    "empreinte": "d3c6b634ae80d004",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/9-12/reaction": {
+    "empreinte": "48dec7307c7859ad",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/9-12/gaz": {
+    "empreinte": "197fc97f6dc0931b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-volcan-de-vinaigre/9-12/mousse": {
+    "empreinte": "ffefe28e0c424808",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/3-5/poids": {
+    "empreinte": "fa9d90795e10a269",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/3-5/carre": {
+    "empreinte": "b7cacdd0a8ef4af9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/3-5/triangle": {
+    "empreinte": "73bf443ef10d8069",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/3-5/repartition": {
+    "empreinte": "eb51a4712361f0e9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/6-8/poids": {
+    "empreinte": "ebbdb58213824173",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/6-8/carre": {
+    "empreinte": "7a3319c663296131",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/6-8/triangle": {
+    "empreinte": "39b50ccb4c6bef7d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/6-8/repartition": {
+    "empreinte": "17a5e38869e8dfb8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/9-12/poids": {
+    "empreinte": "015b74f8418eaadf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/9-12/carre": {
+    "empreinte": "2147f09979379e0f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/9-12/triangle": {
+    "empreinte": "6f7859a73cab0481",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-les-ponts-tiennent/9-12/repartition": {
+    "empreinte": "e4f4e82637479a51",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/3-5/interrupteurs": {
+    "empreinte": "8fa561ea08c8e51a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/3-5/deux-chiffres": {
+    "empreinte": "e4e6d63f1c316ee8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/3-5/combinaisons": {
+    "empreinte": "b8b95ba0546df26c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/3-5/tout-est-nombre": {
+    "empreinte": "50d152bf5f6db8d7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/6-8/interrupteurs": {
+    "empreinte": "8a2eac950acf9d52",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/6-8/deux-chiffres": {
+    "empreinte": "d8462a5bb31ef2a9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/6-8/combinaisons": {
+    "empreinte": "1ce466ad8dc5bd98",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/6-8/tout-est-nombre": {
+    "empreinte": "18b8eff6d6e1c51f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/9-12/interrupteurs": {
+    "empreinte": "363b691cf40bd0ea",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/9-12/deux-chiffres": {
+    "empreinte": "9a44e69c8d4ebf2c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/9-12/combinaisons": {
+    "empreinte": "61ce4c6260a82591",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-compte-un-ordinateur/9-12/tout-est-nombre": {
+    "empreinte": "504fb8d57cb4a716",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/3-5/miroir": {
+    "empreinte": "ff5a7f6996fe87c5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/3-5/pliage": {
+    "empreinte": "89f3ac6bc388692e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/3-5/nature": {
+    "empreinte": "7f20dea7f3a0828f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/3-5/presque": {
+    "empreinte": "6378d420984a92e9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/6-8/miroir": {
+    "empreinte": "855b49f4dd826b7b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/6-8/pliage": {
+    "empreinte": "e90c745eca92ba0e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/6-8/nature": {
+    "empreinte": "1403a064fe59867f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/6-8/presque": {
+    "empreinte": "5135e4d796180418",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/9-12/miroir": {
+    "empreinte": "253c91234317c518",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/9-12/pliage": {
+    "empreinte": "44c6475a56854faa",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-symetrie/9-12/nature": {
+    "empreinte": "fabb909969759a8b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  }
 }

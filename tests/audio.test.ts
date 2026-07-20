@@ -19,41 +19,34 @@ import { AGE_RANGES } from '@/lib/types';
  * alors les fichiers, et échouera s'ils manquent toujours.
  */
 const EN_ATTENTE_AUDIO = new Set([
-  // Vague 1
-  'les-volcans',
-  'les-phases-de-la-lune',
-  'le-coeur-et-le-sang',
-  'les-aimants',
-  'les-etats-de-la-matiere',
-  'comment-vole-un-avion',
-  'comment-marche-internet',
-  'les-fractales',
-  // Vague 2
-  'pourquoi-la-terre-tremble',
-  'pourquoi-il-y-a-des-saisons',
-  'les-microbes',
-  'pourquoi-on-voit-les-couleurs',
-  'ou-va-le-sucre-dans-leau',
-  'les-leviers',
-  'quest-ce-quun-programme',
-  'le-hasard',
-  // Vague 3
-  'les-fossiles',
-  'les-etoiles',
-  'pourquoi-on-dort',
-  'comment-voyage-le-son',
-  'de-quoi-est-fait-lair',
-  'les-engrenages',
-  'comment-un-ordinateur-se-souvient',
-  'linfini',
-  // Vague 4
   'le-vent',
+  'les-phases-de-la-lune',
+  'pourquoi-il-y-a-des-saisons',
+  'les-etoiles',
   'pourquoi-les-astronautes-flottent',
+  'le-coeur-et-le-sang',
+  'les-microbes',
+  'pourquoi-on-dort',
   'pourquoi-on-ressemble-a-ses-parents',
+  'les-aimants',
+  'pourquoi-on-voit-les-couleurs',
+  'comment-voyage-le-son',
   'lelectricite',
+  'les-etats-de-la-matiere',
+  'ou-va-le-sucre-dans-leau',
+  'de-quoi-est-fait-lair',
   'le-feu',
+  'comment-vole-un-avion',
+  'les-leviers',
+  'les-engrenages',
   'pourquoi-les-bateaux-flottent',
+  'comment-marche-internet',
+  'quest-ce-quun-programme',
+  'comment-un-ordinateur-se-souvient',
   'comment-une-machine-apprend',
+  'les-fractales',
+  'le-hasard',
+  'linfini',
   'le-zero',
 ]);
 
@@ -94,8 +87,16 @@ describe('couverture audio du catalogue', () => {
     const aTortEnAttente = [...EN_ATTENTE_AUDIO].filter((id) => {
       const carte = cards.find((c) => c.id === id);
       if (!carte) return false;
-      const premier = carte.content.fr.explanation['6-8'].beats[0];
-      return existsSync(`public/audio/${id}/6-8/${premier.id}.mp3`);
+      /*
+        Vérifie tous les beats, et non le premier seulement : la génération
+        s'interrompt sur épuisement de quota, souvent au milieu d'une carte.
+        Une carte à moitié sonore doit rester en attente.
+      */
+      return AGE_RANGES.every((age) =>
+        carte.content.fr.explanation[age].beats.every((beat) =>
+          existsSync(`public/audio/${id}/${age}/${beat.id}.mp3`),
+        ),
+      );
     });
 
     expect(

@@ -378,5 +378,181 @@
   "la-symetrie/9-12/nature": {
     "empreinte": "fabb909969759a8b",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-volcans/3-5/profondeur": {
+    "empreinte": "f2fe005ba754aad1",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/3-5/remontee": {
+    "empreinte": "a8ee876721dc461c",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/3-5/pression": {
+    "empreinte": "3c9cfac385221fbb",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/3-5/eruption": {
+    "empreinte": "7d41f5b4f939fc46",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/6-8/profondeur": {
+    "empreinte": "104bb65a4da264bb",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/6-8/remontee": {
+    "empreinte": "f309aa5860ad3786",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/6-8/pression": {
+    "empreinte": "2a327a3781b98a72",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/6-8/eruption": {
+    "empreinte": "127a2766c41decdf",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/9-12/profondeur": {
+    "empreinte": "53d0cab8b58b7471",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/9-12/remontee": {
+    "empreinte": "406b52985d045e2e",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/9-12/pression": {
+    "empreinte": "1bb44972d951b60b",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-volcans/9-12/eruption": {
+    "empreinte": "3c79d9dbb1ecdfd8",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/3-5/plaques": {
+    "empreinte": "df65128839d9841e",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/3-5/frottement": {
+    "empreinte": "9cef6f1416797756",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/3-5/rupture": {
+    "empreinte": "1e57f04bca6b1c55",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/3-5/ondes": {
+    "empreinte": "a30b5f9ab5ee32fa",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/6-8/plaques": {
+    "empreinte": "91ff2a079778e8fb",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/6-8/frottement": {
+    "empreinte": "335570a977c0d60e",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/6-8/rupture": {
+    "empreinte": "8e5f7e5154d29106",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/6-8/ondes": {
+    "empreinte": "ca74da5da5091c2f",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/9-12/plaques": {
+    "empreinte": "33f66a38bf5afff5",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/9-12/frottement": {
+    "empreinte": "4abcb542bf90d2ae",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/9-12/rupture": {
+    "empreinte": "a9196432cef36725",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-terre-tremble/9-12/ondes": {
+    "empreinte": "4c3dd16d3daa823f",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/3-5/mort": {
+    "empreinte": "746272840826fca2",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/3-5/enfouissement": {
+    "empreinte": "5d55dab62976a906",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/3-5/pierre": {
+    "empreinte": "26eeee022826937d",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/3-5/rare": {
+    "empreinte": "2d75f8fea728d32c",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/6-8/mort": {
+    "empreinte": "66b564903f7ff358",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/6-8/enfouissement": {
+    "empreinte": "4d45e2445f0a90df",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/6-8/pierre": {
+    "empreinte": "20d7474ec5c3e05a",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/6-8/rare": {
+    "empreinte": "768704392d62327b",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/9-12/mort": {
+    "empreinte": "2f9a4e7ddddb2c75",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/9-12/enfouissement": {
+    "empreinte": "83b3ca17234eaac7",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/9-12/pierre": {
+    "empreinte": "5cd80f9c4a169020",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-fossiles/9-12/rare": {
+    "empreinte": "fa19655f106f183c",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-vent/3-5/chaud": {
+    "empreinte": "78a1a116d7f5f6b6",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-vent/3-5/monte": {
+    "empreinte": "c0d150f85ac5cbed",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-vent/3-5/remplace": {
+    "empreinte": "f779db65ceaeb014",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-vent/3-5/vent": {
+    "empreinte": "4beb9be66604e1f7",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-vent/6-8/chaud": {
+    "empreinte": "794a7260b3627e30",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-vent/6-8/monte": {
+    "empreinte": "b47f9f96697b56d2",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-vent/6-8/remplace": {
+    "empreinte": "8c33c69fd54e2da4",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-vent/6-8/vent": {
+    "empreinte": "bb0f874a87c7b428",
+    "modele": "gemini-2.5-pro-preview-tts"
   }
 }

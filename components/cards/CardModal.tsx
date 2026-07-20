@@ -7,6 +7,7 @@ import { animationRegistry } from '@/components/animations/registry';
 import { useReducedMotion } from '@/components/animations/shared/useReducedMotion';
 import { useNarration } from '@/components/narration/useNarration';
 import { NarrationControls } from '@/components/narration/NarrationControls';
+import { useCartesVues } from '@/components/quiz/useCartesVues';
 
 /**
  * Isole les pannes d'animation : un SVG qui plante ne doit pas emporter la
@@ -37,6 +38,7 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
+  const { marquerVue } = useCartesVues();
   const beats = card.content.fr.explanation[ageRange].beats;
   const { state, play, pause, resume, replay } = useNarration(
     card.id,
@@ -55,6 +57,15 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
     const dialog = dialogRef.current;
     if (dialog && !dialog.open) dialog.showModal();
   }, []);
+
+  /*
+    Ouvrir une carte la fait entrer dans la collection : le quizz n'interroge
+    que là-dessus. Marquer à l'ouverture plutôt qu'à la fin de la narration
+    évite qu'un enfant qui écoute puis ferme perde le bénéfice.
+  */
+  useEffect(() => {
+    marquerVue(card.id);
+  }, [card.id, marquerVue]);
 
   return (
     <dialog

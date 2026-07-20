@@ -62,7 +62,7 @@ export function VentAnimation({
             )}
           </circle>
         ))}
-        <text x="222" y="152" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="238" y="126" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           l&apos;air frais accourt
         </text>
       </g>
@@ -77,7 +77,7 @@ export function VentAnimation({
             <animate attributeName="stroke-dashoffset" values="34;0" dur="1.6s" repeatCount="indefinite" />
           )}
         </path>
-        <text x="140" y="120" fill="#f5f0e6" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="106" y="30" fill="#f5f0e6" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           ce mouvement, c&apos;est le vent
         </text>
       </g>

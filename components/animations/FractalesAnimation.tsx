@@ -87,7 +87,7 @@ export function FractalesAnimation({
 
       {/* La limite : le réel s'arrête, le modèle non. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="220" y="214" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="211" y="212" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           la nature s&apos;arrête,
         </text>
         <text x="211" y="232" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">

@@ -51,8 +51,8 @@ export function LeviersAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <line x1="98" y1="164" x2="150" y2="164" stroke="#34d399" strokeWidth="2.5" strokeDasharray="4 4" />
         <line x1="150" y1="164" x2="330" y2="164" stroke="#34d399" strokeWidth="2.5" strokeDasharray="4 4" />
-        <text x="104" y="156" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">court</text>
-        <text x="171" y="156" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">long : peu de force suffit</text>
+        <text x="108" y="176" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">court</text>
+        <text x="186" y="156" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">long : peu de force suffit</text>
         <circle cx="330" cy="176" r="11" fill="#38bdf8">
           {anime && phase === 2 && (
             <animate attributeName="cy" values="168;186;168" dur="2s" repeatCount="indefinite" />

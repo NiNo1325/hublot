@@ -51,7 +51,7 @@ export function ApesanteurAnimation({
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <line x1="300" y1="70" x2="300" y2="128" stroke="#ffb627" strokeWidth="4" />
         <path d="M292 120 L300 138 L308 120 Z" fill="#ffb627" />
-        <text x="247" y="58" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="256" y="58" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           la gravité est là
         </text>
         <text x="256" y="74" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">

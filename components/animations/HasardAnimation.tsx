@@ -52,7 +52,7 @@ export function HasardAnimation({
         <rect x="250" y="146" width="100" height="22" rx="4" fill="#fb7185" />
         <text x="176" y="162" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">pile 50 %</text>
         <text x="272" y="162" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">face 50 %</text>
-        <text x="150" y="190" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="30" y="196" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           la pièce n&apos;a pas de mémoire
         </text>
       </g>

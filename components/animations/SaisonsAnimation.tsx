@@ -84,7 +84,7 @@ export function SaisonsAnimation({
 
       {/* La distance n'explique rien : elle varie à peine, et à contretemps. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="94" y="216" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="86" y="234" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           la distance ne change presque pas
         </text>
         {phase === 3 && (

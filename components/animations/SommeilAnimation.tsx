@@ -45,7 +45,7 @@ export function SommeilAnimation({
             )}
           </circle>
         ))}
-        <text x="150" y="112" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="150" y="120" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           le cerveau travaille
         </text>
       </g>

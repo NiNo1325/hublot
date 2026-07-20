@@ -1,9 +1,9 @@
 'use client';
 
-import type { SpeechState } from './useSpeech';
+import type { NarrationState } from './useNarration';
 
 interface NarrationControlsProps {
-  state: SpeechState;
+  state: NarrationState;
   onPlay: () => void;
   onPause: () => void;
   onResume: () => void;
@@ -21,10 +21,6 @@ export function NarrationControls({
   onReplay,
 }: NarrationControlsProps) {
   const { status, isPlaying, activeIndex } = state;
-
-  if (status === 'initialisation') {
-    return <p className="text-craie-douce">Préparation de la voix…</p>;
-  }
 
   /*
     L'action affichée dépend de la progression réelle, pas du seul `status` :
@@ -55,8 +51,8 @@ export function NarrationControls({
 
       {state.isSilent && (
         <p className="w-full text-center text-sm text-craie-douce">
-          La voix n&apos;est pas disponible sur cet appareil. L&apos;explication
-          défile à l&apos;écrit.
+          Le son n&apos;a pas pu être chargé. L&apos;explication défile à
+          l&apos;écrit.
         </p>
       )}
     </div>

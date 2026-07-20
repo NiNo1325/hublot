@@ -15,7 +15,7 @@ L'utilisateur filtre les domaines scientifiques qui l'intéressent.
 | Sujet | Décision | Raison |
 |---|---|---|
 | Contenu | Pré-écrit en dur dans le repo, 3 variantes d'âge par carte | Zéro coût API, zéro latence, contenu contrôlé et sûr pour un public enfant |
-| Voix | `speechSynthesis` natif du navigateur | Gratuit, hors ligne, aucune clé à gérer |
+| Voix | Fichiers `.mp3` préenregistrés via l'API TTS Gemini (voix Callirrhoe), un par beat | Qualité constante sur tous les appareils, aucun coût à l'exécution, pause fiable |
 | Langue | Français uniquement en V1 | Structure de données prête pour l'i18n, pas d'implémentation |
 | Niveau d'âge | Sélecteur à l'entrée, persisté en `localStorage` | Pas de compte, aucune donnée personnelle (RGPD/COPPA) |
 | Animation | SVG animé en CSS / Framer Motion, codé à la main | Léger, net sur tout écran, synchronisable avec la narration |
@@ -138,6 +138,39 @@ drilling reste lisible.
 7. Par beat : `onstart` → `activeBeatId` → l'animation change de phase ;
    `onend` → beat suivant. Fin → animation en boucle « au repos ».
 8. Fermeture → `cancel()` + cleanup → focus restitué à la tuile d'origine.
+
+## Révision du 20/07/2026 — abandon de `speechSynthesis`
+
+La synthèse navigateur a été implémentée puis remplacée : la voix était
+robotique et sa qualité variait trop d'un appareil à l'autre pour un produit où
+l'écoute porte le contenu. Le contenu étant fixe, il n'y avait aucune raison de
+synthétiser à la volée.
+
+Les fichiers sont générés hors ligne par `scripts/generer-audio.mjs` et servis
+depuis `public/audio/<carte>/<âge>/<beat>.mp3`. Le découpage en beats a rendu la
+migration indolore : `ended` d'un élément audio a remplacé `onend`, et le
+mécanisme de synchronisation avec l'animation n'a pas bougé.
+
+Bénéfices constatés :
+
+- la pause reprend à la milliseconde près, le contournement décrit plus bas
+  (annuler puis relancer le beat au début) n'a plus lieu d'être ;
+- le beat suivant est préchargé pendant la lecture du courant, sans blanc ;
+- un test d'intégrité vérifie qu'aucun beat n'est dépourvu de fichier audio —
+  sans lui, une carte muette basculerait silencieusement en mode minuté.
+
+Deux pièges spécifiques à l'audio, découverts en test :
+
+- **Lecture automatique refusée.** Le navigateur peut bloquer `play()` si le
+  geste utilisateur lui paraît trop ancien. Le hook revient alors à « prêt » et
+  le bouton « Écouter » prend le relais, sans basculer en minuté : le son est
+  disponible, il ne manque qu'une interaction.
+- **Création et démarrage doivent être atomiques.** Séparer l'instanciation de
+  l'élément audio et le lancement de la narration dans deux effets laisse, après
+  un cycle démontage/remontage, un élément neuf que rien ne relance.
+
+Les parades ci-dessous concernent l'implémentation historique et sont
+conservées pour mémoire.
 
 ## Narration : pièges et parades
 

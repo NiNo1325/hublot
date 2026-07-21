@@ -219,4 +219,45 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'les-poulies',
+    questions: {
+      '3-5': [
+        {
+          id: 'poulie-quoi',
+          question: 'Une poulie, c’est quoi ?',
+          reponses: [
+            { texte: 'Une roue avec une corde dessus', icone: '⚙️', correcte: true },
+            { texte: 'Un gros aimant', icone: '🧲' },
+          ],
+          explication: 'La corde passe sur la roue, et ça aide à tirer.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'poulie-fixe',
+          question: 'Une seule poulie fixe rend-elle la charge plus légère ?',
+          reponses: [
+            { texte: 'Non, elle change juste la direction', icone: '🔄', correcte: true },
+            { texte: 'Oui, deux fois plus légère', icone: '🪶' },
+            { texte: 'Oui, elle supprime le poids', icone: '🚫' },
+          ],
+          explication: 'Le vrai gain vient de plusieurs poulies reliées ensemble.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'poulie-echange',
+          question: 'Avec un palan, on divise la force par deux. Que paie-t-on ?',
+          reponses: [
+            { texte: 'On tire deux fois plus de corde', icone: '📏', correcte: true },
+            { texte: 'Rien, c’est gratuit', icone: '🎁' },
+            { texte: 'On perd du temps seulement', icone: '⏱️' },
+          ],
+          explication:
+            'Comme le levier, la poulie échange de la force contre de la distance : le travail se conserve.',
+        },
+      ],
+    },
+  },
 ];

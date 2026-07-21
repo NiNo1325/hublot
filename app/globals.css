@@ -76,6 +76,12 @@ body {
   36% { transform: scale(1); }
 }
 
+/* Poumons qui se gonflent puis se dégonflent. */
+@keyframes respire {
+  0%, 100% { transform: scale(0.94); }
+  45% { transform: scale(1.06); }
+}
+
 /* Pièce lancée en l'air. */
 @keyframes lancer-piece {
   0%, 100% { transform: translateY(0) rotateX(0deg); }

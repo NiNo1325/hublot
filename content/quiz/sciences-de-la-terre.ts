@@ -177,6 +177,47 @@ export const quiz: QuizCarte[] = [
     },
   },
   {
+    cardId: 'les-marees',
+    questions: {
+      '3-5': [
+        {
+          id: 'qui-fait-marees',
+          question: 'Qu’est-ce qui fait monter et descendre la mer ?',
+          reponses: [
+            { texte: 'La Lune, de très loin', icone: '🌙', correcte: true },
+            { texte: 'Le vent qui souffle', icone: '🌬️' },
+          ],
+          explication: 'C’est la Lune qui tire sur l’eau des océans.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'combien-marees',
+          question: 'Combien de marées hautes y a-t-il par jour ?',
+          reponses: [
+            { texte: 'Deux', icone: '2️⃣', correcte: true },
+            { texte: 'Une seule', icone: '1️⃣' },
+            { texte: 'Aucune', icone: '🚫' },
+          ],
+          explication: 'La mer se soulève des deux côtés de la Terre : deux marées hautes par jour.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'lune-aspire',
+          question: 'La Lune aspire-t-elle l’eau vers le haut ?',
+          reponses: [
+            { texte: 'Non, elle l’étire des deux côtés', icone: '↔️', correcte: true },
+            { texte: 'Oui, comme un aimant', icone: '🧲' },
+            { texte: 'Oui, mais d’un seul côté', icone: '⬆️' },
+          ],
+          explication:
+            'C’est la différence d’attraction entre les deux faces de la Terre qui compte : deux bourrelets, pas une aspiration.',
+        },
+      ],
+    },
+  },
+  {
     cardId: 'le-vent',
     questions: {
       '3-5': [

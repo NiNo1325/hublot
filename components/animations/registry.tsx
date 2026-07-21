@@ -45,6 +45,15 @@ import { FlottaisonAnimation } from './FlottaisonAnimation';
 import { ApprentissageAnimation } from './ApprentissageAnimation';
 import { ZeroAnimation } from './ZeroAnimation';
 
+import { MareesAnimation } from './MareesAnimation';
+import { TrouNoirAnimation } from './TrouNoirAnimation';
+import { RespirationAnimation } from './RespirationAnimation';
+import { ChaleurAnimation } from './ChaleurAnimation';
+import { RouilleAnimation } from './RouilleAnimation';
+import { PouliesAnimation } from './PouliesAnimation';
+import { PixelsAnimation } from './PixelsAnimation';
+import { GrandsNombresAnimation } from './GrandsNombresAnimation';
+
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
   activeBeatId: string | null;
@@ -101,4 +110,12 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   flottaison: FlottaisonAnimation,
   apprentissage: ApprentissageAnimation,
   zero: ZeroAnimation,
+  marees: MareesAnimation,
+  'trou-noir': TrouNoirAnimation,
+  respiration: RespirationAnimation,
+  chaleur: ChaleurAnimation,
+  rouille: RouilleAnimation,
+  poulies: PouliesAnimation,
+  pixels: PixelsAnimation,
+  'grands-nombres': GrandsNombresAnimation,
 };

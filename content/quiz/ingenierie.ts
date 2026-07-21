@@ -259,5 +259,47 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'comment-avance-une-fusee',
+    questions: {
+      '3-5': [
+        {
+          id: 'ballon-lache',
+          question: 'Tu lâches un ballon gonflé. Que fait-il ?',
+          reponses: [
+            { texte: 'Il part de l’autre côté du souffle', icone: '🎈', correcte: true },
+            { texte: 'Il reste sur place', icone: '🚫' },
+          ],
+          explication:
+            'L’air sort d’un côté, le ballon part de l’autre. Une fusée avance exactement pareil.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'fusee-appui',
+          question: 'Sur quoi une fusée s’appuie-t-elle pour avancer ?',
+          reponses: [
+            { texte: 'Sur rien : elle éjecte du gaz', icone: '🚀', correcte: true },
+            { texte: 'Sur l’air, comme une rame sur l’eau', icone: '🌬️' },
+            { texte: 'Sur le sol, qu’elle repousse', icone: '⬇️' },
+          ],
+          explication:
+            'Elle pousse du gaz vers le bas, le gaz la pousse vers le haut. L’air extérieur n’y sert à rien.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'fusee-vide',
+          question: 'Une fusée pousse-t-elle mieux dans le vide ou dans l’air ?',
+          reponses: [
+            { texte: 'Dans le vide', icone: '🌌', correcte: true },
+            { texte: 'Dans l’air, contre lequel elle s’appuie', icone: '💨' },
+            { texte: 'Exactement pareil', icone: '⚖️' },
+          ],
+          explication:
+            'L’atmosphère ne fait que freiner. Le New York Times, qui affirmait le contraire en 1920, s’est rétracté la veille d’Apollo 11.',
+        },
+      ],
+    },
   },
 ];

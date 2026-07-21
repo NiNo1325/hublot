@@ -258,5 +258,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'pourquoi-le-ciel-est-bleu',
+    questions: {
+      '3-5': [
+        {
+          id: 'ciel-couleur',
+          question: 'Qu’est-ce qui rend le ciel bleu ?',
+          reponses: [
+            { texte: 'L’air, qui renvoie le bleu', icone: '🌬️', correcte: true },
+            { texte: 'La mer, qui se reflète', icone: '🌊' },
+          ],
+          explication: 'C’est l’air qui éparpille le bleu partout au-dessus de toi.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'ciel-desert',
+          question: 'Au-dessus du désert, très loin de la mer, de quelle couleur est le ciel ?',
+          reponses: [
+            { texte: 'Bleu, comme partout', icone: '🔵', correcte: true },
+            { texte: 'Jaune, comme le sable', icone: '🟡' },
+            { texte: 'Gris, faute de mer à refléter', icone: '⬜' },
+          ],
+          explication:
+            'Le ciel n’est pas bleu parce qu’il reflète la mer : c’est l’air lui-même qui disperse le bleu.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'soleil-couchant',
+          question: 'Pourquoi le Soleil couchant est-il rouge ?',
+          reponses: [
+            { texte: 'Sa lumière traverse plus d’air, le bleu est dispersé ailleurs', icone: '🌅', correcte: true },
+            { texte: 'Il chauffe davantage en fin de journée', icone: '🌡️' },
+            { texte: 'Il commence à s’éteindre', icone: '🕯️' },
+          ],
+          explication:
+            'Même cause que le ciel bleu de midi — la diffusion — mais sur une épaisseur d’atmosphère bien plus grande.',
+        },
+      ],
+    },
   },
 ];

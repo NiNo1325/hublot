@@ -258,5 +258,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'pourquoi-le-savon-lave',
+    questions: {
+      '3-5': [
+        {
+          id: 'eau-seule',
+          question: 'L’eau toute seule enlève-t-elle le gras ?',
+          reponses: [
+            { texte: 'Non, elle glisse dessus', icone: '💧', correcte: true },
+            { texte: 'Oui, très bien', icone: '✨' },
+          ],
+          explication: 'L’eau et le gras ne se mélangent pas : il faut du savon pour les réunir.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'savon-deux-bouts',
+          question: 'Que fait une molécule de savon ?',
+          reponses: [
+            { texte: 'Elle attrape le gras d’un côté et l’eau de l’autre', icone: '🧼', correcte: true },
+            { texte: 'Elle tue la saleté', icone: '☠️' },
+            { texte: 'Elle réchauffe l’eau', icone: '🌡️' },
+          ],
+          explication:
+            'Une tête qui aime l’eau, une queue qui aime le gras : le savon sert d’intermédiaire entre les deux.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'micelle',
+          question: 'Comment le savon fait-il partir la graisse ?',
+          reponses: [
+            { texte: 'Il l’enferme dans des micelles que l’eau emporte', icone: '🫧', correcte: true },
+            { texte: 'Il la dissout, comme l’eau dissout le sucre', icone: '🥄' },
+            { texte: 'Il la décompose en la brûlant', icone: '🔥' },
+          ],
+          explication:
+            'Les queues hydrophobes entourent la gouttelette, les têtes hydrophiles font face à l’eau : la saleté devient transportable.',
+        },
+      ],
+    },
   },
 ];

@@ -141,7 +141,7 @@ for (const carte of cards) {
 await navigateur.close();
 
 if (rapport.length === 0) {
-  console.log('Aucun défaut détecté sur les 40 cartes.');
+  console.log(`Aucun défaut détecté sur les ${cards.length} cartes.`);
 } else {
   const parCarte = {};
   for (const r of rapport) (parCarte[r.carte] ??= []).push(r);

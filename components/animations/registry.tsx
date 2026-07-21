@@ -54,6 +54,15 @@ import { PouliesAnimation } from './PouliesAnimation';
 import { PixelsAnimation } from './PixelsAnimation';
 import { GrandsNombresAnimation } from './GrandsNombresAnimation';
 
+import { CielBleuAnimation } from './CielBleuAnimation';
+import { EtoilesFilantesAnimation } from './EtoilesFilantesAnimation';
+import { DigestionAnimation } from './DigestionAnimation';
+import { InertieAnimation } from './InertieAnimation';
+import { SavonAnimation } from './SavonAnimation';
+import { FuseeAnimation } from './FuseeAnimation';
+import { MotDePasseAnimation } from './MotDePasseAnimation';
+import { PerimetreAireAnimation } from './PerimetreAireAnimation';
+
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
   activeBeatId: string | null;
@@ -118,4 +127,12 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   poulies: PouliesAnimation,
   pixels: PixelsAnimation,
   'grands-nombres': GrandsNombresAnimation,
+  'ciel-bleu': CielBleuAnimation,
+  'etoiles-filantes': EtoilesFilantesAnimation,
+  digestion: DigestionAnimation,
+  inertie: InertieAnimation,
+  savon: SavonAnimation,
+  fusee: FuseeAnimation,
+  'mot-de-passe': MotDePasseAnimation,
+  'perimetre-aire': PerimetreAireAnimation,
 };

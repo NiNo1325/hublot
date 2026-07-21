@@ -261,5 +261,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'les-mots-de-passe',
+    questions: {
+      '3-5': [
+        {
+          id: 'secret-long',
+          question: 'Quel mot secret est le plus dur à deviner ?',
+          reponses: [
+            { texte: 'Chat lune bateau pomme', icone: '🔑', correcte: true },
+            { texte: 'Chat', icone: '🐱' },
+          ],
+          explication: 'Plus le secret est long, plus il est difficile à trouver.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'essais-machine',
+          question: 'Comment retrouve-t-on un mot de passe qui n’est pas le sien ?',
+          reponses: [
+            { texte: 'En essayant des milliards de possibilités', icone: '🔁', correcte: true },
+            { texte: 'En réfléchissant très fort', icone: '🤔' },
+            { texte: 'En le lisant dans l’écran', icone: '👀' },
+          ],
+          explication:
+            'C’est une machine qui essaie, très vite. Tout se joue sur le nombre d’essais nécessaires.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'longueur-vs-ruse',
+          question: 'Qui résiste le mieux : « Tr0ub4dor&3 » ou quatre mots courants tirés au hasard ?',
+          reponses: [
+            { texte: 'Les quatre mots', icone: '📏', correcte: true },
+            { texte: 'Tr0ub4dor&3, plus compliqué', icone: '🌀' },
+            { texte: 'Les deux se valent', icone: '⚖️' },
+          ],
+          explication:
+            'Les substitutions du genre « a » en arobase figurent dans les règles des outils d’attaque. Seule la longueur multiplie vraiment les essais.',
+        },
+      ],
+    },
   },
 ];

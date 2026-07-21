@@ -39,17 +39,34 @@ const CONSIGNES = {
 };
 
 /**
+ * Ordre de lecture des propositions, déterministe mais variable d'une question
+ * à l'autre. La bonne réponse est toujours écrite en premier dans le contenu :
+ * la lire systématiquement en premier apprendrait à l'enfant à choisir « la
+ * première » sans réfléchir. Un simple hachage de l'identifiant inverse
+ * l'ordre pour environ la moitié des questions.
+ */
+function ordreLecture(question) {
+  const somme = [...question.id].reduce((n, c) => n + c.charCodeAt(0), 0);
+  return somme % 2 === 0 ? question.reponses : [...question.reponses].reverse();
+}
+
+/**
  * Texte réellement prononcé pour l'énoncé.
  *
  * Les propositions ne sont énoncées que pour les non-lecteurs : à partir de
  * six ans, les entendre après les avoir lues alourdirait inutilement.
+ *
+ * Point crucial : aucune étiquette de position (« première réponse ») n'est
+ * prononcée. L'affichage mélange les propositions ; une position annoncée par
+ * l'audio la contredirait — c'est exactement le bug corrigé ici. L'enfant
+ * associe ce qu'il entend à l'icône de la réponse, pas à un rang.
  */
 function texteEnonce(question, age) {
   if (age !== '3-5') return question.question;
-  const propositions = question.reponses
-    .map((r, i) => `${i === 0 ? 'Première réponse' : 'Deuxième réponse'} : ${r.texte}.`)
-    .join(' ');
-  return `${question.question} ${propositions}`;
+  const propositions = ordreLecture(question)
+    .map((r) => r.texte)
+    .join(' ? Ou bien : ');
+  return `${question.question} Est-ce que : ${propositions} ?`;
 }
 
 function cle() {

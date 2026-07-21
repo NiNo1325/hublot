@@ -2302,5 +2302,389 @@
   "le-chaud-et-le-froid/3-5/equilibre": {
     "empreinte": "a1812fa62afc7a53",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/3-5/regarder": {
+    "empreinte": "76a462d9c3deee1e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/3-5/lumiere-blanche": {
+    "empreinte": "436fed493b18ef36",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/3-5/diffusion": {
+    "empreinte": "bf92f8a0268f2bce",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/3-5/couchant": {
+    "empreinte": "9813012981b0e7d7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/6-8/regarder": {
+    "empreinte": "2f99429760628448",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/6-8/lumiere-blanche": {
+    "empreinte": "c3a5731021078465",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/6-8/diffusion": {
+    "empreinte": "9c8587b242736271",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/6-8/couchant": {
+    "empreinte": "a10ace4d91e67e63",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/9-12/regarder": {
+    "empreinte": "a0b228d49f4111ec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/9-12/lumiere-blanche": {
+    "empreinte": "ed401ab5154c8abb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/9-12/diffusion": {
+    "empreinte": "72cbd4dc4d523a8b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/9-12/couchant": {
+    "empreinte": "f1a15cd97fb09140",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/3-5/souhait": {
+    "empreinte": "4a4429b98aadfecf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/3-5/grain": {
+    "empreinte": "27912e2d6a892486",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/3-5/chauffe": {
+    "empreinte": "a6d593f875d75ec2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/3-5/pluie": {
+    "empreinte": "86e108141cea94e7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/6-8/souhait": {
+    "empreinte": "cb6cb000831c41d5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/6-8/grain": {
+    "empreinte": "4764ef297d782b11",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/6-8/chauffe": {
+    "empreinte": "130a05ae867844ca",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/6-8/pluie": {
+    "empreinte": "ec8b688fa3bec8d4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/9-12/souhait": {
+    "empreinte": "e7f4b084a2eee967",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/9-12/grain": {
+    "empreinte": "85aaed80e4637371",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/9-12/chauffe": {
+    "empreinte": "a09ae0298c8193e0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/9-12/pluie": {
+    "empreinte": "b988e2e18772ce67",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/3-5/avaler": {
+    "empreinte": "8b45715c7d0dcc1a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/3-5/estomac": {
+    "empreinte": "9e64ac84c971ec4a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/3-5/intestin": {
+    "empreinte": "2fedfebeffe27bec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/3-5/sortie": {
+    "empreinte": "c49f12127b670d35",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/6-8/avaler": {
+    "empreinte": "2d69cc9dce6e1f0b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/6-8/estomac": {
+    "empreinte": "d8d2a986291c46cd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/6-8/intestin": {
+    "empreinte": "c0fd2b6b56e6c6c0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/6-8/sortie": {
+    "empreinte": "a7aa43e38cb70bde",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/9-12/avaler": {
+    "empreinte": "ab17b5f467f3b794",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/9-12/estomac": {
+    "empreinte": "0be9a2e6876c0189",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/9-12/intestin": {
+    "empreinte": "58d521d6e35e1511",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/9-12/sortie": {
+    "empreinte": "68aa81e413eaf876",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/3-5/lancer": {
+    "empreinte": "277f5fd9b5061e22",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/3-5/frottement": {
+    "empreinte": "700d52a0a774c8e5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/3-5/glace": {
+    "empreinte": "4efb40a0102aca1e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/3-5/espace": {
+    "empreinte": "b6a0884f6e60510f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/6-8/lancer": {
+    "empreinte": "51f6dd9afc99e686",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/6-8/frottement": {
+    "empreinte": "b7daf2e27470d773",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/6-8/glace": {
+    "empreinte": "620a2f22d64c58de",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/6-8/espace": {
+    "empreinte": "304adb15b7558d8d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/9-12/lancer": {
+    "empreinte": "e9108b9629242f79",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/9-12/frottement": {
+    "empreinte": "92cad7c894b77629",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/9-12/glace": {
+    "empreinte": "3f896d231e9f620a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/9-12/espace": {
+    "empreinte": "0f34454b6bae610f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/3-5/gras": {
+    "empreinte": "177d0cd14b90693d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/3-5/deux-bouts": {
+    "empreinte": "01a8224e4eb4f328",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/3-5/entourer": {
+    "empreinte": "baa958477d17cc47",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/3-5/emporter": {
+    "empreinte": "d72f39122b3a4b5a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/6-8/gras": {
+    "empreinte": "3102e6b44ec54e44",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/6-8/deux-bouts": {
+    "empreinte": "fe2deca19e0265f1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/6-8/entourer": {
+    "empreinte": "670d48ef91b70977",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/6-8/emporter": {
+    "empreinte": "cdbf03f97a098947",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/9-12/gras": {
+    "empreinte": "3621627a49c34c7d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/9-12/deux-bouts": {
+    "empreinte": "99b796dfcc852116",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/9-12/entourer": {
+    "empreinte": "0c9061087da5d496",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/9-12/emporter": {
+    "empreinte": "be77ae91aac0c4b1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/3-5/ballon": {
+    "empreinte": "ba07759751064fdb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/3-5/pousser": {
+    "empreinte": "e58b25ccded4b131",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/3-5/sans-air": {
+    "empreinte": "a617abfb18587578",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/3-5/etages": {
+    "empreinte": "e5bd80a409023adc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/6-8/ballon": {
+    "empreinte": "c8dd3b0bdefae4a4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/6-8/pousser": {
+    "empreinte": "d89551e655427296",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/6-8/sans-air": {
+    "empreinte": "a269815321840291",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/6-8/etages": {
+    "empreinte": "46ba601b756fe964",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/9-12/ballon": {
+    "empreinte": "f138c342e9a59e6a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/9-12/pousser": {
+    "empreinte": "dc518446f47c5998",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/9-12/sans-air": {
+    "empreinte": "0e46c29499504606",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/9-12/etages": {
+    "empreinte": "507d2f1ee5db66a3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/3-5/secret": {
+    "empreinte": "0711377451916be2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/3-5/essais": {
+    "empreinte": "bd299f1baf40233f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/3-5/longueur": {
+    "empreinte": "f60813764cd3e99a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/3-5/un-par-porte": {
+    "empreinte": "fbc4cd7d072f3e8d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/6-8/secret": {
+    "empreinte": "bd548deb7eb242e0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/6-8/essais": {
+    "empreinte": "b2fa518bfbbd995e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/6-8/longueur": {
+    "empreinte": "ce81e849eb67db32",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/6-8/un-par-porte": {
+    "empreinte": "3850febde92c0fba",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/9-12/secret": {
+    "empreinte": "c94e25488fbe55c7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/9-12/essais": {
+    "empreinte": "5908f3f771cbc017",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/9-12/longueur": {
+    "empreinte": "05b3e4b08129c1aa",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/9-12/un-par-porte": {
+    "empreinte": "3e862d38f2851d28",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/3-5/corde": {
+    "empreinte": "9ca0f2f2bcdb0612",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/3-5/carre": {
+    "empreinte": "d348dffb41d4d33e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/3-5/rond": {
+    "empreinte": "15319d052b2c1bfc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/6-8/corde": {
+    "empreinte": "ecbbbc7f32ed6a63",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/6-8/long-et-fin": {
+    "empreinte": "3669daaafc7acb13",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/6-8/carre": {
+    "empreinte": "fb3ed2315c0f7543",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/6-8/rond": {
+    "empreinte": "ae41fcf080fd81be",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/9-12/corde": {
+    "empreinte": "c9bc3c34067aac71",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/9-12/long-et-fin": {
+    "empreinte": "2167e65e13d90e59",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/9-12/carre": {
+    "empreinte": "279cbfd69620b267",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/9-12/rond": {
+    "empreinte": "1117219df5d0d73a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/3-5/long-et-fin": {
+    "empreinte": "ebf01d481517881f",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

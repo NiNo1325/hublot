@@ -259,5 +259,47 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'le-voyage-de-la-nourriture',
+    questions: {
+      '3-5': [
+        {
+          id: 'tete-en-bas',
+          question: 'Peux-tu avaler la tête en bas ?',
+          reponses: [
+            { texte: 'Oui, des muscles poussent', icone: '💪', correcte: true },
+            { texte: 'Non, ça remonterait', icone: '🙃' },
+          ],
+          explication:
+            'La nourriture ne tombe pas toute seule : des muscles la poussent tout au long du chemin.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'ou-passe-sang',
+          question: 'Où la nourriture passe-t-elle dans le sang ?',
+          reponses: [
+            { texte: 'Dans l’intestin grêle', icone: '🌀', correcte: true },
+            { texte: 'Dans l’estomac', icone: '🫙' },
+            { texte: 'Dans la bouche', icone: '👄' },
+          ],
+          explication:
+            'L’estomac ne fait que broyer et préparer. C’est l’intestin grêle qui fait passer les nutriments dans le sang.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'role-estomac',
+          question: 'À quoi sert principalement l’estomac ?',
+          reponses: [
+            { texte: 'À broyer et attaquer chimiquement les aliments', icone: '⚗️', correcte: true },
+            { texte: 'À absorber les nutriments', icone: '🩸' },
+            { texte: 'À stocker l’eau du corps', icone: '💧' },
+          ],
+          explication:
+            'À part l’alcool et quelques médicaments, presque rien n’y passe dans le sang : l’absorption se fait plus loin.',
+        },
+      ],
+    },
   },
 ];

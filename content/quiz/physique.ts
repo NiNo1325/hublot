@@ -260,5 +260,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'pourquoi-ca-sarrete',
+    questions: {
+      '3-5': [
+        {
+          id: 'balle-sarrete',
+          question: 'Pourquoi la balle qui roule finit par s’arrêter ?',
+          reponses: [
+            { texte: 'Le sol et l’air la freinent', icone: '🛑', correcte: true },
+            { texte: 'Elle est fatiguée', icone: '😴' },
+          ],
+          explication: 'Ce sont les frottements qui l’arrêtent, pas la fatigue.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'sans-frottement',
+          question: 'Sans aucun frottement, que ferait un objet lancé ?',
+          reponses: [
+            { texte: 'Il continuerait sans jamais s’arrêter', icone: '♾️', correcte: true },
+            { texte: 'Il s’arrêterait quand même', icone: '🛑' },
+            { texte: 'Il irait de plus en plus vite', icone: '🚀' },
+          ],
+          explication:
+            'Sans force pour le freiner, un objet conserve sa vitesse : c’est le principe d’inertie.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'voyager-moteur',
+          question: 'Les sondes Voyager avancent-elles grâce à leur moteur ?',
+          reponses: [
+            { texte: 'Non : plus rien ne les freine', icone: '🛰️', correcte: true },
+            { texte: 'Oui, il tourne en permanence', icone: '🔧' },
+            { texte: 'Oui, elles sont attirées par les étoiles lointaines', icone: '🌟' },
+          ],
+          explication:
+            'Moteur principal éteint depuis des décennies : dans le vide, aucune force notable ne les ralentit.',
+        },
+      ],
+    },
   },
 ];

@@ -1150,5 +1150,197 @@
   "les-grands-nombres/9-12/facteur-mille-explication": {
     "empreinte": "f7b235e815cd599d",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/3-5/ciel-couleur-question": {
+    "empreinte": "7ae43e37bb17c984",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/3-5/ciel-couleur-explication": {
+    "empreinte": "f4974d88bfc48c11",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/6-8/ciel-desert-question": {
+    "empreinte": "408a09a3b79dd130",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/6-8/ciel-desert-explication": {
+    "empreinte": "ebd781a3c9f90e4a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/9-12/soleil-couchant-question": {
+    "empreinte": "3f80a02b2b504777",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-ciel-est-bleu/9-12/soleil-couchant-explication": {
+    "empreinte": "54b91feabf08b5ec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/3-5/filante-quoi-question": {
+    "empreinte": "857cca3971bad0ca",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/3-5/filante-quoi-explication": {
+    "empreinte": "90fe7f7665edd4f1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/6-8/filante-taille-question": {
+    "empreinte": "b3b60a05a58796f8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/6-8/filante-taille-explication": {
+    "empreinte": "e65e179895c49c16",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/9-12/filante-brille-question": {
+    "empreinte": "8004f0c924424e51",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-etoiles-filantes/9-12/filante-brille-explication": {
+    "empreinte": "bd13dcce2605f1be",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/3-5/tete-en-bas-question": {
+    "empreinte": "f0259f44a7d08697",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/3-5/tete-en-bas-explication": {
+    "empreinte": "7cd1da74d8ff9bde",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/6-8/ou-passe-sang-question": {
+    "empreinte": "1fdb7ce53a1d52fb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/6-8/ou-passe-sang-explication": {
+    "empreinte": "921cdb391aa79a9a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/9-12/role-estomac-question": {
+    "empreinte": "3c0b18419d0f9162",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-voyage-de-la-nourriture/9-12/role-estomac-explication": {
+    "empreinte": "80131e4333ab70ff",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/3-5/balle-sarrete-question": {
+    "empreinte": "86cb318c66eaaf77",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/3-5/balle-sarrete-explication": {
+    "empreinte": "c151ea0d96ee4859",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/6-8/sans-frottement-question": {
+    "empreinte": "81b850dc51fd574a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/6-8/sans-frottement-explication": {
+    "empreinte": "a9de5f2e72d15ca1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/9-12/voyager-moteur-question": {
+    "empreinte": "0b367813799ebf1a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sarrete/9-12/voyager-moteur-explication": {
+    "empreinte": "555732968b790c85",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/3-5/eau-seule-question": {
+    "empreinte": "af209149b63da26f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/3-5/eau-seule-explication": {
+    "empreinte": "62aab22ab56c2e68",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/6-8/savon-deux-bouts-question": {
+    "empreinte": "53aaacf3ccda0158",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/6-8/savon-deux-bouts-explication": {
+    "empreinte": "8b272134ee66d292",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/9-12/micelle-question": {
+    "empreinte": "9673a67b6d4efc32",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-le-savon-lave/9-12/micelle-explication": {
+    "empreinte": "6a2d9573ba88d360",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/3-5/ballon-lache-question": {
+    "empreinte": "b8c28ee69dbfb9cc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/3-5/ballon-lache-explication": {
+    "empreinte": "fb51e07aeb5139dd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/6-8/fusee-appui-question": {
+    "empreinte": "a91e91f61263dcda",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/6-8/fusee-appui-explication": {
+    "empreinte": "9a6872279e7c8d87",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/9-12/fusee-vide-question": {
+    "empreinte": "cc18ca99aaaf0986",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-avance-une-fusee/9-12/fusee-vide-explication": {
+    "empreinte": "b3f0cb8735d4e419",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/3-5/secret-long-question": {
+    "empreinte": "b24e2a0cb343c817",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/3-5/secret-long-explication": {
+    "empreinte": "25a5fbd19969ba24",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/6-8/essais-machine-question": {
+    "empreinte": "e5244b7aaee7bbae",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/6-8/essais-machine-explication": {
+    "empreinte": "93f6a023f856d46c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/9-12/longueur-vs-ruse-question": {
+    "empreinte": "d2426cceec3ccf02",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-mots-de-passe/9-12/longueur-vs-ruse-explication": {
+    "empreinte": "679c155705fba735",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/3-5/enclos-forme-question": {
+    "empreinte": "69b91d69a8f058f7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/3-5/enclos-forme-explication": {
+    "empreinte": "8f18e78001707724",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/6-8/meme-tour-question": {
+    "empreinte": "8988f73f0aec44ac",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/6-8/meme-tour-explication": {
+    "empreinte": "f5bb11aba5f1c28d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/9-12/isoperimetrique-question": {
+    "empreinte": "0c6888bee44ea840",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-tour-et-la-surface/9-12/isoperimetrique-explication": {
+    "empreinte": "7ab55ebae7fdbb98",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

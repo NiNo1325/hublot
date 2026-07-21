@@ -259,5 +259,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'le-tour-et-la-surface',
+    questions: {
+      '3-5': [
+        {
+          id: 'enclos-forme',
+          question: 'Même ficelle : quel enclos tient le plus de moutons ?',
+          reponses: [
+            { texte: 'Un enclos bien rond', icone: '⭕', correcte: true },
+            { texte: 'Un enclos long et tout fin', icone: '➖' },
+          ],
+          explication: 'Plus la forme est ramassée, plus il y a de place à l’intérieur.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'meme-tour',
+          question: 'Deux champs ont la même longueur de clôture. Ont-ils la même surface ?',
+          reponses: [
+            { texte: 'Pas forcément', icone: '🤷', correcte: true },
+            { texte: 'Oui, toujours', icone: '✅' },
+            { texte: 'Oui, si les deux sont des rectangles', icone: '🟦' },
+          ],
+          explication:
+            'Avec vingt mètres de tour : neuf mètres carrés en rectangle allongé, vingt-cinq en carré.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'isoperimetrique',
+          question: 'À périmètre fixé, quelle forme enferme la plus grande aire ?',
+          reponses: [
+            { texte: 'Le disque', icone: '⭕', correcte: true },
+            { texte: 'Le carré', icone: '⬜' },
+            { texte: 'Le rectangle le plus allongé', icone: '▭' },
+          ],
+          explication:
+            'C’est le problème isopérimétrique. Le disque bat toutes les autres formes — d’où la bulle de savon ronde.',
+        },
+      ],
+    },
   },
 ];

@@ -258,5 +258,47 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'les-etoiles-filantes',
+    questions: {
+      '3-5': [
+        {
+          id: 'filante-quoi',
+          question: 'Une étoile filante, c’est quoi ?',
+          reponses: [
+            { texte: 'Un tout petit caillou qui brille', icone: '✨', correcte: true },
+            { texte: 'Une étoile qui tombe', icone: '⭐' },
+          ],
+          explication:
+            'Les étoiles ne tombent pas : c’est un grain de poussière qui brille en traversant l’air.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'filante-taille',
+          question: 'Quelle taille a l’objet qui fait une étoile filante ?',
+          reponses: [
+            { texte: 'Plus petit qu’un grain de riz', icone: '🌾', correcte: true },
+            { texte: 'Gros comme une maison', icone: '🏠' },
+            { texte: 'Gros comme la Lune', icone: '🌕' },
+          ],
+          explication:
+            'Quelques milligrammes suffisent : c’est la vitesse, pas la taille, qui fait toute la lumière.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'filante-brille',
+          question: 'Dans une étoile filante, qu’est-ce qui brille exactement ?',
+          reponses: [
+            { texte: 'L’air comprimé devant le grain', icone: '💨', correcte: true },
+            { texte: 'Le grain, qui prend feu comme une allumette', icone: '🔥' },
+            { texte: 'L’étoile dont il s’est détaché', icone: '⭐' },
+          ],
+          explication:
+            'Le grain comprime violemment l’air devant lui ; ce gaz porté à des milliers de degrés s’ionise et rayonne.',
+        },
+      ],
+    },
   },
 ];

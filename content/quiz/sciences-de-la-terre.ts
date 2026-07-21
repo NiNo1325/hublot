@@ -299,5 +299,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'pourquoi-la-mer-est-salee',
+    questions: {
+      '3-5': [
+        {
+          id: 'mer-riviere',
+          question: 'Dans une rivière, l’eau est-elle salée ?',
+          reponses: [
+            { texte: 'Non, elle est douce', icone: '💧', correcte: true },
+            { texte: 'Oui, comme la mer', icone: '🌊' },
+          ],
+          explication: 'Seule la mer est salée. L’eau des rivières, elle, est douce.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'sel-vient-de',
+          question: 'D’où vient le sel de la mer ?',
+          reponses: [
+            { texte: 'Des roches des continents', icone: '🪨', correcte: true },
+            { texte: 'Du fond de l’océan', icone: '🕳️' },
+            { texte: 'Des poissons', icone: '🐟' },
+          ],
+          explication:
+            'La pluie use les roches et les rivières emportent le sel jusqu’à la mer, depuis des milliards d’années.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'salinite-stable',
+          question: 'La mer devient-elle de plus en plus salée avec le temps ?',
+          reponses: [
+            { texte: 'Non, il s’en redépose autant qu’il en arrive', icone: '⚖️', correcte: true },
+            { texte: 'Oui, sans interruption depuis l’origine', icone: '📈' },
+            { texte: 'Non, car l’évaporation emporte aussi le sel', icone: '💨' },
+          ],
+          explication:
+            'C’est un état stationnaire : évaporites, sédiments et croûte océanique retirent le sel au rythme où les fleuves l’apportent.',
+        },
+      ],
+    },
   },
 ];

@@ -301,5 +301,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'le-cerveau',
+    questions: {
+      '3-5': [
+        {
+          id: 'cerveau-travaille',
+          question: 'Ton cerveau travaille-t-il pendant que tu dors ?',
+          reponses: [
+            { texte: 'Oui, tout le temps', icone: '🌙', correcte: true },
+            { texte: 'Non, il s’arrête', icone: '🛑' },
+          ],
+          explication: 'Il ne s’arrête jamais, même la nuit.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'dix-pour-cent-mythe',
+          question: 'N’utilise-t-on vraiment que dix pour cent de son cerveau ?',
+          reponses: [
+            { texte: 'Non, on l’utilise en entier', icone: '🧠', correcte: true },
+            { texte: 'Oui, les génies en utilisent davantage', icone: '🎓' },
+            { texte: 'Oui, le reste est en sommeil', icone: '😴' },
+          ],
+          explication:
+            'Le cerveau consomme un cinquième de ton énergie : un corps ne paierait jamais ce prix pour un organe inutile aux neuf dixièmes.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'gauche-droite-mythe',
+          question: 'Existe-t-il des personnes « cerveau gauche » et « cerveau droit » ?',
+          reponses: [
+            { texte: 'Non, aucune dominance globale n’a jamais été trouvée', icone: '🔬', correcte: true },
+            { texte: 'Oui : les logiques et les créatifs', icone: '🎨' },
+            { texte: 'Oui, selon la main dominante', icone: '✋' },
+          ],
+          explication:
+            'La latéralisation existe pour certaines fonctions, comme le langage, mais elle ne fonde aucune typologie de personnalité.',
+        },
+      ],
+    },
   },
 ];

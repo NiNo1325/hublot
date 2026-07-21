@@ -301,5 +301,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'les-atomes',
+    questions: {
+      '3-5': [
+        {
+          id: 'atome-dedans',
+          question: 'Qu’y a-t-il à l’intérieur d’un atome ?',
+          reponses: [
+            { texte: 'Une petite bille et beaucoup de vide', icone: '⚪', correcte: true },
+            { texte: 'C’est plein, comme un caillou', icone: '🪨' },
+          ],
+          explication: 'Un atome est presque entièrement vide.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'main-table',
+          question: 'Pourquoi ta main ne traverse-t-elle pas la table ?',
+          reponses: [
+            { texte: 'Parce que leurs électrons se repoussent', icone: '⚡', correcte: true },
+            { texte: 'Parce que la table est pleine de matière', icone: '🧱' },
+            { texte: 'Parce que la main est trop molle', icone: '🖐️' },
+          ],
+          explication:
+            'Les deux sont surtout du vide : ce qui les empêche de se traverser est une force de répulsion, pas un remplissage.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'noyau-echelle',
+          question: 'Si le noyau d’un atome était une bille d’un centimètre, l’atome ferait ?',
+          reponses: [
+            { texte: 'Environ un kilomètre', icone: '🏙️', correcte: true },
+            { texte: 'Environ un mètre', icone: '📏' },
+            { texte: 'Environ dix centimètres', icone: '✋' },
+          ],
+          explication:
+            'Le noyau est cent mille fois plus petit que l’atome, tout en concentrant plus de 99,9 % de sa masse.',
+        },
+      ],
+    },
   },
 ];

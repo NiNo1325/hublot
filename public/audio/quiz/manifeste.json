@@ -1342,5 +1342,197 @@
   "le-tour-et-la-surface/9-12/isoperimetrique-explication": {
     "empreinte": "7ab55ebae7fdbb98",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/3-5/mer-riviere-question": {
+    "empreinte": "f5f31d559e278524",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/3-5/mer-riviere-explication": {
+    "empreinte": "3a44afa61323b898",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/6-8/sel-vient-de-question": {
+    "empreinte": "ba797334c9cac98d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/6-8/sel-vient-de-explication": {
+    "empreinte": "be7720ae6248fe1a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/9-12/salinite-stable-question": {
+    "empreinte": "a1b7cf0760d98e04",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/9-12/salinite-stable-explication": {
+    "empreinte": "a87b18a33b4f8d48",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/3-5/entre-planetes-question": {
+    "empreinte": "b340b2662e7cbca2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/3-5/entre-planetes-explication": {
+    "empreinte": "ac080349cf9585c1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/6-8/echelle-dessins-question": {
+    "empreinte": "3882dcdd507fa6b2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/6-8/echelle-dessins-explication": {
+    "empreinte": "afab5587f1ede2f0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/9-12/planetes-terre-lune-question": {
+    "empreinte": "630b33868fd50d39",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/9-12/planetes-terre-lune-explication": {
+    "empreinte": "82464c3883ecebbf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-cerveau/3-5/cerveau-travaille-question": {
+    "empreinte": "dea7b0a443eb2016",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-cerveau/3-5/cerveau-travaille-explication": {
+    "empreinte": "f63553e69cbc7f97",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-cerveau/6-8/dix-pour-cent-mythe-question": {
+    "empreinte": "59fed744f110ad14",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-cerveau/6-8/dix-pour-cent-mythe-explication": {
+    "empreinte": "3f416697cb073816",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-cerveau/9-12/gauche-droite-mythe-question": {
+    "empreinte": "beea0db42cedceaf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-cerveau/9-12/gauche-droite-mythe-explication": {
+    "empreinte": "d3304c11ad316278",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-atomes/3-5/atome-dedans-question": {
+    "empreinte": "cc1410d7922e65e0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-atomes/3-5/atome-dedans-explication": {
+    "empreinte": "a121636dc586e531",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-atomes/6-8/main-table-question": {
+    "empreinte": "3614754e1fd2d00d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-atomes/6-8/main-table-explication": {
+    "empreinte": "cd31440c8374fb82",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-atomes/9-12/noyau-echelle-question": {
+    "empreinte": "9d7e84778a26d742",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-atomes/9-12/noyau-echelle-explication": {
+    "empreinte": "d9a8a74184b4c131",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/3-5/citron-acide-question": {
+    "empreinte": "45d33b1511f4c9d0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/3-5/citron-acide-explication": {
+    "empreinte": "ac48780fde515062",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/6-8/bases-dangereuses-question": {
+    "empreinte": "832748802ce083a4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/6-8/bases-dangereuses-explication": {
+    "empreinte": "f7a386651ba6f14c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/9-12/ph-logarithme-question": {
+    "empreinte": "677ab6e49bfadb2b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/9-12/ph-logarithme-explication": {
+    "empreinte": "d2a3a1a204c7435c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/3-5/freiner-place-question": {
+    "empreinte": "a3f8879196a1e6e9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/3-5/freiner-place-explication": {
+    "empreinte": "5c05d37985e54564",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/6-8/roue-bloquee-question": {
+    "empreinte": "c7ffd6f25cf797a7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/6-8/roue-bloquee-explication": {
+    "empreinte": "5110f4ee24e60051",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/9-12/distance-carre-question": {
+    "empreinte": "81a8fc0f811fd2b6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/9-12/distance-carre-explication": {
+    "empreinte": "c0752df807c16293",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/3-5/photo-carres-question": {
+    "empreinte": "a036fc430dc97a85",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/3-5/photo-carres-explication": {
+    "empreinte": "6bb47f1bf9784c68",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/6-8/ameliorer-photo-question": {
+    "empreinte": "9d62a85a631b1a9f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/6-8/ameliorer-photo-explication": {
+    "empreinte": "ce77bc351ff2ea62",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/9-12/ia-invente-question": {
+    "empreinte": "a748ea11ad87559a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/9-12/ia-invente-explication": {
+    "empreinte": "7c428249fbb36335",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/3-5/moitie-de-quoi-question": {
+    "empreinte": "9e465e644283f073",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/3-5/moitie-de-quoi-explication": {
+    "empreinte": "e254ff3455939034",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/6-8/baisse-puis-hausse-question": {
+    "empreinte": "d627983dc2e8142e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/6-8/baisse-puis-hausse-explication": {
+    "empreinte": "b4fc1fc3172013cb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/9-12/points-pourcentage-question": {
+    "empreinte": "b7a0339ac20393a1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/9-12/points-pourcentage-explication": {
+    "empreinte": "2c14b5d0972fb9c7",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

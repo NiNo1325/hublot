@@ -2686,5 +2686,165 @@
   "le-tour-et-la-surface/3-5/long-et-fin": {
     "empreinte": "ebf01d481517881f",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/3-5/gout": {
+    "empreinte": "3f41597cb554f9bf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/3-5/rivieres": {
+    "empreinte": "f4c3fa88a1d49ca1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/3-5/equilibre": {
+    "empreinte": "6a0e574932e34a80",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/6-8/gout": {
+    "empreinte": "293e7232225d71d8",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-mer-est-salee/6-8/equilibre": {
+    "empreinte": "b2bc508442b23802",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-mer-est-salee/9-12/roches": {
+    "empreinte": "5574adfd43dc09c1",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-mer-est-salee/9-12/rivieres": {
+    "empreinte": "01733e5c7d055ae2",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-mer-est-salee/9-12/equilibre": {
+    "empreinte": "55317de237a896eb",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-planetes/3-5/famille": {
+    "empreinte": "6eb260b26a615b7e",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-planetes/3-5/rocheuses-gazeuses": {
+    "empreinte": "65ad44f2be078929",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-planetes/6-8/vide": {
+    "empreinte": "551756c41634b8c6",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-planetes/6-8/rocheuses-gazeuses": {
+    "empreinte": "3b8e6bd50c93c461",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-planetes/9-12/famille": {
+    "empreinte": "7b294e0b99f02904",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-planetes/9-12/distances": {
+    "empreinte": "b1be8412d03b800e",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-planetes/9-12/vide": {
+    "empreinte": "95b601ca4c9197df",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-planetes/9-12/rocheuses-gazeuses": {
+    "empreinte": "fde9a94c2c01e947",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/3-5/dix-pour-cent": {
+    "empreinte": "458a5c3d32ba8560",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/3-5/partout": {
+    "empreinte": "6ea9624b3e0ea6d2",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/3-5/gauche-droite": {
+    "empreinte": "89b40fa6529b0085",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/6-8/dix-pour-cent": {
+    "empreinte": "faa14d329045bfea",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/6-8/partout": {
+    "empreinte": "8180f21653a34b08",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/6-8/gauche-droite": {
+    "empreinte": "c1f5982d95081c9d",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/6-8/plasticite": {
+    "empreinte": "09ebed7cb998c92a",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/9-12/dix-pour-cent": {
+    "empreinte": "8693ce0a56d4ecf8",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/9-12/partout": {
+    "empreinte": "dc056c660f73fcac",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/9-12/gauche-droite": {
+    "empreinte": "69c129fa24abe8c7",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-cerveau/9-12/plasticite": {
+    "empreinte": "4ebd7a7ec5f53835",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-atomes/3-5/decouper": {
+    "empreinte": "2132e3f5402e58c1",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-atomes/3-5/vide": {
+    "empreinte": "c23a0f6617e24067",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-atomes/6-8/atome": {
+    "empreinte": "8d51ba60e120833c",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-atomes/6-8/vide": {
+    "empreinte": "2e10b7ceac5a13b7",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-atomes/6-8/assembler": {
+    "empreinte": "30ab5b94c16f8dc4",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-atomes/9-12/decouper": {
+    "empreinte": "441b657711a8aacb",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-atomes/9-12/atome": {
+    "empreinte": "f9ce46a91b13c1e2",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-atomes/9-12/vide": {
+    "empreinte": "499b26bb7bb11cfd",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-atomes/9-12/assembler": {
+    "empreinte": "ea4aad8d963d6dc5",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-acides-et-les-bases/3-5/piquant": {
+    "empreinte": "cf61c1fde374c9e6",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-acides-et-les-bases/3-5/echelle": {
+    "empreinte": "6513006539097b91",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-acides-et-les-bases/3-5/bases": {
+    "empreinte": "68989bf6c085bffc",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "les-acides-et-les-bases/6-8/echelle": {
+    "empreinte": "550b8375798e8ed4",
+    "modele": "gemini-2.5-pro-preview-tts"
   }
 }

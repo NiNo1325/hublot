@@ -135,7 +135,13 @@ async function versMp3(pcm, destination) {
     '-b:a', '64k',
     destination,
   ]);
-  await rm(temporaire);
+  /*
+    Le mp3 est écrit à ce stade. Le fichier temporaire, lui, peut rester
+    verrouillé un instant — synchronisation Dropbox, antivirus — et lever
+    EBUSY. Faire échouer le beat pour cela reviendrait à jeter un fichier
+    valide et à le régénérer au prochain passage, en pure perte de quota.
+  */
+  await rm(temporaire, { force: true }).catch(() => {});
 }
 
 async function lireManifeste() {

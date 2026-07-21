@@ -18,7 +18,16 @@ import { AGE_RANGES } from '@/lib/types';
  * `npm run audio` réussi, retirer l'entrée correspondante — le test vérifiera
  * alors les fichiers, et échouera s'ils manquent toujours.
  */
-const EN_ATTENTE_AUDIO = new Set<string>([]);
+const EN_ATTENTE_AUDIO = new Set<string>([
+  // Vague 3 : quota TTS épuisé sur les deux modèles en cours de génération.
+  // 54 des 96 fichiers sont produits ; ces cinq cartes attendent la suite.
+  // « pourquoi-la-mer-est-salee » n'attend qu'un seul beat, 3-5 / roches.
+  'pourquoi-la-mer-est-salee',
+  'les-acides-et-les-bases',
+  'comment-on-freine',
+  'pourquoi-une-photo-devient-floue',
+  'les-pourcentages',
+]);
 
 const cas = cards
   .filter((carte) => !EN_ATTENTE_AUDIO.has(carte.id))

@@ -300,5 +300,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'les-planetes',
+    questions: {
+      '3-5': [
+        {
+          id: 'entre-planetes',
+          question: 'Qu’y a-t-il entre deux planètes ?',
+          reponses: [
+            { texte: 'Du vide', icone: '🌌', correcte: true },
+            { texte: 'Plein d’autres planètes', icone: '🪐' },
+          ],
+          explication: 'Entre les planètes, il n’y a presque rien : du vide, sur de très longues distances.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'echelle-dessins',
+          question: 'Les dessins du système solaire sont-ils à la bonne échelle ?',
+          reponses: [
+            { texte: 'Non, les distances y sont énormément réduites', icone: '📏', correcte: true },
+            { texte: 'Oui, tailles et distances sont exactes', icone: '✅' },
+            { texte: 'Non, mais seules les couleurs changent', icone: '🎨' },
+          ],
+          explication:
+            'Si le Soleil était un ballon de football, Neptune serait une bille à sept cents mètres de là.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'planetes-terre-lune',
+          question: 'Les sept autres planètes tiendraient-elles entre la Terre et la Lune ?',
+          reponses: [
+            { texte: 'Oui, tout juste', icone: '🌕', correcte: true },
+            { texte: 'Non, il faudrait dix fois plus de place', icone: '📐' },
+            { texte: 'Non, Jupiter à elle seule dépasse la distance', icone: '🪐' },
+          ],
+          explication:
+            'Leurs diamètres cumulés font environ 380 000 kilomètres, pour une distance Terre-Lune de 384 000.',
+        },
+      ],
+    },
   },
 ];

@@ -300,5 +300,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'les-pourcentages',
+    questions: {
+      '3-5': [
+        {
+          id: 'moitie-de-quoi',
+          question: 'La moitié d’un grand gâteau et la moitié d’un petit, c’est pareil ?',
+          reponses: [
+            { texte: 'Non, ça dépend du gâteau', icone: '🍰', correcte: true },
+            { texte: 'Oui, c’est la même chose', icone: '🟰' },
+          ],
+          explication: 'Une part n’a de sens que si on sait de quoi elle est la part.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'baisse-puis-hausse',
+          question: 'Un prix baisse de 50 %, puis remonte de 50 %. Que vaut-il ?',
+          reponses: [
+            { texte: 'Les trois quarts du prix de départ', icone: '📉', correcte: true },
+            { texte: 'Exactement le prix de départ', icone: '🟰' },
+            { texte: 'Un quart de plus qu’au départ', icone: '📈' },
+          ],
+          explication:
+            'La hausse s’applique au prix déjà réduit : cent devient cinquante, puis soixante-quinze.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'points-pourcentage',
+          question: 'Un taux passe de 2 % à 3 %. De combien a-t-il augmenté ?',
+          reponses: [
+            { texte: 'D’un point, soit de 50 %', icone: '↗️', correcte: true },
+            { texte: 'De 1 % seulement', icone: '1️⃣' },
+            { texte: 'De 150 %', icone: '📈' },
+          ],
+          explication:
+            'Un point de pourcentage n’est pas un pour cent. Les deux formulations sont exactes — on retient souvent celle qui impressionne.',
+        },
+      ],
+    },
   },
 ];

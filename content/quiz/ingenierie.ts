@@ -301,5 +301,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'comment-on-freine',
+    questions: {
+      '3-5': [
+        {
+          id: 'freiner-place',
+          question: 'Faut-il plus de place pour s’arrêter quand on va vite ?',
+          reponses: [
+            { texte: 'Oui, beaucoup plus', icone: '📏', correcte: true },
+            { texte: 'Non, c’est pareil', icone: '🟰' },
+          ],
+          explication: 'Plus on va vite, beaucoup plus il faut de place pour s’arrêter.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'roue-bloquee',
+          question: 'Bloquer les roues fait-il freiner plus vite ?',
+          reponses: [
+            { texte: 'Non, une roue qui glisse freine moins bien', icone: '🛞', correcte: true },
+            { texte: 'Oui, c’est le freinage maximal', icone: '🛑' },
+            { texte: 'Oui, mais seulement sur route sèche', icone: '☀️' },
+          ],
+          explication:
+            'Une roue bloquée glisse, et on ne peut plus diriger. C’est exactement le problème que l’ABS résout.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'distance-carre',
+          question: 'On double la vitesse : que devient la distance de freinage ?',
+          reponses: [
+            { texte: 'Elle quadruple', icone: '4️⃣', correcte: true },
+            { texte: 'Elle double', icone: '2️⃣' },
+            { texte: 'Elle augmente d’un tiers', icone: '➗' },
+          ],
+          explication:
+            'L’énergie cinétique varie comme le carré de la vitesse : il y a quatre fois plus d’énergie à dissiper.',
+        },
+      ],
+    },
   },
 ];

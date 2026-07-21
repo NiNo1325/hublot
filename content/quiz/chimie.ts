@@ -299,5 +299,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'les-acides-et-les-bases',
+    questions: {
+      '3-5': [
+        {
+          id: 'citron-acide',
+          question: 'Le citron qui pique la langue, c’est quoi ?',
+          reponses: [
+            { texte: 'Un acide', icone: '🍋', correcte: true },
+            { texte: 'Un sucre', icone: '🍬' },
+          ],
+          explication: 'Le citron est un acide — un acide qu’on peut manger sans danger.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'bases-dangereuses',
+          question: 'Les produits basiques forts sont-ils dangereux ?',
+          reponses: [
+            { texte: 'Oui, autant que les acides forts', icone: '⚠️', correcte: true },
+            { texte: 'Non, seuls les acides brûlent', icone: '🧪' },
+            { texte: 'Non, ce sont des savons', icone: '🧼' },
+          ],
+          explication:
+            'La soude brûle la peau tout aussi bien, et elle ne prévient par aucun goût piquant.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'ph-logarithme',
+          question: 'Un pH de 3 est-il deux fois plus acide qu’un pH de 6 ?',
+          reponses: [
+            { texte: 'Non : mille fois plus', icone: '🔢', correcte: true },
+            { texte: 'Oui, exactement deux fois', icone: '✖️' },
+            { texte: 'Non : trois fois plus', icone: '3️⃣' },
+          ],
+          explication:
+            'L’échelle est logarithmique : chaque unité vaut un facteur dix, donc trois unités valent mille.',
+        },
+      ],
+    },
   },
 ];

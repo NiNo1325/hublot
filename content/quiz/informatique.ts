@@ -302,5 +302,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'pourquoi-une-photo-devient-floue',
+    questions: {
+      '3-5': [
+        {
+          id: 'photo-carres',
+          question: 'Si tu agrandis beaucoup une photo, tu vois quoi ?',
+          reponses: [
+            { texte: 'Des carrés de couleur', icone: '🟦', correcte: true },
+            { texte: 'Des détails cachés', icone: '🔍' },
+          ],
+          explication: 'La photo est faite de petits carrés. En l’agrandissant, on finit par les voir.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'ameliorer-photo',
+          question: 'Un logiciel peut-il rendre net un visage flou sur une photo ?',
+          reponses: [
+            { texte: 'Non, ce détail n’a jamais été enregistré', icone: '🚫', correcte: true },
+            { texte: 'Oui, comme dans les films policiers', icone: '🎬' },
+            { texte: 'Oui, si l’ordinateur est assez puissant', icone: '💻' },
+          ],
+          explication:
+            'On ne peut pas retrouver ce qui n’a pas été capté : il n’y a tout simplement rien à retrouver.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'ia-invente',
+          question: 'Une IA rend net un visage flou. Que montre l’image obtenue ?',
+          reponses: [
+            { texte: 'Un détail plausible, fabriqué', icone: '🎭', correcte: true },
+            { texte: 'Le vrai visage, restauré', icone: '🧑' },
+            { texte: 'La moyenne des pixels voisins', icone: '➗' },
+          ],
+          explication:
+            'Le modèle invente un détail appris sur d’autres images. Le résultat est une hypothèse, jamais une preuve.',
+        },
+      ],
+    },
   },
 ];

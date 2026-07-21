@@ -63,6 +63,15 @@ import { FuseeAnimation } from './FuseeAnimation';
 import { MotDePasseAnimation } from './MotDePasseAnimation';
 import { PerimetreAireAnimation } from './PerimetreAireAnimation';
 
+import { SelMerAnimation } from './SelMerAnimation';
+import { PlanetesAnimation } from './PlanetesAnimation';
+import { CerveauAnimation } from './CerveauAnimation';
+import { AtomesAnimation } from './AtomesAnimation';
+import { AcideBaseAnimation } from './AcideBaseAnimation';
+import { FreinageAnimation } from './FreinageAnimation';
+import { ZoomPixelsAnimation } from './ZoomPixelsAnimation';
+import { PourcentagesAnimation } from './PourcentagesAnimation';
+
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
   activeBeatId: string | null;
@@ -135,4 +144,12 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   fusee: FuseeAnimation,
   'mot-de-passe': MotDePasseAnimation,
   'perimetre-aire': PerimetreAireAnimation,
+  'sel-mer': SelMerAnimation,
+  planetes: PlanetesAnimation,
+  cerveau: CerveauAnimation,
+  atomes: AtomesAnimation,
+  'acide-base': AcideBaseAnimation,
+  freinage: FreinageAnimation,
+  'zoom-pixels': ZoomPixelsAnimation,
+  pourcentages: PourcentagesAnimation,
 };

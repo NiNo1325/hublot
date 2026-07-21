@@ -217,4 +217,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'les-trous-noirs',
+    questions: {
+      '3-5': [
+        {
+          id: 'trou-noir-voit',
+          question: 'Pourquoi ne voit-on pas un trou noir ?',
+          reponses: [
+            { texte: 'Même la lumière ne peut pas en sortir', icone: '🕳️', correcte: true },
+            { texte: 'Parce qu’il est tout petit', icone: '🤏' },
+          ],
+          explication: 'Rien ne s’en échappe, pas même la lumière : il est tout noir.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'trou-noir-aspire',
+          question: 'Un trou noir aspire-t-il tout autour de lui comme un aspirateur ?',
+          reponses: [
+            { texte: 'Non, il faut s’approcher très près', icone: '📏', correcte: true },
+            { texte: 'Oui, il avale tout de très loin', icone: '🌀' },
+            { texte: 'Oui, toute la galaxie', icone: '🌌' },
+          ],
+          explication:
+            'Si le Soleil devenait un trou noir de même masse, la Terre tournerait exactement pareil.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'horizon',
+          question: 'Comment appelle-t-on la frontière au-delà de laquelle rien ne ressort ?',
+          reponses: [
+            { texte: 'L’horizon des événements', icone: '⭕', correcte: true },
+            { texte: 'L’équateur du trou noir', icone: '🧭' },
+            { texte: 'La zone morte', icone: '💀' },
+          ],
+          explication:
+            'En deçà, la vitesse pour s’échapper dépasserait celle de la lumière : impossible.',
+        },
+      ],
+    },
+  },
 ];

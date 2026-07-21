@@ -218,4 +218,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'comment-on-respire',
+    questions: {
+      '3-5': [
+        {
+          id: 'muscle-respire',
+          question: 'Qu’est-ce qui fait entrer l’air dans ta poitrine ?',
+          reponses: [
+            { texte: 'Un muscle sous les poumons', icone: '💪', correcte: true },
+            { texte: 'Les poumons se gonflent seuls', icone: '🎈' },
+          ],
+          explication: 'C’est le diaphragme : quand il descend, l’air entre tout seul.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'diaphragme',
+          question: 'Comment s’appelle le muscle de la respiration ?',
+          reponses: [
+            { texte: 'Le diaphragme', icone: '🫁', correcte: true },
+            { texte: 'Le cœur', icone: '❤️' },
+            { texte: 'L’estomac', icone: '🍽️' },
+          ],
+          explication:
+            'En s’abaissant, il agrandit la poitrine, et l’air se précipite pour remplir le vide.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'oxygene-pur',
+          question: 'Respire-t-on de l’oxygène pur ?',
+          reponses: [
+            { texte: 'Non, l’air n’en contient qu’un cinquième', icone: '💨', correcte: true },
+            { texte: 'Oui, on inspire de l’oxygène', icone: '🫧' },
+            { texte: 'Oui, puis on rejette de l’oxygène', icone: '♻️' },
+          ],
+          explication:
+            'L’air inspiré contient 21 % d’oxygène, l’air expiré encore 16 % : on n’en prélève qu’une fraction.',
+        },
+      ],
+    },
+  },
 ];

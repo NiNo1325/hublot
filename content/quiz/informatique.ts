@@ -220,4 +220,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'comment-marche-un-ecran',
+    questions: {
+      '3-5': [
+        {
+          id: 'ecran-points',
+          question: 'Une image sur un écran est faite de quoi ?',
+          reponses: [
+            { texte: 'De milliers de tout petits points', icone: '🔲', correcte: true },
+            { texte: 'D’un seul grand dessin', icone: '🖼️' },
+          ],
+          explication: 'Les points sont si petits qu’on les prend pour une image entière.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'ecran-couleurs',
+          question: 'Combien de couleurs de base un pixel utilise-t-il ?',
+          reponses: [
+            { texte: 'Trois : rouge, vert et bleu', icone: '🔴', correcte: true },
+            { texte: 'Toutes les couleurs', icone: '🌈' },
+            { texte: 'Une seule', icone: '⚪' },
+          ],
+          explication:
+            'Toutes les autres couleurs sont fabriquées en mélangeant ces trois lumières.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'ecran-jaune',
+          question: 'Le jaune que tu vois sur un écran, c’est quoi ?',
+          reponses: [
+            { texte: 'Du rouge et du vert allumés ensemble', icone: '🟡', correcte: true },
+            { texte: 'Une vraie lumière jaune', icone: '💡' },
+            { texte: 'De la peinture jaune', icone: '🎨' },
+          ],
+          explication:
+            'L’écran n’a pas de jaune : c’est la synthèse additive, ton œil mélange le rouge et le vert.',
+        },
+      ],
+    },
+  },
 ];

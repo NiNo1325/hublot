@@ -1918,5 +1918,389 @@
   "le-zero/9-12/division": {
     "empreinte": "440f1f7ed4bb0a5c",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/3-5/observer": {
+    "empreinte": "632c6995390aca13",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/3-5/lune": {
+    "empreinte": "858cda12f7a6f75b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/3-5/deux-cotes": {
+    "empreinte": "83b7342cdaa0a4ad",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/6-8/sens": {
+    "empreinte": "ab2bc100da8af962",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/6-8/pas-de-froid": {
+    "empreinte": "eaf584a490942b49",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/6-8/manteau": {
+    "empreinte": "9c9deff265085d50",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/6-8/equilibre": {
+    "empreinte": "02fdf6d7ad485a05",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/9-12/sens": {
+    "empreinte": "2e2a13bcb9b1e92d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/9-12/pas-de-froid": {
+    "empreinte": "e089a880c68c7a05",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/9-12/manteau": {
+    "empreinte": "6e63114f09664be8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/9-12/equilibre": {
+    "empreinte": "b5de6d9c3f927b3f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/3-5/observer": {
+    "empreinte": "bf3510f1c7183f7c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/3-5/eau-air": {
+    "empreinte": "4221b0d55704cfea",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/3-5/transformation": {
+    "empreinte": "04533919e7188cb7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/3-5/protection": {
+    "empreinte": "5cf12ba753a0a65e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/6-8/observer": {
+    "empreinte": "f3f650f3e61c0481",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/6-8/eau-air": {
+    "empreinte": "4bb827ecf9605d90",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/6-8/transformation": {
+    "empreinte": "cf1df4a168ef4e98",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/6-8/protection": {
+    "empreinte": "e35e5dbf8c1dc5d6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/9-12/observer": {
+    "empreinte": "faf97b7abca53651",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/9-12/eau-air": {
+    "empreinte": "8b6e57ecc29d0dcd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/9-12/transformation": {
+    "empreinte": "73c24afbb95e31c2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/9-12/protection": {
+    "empreinte": "0044d80f118730e1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/3-5/roue-corde": {
+    "empreinte": "e2f7b02cd86c53a7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/3-5/direction": {
+    "empreinte": "32e0300148beb153",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/3-5/plusieurs": {
+    "empreinte": "eefecbfd31b5619d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/3-5/echange": {
+    "empreinte": "66470debbdd6fe14",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/6-8/roue-corde": {
+    "empreinte": "ef0561e5e12ef65c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/6-8/direction": {
+    "empreinte": "82e7d1efd034a16b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/6-8/plusieurs": {
+    "empreinte": "752a54ae622f5375",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/6-8/echange": {
+    "empreinte": "b8af4e2b47945d55",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/9-12/roue-corde": {
+    "empreinte": "b0faa29b6c0f2f39",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/9-12/direction": {
+    "empreinte": "db2f151782959405",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/9-12/plusieurs": {
+    "empreinte": "a6700966657f00b4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/9-12/echange": {
+    "empreinte": "74267a1b96243b50",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/3-5/points": {
+    "empreinte": "5676219abd1c2a01",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/3-5/trois-couleurs": {
+    "empreinte": "38d213369b3d2f8d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/3-5/melange": {
+    "empreinte": "3bb56abe3faa6b94",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/3-5/loupe": {
+    "empreinte": "1acffa3093367395",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/6-8/points": {
+    "empreinte": "57c5a3aaa640d10a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/6-8/trois-couleurs": {
+    "empreinte": "9aec54a1584d12a7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/6-8/melange": {
+    "empreinte": "0e3f7ee47d68166c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/6-8/loupe": {
+    "empreinte": "aea681e441200509",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/9-12/points": {
+    "empreinte": "0cae8e14674344b8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/9-12/trois-couleurs": {
+    "empreinte": "9c3a17923adda10f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/9-12/melange": {
+    "empreinte": "9270597350202fb0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/9-12/loupe": {
+    "empreinte": "bede2f81e157458c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/3-5/compter": {
+    "empreinte": "7d0f422a74835dec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/3-5/million": {
+    "empreinte": "2a3ba7ff2f1fc07a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/3-5/milliard": {
+    "empreinte": "df0497bf2e88041e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/3-5/imaginer": {
+    "empreinte": "dcd897fe8c42e117",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/6-8/compter": {
+    "empreinte": "85e1abca27a82d77",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/6-8/million": {
+    "empreinte": "98555fff2edc4081",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/6-8/milliard": {
+    "empreinte": "e6421bb41aaada28",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/6-8/imaginer": {
+    "empreinte": "c40286fe36ebdcd8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/9-12/compter": {
+    "empreinte": "4fd1290cbd255eec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/9-12/million": {
+    "empreinte": "6012479fa53bcf40",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/9-12/milliard": {
+    "empreinte": "9c3ddbfca0d511e3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/9-12/imaginer": {
+    "empreinte": "5bb58b1f0bfa462f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/3-5/rythme": {
+    "empreinte": "9929a664ffc9c585",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/6-8/observer": {
+    "empreinte": "59bbf16695dfc9b7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/6-8/lune": {
+    "empreinte": "1984671c46e62f8f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/6-8/deux-cotes": {
+    "empreinte": "26508c28ae6d8ae7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/6-8/rythme": {
+    "empreinte": "dbaadaada52b203f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/9-12/observer": {
+    "empreinte": "7873139edfa4e471",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/9-12/lune": {
+    "empreinte": "acc635f4d0d6bb23",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/9-12/deux-cotes": {
+    "empreinte": "64e5aa94c23bece5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/9-12/rythme": {
+    "empreinte": "c26d3ffdf65861ff",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/3-5/etoile-morte": {
+    "empreinte": "a61842968aab21ca",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/3-5/lumiere": {
+    "empreinte": "059f7c7b633e36ec",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/3-5/pas-aspirateur": {
+    "empreinte": "8a0473022b5bf3d4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/3-5/invisible": {
+    "empreinte": "e3b99e10d7a7e80f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/6-8/etoile-morte": {
+    "empreinte": "f9fc015a5e635ccf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/6-8/lumiere": {
+    "empreinte": "11657fecbf40e2ee",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/6-8/pas-aspirateur": {
+    "empreinte": "41aeb29941161d7c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/6-8/invisible": {
+    "empreinte": "74719c642bfecdc2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/9-12/etoile-morte": {
+    "empreinte": "1a513bde57dc65be",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/9-12/lumiere": {
+    "empreinte": "79f2ac6321d10313",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/9-12/pas-aspirateur": {
+    "empreinte": "cb2f49824417b48f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/9-12/invisible": {
+    "empreinte": "426bfec9b0fa3792",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/3-5/muscle": {
+    "empreinte": "81c190dea0f35435",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/3-5/poumons": {
+    "empreinte": "82d56065722571a7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/3-5/oxygene": {
+    "empreinte": "bbaec5633b65859b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/3-5/expirer": {
+    "empreinte": "80a7fdbcc6c5dea2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/6-8/muscle": {
+    "empreinte": "379834f33a3900a2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/6-8/poumons": {
+    "empreinte": "5e1f8523a5c3f3a2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/6-8/oxygene": {
+    "empreinte": "0469e8d6159a973f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/6-8/expirer": {
+    "empreinte": "162499740d5a8e51",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/9-12/muscle": {
+    "empreinte": "a79572cadfc472f9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/9-12/poumons": {
+    "empreinte": "c554308082168747",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/9-12/oxygene": {
+    "empreinte": "bd9c7d12e1eefed8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/9-12/expirer": {
+    "empreinte": "d3aaf273eaadc2f6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/3-5/sens": {
+    "empreinte": "d285a32123eb39b1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/3-5/pas-de-froid": {
+    "empreinte": "4a196a9993d77853",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/3-5/manteau": {
+    "empreinte": "b79985723f80693c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/3-5/equilibre": {
+    "empreinte": "a1812fa62afc7a53",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

@@ -958,5 +958,197 @@
   "les-engrenages/6-8/rapport-dents-question": {
     "empreinte": "fe040e3c5ed20392",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/3-5/qui-fait-marees-question": {
+    "empreinte": "d0c3c4f6b3eca93f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/3-5/qui-fait-marees-explication": {
+    "empreinte": "ec5c66bd95cee678",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/6-8/combien-marees-question": {
+    "empreinte": "a1a26965c98a1ba4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/6-8/combien-marees-explication": {
+    "empreinte": "d6aa9c8922aa0ff1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/9-12/lune-aspire-question": {
+    "empreinte": "5837c80a882a42a2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/3-5/trou-noir-voit-question": {
+    "empreinte": "5e742fd3e59977e9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/3-5/trou-noir-voit-explication": {
+    "empreinte": "0a2171eb56702be6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/6-8/trou-noir-aspire-question": {
+    "empreinte": "af8932096247acf4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/6-8/trou-noir-aspire-explication": {
+    "empreinte": "9fd61e69c2cd907b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/9-12/horizon-question": {
+    "empreinte": "af7ffaf988635315",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-trous-noirs/9-12/horizon-explication": {
+    "empreinte": "b6a10e8e5ddfec8f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/3-5/muscle-respire-question": {
+    "empreinte": "0f2801446c332455",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/3-5/muscle-respire-explication": {
+    "empreinte": "e90a77c3ce94c898",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/6-8/diaphragme-question": {
+    "empreinte": "240964790ddc58cc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/6-8/diaphragme-explication": {
+    "empreinte": "f12a2b24ca87c2da",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/9-12/oxygene-pur-question": {
+    "empreinte": "1b9bb04ed16db751",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-respire/9-12/oxygene-pur-explication": {
+    "empreinte": "8599f575b56980ef",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/3-5/chocolat-froid-question": {
+    "empreinte": "b698351fe2510ccb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/3-5/chocolat-froid-explication": {
+    "empreinte": "d517c9028a551164",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/6-8/manteau-chaleur-question": {
+    "empreinte": "a618826cd17ce801",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/6-8/manteau-chaleur-explication": {
+    "empreinte": "fb1af1758a90cf2a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/9-12/froid-existe-question": {
+    "empreinte": "176f88b8b892572c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-chaud-et-le-froid/9-12/froid-existe-explication": {
+    "empreinte": "5048221e65f58c61",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/3-5/rouille-couleur-question": {
+    "empreinte": "c3202463f80b5f7d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/3-5/rouille-couleur-explication": {
+    "empreinte": "8247668fcf4402b2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/6-8/rouille-besoin-question": {
+    "empreinte": "d634564dffca34b4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/6-8/rouille-besoin-explication": {
+    "empreinte": "037dfbd5e49d7cc5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/9-12/rouille-nature-question": {
+    "empreinte": "7f17ce401abc6353",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-rouille/9-12/rouille-nature-explication": {
+    "empreinte": "a0da17dad5549a23",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/3-5/poulie-quoi-question": {
+    "empreinte": "507fae1133085a6d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/3-5/poulie-quoi-explication": {
+    "empreinte": "225b4717496fc381",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/6-8/poulie-fixe-question": {
+    "empreinte": "03837bc0b638267a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/6-8/poulie-fixe-explication": {
+    "empreinte": "ffc1cdd4b998af34",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/9-12/poulie-echange-question": {
+    "empreinte": "df5dd537ee0ac74a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-poulies/9-12/poulie-echange-explication": {
+    "empreinte": "f73fe806582678eb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/3-5/ecran-points-question": {
+    "empreinte": "d6662d45e001a837",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/3-5/ecran-points-explication": {
+    "empreinte": "4098a78fffef1c8c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/6-8/ecran-couleurs-question": {
+    "empreinte": "26661e4bee5a013b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/6-8/ecran-couleurs-explication": {
+    "empreinte": "4c25c0165a6b183a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-marees/9-12/lune-aspire-explication": {
+    "empreinte": "0d795285dab3e36d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/9-12/ecran-jaune-question": {
+    "empreinte": "6c421e15f0d834ee",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-ecran/9-12/ecran-jaune-explication": {
+    "empreinte": "b081035205db7a66",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/3-5/milliard-plus-question": {
+    "empreinte": "549e60b97c7df5cf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/3-5/milliard-plus-explication": {
+    "empreinte": "eeda02677b5ad5f1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/6-8/million-secondes-question": {
+    "empreinte": "79370cbbf87c9090",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/6-8/million-secondes-explication": {
+    "empreinte": "ab83c1c884374e62",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/9-12/facteur-mille-question": {
+    "empreinte": "883b0a6822183f83",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-grands-nombres/9-12/facteur-mille-explication": {
+    "empreinte": "f7b235e815cd599d",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

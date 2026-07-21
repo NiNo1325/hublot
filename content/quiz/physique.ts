@@ -219,4 +219,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'le-chaud-et-le-froid',
+    questions: {
+      '3-5': [
+        {
+          id: 'chocolat-froid',
+          question: 'Un chocolat chaud posé sur la table, que se passe-t-il ?',
+          reponses: [
+            { texte: 'Sa chaleur s’en va peu à peu', icone: '☕', correcte: true },
+            { texte: 'Le froid entre dedans', icone: '❄️' },
+          ],
+          explication: 'La chaleur va toujours du chaud vers le froid.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'manteau-chaleur',
+          question: 'Un manteau te donne-t-il de la chaleur ?',
+          reponses: [
+            { texte: 'Non, il garde la tienne près de toi', icone: '🧥', correcte: true },
+            { texte: 'Oui, il fabrique de la chaleur', icone: '🔥' },
+            { texte: 'Oui, il attire le soleil', icone: '☀️' },
+          ],
+          explication:
+            'Un manteau ne chauffe rien : il emprisonne de l’air et ralentit la fuite de ta chaleur.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'froid-existe',
+          question: 'Le froid est-il une chose qui se déplace ?',
+          reponses: [
+            { texte: 'Non, seule la chaleur voyage', icone: '➡️', correcte: true },
+            { texte: 'Oui, il entre par les fenêtres', icone: '🪟' },
+            { texte: 'Oui, il pousse la chaleur', icone: '💨' },
+          ],
+          explication:
+            'Le froid est un manque de chaleur, pas une entité : « le froid qui entre » inverse la réalité.',
+        },
+      ],
+    },
+  },
 ];

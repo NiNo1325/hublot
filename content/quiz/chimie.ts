@@ -218,4 +218,45 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'la-rouille',
+    questions: {
+      '3-5': [
+        {
+          id: 'rouille-couleur',
+          question: 'De quelle couleur devient un vieux clou qui rouille ?',
+          reponses: [
+            { texte: 'Orange', icone: '🟠', correcte: true },
+            { texte: 'Vert', icone: '🟢' },
+          ],
+          explication: 'La rouille est orange, et c’est le fer lui-même qui se transforme.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'rouille-besoin',
+          question: 'De quoi le fer a-t-il besoin pour rouiller ?',
+          reponses: [
+            { texte: 'D’eau et d’air en même temps', icone: '💧', correcte: true },
+            { texte: 'D’eau seulement', icone: '🌊' },
+            { texte: 'De chaleur seulement', icone: '🔥' },
+          ],
+          explication: 'Sans oxygène de l’air, le fer ne rouille pas, même dans l’eau.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'rouille-nature',
+          question: 'La rouille, qu’est-ce que c’est ?',
+          reponses: [
+            { texte: 'Du fer transformé en oxyde', icone: '🔩', correcte: true },
+            { texte: 'De la saleté déposée dessus', icone: '🧹' },
+            { texte: 'Une moisissure du métal', icone: '🍄' },
+          ],
+          explication:
+            'Le fer se combine à l’oxygène : une combustion très lente, comme le feu mais étalée sur des mois.',
+        },
+      ],
+    },
+  },
 ];

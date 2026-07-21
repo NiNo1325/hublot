@@ -219,4 +219,45 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'les-grands-nombres',
+    questions: {
+      '3-5': [
+        {
+          id: 'milliard-plus',
+          question: 'Un milliard, c’est plus grand qu’un million ?',
+          reponses: [
+            { texte: 'Oui, beaucoup plus', icone: '📈', correcte: true },
+            { texte: 'Non, c’est pareil', icone: '🟰' },
+          ],
+          explication: 'Un milliard, c’est mille fois plus grand qu’un million !',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'million-secondes',
+          question: 'Un million de secondes, ça fait à peu près…',
+          reponses: [
+            { texte: 'Onze jours', icone: '📅', correcte: true },
+            { texte: 'Trente-deux ans', icone: '🎂' },
+            { texte: 'Une heure', icone: '⏰' },
+          ],
+          explication: 'Onze jours pour un million ; mais trente-deux ans pour un milliard.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'facteur-mille',
+          question: 'De combien un milliard dépasse-t-il un million ?',
+          reponses: [
+            { texte: 'D’un facteur mille', icone: '🔢', correcte: true },
+            { texte: 'D’un facteur dix', icone: '🔟' },
+            { texte: 'D’un peu seulement', icone: '➕' },
+          ],
+          explication:
+            'Trois ordres de grandeur d’écart : confondre les deux fausse un budget par mille.',
+        },
+      ],
+    },
+  },
 ];

@@ -12,6 +12,8 @@ import { writeFile, readFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { quizCartes } from '../content/quiz/index.ts';
+import { ordreLecture } from '../content/quiz/ordre.ts';
+import { VERDICTS, cheminVerdict } from '../content/quiz/verdicts.ts';
 import { AGE_RANGES } from '../lib/types.ts';
 import { BASE_API as BASE, VOIX, cle, versMp3 } from './lib/audio.mjs';
 
@@ -32,18 +34,6 @@ const CONSIGNES = {
     "Pose cette question à un enfant de onze ans, d'un ton naturel et complice, " +
     'débit normal :\n\n',
 };
-
-/**
- * Ordre de lecture des propositions, déterministe mais variable d'une question
- * à l'autre. La bonne réponse est toujours écrite en premier dans le contenu :
- * la lire systématiquement en premier apprendrait à l'enfant à choisir « la
- * première » sans réfléchir. Un simple hachage de l'identifiant inverse
- * l'ordre pour environ la moitié des questions.
- */
-function ordreLecture(question) {
-  const somme = [...question.id].reduce((n, c) => n + c.charCodeAt(0), 0);
-  return somme % 2 === 0 ? question.reponses : [...question.reponses].reverse();
-}
 
 /**
  * Texte réellement prononcé pour l'énoncé.
@@ -100,6 +90,25 @@ function aFaire(manifeste) {
       }
     }
   }
+
+  /*
+    Les verdicts sont génériques et non rattachés à une carte : sans eux, un
+    non-lecteur n'apprend jamais s'il a trouvé, le « Bravo » n'existant qu'à
+    l'écran.
+  */
+  for (const age of AGE_RANGES) {
+    for (const verdict of ['juste', 'presque']) {
+      VERDICTS[age][verdict].forEach((texte, rang) => {
+        const cleM = cheminVerdict(age, verdict, rang);
+        const chemin = `${RACINE}/${cleM}.mp3`;
+        const dossier = chemin.slice(0, chemin.lastIndexOf('/'));
+        const attendu = empreinte(texte, age);
+        if (manifeste[cleM]?.empreinte === attendu && existsSync(chemin)) return;
+        liste.push({ cle: cleM, dossier, chemin, texte, age, attendu });
+      });
+    }
+  }
+
   return liste;
 }
 

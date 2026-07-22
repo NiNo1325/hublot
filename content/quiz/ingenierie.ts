@@ -383,5 +383,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'le-micro-ondes',
+    questions: {
+      '3-5': [
+        {
+          id: 'micro-milieu',
+          question: 'Le micro-ondes chauffe-t-il par le milieu ?',
+          reponses: [
+            { texte: 'Non, par les bords', icone: '🔥', correcte: true },
+            { texte: 'Oui, par le milieu', icone: '🎯' },
+          ],
+          explication: 'Il chauffe surtout le bord. Le milieu se réchauffe ensuite, tout doucement.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'micro-eau',
+          question: 'Qu’est-ce que le micro-ondes fait bouger ?',
+          reponses: [
+            { texte: 'L’eau contenue dans les aliments', icone: '💧', correcte: true },
+            { texte: 'L’air autour du plat', icone: '💨' },
+            { texte: 'Le plat lui-même', icone: '🍽️' },
+          ],
+          explication:
+            'Il fait pivoter les molécules d’eau des milliards de fois par seconde : cette agitation, c’est la chaleur.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'porte-grille',
+          question: 'Pourquoi la porte du micro-ondes est-elle grillagée ?',
+          reponses: [
+            { texte: 'Les trous sont plus petits que la longueur d’onde', icone: '📏', correcte: true },
+            { texte: 'Pour laisser sortir la vapeur', icone: '💨' },
+            { texte: 'Pour renforcer la vitre', icone: '🛡️' },
+          ],
+          explication:
+            'C’est une cage de Faraday : les ondes de douze centimètres sont réfléchies, la lumière passe.',
+        },
+      ],
+    },
   },
 ];

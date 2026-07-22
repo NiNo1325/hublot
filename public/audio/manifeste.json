@@ -3454,5 +3454,389 @@
   "dou-vient-le-petrole/3-5/plancton": {
     "empreinte": "57bfcd44ba08566c",
     "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "le-sol-est-vivant/3-5/pas-inerte": {
+    "empreinte": "58b3638acd2e9496",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/3-5/habitants": {
+    "empreinte": "3cd79d75ed63736d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/3-5/fabrication": {
+    "empreinte": "910ad0f911a6acb1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/3-5/fragile": {
+    "empreinte": "72c12790a1ac1b90",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/6-8/pas-inerte": {
+    "empreinte": "022feebec2e2e081",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/6-8/habitants": {
+    "empreinte": "c0e22109d9b18091",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/6-8/fabrication": {
+    "empreinte": "e9ec9aa69a11eca7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/6-8/fragile": {
+    "empreinte": "146ebb57c4cf67c5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/9-12/pas-inerte": {
+    "empreinte": "cae9ce434762588d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/9-12/habitants": {
+    "empreinte": "7efcffa8e0437efe",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/9-12/fabrication": {
+    "empreinte": "f9bfb02179bf9a2b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/9-12/fragile": {
+    "empreinte": "a1996f86618fbb2a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/3-5/pourquoi-pas-tous-les-mois": {
+    "empreinte": "33da361f482001db",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/3-5/inclinaison": {
+    "empreinte": "cc7f39272115a3bf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/3-5/deux-sortes": {
+    "empreinte": "e9cdb9b25eddcfac",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/3-5/coincidence": {
+    "empreinte": "394651fa9d15e868",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/6-8/pourquoi-pas-tous-les-mois": {
+    "empreinte": "0f95a80a08a10c40",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/6-8/inclinaison": {
+    "empreinte": "8e724fca55d431a1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/6-8/deux-sortes": {
+    "empreinte": "5ec0996fa8f725aa",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/6-8/coincidence": {
+    "empreinte": "04d78c78c5ad6ba1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/9-12/pourquoi-pas-tous-les-mois": {
+    "empreinte": "d2a5c4d929fb6199",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/9-12/inclinaison": {
+    "empreinte": "704e8bc1dfd211f2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/9-12/deux-sortes": {
+    "empreinte": "4e4dbb6644c16341",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/9-12/coincidence": {
+    "empreinte": "494b191048c876a7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/3-5/pas-du-singe": {
+    "empreinte": "df9b5d23dc2e5339",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/3-5/variation": {
+    "empreinte": "ad984e0991e05dc7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/3-5/selection": {
+    "empreinte": "4a66f51d9f2794d2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/3-5/pas-de-but": {
+    "empreinte": "5bbe13345d853774",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/6-8/pas-du-singe": {
+    "empreinte": "e2928bcc3ab9c53f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/6-8/variation": {
+    "empreinte": "15f09777e34d49b9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/6-8/selection": {
+    "empreinte": "6ba411684029a79a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/6-8/pas-de-but": {
+    "empreinte": "7cb791754079b703",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/9-12/pas-du-singe": {
+    "empreinte": "16dd6110a139ebfd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/9-12/variation": {
+    "empreinte": "005f203344447e7c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/9-12/selection": {
+    "empreinte": "57af2a8185244c43",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/9-12/pas-de-but": {
+    "empreinte": "02b89a2f96ab0acb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/3-5/balance": {
+    "empreinte": "b7a8d6824d9450a5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/3-5/deux-choses": {
+    "empreinte": "d1eb3dabdecf9dd3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/3-5/sur-la-lune": {
+    "empreinte": "0e75629d2b958cb4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/3-5/apesanteur": {
+    "empreinte": "2d03c292622fc3b8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/6-8/balance": {
+    "empreinte": "2410b3cd3076f2b0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/6-8/deux-choses": {
+    "empreinte": "129fe2540f706b25",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/6-8/sur-la-lune": {
+    "empreinte": "f8bece4cdf37817d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/6-8/apesanteur": {
+    "empreinte": "27628afe3bb196c9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/9-12/balance": {
+    "empreinte": "065a28d3b41e06b6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/9-12/deux-choses": {
+    "empreinte": "2589bc02c0c7ed22",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/9-12/sur-la-lune": {
+    "empreinte": "b695dd7df691f951",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/9-12/apesanteur": {
+    "empreinte": "954739279c257762",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/3-5/anomalie": {
+    "empreinte": "bb76cd4b1a4851ea",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/3-5/liaisons": {
+    "empreinte": "608d5ad087d7f337",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/3-5/quatre-degres": {
+    "empreinte": "fb76e5518930c12c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/3-5/lacs": {
+    "empreinte": "4e391721932b3b14",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/6-8/anomalie": {
+    "empreinte": "6b1396e96ce3e0d4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/6-8/liaisons": {
+    "empreinte": "77168d1de07bc87b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/6-8/quatre-degres": {
+    "empreinte": "b0cdbc8557b3ba6e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/6-8/lacs": {
+    "empreinte": "2d48b9a8da555814",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/9-12/anomalie": {
+    "empreinte": "606f3503a962f09f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/9-12/liaisons": {
+    "empreinte": "ed608699f74ee0a4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/9-12/quatre-degres": {
+    "empreinte": "7b31dca92259a265",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/9-12/lacs": {
+    "empreinte": "af3815a4358ed554",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/3-5/de-linterieur": {
+    "empreinte": "4409cb7b3fe0af3a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/3-5/agiter-leau": {
+    "empreinte": "eca3f78711e6c0eb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/3-5/deux-centimetres": {
+    "empreinte": "e02a2948985cbe30",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/3-5/metal": {
+    "empreinte": "91fce31d40013bfe",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/6-8/de-linterieur": {
+    "empreinte": "11b8ece7f4172854",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/6-8/agiter-leau": {
+    "empreinte": "ba4f235a47bb40cf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/6-8/deux-centimetres": {
+    "empreinte": "be314877f976a3e1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/6-8/metal": {
+    "empreinte": "965033aa6aa6cfdd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/9-12/de-linterieur": {
+    "empreinte": "b8ad3e4967b81abb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/9-12/agiter-leau": {
+    "empreinte": "79605002318eaec0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/9-12/deux-centimetres": {
+    "empreinte": "eec6ffbb3f28ade0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/9-12/metal": {
+    "empreinte": "1fae88627c60a748",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/3-5/pas-internet": {
+    "empreinte": "4d2d4e86611f97ea",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/3-5/ondes-radio": {
+    "empreinte": "d2bd5ccbee23406d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/3-5/portee": {
+    "empreinte": "f90f89cf8bdf123b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/3-5/partage": {
+    "empreinte": "12eb20ee42f32e2c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/6-8/pas-internet": {
+    "empreinte": "b26878250364b720",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/6-8/ondes-radio": {
+    "empreinte": "54d4466c0d400b31",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/6-8/portee": {
+    "empreinte": "25b96459235ee55e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/6-8/partage": {
+    "empreinte": "2cb801373bb4f34e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/9-12/pas-internet": {
+    "empreinte": "ac14f9032830abcd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/9-12/ondes-radio": {
+    "empreinte": "cb95a0e63dff7ce5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/9-12/portee": {
+    "empreinte": "5c8a29d63aeefd68",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/9-12/partage": {
+    "empreinte": "fc1173b7d2195679",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/3-5/intuition": {
+    "empreinte": "7317a732f9ce54e9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/3-5/paires": {
+    "empreinte": "481bd52167178ea3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/3-5/vingt-trois": {
+    "empreinte": "5d2d7562dcb25e04",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/3-5/coincidences": {
+    "empreinte": "460296c85c4ef570",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/6-8/intuition": {
+    "empreinte": "e77466bf5959b070",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/6-8/paires": {
+    "empreinte": "7fb46fe9396ded12",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/6-8/vingt-trois": {
+    "empreinte": "bbf3c14a7f457fff",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/6-8/coincidences": {
+    "empreinte": "db61401300e3680d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/9-12/intuition": {
+    "empreinte": "8ee7a16acd2579fb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/9-12/paires": {
+    "empreinte": "7425c24b964bd64a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/9-12/vingt-trois": {
+    "empreinte": "c1f7c8cde75f4d01",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/9-12/coincidences": {
+    "empreinte": "e78a1ec48fb5054c",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

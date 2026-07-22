@@ -383,5 +383,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'le-poids-et-la-masse',
+    questions: {
+      '3-5': [
+        {
+          id: 'lune-leger',
+          question: 'Sur la Lune, tu sautes très haut. Pourquoi ?',
+          reponses: [
+            { texte: 'La Lune tire moins fort', icone: '🌙', correcte: true },
+            { texte: 'Tu es devenu plus petit', icone: '📉' },
+          ],
+          explication: 'Il y a toujours autant de toi : c’est la Lune qui tire six fois moins fort.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'masse-change',
+          question: 'Ta masse change-t-elle si tu vas sur la Lune ?',
+          reponses: [
+            { texte: 'Non, elle est la même partout', icone: '⚖️', correcte: true },
+            { texte: 'Oui, elle est divisée par six', icone: '📉' },
+            { texte: 'Oui, elle disparaît presque', icone: '🕳️' },
+          ],
+          explication:
+            'La masse ne change pas. C’est le poids — la force d’attraction — qui est divisé par six.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'orbite-gravite',
+          question: 'Dans la Station spatiale, y a-t-il encore de la gravité ?',
+          reponses: [
+            { texte: 'Oui, presque autant qu’au sol', icone: '🛰️', correcte: true },
+            { texte: 'Non, elle a disparu', icone: '🕳️' },
+            { texte: 'Non, on est trop loin de la Terre', icone: '📏' },
+          ],
+          explication:
+            'À quatre cents kilomètres, elle vaut encore 8,7. On flotte parce que tout tombe ensemble : c’est la chute libre.',
+        },
+      ],
+    },
   },
 ];

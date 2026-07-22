@@ -1726,5 +1726,197 @@
   "lenergie/3-5/energie-fabrique-explication": {
     "empreinte": "672bcc94e6c084ea",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/3-5/terre-vivante-question": {
+    "empreinte": "20bb36981ec3453c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/3-5/terre-vivante-explication": {
+    "empreinte": "7a20618efb42be7b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/6-8/combien-habitants-question": {
+    "empreinte": "5b39f6c024fa8f89",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/6-8/combien-habitants-explication": {
+    "empreinte": "b46b53092daad822",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/9-12/sol-renouvelable-question": {
+    "empreinte": "73fcb1e7694ba282",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-sol-est-vivant/9-12/sol-renouvelable-explication": {
+    "empreinte": "073af6f0f0517afe",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/3-5/eclipse-rare-question": {
+    "empreinte": "8c6c0a25e5d39f00",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/3-5/eclipse-rare-explication": {
+    "empreinte": "1078b67f4cbf257d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/6-8/pourquoi-rare-question": {
+    "empreinte": "147ae66e8b6de3c4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/6-8/pourquoi-rare-explication": {
+    "empreinte": "9899090ef91237d3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/9-12/lune-rouge-question": {
+    "empreinte": "aeabfbe72576b2ff",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-eclipses/9-12/lune-rouge-explication": {
+    "empreinte": "b318a332e719a6f7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/3-5/singe-grand-parent-question": {
+    "empreinte": "c890a7d947109f0d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/3-5/singe-grand-parent-explication": {
+    "empreinte": "41201fe9b20cf236",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/6-8/girafe-cou-question": {
+    "empreinte": "c21c35a771f378fd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/6-8/girafe-cou-explication": {
+    "empreinte": "7e2cb24d2c9ca282",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/9-12/evolution-but-question": {
+    "empreinte": "1f4799fb15adffbe",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "levolution/9-12/evolution-but-explication": {
+    "empreinte": "e2f6ab6e3d0a0233",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/3-5/lune-leger-question": {
+    "empreinte": "804cea2e58f7a39d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/3-5/lune-leger-explication": {
+    "empreinte": "da9bd6bc746caa10",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/6-8/masse-change-question": {
+    "empreinte": "1c616e15409728a2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/6-8/masse-change-explication": {
+    "empreinte": "16d804afe6379791",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/9-12/orbite-gravite-question": {
+    "empreinte": "d6c031c92f533031",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-poids-et-la-masse/9-12/orbite-gravite-explication": {
+    "empreinte": "6416ae6d01ff41da",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/3-5/glacon-flotte-question": {
+    "empreinte": "8672d0fe336c6cb4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/3-5/glacon-flotte-explication": {
+    "empreinte": "407fd679573c12a0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/6-8/glace-place-question": {
+    "empreinte": "faf52d3915bb3b9f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/6-8/glace-place-explication": {
+    "empreinte": "6ca6c40138914028",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/9-12/lac-gele-question": {
+    "empreinte": "64862ca4488085e3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-glace-flotte/9-12/lac-gele-explication": {
+    "empreinte": "e30924028946b82b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/3-5/micro-milieu-question": {
+    "empreinte": "74958ebdd62fdacd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/3-5/micro-milieu-explication": {
+    "empreinte": "9a76a818aec633d8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/6-8/micro-eau-question": {
+    "empreinte": "e20485cf98951248",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/6-8/micro-eau-explication": {
+    "empreinte": "fc15aedef01c0961",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/9-12/porte-grille-question": {
+    "empreinte": "54cef16caca856b3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-micro-ondes/9-12/porte-grille-explication": {
+    "empreinte": "447f8bf72fc817dc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/3-5/wifi-internet-question": {
+    "empreinte": "7af6d5649f182fb1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/3-5/wifi-internet-explication": {
+    "empreinte": "224bc5f551981b97",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/6-8/wifi-ondes-question": {
+    "empreinte": "ef9af99a8daed782",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/6-8/wifi-ondes-explication": {
+    "empreinte": "9106fb3b511d9514",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/9-12/wifi-lenteur-question": {
+    "empreinte": "cb552d882ba01cab",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-wifi/9-12/wifi-lenteur-explication": {
+    "empreinte": "1a1f506af49267ff",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/3-5/deux-anniversaires-question": {
+    "empreinte": "12071954be861372",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/3-5/deux-anniversaires-explication": {
+    "empreinte": "889bce652e137e0b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/6-8/combien-personnes-question": {
+    "empreinte": "35031adc5c61aaed",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/6-8/combien-personnes-explication": {
+    "empreinte": "ad3f717c3161f5fb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/9-12/paires-carre-question": {
+    "empreinte": "67472f7c1e4a87a7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-paradoxe-des-anniversaires/9-12/paires-carre-explication": {
+    "empreinte": "cb452f1f09cc9b71",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

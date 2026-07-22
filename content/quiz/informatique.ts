@@ -384,5 +384,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'le-wifi',
+    questions: {
+      '3-5': [
+        {
+          id: 'wifi-internet',
+          question: 'Le wifi, c’est la même chose qu’internet ?',
+          reponses: [
+            { texte: 'Non, c’est juste le dernier bout', icone: '📶', correcte: true },
+            { texte: 'Oui, c’est pareil', icone: '🟰' },
+          ],
+          explication: 'Le wifi relie ton appareil à la boîte. Internet, c’est tout ce qui vient après.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'wifi-ondes',
+          question: 'Le wifi, c’est fait avec quoi ?',
+          reponses: [
+            { texte: 'Des ondes radio, comme la radio FM', icone: '📻', correcte: true },
+            { texte: 'De la lumière qu’on peut voir', icone: '💡' },
+            { texte: 'Des fils invisibles', icone: '🧵' },
+          ],
+          explication:
+            'Ce sont des ondes de la même famille que celles de la radio, à une fréquence près.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'wifi-lenteur',
+          question: 'La connexion rame. Quel est le coupable le plus fréquent ?',
+          reponses: [
+            { texte: 'Le wifi, partagé entre tous les appareils', icone: '📶', correcte: true },
+            { texte: 'L’abonnement internet', icone: '💶' },
+            { texte: 'Le site visité', icone: '🌐' },
+          ],
+          explication:
+            'Le wifi est un média partagé : le débit se répartit entre tous les émetteurs à portée, voisins compris.',
+        },
+      ],
+    },
   },
 ];

@@ -80,6 +80,14 @@ import { OdeursAnimation } from './OdeursAnimation';
 import { FrigoAnimation } from './FrigoAnimation';
 import { NavigationPriveeAnimation } from './NavigationPriveeAnimation';
 import { MoyenneAnimation } from './MoyenneAnimation';
+import { SolAnimation } from './SolAnimation';
+import { EclipsesAnimation } from './EclipsesAnimation';
+import { EvolutionAnimation } from './EvolutionAnimation';
+import { PoidsMasseAnimation } from './PoidsMasseAnimation';
+import { GlaceFlotteAnimation } from './GlaceFlotteAnimation';
+import { MicroOndesAnimation } from './MicroOndesAnimation';
+import { WifiAnimation } from './WifiAnimation';
+import { AnniversairesAnimation } from './AnniversairesAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -169,4 +177,12 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   frigo: FrigoAnimation,
   'navigation-privee': NavigationPriveeAnimation,
   moyenne: MoyenneAnimation,
+  sol: SolAnimation,
+  eclipses: EclipsesAnimation,
+  evolution: EvolutionAnimation,
+  'poids-masse': PoidsMasseAnimation,
+  'glace-flotte': GlaceFlotteAnimation,
+  'micro-ondes': MicroOndesAnimation,
+  wifi: WifiAnimation,
+  anniversaires: AnniversairesAnimation,
 };

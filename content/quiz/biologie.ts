@@ -342,5 +342,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'les-os',
+    questions: {
+      '3-5': [
+        {
+          id: 'os-vivants',
+          question: 'Tes os sont-ils vivants ?',
+          reponses: [
+            { texte: 'Oui, comme le reste de toi', icone: '❤️', correcte: true },
+            { texte: 'Non, c’est comme des cailloux', icone: '🪨' },
+          ],
+          explication: 'Il y a du sang dedans, et ils se réparent tout seuls.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'qui-repare',
+          question: 'Qui répare un os cassé ?',
+          reponses: [
+            { texte: 'L’os lui-même', icone: '🦴', correcte: true },
+            { texte: 'Le plâtre', icone: '🩹' },
+            { texte: 'Le médecin, en le recollant', icone: '💉' },
+          ],
+          explication:
+            'Le plâtre ne fait qu’immobiliser. C’est l’os, bien vivant, qui fabrique la réparation.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'moelle-role',
+          question: 'À quoi sert la moelle osseuse ?',
+          reponses: [
+            { texte: 'À fabriquer les cellules du sang', icone: '🩸', correcte: true },
+            { texte: 'À amortir les chocs', icone: '🛡️' },
+            { texte: 'À stocker uniquement de la graisse', icone: '🧈' },
+          ],
+          explication:
+            'L’hématopoïèse y produit chaque jour des centaines de milliards de cellules sanguines.',
+        },
+      ],
+    },
   },
 ];

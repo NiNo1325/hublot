@@ -343,5 +343,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'la-navigation-privee',
+    questions: {
+      '3-5': [
+        {
+          id: 'prive-cache',
+          question: 'Le bouton « privé » te rend-il invisible ?',
+          reponses: [
+            { texte: 'Non, pas vraiment', icone: '👀', correcte: true },
+            { texte: 'Oui, complètement', icone: '🫥' },
+          ],
+          explication: 'Il efface seulement les traces sur cet ordinateur-là.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'prive-perimetre',
+          question: 'Que cache vraiment la navigation privée ?',
+          reponses: [
+            { texte: 'Tes traces sur l’appareil que tu utilises', icone: '💻', correcte: true },
+            { texte: 'Ta visite au site que tu ouvres', icone: '🌐' },
+            { texte: 'Tout, à tout le monde', icone: '🫥' },
+          ],
+          explication:
+            'Elle te protège de la personne qui utilisera l’appareil après toi, pas du réseau.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'prive-qui-voit',
+          question: 'En navigation privée, qui peut encore te reconnaître ?',
+          reponses: [
+            { texte: 'Le site, le fournisseur d’accès et l’administrateur réseau', icone: '🛰️', correcte: true },
+            { texte: 'Personne, c’est tout le principe', icone: '🚫' },
+            { texte: 'Seulement les sites où tu as un compte', icone: '🔑' },
+          ],
+          explication:
+            'Le périmètre est strictement local : adresse IP et empreinte de navigateur restent parfaitement visibles.',
+        },
+      ],
+    },
   },
 ];

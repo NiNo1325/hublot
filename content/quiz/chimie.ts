@@ -340,5 +340,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'pourquoi-ca-sent',
+    questions: {
+      '3-5': [
+        {
+          id: 'odeur-quoi',
+          question: 'Quand ça sent bon, qu’est-ce qui arrive à ton nez ?',
+          reponses: [
+            { texte: 'De tout petits morceaux, dans l’air', icone: '💨', correcte: true },
+            { texte: 'Une image de l’odeur', icone: '🖼️' },
+          ],
+          explication: 'Des morceaux minuscules se détachent et volent jusqu’à ton nez.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'odeur-chaud',
+          question: 'Pourquoi sent-on plus fort un plat chaud ?',
+          reponses: [
+            { texte: 'La chaleur libère plus de molécules', icone: '🔥', correcte: true },
+            { texte: 'La chaleur rend le nez plus sensible', icone: '👃' },
+            { texte: 'Le chaud fait vibrer l’air plus vite', icone: '🔊' },
+          ],
+          explication:
+            'Plus c’est chaud, plus les molécules s’échappent — et plus elles arrivent nombreuses jusqu’à toi.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'odeur-habitude',
+          question: 'Pourquoi ne sent-on plus l’odeur de sa propre maison ?',
+          reponses: [
+            { texte: 'Les récepteurs se désensibilisent', icone: '📉', correcte: true },
+            { texte: 'Les molécules ont fini par disparaître', icone: '💨' },
+            { texte: 'Le cerveau a oublié cette odeur', icone: '🧠' },
+          ],
+          explication:
+            'C’est l’adaptation olfactive : le système est fait pour signaler le changement, pas l’état constant.',
+        },
+      ],
+    },
   },
 ];

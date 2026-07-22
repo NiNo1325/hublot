@@ -13,6 +13,7 @@
     "audio:batch": "tsx --env-file=.env.local scripts/generer-audio-batch.mjs",
     "audio:quiz": "tsx --env-file=.env.local scripts/generer-audio-quiz.mjs",
     "audio:attente": "tsx scripts/maj-attente-audio.mjs",
+    "audio:catalogue": "tsx scripts/catalogue-audio.mjs",
     "voix:echantillons": "tsx --env-file=.env.local scripts/echantillons-voix.mjs",
     "voix:modeles": "tsx --env-file=.env.local scripts/comparer-modeles.mjs",
     "audit:illustrations": "tsx scripts/auditer-illustrations.mjs",

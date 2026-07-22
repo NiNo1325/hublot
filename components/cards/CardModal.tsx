@@ -7,7 +7,7 @@ import { animationRegistry } from '@/components/animations/registry';
 import { useReducedMotion } from '@/components/animations/shared/useReducedMotion';
 import { useNarration } from '@/components/narration/useNarration';
 import { NarrationControls } from '@/components/narration/NarrationControls';
-import { useCartesVues } from '@/components/quiz/useCartesVues';
+import { useCartesVues } from './useCartesVues';
 
 /**
  * Isole les pannes d'animation : un SVG qui plante ne doit pas emporter la

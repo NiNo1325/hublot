@@ -8,6 +8,8 @@ interface CardTileProps {
   ageRange: AgeRange;
   /** Rang dans la grille, pour l'allumage en séquence. */
   index: number;
+  /** Carte déjà ouverte : son hublot s'éteint. */
+  dejaJouee: boolean;
   onSelect: (card: ScienceCard) => void;
 }
 
@@ -15,8 +17,14 @@ interface CardTileProps {
  * Un hublot : disque lumineux posé sur le fond encre. La cible tactile fait
  * 128px de côté minimum, bien au-delà des 44px recommandés — la précision
  * motrice d'un enfant de trois ans est faible.
+ *
+ * Une carte déjà écoutée perd son halo et son anneau coloré, de sorte que
+ * seules les cartes restantes brillent. L'emoji, lui, ne change pas : une
+ * tuile grisée se lirait « indisponible », alors qu'une carte se réécoute
+ * autant qu'on veut. Et comme éteindre est une variation de luminance et non
+ * de teinte, le repère tient aussi sans distinguer les couleurs.
  */
-export function CardTile({ card, ageRange, index, onSelect }: CardTileProps) {
+export function CardTile({ card, ageRange, index, dejaJouee, onSelect }: CardTileProps) {
   const style = domainStyles[card.domainId];
   const titre = card.content.fr.title[ageRange];
 
@@ -32,11 +40,11 @@ export function CardTile({ card, ageRange, index, onSelect }: CardTileProps) {
         }}
       >
         <span
-          className="flex h-32 w-32 items-center justify-center rounded-full border-4 text-5xl transition-shadow sm:h-36 sm:w-36"
+          className="flex h-32 w-32 items-center justify-center rounded-full border-4 text-5xl transition-[box-shadow,border-color] duration-500 sm:h-36 sm:w-36"
           style={{
-            borderColor: style.teinte,
+            borderColor: dejaJouee ? 'var(--color-encre-bord)' : style.teinte,
             backgroundColor: 'var(--color-encre-clair)',
-            boxShadow: `0 0 32px ${style.halo}`,
+            boxShadow: dejaJouee ? 'none' : `0 0 32px ${style.halo}`,
           }}
         >
           {card.thumbnail}
@@ -56,6 +64,13 @@ export function CardTile({ card, ageRange, index, onSelect }: CardTileProps) {
         >
           {titre}
         </span>
+
+        {/*
+          L'extinction est visuelle : pour qui n'y a pas accès, le repère doit
+          être dit. C'est la redondance qu'impose la règle d'accessibilité du
+          projet — jamais d'information portée par le seul rendu.
+        */}
+        {dejaJouee && <span className="sr-only">, déjà écoutée</span>}
       </button>
     </li>
   );

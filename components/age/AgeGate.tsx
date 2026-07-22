@@ -1,7 +1,9 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { AgeRange } from '@/lib/types';
+import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useAgeRange } from './useAgeRange';
 
 /**
@@ -38,6 +40,23 @@ function Silhouette({ echelle }: { echelle: number }) {
 export function AgeGate() {
   const router = useRouter();
   const { ageRange, status, chooseAgeRange } = useAgeRange();
+  const { cartesVues, oublierToutesLesVues } = useCartesVues();
+
+  /*
+    Effacer la progression est irréversible, et l'écran reste à portée d'un
+    enfant. D'où la confirmation en deux temps, plutôt qu'un `confirm()` natif
+    — bloquant, non stylable, et illisible pour qui l'aurait ouvert par
+    accident.
+  */
+  const [confirmation, setConfirmation] = useState(false);
+
+  useEffect(() => {
+    if (!confirmation) return;
+    // Sans retour automatique, un « Confirmer ? » resté affiché deviendrait un
+    // piège au retour suivant sur l'écran.
+    const minuterie = setTimeout(() => setConfirmation(false), 4000);
+    return () => clearTimeout(minuterie);
+  }, [confirmation]);
 
   /*
     Venir changer d'âge est une demande explicite : sans ce drapeau, la
@@ -164,6 +183,34 @@ export function AgeGate() {
           className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-6 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
         >
           Revenir aux cartes
+        </button>
+      )}
+
+      {/*
+        Réinitialisation de la progression. Elle vit ici, et non dans l'en-tête
+        de Découvrir, parce que c'est un geste d'adulte : celui qui passe la
+        tablette au cadet vient de toute façon changer le niveau.
+      */}
+      {changementDemande && cartesVues.size > 0 && (
+        <button
+          type="button"
+          onClick={() => {
+            if (!confirmation) {
+              setConfirmation(true);
+              return;
+            }
+            oublierToutesLesVues();
+            setConfirmation(false);
+          }}
+          className={`min-h-12 cursor-pointer rounded-full border-2 px-6 text-sm transition-colors ${
+            confirmation
+              ? 'border-soleil text-soleil'
+              : 'border-encre-bord text-craie-douce hover:border-soleil hover:text-soleil'
+          }`}
+        >
+          {confirmation
+            ? 'Confirmer ? Les cartes redeviendront neuves'
+            : `Oublier les ${cartesVues.size} cartes déjà écoutées`}
         </button>
       )}
     </main>

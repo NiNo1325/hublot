@@ -7,15 +7,20 @@ import { useAgeRange } from '@/components/age/useAgeRange';
 import { DomainFilter } from '@/components/domains/DomainFilter';
 import { CardGrid } from './CardGrid';
 import { CardModal } from './CardModal';
+import { useCartesVues } from './useCartesVues';
 
 interface DiscoverViewProps {
   cards: ScienceCard[];
   domains: DomainDefinition[];
 }
 
+/** Alloué une fois : passer un `Set` neuf à chaque rendu ferait diffuser CardGrid. */
+const AUCUNE = new Set<string>();
+
 export function DiscoverView({ cards, domains }: DiscoverViewProps) {
   const router = useRouter();
   const { ageRange, status } = useAgeRange();
+  const { cartesVues } = useCartesVues();
 
   /** `null` = tous les domaines. Évite d'avoir à synchroniser un Set complet. */
   const [selection, setSelection] = useState<Set<DomainId> | null>(null);
@@ -30,6 +35,14 @@ export function DiscoverView({ cards, domains }: DiscoverViewProps) {
     () => (selection === null ? cards : cards.filter((c) => selection.has(c.domainId))),
     [cards, selection],
   );
+
+  /*
+    Le catalogue entièrement exploré, l'extinction n'a plus rien à désigner :
+    tout se rallume, et la grille entière allumée fait une fin. Le calcul porte
+    sur le catalogue complet et non sur les cartes visibles, sinon isoler un
+    domaine terminé rallumerait la grille au passage.
+  */
+  const cartesEteintes = cartesVues.size >= cards.length ? AUCUNE : cartesVues;
 
   function basculerDomaine(id: DomainId) {
     setSelection((courant) => {
@@ -92,6 +105,7 @@ export function DiscoverView({ cards, domains }: DiscoverViewProps) {
       <CardGrid
         cards={cartesVisibles}
         ageRange={ageRange}
+        cartesEteintes={cartesEteintes}
         onSelectCard={setCarteOuverte}
       />
 

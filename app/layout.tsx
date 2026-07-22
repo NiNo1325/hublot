@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Fredoka, Atkinson_Hyperlegible } from 'next/font/google';
+import { EnregistrerServiceWorker } from '@/components/hors-ligne/EnregistrerServiceWorker';
 import './globals.css';
 
 /** Display : rond et joyeux, réservé aux titres et aux gros boutons. */
@@ -33,7 +34,10 @@ export default function RootLayout({
       lang="fr"
       className={`${fredoka.variable} ${atkinson.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <EnregistrerServiceWorker />
+        {children}
+      </body>
     </html>
   );
 }

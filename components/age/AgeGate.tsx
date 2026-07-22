@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { AgeRange } from '@/lib/types';
 import { useCartesVues } from '@/components/cards/useCartesVues';
+import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
+import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { useAgeRange } from './useAgeRange';
 
 /**
@@ -49,6 +51,23 @@ export function AgeGate() {
     accident.
   */
   const [confirmation, setConfirmation] = useState(false);
+
+  /*
+    L'état vient du cache, jamais d'un drapeau : après un nettoyage du stockage
+    par le système, un drapeau annoncerait « prêt » devant une application
+    muette — exactement au moment où le parent compte dessus.
+  */
+  const { resume: horsLigne } = useHorsLigne();
+  const libelleHorsLigne =
+    horsLigne.etat === 'complet'
+      ? 'Prêt hors connexion'
+      : horsLigne.etat === 'telechargement'
+        ? `Téléchargement… ${Math.round((horsLigne.octetsPresents / horsLigne.octetsTotal) * 100)} %`
+        : horsLigne.etat === 'partiel'
+          ? 'Téléchargement incomplet'
+          : horsLigne.octetsTotal > 0
+            ? `Écouter sans internet — ${enMo(horsLigne.octetsTotal)}`
+            : 'Écouter sans internet';
 
   useEffect(() => {
     if (!confirmation) return;
@@ -108,13 +127,28 @@ export function AgeGate() {
           </button>
         </div>
 
-        <button
-          type="button"
-          onClick={() => router.push('/?changer=1')}
-          className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-        >
-          Niveau&nbsp;: {ageRange} ans — changer
-        </button>
+        <div className="flex flex-col items-center gap-3">
+          <button
+            type="button"
+            onClick={() => router.push('/?changer=1')}
+            className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+          >
+            Niveau&nbsp;: {ageRange} ans — changer
+          </button>
+
+          {/*
+            L'entrée du mode hors ligne vit sur le menu, et non dans les
+            réglages : un parent doit la trouver avant de partir en voiture,
+            pas la découvrir en cherchant autre chose.
+          */}
+          <button
+            type="button"
+            onClick={() => router.push('/hors-ligne')}
+            className="flex min-h-12 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+          >
+            <span aria-hidden="true">🚗</span> {libelleHorsLigne}
+          </button>
+        </div>
       </main>
     );
   }

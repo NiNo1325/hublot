@@ -28,7 +28,7 @@ const incompletes = cards
 const bloc =
   incompletes.length === 0
     ? 'const EN_ATTENTE_AUDIO = new Set<string>([]);'
-    : `const EN_ATTENTE_AUDIO = new Set([\n${incompletes
+    : `const EN_ATTENTE_AUDIO = new Set<string>([\n${incompletes
         .map((id) => `  '${id}',`)
         .join('\n')}\n]);`;
 

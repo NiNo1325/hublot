@@ -12,21 +12,16 @@
  * attend. Ce qui convient parfaitement ici — personne n'attend ces fichiers
  * en temps réel.
  */
-import { writeFile, readFile, mkdir, rm } from 'node:fs/promises';
+import { writeFile, readFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { execFile } from 'node:child_process';
-import { promisify } from 'node:util';
 import { cards } from '../content/cards/index.ts';
 import { AGE_RANGES } from '../lib/types.ts';
-
-const execFileAsync = promisify(execFile);
+import { BASE_API as BASE, CONSIGNES_CARTES as CONSIGNES, VOIX, cle, versMp3 } from './lib/audio.mjs';
 
 const MODELE = 'gemini-3.1-flash-tts-preview';
-const VOIX = 'Callirrhoe';
 const RACINE = 'public/audio';
 const MANIFESTE = `${RACINE}/manifeste.json`;
-const BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
 /**
  * Taille d'un lot. Les réponses arrivent en ligne, audio compris : un lot trop
@@ -34,30 +29,6 @@ const BASE = 'https://generativelanguage.googleapis.com/v1beta';
  */
 const PAR_LOT = 40;
 const INTERVALLE_SONDAGE_MS = 20000;
-
-const CONSIGNES = {
-  '3-5':
-    "Lis ce texte en français à un enfant de quatre ans. Parle lentement et " +
-    "très distinctement, d'une voix douce et émerveillée, en marquant de " +
-    'nettes pauses entre les phrases :\n\n',
-  '6-8':
-    "Lis ce texte en français à un enfant de sept ans, d'une voix chaleureuse " +
-    "et décontractée, avec l'enthousiasme de quelqu'un qui raconte quelque " +
-    'chose de fascinant. Parle posément :\n\n',
-  '9-12':
-    "Lis ce texte en français à un enfant de onze ans, d'un ton naturel, " +
-    'curieux et complice, comme on explique quelque chose de passionnant à ' +
-    "quelqu'un qu'on prend au sérieux. Débit normal :\n\n",
-};
-
-function cle() {
-  const valeur = process.env.GEMINI_API_KEY;
-  if (!valeur) {
-    console.error('GEMINI_API_KEY absente. Ajoute-la dans .env.local.');
-    process.exit(1);
-  }
-  return valeur.trim();
-}
 
 function empreinte(texte, age) {
   return createHash('sha256')
@@ -78,17 +49,6 @@ async function lireManifeste() {
   } catch {
     return {};
   }
-}
-
-async function versMp3(pcm, destination) {
-  const temporaire = `${destination}.pcm`;
-  await writeFile(temporaire, pcm);
-  await execFileAsync('ffmpeg', [
-    '-y', '-loglevel', 'error',
-    '-f', 's16le', '-ar', '24000', '-ac', '1',
-    '-i', temporaire, '-b:a', '64k', destination,
-  ]);
-  await rm(temporaire);
 }
 
 /** Beats dont le fichier manque ou dont le texte a changé. */

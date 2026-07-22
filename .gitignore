@@ -50,6 +50,11 @@ next-env.d.ts
 # Echantillons audio de travail
 echantillons-voix/
 
+# Outillage d'agents déposé dans l'arborescence, sans rapport avec le produit.
+.agents/
+.codex/
+skills-lock.json
+
 # PCM brut intermédiaire de la génération audio. Le nettoyage est volontairement
 # non bloquant — Dropbox verrouille parfois le fichier une fraction de seconde —
 # donc il en reste par moments. Ils ne doivent jamais entrer dans l'historique :

@@ -7,6 +7,7 @@ import { animationRegistry } from '@/components/animations/registry';
 import { useReducedMotion } from '@/components/animations/shared/useReducedMotion';
 import { useNarration } from '@/components/narration/useNarration';
 import { NarrationControls } from '@/components/narration/NarrationControls';
+import { NarrationProgress } from '@/components/narration/NarrationProgress';
 import { useCartesVues } from './useCartesVues';
 
 /**
@@ -40,7 +41,7 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
 
   const { marquerVue } = useCartesVues();
   const beats = card.content.fr.explanation[ageRange].beats;
-  const { state, play, pause, resume, replay } = useNarration(
+  const { state, play, pause, resume, replay, allerA, reculer } = useNarration(
     card.id,
     ageRange,
     beats,
@@ -148,12 +149,19 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
           </p>
         </div>
 
+        <NarrationProgress
+          beats={beats}
+          activeIndex={state.activeIndex}
+          onSelect={allerA}
+        />
+
         <NarrationControls
           state={state}
           onPlay={() => play(0)}
           onPause={pause}
           onResume={resume}
           onReplay={replay}
+          onReculer={reculer}
         />
       </div>
     </dialog>

@@ -8,10 +8,15 @@ interface NarrationControlsProps {
   onPause: () => void;
   onResume: () => void;
   onReplay: () => void;
+  onReculer: () => void;
 }
 
 const BOUTON =
   'flex min-h-16 min-w-16 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-encre-bord bg-encre-clair px-6 font-display text-lg text-craie transition-transform hover:scale-105 hover:border-soleil active:scale-95';
+
+/** Même hauteur tactile que la commande principale, mais sans la concurrencer. */
+const BOUTON_SECONDAIRE =
+  'flex min-h-16 min-w-16 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord px-5 font-display text-lg text-craie-douce transition-transform hover:scale-105 hover:border-soleil hover:text-soleil active:scale-95';
 
 export function NarrationControls({
   state,
@@ -19,6 +24,7 @@ export function NarrationControls({
   onPause,
   onResume,
   onReplay,
+  onReculer,
 }: NarrationControlsProps) {
   const { status, isPlaying, activeIndex } = state;
 
@@ -31,6 +37,21 @@ export function NarrationControls({
   */
   return (
     <div className="flex flex-wrap items-center justify-center gap-4">
+      {/*
+        Reculer n'a de sens qu'une fois la narration commencée : avant, le
+        bouton ne désignerait rien et ferait un troisième objet à comprendre.
+      */}
+      {activeIndex >= 0 && (
+        <button
+          type="button"
+          onClick={onReculer}
+          className={BOUTON_SECONDAIRE}
+          aria-label="Étape précédente"
+        >
+          <span aria-hidden="true">⏮</span>
+        </button>
+      )}
+
       {isPlaying ? (
         <button type="button" onClick={onPause} className={BOUTON}>
           <span aria-hidden="true">⏸</span> Pause

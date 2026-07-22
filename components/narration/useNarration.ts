@@ -217,6 +217,31 @@ export function useNarration(
 
   const replay = useCallback(() => play(0), [play]);
 
+  /**
+   * Reprend la narration à l'étape demandée.
+   *
+   * Tout passe par `play`, qui remet déjà `estTermine` à faux, invalide la
+   * session en cours et propage le mode minuté : la navigation fonctionne donc
+   * telle quelle quand le son est indisponible, et une lecture en pause
+   * repart — l'intention du geste est bien de réentendre.
+   */
+  const allerA = useCallback(
+    (index: number) => {
+      play(Math.min(Math.max(index, 0), beats.length - 1));
+    },
+    [play, beats.length],
+  );
+
+  /*
+    Sur le premier beat, on le redémarre plutôt que de ne rien faire : un
+    bouton qui reste muet est incompréhensible pour un enfant, qui conclut
+    qu'il est cassé.
+  */
+  const reculer = useCallback(
+    () => allerA(activeIndex - 1),
+    [allerA, activeIndex],
+  );
+
   const isSilent = status === 'silencieux';
   const state: NarrationState = {
     status,
@@ -229,5 +254,5 @@ export function useNarration(
     isSilent,
   };
 
-  return { state, play, pause, resume, replay, stop };
+  return { state, play, pause, resume, replay, allerA, reculer, stop };
 }

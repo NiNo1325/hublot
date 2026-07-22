@@ -6,10 +6,17 @@ import { CardTile } from './CardTile';
 interface CardGridProps {
   cards: ScienceCard[];
   ageRange: AgeRange;
+  /** Cartes dont le hublot doit être éteint. */
+  cartesEteintes: Set<string>;
   onSelectCard: (card: ScienceCard) => void;
 }
 
-export function CardGrid({ cards, ageRange, onSelectCard }: CardGridProps) {
+export function CardGrid({
+  cards,
+  ageRange,
+  cartesEteintes,
+  onSelectCard,
+}: CardGridProps) {
   if (cards.length === 0) {
     return (
       <p className="py-16 text-center text-craie-douce">
@@ -26,6 +33,7 @@ export function CardGrid({ cards, ageRange, onSelectCard }: CardGridProps) {
           card={card}
           ageRange={ageRange}
           index={index}
+          dejaJouee={cartesEteintes.has(card.id)}
           onSelect={onSelectCard}
         />
       ))}

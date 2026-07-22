@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import type { AgeRange, QuizQuestion, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { useAgeRange } from '@/components/age/useAgeRange';
-import { useCartesVues } from './useCartesVues';
+import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useQuizAudio } from './useQuizAudio';
 import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
 

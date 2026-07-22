@@ -172,6 +172,37 @@ Deux pièges spécifiques à l'audio, découverts en test :
 Les parades ci-dessous concernent l'implémentation historique et sont
 conservées pour mémoire.
 
+## Révision du 22/07/2026 — le catalogue est complet
+
+Quatre-vingts cartes, dix par domaine, plus un mode quizz de deux cent
+quarante questions. Le périmètre V1 est dépassé ; ce qui suit n'était pas dans
+le plan initial et mérite d'être consigné.
+
+**Une règle de contenu s'est imposée** : chaque carte corrige une idée reçue
+identifiée, et la mauvaise réponse du quizz reprend cette idée reçue. Ce n'est
+pas un habillage. C'est ce qui distingue une carte utile d'un résumé
+d'encyclopédie, et c'est ce qui a permis de choisir les sujets — quand aucune
+idée reçue n'émerge, le sujet ne fait pas une bonne carte.
+
+**Le coût s'est déplacé de l'écriture vers la vérification.** À dix cartes par
+domaine, le risque n'est plus de manquer d'idées mais d'écrire un doublon. Six
+sujets ont été abandonnés en cours de route parce que le catalogue les
+traitait déjà, parfois dans un domaine voisin : le « cloud » par la carte
+internet, la pression atmosphérique par celle sur l'air, l'arbre fait d'air
+par la photosynthèse. Toute vague suivante devra commencer par un `grep`, et
+non par un brainstorming.
+
+**Le quota TTS gouverne le rythme, pas la rédaction.** Une vague de huit
+cartes demande cent quarante-quatre générations. L'API interactive sature
+autour de la centaine par jour ; l'API Batch a son propre quota et prend le
+relais. Le mur se heurte en fin de journée américaine, jamais le matin.
+
+**Deux garde-fous se sont révélés indispensables**, tous deux absents du plan
+initial : l'audit des illustrations dans un vrai navigateur, qui mesure les
+positions réelles des textes et attrape les collisions entre légendes de
+phases différentes ; et le test de couverture audio, sans lequel une carte
+muette passerait inaperçue jusqu'à ce qu'un enfant l'ouvre.
+
 ## Narration : pièges et parades
 
 - **Voix chargées en asynchrone** : `getVoices()` renvoie souvent `[]` au premier

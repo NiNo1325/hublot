@@ -8,21 +8,16 @@
  * un non-lecteur qui n'entend pas les réponses ne peut pas choisir, et le mode
  * lui resterait fermé.
  */
-import { writeFile, readFile, mkdir, rm } from 'node:fs/promises';
+import { writeFile, readFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { execFile } from 'node:child_process';
-import { promisify } from 'node:util';
 import { quizCartes } from '../content/quiz/index.ts';
 import { AGE_RANGES } from '../lib/types.ts';
-
-const execFileAsync = promisify(execFile);
+import { BASE_API as BASE, VOIX, cle, versMp3 } from './lib/audio.mjs';
 
 const MODELE = 'gemini-3.1-flash-tts-preview';
-const VOIX = 'Callirrhoe';
 const RACINE = 'public/audio/quiz';
 const MANIFESTE = `${RACINE}/manifeste.json`;
-const BASE = 'https://generativelanguage.googleapis.com/v1beta';
 const PAR_LOT = 40;
 const SONDAGE_MS = 20000;
 
@@ -69,15 +64,6 @@ function texteEnonce(question, age) {
   return `${question.question} Est-ce que : ${propositions} ?`;
 }
 
-function cle() {
-  const valeur = process.env.GEMINI_API_KEY;
-  if (!valeur) {
-    console.error('GEMINI_API_KEY absente. Ajoute-la dans .env.local.');
-    process.exit(1);
-  }
-  return valeur.trim();
-}
-
 function empreinte(texte, age) {
   return createHash('sha256')
     .update(`${VOIX}|${CONSIGNES[age]}|${texte}`)
@@ -92,17 +78,6 @@ async function lireManifeste() {
   } catch {
     return {};
   }
-}
-
-async function versMp3(pcm, destination) {
-  const temporaire = `${destination}.pcm`;
-  await writeFile(temporaire, pcm);
-  await execFileAsync('ffmpeg', [
-    '-y', '-loglevel', 'error',
-    '-f', 's16le', '-ar', '24000', '-ac', '1',
-    '-i', temporaire, '-b:a', '64k', destination,
-  ]);
-  await rm(temporaire);
 }
 
 function aFaire(manifeste) {

@@ -38,6 +38,13 @@ trois niveaux. Un test le vérifie.
 
 ## Ajouter une carte
 
+0. **Vérifier que le sujet n'est pas déjà traité.** Le catalogue compte
+   quatre-vingts cartes, dix par domaine : la plupart des sujets évidents le
+   sont. Un `grep` sur les mots-clés du sujet dans `content/cards/` coûte une
+   minute et évite d'écrire une carte à jeter. Attention aux recouvrements
+   partiels, les plus coûteux : la pression atmosphérique est traitée dans
+   « de quoi est fait l'air », les câbles sous-marins dans « comment marche
+   internet », la conservation de l'énergie dans « les leviers ».
 1. Créer `content/cards/<domaine>/<slug>.ts` sur le modèle de
    [`cycle-de-leau.ts`](content/cards/sciences-de-la-terre/cycle-de-leau.ts) :
    un titre et une suite de beats pour chacun des trois âges.
@@ -45,21 +52,50 @@ trois niveaux. Un test le vérifie.
    `activeBeatId`. Prévoir le rendu `prefersReducedMotion`.
 3. L'enregistrer dans `components/animations/registry.tsx`.
 4. L'ajouter à `content/cards/index.ts`.
+5. Écrire les questions dans `content/quiz/<domaine>.ts` — une par tranche
+   d'âge. `npm run quiz:couverture` signale toute carte oubliée.
+6. `npm run audio` puis `npm run audio:quiz`.
 
 `npm test` échoue si une carte est incomplète, référence un domaine inconnu,
-oublie une tranche d'âge, ou n'a pas d'animation enregistrée.
+oublie une tranche d'âge, n'a pas d'animation enregistrée, ou si un fichier
+audio manque.
+
+Une carte porte une **idée reçue à corriger**, et la mauvaise réponse du quizz
+reprend cette idée reçue. C'est la règle de rédaction de tout le catalogue :
+se tromper devient l'occasion de rectifier une croyance réelle.
+
+### Vérifier les illustrations
+
+```bash
+npm run dev -- -p 3001        # dans un terminal
+npm run audit:illustrations   # dans un autre
+```
+
+L'audit ouvre les quatre-vingts cartes dans un vrai navigateur et mesure la
+position réelle de chaque texte : il attrape les débordements du cadre et les
+légendes qui se recouvrent, que rien d'autre ne voit. À garder pour toute
+nouvelle animation — les collisions arrivent entre légendes de **phases
+différentes**, invisibles à l'œil puisqu'elles ne s'affichent jamais ensemble.
 
 ### Livrer une carte avant son audio
 
-Le quota TTS est journalier (environ cent générations, soit huit cartes). Une
-carte peut donc être livrée avant sa voix : elle bascule en lecture minutée et
-reste utilisable.
+Le quota TTS interactif est journalier, et une vague de huit cartes en fait
+quatre-vingt-seize. Une carte peut donc être livrée avant sa voix : elle
+bascule en lecture minutée et reste utilisable. Un beat manquant ne coupe que
+lui — le reste de la carte garde la narration.
 
 Pour que le garde-fou reste utile, l'attente doit être déclarée dans
 `EN_ATTENTE_AUDIO`, en tête de [`tests/audio.test.ts`](tests/audio.test.ts).
-Toute carte absente de cette liste doit avoir son audio complet. Après un
-`npm run audio` réussi, retirer l'entrée — un test vérifie précisément qu'on ne
-laisse pas traîner dans cette liste une carte dont l'audio existe déjà.
+Toute carte absente de cette liste doit avoir son audio complet, et un test
+vérifie qu'on n'y laisse pas traîner une carte déjà sonorisée.
+
+```bash
+npm run audio:attente   # recalcule la liste depuis les fichiers présents
+```
+
+Tenir cette liste à la main après une génération interrompue en plein milieu
+d'une carte est fastidieux et source d'oublis — or une carte oubliée dedans
+n'est plus vérifiée du tout.
 
 ## Narration
 
@@ -78,8 +114,23 @@ elle s'est arrêtée, ce que l'API de synthèse ne permettait pas de façon fiab
 
 ```bash
 npm run audio               # ne régénère que ce qui a changé
+npm run audio:batch         # même chose, via l'API Batch
+npm run audio:quiz          # les questions du quizz, via l'API Batch
 npm run voix:echantillons   # compare plusieurs voix sur un même texte
 ```
+
+**Les deux API ont des quotas séparés, et c'est décisif en pratique.** Quand
+`npm run audio` répond 429 sur les deux modèles, `npm run audio:batch` produit
+encore : il passe par l'API Batch, qui dispose de son propre quota, coûte
+moitié moins cher, et rend la main au bout de quelques minutes. Le quota
+interactif, lui, se réinitialise à minuit heure du Pacifique — soit 9 h en
+Belgique. Lancer une grosse génération en fin de journée, c'est se heurter au
+mur pour rien.
+
+Le code commun aux générateurs vit dans
+[`scripts/lib/audio.mjs`](scripts/lib/audio.mjs). Il y a été rassemblé après
+qu'un correctif appliqué à une seule des quatre copies eut laissé les autres
+jeter des fichiers valides.
 
 Les deux scripts lisent `GEMINI_API_KEY` depuis `.env.local`, qui n'est **pas**
 suivi par git. La clé ne sert qu'à la génération locale : elle n'est jamais

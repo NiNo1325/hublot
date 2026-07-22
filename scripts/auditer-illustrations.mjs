@@ -3,10 +3,11 @@
  *
  * Usage : npx tsx scripts/auditer-illustrations.mjs [url]
  *
- * Mesure la position réelle de chaque élément via getBBox, plutôt que
- * d'estimer la largeur des textes comme le fait verifier-textes-svg.mjs. Cela
- * permet de détecter ce qu'aucun test ne voit et qu'il serait irréaliste de
- * chercher à l'œil sur quarante cartes :
+ * Mesure la position réelle de chaque élément dans le navigateur, plutôt que
+ * d'estimer la largeur des textes à partir du nombre de caractères — une
+ * approche qui donnait trop de faux positifs et de faux négatifs pour servir.
+ * Cela permet de détecter ce qu'aucun test ne voit, et qu'il serait
+ * irréaliste de chercher à l'œil sur quatre-vingts cartes :
  *
  *   - un texte qui sort du cadre ;
  *   - deux textes qui se recouvrent.

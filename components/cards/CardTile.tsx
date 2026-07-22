@@ -8,8 +8,10 @@ interface CardTileProps {
   ageRange: AgeRange;
   /** Rang dans la grille, pour l'allumage en séquence. */
   index: number;
-  /** Carte déjà ouverte : son hublot s'éteint. */
+  /** Carte déjà écoutée : elle porte la coche de validation. */
   dejaJouee: boolean;
+  /** Hublot éteint. Levé quand tout le catalogue est exploré, la coche restant. */
+  eteinte: boolean;
   onSelect: (card: ScienceCard) => void;
 }
 
@@ -23,8 +25,20 @@ interface CardTileProps {
  * tuile grisée se lirait « indisponible », alors qu'une carte se réécoute
  * autant qu'on veut. Et comme éteindre est une variation de luminance et non
  * de teinte, le repère tient aussi sans distinguer les couleurs.
+ *
+ * S'y ajoute une coche verte, à la demande des utilisateurs : l'extinction dit
+ * « il ne reste rien à faire ici », la coche dit « c'est validé ». Les deux
+ * cohabitent, et la coche apporte un troisième canal — une forme — après la
+ * luminance et le texte pour lecteur d'écran.
  */
-export function CardTile({ card, ageRange, index, dejaJouee, onSelect }: CardTileProps) {
+export function CardTile({
+  card,
+  ageRange,
+  index,
+  dejaJouee,
+  eteinte,
+  onSelect,
+}: CardTileProps) {
   const style = domainStyles[card.domainId];
   const titre = card.content.fr.title[ageRange];
 
@@ -40,14 +54,39 @@ export function CardTile({ card, ageRange, index, dejaJouee, onSelect }: CardTil
         }}
       >
         <span
-          className="flex h-32 w-32 items-center justify-center rounded-full border-4 text-5xl transition-[box-shadow,border-color] duration-500 sm:h-36 sm:w-36"
+          className="relative flex h-32 w-32 items-center justify-center rounded-full border-4 text-5xl transition-[box-shadow,border-color] duration-500 sm:h-36 sm:w-36"
           style={{
-            borderColor: dejaJouee ? 'var(--color-encre-bord)' : style.teinte,
+            borderColor: eteinte ? 'var(--color-encre-bord)' : style.teinte,
             backgroundColor: 'var(--color-encre-clair)',
-            boxShadow: dejaJouee ? 'none' : `0 0 32px ${style.halo}`,
+            boxShadow: eteinte ? 'none' : `0 0 32px ${style.halo}`,
           }}
         >
           {card.thumbnail}
+
+          {/*
+            Posée à quarante-cinq degrés sur l'anneau, en bas à droite : sur un
+            cercle, le coin de la boîte est hors du disque, et la coche y
+            flotterait sans y appartenir. Le liseré couleur du fond la détache
+            de l'anneau quel que soit le domaine.
+          */}
+          {dejaJouee && (
+            <span
+              aria-hidden="true"
+              className="absolute bottom-1 right-1 flex h-7 w-7 items-center justify-center rounded-full border-[3px] border-encre"
+              style={{ backgroundColor: '#34d399' }}
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4">
+                <path
+                  d="M5 13l4.5 4.5L19 7"
+                  fill="none"
+                  stroke="var(--color-encre)"
+                  strokeWidth="3.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          )}
         </span>
 
         {/*

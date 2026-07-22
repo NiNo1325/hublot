@@ -105,6 +105,7 @@ export function DiscoverView({ cards, domains }: DiscoverViewProps) {
       <CardGrid
         cards={cartesVisibles}
         ageRange={ageRange}
+        cartesVues={cartesVues}
         cartesEteintes={cartesEteintes}
         onSelectCard={setCarteOuverte}
       />

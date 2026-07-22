@@ -117,6 +117,27 @@ par la suite existante, et il vaut mieux le dire que de le maquiller.
 
 Ajouter Testing Library est un autre chantier, hors de ce périmètre.
 
+## Révision — la coche verte s'ajoute à l'extinction
+
+Retour d'usage après mise en production : l'extinction seule ne dit pas
+« validé ». Une coche verte a donc été ajoutée en bas à droite du disque, à
+quarante-cinq degrés sur l'anneau.
+
+Cela revient partiellement sur la décision initiale, qui écartait la pastille
+au motif qu'elle récompense au lieu de guider. L'argument tenait tant que la
+pastille *remplaçait* l'extinction ; combinées, elles disent deux choses
+différentes et complémentaires — « il ne reste rien à faire ici » d'une part,
+« c'est acquis » d'autre part. La coche apporte de surcroît un troisième canal
+d'accessibilité, une forme, après la luminance et le texte pour lecteur
+d'écran.
+
+**Conséquence sur le modèle, non évidente au premier abord.** Les deux
+signaux ne reposent plus sur le même ensemble. La règle du catalogue complet
+lève l'extinction quand tout est exploré ; brancher la coche sur cet ensemble
+l'aurait fait disparaître à l'instant précis où l'enfant termine tout.
+`CardGrid` reçoit donc `cartesVues`, qui pilote la coche, et `cartesEteintes`,
+qui pilote l'extinction. Un contrôle navigateur couvre spécifiquement ce cas.
+
 ## Hors périmètre
 
 - Comptes, authentification, synchronisation multi-appareils.

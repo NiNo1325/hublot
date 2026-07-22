@@ -2846,5 +2846,229 @@
   "les-acides-et-les-bases/6-8/echelle": {
     "empreinte": "550b8375798e8ed4",
     "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-mer-est-salee/3-5/roches": {
+    "empreinte": "568e1001f387e696",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/6-8/roches": {
+    "empreinte": "0040864b1edf8290",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-la-mer-est-salee/6-8/rivieres": {
+    "empreinte": "ccb0c3a16d7d8d46",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-la-mer-est-salee/9-12/gout": {
+    "empreinte": "cdc53b7dc1b1ab20",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/3-5/distances": {
+    "empreinte": "3058847da58f8f20",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/3-5/vide": {
+    "empreinte": "da391325b8dbd294",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/6-8/famille": {
+    "empreinte": "7b00715fee707c36",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-planetes/6-8/distances": {
+    "empreinte": "3c66d7006b6adfc0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "le-cerveau/3-5/plasticite": {
+    "empreinte": "a92b13593babdab4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-atomes/3-5/atome": {
+    "empreinte": "40085972d216f0ab",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-atomes/3-5/assembler": {
+    "empreinte": "88c408c5dc8421be",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-atomes/6-8/decouper": {
+    "empreinte": "5c233f5fa8d87548",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/3-5/neutraliser": {
+    "empreinte": "7c308a58d3573e55",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/6-8/piquant": {
+    "empreinte": "a2db6c3ad687712b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/6-8/bases": {
+    "empreinte": "fe75e8485428e4c7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/6-8/neutraliser": {
+    "empreinte": "146abd00917c8c58",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/9-12/piquant": {
+    "empreinte": "36ae0b3008a2d2b1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/9-12/echelle": {
+    "empreinte": "e9a5978f2b26bfe5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/9-12/bases": {
+    "empreinte": "92a91a598fb4cd44",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-acides-et-les-bases/9-12/neutraliser": {
+    "empreinte": "ca6307c2f5bcd176",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/3-5/pedale": {
+    "empreinte": "e9c50d2ddeff0557",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/3-5/adherence": {
+    "empreinte": "7bdb914f88fe7847",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/3-5/bloquer": {
+    "empreinte": "94ccd558d84e44e6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/3-5/carre-vitesse": {
+    "empreinte": "757e864e69b949d6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/6-8/pedale": {
+    "empreinte": "69b61e4367323518",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/6-8/adherence": {
+    "empreinte": "51f0d53fbe357f51",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/6-8/bloquer": {
+    "empreinte": "e6abcae699f168ca",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/6-8/carre-vitesse": {
+    "empreinte": "9073fcc117b26adc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/9-12/pedale": {
+    "empreinte": "82af51c014b8ef21",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/9-12/adherence": {
+    "empreinte": "a99be8713da6fc16",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/9-12/bloquer": {
+    "empreinte": "592611732aa4c374",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-on-freine/9-12/carre-vitesse": {
+    "empreinte": "57752a118d30f6c3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/3-5/zoomer": {
+    "empreinte": "54855b6cca48168f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/3-5/grille": {
+    "empreinte": "96fb698a4189d5ae",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/3-5/inventer": {
+    "empreinte": "f66d4516aa058672",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/3-5/compresser": {
+    "empreinte": "d66e25fadb28dace",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/6-8/zoomer": {
+    "empreinte": "420f5e91329c6ef9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/6-8/grille": {
+    "empreinte": "d3dc71f44dce78ae",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/6-8/inventer": {
+    "empreinte": "379aeda95ca3d6cf",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/6-8/compresser": {
+    "empreinte": "4f92e8c88f9e8ae5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/9-12/zoomer": {
+    "empreinte": "ad1ff39d9705cb4e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/9-12/grille": {
+    "empreinte": "10bbb99b2b27a350",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/9-12/inventer": {
+    "empreinte": "5d2d40ff48f3c750",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-une-photo-devient-floue/9-12/compresser": {
+    "empreinte": "f2c2fc2b9dfe775f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/3-5/part": {
+    "empreinte": "7eb02aecab11384a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/3-5/de-quoi": {
+    "empreinte": "1ea0db72988b051b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/3-5/aller-retour": {
+    "empreinte": "68d70d2f2baf546f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/3-5/points": {
+    "empreinte": "499b1ebe16f4dc0d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/6-8/part": {
+    "empreinte": "744302d0c80e4268",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/6-8/de-quoi": {
+    "empreinte": "3cb99686df16830d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/6-8/aller-retour": {
+    "empreinte": "d16b9564105f9b77",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/6-8/points": {
+    "empreinte": "af7ecd92a123cf54",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/9-12/part": {
+    "empreinte": "a4f619aefcf665c4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/9-12/de-quoi": {
+    "empreinte": "7bde09e5759364d0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/9-12/aller-retour": {
+    "empreinte": "2a8da7e1d7e535bc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-pourcentages/9-12/points": {
+    "empreinte": "b9a4ea4489050b27",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

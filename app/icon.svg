@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hublot">
+  <title>Hublot</title>
+
+  <!--
+    Un hublot vu de face : anneau de laiton, verre sombre, et derrière lui une
+    planète et une étoile. La composition est pensée pour l'onglet du
+    navigateur : à seize pixels, il ne reste que l'anneau doré, le disque
+    sombre et deux taches — vert et blanc — ce qui suffit à distinguer le site.
+    Les rivets et le reflet du verre n'existent que pour les grandes tailles.
+  -->
+
+  <circle cx="32" cy="32" r="30" fill="#ffb627" />
+  <circle cx="32" cy="32" r="26" fill="#c98a12" />
+
+  <!-- Rivets : invisibles dans l'onglet, ils donnent sa matière à l'icône. -->
+  <g fill="#8a5c0d">
+    <circle cx="32" cy="4.4" r="1.7" />
+    <circle cx="51.6" cy="12.4" r="1.7" />
+    <circle cx="59.6" cy="32" r="1.7" />
+    <circle cx="51.6" cy="51.6" r="1.7" />
+    <circle cx="32" cy="59.6" r="1.7" />
+    <circle cx="12.4" cy="51.6" r="1.7" />
+    <circle cx="4.4" cy="32" r="1.7" />
+    <circle cx="12.4" cy="12.4" r="1.7" />
+  </g>
+
+  <!-- Le verre, dans l'encre du site. -->
+  <circle cx="32" cy="32" r="23" fill="#0f1b33" />
+
+  <!-- Ce qu'on voit à travers : une planète, une étoile, une poussière. -->
+  <circle cx="25" cy="39" r="8.5" fill="#34d399" />
+  <path
+    d="M41 17.5c.6 4.5 2 5.9 6.5 6.5-4.5.6-5.9 2-6.5 6.5-.6-4.5-2-5.9-6.5-6.5 4.5-.6 5.9-2 6.5-6.5z"
+    fill="#f5f0e6"
+  />
+  <circle cx="45" cy="38" r="1.6" fill="#f5f0e6" />
+
+  <!-- Reflet sur le verre, en haut à gauche. -->
+  <path
+    d="M14.15 25.5A19 19 0 0 1 25.5 14.15"
+    fill="none"
+    stroke="#f5f0e6"
+    stroke-opacity="0.18"
+    stroke-width="3.5"
+    stroke-linecap="round"
+  />
+</svg>

@@ -43,6 +43,9 @@ next-env.d.ts
 # Sorties de test navigateur
 .playwright-mcp/
 *.png
+# …mais les icônes de l'application en sont, elles : sans cette exception, le
+# raster de l'icône d'accueil disparaîtrait du dépôt sans un mot.
+!app/apple-icon.png
 
 .vercel
 .env*

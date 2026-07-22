@@ -72,6 +72,15 @@ import { FreinageAnimation } from './FreinageAnimation';
 import { ZoomPixelsAnimation } from './ZoomPixelsAnimation';
 import { PourcentagesAnimation } from './PourcentagesAnimation';
 
+import { PetroleAnimation } from './PetroleAnimation';
+import { FaceLuneAnimation } from './FaceLuneAnimation';
+import { OsAnimation } from './OsAnimation';
+import { EnergieAnimation } from './EnergieAnimation';
+import { OdeursAnimation } from './OdeursAnimation';
+import { FrigoAnimation } from './FrigoAnimation';
+import { NavigationPriveeAnimation } from './NavigationPriveeAnimation';
+import { MoyenneAnimation } from './MoyenneAnimation';
+
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
   activeBeatId: string | null;
@@ -152,4 +161,12 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   freinage: FreinageAnimation,
   'zoom-pixels': ZoomPixelsAnimation,
   pourcentages: PourcentagesAnimation,
+  petrole: PetroleAnimation,
+  'face-lune': FaceLuneAnimation,
+  os: OsAnimation,
+  energie: EnergieAnimation,
+  odeurs: OdeursAnimation,
+  frigo: FrigoAnimation,
+  'navigation-privee': NavigationPriveeAnimation,
+  moyenne: MoyenneAnimation,
 };

@@ -340,5 +340,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'dou-vient-le-petrole',
+    questions: {
+      '3-5': [
+        {
+          id: 'petrole-dinos',
+          question: 'Le pétrole vient-il des dinosaures ?',
+          reponses: [
+            { texte: 'Non, de tout petits êtres de la mer', icone: '🌊', correcte: true },
+            { texte: 'Oui, des gros dinosaures', icone: '🦕' },
+          ],
+          explication: 'Il vient du plancton, minuscule, qui flottait dans les océans.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'petrole-origine',
+          question: 'De quoi le pétrole est-il fait, au départ ?',
+          reponses: [
+            { texte: 'De plancton tombé au fond des mers', icone: '🦠', correcte: true },
+            { texte: 'De dinosaures enfouis', icone: '🦕' },
+            { texte: 'De roches fondues', icone: '🌋' },
+          ],
+          explication:
+            'Des algues et des organismes microscopiques, enfouis puis chauffés pendant des millions d’années.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'charbon-petrole',
+          question: 'Le charbon et le pétrole ont-ils la même origine ?',
+          reponses: [
+            { texte: 'Non : des forêts pour l’un, du plancton marin pour l’autre', icone: '🌲', correcte: true },
+            { texte: 'Oui, les deux viennent de forêts', icone: '🌳' },
+            { texte: 'Oui, les deux viennent du plancton', icone: '🦠' },
+          ],
+          explication:
+            'Le charbon vient des forêts du Carbonifère, le pétrole du plancton. Les deux stockent de l’énergie solaire.',
+        },
+      ],
+    },
   },
 ];

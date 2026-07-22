@@ -341,5 +341,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'la-moyenne',
+    questions: {
+      '3-5': [
+        {
+          id: 'moyenne-geant',
+          question: 'Un géant entre dans la classe. La taille moyenne…',
+          reponses: [
+            { texte: 'grandit d’un coup', icone: '📈', correcte: true },
+            { texte: 'ne bouge pas', icone: '🟰' },
+          ],
+          explication: 'Une seule valeur très différente suffit à déplacer la moyenne.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'moyenne-mediane',
+          question: 'Dix personnes ont 20 €, une a 1000 €. Que vaut la médiane ?',
+          reponses: [
+            { texte: '20 €', icone: '🎯', correcte: true },
+            { texte: '109 €', icone: '📊' },
+            { texte: '1000 €', icone: '💰' },
+          ],
+          explication:
+            'La médiane est la valeur du milieu : elle résiste aux extrêmes, contrairement à la moyenne.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'revenu-median',
+          question: 'Pourquoi le revenu moyen dépasse-t-il toujours le revenu médian ?',
+          reponses: [
+            { texte: 'Parce que la distribution est asymétrique vers le haut', icone: '📈', correcte: true },
+            { texte: 'Parce qu’on compte mal les bas revenus', icone: '📉' },
+            { texte: 'C’est une coïncidence statistique', icone: '🎲' },
+          ],
+          explication:
+            'Les très hauts revenus tirent la moyenne vers le haut sans déplacer la médiane d’un centime.',
+        },
+      ],
+    },
   },
 ];

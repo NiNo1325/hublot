@@ -1534,5 +1534,197 @@
   "les-pourcentages/9-12/points-pourcentage-explication": {
     "empreinte": "2c14b5d0972fb9c7",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/3-5/petrole-dinos-question": {
+    "empreinte": "fec7e37b69dc760c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/3-5/petrole-dinos-explication": {
+    "empreinte": "aa23d0cd03a46e2b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/6-8/petrole-origine-question": {
+    "empreinte": "dc60b012f02966eb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/6-8/petrole-origine-explication": {
+    "empreinte": "dd23b6c52423a1fa",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/9-12/charbon-petrole-question": {
+    "empreinte": "770e7dec87409ddb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/9-12/charbon-petrole-explication": {
+    "empreinte": "2a21a3380342ba1b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/3-5/lune-tourne-question": {
+    "empreinte": "20fafd9ed01d5bfe",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/3-5/lune-tourne-explication": {
+    "empreinte": "19689b3e9106d994",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/6-8/meme-face-question": {
+    "empreinte": "7955837c94177240",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/6-8/meme-face-explication": {
+    "empreinte": "47853942621ee288",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/9-12/face-sombre-question": {
+    "empreinte": "327bba3f6126ea62",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/9-12/face-sombre-explication": {
+    "empreinte": "9d2012b328020e63",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/3-5/os-vivants-question": {
+    "empreinte": "6404c8c043c0b18d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/3-5/os-vivants-explication": {
+    "empreinte": "65e804775f80c9b4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/6-8/qui-repare-question": {
+    "empreinte": "60ad7c4738585791",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/6-8/qui-repare-explication": {
+    "empreinte": "cf335fc65b761318",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/9-12/moelle-role-question": {
+    "empreinte": "bd4c1d42bc342545",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/9-12/moelle-role-explication": {
+    "empreinte": "5d9808a1c30c2a04",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/3-5/energie-fabrique-question": {
+    "empreinte": "a7348e9471ae2528",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/6-8/ou-va-energie-question": {
+    "empreinte": "d008e057d50f6894",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/6-8/ou-va-energie-explication": {
+    "empreinte": "4903318f28c57b30",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/9-12/mouvement-perpetuel-question": {
+    "empreinte": "4756d6ae1a8ab205",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/9-12/mouvement-perpetuel-explication": {
+    "empreinte": "57adfecd84cd4d0e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sent/3-5/odeur-quoi-question": {
+    "empreinte": "3cffb66194a283ba",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sent/3-5/odeur-quoi-explication": {
+    "empreinte": "930901c2b89aece4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sent/6-8/odeur-chaud-question": {
+    "empreinte": "fb475a5c0bb89fae",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sent/6-8/odeur-chaud-explication": {
+    "empreinte": "7528568e1816b6d9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sent/9-12/odeur-habitude-question": {
+    "empreinte": "ca0ad5fddfa7234d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "pourquoi-ca-sent/9-12/odeur-habitude-explication": {
+    "empreinte": "4c030137d96b01fe",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-frigo/3-5/frigo-froid-question": {
+    "empreinte": "8e58621191116cdc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-frigo/3-5/frigo-froid-explication": {
+    "empreinte": "c30eff22f7ed08b4",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-frigo/6-8/frigo-porte-question": {
+    "empreinte": "b3c957acf86c7b62",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-frigo/6-8/frigo-porte-explication": {
+    "empreinte": "9eaa106c9097cd98",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-frigo/9-12/frigo-travail-question": {
+    "empreinte": "a4d63716f8ba4050",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "comment-marche-un-frigo/9-12/frigo-travail-explication": {
+    "empreinte": "40f0cab41b923cb2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-navigation-privee/3-5/prive-cache-question": {
+    "empreinte": "caccc95328f49a37",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-navigation-privee/3-5/prive-cache-explication": {
+    "empreinte": "69f42a276048d0bd",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-navigation-privee/6-8/prive-perimetre-question": {
+    "empreinte": "878b53f2072904a7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-navigation-privee/6-8/prive-perimetre-explication": {
+    "empreinte": "8661cd85b5b5b772",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-navigation-privee/9-12/prive-qui-voit-question": {
+    "empreinte": "bb33cd2d8fc60539",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-navigation-privee/9-12/prive-qui-voit-explication": {
+    "empreinte": "0ca4ae89bbd9b599",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-moyenne/3-5/moyenne-geant-question": {
+    "empreinte": "bb0d22a835188ee2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-moyenne/3-5/moyenne-geant-explication": {
+    "empreinte": "f1e9173b82813134",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-moyenne/6-8/moyenne-mediane-question": {
+    "empreinte": "b7c2519de7c62674",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-moyenne/6-8/moyenne-mediane-explication": {
+    "empreinte": "1b041af20e2ccafb",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-moyenne/9-12/revenu-median-question": {
+    "empreinte": "e75db094e466b30f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-moyenne/9-12/revenu-median-explication": {
+    "empreinte": "b1c72c1ef3064d82",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/3-5/energie-fabrique-explication": {
+    "empreinte": "672bcc94e6c084ea",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

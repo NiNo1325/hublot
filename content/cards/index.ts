@@ -8,6 +8,7 @@ import { card as leVent } from './sciences-de-la-terre/le-vent';
 import { card as lesMarees } from './sciences-de-la-terre/les-marees';
 import { card as pourquoiLeCielEstBleu } from './sciences-de-la-terre/pourquoi-le-ciel-est-bleu';
 import { card as pourquoiLaMerEstSalee } from './sciences-de-la-terre/pourquoi-la-mer-est-salee';
+import { card as douVientLePetrole } from './sciences-de-la-terre/dou-vient-le-petrole';
 
 import { card as jourEtNuit } from './astronomie/jour-et-nuit';
 import { card as lesPhasesDeLaLune } from './astronomie/les-phases-de-la-lune';
@@ -17,6 +18,7 @@ import { card as pourquoiLesAstronautesFlottent } from './astronomie/pourquoi-le
 import { card as lesTrousNoirs } from './astronomie/les-trous-noirs';
 import { card as lesEtoilesFilantes } from './astronomie/les-etoiles-filantes';
 import { card as lesPlanetes } from './astronomie/les-planetes';
+import { card as laFaceCacheeDeLaLune } from './astronomie/la-face-cachee-de-la-lune';
 
 import { card as commentPoussentLesPlantes } from './biologie/comment-poussent-les-plantes';
 import { card as leCoeurEtLeSang } from './biologie/le-coeur-et-le-sang';
@@ -26,6 +28,7 @@ import { card as pourquoiOnRessembleASesParents } from './biologie/pourquoi-on-r
 import { card as commentOnRespire } from './biologie/comment-on-respire';
 import { card as leVoyageDeLaNourriture } from './biologie/le-voyage-de-la-nourriture';
 import { card as leCerveau } from './biologie/le-cerveau';
+import { card as lesOs } from './biologie/les-os';
 
 import { card as pourquoiToutTombe } from './physique/pourquoi-tout-tombe';
 import { card as lesAimants } from './physique/les-aimants';
@@ -35,6 +38,7 @@ import { card as lelectricite } from './physique/lelectricite';
 import { card as leChaudEtLeFroid } from './physique/le-chaud-et-le-froid';
 import { card as pourquoiCaSarrete } from './physique/pourquoi-ca-sarrete';
 import { card as lesAtomes } from './physique/les-atomes';
+import { card as lenergie } from './physique/lenergie';
 
 import { card as leVolcanDeVinaigre } from './chimie/le-volcan-de-vinaigre';
 import { card as lesEtatsDeLaMatiere } from './chimie/les-etats-de-la-matiere';
@@ -44,6 +48,7 @@ import { card as leFeu } from './chimie/le-feu';
 import { card as laRouille } from './chimie/la-rouille';
 import { card as pourquoiLeSavonLave } from './chimie/pourquoi-le-savon-lave';
 import { card as lesAcidesEtLesBases } from './chimie/les-acides-et-les-bases';
+import { card as pourquoiCaSent } from './chimie/pourquoi-ca-sent';
 
 import { card as pourquoiLesPontsTiennent } from './ingenierie/pourquoi-les-ponts-tiennent';
 import { card as commentVoleUnAvion } from './ingenierie/comment-vole-un-avion';
@@ -53,6 +58,7 @@ import { card as pourquoiLesBateauxFlottent } from './ingenierie/pourquoi-les-ba
 import { card as lesPoulies } from './ingenierie/les-poulies';
 import { card as commentAvanceUneFusee } from './ingenierie/comment-avance-une-fusee';
 import { card as commentOnFreine } from './ingenierie/comment-on-freine';
+import { card as commentMarcheUnFrigo } from './ingenierie/comment-marche-un-frigo';
 
 import { card as commentCompteUnOrdinateur } from './informatique/comment-compte-un-ordinateur';
 import { card as commentMarcheInternet } from './informatique/comment-marche-internet';
@@ -62,6 +68,7 @@ import { card as commentUneMachineApprend } from './informatique/comment-une-mac
 import { card as commentMarcheUnEcran } from './informatique/comment-marche-un-ecran';
 import { card as lesMotsDePasse } from './informatique/les-mots-de-passe';
 import { card as pourquoiUnePhotoDevientFloue } from './informatique/pourquoi-une-photo-devient-floue';
+import { card as laNavigationPrivee } from './informatique/la-navigation-privee';
 
 import { card as laSymetrie } from './mathematiques/la-symetrie';
 import { card as lesFractales } from './mathematiques/les-fractales';
@@ -71,6 +78,7 @@ import { card as leZero } from './mathematiques/le-zero';
 import { card as lesGrandsNombres } from './mathematiques/les-grands-nombres';
 import { card as leTourEtLaSurface } from './mathematiques/le-tour-et-la-surface';
 import { card as lesPourcentages } from './mathematiques/les-pourcentages';
+import { card as laMoyenne } from './mathematiques/la-moyenne';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -92,6 +100,7 @@ export const cards: ScienceCard[] = [
   lesMarees,
   pourquoiLeCielEstBleu,
   pourquoiLaMerEstSalee,
+  douVientLePetrole,
   jourEtNuit,
   lesPhasesDeLaLune,
   pourquoiIlYADesSaisons,
@@ -100,6 +109,7 @@ export const cards: ScienceCard[] = [
   lesTrousNoirs,
   lesEtoilesFilantes,
   lesPlanetes,
+  laFaceCacheeDeLaLune,
   commentPoussentLesPlantes,
   leCoeurEtLeSang,
   lesMicrobes,
@@ -108,6 +118,7 @@ export const cards: ScienceCard[] = [
   commentOnRespire,
   leVoyageDeLaNourriture,
   leCerveau,
+  lesOs,
   pourquoiToutTombe,
   lesAimants,
   pourquoiOnVoitLesCouleurs,
@@ -116,6 +127,7 @@ export const cards: ScienceCard[] = [
   leChaudEtLeFroid,
   pourquoiCaSarrete,
   lesAtomes,
+  lenergie,
   leVolcanDeVinaigre,
   lesEtatsDeLaMatiere,
   ouVaLeSucreDansLeau,
@@ -124,6 +136,7 @@ export const cards: ScienceCard[] = [
   laRouille,
   pourquoiLeSavonLave,
   lesAcidesEtLesBases,
+  pourquoiCaSent,
   pourquoiLesPontsTiennent,
   commentVoleUnAvion,
   lesLeviers,
@@ -132,6 +145,7 @@ export const cards: ScienceCard[] = [
   lesPoulies,
   commentAvanceUneFusee,
   commentOnFreine,
+  commentMarcheUnFrigo,
   commentCompteUnOrdinateur,
   commentMarcheInternet,
   questCeQuunProgramme,
@@ -140,6 +154,7 @@ export const cards: ScienceCard[] = [
   commentMarcheUnEcran,
   lesMotsDePasse,
   pourquoiUnePhotoDevientFloue,
+  laNavigationPrivee,
   laSymetrie,
   lesFractales,
   leHasard,
@@ -148,4 +163,5 @@ export const cards: ScienceCard[] = [
   lesGrandsNombres,
   leTourEtLaSurface,
   lesPourcentages,
+  laMoyenne,
 ];

@@ -342,5 +342,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'comment-marche-un-frigo',
+    questions: {
+      '3-5': [
+        {
+          id: 'frigo-froid',
+          question: 'Le frigo fabrique-t-il du froid ?',
+          reponses: [
+            { texte: 'Non, il enlève la chaleur', icone: '🌡️', correcte: true },
+            { texte: 'Oui, il fabrique du froid', icone: '❄️' },
+          ],
+          explication: 'Il prend la chaleur qui est dedans et il la met dehors.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'frigo-porte',
+          question: 'Si on laisse la porte du frigo ouverte, la cuisine…',
+          reponses: [
+            { texte: 'se réchauffe', icone: '🔥', correcte: true },
+            { texte: 'se rafraîchit', icone: '🧊' },
+            { texte: 'ne change pas', icone: '🟰' },
+          ],
+          explication:
+            'La chaleur retirée ressort dans la même pièce, augmentée de celle que produit le moteur.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'frigo-travail',
+          question: 'Pourquoi un réfrigérateur a-t-il besoin d’électricité ?',
+          reponses: [
+            { texte: 'Pour faire remonter la chaleur du froid vers le chaud', icone: '⬆️', correcte: true },
+            { texte: 'Pour créer du froid à partir de rien', icone: '❄️' },
+            { texte: 'Pour refroidir l’air par ventilation', icone: '🌀' },
+          ],
+          explication:
+            'Le second principe interdit ce transfert sans apport de travail : c’est le rôle du compresseur.',
+        },
+      ],
+    },
   },
 ];

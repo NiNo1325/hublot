@@ -341,5 +341,47 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'la-face-cachee-de-la-lune',
+    questions: {
+      '3-5': [
+        {
+          id: 'lune-tourne',
+          question: 'La Lune tourne-t-elle sur elle-même ?',
+          reponses: [
+            { texte: 'Oui, elle tourne', icone: '🌝', correcte: true },
+            { texte: 'Non, jamais', icone: '🚫' },
+          ],
+          explication:
+            'Elle tourne, juste à la bonne vitesse pour nous montrer toujours le même côté.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'meme-face',
+          question: 'Pourquoi voit-on toujours la même face de la Lune ?',
+          reponses: [
+            { texte: 'Parce qu’elle tourne pile en un tour d’orbite', icone: '🔄', correcte: true },
+            { texte: 'Parce qu’elle ne tourne pas du tout', icone: '🛑' },
+            { texte: 'Parce que la Terre l’éclaire d’un seul côté', icone: '🔦' },
+          ],
+          explication:
+            'Un corps qui ne tournerait pas sur lui-même nous montrerait toutes ses faces au cours d’une orbite.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'face-sombre',
+          question: 'La face cachée de la Lune est-elle plongée dans le noir ?',
+          reponses: [
+            { texte: 'Non, elle reçoit autant de soleil que l’autre', icone: '☀️', correcte: true },
+            { texte: 'Oui, elle n’est jamais éclairée', icone: '🌑' },
+            { texte: 'Oui, sauf pendant les éclipses', icone: '🌒' },
+          ],
+          explication:
+            'Elle est cachée, pas sombre : elle se trouve en plein jour au moment de la nouvelle Lune.',
+        },
+      ],
+    },
   },
 ];

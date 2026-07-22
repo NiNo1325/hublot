@@ -342,5 +342,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'lenergie',
+    questions: {
+      '3-5': [
+        {
+          id: 'energie-fabrique',
+          question: 'Peut-on fabriquer de l’énergie ?',
+          reponses: [
+            { texte: 'Non, on la change de forme', icone: '🔄', correcte: true },
+            { texte: 'Oui, dans les centrales', icone: '🏭' },
+          ],
+          explication: 'L’énergie ne se fabrique pas : elle change de forme.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'ou-va-energie',
+          question: 'Où va l’énergie qu’on a « consommée » ?',
+          reponses: [
+            { texte: 'Elle est devenue de la chaleur dispersée', icone: '🌡️', correcte: true },
+            { texte: 'Elle a disparu', icone: '🕳️' },
+            { texte: 'Elle est stockée dans les fils', icone: '🔌' },
+          ],
+          explication:
+            'Elle ne disparaît jamais : elle se dégrade en chaleur diffuse, trop diluée pour resservir.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'mouvement-perpetuel',
+          question: 'Pourquoi le mouvement perpétuel est-il impossible ?',
+          reponses: [
+            { texte: 'Parce que chaque conversion dégrade l’énergie', icone: '♻️', correcte: true },
+            { texte: 'Parce qu’on n’a pas encore les bons matériaux', icone: '🔧' },
+            { texte: 'Parce que l’énergie finit par disparaître', icone: '🕳️' },
+          ],
+          explication:
+            'Le second principe l’interdit : l’énergie se conserve, mais sa qualité se dégrade irréversiblement.',
+        },
+      ],
+    },
   },
 ];

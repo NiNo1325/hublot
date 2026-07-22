@@ -3070,5 +3070,389 @@
   "les-pourcentages/9-12/points": {
     "empreinte": "b9a4ea4489050b27",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/3-5/dinosaures": {
+    "empreinte": "af70f5c6c510456c",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/3-5/enfoui": {
+    "empreinte": "bf08924314a00600",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/3-5/epuisable": {
+    "empreinte": "9d0fe1a949dc357a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/6-8/dinosaures": {
+    "empreinte": "7a99ee681e01a902",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/6-8/plancton": {
+    "empreinte": "eea45a12c49ff7c5",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/6-8/enfoui": {
+    "empreinte": "add5f1447fe489a8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/6-8/epuisable": {
+    "empreinte": "2d03ad9183a2310f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/9-12/dinosaures": {
+    "empreinte": "c11790d8c4963a8b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/9-12/plancton": {
+    "empreinte": "e47c362c81f1f085",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/9-12/enfoui": {
+    "empreinte": "aaaee3d76448dfd9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "dou-vient-le-petrole/9-12/epuisable": {
+    "empreinte": "8e02cd8eab2b3a3e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/3-5/toujours-pareille": {
+    "empreinte": "73d563a5ac07f191",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/3-5/elle-tourne": {
+    "empreinte": "778113d85497ebff",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/3-5/verrouillage": {
+    "empreinte": "a36d27134681b256",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/3-5/face-cachee": {
+    "empreinte": "46c20d0069d79c40",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/6-8/toujours-pareille": {
+    "empreinte": "74a1bd4af51e0035",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/6-8/elle-tourne": {
+    "empreinte": "b3593bfa4fdb0ca8",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/6-8/verrouillage": {
+    "empreinte": "2c6c0f191352d4ea",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/6-8/face-cachee": {
+    "empreinte": "be9401758d73fa40",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/9-12/toujours-pareille": {
+    "empreinte": "7df5ec335e19d3e7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/9-12/elle-tourne": {
+    "empreinte": "feef72ba7f3c7ff3",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/9-12/verrouillage": {
+    "empreinte": "675afbbc742ba389",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "la-face-cachee-de-la-lune/9-12/face-cachee": {
+    "empreinte": "f4144ca5ef779ade",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/3-5/pas-morts": {
+    "empreinte": "cc34cf2439395893",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/3-5/vivant": {
+    "empreinte": "6cf598224c8b39e2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/3-5/moelle": {
+    "empreinte": "1651c7c9953e6399",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/3-5/reparation": {
+    "empreinte": "138f13e065bc91a9",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/6-8/pas-morts": {
+    "empreinte": "d6b2688ffa4d1948",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/6-8/vivant": {
+    "empreinte": "8587a7261c4f5f9a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/6-8/moelle": {
+    "empreinte": "1551374d3c357e94",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/6-8/reparation": {
+    "empreinte": "22761d40d6f15f59",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/9-12/pas-morts": {
+    "empreinte": "27e6a19ef9db402a",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/9-12/vivant": {
+    "empreinte": "c32470adbda4589b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/9-12/moelle": {
+    "empreinte": "164fc35eb8d394bc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "les-os/9-12/reparation": {
+    "empreinte": "3bc1893bd9e3899f",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/3-5/produire": {
+    "empreinte": "5ab37d00fde75492",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/3-5/conserver": {
+    "empreinte": "a32a333795e0b07b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/3-5/degrader": {
+    "empreinte": "e4d2aff4934f4574",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/3-5/soleil": {
+    "empreinte": "427544645a07b0c6",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/6-8/produire": {
+    "empreinte": "321dcc291f3a1f51",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/6-8/conserver": {
+    "empreinte": "7a34a0cfca3bd7ed",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/6-8/degrader": {
+    "empreinte": "67a7eddd6e4764ce",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/6-8/soleil": {
+    "empreinte": "16eba90ada1662e2",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/9-12/produire": {
+    "empreinte": "98b8ec0fa7cf07db",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/9-12/conserver": {
+    "empreinte": "f016e7340bf68cad",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/9-12/degrader": {
+    "empreinte": "456616b8292c56b7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "lenergie/9-12/soleil": {
+    "empreinte": "3fdae9580584558b",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/3-5/molecules": {
+    "empreinte": "c4cd11477817274a",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/3-5/voyage": {
+    "empreinte": "4a80ab05861b3ce7",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/3-5/nez": {
+    "empreinte": "ec24edf5baddab26",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/3-5/habitude": {
+    "empreinte": "8df53fba834b28af",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/6-8/molecules": {
+    "empreinte": "901618d8b85ba240",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/6-8/voyage": {
+    "empreinte": "aba4511d2e816f79",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/6-8/nez": {
+    "empreinte": "2fb03b02918f4a33",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/6-8/habitude": {
+    "empreinte": "bd20782647b2dd1e",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/9-12/molecules": {
+    "empreinte": "7f9d569d2c8a0bfa",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/9-12/voyage": {
+    "empreinte": "7443a796e151c0ec",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/9-12/nez": {
+    "empreinte": "8670bb8a9d7bebe4",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "pourquoi-ca-sent/9-12/habitude": {
+    "empreinte": "e8297412e6f4eb96",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/3-5/pas-de-froid": {
+    "empreinte": "d599681fbcca6b6e",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/3-5/deplacer": {
+    "empreinte": "7cb118b8c619e5dd",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/3-5/grille-chaude": {
+    "empreinte": "f8c4608d32073aeb",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/3-5/porte-ouverte": {
+    "empreinte": "0cc8bcf035c5e060",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/6-8/pas-de-froid": {
+    "empreinte": "1154c190339850cc",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/6-8/deplacer": {
+    "empreinte": "3bede2bd9366a200",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/6-8/grille-chaude": {
+    "empreinte": "68d1f102706edc8e",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/6-8/porte-ouverte": {
+    "empreinte": "1dbbe3923532cce3",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/9-12/pas-de-froid": {
+    "empreinte": "4e9d328d798cadba",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/9-12/deplacer": {
+    "empreinte": "30ec7622852af0ca",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/9-12/grille-chaude": {
+    "empreinte": "c5c72b576f8b9391",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "comment-marche-un-frigo/9-12/porte-ouverte": {
+    "empreinte": "e40199f5c5c061f8",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/3-5/promesse": {
+    "empreinte": "b59b1877dd3e1d84",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/3-5/local": {
+    "empreinte": "8282805726c7bf62",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/3-5/qui-voit": {
+    "empreinte": "f12f23cce9a6bdd6",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/3-5/vraiment": {
+    "empreinte": "f9bbd14e454bd052",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/6-8/promesse": {
+    "empreinte": "f1dee44452b803ea",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/6-8/local": {
+    "empreinte": "4d15c056a52239a1",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/6-8/qui-voit": {
+    "empreinte": "831aa02560d250c0",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/6-8/vraiment": {
+    "empreinte": "18f3673d0d86d37d",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/9-12/promesse": {
+    "empreinte": "a423af598dd094ea",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/9-12/local": {
+    "empreinte": "7d52190f4d90ac7d",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/9-12/qui-voit": {
+    "empreinte": "7d67913f4d4d67a3",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-navigation-privee/9-12/vraiment": {
+    "empreinte": "7a8685c034f24df7",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/3-5/calcul": {
+    "empreinte": "05ef610479cc3603",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/3-5/trompe": {
+    "empreinte": "d3174b99177fe665",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/3-5/mediane": {
+    "empreinte": "7c50a1fa7d5b6b17",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/3-5/dispersion": {
+    "empreinte": "404c2e375c6fdc35",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/6-8/calcul": {
+    "empreinte": "996af33973e1ce5f",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/6-8/trompe": {
+    "empreinte": "16dffee4d52c79aa",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/6-8/mediane": {
+    "empreinte": "43bb7cf6f9b7cc41",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/6-8/dispersion": {
+    "empreinte": "7947872a8ab730f4",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/9-12/calcul": {
+    "empreinte": "dd431b3154ea2dd1",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/9-12/trompe": {
+    "empreinte": "66fa48e2b11d7885",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/9-12/mediane": {
+    "empreinte": "c133783a63dc91a5",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "la-moyenne/9-12/dispersion": {
+    "empreinte": "2e49d93e96c18521",
+    "modele": "gemini-2.5-pro-preview-tts"
+  },
+  "dou-vient-le-petrole/3-5/plancton": {
+    "empreinte": "57bfcd44ba08566c",
+    "modele": "gemini-2.5-pro-preview-tts"
   }
 }

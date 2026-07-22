@@ -1918,5 +1918,77 @@
   "le-paradoxe-des-anniversaires/9-12/paires-carre-explication": {
     "empreinte": "cb452f1f09cc9b71",
     "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/3-5/juste-1": {
+    "empreinte": "eb019b378d630370",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/3-5/juste-2": {
+    "empreinte": "9a28ff455e6dae6b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/3-5/juste-3": {
+    "empreinte": "d0ca3e229dda79a7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/3-5/presque-1": {
+    "empreinte": "b8b44ad538e87c2d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/3-5/presque-3": {
+    "empreinte": "a8d4f6d32970805b",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/6-8/juste-1": {
+    "empreinte": "1d2a55287b546f9d",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/6-8/juste-2": {
+    "empreinte": "888eec69ddead651",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/6-8/juste-3": {
+    "empreinte": "a057234425b78287",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/6-8/presque-1": {
+    "empreinte": "22ea014d3d0c1ad1",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/6-8/presque-2": {
+    "empreinte": "288bcc3a56334ff7",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/6-8/presque-3": {
+    "empreinte": "bd2a38e1826eb337",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/9-12/juste-1": {
+    "empreinte": "2e9dd9d7d3156041",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/9-12/juste-2": {
+    "empreinte": "cdc4edbbefa4e776",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/9-12/juste-3": {
+    "empreinte": "b0d42bc53352cfdc",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/9-12/presque-1": {
+    "empreinte": "bea6aedd26facc2e",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/9-12/presque-2": {
+    "empreinte": "7cde3bd3e0754aa0",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/9-12/presque-3": {
+    "empreinte": "2fd452bf32ac9287",
+    "modele": "gemini-3.1-flash-tts-preview"
+  },
+  "_verdicts/3-5/presque-2": {
+    "empreinte": "b8fe62ea560ccd79",
+    "modele": "gemini-3.1-flash-tts-preview"
   }
 }

@@ -8,6 +8,7 @@ import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useQuizAudio } from './useQuizAudio';
 import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
+import { ordreLecture } from '@/content/quiz/ordre';
 
 interface QuizViewProps {
   cards: ScienceCard[];
@@ -49,7 +50,7 @@ export function QuizView({ cards }: QuizViewProps) {
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
 
-  const { jouer, arreter, enLecture } = useQuizAudio(ageRange ?? '6-8');
+  const { jouer, jouerVerdict, arreter, enLecture } = useQuizAudio(ageRange ?? '6-8');
   const [serie, setSerie] = useState<Tirage[] | null>(null);
   const [index, setIndex] = useState(0);
   const [choisie, setChoisie] = useState<number | null>(null);
@@ -71,11 +72,22 @@ export function QuizView({ cards }: QuizViewProps) {
     jouer(tirageCourant.carte.id, tirageCourant.question.id, 'question');
   }, [tirageCourant, ageRange, jouer]);
 
-  /* Propositions mélangées une fois par question, jamais à chaque rendu. */
+  /*
+    Ordre des propositions. Pour les 3-5 ans, l'énoncé est un mp3 figé qui les
+    lit dans l'ordre de `ordreLecture` : un tirage aléatoire ici ferait
+    annoncer une proposition quand l'écran en montre une autre — une fois sur
+    deux, puisqu'ils n'en ont que deux. L'affichage suit donc la voix.
+
+    Aux autres âges, l'audio n'énonce pas les propositions : le mélange reste
+    utile, il empêche de retenir une position d'une partie à l'autre.
+  */
   const propositions = useMemo(() => {
     const tirage = serie?.[index];
-    return tirage ? melanger(tirage.question.reponses) : [];
-  }, [serie, index]);
+    if (!tirage) return [];
+    return ageRange === '3-5'
+      ? ordreLecture(tirage.question)
+      : melanger(tirage.question.reponses);
+  }, [serie, index, ageRange]);
 
   if (status === 'chargement' || !ageRange) return null;
 
@@ -232,7 +244,11 @@ export function QuizView({ cards }: QuizViewProps) {
                 onClick={() => {
                   setChoisie(i);
                   if (reponse.correcte) setReussies((n) => n + 1);
-                  jouer(tirage.carte.id, tirage.question.id, 'explication');
+                  jouerVerdict(
+                    tirage.carte.id,
+                    tirage.question.id,
+                    reponse.correcte ? 'juste' : 'presque',
+                  );
                 }}
                 className="flex min-h-20 w-full cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 text-left transition-transform hover:scale-[1.02] active:scale-95 disabled:cursor-default disabled:hover:scale-100"
                 style={{

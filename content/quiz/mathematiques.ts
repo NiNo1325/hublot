@@ -382,5 +382,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'le-paradoxe-des-anniversaires',
+    questions: {
+      '3-5': [
+        {
+          id: 'deux-anniversaires',
+          question: 'Deux enfants de ta classe, même anniversaire ?',
+          reponses: [
+            { texte: 'Ça arrive souvent', icone: '🎂', correcte: true },
+            { texte: 'C’est presque impossible', icone: '🚫' },
+          ],
+          explication: 'Il faut comparer tout le monde deux par deux : ça fait beaucoup d’occasions.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'combien-personnes',
+          question: 'Combien faut-il de personnes pour une chance sur deux ?',
+          reponses: [
+            { texte: 'Vingt-trois', icone: '🎯', correcte: true },
+            { texte: 'Cent quatre-vingts', icone: '💯' },
+            { texte: 'Trois cent soixante-cinq', icone: '📅' },
+          ],
+          explication:
+            'Vingt-trois personnes forment deux cent cinquante-trois paires : autant d’occasions de coïncider.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'paires-carre',
+          question: 'Pourquoi vingt-trois personnes suffisent-elles ?',
+          reponses: [
+            { texte: 'Le nombre de paires croît comme le carré de l’effectif', icone: '📐', correcte: true },
+            { texte: 'Parce que certains jours sont plus fréquents', icone: '📅' },
+            { texte: 'Parce que l’année ne fait que 365 jours', icone: '🗓️' },
+          ],
+          explication:
+            'Deux cent cinquante-trois paires à vingt-trois personnes, mille deux cent vingt-cinq à cinquante. L’intuition, elle, raisonne linéairement.',
+        },
+      ],
+    },
   },
 ];

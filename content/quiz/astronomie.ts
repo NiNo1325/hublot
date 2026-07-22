@@ -383,5 +383,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'les-eclipses',
+    questions: {
+      '3-5': [
+        {
+          id: 'eclipse-rare',
+          question: 'Y a-t-il une éclipse tous les mois ?',
+          reponses: [
+            { texte: 'Non, c’est rare', icone: '🕶️', correcte: true },
+            { texte: 'Oui, chaque mois', icone: '📅' },
+          ],
+          explication: 'La Lune passe presque toujours un peu au-dessus ou un peu en dessous.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'pourquoi-rare',
+          question: 'Pourquoi n’y a-t-il pas une éclipse à chaque pleine Lune ?',
+          reponses: [
+            { texte: 'L’orbite de la Lune est penchée', icone: '📐', correcte: true },
+            { texte: 'La Lune est trop petite', icone: '🌙' },
+            { texte: 'Les nuages nous en empêchent', icone: '☁️' },
+          ],
+          explication:
+            'Inclinée d’environ cinq degrés, elle passe le plus souvent à côté de l’alignement.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'lune-rouge',
+          question: 'Pourquoi la Lune devient-elle rouge pendant une éclipse ?',
+          reponses: [
+            { texte: 'L’atmosphère terrestre réfracte et rougit la lumière', icone: '🌅', correcte: true },
+            { texte: 'Elle chauffe en entrant dans l’ombre', icone: '🔥' },
+            { texte: 'Sa surface contient beaucoup de fer', icone: '🪨' },
+          ],
+          explication:
+            'Ce qui l’éclaire alors, c’est la somme de tous les levers et couchers de soleil de la Terre.',
+        },
+      ],
+    },
   },
 ];

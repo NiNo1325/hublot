@@ -381,5 +381,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'pourquoi-la-glace-flotte',
+    questions: {
+      '3-5': [
+        {
+          id: 'glacon-flotte',
+          question: 'Un glaçon dans l’eau, il fait quoi ?',
+          reponses: [
+            { texte: 'Il flotte', icone: '🧊', correcte: true },
+            { texte: 'Il coule au fond', icone: '⬇️' },
+          ],
+          explication: 'La glace est plus légère que l’eau, alors elle reste tout en haut.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'glace-place',
+          question: 'En gelant, l’eau prend…',
+          reponses: [
+            { texte: 'plus de place', icone: '📈', correcte: true },
+            { texte: 'moins de place', icone: '📉' },
+            { texte: 'exactement la même place', icone: '🟰' },
+          ],
+          explication:
+            'Environ neuf pour cent de plus — d’où la bouteille pleine qui éclate au congélateur.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'lac-gele',
+          question: 'Si la glace coulait, que deviendraient les lacs ?',
+          reponses: [
+            { texte: 'Ils gèleraient depuis le fond, tuant ce qui y vit', icone: '🐟', correcte: true },
+            { texte: 'Rien de particulier', icone: '🟰' },
+            { texte: 'Ils gèleraient simplement plus lentement', icone: '🐢' },
+          ],
+          explication:
+            'La glace flottante isole la colonne d’eau, qui reste liquide autour de quatre degrés au fond.',
+        },
+      ],
+    },
   },
 ];

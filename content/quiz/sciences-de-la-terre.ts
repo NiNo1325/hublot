@@ -381,5 +381,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'le-sol-est-vivant',
+    questions: {
+      '3-5': [
+        {
+          id: 'terre-vivante',
+          question: 'La terre du jardin, c’est vivant ?',
+          reponses: [
+            { texte: 'Oui, pleine de bêtes dedans', icone: '🪱', correcte: true },
+            { texte: 'Non, c’est de la poussière', icone: '🌫️' },
+          ],
+          explication: 'Une seule poignée contient plus d’habitants que la Terre n’a d’humains.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'combien-habitants',
+          question: 'Combien d’êtres vivants dans une cuillerée de sol ?',
+          reponses: [
+            { texte: 'Des milliards', icone: '🦠', correcte: true },
+            { texte: 'Quelques dizaines', icone: '🔟' },
+            { texte: 'Aucun, sauf un ver de temps en temps', icone: '🪱' },
+          ],
+          explication:
+            'Bactéries et champignons s’y comptent par milliards, et par kilomètres de filaments.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'sol-renouvelable',
+          question: 'Le sol est-il une ressource renouvelable ?',
+          reponses: [
+            { texte: 'Pas à notre échelle : un siècle par centimètre', icone: '⏳', correcte: true },
+            { texte: 'Oui, il se reforme chaque année', icone: '🔁' },
+            { texte: 'Oui, il suffit d’ajouter de l’engrais', icone: '🧪' },
+          ],
+          explication:
+            'La formation d’un sol produit environ un centimètre par siècle ; l’érosion peut l’emporter en quelques années.',
+        },
+      ],
+    },
   },
 ];

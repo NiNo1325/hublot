@@ -383,5 +383,46 @@ export const quiz: QuizCarte[] = [
         },
       ],
     },
+  },  {
+    cardId: 'levolution',
+    questions: {
+      '3-5': [
+        {
+          id: 'singe-grand-parent',
+          question: 'L’humain vient-il du singe ?',
+          reponses: [
+            { texte: 'Non, on a un grand-parent commun', icone: '👵', correcte: true },
+            { texte: 'Oui, directement', icone: '🐒' },
+          ],
+          explication: 'Comme deux cousins : un ancêtre commun, mais l’un ne vient pas de l’autre.',
+        },
+      ],
+      '6-8': [
+        {
+          id: 'girafe-cou',
+          question: 'Comment la girafe a-t-elle eu un si long cou ?',
+          reponses: [
+            { texte: 'Celles nées avec un cou plus long ont eu plus de petits', icone: '🦒', correcte: true },
+            { texte: 'À force de tendre le cou vers les feuilles', icone: '🌿' },
+            { texte: 'Parce qu’elle en avait besoin', icone: '🎯' },
+          ],
+          explication:
+            'Un individu ne s’adapte pas de son vivant : c’est la descendance qui change, sur des milliers de générations.',
+        },
+      ],
+      '9-12': [
+        {
+          id: 'evolution-but',
+          question: 'L’évolution poursuit-elle un but ?',
+          reponses: [
+            { texte: 'Non, aucun — et elle ne garantit aucun progrès', icone: '🎲', correcte: true },
+            { texte: 'Oui, la perfection de chaque espèce', icone: '✨' },
+            { texte: 'Oui, l’intelligence', icone: '🧠' },
+          ],
+          explication:
+            'Plus de quatre-vingt-dix-neuf pour cent des espèces ayant existé sont éteintes. Parler d’espèce « plus évoluée » n’a pas de sens.',
+        },
+      ],
+    },
   },
 ];

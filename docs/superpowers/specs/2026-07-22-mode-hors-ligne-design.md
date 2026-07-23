@@ -95,11 +95,50 @@ lorsque le stockage refuse.
 - **Mise à jour disponible** : les fichiers déjà présents restent utilisables ;
   rien ne se télécharge sans un geste du parent.
 
+## Addendum du 23/07/2026 — le différentiel de mise à jour
+
+L'écran annonçait déjà « Mise à jour disponible » dans son design, mais rien ne
+le calculait. Deux manques comblés ici.
+
+**Détecter ce qui a changé.** `manquants()` ne testait que le chemin. Or un
+texte corrigé produit un mp3 au même chemin : le cache en garde l'ancienne
+version, et la détection ne voyait rien. La comparaison passe donc aux
+empreintes, que le catalogue porte déjà.
+
+**Où mémoriser les empreintes installées.** Le hook s'interdit tout drapeau
+mémorisé à côté du cache — il survivrait à un vidage système et mentirait. Les
+empreintes installées vivent donc *dans* le cache audio, sous une clé
+sentinelle (`/audio/.installe.json`) : chemin → empreinte de ce qui a été
+délibérément téléchargé. Un vidage du cache emporte la sentinelle, et l'app
+retombe honnêtement sur « à télécharger ». Le service worker n'est pas touché,
+la sentinelle n'étant jamais demandée par le réseau, seulement lue directement.
+
+**Le calcul.** À l'ouverture de l'écran hors-ligne, le hook charge le catalogue
+en ligne et lit la sentinelle. Le delta = fichiers absents (cartes nouvelles)
+ou dont l'empreinte a changé (textes corrigés). Son poids donne le « — X Mo ».
+Hors réseau, le chargement du catalogue échoue et aucune fausse alerte
+n'apparaît : l'état installé est conservé.
+
+**L'état `maj`.** Quand un delta existe par-dessus une installation antérieure,
+l'écran affiche « Mise à jour disponible — X Mo » et un bouton qui ne télécharge
+que le delta, puis rafraîchit la sentinelle. Les fichiers présents restent
+jouables pendant ce temps.
+
+**Fin d'un piège d'exploitation.** `npm run audio:catalogue` devait être relancé
+à la main après chaque génération, sous peine d'ignorer les nouveaux fichiers.
+Les trois scripts de génération le rappellent désormais en fin de course — le
+catalogue scanne le disque, donc il reste juste même après une génération
+partielle.
+
 ## Vérification
 
 Le contrôle qui décide est reproductible : installer, télécharger, **couper le
 réseau, recharger à froid**, ouvrir une carte et vérifier que la narration se
 déroule. Playwright sait couper le réseau, ce test sera donc automatisé.
+
+Pour le différentiel : télécharger, altérer une empreinte du catalogue, vérifier
+que l'écran passe à « mise à jour disponible » avec le bon poids, mettre à jour,
+et retrouver « prêt hors connexion ».
 
 S'y ajoute un test unitaire sur la fraîcheur du catalogue.
 
@@ -109,4 +148,5 @@ S'y ajoute un test unitaire sur la fraîcheur du catalogue.
   administratif, et non nécessaire à l'usage visé.
 - Téléchargement sélectif par domaine ou par âge.
 - Lecture audio en arrière-plan, écran verrouillé.
-- Mise à jour automatique du contenu.
+- Mise à jour automatique du contenu : elle est signalée, jamais appliquée
+  sans un geste du parent.

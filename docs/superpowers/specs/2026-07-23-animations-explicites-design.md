@@ -1,7 +1,7 @@
 # Animations explicites : montrer le mécanisme, pas seulement le résultat
 
 Date : 2026-07-23
-Statut : grille approuvée, audit en cours
+Statut : audit terminé (80/80), deux corrections retenues
 
 ## Le problème
 
@@ -44,19 +44,32 @@ avant d'ajouter — l'objectif est la clarté, pas l'accumulation.
 Le mode `prefers-reduced-motion` doit rester traité : les flèches sont alors
 statiques, comme le reste.
 
-## Méthode d'audit
+## Méthode et résultat de l'audit
 
-Classement des 80 animations en trois paniers, par lecture du code croisée avec
-le texte des beats, captures à l'appui pour les cas litigieux :
+Les 80 animations lues une par une, code croisé avec le texte des beats,
+captures à l'appui pour les cas litigieux. Résultat sans appel : **deux
+animations en défaut, exactement les deux signalées par l'usage.** Les
+soixante-dix-huit autres appliquent la grille avec une constance remarquable —
+flèches de force, cas contrastés, réfutations visuelles.
 
-| Panier | Sens | Suite |
+| Panier | Cartes | Détail |
 |---|---|---|
-| **Contredit la voix** | Le visuel dit l'inverse du texte | Correction d'office |
-| **Ne montre que le résultat** | Effet visible, cause absente | À enrichir |
-| **Montre déjà le mécanisme** | Cause et contraste présents | Rien à faire |
+| **Contredit la voix** | `aimants` | Les barreaux qui se font face montrent S↔S (pôles identiques), la voix dit « pôles opposés : ils s'attirent », et le mouvement les écarte comme une répulsion. Aucune flèche |
+| **Ne montre que le résultat** | `gravité` (`pourquoi-tout-tombe`) | La plume tombe plus lentement avec l'air, mais rien ne montre pourquoi : pas de flèche de résistance vers le haut, et le contraste Terre/Lune n'est qu'une étiquette texte |
+| **Montre déjà le mécanisme** | les 78 autres | Rien à faire |
 
-L'audit dit l'ampleur réelle. Le périmètre des corrections est décidé ensuite,
-au vu du tableau — il fera l'objet de son propre plan.
+Que ce soient les deux plus anciennes cartes du projet n'est pas un hasard :
+elles précèdent l'installation du réflexe « montrer la cause », que toutes les
+suivantes ont appliqué.
+
+## Corrections retenues
+
+- **Aimants** : deux paires côte à côte — S↔S avec des flèches divergentes qui
+  repoussent, N↔S avec des flèches convergentes qui collent. Fin du mouvement
+  et du texte contradictoires.
+- **Plume** : sur Terre, une flèche « air » vers le haut sur la plume, plus
+  courte sur la bille ; sur la Lune, aucune flèche, et les deux tombent
+  ensemble. La différence de flèches devient l'explication.
 
 ## Hors périmètre pour l'instant
 

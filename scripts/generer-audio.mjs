@@ -20,6 +20,7 @@ import {
   cle,
   versMp3,
 } from './lib/audio.mjs';
+import { ecrireCatalogue } from './catalogue-audio.mjs';
 
 /*
   Modèles par ordre de préférence. Le quota est compté séparément pour chacun :
@@ -191,4 +192,6 @@ function resumer(parModele, inchanges, echecs) {
   }
 }
 
-main();
+// Le catalogue hors-ligne est régénéré à la suite, même après une génération
+// partielle : il scanne le disque, donc il reflète toujours l'état réel.
+main().then(ecrireCatalogue);

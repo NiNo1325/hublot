@@ -59,15 +59,17 @@ export function AgeGate() {
   */
   const { resume: horsLigne } = useHorsLigne();
   const libelleHorsLigne =
-    horsLigne.etat === 'complet'
-      ? 'Prêt hors connexion'
-      : horsLigne.etat === 'telechargement'
-        ? `Téléchargement… ${Math.round((horsLigne.octetsPresents / horsLigne.octetsTotal) * 100)} %`
-        : horsLigne.etat === 'partiel'
-          ? 'Téléchargement incomplet'
-          : horsLigne.octetsTotal > 0
-            ? `Écouter sans internet — ${enMo(horsLigne.octetsTotal)}`
-            : 'Écouter sans internet';
+    horsLigne.etat === 'maj'
+      ? `Mise à jour disponible — ${enMo(horsLigne.octetsDelta)}`
+      : horsLigne.etat === 'complet'
+        ? 'Prêt hors connexion'
+        : horsLigne.etat === 'telechargement'
+          ? `Téléchargement… ${Math.round((horsLigne.octetsPresents / horsLigne.octetsTotal) * 100)} %`
+          : horsLigne.etat === 'partiel'
+            ? 'Téléchargement incomplet'
+            : horsLigne.octetsTotal > 0
+              ? `Écouter sans internet — ${enMo(horsLigne.octetsTotal)}`
+              : 'Écouter sans internet';
 
   useEffect(() => {
     if (!confirmation) return;

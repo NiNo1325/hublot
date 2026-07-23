@@ -11,11 +11,13 @@ export function enMo(octets: number): string {
 export function HorsLigneView() {
   const router = useRouter();
   const { resume, telecharger, supprimer } = useHorsLigne();
-  const { etat, octetsPresents, octetsTotal, persistant, erreur } = resume;
+  const { etat, octetsPresents, octetsTotal, octetsDelta, persistant, erreur } =
+    resume;
 
   const pourcent =
     octetsTotal > 0 ? Math.round((octetsPresents / octetsTotal) * 100) : 0;
   const enCours = etat === 'telechargement';
+  const maj = etat === 'maj';
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-6 py-10">
@@ -60,14 +62,28 @@ export function HorsLigneView() {
           </div>
 
           <p className="font-display text-lg">
-            {etat === 'complet'
-              ? `Prêt hors connexion — ${enMo(octetsTotal)}`
-              : enCours
-                ? `Téléchargement… ${enMo(octetsPresents)} sur ${enMo(octetsTotal)}`
-                : etat === 'partiel'
-                  ? `Incomplet — ${enMo(octetsPresents)} sur ${enMo(octetsTotal)}`
-                  : `À télécharger — ${enMo(octetsTotal)}`}
+            {maj
+              ? `Mise à jour disponible — ${enMo(octetsDelta)}`
+              : etat === 'complet'
+                ? `Prêt hors connexion — ${enMo(octetsTotal)}`
+                : enCours
+                  ? `Téléchargement… ${enMo(octetsPresents)} sur ${enMo(octetsTotal)}`
+                  : etat === 'partiel'
+                    ? `Incomplet — ${enMo(octetsPresents)} sur ${enMo(octetsTotal)}`
+                    : `À télécharger — ${enMo(octetsTotal)}`}
           </p>
+
+          {/*
+            Une mise à jour ne remet pas tout en cause : les cartes déjà là
+            restent jouables. On le dit, pour que le parent sache qu'il peut
+            attendre le wifi sans rien casser.
+          */}
+          {maj && (
+            <p className="text-sm text-craie-douce">
+              Les cartes déjà téléchargées restent utilisables. La mise à jour
+              ne récupère que ce qui a changé.
+            </p>
+          )}
 
           {erreur && <p className="text-sm text-soleil">{erreur}</p>}
 
@@ -81,9 +97,11 @@ export function HorsLigneView() {
               >
                 {enCours
                   ? 'Téléchargement en cours…'
-                  : etat === 'partiel'
-                    ? 'Reprendre le téléchargement'
-                    : 'Tout télécharger'}
+                  : maj
+                    ? 'Mettre à jour'
+                    : etat === 'partiel'
+                      ? 'Reprendre le téléchargement'
+                      : 'Tout télécharger'}
               </button>
             )}
 

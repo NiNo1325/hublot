@@ -5,6 +5,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 const CACHE_AUDIO = 'hublot-audio';
 const CATALOGUE = '/audio/catalogue.json';
 
+/**
+ * Sentinelle : les empreintes de ce qui a été délibérément téléchargé, plus un
+ * drapeau « installation complète ». Elle vit DANS le cache audio, sous cette
+ * clé, et non dans localStorage : un vidage du cache par le système l'emporte
+ * avec les fichiers, et l'app retombe honnêtement sur « à télécharger » au lieu
+ * d'annoncer un hors-ligne fantôme.
+ */
+const SENTINELLE = '/audio/.installe.json';
+
 /** Requêtes menées de front. Six est le plafond usuel par domaine en HTTP/1.1. */
 const CONCURRENCE = 6;
 
@@ -14,20 +23,31 @@ export interface FichierAudio {
   empreinte: string | null;
 }
 
+interface Sentinelle {
+  /** chemin → empreinte de ce qui est installé. */
+  empreintes: Record<string, string | null>;
+  /** Le dernier téléchargement a-t-il couvert tout le catalogue ? */
+  complet: boolean;
+}
+
 export type EtatHorsLigne =
   | 'inconnu'
   | 'indisponible'
   | 'rien'
   | 'partiel'
   | 'complet'
+  /** Installation complète, mais du contenu a changé depuis. */
+  | 'maj'
   | 'telechargement';
 
 export interface ResumeHorsLigne {
   etat: EtatHorsLigne;
-  /** Octets déjà en cache. */
+  /** Octets installés et à jour. */
   octetsPresents: number;
   /** Octets du catalogue complet. */
   octetsTotal: number;
+  /** Octets à récupérer : nouveaux fichiers plus fichiers modifiés. */
+  octetsDelta: number;
   /**
    * Le navigateur garantit-il de ne pas évincer ce cache ?
    *
@@ -91,19 +111,49 @@ async function chargerCatalogue(): Promise<FichierAudio[]> {
   return donnees.fichiers as FichierAudio[];
 }
 
-/**
- * Ce qui manque au cache.
- *
- * L'appartenance se teste par `cache.match`, jamais par un drapeau mémorisé à
- * côté : un drapeau survivrait à un vidage de cache par le système et
- * annoncerait « prêt hors connexion » devant une application muette.
- */
-async function manquants(fichiers: FichierAudio[]): Promise<FichierAudio[]> {
+async function lireSentinelle(): Promise<Sentinelle> {
   const cache = await caches.open(CACHE_AUDIO);
-  const presents = new Set(
-    (await cache.keys()).map((requete) => new URL(requete.url).pathname),
+  const reponse = await cache.match(SENTINELLE);
+  if (!reponse) return { empreintes: {}, complet: false };
+  try {
+    const donnees = await reponse.json();
+    return {
+      empreintes: donnees.empreintes ?? {},
+      complet: Boolean(donnees.complet),
+    };
+  } catch {
+    return { empreintes: {}, complet: false };
+  }
+}
+
+async function ecrireSentinelle(sentinelle: Sentinelle): Promise<void> {
+  const cache = await caches.open(CACHE_AUDIO);
+  await cache.put(
+    SENTINELLE,
+    new Response(JSON.stringify(sentinelle), {
+      headers: { 'content-type': 'application/json' },
+    }),
   );
-  return fichiers.filter((f) => !presents.has(f.chemin));
+}
+
+/**
+ * Ce qui reste à récupérer, par comparaison des empreintes.
+ *
+ * Un fichier est à (re)télécharger si la sentinelle ne connaît pas son
+ * empreinte actuelle : soit il n'a jamais été installé, soit son texte a changé
+ * et son mp3 aussi, à chemin identique. Comparer les chemins seuls, comme
+ * autrefois, laissait passer toutes les corrections de contenu.
+ *
+ * On se fonde sur la sentinelle, pas sur la simple présence au cache : le
+ * service worker met des fichiers en cache au fil de l'écoute, mais ce cache
+ * opportuniste n'est pas un téléchargement délibéré et ne doit pas compter
+ * comme tel.
+ */
+function aTelecharger(
+  fichiers: FichierAudio[],
+  sentinelle: Sentinelle,
+): FichierAudio[] {
+  return fichiers.filter((f) => sentinelle.empreintes[f.chemin] !== f.empreinte);
 }
 
 /**
@@ -120,6 +170,7 @@ export function useHorsLigne() {
     etat: 'inconnu',
     octetsPresents: 0,
     octetsTotal: 0,
+    octetsDelta: 0,
     persistant: null,
     erreur: null,
   });
@@ -133,20 +184,37 @@ export function useHorsLigne() {
       return;
     }
     try {
-      const fichiers = catalogueRef.current ?? (await chargerCatalogue());
+      // Le catalogue est rechargé à chaque fois (le service worker le sert en
+      // réseau d'abord) : c'est ce qui permet de voir une mise à jour publiée.
+      const fichiers = await chargerCatalogue();
       catalogueRef.current = fichiers;
 
       const total = fichiers.reduce((n, f) => n + f.octets, 0);
-      const absents = await manquants(fichiers);
-      const presents = total - absents.reduce((n, f) => n + f.octets, 0);
+      const sentinelle = await lireSentinelle();
+      const aFaire = aTelecharger(fichiers, sentinelle);
+      const octetsDelta = aFaire.reduce((n, f) => n + f.octets, 0);
+      const octetsPresents = total - octetsDelta;
+      const dejaInstalle = Object.keys(sentinelle.empreintes).length > 0;
       const persistant = navigator.storage?.persisted
         ? await navigator.storage.persisted()
         : null;
 
+      /*
+        Rien à faire → complet. Sinon, on distingue une mise à jour (une
+        installation complète que du contenu a fait diverger) d'une première
+        installation, interrompue ou jamais lancée.
+      */
+      let etat: EtatHorsLigne;
+      if (aFaire.length === 0) etat = 'complet';
+      else if (sentinelle.complet) etat = 'maj';
+      else if (dejaInstalle) etat = 'partiel';
+      else etat = 'rien';
+
       setResume({
-        etat: absents.length === 0 ? 'complet' : presents === 0 ? 'rien' : 'partiel',
-        octetsPresents: presents,
+        etat,
+        octetsPresents,
         octetsTotal: total,
+        octetsDelta,
         persistant,
         erreur: null,
       });
@@ -179,32 +247,49 @@ export function useHorsLigne() {
       // servent à rien si la grille reste blanche faute de JavaScript.
       await preparerShell();
 
-      const fichiers = catalogueRef.current ?? (await chargerCatalogue());
+      const fichiers = await chargerCatalogue();
       catalogueRef.current = fichiers;
       const total = fichiers.reduce((n, f) => n + f.octets, 0);
 
-      const aFaire = await manquants(fichiers);
-      let acquis = total - aFaire.reduce((n, f) => n + f.octets, 0);
+      const sentinelle = await lireSentinelle();
+      const aFaire = aTelecharger(fichiers, sentinelle);
+      const octetsDelta = aFaire.reduce((n, f) => n + f.octets, 0);
+      let acquis = total - octetsDelta;
       setResume((r) => ({
         ...r,
         etat: 'telechargement',
         octetsPresents: acquis,
         octetsTotal: total,
+        octetsDelta,
         erreur: null,
       }));
 
       const cache = await caches.open(CACHE_AUDIO);
       const file = [...aFaire];
       const echecs: string[] = [];
+      // On part des empreintes déjà installées et on enrichit au fil des succès.
+      const installes = { ...sentinelle.empreintes };
 
       async function ouvrier() {
         for (;;) {
           const fichier = file.shift();
           if (!fichier) return;
           try {
-            const reponse = await fetch(fichier.chemin);
+            /*
+              Le paramètre `?maj` force le service worker à passer par le réseau
+              et à écraser la version en cache : sans lui, un fichier déjà en
+              cache (ancienne version) serait resservi tel quel, et la mise à
+              jour n'aurait aucun effet.
+
+              On range aussi la réponse sous la clé propre : le service worker le
+              fait déjà quand il contrôle la page, mais tant qu'il ne l'a pas
+              encore prise en main, c'est ce `cache.put` qui garantit que le
+              fichier est bien mis en cache.
+            */
+            const reponse = await fetch(`${fichier.chemin}?maj=1`);
             if (!reponse.ok) throw new Error(String(reponse.status));
             await cache.put(fichier.chemin, reponse);
+            installes[fichier.chemin] = fichier.empreinte;
             acquis += fichier.octets;
             setResume((r) => ({ ...r, octetsPresents: acquis }));
           } catch {
@@ -218,6 +303,11 @@ export function useHorsLigne() {
       await Promise.all(
         Array.from({ length: CONCURRENCE }, () => ouvrier()),
       );
+
+      // La sentinelle enregistre exactement ce qui est installé, et si le
+      // catalogue est désormais couvert en entier.
+      const restant = aTelecharger(fichiers, { empreintes: installes, complet: false });
+      await ecrireSentinelle({ empreintes: installes, complet: restant.length === 0 });
 
       await rafraichir();
       if (echecs.length > 0) {

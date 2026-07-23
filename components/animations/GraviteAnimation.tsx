@@ -10,6 +10,11 @@ const PHASES = ['chute', 'attraction', 'plume', 'lune'] as const;
  * traîne ; sans air, les deux descendent ensemble. C'est la démonstration
  * visuelle du point que la carte corrige — la masse ne change pas la vitesse
  * de chute.
+ *
+ * Une flèche de résistance de l'air pousse vers le haut sur la plume, tant
+ * qu'il y a de l'air. Sur la Lune, elle disparaît : c'est cette différence de
+ * flèche, et non le seul changement de vitesse, qui explique pourquoi la plume
+ * traînait.
  */
 export function GraviteAnimation({
   activeBeatId,
@@ -69,8 +74,20 @@ export function GraviteAnimation({
             />
           )}
         </path>
+
+        {/* La résistance de l'air : une flèche vers le haut, sur la plume. */}
+        {!sansAir && (
+          <g>
+            <line x1="366" y1="150" x2="366" y2="108" stroke="#fb923c" strokeWidth="4" />
+            <path d="M359 114 L366 98 L373 114 Z" fill="#fb923c" />
+            <text x="248" y="150" fill="#fb923c" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
+              l&apos;air freine
+            </text>
+          </g>
+        )}
+
         <text x="58" y="34" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          {sansAir ? 'sans air' : "avec l'air"}
+          {sansAir ? 'sur la Lune : sans air' : "sur Terre : avec l'air"}
         </text>
       </g>
 

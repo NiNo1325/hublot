@@ -5,6 +5,44 @@ import { miseEnScene } from './shared/phases';
 
 const PHASES = ['attraction', 'poles', 'pas-tout', 'boussole'] as const;
 
+/**
+ * Un barreau aimanté à deux pôles. Le nord est corail, le sud craie : la
+ * couleur double la lettre, pour qui ne lit pas encore.
+ */
+function Barreau({
+  x,
+  y,
+  gauche,
+  droite,
+}: {
+  x: number;
+  y: number;
+  gauche: 'N' | 'S';
+  droite: 'N' | 'S';
+}) {
+  const couleur = (p: 'N' | 'S') => (p === 'N' ? '#fb7185' : '#e2e8f0');
+  const lettre = (p: 'N' | 'S', cx: number) => (
+    <text
+      x={cx}
+      y={y + 16}
+      fill="#0f1b33"
+      fontSize="17"
+      fontFamily="var(--font-atkinson), sans-serif"
+      textAnchor="middle"
+    >
+      {p}
+    </text>
+  );
+  return (
+    <g>
+      <rect x={x} y={y} width="44" height="22" fill={couleur(gauche)} />
+      <rect x={x + 44} y={y} width="44" height="22" fill={couleur(droite)} />
+      {lettre(gauche, x + 22)}
+      {lettre(droite, x + 66)}
+    </g>
+  );
+}
+
 export function AimantsAnimation({
   activeBeatId,
   isPlaying,
@@ -37,28 +75,43 @@ export function AimantsAnimation({
         ))}
       </g>
 
-      {/* Deux pôles identiques se repoussent */}
+      {/*
+        Les deux cas montrés ensemble : c'est la comparaison qui fait la règle.
+        L'ancienne version n'affichait qu'une paire, avec un mouvement ambigu et
+        un texte qui contredisait les pôles dessinés — le visuel disait l'inverse
+        de la voix.
+      */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
+        {/* Pôles opposés (S face à N) : ils s'attirent. Flèches convergentes. */}
+        <Barreau x={150} y={54} gauche="N" droite="S" />
+        <Barreau x={262} y={54} gauche="N" droite="S" />
         <g>
-          <rect x="188" y="60" width="44" height="20" fill="#fb7185" />
-          <rect x="232" y="60" width="44" height="20" fill="#f5f0e6" />
-          <text x="204" y="75" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">N</text>
-          <text x="250" y="75" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">S</text>
+          <line x1="222" y1="92" x2="242" y2="92" stroke="#4ade80" strokeWidth="4" />
+          <path d="M238 86 L250 92 L238 98 Z" fill="#4ade80" />
+          <line x1="278" y1="92" x2="258" y2="92" stroke="#4ade80" strokeWidth="4" />
+          <path d="M262 86 L250 92 L262 98 Z" fill="#4ade80" />
         </g>
+        <text x="14" y="66" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+          opposés :
+        </text>
+        <text x="14" y="86" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+          ils collent
+        </text>
+
+        {/* Pôles identiques (N face à N) : ils se repoussent. Flèches divergentes. */}
+        <Barreau x={150} y={150} gauche="S" droite="N" />
+        <Barreau x={262} y={150} gauche="N" droite="S" />
         <g>
-          <rect x="292" y="60" width="44" height="20" fill="#f5f0e6" />
-          <rect x="336" y="60" width="44" height="20" fill="#fb7185" />
-          <text x="308" y="75" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">S</text>
-          <text x="354" y="75" fill="#0f1b33" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">N</text>
-          {anime && phase === 1 && (
-            <animateTransform
-              attributeName="transform" type="translate"
-              values="0 0; 16 0; 0 0" dur="2s" repeatCount="indefinite"
-            />
-          )}
+          <line x1="238" y1="188" x2="218" y2="188" stroke="#f87171" strokeWidth="4" />
+          <path d="M222 182 L210 188 L222 194 Z" fill="#f87171" />
+          <line x1="262" y1="188" x2="282" y2="188" stroke="#f87171" strokeWidth="4" />
+          <path d="M278 182 L290 188 L278 194 Z" fill="#f87171" />
         </g>
-        <text x="137" y="46" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          pôles opposés : ils s&apos;attirent
+        <text x="14" y="162" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+          pareils :
+        </text>
+        <text x="14" y="182" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+          se repoussent
         </text>
       </g>
 

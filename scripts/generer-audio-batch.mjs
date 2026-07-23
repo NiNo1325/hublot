@@ -18,6 +18,7 @@ import { createHash } from 'node:crypto';
 import { cards } from '../content/cards/index.ts';
 import { AGE_RANGES } from '../lib/types.ts';
 import { BASE_API as BASE, CONSIGNES_CARTES as CONSIGNES, VOIX, cle, versMp3 } from './lib/audio.mjs';
+import { ecrireCatalogue } from './catalogue-audio.mjs';
 
 const MODELE = 'gemini-3.1-flash-tts-preview';
 const RACINE = 'public/audio';
@@ -190,4 +191,5 @@ async function main() {
   }
 }
 
-main();
+// Régénère le catalogue hors-ligne à la suite, même après un lot partiel.
+main().then(ecrireCatalogue);

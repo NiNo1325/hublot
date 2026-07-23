@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v1';
+const VERSION = 'v2';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -60,6 +60,36 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return;
 
   if (estAudio(url)) {
+    /*
+      Deux exceptions au cache d'abord, toutes deux réseau d'abord :
+
+      - le catalogue (`.json`) doit rester frais, sinon `chargerCatalogue` lit
+        une vieille copie servie par ce worker et ne voit jamais de mise à jour ;
+      - une requête `?maj` est un fichier qu'on veut réécraser : on la sert
+        depuis le réseau et on remplace la version en cache, à sa clé propre.
+
+      En cas d'échec réseau, on retombe sur le cache : une mise à jour ratée ne
+      casse donc jamais un fichier qui marchait.
+    */
+    if (url.pathname.endsWith('.json') || url.searchParams.has('maj')) {
+      const cleUrl = url.origin + url.pathname;
+      event.respondWith(
+        (async () => {
+          const cache = await caches.open(CACHE_AUDIO);
+          try {
+            const reponse = await fetch(cleUrl, { cache: 'no-store' });
+            if (reponse.ok) await cache.put(cleUrl, reponse.clone());
+            return reponse;
+          } catch (erreur) {
+            const enCache = await cache.match(cleUrl);
+            if (enCache) return enCache;
+            throw erreur;
+          }
+        })(),
+      );
+      return;
+    }
+
     /*
       Cache d'abord. En cas d'absence on récupère et on garde : ce qu'un enfant
       écoute à la maison est ainsi déjà disponible en voiture, même sans

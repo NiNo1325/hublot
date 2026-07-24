@@ -1,0 +1,51 @@
+{
+  "packageId": "com.hublot.app",
+  "host": "hublot-ruby.vercel.app",
+  "name": "Hublot — les sciences pour les curieux",
+  "launcherName": "Hublot",
+  "display": "standalone",
+  "themeColor": "#0F1B33",
+  "themeColorDark": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#0F1B33",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://hublot-ruby.vercel.app/icones/icone-512.png",
+  "maskableIconUrl": "https://hublot-ruby.vercel.app/icones/icone-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "C:\\Users\\Nicolas Notte\\Dropbox\\Projets Divers\\science\\android\\android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "2",
+  "appVersionCode": 2,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://hublot-ruby.vercel.app/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {
+    "playBilling": {
+      "enabled": true
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://hublot-ruby.vercel.app/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "",
+  "displayOverride": [],
+  "appVersion": "2"
+}

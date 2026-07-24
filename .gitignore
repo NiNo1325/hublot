@@ -73,10 +73,12 @@ planches/
 # mise à jour de l'app sur le Play Store définitivement impossible.
 *.keystore
 *.jks
-# Artefacts de build Android (régénérables par `bubblewrap build`)
-android/app/build/
-android/*.aab
-android/*.apk
+
+# Projet Android (Bubblewrap). Tout est régénérable par `bubblewrap build`
+# à partir de twa-manifest.json — seule la config mérite d'être versionnée.
+# On ignore donc tout le dossier, sauf ce fichier.
+/android/*
+!/android/twa-manifest.json
 
 # Journal d'avancement des sous-agents (scratch, non lié au produit)
 .superpowers/

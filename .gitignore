@@ -68,3 +68,15 @@ skills-lock.json
 
 # Planches de contrôle des illustrations
 planches/
+
+# Signature Android — NE JAMAIS commiter. La perte du keystore rend toute
+# mise à jour de l'app sur le Play Store définitivement impossible.
+*.keystore
+*.jks
+# Artefacts de build Android (régénérables par `bubblewrap build`)
+android/app/build/
+android/*.aab
+android/*.apk
+
+# Journal d'avancement des sous-agents (scratch, non lié au produit)
+.superpowers/

@@ -17,6 +17,7 @@ export default function manifest(): MetadataRoute.Manifest {
     description:
       'Des cartes animées et racontées à voix haute pour découvrir les sciences, de 3 à 12 ans.',
     start_url: '/',
+    id: '/',
     display: 'standalone',
     orientation: 'portrait',
     background_color: '#0f1b33',

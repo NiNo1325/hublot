@@ -16,11 +16,11 @@ export const metadata: Metadata = {
  */
 export default function ConfidentialitePage() {
   return (
-    <main className="mx-auto max-w-2xl px-6 py-12 text-slate-100">
-      <h1 className="font-[family-name:var(--font-fredoka)] text-3xl font-bold">
+    <main className="mx-auto max-w-2xl px-6 py-12">
+      <h1 className="font-display text-3xl font-semibold">
         Confidentialité
       </h1>
-      <p className="mt-2 text-sm text-slate-400">
+      <p className="mt-2 text-sm text-craie-douce">
         Dernière mise à jour : 24 juillet 2026
       </p>
 
@@ -30,7 +30,7 @@ export default function ConfidentialitePage() {
           de 3 à 12 ans. Nous avons conçu Hublot pour qu&apos;elle respecte la vie
           privée des familles.
         </p>
-        <h2 className="font-[family-name:var(--font-fredoka)] text-xl font-semibold">
+        <h2 className="font-display text-xl font-semibold">
           Aucune donnée collectée
         </h2>
         <p>
@@ -38,7 +38,7 @@ export default function ConfidentialitePage() {
           L&apos;application ne demande ni compte, ni inscription, ni adresse
           e-mail. Elle ne contient aucune publicité et aucun outil de suivi.
         </p>
-        <h2 className="font-[family-name:var(--font-fredoka)] text-xl font-semibold">
+        <h2 className="font-display text-xl font-semibold">
           Fonctionnement hors ligne
         </h2>
         <p>
@@ -46,13 +46,13 @@ export default function ConfidentialitePage() {
           fonctionner sans connexion. Ces données restent sur l&apos;appareil et ne
           sont jamais envoyées ailleurs.
         </p>
-        <h2 className="font-[family-name:var(--font-fredoka)] text-xl font-semibold">
+        <h2 className="font-display text-xl font-semibold">
           Contact
         </h2>
         <p>
           Pour toute question :{' '}
           <a
-            className="underline"
+            className="underline transition-colors hover:text-soleil"
             href="mailto:nicolas.notte@gmail.com"
           >
             nicolas.notte@gmail.com
@@ -60,7 +60,7 @@ export default function ConfidentialitePage() {
           .
         </p>
         <p className="pt-4">
-          <Link className="underline" href="/">
+          <Link className="underline transition-colors hover:text-soleil" href="/">
             Retour à l&apos;accueil
           </Link>
         </p>

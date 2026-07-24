@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.hublot.app",
+      "sha256_cert_fingerprints": [
+        "D3:B4:E9:FC:E8:41:8F:05:69:A5:61:0F:0B:3F:8A:F4:6A:8C:F2:FF:0A:F2:56:0D:36:D1:BE:FF:45:03:96:5B"
+      ]
+    }
+  }
+]

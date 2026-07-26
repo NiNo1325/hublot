@@ -102,6 +102,7 @@ import { ChatRetombeAnimation } from './ChatRetombeAnimation';
 import { NuagesAnimation } from './NuagesAnimation';
 import { AltitudeFroidAnimation } from './AltitudeFroidAnimation';
 import { FoudreAnimation } from './FoudreAnimation';
+import { NeigeAnimation } from './NeigeAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -212,4 +213,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   nuages: NuagesAnimation,
   'altitude-froid': AltitudeFroidAnimation,
   foudre: FoudreAnimation,
+  neige: NeigeAnimation,
 };

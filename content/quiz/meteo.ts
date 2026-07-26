@@ -134,4 +134,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'la-neige',
+    questions: {
+      '3-5': [
+        {
+          id: 'neige-cest-quoi',
+          question: 'La neige, c’est…',
+          reponses: [
+            { texte: 'De petits cristaux de glace en étoile', icone: '❄️', correcte: true },
+            { texte: 'De la pluie qui a gelé en tombant', icone: '🌧️' },
+          ],
+          explication: "La neige se forme directement dans le froid en cristaux, ce n'est pas de la pluie gelée.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'combien-de-branches',
+          question: 'Combien de branches a toujours un cristal de neige ?',
+          reponses: [
+            { texte: 'Six', icone: '❄️', correcte: true },
+            { texte: 'Quatre', icone: '➕' },
+            { texte: 'Un nombre au hasard', icone: '🎲' },
+          ],
+          explication:
+            "À cause de la façon dont les molécules d'eau s'assemblent, un flocon a toujours six branches.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'de-quel-etat',
+          question: 'À partir de quoi se forme un flocon de neige ?',
+          reponses: [
+            { texte: 'De la vapeur qui devient glace sans étape liquide', icone: '💨', correcte: true },
+            { texte: 'D’une goutte d’eau qui gèle', icone: '💧' },
+            { texte: 'De grêlons qui se cassent', icone: '🧊' },
+          ],
+          explication:
+            "Dans un nuage sous zéro, la vapeur se dépose directement à l'état solide (déposition). Une goutte gelée donnerait du verglas, pas un flocon.",
+        },
+      ],
+    },
+  },
 ];

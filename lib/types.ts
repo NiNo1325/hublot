@@ -18,7 +18,9 @@ export type DomainId =
   | 'sciences-de-la-terre'
   | 'informatique'
   | 'ingenierie'
-  | 'mathematiques';
+  | 'mathematiques'
+  | 'animaux'
+  | 'meteo';
 
 export interface DomainDefinition {
   id: DomainId;

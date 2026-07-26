@@ -7,6 +7,8 @@ import { quiz as chimie } from './chimie';
 import { quiz as ingenierie } from './ingenierie';
 import { quiz as informatique } from './informatique';
 import { quiz as mathematiques } from './mathematiques';
+import { quiz as animaux } from './animaux';
+import { quiz as meteo } from './meteo';
 
 /**
  * Banque de questions, groupée par domaine.
@@ -15,7 +17,7 @@ import { quiz as mathematiques } from './mathematiques';
  * explications : chaque proposition fausse reprend une idée reçue que la carte
  * corrige, jamais un piège inventé.
  *
- * Les huit domaines sont couverts. `npm run quiz:couverture` le vérifie : une
+ * Les dix domaines sont couverts. `npm run quiz:couverture` le vérifie : une
  * carte sans question n'apparaîtrait jamais dans le quizz, et l'oubli serait
  * silencieux sans ce relevé.
  */
@@ -28,6 +30,8 @@ export const quizCartes = [
   ...ingenierie,
   ...informatique,
   ...mathematiques,
+  ...animaux,
+  ...meteo,
 ];
 
 const parCarte = new Map(quizCartes.map((q) => [q.cardId, q]));

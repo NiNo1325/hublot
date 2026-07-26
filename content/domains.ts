@@ -53,4 +53,16 @@ export const domains: DomainDefinition[] = [
     color: 'rose',
     labels: { fr: 'Les nombres' },
   },
+  {
+    id: 'animaux',
+    icon: '🦊',
+    color: 'amber',
+    labels: { fr: 'Les animaux' },
+  },
+  {
+    id: 'meteo',
+    icon: '🌦️',
+    color: 'teal',
+    labels: { fr: 'La météo' },
+  },
 ];

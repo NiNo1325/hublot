@@ -89,6 +89,7 @@ import { card as laMoyenne } from './mathematiques/la-moyenne';
 import { card as leParadoxeDesAnniversaires } from './mathematiques/le-paradoxe-des-anniversaires';
 
 import { card as laMetamorphoseDuPapillon } from './animaux/la-metamorphose-du-papillon';
+import { card as pourquoiLeCameleonChangeDeCouleur } from './animaux/pourquoi-le-cameleon-change-de-couleur';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -183,4 +184,5 @@ export const cards: ScienceCard[] = [
   laMoyenne,
   leParadoxeDesAnniversaires,
   laMetamorphoseDuPapillon,
+  pourquoiLeCameleonChangeDeCouleur,
 ];

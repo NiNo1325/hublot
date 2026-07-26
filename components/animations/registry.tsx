@@ -90,6 +90,7 @@ import { WifiAnimation } from './WifiAnimation';
 import { AnniversairesAnimation } from './AnniversairesAnimation';
 
 import { MetamorphoseAnimation } from './MetamorphoseAnimation';
+import { CameleonAnimation } from './CameleonAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -188,4 +189,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   wifi: WifiAnimation,
   anniversaires: AnniversairesAnimation,
   metamorphose: MetamorphoseAnimation,
+  cameleon: CameleonAnimation,
 };

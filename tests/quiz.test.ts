@@ -32,6 +32,7 @@ const EN_ATTENTE_AUDIO_QUIZ = new Set<string>([
   'louragan',
   'la-rosee-du-matin',
   'le-givre',
+  'la-forme-des-gouttes-de-pluie',
 ]);
 
 /**

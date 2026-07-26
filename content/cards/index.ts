@@ -108,6 +108,7 @@ import { card as leBrouillard } from './meteo/le-brouillard';
 import { card as louragan } from './meteo/louragan';
 import { card as laRoseeDuMatin } from './meteo/la-rosee-du-matin';
 import { card as leGivre } from './meteo/le-givre';
+import { card as laFormeDesGouttesDePluie } from './meteo/la-forme-des-gouttes-de-pluie';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -220,4 +221,5 @@ export const cards: ScienceCard[] = [
   louragan,
   laRoseeDuMatin,
   leGivre,
+  laFormeDesGouttesDePluie,
 ];

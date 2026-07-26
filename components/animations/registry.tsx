@@ -108,6 +108,7 @@ import { BrouillardAnimation } from './BrouillardAnimation';
 import { OuraganAnimation } from './OuraganAnimation';
 import { RoseeAnimation } from './RoseeAnimation';
 import { GivreAnimation } from './GivreAnimation';
+import { GoutteFormeAnimation } from './GoutteFormeAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -224,4 +225,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   ouragan: OuraganAnimation,
   rosee: RoseeAnimation,
   givre: GivreAnimation,
+  'goutte-forme': GoutteFormeAnimation,
 };

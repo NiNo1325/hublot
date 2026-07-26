@@ -386,4 +386,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'la-forme-des-gouttes-de-pluie',
+    questions: {
+      '3-5': [
+        {
+          id: 'forme-goutte',
+          question: 'Quelle est la vraie forme d’une petite goutte de pluie ?',
+          reponses: [
+            { texte: 'Toute ronde, comme une bille', icone: '⚪', correcte: true },
+            { texte: 'Pointue, comme une larme', icone: '💧' },
+          ],
+          explication: "Une petite goutte est ronde. La forme de larme des dessins n'existe pas dans la vraie pluie.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'goutte-qui-tombe',
+          question: 'Quelle forme prend une grosse goutte qui tombe ?',
+          reponses: [
+            { texte: 'Un petit coussin, aplati en dessous', icone: '🍔', correcte: true },
+            { texte: 'Une larme pointue en haut', icone: '💧' },
+            { texte: 'Une longue aiguille', icone: '📍' },
+          ],
+          explication:
+            "En tombant, l'air pousse la goutte par en dessous et l'aplatit : elle ressemble à un petit pain, pas à une larme.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'pourquoi-ronde',
+          question: 'Pourquoi une petite goutte est-elle sphérique ?',
+          reponses: [
+            { texte: 'La tension de surface la ramène en boule', icone: '⚪', correcte: true },
+            { texte: 'Parce qu’elle tourne en tombant', icone: '🌀' },
+            { texte: 'Parce que le froid l’arrondit', icone: '❄️' },
+          ],
+          explication:
+            "La tension superficielle tire la surface vers l'intérieur et donne la forme la plus compacte, la sphère. C'est l'air, en tombant, qui l'aplatit ensuite en coussin.",
+        },
+      ],
+    },
+  },
 ];

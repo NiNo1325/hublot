@@ -38,6 +38,7 @@ const EN_ATTENTE_AUDIO = new Set<string>([
   'louragan',
   'la-rosee-du-matin',
   'le-givre',
+  'la-forme-des-gouttes-de-pluie',
 ]);
 
 const cas = cards

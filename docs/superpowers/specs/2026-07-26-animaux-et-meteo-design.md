@@ -38,8 +38,8 @@ ciel bleu, la pression de l'air (« de quoi est fait l'air »).
 | # | Slug | Titre | Idée reçue corrigée |
 |---|------|-------|---------------------|
 | 1 | `les-nuages` | Les nuages | « un nuage, c'est de la vapeur » → des gouttelettes/cristaux en suspension ; la vapeur, elle, est invisible |
-| 2 | `larc-en-ciel` | L'arc-en-ciel | « il y a sept couleurs bien séparées » → un dégradé continu, et la lumière blanche les contient toutes |
-| 3 | `la-foudre-et-le-tonnerre` | La foudre et le tonnerre | « on voit l'éclair et on entend le tonnerre en même temps » → la lumière va plus vite que le son ; on compte les secondes |
+| 2 | `pourquoi-il-fait-plus-froid-en-montagne` | Pourquoi il fait plus froid en montagne | « en haut, on est plus près du soleil, il devrait faire plus chaud » → l'air se raréfie en altitude et retient moins la chaleur ; la distance au Soleil ne change quasiment pas |
+| 3 | `la-foudre-et-le-tonnerre` | La foudre et le tonnerre | « on voit l'éclair et on entend le tonnerre en même temps » → la foudre est une étincelle électrique géante ; la lumière arrive avant le son, on compte les secondes pour savoir à quelle distance |
 | 4 | `la-neige` | La neige | « la neige, c'est de la pluie gelée » → des cristaux formés directement dans le froid, à six branches |
 | 5 | `la-grele` | La grêle | « c'est de la neige en boule » → des grêlons qui montent et descendent dans l'orage et s'entourent de couches de glace |
 | 6 | `le-brouillard` | Le brouillard | « le brouillard descend du ciel » → c'est un nuage posé au niveau du sol |
@@ -47,6 +47,72 @@ ciel bleu, la pression de l'air (« de quoi est fait l'air »).
 | 8 | `la-rosee-du-matin` | La rosée du matin | « la rosée tombe du ciel pendant la nuit » → l'eau de l'air se condense sur place en refroidissant |
 | 9 | `le-givre` | Le givre | « c'est de la rosée gelée » → la vapeur se transforme directement en glace, sans passer par l'eau liquide |
 | 10 | `la-forme-des-gouttes-de-pluie` | La forme des gouttes de pluie | « une goutte a la forme d'une larme » → en tombant elle s'aplatit comme un petit coussin |
+
+## Vérification de cohérence avec l'existant (faite)
+
+Passe croisée sur les cartes existantes qui pouvaient entrer en tension. Deux
+recouvrements réels trouvés et résolus, le reste confirmé distinct :
+
+- **Arc-en-ciel — retiré.** La carte physique `pourquoi-on-voit-les-couleurs`
+  explique déjà l'arc-en-ciel en détail (réfraction, réflexion interne, les
+  42°). Une carte météo « L'arc-en-ciel » ferait doublon. Remplacée par
+  **« Pourquoi il fait plus froid en montagne »**, sujet distinct et à forte
+  idée reçue.
+- **Foudre — angle recentré.** Le beat 9-12 de `comment-voyage-le-son` mentionne
+  déjà « on voit l'éclair avant d'entendre le tonnerre ». La carte foudre évite
+  le doublon en portant ce que personne ne traite : *la foudre est une étincelle
+  électrique géante* (aucune carte électricité ne couvre la foudre) et le
+  comptage des secondes. Elle doit rester **cohérente** avec la carte son : la
+  lumière arrive avant le son parce qu'elle va bien plus vite — jamais l'inverse.
+- **Écholocation — complémentaire.** `comment-voyage-le-son` établit le son
+  comme vibration de l'air ; l'écholocation ajoute l'écho (le son qui rebondit),
+  absent de cette carte. L'animation réutilise les mêmes ondes.
+- **Nuages / brouillard / rosée / givre** : `cycle-de-leau` ne fait que
+  mentionner « un nuage = gouttelettes en suspension » en passant. Les cartes
+  météo gardent un angle propre (le nuage comme objet ; le brouillard = nuage au
+  sol ; rosée = condensation locale ; givre = dépôt direct vapeur→glace) et ne
+  doivent pas rejouer le cycle de l'eau.
+- **Poissons / hibernation / chat** : distincts de `comment-on-respire` (poumons
+  vs branchies), `pourquoi-on-dort` (sommeil vs ralentissement du métabolisme),
+  `pourquoi-tout-tombe` (le chat tombe bien, il ne fait que pivoter en chutant).
+
+### Justesse scientifique
+
+Chaque idée reçue des deux tables a été revue une par une et correspond à l'état
+des connaissances : histolyse dans la chrysalide (papillon) ; changement de
+couleur du caméléon d'abord social et thermique ; migration guidée par la
+nourriture et l'orientation (soleil/étoiles/magnétisme) ; oxygène dissous extrait
+par les branchies ; rayures du zèbre contre les mouches piqueuses (hypothèse la
+mieux étayée) ; miel à partir du nectar ; fils secs non collants de la toile ;
+redressement du chat par conservation du moment cinétique ; neige par
+cristallisation directe (distincte du verglas) ; givre par déposition ; goutte
+qui s'aplatit en tombant ; refroidissement avec l'altitude.
+
+## Standard d'animation (obligatoire pour les 20)
+
+Les animations de ce produit *sont* l'explication. Chaque nouvelle animation est
+jugée contre la grille approuvée (`2026-07-23-animations-explicites-design.md`) :
+
+1. **Montrer la cause, pas seulement l'effet** (la flèche qui pousse, pas juste
+   l'objet qui bouge).
+2. **Matérialiser l'invisible** — force, attraction, oxygène, onde sonore, air
+   chaud — par une flèche ou un signe explicite.
+3. **Opposer l'idée reçue et la vérité côte à côte** quand c'est possible : le
+   contraste corrige (goutte-larme barrée vs goutte-coussin ; « plus près du
+   Soleil » barré vs air qui se raréfie ; sommeil vs cœur ralenti).
+4. **Ne jamais contredire la voix.**
+
+Contraintes techniques, reprises du motif existant (cf. `MareesAnimation`) :
+
+- La liste `PHASES` du composant est **exactement** la liste des `id` de beats
+  de la carte, dans le même ordre ; `miseEnScene(PHASES, activeBeatId)` révèle
+  les couches par phase via `opacite(n)`.
+- Les animations SMIL sont gardées par `anime = isPlaying && !prefersReducedMotion` ;
+  en `prefers-reduced-motion`, le visuel reste lisible et statique (flèches
+  comprises).
+- Toute flèche/étiquette ajoutée doit passer `npm run audit:illustrations` :
+  aucun texte hors cadre, aucun recouvrement de légendes entre phases
+  différentes.
 
 ## Câblage des domaines (une fois par domaine)
 

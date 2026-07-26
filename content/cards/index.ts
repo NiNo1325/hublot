@@ -97,6 +97,7 @@ import { card as commentLesPoissonsRespirent } from './animaux/comment-les-poiss
 import { card as pourquoiLesZebresOntDesRayures } from './animaux/pourquoi-les-zebres-ont-des-rayures';
 import { card as commentLesAbeillesFontLeMiel } from './animaux/comment-les-abeilles-font-le-miel';
 import { card as laToileDeLaraignee } from './animaux/la-toile-de-laraignee';
+import { card as pourquoiLeChatRetombeSurSesPattes } from './animaux/pourquoi-le-chat-retombe-sur-ses-pattes';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -199,4 +200,5 @@ export const cards: ScienceCard[] = [
   pourquoiLesZebresOntDesRayures,
   commentLesAbeillesFontLeMiel,
   laToileDeLaraignee,
+  pourquoiLeChatRetombeSurSesPattes,
 ];

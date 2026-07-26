@@ -98,6 +98,7 @@ import { BranchiesAnimation } from './BranchiesAnimation';
 import { ZebreAnimation } from './ZebreAnimation';
 import { MielAnimation } from './MielAnimation';
 import { ToileAnimation } from './ToileAnimation';
+import { ChatRetombeAnimation } from './ChatRetombeAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -204,4 +205,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   zebre: ZebreAnimation,
   miel: MielAnimation,
   toile: ToileAnimation,
+  'chat-retombe': ChatRetombeAnimation,
 };

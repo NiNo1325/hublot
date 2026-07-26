@@ -22,6 +22,7 @@ const EN_ATTENTE_AUDIO_QUIZ = new Set<string>([
   'pourquoi-les-zebres-ont-des-rayures',
   'comment-les-abeilles-font-le-miel',
   'la-toile-de-laraignee',
+  'pourquoi-le-chat-retombe-sur-ses-pattes',
 ]);
 
 /**

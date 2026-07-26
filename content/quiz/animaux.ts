@@ -386,4 +386,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'pourquoi-le-chat-retombe-sur-ses-pattes',
+    questions: {
+      '3-5': [
+        {
+          id: 'comment-se-retourne',
+          question: 'Comment le chat se met-il pattes en bas ?',
+          reponses: [
+            { texte: 'Il plie son corps et tourne dans le vide', icone: '🌀', correcte: true },
+            { texte: 'Il ne se fait jamais mal en tombant', icone: '🛡️' },
+          ],
+          explication: "Il tourne en pliant son corps souple. Mais tomber peut quand même lui faire mal.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'sans-appui',
+          question: 'Sur quoi le chat prend-il appui pour se retourner ?',
+          reponses: [
+            { texte: 'Sur rien : il bouge son propre corps', icone: '🤸', correcte: true },
+            { texte: 'Sur l’air, en poussant avec ses pattes', icone: '💨' },
+            { texte: 'Sur un mur invisible', icone: '🧱' },
+          ],
+          explication:
+            "Il fait tourner l'avant dans un sens et l'arrière dans l'autre : il se retourne sans aucun point d'appui.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'toujours-indemne',
+          question: 'Un chat qui retombe sur ses pattes est-il toujours indemne ?',
+          reponses: [
+            { texte: 'Non, la gravité l’attire et une chute peut le blesser', icone: '⚠️', correcte: true },
+            { texte: 'Oui, il ne se fait jamais mal', icone: '🛡️' },
+            { texte: 'Oui, car il annule la gravité', icone: '🚫' },
+          ],
+          explication:
+            "Se retourner ne fait que l'orienter : la gravité l'attire vers le sol tout du long, et une chute de plusieurs étages reste dangereuse.",
+        },
+      ],
+    },
+  },
 ];

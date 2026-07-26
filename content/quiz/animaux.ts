@@ -302,4 +302,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'comment-les-abeilles-font-le-miel',
+    questions: {
+      '3-5': [
+        {
+          id: 'avec-quoi-le-miel',
+          question: 'Avec quoi les abeilles font-elles le miel ?',
+          reponses: [
+            { texte: 'Avec le jus sucré des fleurs', icone: '🌸', correcte: true },
+            { texte: 'Avec la poussière jaune, le pollen', icone: '🟡' },
+          ],
+          explication: "Le miel est fait avec le nectar, le jus sucré des fleurs, que les abeilles font sécher.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'pour-qui-le-miel',
+          question: 'Pour qui les abeilles font-elles surtout le miel ?',
+          reponses: [
+            { texte: 'Pour elles, comme réserve d’hiver', icone: '❄️', correcte: true },
+            { texte: 'Pour nous, pour qu’on le mange', icone: '🥄' },
+            { texte: 'Pour les fleurs', icone: '🌼' },
+          ],
+          explication:
+            "Le miel est leur garde-manger pour l'hiver, quand il n'y a plus de fleurs. On n'en récolte qu'une partie du surplus.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'comment-nectar-devient-miel',
+          question: 'Comment le nectar liquide devient-il du miel épais ?',
+          reponses: [
+            { texte: 'Les abeilles en évaporent l’eau', icone: '💨', correcte: true },
+            { texte: 'Elles y ajoutent du pollen en poudre', icone: '🟡' },
+            { texte: 'Il durcit tout seul au froid', icone: '🧊' },
+          ],
+          explication:
+            "Le nectar contient environ 80 % d'eau. En ventilant des ailes, les abeilles l'évaporent jusqu'à ne laisser qu'environ 18 % d'eau : le miel.",
+        },
+      ],
+    },
+  },
 ];

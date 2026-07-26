@@ -93,6 +93,7 @@ import { card as pourquoiLeCameleonChangeDeCouleur } from './animaux/pourquoi-le
 import { card as laMigrationDesOiseaux } from './animaux/la-migration-des-oiseaux';
 import { card as lhibernation } from './animaux/lhibernation';
 import { card as lecholocationDeLaChauveSouris } from './animaux/lecholocation-de-la-chauve-souris';
+import { card as commentLesPoissonsRespirent } from './animaux/comment-les-poissons-respirent';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -191,4 +192,5 @@ export const cards: ScienceCard[] = [
   laMigrationDesOiseaux,
   lhibernation,
   lecholocationDeLaChauveSouris,
+  commentLesPoissonsRespirent,
 ];

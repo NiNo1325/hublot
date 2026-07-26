@@ -218,4 +218,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'comment-les-poissons-respirent',
+    questions: {
+      '3-5': [
+        {
+          id: 'y-a-t-il-de-lair',
+          question: 'Y a-t-il de l’air caché dans l’eau ?',
+          reponses: [
+            { texte: 'Oui, un peu, mélangé partout', icone: '🫧', correcte: true },
+            { texte: 'Non, l’eau c’est juste de l’eau', icone: '🚫' },
+          ],
+          explication: "Il y a un peu d'oxygène mélangé dans l'eau, et les branchies du poisson l'attrapent.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'que-fait-le-poisson',
+          question: 'Que fait le poisson avec l’eau qu’il avale ?',
+          reponses: [
+            { texte: 'Il en retire l’oxygène avec ses branchies', icone: '🫧', correcte: true },
+            { texte: 'Il respire l’eau comme on respire l’air', icone: '💧' },
+            { texte: 'Il la garde dans son ventre', icone: '🎈' },
+          ],
+          explication:
+            "L'eau passe sur les branchies, qui prennent l'oxygène dissous ; l'eau ressort ensuite par les ouïes.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'pourquoi-suffoque',
+          question: 'Pourquoi un poisson sorti de l’eau suffoque-t-il, alors que l’air est plein d’oxygène ?',
+          reponses: [
+            { texte: 'Ses branchies s’effondrent et ne captent plus rien', icone: '🫁', correcte: true },
+            { texte: 'Parce qu’il n’aime pas l’air', icone: '😤' },
+            { texte: 'Parce que l’air n’a pas d’oxygène', icone: '🚫' },
+          ],
+          explication:
+            "Hors de l'eau, les fins filaments des branchies se collent et s'affaissent : ils ne peuvent plus capter l'oxygène, même en pleine air.",
+        },
+      ],
+    },
+  },
 ];

@@ -24,6 +24,7 @@ const EN_ATTENTE_AUDIO = new Set<string>([
   'la-migration-des-oiseaux',
   'lhibernation',
   'lecholocation-de-la-chauve-souris',
+  'comment-les-poissons-respirent',
 ]);
 
 const cas = cards

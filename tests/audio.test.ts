@@ -30,6 +30,7 @@ const EN_ATTENTE_AUDIO = new Set<string>([
   'la-toile-de-laraignee',
   'pourquoi-le-chat-retombe-sur-ses-pattes',
   'les-nuages',
+  'pourquoi-il-fait-plus-froid-en-montagne',
 ]);
 
 const cas = cards

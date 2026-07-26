@@ -50,4 +50,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'pourquoi-il-fait-plus-froid-en-montagne',
+    questions: {
+      '3-5': [
+        {
+          id: 'plus-haut-plus-froid',
+          question: 'Quand on monte tout en haut d’une montagne…',
+          reponses: [
+            { texte: 'Il fait plus froid', icone: '🥶', correcte: true },
+            { texte: 'Il fait plus chaud, on est près du soleil', icone: '☀️' },
+          ],
+          explication: "Plus on monte, plus il fait froid : il y a moins d'air pour garder la chaleur.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'vraie-raison-froid',
+          question: 'Pourquoi fait-il plus froid en haut des montagnes ?',
+          reponses: [
+            { texte: 'L’air s’y raréfie et garde mal la chaleur', icone: '💨', correcte: true },
+            { texte: 'On est plus près du Soleil', icone: '☀️' },
+            { texte: 'Le vent souffle plus fort', icone: '🌬️' },
+          ],
+          explication:
+            "Le Soleil est à 150 millions de km : monter n'y change rien. En altitude, l'air rare retient mal la chaleur.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'soleil-chauffe-quoi',
+          question: 'Qu’est-ce que le Soleil chauffe surtout ?',
+          reponses: [
+            { texte: 'Le sol, qui réchauffe ensuite l’air', icone: '🌍', correcte: true },
+            { texte: 'Directement l’air, d’autant plus qu’on est haut', icone: '💨' },
+            { texte: 'Seulement les sommets enneigés', icone: '🏔️' },
+          ],
+          explication:
+            "Le Soleil chauffe peu l'air directement : il chauffe le sol, qui réchauffe l'air à son contact. Plus on monte, plus on s'éloigne de ce sol et plus l'air rare retient mal la chaleur.",
+        },
+      ],
+    },
+  },
 ];

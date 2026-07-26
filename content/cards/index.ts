@@ -100,6 +100,7 @@ import { card as laToileDeLaraignee } from './animaux/la-toile-de-laraignee';
 import { card as pourquoiLeChatRetombeSurSesPattes } from './animaux/pourquoi-le-chat-retombe-sur-ses-pattes';
 
 import { card as lesNuages } from './meteo/les-nuages';
+import { card as pourquoiIlFaitPlusFroidEnMontagne } from './meteo/pourquoi-il-fait-plus-froid-en-montagne';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -204,4 +205,5 @@ export const cards: ScienceCard[] = [
   laToileDeLaraignee,
   pourquoiLeChatRetombeSurSesPattes,
   lesNuages,
+  pourquoiIlFaitPlusFroidEnMontagne,
 ];

@@ -302,4 +302,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'la-rosee-du-matin',
+    questions: {
+      '3-5': [
+        {
+          id: 'rosee-tombe',
+          question: 'La rosée sur l’herbe, d’où vient-elle ?',
+          reponses: [
+            { texte: 'L’eau de l’air se colle sur l’herbe froide', icone: '💧', correcte: true },
+            { texte: 'Elle tombe du ciel la nuit', icone: '⬇️' },
+          ],
+          explication: "La rosée se forme sur place : l'eau de l'air se dépose sur l'herbe refroidie. Elle ne tombe pas.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'pourquoi-le-matin',
+          question: 'Pourquoi la rosée apparaît-elle au matin ?',
+          reponses: [
+            { texte: 'La nuit refroidit les surfaces, la vapeur s’y condense', icone: '🌙', correcte: true },
+            { texte: 'Il a plu pendant la nuit', icone: '🌧️' },
+            { texte: 'Les plantes fabriquent de l’eau la nuit', icone: '🌱' },
+          ],
+          explication:
+            "La nuit, l'herbe devient plus froide que l'air ; la vapeur d'eau se condense dessus, comme la buée sur un verre glacé.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'rosee-ou-givre',
+          question: 'Que devient la rosée si la surface descend sous zéro ?',
+          reponses: [
+            { texte: 'La vapeur se dépose en glace : c’est le givre', icone: '🌬️', correcte: true },
+            { texte: 'La rosée gèle en petits glaçons ronds', icone: '🧊' },
+            { texte: 'Il ne se passe rien de spécial', icone: '🤷' },
+          ],
+          explication:
+            "Sous zéro, la vapeur se dépose directement en glace au lieu de gouttes : on obtient du givre, pas de la rosée.",
+        },
+      ],
+    },
+  },
 ];

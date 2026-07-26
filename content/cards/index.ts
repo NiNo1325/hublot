@@ -106,6 +106,7 @@ import { card as laNeige } from './meteo/la-neige';
 import { card as laGrele } from './meteo/la-grele';
 import { card as leBrouillard } from './meteo/le-brouillard';
 import { card as louragan } from './meteo/louragan';
+import { card as laRoseeDuMatin } from './meteo/la-rosee-du-matin';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -216,4 +217,5 @@ export const cards: ScienceCard[] = [
   laGrele,
   leBrouillard,
   louragan,
+  laRoseeDuMatin,
 ];

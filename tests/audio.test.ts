@@ -36,6 +36,7 @@ const EN_ATTENTE_AUDIO = new Set<string>([
   'la-grele',
   'le-brouillard',
   'louragan',
+  'la-rosee-du-matin',
 ]);
 
 const cas = cards

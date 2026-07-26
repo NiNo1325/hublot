@@ -95,6 +95,7 @@ import { MigrationAnimation } from './MigrationAnimation';
 import { HibernationAnimation } from './HibernationAnimation';
 import { EcholocationAnimation } from './EcholocationAnimation';
 import { BranchiesAnimation } from './BranchiesAnimation';
+import { ZebreAnimation } from './ZebreAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -198,4 +199,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   hibernation: HibernationAnimation,
   echolocation: EcholocationAnimation,
   branchies: BranchiesAnimation,
+  zebre: ZebreAnimation,
 };

@@ -25,6 +25,7 @@ const EN_ATTENTE_AUDIO = new Set<string>([
   'lhibernation',
   'lecholocation-de-la-chauve-souris',
   'comment-les-poissons-respirent',
+  'pourquoi-les-zebres-ont-des-rayures',
 ]);
 
 const cas = cards

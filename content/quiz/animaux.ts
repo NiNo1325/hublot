@@ -260,4 +260,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'pourquoi-les-zebres-ont-des-rayures',
+    questions: {
+      '3-5': [
+        {
+          id: 'rayures-pour-quoi',
+          question: 'Les rayures du zèbre servent surtout à…',
+          reponses: [
+            { texte: 'Éloigner les mouches qui piquent', icone: '🪰', correcte: true },
+            { texte: 'Se cacher dans les herbes', icone: '🌾' },
+          ],
+          explication: "Les mouches piqueuses n'arrivent pas à se poser sur les rayures. Ce n'est pas pour se cacher.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'camouflage-ou-non',
+          question: 'Les rayures servent-elles à se camoufler ?',
+          reponses: [
+            { texte: 'Non, elles gênent les mouches piqueuses', icone: '🪰', correcte: true },
+            { texte: 'Oui, pour disparaître dans les hautes herbes', icone: '🌾' },
+            { texte: 'Oui, pour se cacher la nuit', icone: '🌙' },
+          ],
+          explication:
+            "Dans la savane, un zèbre rayé se voit de loin. Les rayures empêchent surtout les taons de se poser.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'hypothese-la-mieux-etayee',
+          question: 'Quelle explication des rayures est aujourd’hui la mieux étayée ?',
+          reponses: [
+            { texte: 'La protection contre les mouches piqueuses', icone: '🪰', correcte: true },
+            { texte: 'Le camouflage dans la végétation', icone: '🌾' },
+            { texte: 'Se rendre invisible aux lions', icone: '🦁' },
+          ],
+          explication:
+            "Les expériences montrent que les taons dérapent sur les rayures. Comme ils transmettent des maladies, ce pelage offre un vrai avantage de survie.",
+        },
+      ],
+    },
+  },
 ];

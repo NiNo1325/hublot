@@ -94,6 +94,7 @@ import { card as laMigrationDesOiseaux } from './animaux/la-migration-des-oiseau
 import { card as lhibernation } from './animaux/lhibernation';
 import { card as lecholocationDeLaChauveSouris } from './animaux/lecholocation-de-la-chauve-souris';
 import { card as commentLesPoissonsRespirent } from './animaux/comment-les-poissons-respirent';
+import { card as pourquoiLesZebresOntDesRayures } from './animaux/pourquoi-les-zebres-ont-des-rayures';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -193,4 +194,5 @@ export const cards: ScienceCard[] = [
   lhibernation,
   lecholocationDeLaChauveSouris,
   commentLesPoissonsRespirent,
+  pourquoiLesZebresOntDesRayures,
 ];

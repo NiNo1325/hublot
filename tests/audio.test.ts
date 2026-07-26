@@ -29,6 +29,7 @@ const EN_ATTENTE_AUDIO = new Set<string>([
   'comment-les-abeilles-font-le-miel',
   'la-toile-de-laraignee',
   'pourquoi-le-chat-retombe-sur-ses-pattes',
+  'les-nuages',
 ]);
 
 const cas = cards

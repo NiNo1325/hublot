@@ -99,6 +99,8 @@ import { card as commentLesAbeillesFontLeMiel } from './animaux/comment-les-abei
 import { card as laToileDeLaraignee } from './animaux/la-toile-de-laraignee';
 import { card as pourquoiLeChatRetombeSurSesPattes } from './animaux/pourquoi-le-chat-retombe-sur-ses-pattes';
 
+import { card as lesNuages } from './meteo/les-nuages';
+
 /**
  * Catalogue des cartes, groupées par domaine.
  *
@@ -201,4 +203,5 @@ export const cards: ScienceCard[] = [
   commentLesAbeillesFontLeMiel,
   laToileDeLaraignee,
   pourquoiLeChatRetombeSurSesPattes,
+  lesNuages,
 ];

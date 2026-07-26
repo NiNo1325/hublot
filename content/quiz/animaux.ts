@@ -176,4 +176,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'lecholocation-de-la-chauve-souris',
+    questions: {
+      '3-5': [
+        {
+          id: 'aveugle-ou-non',
+          question: 'La chauve-souris est-elle aveugle ?',
+          reponses: [
+            { texte: 'Non, elle voit très bien', icone: '👀', correcte: true },
+            { texte: 'Oui, elle ne voit rien du tout', icone: '🙈' },
+          ],
+          explication: "Elle voit très bien. Dans le noir, elle se guide en plus avec le son.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'comment-dans-le-noir',
+          question: 'Comment se dirige-t-elle dans le noir complet ?',
+          reponses: [
+            { texte: 'Elle crie et écoute l’écho revenir', icone: '🔊', correcte: true },
+            { texte: 'Elle est aveugle et vole au hasard', icone: '🙈' },
+            { texte: 'Elle allume ses yeux comme des lampes', icone: '🔦' },
+          ],
+          explication:
+            "Elle émet des cris aigus qui rebondissent sur les obstacles ; l'écho qui revient lui dit ce qui l'entoure.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'que-dit-lecho',
+          question: 'Qu’apprend la chauve-souris grâce à l’écho ?',
+          reponses: [
+            { texte: 'La distance et la position de l’obstacle', icone: '📍', correcte: true },
+            { texte: 'La couleur de sa proie', icone: '🎨' },
+            { texte: 'Rien, l’écho est juste du bruit', icone: '🔇' },
+          ],
+          explication:
+            "Le temps que met l'écho à revenir donne la distance ; en assemblant les échos, son cerveau reconstruit une image sonore de la scène.",
+        },
+      ],
+    },
+  },
 ];

@@ -23,6 +23,7 @@ const EN_ATTENTE_AUDIO = new Set<string>([
   'pourquoi-le-cameleon-change-de-couleur',
   'la-migration-des-oiseaux',
   'lhibernation',
+  'lecholocation-de-la-chauve-souris',
 ]);
 
 const cas = cards

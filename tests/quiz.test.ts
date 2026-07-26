@@ -5,6 +5,18 @@ import { cards } from '@/content/cards';
 import { AGE_RANGES } from '@/lib/types';
 
 /**
+ * Cartes livrées avant l'audio de leur quizz, en attente de quota TTS.
+ *
+ * Pendant du EN_ATTENTE_AUDIO des beats (tests/audio.test.ts) : rend l'attente
+ * visible et délibérée plutôt que de désactiver le garde-fou. Toute carte
+ * absente d'ici doit avoir l'audio complet de son quizz. `npm run audio:attente`
+ * recalcule cette liste depuis les fichiers présents.
+ */
+const EN_ATTENTE_AUDIO_QUIZ = new Set<string>([
+  'la-metamorphose-du-papillon',
+]);
+
+/**
  * Les questions vivent dans `content/quiz`, séparées des cartes. Ce découplage
  * fait gagner du temps de rédaction mais crée un risque : qu'une question
  * référence une carte disparue, ou contredise son contenu. Ces tests sont le
@@ -69,9 +81,12 @@ describe('intégrité du quizz', () => {
     L'audio du quizz est généré hors ligne par `npm run audio:quiz`. Une
     question muette au niveau 3-5 ans est un vrai problème : les non-lecteurs
     ne pourraient pas jouer. Deux fichiers par question, l'énoncé et
-    l'explication.
+    l'explication. Les cartes livrées avant l'audio de leur quizz sont déclarées
+    dans EN_ATTENTE_AUDIO_QUIZ (voir en tête de fichier).
   */
-  const fichiersAudio = quizCartes.flatMap((quiz) =>
+  const fichiersAudio = quizCartes
+    .filter((quiz) => !EN_ATTENTE_AUDIO_QUIZ.has(quiz.cardId))
+    .flatMap((quiz) =>
     AGE_RANGES.flatMap((age) =>
       quiz.questions[age].flatMap((question) =>
         (['question', 'explication'] as const).map(

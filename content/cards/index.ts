@@ -88,6 +88,8 @@ import { card as lesPourcentages } from './mathematiques/les-pourcentages';
 import { card as laMoyenne } from './mathematiques/la-moyenne';
 import { card as leParadoxeDesAnniversaires } from './mathematiques/le-paradoxe-des-anniversaires';
 
+import { card as laMetamorphoseDuPapillon } from './animaux/la-metamorphose-du-papillon';
+
 /**
  * Catalogue des cartes, groupées par domaine.
  *
@@ -180,4 +182,5 @@ export const cards: ScienceCard[] = [
   lesPourcentages,
   laMoyenne,
   leParadoxeDesAnniversaires,
+  laMetamorphoseDuPapillon,
 ];

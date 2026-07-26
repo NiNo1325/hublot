@@ -18,7 +18,9 @@ import { AGE_RANGES } from '@/lib/types';
  * `npm run audio` réussi, retirer l'entrée correspondante — le test vérifiera
  * alors les fichiers, et échouera s'ils manquent toujours.
  */
-const EN_ATTENTE_AUDIO = new Set<string>([]);
+const EN_ATTENTE_AUDIO = new Set<string>([
+  'la-metamorphose-du-papillon',
+]);
 
 const cas = cards
   .filter((carte) => !EN_ATTENTE_AUDIO.has(carte.id))

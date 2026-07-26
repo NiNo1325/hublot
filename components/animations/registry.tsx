@@ -89,6 +89,8 @@ import { MicroOndesAnimation } from './MicroOndesAnimation';
 import { WifiAnimation } from './WifiAnimation';
 import { AnniversairesAnimation } from './AnniversairesAnimation';
 
+import { MetamorphoseAnimation } from './MetamorphoseAnimation';
+
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
   activeBeatId: string | null;
@@ -185,4 +187,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   'micro-ondes': MicroOndesAnimation,
   wifi: WifiAnimation,
   anniversaires: AnniversairesAnimation,
+  metamorphose: MetamorphoseAnimation,
 };

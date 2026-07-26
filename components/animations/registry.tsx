@@ -91,6 +91,7 @@ import { AnniversairesAnimation } from './AnniversairesAnimation';
 
 import { MetamorphoseAnimation } from './MetamorphoseAnimation';
 import { CameleonAnimation } from './CameleonAnimation';
+import { MigrationAnimation } from './MigrationAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -190,4 +191,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   anniversaires: AnniversairesAnimation,
   metamorphose: MetamorphoseAnimation,
   cameleon: CameleonAnimation,
+  migration: MigrationAnimation,
 };

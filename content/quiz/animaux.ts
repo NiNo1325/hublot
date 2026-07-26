@@ -92,4 +92,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'la-migration-des-oiseaux',
+    questions: {
+      '3-5': [
+        {
+          id: 'pourquoi-partent',
+          question: 'Pourquoi les oiseaux partent-ils en hiver ?',
+          reponses: [
+            { texte: 'Parce qu’il n’y a plus à manger', icone: '🍽️', correcte: true },
+            { texte: 'Parce qu’ils ont froid', icone: '🥶' },
+          ],
+          explication: "Ils partent surtout parce que la nourriture manque, pas à cause du froid.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'vraie-raison',
+          question: 'Quelle est la vraie raison du grand départ ?',
+          reponses: [
+            { texte: 'La nourriture qui devient rare', icone: '🍽️', correcte: true },
+            { texte: 'Le froid qu’ils ne supportent pas', icone: '🥶' },
+            { texte: 'La nuit qui tombe plus tôt', icone: '🌙' },
+          ],
+          explication:
+            "Bien couverts de plumes, les oiseaux résistent au froid ; c'est la disparition des insectes et des graines qui les fait partir.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'comment-orientent',
+          question: 'Comment les oiseaux trouvent-ils leur chemin ?',
+          reponses: [
+            { texte: 'Le soleil, les étoiles et le champ magnétique', icone: '🧭', correcte: true },
+            { texte: 'Ils suivent simplement les routes des voitures', icone: '🛣️' },
+            { texte: 'Ils volent au hasard jusqu’à trouver', icone: '🎲' },
+          ],
+          explication:
+            "Ils combinent la position du soleil, la carte des étoiles et une perception du champ magnétique terrestre, comme une boussole intérieure.",
+        },
+      ],
+    },
+  },
 ];

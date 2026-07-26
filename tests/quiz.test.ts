@@ -21,6 +21,7 @@ const EN_ATTENTE_AUDIO_QUIZ = new Set<string>([
   'comment-les-poissons-respirent',
   'pourquoi-les-zebres-ont-des-rayures',
   'comment-les-abeilles-font-le-miel',
+  'la-toile-de-laraignee',
 ]);
 
 /**

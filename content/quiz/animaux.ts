@@ -344,4 +344,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'la-toile-de-laraignee',
+    questions: {
+      '3-5': [
+        {
+          id: 'araignee-collee',
+          question: 'L’araignée se colle-t-elle à sa toile ?',
+          reponses: [
+            { texte: 'Non, elle marche sur les fils qui ne collent pas', icone: '🕸️', correcte: true },
+            { texte: 'Oui, elle se colle comme les mouches', icone: '🪰' },
+          ],
+          explication: "Certains fils ne collent pas. L'araignée se déplace seulement sur ceux-là.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'quels-fils-collent',
+          question: 'Dans la toile, quels fils sont collants ?',
+          reponses: [
+            { texte: 'Seulement la spirale', icone: '🌀', correcte: true },
+            { texte: 'Tous les fils sans exception', icone: '🕸️' },
+            { texte: 'Seulement les rayons du centre', icone: '➡️' },
+          ],
+          explication:
+            "Les rayons secs portent l'araignée ; seule la spirale, couverte de gouttes de colle, piège les insectes.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'pourquoi-piege-marche',
+          question: 'Pourquoi le piège fonctionne-t-il sans coincer l’araignée ?',
+          reponses: [
+            { texte: 'Fils secs et collants coexistent, et elle connaît la toile', icone: '🧭', correcte: true },
+            { texte: 'Parce que l’araignée est trop légère pour coller', icone: '🪶' },
+            { texte: 'Parce que la colle sèche quand elle passe', icone: '☀️' },
+          ],
+          explication:
+            "L'araignée emprunte les rayons secs et évite la spirale gluante ; ses pattes fines et enduites limitent aussi l'adhérence.",
+        },
+      ],
+    },
+  },
 ];

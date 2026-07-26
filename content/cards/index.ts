@@ -96,6 +96,7 @@ import { card as lecholocationDeLaChauveSouris } from './animaux/lecholocation-d
 import { card as commentLesPoissonsRespirent } from './animaux/comment-les-poissons-respirent';
 import { card as pourquoiLesZebresOntDesRayures } from './animaux/pourquoi-les-zebres-ont-des-rayures';
 import { card as commentLesAbeillesFontLeMiel } from './animaux/comment-les-abeilles-font-le-miel';
+import { card as laToileDeLaraignee } from './animaux/la-toile-de-laraignee';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -197,4 +198,5 @@ export const cards: ScienceCard[] = [
   commentLesPoissonsRespirent,
   pourquoiLesZebresOntDesRayures,
   commentLesAbeillesFontLeMiel,
+  laToileDeLaraignee,
 ];

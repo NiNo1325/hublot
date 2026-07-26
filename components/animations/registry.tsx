@@ -97,6 +97,7 @@ import { EcholocationAnimation } from './EcholocationAnimation';
 import { BranchiesAnimation } from './BranchiesAnimation';
 import { ZebreAnimation } from './ZebreAnimation';
 import { MielAnimation } from './MielAnimation';
+import { ToileAnimation } from './ToileAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -202,4 +203,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   branchies: BranchiesAnimation,
   zebre: ZebreAnimation,
   miel: MielAnimation,
+  toile: ToileAnimation,
 };

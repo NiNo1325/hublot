@@ -105,6 +105,7 @@ import { FoudreAnimation } from './FoudreAnimation';
 import { NeigeAnimation } from './NeigeAnimation';
 import { GreleAnimation } from './GreleAnimation';
 import { BrouillardAnimation } from './BrouillardAnimation';
+import { OuraganAnimation } from './OuraganAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -218,4 +219,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   neige: NeigeAnimation,
   grele: GreleAnimation,
   brouillard: BrouillardAnimation,
+  ouragan: OuraganAnimation,
 };

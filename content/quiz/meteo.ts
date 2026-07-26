@@ -260,4 +260,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'louragan',
+    questions: {
+      '3-5': [
+        {
+          id: 'ouragan-au-milieu',
+          question: 'Qu’y a-t-il au milieu d’un ouragan ?',
+          reponses: [
+            { texte: 'Un endroit tout calme, l’œil', icone: '😌', correcte: true },
+            { texte: 'Le vent le plus fort', icone: '🌪️' },
+          ],
+          explication: "Au centre se trouve l'œil, une zone calme. Tout tourne bien rangé autour de lui.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'vent-desordre',
+          question: 'Dans un ouragan, le vent souffle-t-il n’importe comment ?',
+          reponses: [
+            { texte: 'Non, il tourne en spirale autour de l’œil', icone: '🌀', correcte: true },
+            { texte: 'Oui, dans tous les sens au hasard', icone: '🎲' },
+            { texte: 'Oui, toujours tout droit', icone: '➡️' },
+          ],
+          explication:
+            "Un ouragan est très organisé : une immense spirale de nuages qui tourne autour d'un centre calme.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'energie-ouragan',
+          question: 'D’où un ouragan tire-t-il son énergie ?',
+          reponses: [
+            { texte: 'De la chaleur d’une mer chaude qui évapore de l’eau', icone: '🌊', correcte: true },
+            { texte: 'Du froid de l’hiver', icone: '❄️' },
+            { texte: 'Des éclairs qu’il contient', icone: '⚡' },
+          ],
+          explication:
+            "Sur une mer à plus de 26 °C, l'eau s'évapore ; en se condensant en altitude, la vapeur libère la chaleur qui alimente la tempête.",
+        },
+      ],
+    },
+  },
 ];

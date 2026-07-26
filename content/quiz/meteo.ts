@@ -344,4 +344,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'le-givre',
+    questions: {
+      '3-5': [
+        {
+          id: 'givre-cest',
+          question: 'Le givre blanc sur les vitres, c’est fait de quoi ?',
+          reponses: [
+            { texte: 'De petits cristaux de glace', icone: '❄️', correcte: true },
+            { texte: 'De rosée qui a gelé', icone: '💧' },
+          ],
+          explication: "L'eau de l'air se change directement en glace sur la vitre froide, en jolis cristaux.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'givre-ou-rosee-gelee',
+          question: 'Le givre, est-ce de la rosée qui a gelé ?',
+          reponses: [
+            { texte: 'Non, la vapeur devient glace sans faire de goutte', icone: '🌬️', correcte: true },
+            { texte: 'Oui, les gouttes de rosée ont gelé', icone: '🧊' },
+            { texte: 'Oui, c’est de la neige écrasée', icone: '❄️' },
+          ],
+          explication:
+            "Sur une surface sous zéro, la vapeur se dépose directement en glace, sans passer par la goutte : c'est la déposition.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'forme-du-givre',
+          question: 'Pourquoi le givre forme-t-il des plumes et non des gouttes rondes ?',
+          reponses: [
+            { texte: 'Parce que la vapeur se solidifie en cristaux, comme la neige', icone: '🪶', correcte: true },
+            { texte: 'Parce que le vent étire les gouttes', icone: '💨' },
+            { texte: 'Parce que la rosée gèle en pointe', icone: '🧊' },
+          ],
+          explication:
+            "Le givre naît de vapeur solidifiée (déposition) : comme la neige, il s'organise en cristaux — plumes, aiguilles, fougères — jamais en gouttes.",
+        },
+      ],
+    },
+  },
 ];

@@ -31,6 +31,7 @@ const EN_ATTENTE_AUDIO_QUIZ = new Set<string>([
   'le-brouillard',
   'louragan',
   'la-rosee-du-matin',
+  'le-givre',
 ]);
 
 /**

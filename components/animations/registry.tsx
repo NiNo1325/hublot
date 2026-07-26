@@ -101,6 +101,7 @@ import { ToileAnimation } from './ToileAnimation';
 import { ChatRetombeAnimation } from './ChatRetombeAnimation';
 import { NuagesAnimation } from './NuagesAnimation';
 import { AltitudeFroidAnimation } from './AltitudeFroidAnimation';
+import { FoudreAnimation } from './FoudreAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -210,4 +211,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   'chat-retombe': ChatRetombeAnimation,
   nuages: NuagesAnimation,
   'altitude-froid': AltitudeFroidAnimation,
+  foudre: FoudreAnimation,
 };

@@ -92,4 +92,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'la-foudre-et-le-tonnerre',
+    questions: {
+      '3-5': [
+        {
+          id: 'eclair-ou-tonnerre',
+          question: 'Que remarque-t-on d’abord pendant un orage ?',
+          reponses: [
+            { texte: 'On voit l’éclair, puis on entend le tonnerre', icone: '⚡', correcte: true },
+            { texte: 'On voit et on entend en même temps', icone: '👂' },
+          ],
+          explication: "On voit l'éclair avant d'entendre le tonnerre, parce que la lumière va plus vite que le son.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'pourquoi-decalage',
+          question: 'Pourquoi entend-on le tonnerre après avoir vu l’éclair ?',
+          reponses: [
+            { texte: 'La lumière va bien plus vite que le son', icone: '💨', correcte: true },
+            { texte: 'Le tonnerre part plus tard que l’éclair', icone: '⏰' },
+            { texte: 'Le nuage garde le bruit un moment', icone: '☁️' },
+          ],
+          explication:
+            "Éclair et tonnerre naissent en même temps ; mais la lumière nous parvient presque instantanément, le son beaucoup plus lentement.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'calcul-distance',
+          question: 'Comment estimer la distance de l’orage ?',
+          reponses: [
+            { texte: 'Compter les secondes éclair-tonnerre et diviser par trois', icone: '🔢', correcte: true },
+            { texte: 'Compter le nombre d’éclairs', icone: '⚡' },
+            { texte: 'Regarder la taille du nuage', icone: '☁️' },
+          ],
+          explication:
+            "Le son parcourt environ 1 km en 3 secondes. Compter les secondes entre l'éclair et le tonnerre puis diviser par trois donne la distance en kilomètres.",
+        },
+      ],
+    },
+  },
 ];

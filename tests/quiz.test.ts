@@ -25,6 +25,7 @@ const EN_ATTENTE_AUDIO_QUIZ = new Set<string>([
   'pourquoi-le-chat-retombe-sur-ses-pattes',
   'les-nuages',
   'pourquoi-il-fait-plus-froid-en-montagne',
+  'la-foudre-et-le-tonnerre',
 ]);
 
 /**

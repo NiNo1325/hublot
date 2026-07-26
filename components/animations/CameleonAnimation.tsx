@@ -75,7 +75,7 @@ export function CameleonAnimation({
         })}
         <line x1="78" y1="64" x2="128" y2="104" stroke="#fb923c" strokeWidth="3" />
         <path d="M122 96 L132 108 L118 108 Z" fill="#fb923c" />
-        <text x="230" y="200" fill="#fb923c" fontSize="15" fontFamily={police}>sombre pour se réchauffer</text>
+        <text x="206" y="200" fill="#fb923c" fontSize="15" fontFamily={police}>sombre pour se réchauffer</text>
       </g>
 
       {/* Phase 4 : mécanisme — cristaux + camouflage barré */}

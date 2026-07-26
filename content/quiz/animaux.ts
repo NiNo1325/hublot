@@ -134,4 +134,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'lhibernation',
+    questions: {
+      '3-5': [
+        {
+          id: 'que-fait-le-corps',
+          question: "Pendant l'hiver, que fait le corps du hérisson ?",
+          reponses: [
+            { texte: 'Il tourne tout doucement, presque arrêté', icone: '🐢', correcte: true },
+            { texte: 'Il dort normalement comme la nuit', icone: '😴' },
+          ],
+          explication: "Son cœur bat très lentement et son corps devient froid : il se met au ralenti.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'est-ce-un-sommeil',
+          question: "L'hibernation, est-ce juste un long sommeil ?",
+          reponses: [
+            { texte: 'Non, le corps se met au ralenti extrême', icone: '🌡️', correcte: true },
+            { texte: 'Oui, l’animal dort simplement des mois', icone: '😴' },
+            { texte: 'Oui, mais il rêve tout le temps', icone: '💭' },
+          ],
+          explication:
+            "Ce n'est pas un sommeil : le cœur ralentit énormément et la température chute, pour dépenser presque zéro énergie.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'pourquoi-le-ralenti',
+          question: 'Pourquoi le corps se met-il autant au ralenti ?',
+          reponses: [
+            { texte: 'Pour dépenser presque zéro énergie et tenir sans manger', icone: '🔋', correcte: true },
+            { texte: 'Parce que le froid l’endort profondément', icone: '🥶' },
+            { texte: 'Pour digérer sa réserve plus vite', icone: '⏩' },
+          ],
+          explication:
+            "En tournant à très bas régime (cœur lent, température près de zéro), l'animal consomme si peu qu'il survit des mois sur ses réserves de graisse.",
+        },
+      ],
+    },
+  },
 ];

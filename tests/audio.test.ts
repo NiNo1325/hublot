@@ -22,6 +22,7 @@ const EN_ATTENTE_AUDIO = new Set<string>([
   'la-metamorphose-du-papillon',
   'pourquoi-le-cameleon-change-de-couleur',
   'la-migration-des-oiseaux',
+  'lhibernation',
 ]);
 
 const cas = cards

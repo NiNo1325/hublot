@@ -176,4 +176,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'la-grele',
+    questions: {
+      '3-5': [
+        {
+          id: 'grele-monte',
+          question: 'Dans le nuage, que fait le petit grêlon ?',
+          reponses: [
+            { texte: 'Il monte et descend plusieurs fois', icone: '🔃', correcte: true },
+            { texte: 'Il tombe tout de suite', icone: '⬇️' },
+          ],
+          explication: "Le vent le fait monter et descendre ; à chaque tour, il s'entoure d'une couche de glace.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'grele-quoi',
+          question: 'La grêle, qu’est-ce que c’est ?',
+          reponses: [
+            { texte: 'Des billes de glace faites de couches', icone: '🧅', correcte: true },
+            { texte: 'De la neige roulée en boule', icone: '⚪' },
+            { texte: 'De la pluie très froide', icone: '💧' },
+          ],
+          explication:
+            "Un grêlon grossit couche après couche en montant et descendant dans l'orage, comme un oignon.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'quand-tombe',
+          question: 'Quand un grêlon finit-il par tomber ?',
+          reponses: [
+            { texte: 'Quand il est trop lourd pour le courant d’air', icone: '⚖️', correcte: true },
+            { texte: 'Quand le nuage a fini sa neige', icone: '❄️' },
+            { texte: 'Quand il fait plus froid', icone: '🌡️' },
+          ],
+          explication:
+            "Il grossit tant que le courant ascendant le soutient ; dès que son poids l'emporte, il chute — d'autant plus gros que l'orage est puissant.",
+        },
+      ],
+    },
+  },
 ];

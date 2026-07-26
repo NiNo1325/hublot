@@ -103,6 +103,7 @@ import { NuagesAnimation } from './NuagesAnimation';
 import { AltitudeFroidAnimation } from './AltitudeFroidAnimation';
 import { FoudreAnimation } from './FoudreAnimation';
 import { NeigeAnimation } from './NeigeAnimation';
+import { GreleAnimation } from './GreleAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -214,4 +215,5 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
   'altitude-froid': AltitudeFroidAnimation,
   foudre: FoudreAnimation,
   neige: NeigeAnimation,
+  grele: GreleAnimation,
 };

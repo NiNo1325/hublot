@@ -103,6 +103,7 @@ import { card as lesNuages } from './meteo/les-nuages';
 import { card as pourquoiIlFaitPlusFroidEnMontagne } from './meteo/pourquoi-il-fait-plus-froid-en-montagne';
 import { card as laFoudreEtLeTonnerre } from './meteo/la-foudre-et-le-tonnerre';
 import { card as laNeige } from './meteo/la-neige';
+import { card as laGrele } from './meteo/la-grele';
 
 /**
  * Catalogue des cartes, groupées par domaine.
@@ -210,4 +211,5 @@ export const cards: ScienceCard[] = [
   pourquoiIlFaitPlusFroidEnMontagne,
   laFoudreEtLeTonnerre,
   laNeige,
+  laGrele,
 ];

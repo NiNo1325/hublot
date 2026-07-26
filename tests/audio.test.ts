@@ -33,6 +33,7 @@ const EN_ATTENTE_AUDIO = new Set<string>([
   'pourquoi-il-fait-plus-froid-en-montagne',
   'la-foudre-et-le-tonnerre',
   'la-neige',
+  'la-grele',
 ]);
 
 const cas = cards

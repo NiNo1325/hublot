@@ -12,28 +12,7 @@ import { AGE_RANGES } from '@/lib/types';
  * absente d'ici doit avoir l'audio complet de son quizz. `npm run audio:attente`
  * recalcule cette liste depuis les fichiers présents.
  */
-const EN_ATTENTE_AUDIO_QUIZ = new Set<string>([
-  'la-metamorphose-du-papillon',
-  'pourquoi-le-cameleon-change-de-couleur',
-  'la-migration-des-oiseaux',
-  'lhibernation',
-  'lecholocation-de-la-chauve-souris',
-  'comment-les-poissons-respirent',
-  'pourquoi-les-zebres-ont-des-rayures',
-  'comment-les-abeilles-font-le-miel',
-  'la-toile-de-laraignee',
-  'pourquoi-le-chat-retombe-sur-ses-pattes',
-  'les-nuages',
-  'pourquoi-il-fait-plus-froid-en-montagne',
-  'la-foudre-et-le-tonnerre',
-  'la-neige',
-  'la-grele',
-  'le-brouillard',
-  'louragan',
-  'la-rosee-du-matin',
-  'le-givre',
-  'la-forme-des-gouttes-de-pluie',
-]);
+const EN_ATTENTE_AUDIO_QUIZ = new Set<string>([]);
 
 /**
  * Les questions vivent dans `content/quiz`, séparées des cartes. Ce découplage

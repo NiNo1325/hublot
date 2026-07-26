@@ -218,4 +218,46 @@ export const quiz: QuizCarte[] = [
       ],
     },
   },
+  {
+    cardId: 'le-brouillard',
+    questions: {
+      '3-5': [
+        {
+          id: 'brouillard-vient-do',
+          question: 'D’où vient le brouillard ?',
+          reponses: [
+            { texte: 'Il se forme tout près du sol', icone: '🌫️', correcte: true },
+            { texte: 'Il descend du ciel', icone: '⬇️' },
+          ],
+          explication: "Le brouillard se forme au ras du sol, quand l'air y refroidit. Il ne tombe pas du ciel.",
+        },
+      ],
+      '6-8': [
+        {
+          id: 'brouillard-cest',
+          question: 'Le brouillard, c’est en fait…',
+          reponses: [
+            { texte: 'Un nuage posé au niveau du sol', icone: '☁️', correcte: true },
+            { texte: 'De la fumée', icone: '💨' },
+            { texte: 'De la pluie très fine', icone: '🌧️' },
+          ],
+          explication:
+            "C'est un nuage de gouttelettes, mais au ras du sol : l'air y a refroidi et sa vapeur s'est condensée sur place.",
+        },
+      ],
+      '9-12': [
+        {
+          id: 'brouillard-se-leve',
+          question: 'Quand on dit que le brouillard « se lève », que se passe-t-il ?',
+          reponses: [
+            { texte: 'Il se réchauffe et se change en vapeur invisible sur place', icone: '☀️', correcte: true },
+            { texte: 'Il monte dans le ciel comme un ballon', icone: '🎈' },
+            { texte: 'Le vent l’emporte vers un autre pays', icone: '🌬️' },
+          ],
+          explication:
+            "Quand l'air se réchauffe et repasse au-dessus du point de rosée, les gouttelettes s'évaporent. Le brouillard ne monte pas : il disparaît là où il était.",
+        },
+      ],
+    },
+  },
 ];

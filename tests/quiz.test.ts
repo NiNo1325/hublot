@@ -28,6 +28,7 @@ const EN_ATTENTE_AUDIO_QUIZ = new Set<string>([
   'la-foudre-et-le-tonnerre',
   'la-neige',
   'la-grele',
+  'le-brouillard',
 ]);
 
 /**

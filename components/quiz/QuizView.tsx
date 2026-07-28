@@ -297,6 +297,11 @@ export function QuizView({ cards }: QuizViewProps) {
           <button
             type="button"
             onClick={() => {
+              // Couper l'explication en cours : sans lui, aux âges où l'énoncé
+              // suivant n'est pas lu (6-8, 9-12), la voix déborderait sur la
+              // question suivante. Chez les 3-5 ans, la lecture du nouvel énoncé
+              // reprend juste après.
+              arreter();
               setIndex((n) => n + 1);
               setChoisie(null);
             }}

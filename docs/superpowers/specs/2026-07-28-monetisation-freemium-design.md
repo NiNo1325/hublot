@@ -95,10 +95,19 @@ cannibaliser l'abonnement. (Valeurs par défaut, ajustables avant lancement.)
   pour éviter les achats déclenchés par un enfant. Le paiement lui-même reste
   protégé par l'authentification Google Play.
 
-### 6. Comportement web
-- Le site en navigateur reste une **vitrine du socle gratuit** ; le contenu premium
-  y est verrouillé avec le message « Disponible dans l'application Android ». Même
-  base de code, comportement piloté par la détection de la Digital Goods API.
+### 6. Comportement web (vitrine + entonnoir)
+- Le site en navigateur est une **vitrine du socle gratuit et un entonnoir vers
+  l'app** : le socle gratuit est jouable, et les cartes premium restent visibles
+  (cadenas) mais leur ouverture affiche un **appel à l'action clair** — un bouton
+  « Installer l'app pour tout débloquer » pointant vers la fiche Play Store — plutôt
+  qu'un simple message. Le but est de convertir le visiteur web en installation,
+  seul endroit où l'achat est possible.
+- Même base de code que l'app ; le comportement est piloté par la détection de la
+  Digital Goods API (présente = TWA → achat possible ; absente = navigateur →
+  appel à installer).
+- Rappel (cf. Gestion des erreurs) : en phase 1 ce verrouillage est **côté UI
+  seulement** ; le contenu premium reste techniquement servi par Vercel. Blindage
+  serveur repoussé en phase 2.
 
 ### 7. Rebuild et republication de l'AAB
 - Une fois les produits créés dans Play Console et le code du paywall en place,

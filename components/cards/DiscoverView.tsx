@@ -5,6 +5,10 @@ import { useRouter } from 'next/navigation';
 import type { DomainDefinition, DomainId, ScienceCard } from '@/lib/types';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { DomainFilter } from '@/components/domains/DomainFilter';
+import { estPremium } from '@/content/acces';
+import { premiumActif } from '@/lib/premium/flag';
+import { useEntitlement } from '@/components/premium/useEntitlement';
+import { Paywall } from '@/components/premium/Paywall';
 import { CardGrid } from './CardGrid';
 import { CardModal } from './CardModal';
 import { useCartesVues } from './useCartesVues';
@@ -21,10 +25,21 @@ export function DiscoverView({ cards, domains }: DiscoverViewProps) {
   const router = useRouter();
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
+  const { premium } = useEntitlement();
+  const [paywallOuvert, setPaywallOuvert] = useState(false);
 
   /** `null` = tous les domaines. Évite d'avoir à synchroniser un Set complet. */
   const [selection, setSelection] = useState<Set<DomainId> | null>(null);
   const [carteOuverte, setCarteOuverte] = useState<ScienceCard | null>(null);
+
+  // Le drapeau d'abord : freemium éteint ⇒ rien n'est jamais verrouillé.
+  const estVerrouillee = (card: ScienceCard) =>
+    premiumActif() && estPremium(card) && !premium;
+
+  function ouvrirCarte(card: ScienceCard) {
+    if (estVerrouillee(card)) setPaywallOuvert(true);
+    else setCarteOuverte(card);
+  }
 
   // Accès direct à /decouvrir sans avoir choisi d'âge : on renvoie à l'accueil.
   useEffect(() => {
@@ -107,7 +122,8 @@ export function DiscoverView({ cards, domains }: DiscoverViewProps) {
         ageRange={ageRange}
         cartesVues={cartesVues}
         cartesEteintes={cartesEteintes}
-        onSelectCard={setCarteOuverte}
+        estVerrouillee={estVerrouillee}
+        onSelectCard={ouvrirCarte}
       />
 
       {carteOuverte && (
@@ -120,6 +136,8 @@ export function DiscoverView({ cards, domains }: DiscoverViewProps) {
           onClose={() => setCarteOuverte(null)}
         />
       )}
+
+      {paywallOuvert && <Paywall onClose={() => setPaywallOuvert(false)} />}
     </main>
   );
 }

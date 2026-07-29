@@ -12,6 +12,8 @@ interface CardTileProps {
   dejaJouee: boolean;
   /** Hublot éteint. Levé quand tout le catalogue est exploré, la coche restant. */
   eteinte: boolean;
+  /** Carte premium non débloquée : elle porte un cadenas. */
+  verrouillee: boolean;
   onSelect: (card: ScienceCard) => void;
 }
 
@@ -37,6 +39,7 @@ export function CardTile({
   index,
   dejaJouee,
   eteinte,
+  verrouillee,
   onSelect,
 }: CardTileProps) {
   const style = domainStyles[card.domainId];
@@ -87,6 +90,15 @@ export function CardTile({
               </svg>
             </span>
           )}
+
+          {verrouillee && (
+            <span
+              aria-hidden="true"
+              className="absolute bottom-1 left-1 flex h-7 w-7 items-center justify-center rounded-full border-[3px] border-encre bg-encre-clair text-sm"
+            >
+              🔒
+            </span>
+          )}
         </span>
 
         {/*
@@ -110,6 +122,7 @@ export function CardTile({
           projet — jamais d'information portée par le seul rendu.
         */}
         {dejaJouee && <span className="sr-only">, déjà écoutée</span>}
+        {verrouillee && <span className="sr-only">, premium — à débloquer</span>}
       </button>
     </li>
   );

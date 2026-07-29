@@ -15,6 +15,8 @@ interface CardGridProps {
    * à l'instant même où l'enfant vient de tout terminer.
    */
   cartesEteintes: Set<string>;
+  /** Vrai pour une carte premium non débloquée : elle porte un cadenas. */
+  estVerrouillee: (card: ScienceCard) => boolean;
   onSelectCard: (card: ScienceCard) => void;
 }
 
@@ -23,6 +25,7 @@ export function CardGrid({
   ageRange,
   cartesVues,
   cartesEteintes,
+  estVerrouillee,
   onSelectCard,
 }: CardGridProps) {
   if (cards.length === 0) {
@@ -43,6 +46,7 @@ export function CardGrid({
           index={index}
           dejaJouee={cartesVues.has(card.id)}
           eteinte={cartesEteintes.has(card.id)}
+          verrouillee={estVerrouillee(card)}
           onSelect={onSelectCard}
         />
       ))}

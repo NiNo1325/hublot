@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { SKUS_PREMIUM } from '@/lib/premium/produits';
+import { premiumActif } from '@/lib/premium/flag';
 import { estPremiumDapresAchats } from '@/lib/premium/entitlement';
 import {
   acheter,
@@ -40,7 +41,13 @@ function publier(maj: Partial<EtatPremium>) {
 async function charger() {
   if (chargementLance) return;
   chargementLance = true;
-  if (!digitalGoodsDisponible()) {
+  /*
+    Mode dormant : drapeau éteint ⇒ aucune requête billing. Sans ce garde-fou,
+    la TWA (où la Digital Goods API existe) interrogerait Google Play à chaque
+    lancement alors que le freemium n'est pas activé — l'app ne serait plus
+    identique à aujourd'hui, contrairement à la garantie du drapeau.
+  */
+  if (!premiumActif() || !digitalGoodsDisponible()) {
     publier({ statut: 'pret', peutAcheter: false });
     return;
   }

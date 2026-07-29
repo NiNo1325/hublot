@@ -45,8 +45,93 @@ vitrine + entonnoir : le premium y affiche un appel à installer l'app.
   listPurchases, acknowledge, achat d'une offre d'abonnement) contre la
   documentation Play Billing + Digital Goods **à jour** au moment d'implémenter la
   tâche 5. Le code fourni reflète l'état connu de l'API v2.0.
-- **Rappel stratégique** : ne pas construire ce chantier tant qu'un premier signal
-  d'usage (installs, rétention du test) n'existe pas.
+- **Drapeau d'activation** : tout le freemium est livré **dormant** derrière le
+  drapeau `NEXT_PUBLIC_PREMIUM_ACTIF`. Tant qu'il ne vaut pas `'true'`, l'app se
+  comporte exactement comme aujourd'hui — aucune carte verrouillée, aucun paywall,
+  aucune requête billing. L'activation se fait en posant la variable d'environnement
+  (Vercel) et en redéployant, **sans changer de code**. Le gating passe donc
+  toujours par `premiumActif()` (tâche 0), jamais par `estPremium` seul.
+- **Rappel stratégique** : ne pas *activer* ce chantier (drapeau à `true`) tant
+  qu'un premier signal d'usage (installs, rétention du test) n'existe pas. Le code
+  peut être livré dormant sans risque.
+
+---
+
+### Tâche 0 : Drapeau d'activation premium
+
+Le freemium doit pouvoir être livré **éteint** puis allumé à la demande, sans
+nouveau code. Un unique point de vérité lit la variable d'environnement.
+
+**Files:**
+- Create: `lib/premium/flag.ts`
+- Test: `tests/premium-flag.test.ts`
+
+**Interfaces:**
+- Produces: `premiumActif(): boolean`.
+- Consumed by: tâche 6 (gating).
+
+- [ ] **Étape 1 : Écrire le test qui échoue**
+
+```ts
+// tests/premium-flag.test.ts
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { premiumActif } from '@/lib/premium/flag';
+
+afterEach(() => {
+  vi.unstubAllEnvs();
+});
+
+describe('drapeau d’activation premium', () => {
+  it('est éteint par défaut (variable absente)', () => {
+    vi.stubEnv('NEXT_PUBLIC_PREMIUM_ACTIF', '');
+    expect(premiumActif()).toBe(false);
+  });
+
+  it('n’est allumé que par la valeur exacte "true"', () => {
+    vi.stubEnv('NEXT_PUBLIC_PREMIUM_ACTIF', 'true');
+    expect(premiumActif()).toBe(true);
+  });
+
+  it('reste éteint pour toute autre valeur', () => {
+    vi.stubEnv('NEXT_PUBLIC_PREMIUM_ACTIF', '1');
+    expect(premiumActif()).toBe(false);
+  });
+});
+```
+
+- [ ] **Étape 2 : Lancer le test, vérifier qu'il échoue**
+
+Run: `npm test -- premium-flag`
+Expected: FAIL — `lib/premium/flag` introuvable.
+
+- [ ] **Étape 3 : Implémenter**
+
+```ts
+// lib/premium/flag.ts
+/**
+ * Interrupteur unique du freemium.
+ *
+ * Livré à `false` : l'app reste entièrement gratuite, sans cadenas ni paywall.
+ * On l'allume en posant `NEXT_PUBLIC_PREMIUM_ACTIF=true` dans l'environnement
+ * (Vercel) puis en redéployant — aucun changement de code n'est nécessaire.
+ * Le préfixe `NEXT_PUBLIC_` rend la valeur lisible côté client, où vit le gating.
+ */
+export function premiumActif(): boolean {
+  return process.env.NEXT_PUBLIC_PREMIUM_ACTIF === 'true';
+}
+```
+
+- [ ] **Étape 4 : Lancer le test, vérifier qu'il passe**
+
+Run: `npm test -- premium-flag`
+Expected: PASS (3 tests).
+
+- [ ] **Étape 5 : Commit**
+
+```bash
+git add lib/premium/flag.ts tests/premium-flag.test.ts
+git commit -m "Ajoute le drapeau d'activation du freemium (dormant par défaut)"
+```
 
 ---
 
@@ -827,6 +912,7 @@ Dans `components/cards/DiscoverView.tsx` :
 
 ```tsx
 import { estPremium } from '@/content/acces';
+import { premiumActif } from '@/lib/premium/flag';
 import { useEntitlement } from '@/components/premium/useEntitlement';
 import { Paywall } from '@/components/premium/Paywall';
 ```
@@ -837,7 +923,9 @@ import { Paywall } from '@/components/premium/Paywall';
 const { premium } = useEntitlement();
 const [paywallOuvert, setPaywallOuvert] = useState(false);
 
-const estVerrouillee = (card: ScienceCard) => estPremium(card) && !premium;
+// Le drapeau d'abord : freemium éteint ⇒ rien n'est jamais verrouillé.
+const estVerrouillee = (card: ScienceCard) =>
+  premiumActif() && estPremium(card) && !premium;
 
 function ouvrirCarte(card: ScienceCard) {
   if (estVerrouillee(card)) setPaywallOuvert(true);
@@ -861,7 +949,12 @@ ceux des tâches 1-3).
 
 - [ ] **Étape 5 : Vérifier le rendu en local**
 
-Run: `npm run dev`, ouvrir `/decouvrir`, choisir un âge.
+D'abord, drapeau **éteint** (défaut) : `npm run dev`, ouvrir `/decouvrir`, choisir un
+âge. Expected : **aucun cadenas**, toutes les cartes s'ouvrent — l'app est identique
+à aujourd'hui.
+
+Puis, drapeau **allumé** pour vérifier le verrouillage :
+`NEXT_PUBLIC_PREMIUM_ACTIF=true npm run dev` (ou l'ajouter à `.env.local`).
 Expected : les cartes d'astronomie et les cartes phares s'ouvrent normalement ; une
 carte premium (ex. « Le wifi ») porte un cadenas et ouvre le paywall — lequel, en
 navigateur, montre le bouton « Installer l'app pour tout débloquer » (pas d'offres,
@@ -950,6 +1043,8 @@ Expected : conforme.
 
 ## Auto-revue (couverture de la spec)
 
+- Drapeau d'activation (freemium livré dormant, allumé sans code) → tâche 0,
+  câblé au gating en tâche 6. ✔
 - Produits Play (abonnement mensuel/annuel + à vie) → tâche 7. ✔
 - Digital Goods API (lister/acheter/interroger achats) → tâches 4 et 8. ✔
 - Modèle de droit `useEntitlement` (API absente, premium possédé/expiré) →

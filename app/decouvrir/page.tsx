@@ -1,11 +1,11 @@
 import { cards } from '@/content/cards';
 import { domains } from '@/content/domains';
-import { DiscoverView } from '@/components/cards/DiscoverView';
+import { MondesView } from '@/components/cards/MondesView';
 
 /**
- * Server Component : le catalogue est statique et importé au build, il n'y a ni
- * fetch ni latence réseau à l'ouverture de la page.
+ * Server Component : catalogue statique importé au build. La page d'accueil de
+ * Découvrir est désormais la grille des mondes.
  */
 export default function DecouvrirPage() {
-  return <DiscoverView cards={cards} domains={domains} />;
+  return <MondesView cards={cards} domains={domains} />;
 }

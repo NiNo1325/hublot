@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v2';
+const VERSION = 'v3';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -20,7 +20,26 @@ const CACHE_AUDIO = 'hublot-audio';
   chose. Le reste des ressources arrive par la stratégie ci-dessous, au fil de
   la navigation faite en ligne.
 */
-const SHELL = ['/', '/decouvrir', '/quizz', '/hors-ligne', '/manifest.webmanifest'];
+const SHELL = [
+  '/',
+  '/decouvrir',
+  '/quizz',
+  '/hors-ligne',
+  '/manifest.webmanifest',
+  // Les mondes : une route par domaine, pour que la navigation par domaine
+  // fonctionne aussi au démarrage à froid en voiture. Les ids doivent
+  // correspondre à content/domains.ts (à tenir à jour si un domaine change).
+  '/decouvrir/sciences-de-la-terre',
+  '/decouvrir/astronomie',
+  '/decouvrir/biologie',
+  '/decouvrir/physique',
+  '/decouvrir/chimie',
+  '/decouvrir/ingenierie',
+  '/decouvrir/informatique',
+  '/decouvrir/mathematiques',
+  '/decouvrir/animaux',
+  '/decouvrir/meteo',
+];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

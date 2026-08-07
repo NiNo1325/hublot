@@ -33,6 +33,8 @@ export interface DomainDefinition {
    */
   color: string;
   labels: Record<Locale, string>;
+  /** Phrase courte qui intrigue, affichée sur la grille des mondes. */
+  accroche: Record<Locale, string>;
 }
 
 /**

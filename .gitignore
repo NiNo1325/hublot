@@ -48,6 +48,7 @@ next-env.d.ts
 # échouerait sans que rien ne l'explique.
 !app/apple-icon.png
 !public/icones/*.png
+!public/ages/*.png
 
 .vercel
 .env*

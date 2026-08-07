@@ -1,35 +1,25 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import type { StaticImageData } from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
+import type { AgeRange } from '@/lib/types';
+import { trancheDepuisAge } from '@/lib/age';
+import illustration35 from '@/public/ages/age-3-5.png';
+import illustration68 from '@/public/ages/age-6-8.png';
+import illustration912 from '@/public/ages/age-9-12.png';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { useAgeRange } from './useAgeRange';
 
-// La silhouette grandit avec l'âge : 96px à 3 ans, 168px à 12 ans. Un enfant qui
-// ne lit pas se reconnaît à sa taille ; le grand chiffre sert l'adulte qui règle.
-const tailleSilhouette = (age: number) => 96 + (age - 3) * 8;
-
-function Silhouette({ echelle }: { echelle: number }) {
-  // Dessinée depuis les pieds : l'échelle fait grandir l'enfant vers le haut,
-  // comme une toise, plutôt que de le rétrécir depuis le centre.
-  const hauteurTete = 26 * echelle;
-  const yTete = 108 - 64 * echelle;
-  return (
-    <svg viewBox="0 0 100 120" className="h-full w-full" aria-hidden="true">
-      <circle cx="50" cy={yTete} r={hauteurTete / 2} fill="currentColor" />
-      <path
-        d={`M50 ${yTete + hauteurTete / 2 + 2}
-            c ${-18 * echelle} 0 ${-24 * echelle} ${14 * echelle} ${-24 * echelle} ${34 * echelle}
-            L ${50 - 24 * echelle} 110
-            h ${48 * echelle}
-            c 0 ${-20 * echelle} ${-6 * echelle} ${-34 * echelle} ${-24 * echelle} ${-34 * echelle} z`}
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
+// Une illustration immédiatement reconnaissable par tranche d'âge.
+const illustrationAge: Record<AgeRange, { image: StaticImageData; alt: string }> = {
+  '3-5': { image: illustration35, alt: 'Un tout-petit explorateur' },
+  '6-8': { image: illustration68, alt: 'Un enfant avec une petite fusée' },
+  '9-12': { image: illustration912, alt: "Une jeune ado passionnée d'astronomie" },
+};
 
 export function AgeGate() {
   const router = useRouter();
@@ -47,6 +37,7 @@ export function AgeGate() {
   // Âge en cours d'édition dans le pas-à-pas : l'âge courant si on vient changer,
   // sinon 7 par défaut. `age` est déjà résolu quand cet écran s'affiche.
   const [ageEdite, setAgeEdite] = useState<number>(age ?? 7);
+  const illustration = illustrationAge[trancheDepuisAge(ageEdite)];
 
   /*
     L'état vient du cache, jamais d'un drapeau : après un nettoyage du stockage
@@ -158,23 +149,23 @@ export function AgeGate() {
       </div>
 
       {/*
-        Trois hublots de tailles croissantes, alignés sur leur base comme une
-        toise : la taille du disque est elle-même l'information, ce qui rend le
-        choix lisible sans savoir lire.
-      */}
-      {/*
         Pas-à-pas : on choisit un âge exact. Le grand chiffre sert l'adulte qui
-        règle, la silhouette qui grandit sert l'enfant qui se reconnaît à sa
-        taille — les deux repères, comme avant.
+        règle ; la figure (tout-petit, enfant, ado) sert l'enfant qui s'y
+        reconnaît. Le cercle garde une taille fixe : c'est l'illustration, pas la
+        taille, qui dit la tranche.
       */}
       <div className="flex flex-col items-center gap-8">
-        <span
-          className="halo-soleil flex items-end justify-center overflow-hidden rounded-full border-4 border-soleil bg-encre-clair text-soleil transition-[width,height] duration-200"
-          style={{ width: tailleSilhouette(ageEdite), height: tailleSilhouette(ageEdite) }}
-        >
-          <span className="w-1/2" style={{ height: tailleSilhouette(ageEdite) * 0.62 }}>
-            <Silhouette echelle={1} />
-          </span>
+        <span className="halo-soleil relative block h-44 w-44 overflow-hidden rounded-full border-4 border-soleil bg-encre-clair">
+          <Image
+            key={illustration.image.src}
+            src={illustration.image}
+            alt={illustration.alt}
+            fill
+            priority
+            placeholder="blur"
+            sizes="176px"
+            className="object-cover"
+          />
         </span>
 
         <div className="flex items-center gap-6">
@@ -189,9 +180,10 @@ export function AgeGate() {
           </button>
           <span
             aria-hidden="true"
-            className="w-24 text-center font-display text-6xl font-semibold text-craie"
+            className="w-32 text-center font-display text-6xl font-semibold text-craie"
           >
             {ageEdite}
+            {ageEdite >= 12 ? ' +' : ''}
           </span>
           <button
             type="button"
@@ -204,7 +196,7 @@ export function AgeGate() {
           </button>
         </div>
         <span className="sr-only" aria-live="polite">
-          {ageEdite} ans
+          {ageEdite >= 12 ? '12 ans et plus' : `${ageEdite} ans`}
         </span>
 
         <button

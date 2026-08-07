@@ -59,7 +59,7 @@ export const domains: DomainDefinition[] = [
     icon: '🔢',
     color: 'rose',
     labels: { fr: 'Les nombres' },
-    accroche: { fr: "Le zéro, l'infini, le hasard : les secrets des nombres." },
+    accroche: { fr: "Le zéro et l'infini cachent-ils des secrets ?" },
   },
   {
     id: 'animaux',

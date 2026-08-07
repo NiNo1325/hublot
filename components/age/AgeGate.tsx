@@ -2,22 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import type { AgeRange } from '@/lib/types';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { useAgeRange } from './useAgeRange';
 
-/**
- * Silhouettes de tailles croissantes : un enfant qui ne lit pas peut se
- * reconnaître à sa taille. Le libellé texte est là pour l'adulte qui accompagne,
- * jamais comme seul moyen de choisir.
- */
-const CHOIX: { range: AgeRange; diametre: number; label: string }[] = [
-  { range: '3-5', diametre: 108, label: '3 à 5 ans' },
-  { range: '6-8', diametre: 136, label: '6 à 8 ans' },
-  { range: '9-12', diametre: 164, label: '9 à 12 ans' },
-];
+// La silhouette grandit avec l'âge : 96px à 3 ans, 168px à 12 ans. Un enfant qui
+// ne lit pas se reconnaît à sa taille ; le grand chiffre sert l'adulte qui règle.
+const tailleSilhouette = (age: number) => 96 + (age - 3) * 8;
 
 function Silhouette({ echelle }: { echelle: number }) {
   // Dessinée depuis les pieds : l'échelle fait grandir l'enfant vers le haut,
@@ -41,7 +33,7 @@ function Silhouette({ echelle }: { echelle: number }) {
 
 export function AgeGate() {
   const router = useRouter();
-  const { ageRange, status, chooseAgeRange } = useAgeRange();
+  const { age, ageRange, status, choisirAge } = useAgeRange();
   const { cartesVues, oublierToutesLesVues } = useCartesVues();
 
   /*
@@ -51,6 +43,10 @@ export function AgeGate() {
     accident.
   */
   const [confirmation, setConfirmation] = useState(false);
+
+  // Âge en cours d'édition dans le pas-à-pas : l'âge courant si on vient changer,
+  // sinon 7 par défaut. `age` est déjà résolu quand cet écran s'affiche.
+  const [ageEdite, setAgeEdite] = useState<number>(age ?? 7);
 
   /*
     L'état vient du cache, jamais d'un drapeau : après un nettoyage du stockage
@@ -85,11 +81,6 @@ export function AgeGate() {
     rendrait le changement impossible.
   */
   const changementDemande = useSearchParams().get('changer') === '1';
-
-  function choisir(range: AgeRange) {
-    chooseAgeRange(range);
-    router.push('/');
-  }
 
   // Pendant la lecture du stockage, on ne rend rien : afficher le sélecteur
   // puis le remplacer aussitôt ferait clignoter l'écran à chaque retour.
@@ -135,7 +126,7 @@ export function AgeGate() {
             onClick={() => router.push('/?changer=1')}
             className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
           >
-            Niveau&nbsp;: {ageRange} ans — changer
+            Niveau&nbsp;: {age} ans — changer
           </button>
 
           {/*
@@ -171,45 +162,62 @@ export function AgeGate() {
         toise : la taille du disque est elle-même l'information, ce qui rend le
         choix lisible sans savoir lire.
       */}
-      <ul className="flex flex-wrap items-end justify-center gap-6 sm:gap-10">
-        {CHOIX.map(({ range, diametre, label }) => (
-          <li key={range}>
-            <button
-              type="button"
-              onClick={() => choisir(range)}
-              className="group flex cursor-pointer flex-col items-center gap-4 rounded-3xl p-2 transition-transform duration-150 hover:scale-105 active:scale-95"
-            >
-              <span className="sr-only">
-                {label}
-                {range === ageRange ? ' (choix actuel)' : ''}
-              </span>
-              <span
-                className={`halo-soleil flex items-end justify-center overflow-hidden rounded-full border-4 bg-encre-clair transition-colors group-hover:border-soleil group-hover:text-soleil ${
-                  // En mode changement, le choix courant est marqué : sans
-                  // repère, on ne sait pas ce qu'on est en train de modifier.
-                  range === ageRange && changementDemande
-                    ? 'border-soleil text-soleil'
-                    : 'border-encre-bord text-craie-douce'
-                }`}
-                style={{ width: diametre, height: diametre }}
-              >
-                <span
-                  className="w-1/2"
-                  style={{ height: diametre * 0.62 }}
-                >
-                  <Silhouette echelle={1} />
-                </span>
-              </span>
-              <span
-                aria-hidden="true"
-                className="font-display text-lg font-medium text-craie-douce group-hover:text-soleil"
-              >
-                {label}
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
+      {/*
+        Pas-à-pas : on choisit un âge exact. Le grand chiffre sert l'adulte qui
+        règle, la silhouette qui grandit sert l'enfant qui se reconnaît à sa
+        taille — les deux repères, comme avant.
+      */}
+      <div className="flex flex-col items-center gap-8">
+        <span
+          className="halo-soleil flex items-end justify-center overflow-hidden rounded-full border-4 border-soleil bg-encre-clair text-soleil transition-[width,height] duration-200"
+          style={{ width: tailleSilhouette(ageEdite), height: tailleSilhouette(ageEdite) }}
+        >
+          <span className="w-1/2" style={{ height: tailleSilhouette(ageEdite) * 0.62 }}>
+            <Silhouette echelle={1} />
+          </span>
+        </span>
+
+        <div className="flex items-center gap-6">
+          <button
+            type="button"
+            onClick={() => setAgeEdite((a) => Math.max(3, a - 1))}
+            disabled={ageEdite <= 3}
+            aria-label="Un an de moins"
+            className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-4 border-encre-bord font-display text-4xl text-craie transition-colors hover:border-soleil hover:text-soleil disabled:cursor-default disabled:opacity-30"
+          >
+            −
+          </button>
+          <span
+            aria-hidden="true"
+            className="w-24 text-center font-display text-6xl font-semibold text-craie"
+          >
+            {ageEdite}
+          </span>
+          <button
+            type="button"
+            onClick={() => setAgeEdite((a) => Math.min(12, a + 1))}
+            disabled={ageEdite >= 12}
+            aria-label="Un an de plus"
+            className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-4 border-encre-bord font-display text-4xl text-craie transition-colors hover:border-soleil hover:text-soleil disabled:cursor-default disabled:opacity-30"
+          >
+            +
+          </button>
+        </div>
+        <span className="sr-only" aria-live="polite">
+          {ageEdite} ans
+        </span>
+
+        <button
+          type="button"
+          onClick={() => {
+            choisirAge(ageEdite);
+            router.push('/');
+          }}
+          className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-xl text-soleil transition-transform hover:scale-105 active:scale-95"
+        >
+          C&apos;est parti
+        </button>
+      </div>
 
       {/* Sortie de secours : on doit pouvoir renoncer sans rien changer. */}
       {changementDemande && ageRange && (

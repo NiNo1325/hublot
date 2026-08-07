@@ -54,6 +54,11 @@ export async function ecrireCatalogue() {
         ([cle, valeur]) => [`quiz/${cle}.mp3`, empreinteDe(valeur)],
       ),
     ),
+    ...Object.fromEntries(
+      Object.entries(await lireManifeste(`${RACINE}/accroches/manifeste.json`)).map(
+        ([cle, valeur]) => [`accroches/${cle}.mp3`, empreinteDe(valeur)],
+      ),
+    ),
   };
 
   const fichiers = [];

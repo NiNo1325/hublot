@@ -1,7 +1,8 @@
 /**
  * Recalcule les listes d'attente audio à partir des fichiers réellement
- * présents : EN_ATTENTE_AUDIO (beats) dans tests/audio.test.ts et
- * EN_ATTENTE_AUDIO_QUIZ (quizz) dans tests/quiz.test.ts.
+ * présents : EN_ATTENTE_AUDIO (beats) dans tests/audio.test.ts,
+ * EN_ATTENTE_AUDIO_QUIZ (quizz) dans tests/quiz.test.ts, et
+ * EN_ATTENTE_ACCROCHES (accroches) dans tests/accroches.test.ts.
  *
  * Usage : npx tsx scripts/maj-attente-audio.mjs
  *
@@ -13,6 +14,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { cards } from '../content/cards/index.ts';
 import { quizCartes } from '../content/quiz/index.ts';
+import { domains } from '../content/domains.ts';
 import { AGE_RANGES } from '../lib/types.ts';
 
 /** Remplace le bloc `const <nom> = new Set<string>([...]);` d'un fichier. */
@@ -58,10 +60,17 @@ const quizIncomplets = quizCartes
   )
   .map((q) => q.cardId);
 
+// Accroches : un domaine est en attente si son mp3 manque.
+const accrochesIncompletes = domains
+  .filter((d) => !existsSync(`public/audio/accroches/${d.id}.mp3`))
+  .map((d) => d.id);
+
 majListe('tests/audio.test.ts', 'EN_ATTENTE_AUDIO', beatsIncomplets);
 majListe('tests/quiz.test.ts', 'EN_ATTENTE_AUDIO_QUIZ', quizIncomplets);
+majListe('tests/accroches.test.ts', 'EN_ATTENTE_ACCROCHES', accrochesIncompletes);
 
 console.log(
   `Beats : ${cards.length - beatsIncomplets.length} complet(s), ${beatsIncomplets.length} en attente. ` +
-    `Quizz : ${quizCartes.length - quizIncomplets.length} complet(s), ${quizIncomplets.length} en attente.`,
+    `Quizz : ${quizCartes.length - quizIncomplets.length} complet(s), ${quizIncomplets.length} en attente. ` +
+    `Accroches : ${domains.length - accrochesIncompletes.length} complet(s), ${accrochesIncompletes.length} en attente.`,
 );

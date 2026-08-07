@@ -18,8 +18,12 @@ progression, label (masqué pour les 3-5), compteur `x/10`.
   Répond directement au « ils ne savent pas ce qu'est la chimie », coût maîtrisé.
 - **Emplacement** : sur la **grille des mondes**, au point de choix.
 - **Écoute** : une **icône audio 🔊 pour tout le monde** (3-5 compris) lit
-  l'accroche à voix haute — c'est ce qui rend l'intrigue accessible aux
-  non-lecteurs, chez qui le texte est masqué.
+  l'accroche à voix haute — elle rend l'intrigue accessible aux non-lecteurs.
+- **Tout est visible pour tous les âges** sur la tuile de monde : label,
+  accroche et compteur `x/10` s'affichent aussi pour les 3-5. Choix de cohérence
+  du propriétaire du produit (même si les plus jeunes ne lisent pas encore).
+  Cela **révise** le masquage introduit en B1 sur `MondeTile` (label `sr-only` et
+  compteur caché pour les 3-5).
 - **Hors périmètre** : accroches par carte (extension future), niveau 2 (page du
   domaine).
 
@@ -51,8 +55,9 @@ tuile) et juste.
 ## Affichage — `MondeTile`
 
 Sous le label du monde, dans l'ordre : **accroche** puis **compteur `x/10`**.
-- **Texte de l'accroche** : visible pour `6-8` et `9-12` ; **masqué (non rendu)
-  pour les 3-5**, qui ne lisent pas.
+- **Label, accroche et compteur** : affichés **pour tous les âges**, 3-5 compris
+  (on retire le `sr-only`/masquage du label et du compteur posés en B1 sur
+  `MondeTile`). L'anneau de progression reste inchangé.
 - **Bouton 🔊** : rendu **pour tous les âges**, à côté de l'accroche. Au tap, joue
   `public/audio/accroches/<domainId>.mp3`. Ne déclenche pas la navigation vers le
   domaine (`stopPropagation` / bouton hors du `Link`). `aria-label` explicite

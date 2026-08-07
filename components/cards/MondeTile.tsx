@@ -1,16 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import type { AgeRange, DomainDefinition } from '@/lib/types';
+import type { DomainDefinition } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 
 interface MondeTileProps {
   domain: DomainDefinition;
   vues: number;
   total: number;
-  ageRange: AgeRange;
   /** Rang dans la grille, pour l'allumage en séquence. */
   index: number;
+  onEcouter: () => void;
+  enLecture: boolean;
 }
 
 // Rayon et circonférence de l'anneau de progression (viewBox 100×100).
@@ -18,22 +19,34 @@ const R = 46;
 const C = 2 * Math.PI * R;
 
 /**
- * Un « monde » : le hublot d'un domaine, cerclé d'un anneau de progression qui
- * se remplit à mesure des cartes écoutées. Domaine complet = anneau plein +
- * coche. Le label est masqué pour les 3-5 ans (reconnaissance par emoji/couleur),
- * mais la progression est toujours dite en `sr-only`.
+ * Un « monde » : le hublot d'un domaine, cerclé d'un anneau de progression, avec
+ * son accroche et un bouton pour l'écouter. Tout est affiché à tous les âges —
+ * un jeune enfant qui ne lit pas peut au moins écouter l'accroche.
+ *
+ * Le bouton audio vit hors du `Link` : un `<button>` ne peut pas être imbriqué
+ * dans le `<a>` qu'un `Link` produit.
  */
-export function MondeTile({ domain, vues, total, ageRange, index }: MondeTileProps) {
+export function MondeTile({
+  domain,
+  vues,
+  total,
+  index,
+  onEcouter,
+  enLecture,
+}: MondeTileProps) {
   const style = domainStyles[domain.id];
   const complet = total > 0 && vues >= total;
   const fraction = total > 0 ? vues / total : 0;
+  const accroche = domain.accroche.fr;
 
   return (
-    <li>
+    <li
+      className="flex w-40 flex-col items-center gap-2 sm:w-44"
+      style={{ animation: 'allumage 500ms ease-out backwards', animationDelay: `${index * 70}ms` }}
+    >
       <Link
         href={`/decouvrir/${domain.id}`}
-        className="group flex w-40 cursor-pointer flex-col items-center gap-3 rounded-3xl p-2 transition-transform duration-150 hover:scale-105 active:scale-95 sm:w-44"
-        style={{ animation: 'allumage 500ms ease-out backwards', animationDelay: `${index * 70}ms` }}
+        className="group flex cursor-pointer flex-col items-center gap-2 rounded-3xl p-2 transition-transform duration-150 hover:scale-105 active:scale-95"
       >
         <span className="relative flex h-32 w-32 items-center justify-center sm:h-36 sm:w-36">
           {/* Anneau de progression */}
@@ -82,29 +95,33 @@ export function MondeTile({ domain, vues, total, ageRange, index }: MondeTilePro
           )}
         </span>
 
-        {/* Label : masqué pour les 3-5 ans, comme les cartes */}
-        <span
-          className={
-            ageRange === '3-5'
-              ? 'sr-only'
-              : 'text-center font-display text-base font-medium text-craie'
-          }
-        >
+        <span className="text-center font-display text-base font-medium text-craie">
           {domain.labels.fr}
         </span>
-        {/* Compteur discret pour lecteurs/parents */}
-        {ageRange !== '3-5' && (
-          <span aria-hidden="true" className="text-sm text-craie-douce">
-            {vues}/{total}
-          </span>
-        )}
-        {/* Toujours dit pour l'accessibilité */}
+        <span aria-hidden="true" className="text-sm text-craie-douce">
+          {vues}/{total}
+        </span>
         <span className="sr-only">
           {domain.labels.fr}, {vues} carte{vues > 1 ? 's' : ''} sur {total} écoutée
           {vues > 1 ? 's' : ''}
           {complet ? ', terminé' : ''}
         </span>
       </Link>
+
+      {/* Accroche + écoute, hors du Link (un bouton ne peut pas vivre dans un <a>). */}
+      <div className="flex items-start gap-2 px-1">
+        <p className="flex-1 text-center text-sm italic leading-snug text-craie-douce">
+          {accroche}
+        </p>
+        <button
+          type="button"
+          onClick={onEcouter}
+          aria-label={`Écouter : ${accroche}`}
+          className="mt-0.5 flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-base transition-colors hover:border-soleil hover:text-soleil"
+        >
+          <span aria-hidden="true">{enLecture ? '⏸' : '🔊'}</span>
+        </button>
+      </div>
     </li>
   );
 }

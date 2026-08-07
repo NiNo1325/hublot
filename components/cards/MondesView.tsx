@@ -6,6 +6,7 @@ import type { DomainDefinition, ScienceCard } from '@/lib/types';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { progressionDomaine } from '@/lib/progression';
 import { MondeTile } from './MondeTile';
+import { useAccrocheAudio } from './useAccrocheAudio';
 import { useCartesVues } from './useCartesVues';
 
 interface MondesViewProps {
@@ -17,6 +18,7 @@ export function MondesView({ cards, domains }: MondesViewProps) {
   const router = useRouter();
   const { age, ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
+  const { jouer, enLecture } = useAccrocheAudio();
 
   // Accès direct sans âge choisi : retour à l'accueil.
   useEffect(() => {
@@ -58,8 +60,9 @@ export function MondesView({ cards, domains }: MondesViewProps) {
               domain={domain}
               vues={vues}
               total={total}
-              ageRange={ageRange}
               index={index}
+              onEcouter={() => jouer(domain.id)}
+              enLecture={enLecture === domain.id}
             />
           );
         })}

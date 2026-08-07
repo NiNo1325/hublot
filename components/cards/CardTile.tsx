@@ -102,17 +102,11 @@ export function CardTile({
         </span>
 
         {/*
-          Les 3-5 ans ne lisent pas : le titre reste dans le DOM pour les
-          lecteurs d'écran et les parents, mais n'encombre pas leur écran.
-          La reconnaissance passe par l'emoji et la couleur du domaine.
+          Le titre s'affiche à tous les âges. Même si les 3-5 ne lisent pas
+          encore, montrer le nom partout est plus cohérent (choix du produit) —
+          et l'emoji reste leur repère principal.
         */}
-        <span
-          className={
-            ageRange === '3-5'
-              ? 'sr-only'
-              : 'text-center font-display text-base font-medium text-craie'
-          }
-        >
+        <span className="text-center font-display text-base font-medium text-craie">
           {titre}
         </span>
 

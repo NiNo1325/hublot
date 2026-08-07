@@ -65,6 +65,15 @@ Sous le label du monde, dans l'ordre : **accroche** puis **compteur `x/10`**.
 - Style discret (`craie-douce`), cohérent avec la tuile. La tuile devient un peu
   plus haute ; acceptable, c'est le but (rendre chaque monde explicite).
 
+### Cartes — nom visible pour tous (`CardTile`)
+
+Par cohérence avec la tuile de monde, le **titre de la carte** s'affiche
+désormais **pour tous les âges** : on retire le `sr-only` posé sur le titre pour
+les 3-5 dans `components/cards/CardTile.tsx`. La coche « déjà écoutée » et le
+verrou premium restent inchangés (leurs `sr-only` d'accessibilité aussi).
+
+### Structure de `MondeTile`
+
 Contrainte de structure : le `MondeTile` actuel est **un seul `Link`** englobant
 tout. Le bouton audio ne peut pas être un `<button>` imbriqué dans un `<a>`
 (HTML invalide). Le tile est donc restructuré : le `Link` couvre le hublot + le
@@ -114,8 +123,10 @@ Link**, dans le même `<li>`. Le bouton audio est un vrai `<button>`.
 - `lib/types.ts` : `DomainDefinition` gagne `accroche` (champ requis) — tous les
   domaines doivent le fournir (les 10 le font).
 - `content/domains.ts` : +10 accroches.
-- `components/cards/MondeTile.tsx` : restructuration (Link + accroche/bouton) et
-  ajout du bouton audio.
+- `components/cards/MondeTile.tsx` : restructuration (Link + accroche/bouton),
+  ajout du bouton audio, et label + compteur visibles pour tous les âges.
+- `components/cards/CardTile.tsx` : titre de carte visible pour tous les âges
+  (retrait du `sr-only` pour les 3-5).
 - `scripts/maj-attente-audio.mjs` : gère une 3ᵉ liste.
 - `package.json` : script `audio:accroches`.
 - Aucune donnée personnelle nouvelle ; audio servi en statique.

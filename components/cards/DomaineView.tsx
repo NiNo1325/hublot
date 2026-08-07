@@ -22,7 +22,7 @@ const AUCUNE = new Set<string>();
 
 export function DomaineView({ domain, cards }: DomaineViewProps) {
   const router = useRouter();
-  const { ageRange, status } = useAgeRange();
+  const { age, ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
   const { premium } = useEntitlement();
   const [paywallOuvert, setPaywallOuvert] = useState(false);
@@ -68,7 +68,7 @@ export function DomaineView({ domain, cards }: DomaineViewProps) {
             onClick={() => router.push('/?changer=1')}
             className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
           >
-            Niveau&nbsp;: {ageRange} ans — changer
+            Niveau&nbsp;: {age} ans — changer
           </button>
         </div>
         <h1 className="flex items-center gap-3 font-display text-3xl font-semibold sm:text-4xl">

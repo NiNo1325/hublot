@@ -15,7 +15,7 @@ interface MondesViewProps {
 
 export function MondesView({ cards, domains }: MondesViewProps) {
   const router = useRouter();
-  const { ageRange, status } = useAgeRange();
+  const { age, ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
 
   // Accès direct sans âge choisi : retour à l'accueil.
@@ -44,7 +44,7 @@ export function MondesView({ cards, domains }: MondesViewProps) {
             onClick={() => router.push('/?changer=1')}
             className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
           >
-            Niveau&nbsp;: {ageRange} ans — changer
+            Niveau&nbsp;: {age} ans — changer
           </button>
         </div>
       </header>

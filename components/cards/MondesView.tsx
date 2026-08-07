@@ -18,7 +18,7 @@ export function MondesView({ cards, domains }: MondesViewProps) {
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
 
-  // Accès direct sans âge choisi : retour à l'accueil (motif de DiscoverView).
+  // Accès direct sans âge choisi : retour à l'accueil.
   useEffect(() => {
     if (status === 'pret' && !ageRange) router.replace('/');
   }, [status, ageRange, router]);

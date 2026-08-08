@@ -8,6 +8,7 @@ import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useQuizAudio } from './useQuizAudio';
 import { useEtoiles } from './useEtoiles';
+import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { rangDepuisEtoiles, type Rang } from '@/lib/etoiles';
 import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
 import { ordreLecture } from '@/content/quiz/ordre';
@@ -58,6 +59,7 @@ export function QuizView({ cards }: QuizViewProps) {
   const [choisie, setChoisie] = useState<number | null>(null);
   const [reussies, setReussies] = useState(0);
   const { etoiles, gagnerEtoiles } = useEtoiles();
+  const { marquerMaitrisee } = useCartesMaitrisees();
   // Bonnes réponses consécutives, pour un encouragement positif (jamais négatif).
   const [dAffilee, setDAffilee] = useState(0);
   // Rang avant le crédit de fin de série, pour détecter un passage de rang.
@@ -284,6 +286,7 @@ export function QuizView({ cards }: QuizViewProps) {
                   if (reponse.correcte) {
                     setReussies((n) => n + 1);
                     setDAffilee((d) => d + 1);
+                    marquerMaitrisee(tirage.carte.id);
                   } else {
                     // Remise à zéro silencieuse : aucun message de « série perdue ».
                     setDAffilee(0);

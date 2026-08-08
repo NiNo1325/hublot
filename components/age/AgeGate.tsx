@@ -6,10 +6,12 @@ import type { StaticImageData } from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { AgeRange } from '@/lib/types';
 import { trancheDepuisAge } from '@/lib/age';
+import { rangDepuisEtoiles } from '@/lib/etoiles';
 import illustration35 from '@/public/ages/age-3-5.png';
 import illustration68 from '@/public/ages/age-6-8.png';
 import illustration912 from '@/public/ages/age-9-12.png';
 import { useCartesVues } from '@/components/cards/useCartesVues';
+import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { useAgeRange } from './useAgeRange';
@@ -25,6 +27,7 @@ export function AgeGate() {
   const router = useRouter();
   const { age, ageRange, status, choisirAge } = useAgeRange();
   const { cartesVues, oublierToutesLesVues } = useCartesVues();
+  const { etoiles, oublierEtoiles } = useEtoiles();
 
   /*
     Effacer la progression est irréversible, et l'écran reste à portée d'un
@@ -109,6 +112,28 @@ export function AgeGate() {
             <span aria-hidden="true">🎯</span>
             Jouer au quizz
           </button>
+
+          {/*
+            Rappel de progression : le rang atteint et ce qu'il reste pour le
+            suivant. C'est l'invitation à rejouer au quizz.
+          */}
+          {(() => {
+            const { rang, rangProchain } = rangDepuisEtoiles(etoiles);
+            const reste = rangProchain ? rangProchain.seuil - etoiles : 0;
+            return (
+              <div className="flex flex-col items-center gap-1 rounded-3xl border-2 border-encre-bord bg-encre-clair px-6 py-4">
+                <p className="font-display text-lg text-craie">
+                  <span aria-hidden="true">{rang.icone}</span> {rang.nom} —{' '}
+                  <span aria-hidden="true">⭐</span> {etoiles}
+                </p>
+                {rangProchain && (
+                  <p className="text-sm text-craie-douce">
+                    plus que {reste} <span aria-hidden="true">⭐</span> pour {rangProchain.nom}
+                  </p>
+                )}
+              </div>
+            );
+          })()}
         </div>
 
         <div className="flex flex-col items-center gap-3">
@@ -236,6 +261,7 @@ export function AgeGate() {
               return;
             }
             oublierToutesLesVues();
+            oublierEtoiles();
             setConfirmation(false);
           }}
           className={`min-h-12 cursor-pointer rounded-full border-2 px-6 text-sm transition-colors ${

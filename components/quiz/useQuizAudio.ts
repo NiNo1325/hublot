@@ -92,6 +92,18 @@ export function useQuizAudio(age: AgeRange) {
   );
 
   /*
+    Écoute d'une proposition isolée (bouton par réponse, en 6-8). L'index est
+    celui de la source, pas de l'affichage mélangé : `QuizView` passe le même,
+    de sorte que la voix colle toujours à la réponse pointée.
+  */
+  const jouerProposition = useCallback(
+    (cardId: string, questionId: string, index: number) => {
+      jouerSuite([`/audio/quiz/${cardId}/${age}/${questionId}-prop-${index}.mp3`]);
+    },
+    [age, jouerSuite],
+  );
+
+  /*
     Le verdict précède l'explication. Sans lui, un non-lecteur ne sait pas s'il
     a trouvé : « Bravo, c'est ça ! » n'existait qu'à l'écran, donc précisément
     là où il ne peut pas le lire.
@@ -106,5 +118,5 @@ export function useQuizAudio(age: AgeRange) {
     [age, jouerSuite],
   );
 
-  return { jouer, jouerVerdict, arreter, enLecture };
+  return { jouer, jouerProposition, jouerVerdict, arreter, enLecture };
 }

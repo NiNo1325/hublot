@@ -2,19 +2,21 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { AgeRange, QuizQuestion, ScienceCard } from '@/lib/types';
+import type { AgeRange, DomainDefinition, DomainId, QuizQuestion, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useQuizAudio } from './useQuizAudio';
 import { useEtoiles } from './useEtoiles';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { Lumi } from '@/components/mascotte/Lumi';
 import { rangDepuisEtoiles, type Rang } from '@/lib/etoiles';
 import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
 import { ordreLecture } from '@/content/quiz/ordre';
 
 interface QuizViewProps {
   cards: ScienceCard[];
+  domains: DomainDefinition[];
 }
 
 interface Tirage {
@@ -32,13 +34,18 @@ function melanger<T>(liste: T[]): T[] {
   return copie;
 }
 
+function estEligible(carte: ScienceCard, vues: Set<string>, age: AgeRange): boolean {
+  return vues.has(carte.id) && cartesAvecQuiz.has(carte.id) && questionsDe(carte.id, age).length > 0;
+}
+
 function construireSerie(
   cards: ScienceCard[],
   vues: Set<string>,
   age: AgeRange,
+  domainId: DomainId | null,
 ): Tirage[] {
   const disponibles = cards.filter(
-    (c) => vues.has(c.id) && cartesAvecQuiz.has(c.id) && questionsDe(c.id, age).length > 0,
+    (c) => estEligible(c, vues, age) && (domainId === null || c.domainId === domainId),
   );
   return melanger(disponibles)
     .slice(0, 8)
@@ -48,12 +55,13 @@ function construireSerie(
     }));
 }
 
-export function QuizView({ cards }: QuizViewProps) {
+export function QuizView({ cards, domains }: QuizViewProps) {
   const router = useRouter();
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
 
-  const { jouer, jouerVerdict, arreter, enLecture } = useQuizAudio(ageRange ?? '6-8');
+  const { jouer, jouerProposition, jouerVerdict, arreter, enLecture } =
+    useQuizAudio(ageRange ?? '6-8');
   const [serie, setSerie] = useState<Tirage[] | null>(null);
   const [index, setIndex] = useState(0);
   const [choisie, setChoisie] = useState<number | null>(null);
@@ -100,9 +108,25 @@ export function QuizView({ cards }: QuizViewProps) {
 
   if (status === 'chargement' || !ageRange) return null;
 
-  const eligibles = cards.filter(
-    (c) => cartesVues.has(c.id) && cartesAvecQuiz.has(c.id),
-  );
+  const eligibles = cards.filter((c) => estEligible(c, cartesVues, ageRange));
+
+  // Mondes réellement jouables : au moins une carte écoutée qui a une question à
+  // cet âge. On ne propose jamais un monde qui donnerait un quizz vide.
+  const mondesJouables = domains
+    .map((domain) => ({
+      domain,
+      n: eligibles.reduce((t, c) => (c.domainId === domain.id ? t + 1 : t), 0),
+    }))
+    .filter((m) => m.n > 0);
+
+  const lancer = (domainId: DomainId | null) => {
+    setSerie(construireSerie(cards, cartesVues, ageRange, domainId));
+    setIndex(0);
+    setChoisie(null);
+    setReussies(0);
+    setDAffilee(0);
+    setRangAvant(null);
+  };
 
   /*
     Aucune carte écoutée parmi celles qui ont des questions : plutôt qu'un
@@ -135,31 +159,56 @@ export function QuizView({ cards }: QuizViewProps) {
 
   if (!serie) {
     return (
-      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center">
-        <span className="text-7xl" aria-hidden="true">
-          🎯
-        </span>
-        <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-          Prêt pour le quizz&nbsp;?
-        </h1>
-        <p className="text-craie-douce">
-          {eligibles.length} carte{eligibles.length > 1 ? 's' : ''} dans ta
-          collection. On en tire quelques questions.
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            setSerie(construireSerie(cards, cartesVues, ageRange));
-            setIndex(0);
-            setChoisie(null);
-            setReussies(0);
-            setDAffilee(0);
-            setRangAvant(null);
-          }}
-          className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-xl text-soleil transition-transform hover:scale-105 active:scale-95"
-        >
-          C&apos;est parti
-        </button>
+      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-6 py-12">
+        <header className="flex flex-col items-center gap-3 text-center">
+          <span className="text-6xl" aria-hidden="true">
+            🎯
+          </span>
+          <h1 className="font-display text-3xl font-semibold sm:text-4xl">
+            Sur quoi joue-t-on&nbsp;?
+          </h1>
+          <p className="text-craie-douce">
+            Choisis un monde, ou joue sur tout à la fois.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {/* Le quizz général en tête, mis en avant : c'est le choix par défaut. */}
+          <button
+            type="button"
+            onClick={() => lancer(null)}
+            className="flex min-h-16 cursor-pointer items-center gap-4 rounded-2xl border-2 border-soleil bg-soleil/10 px-5 font-display text-lg text-soleil transition-transform hover:scale-[1.02] active:scale-95 sm:col-span-2"
+          >
+            <span className="text-3xl" aria-hidden="true">🌍</span>
+            <span className="flex flex-col text-left">
+              <span>Tout</span>
+              <span className="text-sm font-normal text-craie-douce">
+                {eligibles.length} carte{eligibles.length > 1 ? 's' : ''} au total
+              </span>
+            </span>
+          </button>
+
+          {mondesJouables.map(({ domain, n }) => {
+            const style = domainStyles[domain.id];
+            return (
+              <button
+                key={domain.id}
+                type="button"
+                onClick={() => lancer(domain.id)}
+                className="flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 border-encre-bord bg-encre-clair px-4 text-left transition-transform hover:scale-[1.02] active:scale-95"
+                style={{ boxShadow: `0 0 18px ${style.halo}` }}
+              >
+                <span className="text-3xl" aria-hidden="true">{domain.icon}</span>
+                <span className="flex flex-col">
+                  <span className="font-display text-lg text-craie">{domain.labels.fr}</span>
+                  <span className="text-sm text-craie-douce">
+                    {n} carte{n > 1 ? 's' : ''}
+                  </span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </main>
     );
   }
@@ -170,9 +219,8 @@ export function QuizView({ cards }: QuizViewProps) {
     const monteEnRang = rangAvant != null && rangApres.rang.index > rangAvant.index;
     return (
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center">
-        <span className="text-7xl" aria-hidden="true">
-          {reussies === serie.length ? '🌟' : '👏'}
-        </span>
+        {/* Lumi félicite l'enfant, dans l'apparence du rang qu'il vient d'atteindre. */}
+        <Lumi rang={rangApres.rang.index} taille={120} />
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">
           {reussies} bonne{reussies > 1 ? 's' : ''} réponse
           {reussies > 1 ? 's' : ''} sur {serie.length}
@@ -277,7 +325,7 @@ export function QuizView({ cards }: QuizViewProps) {
           const estChoisie = choisie === i;
           const revelee = repondu && reponse.correcte;
           return (
-            <li key={reponse.texte}>
+            <li key={reponse.texte} className="flex items-stretch gap-2">
               <button
                 type="button"
                 disabled={repondu}
@@ -297,7 +345,7 @@ export function QuizView({ cards }: QuizViewProps) {
                     reponse.correcte ? 'juste' : 'presque',
                   );
                 }}
-                className="flex min-h-20 w-full cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 text-left transition-transform hover:scale-[1.02] active:scale-95 disabled:cursor-default disabled:hover:scale-100"
+                className="flex min-h-20 flex-1 cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 text-left transition-transform hover:scale-[1.02] active:scale-95 disabled:cursor-default disabled:hover:scale-100"
                 style={{
                   borderColor: revelee
                     ? '#34d399'
@@ -325,6 +373,29 @@ export function QuizView({ cards }: QuizViewProps) {
                   {reponse.texte}
                 </span>
               </button>
+
+              {/*
+                Écoute de la proposition, en 6-8 : un lecteur débutant peut vouloir
+                se faire relire une réponse. Bouton distinct, hors du bouton de
+                réponse (un bouton ne peut pas en contenir un autre), et jamais
+                désactivé — on peut réécouter même après avoir répondu.
+              */}
+              {ageRange === '6-8' && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    jouerProposition(
+                      tirage.carte.id,
+                      tirage.question.id,
+                      tirage.question.reponses.indexOf(reponse),
+                    )
+                  }
+                  aria-label={`Écouter la réponse : ${reponse.texte}`}
+                  className="flex w-14 shrink-0 cursor-pointer items-center justify-center rounded-2xl border-2 border-encre-bord text-xl transition-colors hover:border-soleil hover:text-soleil"
+                >
+                  <span aria-hidden="true">🔊</span>
+                </button>
+              )}
             </li>
           );
         })}

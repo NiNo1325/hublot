@@ -36,6 +36,15 @@ const CONSIGNES = {
     'débit normal :\n\n',
 };
 
+/*
+  Lecture d'une proposition isolée (bouton « écouter » par réponse, en 6-8).
+  Une réponse n'est pas une question : on la lit comme une option qu'on soupèse,
+  sans l'intonation montante d'une interrogation.
+*/
+const CONSIGNE_PROPOSITION =
+  "Lis cette réponse possible à un enfant de sept ans, d'une voix chaleureuse " +
+  'et posée, comme une option parmi d’autres, sans intonation de question :\n\n';
+
 /**
  * Texte réellement prononcé pour l'énoncé.
  *
@@ -55,9 +64,9 @@ function texteEnonce(question, age) {
   return `${question.question} Est-ce que : ${propositions} ?`;
 }
 
-function empreinte(texte, age) {
+function empreinte(texte, consigne) {
   return createHash('sha256')
-    .update(`${VOIX}|${CONSIGNES[age]}|${texte}`)
+    .update(`${VOIX}|${consigne}|${texte}`)
     .digest('hex')
     .slice(0, 16);
 }
@@ -78,15 +87,30 @@ function aFaire(manifeste) {
       for (const question of carte.questions[age]) {
         const dossier = `${RACINE}/${carte.cardId}/${age}`;
         const morceaux = [
-          { suffixe: 'question', texte: texteEnonce(question, age) },
-          { suffixe: 'explication', texte: question.explication },
+          { suffixe: 'question', texte: texteEnonce(question, age), consigne: CONSIGNES[age] },
+          { suffixe: 'explication', texte: question.explication, consigne: CONSIGNES[age] },
         ];
-        for (const { suffixe, texte } of morceaux) {
+        /*
+          Un fichier par proposition, en 6-8 seulement : les 3-5 les entendent
+          déjà dans l'énoncé, et l'enfant de six ans qui lit peut vouloir se
+          faire relire une réponse. L'index est celui de la source (stable),
+          pas de l'affichage (mélangé) — `QuizView` cible le même.
+        */
+        if (age === '6-8') {
+          question.reponses.forEach((reponse, i) => {
+            morceaux.push({
+              suffixe: `prop-${i}`,
+              texte: reponse.texte,
+              consigne: CONSIGNE_PROPOSITION,
+            });
+          });
+        }
+        for (const { suffixe, texte, consigne } of morceaux) {
           const chemin = `${dossier}/${question.id}-${suffixe}.mp3`;
           const cleM = `${carte.cardId}/${age}/${question.id}-${suffixe}`;
-          const attendu = empreinte(texte, age);
+          const attendu = empreinte(texte, consigne);
           if (manifeste[cleM]?.empreinte === attendu && existsSync(chemin)) continue;
-          liste.push({ cle: cleM, dossier, chemin, texte, age, attendu });
+          liste.push({ cle: cleM, dossier, chemin, texte, consigne, attendu });
         }
       }
     }
@@ -103,9 +127,9 @@ function aFaire(manifeste) {
         const cleM = cheminVerdict(age, verdict, rang);
         const chemin = `${RACINE}/${cleM}.mp3`;
         const dossier = chemin.slice(0, chemin.lastIndexOf('/'));
-        const attendu = empreinte(texte, age);
+        const attendu = empreinte(texte, CONSIGNES[age]);
         if (manifeste[cleM]?.empreinte === attendu && existsSync(chemin)) return;
-        liste.push({ cle: cleM, dossier, chemin, texte, age, attendu });
+        liste.push({ cle: cleM, dossier, chemin, texte, consigne: CONSIGNES[age], attendu });
       });
     }
   }
@@ -116,7 +140,7 @@ function aFaire(manifeste) {
 async function soumettre(lot, apiKey, index) {
   const requests = lot.map((item) => ({
     request: {
-      contents: [{ parts: [{ text: CONSIGNES[item.age] + item.texte }] }],
+      contents: [{ parts: [{ text: item.consigne + item.texte }] }],
       generationConfig: {
         responseModalities: ['AUDIO'],
         speechConfig: {

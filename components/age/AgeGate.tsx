@@ -11,6 +11,7 @@ import illustration35 from '@/public/ages/age-3-5.png';
 import illustration68 from '@/public/ages/age-6-8.png';
 import illustration912 from '@/public/ages/age-9-12.png';
 import { useCartesVues } from '@/components/cards/useCartesVues';
+import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
@@ -28,6 +29,7 @@ export function AgeGate() {
   const { age, ageRange, status, choisirAge } = useAgeRange();
   const { cartesVues, oublierToutesLesVues } = useCartesVues();
   const { etoiles, oublierEtoiles } = useEtoiles();
+  const { oublierMaitrisees } = useCartesMaitrisees();
 
   /*
     Effacer la progression est irréversible, et l'écran reste à portée d'un
@@ -134,6 +136,15 @@ export function AgeGate() {
               </div>
             );
           })()}
+
+          <button
+            type="button"
+            onClick={() => router.push('/collection')}
+            className="flex min-h-14 cursor-pointer items-center justify-center gap-3 rounded-3xl border-2 border-encre-bord bg-encre-clair px-6 font-display text-lg text-craie transition-transform hover:scale-105 hover:border-soleil active:scale-95"
+          >
+            <span aria-hidden="true">🏅</span>
+            Ma collection
+          </button>
         </div>
 
         <div className="flex flex-col items-center gap-3">
@@ -262,6 +273,7 @@ export function AgeGate() {
             }
             oublierToutesLesVues();
             oublierEtoiles();
+            oublierMaitrisees();
             setConfirmation(false);
           }}
           className={`min-h-12 cursor-pointer rounded-full border-2 px-6 text-sm transition-colors ${

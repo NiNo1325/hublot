@@ -179,7 +179,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
             onClick={() => lancer(null)}
             className="flex min-h-16 cursor-pointer items-center gap-4 rounded-2xl border-2 border-soleil bg-soleil/10 px-5 font-display text-lg text-soleil transition-transform hover:scale-[1.02] active:scale-95 sm:col-span-2"
           >
-            <span className="text-3xl" aria-hidden="true">🌍</span>
+            <span className="text-3xl" aria-hidden="true">🎲</span>
             <span className="flex flex-col text-left">
               <span>Tout</span>
               <span className="text-sm font-normal text-craie-douce">

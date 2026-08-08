@@ -27,13 +27,17 @@ export function CollectionView({ cards, domains }: CollectionViewProps) {
 
   if (status === 'chargement' || !ageRange) return null;
 
-  const badges = domains.map((domain) => ({
-    domain,
-    ...badgesDomaine(cards, cartesVues, cartesMaitrisees, domain.id),
-    ...progressionDomaine(cards, cartesVues, domain.id),
-  }));
-  const nbExplore = badges.filter((b) => b.explore).length;
-  const nbMaitrise = badges.filter((b) => b.maitrise).length;
+  const lignes = domains.map((domain) => {
+    const { explore, maitrise } = badgesDomaine(cards, cartesVues, cartesMaitrisees, domain.id);
+    const { vues, total } = progressionDomaine(cards, cartesVues, domain.id);
+    // On réutilise progressionDomaine : compter les cartes d'un domaine présentes
+    // dans un ensemble, c'est exactement ce qu'elle fait — ici l'ensemble des
+    // cartes maîtrisées plutôt que des cartes vues.
+    const reussies = progressionDomaine(cards, cartesMaitrisees, domain.id).vues;
+    return { domain, explore, maitrise, vues, total, reussies };
+  });
+  const nbExplore = lignes.filter((b) => b.explore).length;
+  const nbMaitrise = lignes.filter((b) => b.maitrise).length;
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-10">
@@ -53,7 +57,7 @@ export function CollectionView({ cards, domains }: CollectionViewProps) {
       </header>
 
       <ul className="flex flex-col gap-3">
-        {badges.map(({ domain, explore, maitrise, vues, total }) => {
+        {lignes.map(({ domain, explore, maitrise, vues, total, reussies }) => {
           const style = domainStyles[domain.id];
           return (
             <li
@@ -70,9 +74,13 @@ export function CollectionView({ cards, domains }: CollectionViewProps) {
                 </span>
                 <span className="flex flex-col">
                   <span className="font-display text-lg text-craie">{domain.labels.fr}</span>
-                  {/* Progression du monde, écrite pour tous les âges. */}
+                  {/* Deux progressions, écrites pour tous les âges : l'écoute (mène
+                      au 🧭) et la réussite au quizz (mène au 🏅). Rendre la seconde
+                      visible évite qu'une bonne réponse semble « ne pas compter ». */}
                   <span className="text-sm text-craie-douce">
-                    {vues}/{total} carte{total > 1 ? 's' : ''} écoutée{total > 1 ? 's' : ''}
+                    <span aria-hidden="true">🧭</span> {vues}/{total} écoutée{total > 1 ? 's' : ''}
+                    {' · '}
+                    <span aria-hidden="true">🏅</span> {reussies}/{total} réussie{total > 1 ? 's' : ''}
                   </span>
                 </span>
               </span>

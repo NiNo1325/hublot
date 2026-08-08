@@ -7,6 +7,8 @@ import { domainStyles } from '@/lib/domain-styles';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useQuizAudio } from './useQuizAudio';
+import { useEtoiles } from './useEtoiles';
+import { rangDepuisEtoiles, type Rang } from '@/lib/etoiles';
 import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
 import { ordreLecture } from '@/content/quiz/ordre';
 
@@ -55,6 +57,11 @@ export function QuizView({ cards }: QuizViewProps) {
   const [index, setIndex] = useState(0);
   const [choisie, setChoisie] = useState<number | null>(null);
   const [reussies, setReussies] = useState(0);
+  const { etoiles, gagnerEtoiles } = useEtoiles();
+  // Bonnes réponses consécutives, pour un encouragement positif (jamais négatif).
+  const [dAffilee, setDAffilee] = useState(0);
+  // Rang avant le crédit de fin de série, pour détecter un passage de rang.
+  const [rangAvant, setRangAvant] = useState<Rang | null>(null);
 
   const tirageCourant = serie?.[index] ?? null;
 
@@ -144,6 +151,8 @@ export function QuizView({ cards }: QuizViewProps) {
             setIndex(0);
             setChoisie(null);
             setReussies(0);
+            setDAffilee(0);
+            setRangAvant(null);
           }}
           className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-xl text-soleil transition-transform hover:scale-105 active:scale-95"
         >
@@ -155,6 +164,8 @@ export function QuizView({ cards }: QuizViewProps) {
 
   // Fin de série.
   if (index >= serie.length) {
+    const rangApres = rangDepuisEtoiles(etoiles);
+    const monteEnRang = rangAvant != null && rangApres.rang.index > rangAvant.index;
     return (
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center">
         <span className="text-7xl" aria-hidden="true">
@@ -164,6 +175,25 @@ export function QuizView({ cards }: QuizViewProps) {
           {reussies} bonne{reussies > 1 ? 's' : ''} réponse
           {reussies > 1 ? 's' : ''} sur {serie.length}
         </h1>
+
+        {/* Étoiles gagnées et total, jamais de sanction. */}
+        <div className="flex flex-col items-center gap-2">
+          <p className="font-display text-2xl text-soleil">
+            +{reussies} <span aria-hidden="true">⭐</span>
+          </p>
+          <p className="text-craie-douce">
+            <span aria-hidden="true">⭐</span> {etoiles} au total —{' '}
+            <span aria-hidden="true">{rangApres.rang.icone}</span> {rangApres.rang.nom}
+          </p>
+        </div>
+
+        {monteEnRang && (
+          <p className="font-display text-xl text-soleil">
+            Nouveau rang : <span aria-hidden="true">{rangApres.rang.icone}</span>{' '}
+            {rangApres.rang.nom}&nbsp;!
+          </p>
+        )}
+
         {/* Aucun échec possible : on encourage, on ne sanctionne pas. */}
         <p className="max-w-md text-craie-douce">
           Chaque question t&apos;a rappelé quelque chose. Rejoue quand tu veux,
@@ -209,6 +239,14 @@ export function QuizView({ cards }: QuizViewProps) {
         </button>
       </header>
 
+      <div className="flex justify-center gap-1" aria-hidden="true">
+        {serie.map((_, i) => (
+          <span key={i} className={i < reussies ? 'text-xl' : 'text-xl opacity-25'}>
+            ⭐
+          </span>
+        ))}
+      </div>
+
       <div
         className="flex items-start gap-4 rounded-3xl border-2 p-5"
         style={{ borderColor: style.teinte, boxShadow: `0 0 30px ${style.halo}` }}
@@ -243,7 +281,13 @@ export function QuizView({ cards }: QuizViewProps) {
                 disabled={repondu}
                 onClick={() => {
                   setChoisie(i);
-                  if (reponse.correcte) setReussies((n) => n + 1);
+                  if (reponse.correcte) {
+                    setReussies((n) => n + 1);
+                    setDAffilee((d) => d + 1);
+                  } else {
+                    // Remise à zéro silencieuse : aucun message de « série perdue ».
+                    setDAffilee(0);
+                  }
                   jouerVerdict(
                     tirage.carte.id,
                     tirage.question.id,
@@ -291,17 +335,22 @@ export function QuizView({ cards }: QuizViewProps) {
           >
             {justeChoisie ? 'Bravo, c’est ça !' : 'Pas tout à fait…'}
           </p>
+          {justeChoisie && dAffilee >= 3 && (
+            <p className="font-display text-base text-soleil">En pleine forme&nbsp;! 🔥</p>
+          )}
           <p className="text-base leading-relaxed text-craie-douce">
             {tirage.question.explication}
           </p>
           <button
             type="button"
             onClick={() => {
-              // Couper l'explication en cours : sans lui, aux âges où l'énoncé
-              // suivant n'est pas lu (6-8, 9-12), la voix déborderait sur la
-              // question suivante. Chez les 3-5 ans, la lecture du nouvel énoncé
-              // reprend juste après.
               arreter();
+              // Dernière question : on crédite les étoiles une seule fois, en
+              // capturant le rang d'avant pour détecter un passage de rang.
+              if (index + 1 >= serie.length) {
+                setRangAvant(rangDepuisEtoiles(etoiles).rang);
+                gagnerEtoiles(reussies);
+              }
               setIndex((n) => n + 1);
               setChoisie(null);
             }}

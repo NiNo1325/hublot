@@ -6,6 +6,7 @@ import type { DomainDefinition, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { badgesDomaine } from '@/lib/badges';
+import { progressionDomaine } from '@/lib/progression';
 import { useCartesVues } from './useCartesVues';
 import { useCartesMaitrisees } from './useCartesMaitrisees';
 
@@ -29,6 +30,7 @@ export function CollectionView({ cards, domains }: CollectionViewProps) {
   const badges = domains.map((domain) => ({
     domain,
     ...badgesDomaine(cards, cartesVues, cartesMaitrisees, domain.id),
+    ...progressionDomaine(cards, cartesVues, domain.id),
   }));
   const nbExplore = badges.filter((b) => b.explore).length;
   const nbMaitrise = badges.filter((b) => b.maitrise).length;
@@ -51,22 +53,28 @@ export function CollectionView({ cards, domains }: CollectionViewProps) {
       </header>
 
       <ul className="flex flex-col gap-3">
-        {badges.map(({ domain, explore, maitrise }) => {
+        {badges.map(({ domain, explore, maitrise, vues, total }) => {
           const style = domainStyles[domain.id];
           return (
             <li
               key={domain.id}
               className="flex items-center justify-between gap-4 rounded-3xl border-2 border-encre-bord bg-encre-clair p-4"
             >
-              <span className="flex items-center gap-3 font-display text-lg text-craie">
+              <span className="flex items-center gap-3">
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 items-center justify-center rounded-full text-2xl"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-2xl"
                   style={{ backgroundColor: 'var(--color-encre)', boxShadow: `0 0 16px ${style.halo}` }}
                 >
                   {domain.icon}
                 </span>
-                {domain.labels.fr}
+                <span className="flex flex-col">
+                  <span className="font-display text-lg text-craie">{domain.labels.fr}</span>
+                  {/* Progression du monde, écrite pour tous les âges. */}
+                  <span className="text-sm text-craie-douce">
+                    {vues}/{total} carte{total > 1 ? 's' : ''} écoutée{total > 1 ? 's' : ''}
+                  </span>
+                </span>
               </span>
               <span className="flex items-center gap-3 text-2xl">
                 <span className={explore ? '' : 'opacity-20'}>

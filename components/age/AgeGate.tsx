@@ -10,6 +10,7 @@ import { rangDepuisEtoiles } from '@/lib/etoiles';
 import illustration35 from '@/public/ages/age-3-5.png';
 import illustration68 from '@/public/ages/age-6-8.png';
 import illustration912 from '@/public/ages/age-9-12.png';
+import { Lumi } from '@/components/mascotte/Lumi';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
@@ -124,6 +125,8 @@ export function AgeGate() {
             const reste = rangProchain ? rangProchain.seuil - etoiles : 0;
             return (
               <div className="flex flex-col items-center gap-1 rounded-3xl border-2 border-encre-bord bg-encre-clair px-6 py-4">
+                {/* Lumi porte les insignes du rang atteint : elle grandit avec l'enfant. */}
+                <Lumi rang={rang.index} taille={76} className="-mt-1 mb-1" />
                 <p className="font-display text-lg text-craie">
                   <span aria-hidden="true">{rang.icone}</span> {rang.nom} —{' '}
                   <span aria-hidden="true">⭐</span> {etoiles}

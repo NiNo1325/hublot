@@ -1,0 +1,37 @@
+import { describe, expect, it } from 'vitest';
+import { RANGS, rangDepuisEtoiles, lireEtoiles } from '@/lib/etoiles';
+
+describe('rangDepuisEtoiles', () => {
+  it('donne Apprenti à 0 et sous le premier palier', () => {
+    expect(rangDepuisEtoiles(0).rang.nom).toBe('Apprenti');
+    expect(rangDepuisEtoiles(19).rang.nom).toBe('Apprenti');
+    expect(rangDepuisEtoiles(0).rangProchain?.nom).toBe('Explorateur');
+  });
+
+  it('monte de rang pile au seuil', () => {
+    expect(rangDepuisEtoiles(20).rang.nom).toBe('Explorateur');
+    expect(rangDepuisEtoiles(49).rang.nom).toBe('Explorateur');
+    expect(rangDepuisEtoiles(50).rang.nom).toBe('Aventurier');
+  });
+
+  it('plafonne au dernier rang, sans rang suivant', () => {
+    const dernier = RANGS[RANGS.length - 1];
+    expect(rangDepuisEtoiles(dernier.seuil).rang.nom).toBe(dernier.nom);
+    expect(rangDepuisEtoiles(dernier.seuil + 1000).rang.nom).toBe(dernier.nom);
+    expect(rangDepuisEtoiles(dernier.seuil).rangProchain).toBeNull();
+  });
+
+  it('borne un total négatif au premier rang', () => {
+    expect(rangDepuisEtoiles(-5).rang.index).toBe(0);
+  });
+});
+
+describe('lireEtoiles', () => {
+  it('lit un entier valide, sinon 0', () => {
+    expect(lireEtoiles('42')).toBe(42);
+    expect(lireEtoiles(null)).toBe(0);
+    expect(lireEtoiles('-5')).toBe(0);
+    expect(lireEtoiles('abc')).toBe(0);
+    expect(lireEtoiles('3.9')).toBe(3);
+  });
+});

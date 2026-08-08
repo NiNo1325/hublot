@@ -38,6 +38,13 @@ function estEligible(carte: ScienceCard, vues: Set<string>, age: AgeRange): bool
   return vues.has(carte.id) && cartesAvecQuiz.has(carte.id) && questionsDe(carte.id, age).length > 0;
 }
 
+/*
+  Longueur d'une série. Un monde compte dix cartes : plafonner à dix (et non
+  huit) permet de toutes les couvrir en une partie — donc de maîtriser un
+  domaine entier d'un coup quand ses dix cartes sont écoutées.
+*/
+const QUESTIONS_PAR_SERIE = 10;
+
 function construireSerie(
   cards: ScienceCard[],
   vues: Set<string>,
@@ -48,7 +55,7 @@ function construireSerie(
     (c) => estEligible(c, vues, age) && (domainId === null || c.domainId === domainId),
   );
   return melanger(disponibles)
-    .slice(0, 8)
+    .slice(0, QUESTIONS_PAR_SERIE)
     .map((carte) => ({
       carte,
       question: melanger(questionsDe(carte.id, age))[0],

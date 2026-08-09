@@ -110,6 +110,61 @@ import { card as laRoseeDuMatin } from './meteo/la-rosee-du-matin';
 import { card as leGivre } from './meteo/le-givre';
 import { card as laFormeDesGouttesDePluie } from './meteo/la-forme-des-gouttes-de-pluie';
 
+import { card as pourquoiLechoRepond } from './le-son/pourquoi-lecho-repond';
+import { card as aiguOuGrave } from './le-son/aigu-ou-grave';
+import { card as pourquoiLesVoixSontDifferentes } from './le-son/pourquoi-les-voix-sont-differentes';
+import { card as commentLoreilleEntend } from './le-son/comment-loreille-entend';
+import { card as quandLeBruitFaitMal } from './le-son/quand-le-bruit-fait-mal';
+import { card as commentChanteUneGuitare } from './le-son/comment-chante-une-guitare';
+import { card as laSireneQuiChange } from './le-son/la-sirene-qui-change';
+import { card as maVoixEnregistree } from './le-son/ma-voix-enregistree';
+import { card as lesSonsQuonNentendPas } from './le-son/les-sons-quon-nentend-pas';
+import { card as lesNotesQuiVontEnsemble } from './le-son/les-notes-qui-vont-ensemble';
+
+import { card as lePuzzleDesOs } from './les-dinosaures/le-puzzle-des-os';
+import { card as leJourDeLasteroide } from './les-dinosaures/le-jour-de-lasteroide';
+import { card as lesOiseauxSontDesDinosaures } from './les-dinosaures/les-oiseaux-sont-des-dinosaures';
+import { card as ilYaTresTresLongtemps } from './les-dinosaures/il-y-a-tres-tres-longtemps';
+import { card as pourquoiSiGrands } from './les-dinosaures/pourquoi-si-grands';
+import { card as carnivoreOuHerbivore } from './les-dinosaures/carnivore-ou-herbivore';
+import { card as lesTracesDePas } from './les-dinosaures/les-traces-de-pas';
+import { card as desDinosauresAPlumes } from './les-dinosaures/des-dinosaures-a-plumes';
+import { card as pasTousDesDinosaures } from './les-dinosaures/pas-tous-des-dinosaures';
+import { card as apresLesDinosaures } from './les-dinosaures/apres-les-dinosaures';
+
+import { card as laChairDePoule } from './le-corps/la-chair-de-poule';
+import { card as pourquoiOnEternue } from './le-corps/pourquoi-on-eternue';
+import { card as aQuoiServentLesLarmes } from './le-corps/a-quoi-servent-les-larmes';
+import { card as laPeauNotreBouclier } from './le-corps/la-peau-notre-bouclier';
+import { card as lesEmpreintesDigitales } from './le-corps/les-empreintes-digitales';
+import { card as pourquoiOnAMal } from './le-corps/pourquoi-on-a-mal';
+import { card as commentLesMusclesBougent } from './le-corps/comment-les-muscles-bougent';
+import { card as commentOnTientDebout } from './le-corps/comment-on-tient-debout';
+import { card as pourquoiOnADeuxYeux } from './le-corps/pourquoi-on-a-deux-yeux';
+import { card as lesDentsDeLait } from './le-corps/les-dents-de-lait';
+
+import { card as douViennentLesVagues } from './les-oceans/dou-viennent-les-vagues';
+import { card as lesFleuvesDansLaMer } from './les-oceans/les-fleuves-dans-la-mer';
+import { card as pourquoiIlFaitNoirAuFond } from './les-oceans/pourquoi-il-fait-noir-au-fond';
+import { card as laPressionQuiEcrase } from './les-oceans/la-pression-qui-ecrase';
+import { card as leCorailBatisseur } from './les-oceans/le-corail-batisseur';
+import { card as lesAnimauxQuiBrillent } from './les-oceans/les-animaux-qui-brillent';
+import { card as lesSourcesChaudesDuFond } from './les-oceans/les-sources-chaudes-du-fond';
+import { card as lePlanctonMinuscule } from './les-oceans/le-plancton-minuscule';
+import { card as pourquoiOnFlotteMieuxDansLaMer } from './les-oceans/pourquoi-on-flotte-mieux-dans-la-mer';
+import { card as laVagueGeante } from './les-oceans/la-vague-geante';
+
+import { card as pourquoiLePainGonfle } from './la-cuisine/pourquoi-le-pain-gonfle';
+import { card as pourquoiCaDore } from './la-cuisine/pourquoi-ca-dore';
+import { card as pourquoiLoignonFaitPleurer } from './la-cuisine/pourquoi-loignon-fait-pleurer';
+import { card as pourquoiLePimentBrule } from './la-cuisine/pourquoi-le-piment-brule';
+import { card as pourquoiLePopcornExplose } from './la-cuisine/pourquoi-le-popcorn-explose';
+import { card as pourquoiLeLaitDevientYaourt } from './la-cuisine/pourquoi-le-lait-devient-yaourt';
+import { card as pourquoiLoeufDurcit } from './la-cuisine/pourquoi-loeuf-durcit';
+import { card as pourquoiLeSodaPetille } from './la-cuisine/pourquoi-le-soda-petille';
+import { card as pourquoiLaPommeBrunit } from './la-cuisine/pourquoi-la-pomme-brunit';
+import { card as pourquoiLeMielNeSePerimePas } from './la-cuisine/pourquoi-le-miel-ne-se-perime-pas';
+
 /**
  * Catalogue des cartes, groupées par domaine.
  *
@@ -222,4 +277,54 @@ export const cards: ScienceCard[] = [
   laRoseeDuMatin,
   leGivre,
   laFormeDesGouttesDePluie,
+  pourquoiLechoRepond,
+  aiguOuGrave,
+  pourquoiLesVoixSontDifferentes,
+  commentLoreilleEntend,
+  quandLeBruitFaitMal,
+  commentChanteUneGuitare,
+  laSireneQuiChange,
+  maVoixEnregistree,
+  lesSonsQuonNentendPas,
+  lesNotesQuiVontEnsemble,
+  lePuzzleDesOs,
+  leJourDeLasteroide,
+  lesOiseauxSontDesDinosaures,
+  ilYaTresTresLongtemps,
+  pourquoiSiGrands,
+  carnivoreOuHerbivore,
+  lesTracesDePas,
+  desDinosauresAPlumes,
+  pasTousDesDinosaures,
+  apresLesDinosaures,
+  laChairDePoule,
+  pourquoiOnEternue,
+  aQuoiServentLesLarmes,
+  laPeauNotreBouclier,
+  lesEmpreintesDigitales,
+  pourquoiOnAMal,
+  commentLesMusclesBougent,
+  commentOnTientDebout,
+  pourquoiOnADeuxYeux,
+  lesDentsDeLait,
+  douViennentLesVagues,
+  lesFleuvesDansLaMer,
+  pourquoiIlFaitNoirAuFond,
+  laPressionQuiEcrase,
+  leCorailBatisseur,
+  lesAnimauxQuiBrillent,
+  lesSourcesChaudesDuFond,
+  lePlanctonMinuscule,
+  pourquoiOnFlotteMieuxDansLaMer,
+  laVagueGeante,
+  pourquoiLePainGonfle,
+  pourquoiCaDore,
+  pourquoiLoignonFaitPleurer,
+  pourquoiLePimentBrule,
+  pourquoiLePopcornExplose,
+  pourquoiLeLaitDevientYaourt,
+  pourquoiLoeufDurcit,
+  pourquoiLeSodaPetille,
+  pourquoiLaPommeBrunit,
+  pourquoiLeMielNeSePerimePas,
 ];

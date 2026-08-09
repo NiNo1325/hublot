@@ -8,7 +8,13 @@ import { domains } from '@/content/domains';
   (tests/quiz.test.ts). `npm run audio:attente` la recalcule depuis les fichiers
   présents. Tout domaine absent d'ici doit avoir son mp3 d'accroche.
 */
-const EN_ATTENTE_ACCROCHES = new Set<string>([]);
+const EN_ATTENTE_ACCROCHES = new Set<string>([
+  'le-son',
+  'les-dinosaures',
+  'le-corps',
+  'les-oceans',
+  'la-cuisine',
+]);
 
 describe('accroches de domaine', () => {
   it('chaque domaine a une accroche non vide', () => {

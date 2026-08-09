@@ -9,6 +9,11 @@ import { quiz as informatique } from './informatique';
 import { quiz as mathematiques } from './mathematiques';
 import { quiz as animaux } from './animaux';
 import { quiz as meteo } from './meteo';
+import { quiz as leSon } from './le-son';
+import { quiz as lesDinosaures } from './les-dinosaures';
+import { quiz as leCorps } from './le-corps';
+import { quiz as lesOceans } from './les-oceans';
+import { quiz as laCuisine } from './la-cuisine';
 
 /**
  * Banque de questions, groupée par domaine.
@@ -32,6 +37,11 @@ export const quizCartes = [
   ...mathematiques,
   ...animaux,
   ...meteo,
+  ...leSon,
+  ...lesDinosaures,
+  ...leCorps,
+  ...lesOceans,
+  ...laCuisine,
 ];
 
 const parCarte = new Map(quizCartes.map((q) => [q.cardId, q]));

@@ -24,4 +24,9 @@ export const domainStyles: Record<DomainId, DomainStyle> = {
   mathematiques: { teinte: '#fb7185', halo: 'rgba(251, 113, 133, 0.45)' },
   animaux: { teinte: '#fbbf24', halo: 'rgba(251, 191, 36, 0.45)' },
   meteo: { teinte: '#2dd4bf', halo: 'rgba(45, 212, 191, 0.45)' },
+  'le-son': { teinte: '#e879f9', halo: 'rgba(232, 121, 249, 0.45)' },
+  'les-dinosaures': { teinte: '#c8a97e', halo: 'rgba(200, 169, 126, 0.45)' },
+  'le-corps': { teinte: '#f9a8d4', halo: 'rgba(249, 168, 212, 0.45)' },
+  'les-oceans': { teinte: '#60a5fa', halo: 'rgba(96, 165, 250, 0.45)' },
+  'la-cuisine': { teinte: '#fde047', halo: 'rgba(253, 224, 71, 0.45)' },
 };

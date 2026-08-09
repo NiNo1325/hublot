@@ -20,7 +20,12 @@ export type DomainId =
   | 'ingenierie'
   | 'mathematiques'
   | 'animaux'
-  | 'meteo';
+  | 'meteo'
+  | 'le-son'
+  | 'les-dinosaures'
+  | 'le-corps'
+  | 'les-oceans'
+  | 'la-cuisine';
 
 export interface DomainDefinition {
   id: DomainId;

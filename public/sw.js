@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v6';
+const VERSION = 'v7';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -42,6 +42,11 @@ const SHELL = [
   '/decouvrir/mathematiques',
   '/decouvrir/animaux',
   '/decouvrir/meteo',
+  '/decouvrir/le-son',
+  '/decouvrir/les-dinosaures',
+  '/decouvrir/le-corps',
+  '/decouvrir/les-oceans',
+  '/decouvrir/la-cuisine',
 ];
 
 self.addEventListener('install', (event) => {

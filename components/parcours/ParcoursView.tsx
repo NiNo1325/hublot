@@ -68,6 +68,9 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
 
   return (
     <>
+      {/* Le chemin s'efface pendant la question, qui prend sa place (écran normal,
+          donc la barre d'onglets reste visible en bas). */}
+      {session?.phase !== 'quizz' && (
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-10">
         <header className="flex flex-col items-center gap-2 text-center">
           <h1 className="font-display text-3xl font-semibold sm:text-4xl">Ton chemin</h1>
@@ -145,8 +148,10 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
           })}
         </ol>
       </main>
+      )}
 
-      {/* Session guidée : découverte puis question, en surimpression. */}
+      {/* Découverte : modale plein écran (comme dans Découvrir). Question :
+          écran normal ci-dessous, la barre d'onglets reste visible. */}
       {session?.phase === 'decouverte' && (
         <CardModal
           key={session.carte.id}

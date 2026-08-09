@@ -62,9 +62,8 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
   const justeChoisie = repondu && propositions[choisie]?.correcte === true;
 
   return (
-    <div className="fixed inset-0 z-40 overflow-y-auto bg-encre">
-      <main className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-5 py-8">
-        <header className="flex items-center justify-between gap-3">
+    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-5 py-8">
+      <header className="flex items-center justify-between gap-3">
           <p className="text-sm text-craie-douce">Une question sur cette carte</p>
           <button
             type="button"
@@ -193,7 +192,6 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
             </button>
           </div>
         )}
-      </main>
-    </div>
+    </main>
   );
 }

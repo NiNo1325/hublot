@@ -17,10 +17,17 @@ interface LumiProps {
   rang: number;
   /** Côté du carré de rendu, en pixels. */
   taille?: number;
+  /**
+   * Anime la mascotte. `repos` la rend vivante (flottement, halo qui respire,
+   * clignement) ; `content` un rebond ; `fete` un saut de célébration ;
+   * `statique` (défaut) ne l'anime pas — pour l'icône d'onglet et l'échelle
+   * des rangs, où le mouvement distrairait.
+   */
+  etat?: 'statique' | 'repos' | 'content' | 'fete';
   className?: string;
 }
 
-export function Lumi({ rang, taille = 96, className }: LumiProps) {
+export function Lumi({ rang, taille = 96, etat = 'statique', className }: LumiProps) {
   const uid = useId();
   const corps = `${uid}-corps`;
   const haloFaible = `${uid}-halo-faible`;
@@ -33,7 +40,9 @@ export function Lumi({ rang, taille = 96, className }: LumiProps) {
       viewBox="0 0 120 130"
       width={taille}
       height={(taille * 130) / 120}
-      className={className}
+      className={[className, etat !== 'statique' ? `lumi-${etat}` : null]
+        .filter(Boolean)
+        .join(' ')}
       role="img"
       aria-label={`Lumi, la mascotte, au rang ${LEGENDES[n]}.`}
     >
@@ -100,22 +109,22 @@ function CorpsBase({ corps }: { corps: string }) {
 /* Yeux ronds et rieurs, avec reflet. */
 function YeuxRonds({ cy = 71 }: { cy?: number }) {
   return (
-    <>
+    <g className="lumi-yeux">
       <ellipse cx="50" cy={cy} rx="6" ry="8" fill="#0f1b33" />
       <ellipse cx="70" cy={cy} rx="6" ry="8" fill="#0f1b33" />
       <circle cx="52.4" cy={cy - 3.4} r="2.1" fill="#fff" />
       <circle cx="72.4" cy={cy - 3.4} r="2.1" fill="#fff" />
-    </>
+    </g>
   );
 }
 
 /* Yeux sereins (arcs), pour les rangs les plus hauts. */
 function YeuxSereins() {
   return (
-    <>
+    <g className="lumi-yeux">
       <path d="M44 71 Q 50 65 56 71" stroke="#0f1b33" strokeWidth="2.6" fill="none" strokeLinecap="round" />
       <path d="M64 71 Q 70 65 76 71" stroke="#0f1b33" strokeWidth="2.6" fill="none" strokeLinecap="round" />
-    </>
+    </g>
   );
 }
 
@@ -128,7 +137,7 @@ function Sourire({ d = 'M53 84 Q 60 90 67 84', large = false }: { d?: string; la
 function Apprenti({ corps, halo }: Piece) {
   return (
     <>
-      <circle cx="60" cy="70" r="46" fill={`url(#${halo})`} />
+      <circle cx="60" cy="70" r="46" className="lumi-halo" fill={`url(#${halo})`} />
       <CorpsBase corps={corps} />
       <YeuxRonds />
       <Sourire />
@@ -143,7 +152,7 @@ function Apprenti({ corps, halo }: Piece) {
 function Explorateur({ corps, halo }: Piece) {
   return (
     <>
-      <circle cx="60" cy="70" r="46" fill={`url(#${halo})`} />
+      <circle cx="60" cy="70" r="46" className="lumi-halo" fill={`url(#${halo})`} />
       <CorpsBase corps={corps} />
       {/* foulard */}
       <path d="M52 100 L60 108 L68 100 Q 60 104 52 100 Z" fill="#ffb627" />
@@ -161,7 +170,7 @@ function Explorateur({ corps, halo }: Piece) {
 function Aventurier({ corps, halo }: Piece) {
   return (
     <>
-      <circle cx="60" cy="70" r="48" fill={`url(#${halo})`} />
+      <circle cx="60" cy="70" r="48" className="lumi-halo" fill={`url(#${halo})`} />
       {/* flammes des propulseurs */}
       <path d="M49 106 Q 46 122 53 118 Q 51 112 49 106 Z" fill="#ffb627" />
       <path d="M49 106 Q 47 116 51 114 Q 50 110 49 106 Z" fill="#ff8a3d" />
@@ -188,7 +197,7 @@ function Aventurier({ corps, halo }: Piece) {
 function Chercheur({ corps, halo }: Piece) {
   return (
     <>
-      <circle cx="60" cy="70" r="48" fill={`url(#${halo})`} />
+      <circle cx="60" cy="70" r="48" className="lumi-halo" fill={`url(#${halo})`} />
       <CorpsBase corps={corps} />
       {/* col de blouse */}
       <path d="M50 100 L60 109 L58 98 Z" fill="#ffffff" />
@@ -209,7 +218,7 @@ function Chercheur({ corps, halo }: Piece) {
 function Savant({ corps, halo }: Piece) {
   return (
     <>
-      <circle cx="60" cy="70" r="49" fill={`url(#${halo})`} />
+      <circle cx="60" cy="70" r="49" className="lumi-halo" fill={`url(#${halo})`} />
       <ellipse cx="25" cy="88" rx="7.5" ry="10" fill={`url(#${corps})`} />
       <ellipse cx="95" cy="88" rx="7.5" ry="10" fill={`url(#${corps})`} />
       <path
@@ -232,7 +241,7 @@ function Savant({ corps, halo }: Piece) {
 function Genie({ corps, halo }: Piece) {
   return (
     <>
-      <circle cx="60" cy="70" r="52" fill={`url(#${halo})`} />
+      <circle cx="60" cy="70" r="52" className="lumi-halo" fill={`url(#${halo})`} />
       <ellipse cx="25" cy="88" rx="7.5" ry="10" fill={`url(#${corps})`} />
       <ellipse cx="95" cy="88" rx="7.5" ry="10" fill={`url(#${corps})`} />
       <path

@@ -245,7 +245,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     return (
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center">
         {/* Lumi félicite l'enfant, dans l'apparence du rang qu'il vient d'atteindre. */}
-        <Lumi rang={rangApres.rang.index} taille={120} />
+        <Lumi rang={rangApres.rang.index} taille={120} etat="repos" />
         <div className="flex flex-col items-center gap-2">
           <span className="flex items-center gap-1.5 text-sm text-craie-douce">
             <span aria-hidden="true">{scopeDef ? scopeDef.icon : '🎲'}</span>

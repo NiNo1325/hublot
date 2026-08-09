@@ -29,7 +29,7 @@ export function SelecteurAge({
   return (
     <div className="flex flex-col items-center gap-8">
       <span className="flex h-44 w-44 items-center justify-center rounded-full bg-encre-clair">
-        <Lumi rang={rangLumi} taille={150} />
+        <Lumi rang={rangLumi} taille={150} etat="repos" />
       </span>
 
       <div className="flex items-center gap-6">

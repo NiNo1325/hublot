@@ -59,7 +59,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">Ton évolution</h1>
 
         <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-3xl border-2 border-encre-bord bg-encre-clair px-6 py-5">
-          <Lumi rang={rang.index} taille={104} />
+          <Lumi rang={rang.index} taille={104} etat="repos" />
           <p className="font-display text-lg text-craie">
             <span aria-hidden="true">{rang.icone}</span> {rang.nom} —{' '}
             <span aria-hidden="true">⭐</span> {etoiles}

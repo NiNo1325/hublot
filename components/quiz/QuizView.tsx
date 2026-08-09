@@ -10,7 +10,8 @@ import { useQuizAudio } from './useQuizAudio';
 import { useEtoiles } from './useEtoiles';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { Lumi } from '@/components/mascotte/Lumi';
-import { rangDepuisEtoiles, type Rang } from '@/lib/etoiles';
+import { useCelebration } from '@/components/celebration/CelebrationProvider';
+import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
 import { ordreLecture } from '@/content/quiz/ordre';
 
@@ -77,8 +78,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
   const { marquerMaitrisee } = useCartesMaitrisees();
   // Bonnes réponses consécutives, pour un encouragement positif (jamais négatif).
   const [dAffilee, setDAffilee] = useState(0);
-  // Rang avant le crédit de fin de série, pour détecter un passage de rang.
-  const [rangAvant, setRangAvant] = useState<Rang | null>(null);
+  const celebrer = useCelebration();
   // Périmètre de la série en cours : un monde précis, ou `null` pour « Tout ».
   // Sert à proposer « sujet suivant » et à rejouer le même sujet en fin de série.
   const [scope, setScope] = useState<DomainId | null>(null);
@@ -136,7 +136,6 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     setChoisie(null);
     setReussies(0);
     setDAffilee(0);
-    setRangAvant(null);
   };
 
   // Le monde jouable suivant, dans l'ordre d'affichage, en cyclant. `null` s'il
@@ -238,7 +237,6 @@ export function QuizView({ cards, domains }: QuizViewProps) {
   // Fin de série.
   if (index >= serie.length) {
     const rangApres = rangDepuisEtoiles(etoiles);
-    const monteEnRang = rangAvant != null && rangApres.rang.index > rangAvant.index;
     const suivant = domaineSuivant(scope);
     const suivantDef = suivant ? nomDomaine(suivant) : null;
     const scopeDef = scope ? nomDomaine(scope) : null;
@@ -267,13 +265,6 @@ export function QuizView({ cards, domains }: QuizViewProps) {
             <span aria-hidden="true">{rangApres.rang.icone}</span> {rangApres.rang.nom}
           </p>
         </div>
-
-        {monteEnRang && (
-          <p className="font-display text-xl text-soleil">
-            Nouveau rang : <span aria-hidden="true">{rangApres.rang.icone}</span>{' '}
-            {rangApres.rang.nom}&nbsp;!
-          </p>
-        )}
 
         {/* Aucun échec possible : on encourage, on ne sanctionne pas. */}
         <p className="max-w-md text-craie-douce">
@@ -473,11 +464,19 @@ export function QuizView({ cards, domains }: QuizViewProps) {
             type="button"
             onClick={() => {
               arreter();
-              // Dernière question : on crédite les étoiles une seule fois, en
-              // capturant le rang d'avant pour détecter un passage de rang.
+              // Dernière question : on crédite les étoiles une seule fois, et
+              // si le total fait passer un rang, Lumi surgit féliciter l'enfant.
               if (index + 1 >= serie.length) {
-                setRangAvant(rangDepuisEtoiles(etoiles).rang);
+                const avant = rangDepuisEtoiles(etoiles).rang;
+                const apres = rangDepuisEtoiles(etoiles + reussies).rang;
                 gagnerEtoiles(reussies);
+                if (apres.index > avant.index) {
+                  celebrer({
+                    rang: apres.index,
+                    titre: 'Nouveau rang !',
+                    sousTitre: `${apres.icone} ${apres.nom}`,
+                  });
+                }
               }
               setIndex((n) => n + 1);
               setChoisie(null);

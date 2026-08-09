@@ -155,3 +155,12 @@ body {
   75% { transform: scale(1.03, 0.97); }
   100% { transform: scale(1); }
 }
+
+/* Étincelles d'une célébration : elles scintillent autour de Lumi. */
+.lumi-scintille {
+  animation: lumi-scintille 1.4s ease-in-out infinite;
+}
+@keyframes lumi-scintille {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+}

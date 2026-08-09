@@ -3,10 +3,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AgeRange, QuizQuestion, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
+import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { ordreLecture } from '@/content/quiz/ordre';
 import { useQuizAudio } from '@/components/quiz/useQuizAudio';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { useCelebration } from '@/components/celebration/CelebrationProvider';
 
 /** Mélange sans modifier la source. */
 function melanger<T>(liste: T[]): T[] {
@@ -33,8 +35,9 @@ interface QuestionUniqueProps {
  */
 export function QuestionUnique({ card, question, age, onTermine }: QuestionUniqueProps) {
   const { jouer, jouerProposition, jouerVerdict, arreter, enLecture } = useQuizAudio(age);
-  const { gagnerEtoiles } = useEtoiles();
+  const { etoiles, gagnerEtoiles } = useEtoiles();
   const { marquerMaitrisee } = useCartesMaitrisees();
+  const celebrer = useCelebration();
   const [choisie, setChoisie] = useState<number | null>(null);
   const style = domainStyles[card.domainId];
 
@@ -95,7 +98,16 @@ export function QuestionUnique({ card, question, age, onTermine }: QuestionUniqu
                     setChoisie(i);
                     if (reponse.correcte) {
                       marquerMaitrisee(card.id);
+                      const avant = rangDepuisEtoiles(etoiles).rang;
+                      const apres = rangDepuisEtoiles(etoiles + 1).rang;
                       gagnerEtoiles(1);
+                      if (apres.index > avant.index) {
+                        celebrer({
+                          rang: apres.index,
+                          titre: 'Nouveau rang !',
+                          sousTitre: `${apres.icone} ${apres.nom}`,
+                        });
+                      }
                     }
                     jouerVerdict(
                       card.id,

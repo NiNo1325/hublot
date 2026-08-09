@@ -1,0 +1,84 @@
+import type { ScienceCard } from '@/lib/types';
+
+/**
+ * La réaction de Maillard transforme sucres et protéines en surface à la
+ * chaleur, créant couleur dorée et arômes : ce n'est pas du brûlé, qui est
+ * une réaction différente, plus tardive et amère.
+ */
+export const card: ScienceCard = {
+  id: 'pourquoi-ca-dore',
+  domainId: 'la-cuisine',
+  animationId: 'pourquoi-ca-dore',
+  thumbnail: '🍗',
+  content: {
+    fr: {
+      title: {
+        '3-5': 'Pourquoi ça devient doré',
+        '6-8': 'Pourquoi ça dore et sent bon',
+        '9-12': 'Pourquoi la cuisson fait dorer',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Tu chauffes le pain ou la viande dans le four.',
+            },
+            {
+              id: 'deux',
+              text: 'À l\'intérieur, de tout petits morceaux se rencontrent.',
+            },
+            {
+              id: 'trois',
+              text: 'Ensemble, ils deviennent quelque chose de nouveau.',
+            },
+            {
+              id: 'quatre',
+              text: 'Ça devient doré, et ça sent très bon.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Quand tu chauffes du pain ou de la viande, sa surface devient de plus en plus chaude.',
+            },
+            {
+              id: 'deux',
+              text: 'À la surface, les sucres et les protéines de l\'aliment se rencontrent sous l\'effet de la chaleur.',
+            },
+            {
+              id: 'trois',
+              text: 'Ils se transforment en de tout nouvelles molécules, qui n\'existaient pas avant.',
+            },
+            {
+              id: 'quatre',
+              text: 'Ces nouvelles molécules donnent la couleur dorée et la bonne odeur si appétissante.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Dès qu\'un aliment atteint une température suffisante à sa surface, sa chimie interne change.',
+            },
+            {
+              id: 'deux',
+              text: 'Les sucres et les acides aminés des protéines entrent alors en contact sous l\'effet de la chaleur.',
+            },
+            {
+              id: 'trois',
+              text: 'Ils réagissent ensemble : c\'est la réaction de Maillard, qui crée des centaines de nouvelles molécules.',
+            },
+            {
+              id: 'quatre',
+              text: 'Ces molécules donnent la couleur dorée et les arômes de cuisson : rien à voir avec du brûlé, qui est une réaction différente et plus tardive.',
+            },
+          ],
+        },
+      },
+    },
+  },
+};

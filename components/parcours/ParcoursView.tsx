@@ -162,6 +162,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
           question={session.question}
           age={ageRange}
           onTermine={avancer}
+          onQuitter={() => setSession(null)}
         />
       )}
     </>

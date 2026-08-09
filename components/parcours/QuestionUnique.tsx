@@ -25,6 +25,8 @@ interface QuestionUniqueProps {
   question: QuizQuestion;
   age: AgeRange;
   onTermine: () => void;
+  /** Quitter le parcours et revenir au chemin (où la barre d'onglets est là). */
+  onQuitter: () => void;
 }
 
 /**
@@ -33,7 +35,7 @@ interface QuestionUniqueProps {
  * une étoile et marque la carte maîtrisée, pour que rang et badges progressent
  * aussi en mode guidé. Non-punitif : on avance après l'explication, juste ou non.
  */
-export function QuestionUnique({ card, question, age, onTermine }: QuestionUniqueProps) {
+export function QuestionUnique({ card, question, age, onTermine, onQuitter }: QuestionUniqueProps) {
   const { jouer, jouerProposition, jouerVerdict, arreter, enLecture } = useQuizAudio(age);
   const { etoiles, gagnerEtoiles } = useEtoiles();
   const { marquerMaitrisee } = useCartesMaitrisees();
@@ -62,7 +64,17 @@ export function QuestionUnique({ card, question, age, onTermine }: QuestionUniqu
   return (
     <div className="fixed inset-0 z-40 overflow-y-auto bg-encre">
       <main className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-5 py-8">
-        <p className="text-sm text-craie-douce">Une question sur cette carte</p>
+        <header className="flex items-center justify-between gap-3">
+          <p className="text-sm text-craie-douce">Une question sur cette carte</p>
+          <button
+            type="button"
+            onClick={onQuitter}
+            className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-lg transition-colors hover:border-soleil hover:text-soleil"
+          >
+            <span aria-hidden="true">✕</span>
+            <span className="sr-only">Quitter le parcours</span>
+          </button>
+        </header>
 
         <div
           className="flex items-start gap-4 rounded-3xl border-2 p-5"

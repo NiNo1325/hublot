@@ -95,28 +95,25 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         </p>
       </header>
 
-      {/* L'échelle des rangs : là où Lumi en est, et ce qui l'attend. La
-          différence de luminosité (atteint / à venir) suffit à situer l'enfant,
-          sans bordure de couleur. Même gabarit que les rangées de mondes. */}
+      {/* L'échelle des rangs : là où Lumi en est, et ce qui l'attend. Bande
+          horizontale de blocs larges. La différence de luminosité (atteint /
+          à venir) suffit à situer l'enfant, sans bordure de couleur. */}
       <section className="flex flex-col gap-3">
         <h2 className="font-display text-lg text-craie">Les rangs de Lumi</h2>
-        <ol className="flex flex-col gap-3">
+        <ol className="flex gap-3 overflow-x-auto pb-2">
           {RANGS.map((r) => {
             const atteint = etoiles >= r.seuil;
             return (
-              <li key={r.index}>
-                <div
-                  className="flex items-center justify-between gap-3 rounded-3xl border-2 border-encre-bord bg-encre-clair p-4"
-                  style={{ opacity: atteint ? 1 : 0.45 }}
-                >
-                  <span className="flex items-center gap-3">
-                    <Lumi rang={r.index} taille={48} />
-                    <span className="font-display text-lg text-craie">{r.nom}</span>
-                  </span>
-                  <span className="text-sm text-craie-douce">
-                    {r.seuil} <span aria-hidden="true">⭐</span>
-                  </span>
-                </div>
+              <li
+                key={r.index}
+                className="flex w-32 shrink-0 flex-col items-center gap-1.5 rounded-3xl border-2 border-encre-bord bg-encre-clair px-3 py-4 text-center"
+                style={{ opacity: atteint ? 1 : 0.45 }}
+              >
+                <Lumi rang={r.index} taille={64} />
+                <span className="font-display text-base text-craie">{r.nom}</span>
+                <span className="text-xs text-craie-douce">
+                  {r.seuil} <span aria-hidden="true">⭐</span>
+                </span>
               </li>
             );
           })}

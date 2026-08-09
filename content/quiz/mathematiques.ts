@@ -399,7 +399,7 @@ export const quiz: QuizCarte[] = [
       '6-8': [
         {
           id: 'combien-personnes',
-          question: 'Combien faut-il de personnes pour une chance sur deux ?',
+          question: 'Dans un groupe, combien faut-il de personnes pour avoir une chance sur deux que deux d’entre elles aient le même anniversaire ?',
           reponses: [
             { texte: 'Vingt-trois', icone: '🎯', correcte: true },
             { texte: 'Cent quatre-vingts', icone: '💯' },
@@ -412,7 +412,7 @@ export const quiz: QuizCarte[] = [
       '9-12': [
         {
           id: 'paires-carre',
-          question: 'Pourquoi vingt-trois personnes suffisent-elles ?',
+          question: 'Pourquoi, dans un groupe de vingt-trois personnes, deux ont-elles souvent le même anniversaire ?',
           reponses: [
             { texte: 'Le nombre de paires croît comme le carré de l’effectif', icone: '📐', correcte: true },
             { texte: 'Parce que certains jours sont plus fréquents', icone: '📅' },

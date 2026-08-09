@@ -14,7 +14,7 @@ export const quiz: QuizCarte[] = [
       '3-5': [
         {
           id: 'qui-sort-de-loeuf',
-          question: "Qui sort du petit œuf ?",
+          question: 'Qui sort d’un œuf de papillon ?',
           reponses: [
             { texte: 'Une chenille', icone: '🐛', correcte: true },
             { texte: 'Un papillon tout fait', icone: '🦋' },
@@ -25,7 +25,7 @@ export const quiz: QuizCarte[] = [
       '6-8': [
         {
           id: 'que-fait-la-chrysalide',
-          question: 'Dans la chrysalide, que se passe-t-il ?',
+          question: 'Quand la chenille s’enferme dans sa chrysalide, que se passe-t-il ?',
           reponses: [
             { texte: 'Le corps se défait puis se reconstruit', icone: '✨', correcte: true },
             { texte: 'La chenille gonfle et devient papillon', icone: '🎈' },
@@ -109,7 +109,7 @@ export const quiz: QuizCarte[] = [
       '6-8': [
         {
           id: 'vraie-raison',
-          question: 'Quelle est la vraie raison du grand départ ?',
+          question: 'Quelle est la vraie raison qui pousse les oiseaux migrateurs à partir ?',
           reponses: [
             { texte: 'La nourriture qui devient rare', icone: '🍽️', correcte: true },
             { texte: 'Le froid qu’ils ne supportent pas', icone: '🥶' },
@@ -164,7 +164,7 @@ export const quiz: QuizCarte[] = [
       '9-12': [
         {
           id: 'pourquoi-le-ralenti',
-          question: 'Pourquoi le corps se met-il autant au ralenti ?',
+          question: 'Pendant l’hibernation, pourquoi le corps se met-il autant au ralenti ?',
           reponses: [
             { texte: 'Pour dépenser presque zéro énergie et tenir sans manger', icone: '🔋', correcte: true },
             { texte: 'Parce que le froid l’endort profondément', icone: '🥶' },
@@ -193,7 +193,7 @@ export const quiz: QuizCarte[] = [
       '6-8': [
         {
           id: 'comment-dans-le-noir',
-          question: 'Comment se dirige-t-elle dans le noir complet ?',
+          question: 'Comment la chauve-souris se dirige-t-elle dans le noir complet ?',
           reponses: [
             { texte: 'Elle crie et écoute l’écho revenir', icone: '🔊', correcte: true },
             { texte: 'Elle est aveugle et vole au hasard', icone: '🙈' },
@@ -277,7 +277,7 @@ export const quiz: QuizCarte[] = [
       '6-8': [
         {
           id: 'camouflage-ou-non',
-          question: 'Les rayures servent-elles à se camoufler ?',
+          question: 'Les rayures du zèbre servent-elles à se camoufler ?',
           reponses: [
             { texte: 'Non, elles gênent les mouches piqueuses', icone: '🪰', correcte: true },
             { texte: 'Oui, pour disparaître dans les hautes herbes', icone: '🌾' },
@@ -290,7 +290,7 @@ export const quiz: QuizCarte[] = [
       '9-12': [
         {
           id: 'hypothese-la-mieux-etayee',
-          question: 'Quelle explication des rayures est aujourd’hui la mieux étayée ?',
+          question: 'Quelle explication des rayures du zèbre est aujourd’hui la mieux étayée ?',
           reponses: [
             { texte: 'La protection contre les mouches piqueuses', icone: '🪰', correcte: true },
             { texte: 'Le camouflage dans la végétation', icone: '🌾' },
@@ -374,7 +374,7 @@ export const quiz: QuizCarte[] = [
       '9-12': [
         {
           id: 'pourquoi-piege-marche',
-          question: 'Pourquoi le piège fonctionne-t-il sans coincer l’araignée ?',
+          question: 'Pourquoi la toile piège les insectes sans coincer l’araignée ?',
           reponses: [
             { texte: 'Fils secs et collants coexistent, et elle connaît la toile', icone: '🧭', correcte: true },
             { texte: 'Parce que l’araignée est trop légère pour coller', icone: '🪶' },

@@ -14,7 +14,7 @@ export const quiz: QuizCarte[] = [
       '3-5': [
         {
           id: 'mousse-chaude',
-          question: 'La mousse qui déborde du pot, est-elle brûlante ?',
+          question: 'Le vinaigre et le bicarbonate font une mousse qui déborde. Est-elle brûlante ?',
           reponses: [
             { texte: 'Non, elle est froide', icone: '🫧', correcte: true },
             { texte: 'Oui, comme un vrai volcan', icone: '🌋' },
@@ -25,7 +25,7 @@ export const quiz: QuizCarte[] = [
       '6-8': [
         {
           id: 'gaz-bulles',
-          question: 'Que contiennent les bulles qui se forment ?',
+          question: 'Quand le vinaigre et le bicarbonate moussent, que contiennent les bulles ?',
           reponses: [
             { texte: 'Du dioxyde de carbone', icone: '💨', correcte: true },
             { texte: 'De l’air ordinaire', icone: '🌬️' },
@@ -38,7 +38,7 @@ export const quiz: QuizCarte[] = [
       '9-12': [
         {
           id: 'melange-ou-reaction',
-          question: 'Peut-on récupérer le vinaigre et le bicarbonate après coup ?',
+          question: 'Après avoir mélangé le vinaigre et le bicarbonate, peut-on les récupérer ?',
           reponses: [
             { texte: 'Non, ils se sont transformés', icone: '🔀', correcte: true },
             { texte: 'Oui, en laissant évaporer l’eau', icone: '💧' },

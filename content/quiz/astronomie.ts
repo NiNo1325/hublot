@@ -247,7 +247,7 @@ export const quiz: QuizCarte[] = [
       '9-12': [
         {
           id: 'horizon',
-          question: 'Comment appelle-t-on la frontière au-delà de laquelle rien ne ressort ?',
+          question: 'Autour d’un trou noir, comment appelle-t-on la frontière au-delà de laquelle rien ne ressort ?',
           reponses: [
             { texte: 'L’horizon des événements', icone: '⭕', correcte: true },
             { texte: 'L’équateur du trou noir', icone: '🧭' },

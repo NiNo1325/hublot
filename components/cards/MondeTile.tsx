@@ -43,12 +43,16 @@ export function MondeTile({
 
   return (
     <li
-      className="flex w-40 flex-col items-center gap-2 sm:w-44"
+      className="w-40 sm:w-44"
       style={{ animation: 'allumage 500ms ease-out backwards', animationDelay: `${index * 70}ms` }}
     >
+      {/* Chaque monde est une carte auto-contenue : le hublot, le nom, le
+          compteur et l'accroche forment un seul bloc. L'accroche appartient
+          ainsi clairement à sa carte, et ne flotte plus entre deux mondes. */}
+      <div className="flex h-full flex-col items-center gap-2 rounded-3xl border-2 border-encre-bord bg-encre-clair/40 p-3">
       <Link
         href={`/decouvrir/${domain.id}`}
-        className="group flex cursor-pointer flex-col items-center gap-2 rounded-3xl p-2 transition-transform duration-150 hover:scale-105 active:scale-95"
+        className="group flex cursor-pointer flex-col items-center gap-2 rounded-3xl p-1 transition-transform duration-150 hover:scale-105 active:scale-95"
       >
         <span className="relative flex h-32 w-32 items-center justify-center sm:h-36 sm:w-36">
           {/* Anneau de progression */}
@@ -118,8 +122,10 @@ export function MondeTile({
         </span>
       </Link>
 
-      {/* Accroche + écoute, hors du Link (un bouton ne peut pas vivre dans un <a>). */}
-      <div className="flex items-start gap-2 px-1">
+      {/* Accroche + écoute, poussées en bas de la carte (mt-auto) pour que les
+          boutons s'alignent d'une carte à l'autre. Hors du Link : un bouton ne
+          peut pas vivre dans un <a>. */}
+      <div className="mt-auto flex items-start gap-2 pt-1">
         <p className="flex-1 text-center text-sm italic leading-snug text-craie-douce">
           {accroche}
         </p>
@@ -131,6 +137,7 @@ export function MondeTile({
         >
           <span aria-hidden="true">{enLecture ? '⏸' : '🔊'}</span>
         </button>
+      </div>
       </div>
     </li>
   );

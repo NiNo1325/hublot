@@ -5,16 +5,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { DomainDefinition, QuizQuestion, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
-import { badgesDomaine } from '@/lib/badges';
 import { progressionDomaine } from '@/lib/progression';
 import { ordreParcours, prochaineEtape } from '@/lib/parcours';
-import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { questionsDe } from '@/content/quiz';
-import { Lumi } from '@/components/mascotte/Lumi';
 import { useAgeRange } from '@/components/age/useAgeRange';
-import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useCartesVues } from '@/components/cards/useCartesVues';
-import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { CardModal } from '@/components/cards/CardModal';
 import { QuestionUnique } from './QuestionUnique';
 
@@ -35,14 +30,13 @@ function tirerQuestion(qs: QuizQuestion[]): QuizQuestion {
 /**
  * Le mode guidé : un chemin linéaire à travers toutes les cartes. « Continuer »
  * mène à la prochaine carte non découverte, la raconte, puis pose une question
- * dessus, puis enchaîne. Découvrir et Quizz restent les modes libres à côté.
+ * dessus, puis enchaîne. Épuré de toute statistique — le suivi (rang, badges)
+ * vit dans l'onglet Lumi ; Découvrir et Quizz restent les modes libres.
  */
 export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   const router = useRouter();
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
-  const { cartesMaitrisees } = useCartesMaitrisees();
-  const { etoiles } = useEtoiles();
   const [session, setSession] = useState<Session | null>(null);
 
   const ordre = useMemo(() => ordreParcours(cards, domains), [cards, domains]);
@@ -55,11 +49,6 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   if (status === 'chargement' || !ageRange) return null;
 
   const decouvertes = ordre.reduce((n, c) => (cartesVues.has(c.id) ? n + 1 : n), 0);
-  const { rang, rangProchain } = rangDepuisEtoiles(etoiles);
-  const reste = rangProchain ? rangProchain.seuil - etoiles : 0;
-  const fraction = rangProchain
-    ? Math.min(1, Math.max(0, (etoiles - rang.seuil) / (rangProchain.seuil - rang.seuil)))
-    : 1;
 
   // Après la découverte : on teste la carte, ou on avance s'il n'y a pas de
   // question à cet âge.
@@ -81,44 +70,9 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   return (
     <>
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-10">
-        <header className="flex flex-col items-center gap-5">
-          <h1 className="font-display text-3xl font-semibold sm:text-4xl">Mon parcours</h1>
-
-          <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-3xl border-2 border-encre-bord bg-encre-clair px-6 py-5">
-            <Lumi rang={rang.index} taille={88} />
-            <p className="font-display text-lg text-craie">
-              <span aria-hidden="true">{rang.icone}</span> {rang.nom} —{' '}
-              <span aria-hidden="true">⭐</span> {etoiles}
-            </p>
-            <div className="w-full">
-              <div
-                className="h-3 w-full overflow-hidden rounded-full bg-encre"
-                role="progressbar"
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-valuenow={Math.round(fraction * 100)}
-                aria-label="Progression vers le rang suivant"
-              >
-                <div
-                  className="h-full rounded-full bg-soleil transition-[width] duration-500"
-                  style={{ width: `${fraction * 100}%` }}
-                />
-              </div>
-              {rangProchain ? (
-                <p className="mt-1.5 text-center text-sm text-craie-douce">
-                  plus que {reste} <span aria-hidden="true">⭐</span> pour{' '}
-                  <span aria-hidden="true">{rangProchain.icone}</span> {rangProchain.nom}
-                </p>
-              ) : (
-                <p className="mt-1.5 text-center text-sm text-soleil">
-                  Rang maximum atteint&nbsp;! 🎉
-                </p>
-              )}
-            </div>
-            <p className="text-sm text-craie-douce">
-              {decouvertes}/{ordre.length} cartes découvertes
-            </p>
-          </div>
+        <header className="flex flex-col items-center gap-2 text-center">
+          <h1 className="font-display text-3xl font-semibold sm:text-4xl">Ton chemin</h1>
+          <p className="text-sm text-craie-douce">{decouvertes}/{ordre.length} cartes découvertes</p>
         </header>
 
         {/* Le cœur du mode guidé : une seule action, la prochaine étape. */}
@@ -163,7 +117,6 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
           {domains.map((domain) => {
             const style = domainStyles[domain.id];
             const { vues, total } = progressionDomaine(cards, cartesVues, domain.id);
-            const { explore, maitrise } = badgesDomaine(cards, cartesVues, cartesMaitrisees, domain.id);
             const courant = prochaine?.domainId === domain.id;
             const termine = total > 0 && vues >= total;
             return (
@@ -188,19 +141,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
                     <span className="font-display text-base text-craie">{domain.labels.fr}</span>
                     <span className="text-sm text-craie-douce">{vues}/{total} cartes</span>
                   </span>
-                  <span className="flex items-center gap-2">
-                    <span className="flex items-center gap-1.5 text-lg">
-                      <span className={explore ? '' : 'opacity-20'}>
-                        <span aria-hidden="true">🧭</span>
-                        <span className="sr-only">{explore ? 'exploré' : 'pas encore exploré'}</span>
-                      </span>
-                      <span className={maitrise ? '' : 'opacity-20'}>
-                        <span aria-hidden="true">🏅</span>
-                        <span className="sr-only">{maitrise ? 'maîtrisé' : 'pas encore maîtrisé'}</span>
-                      </span>
-                    </span>
-                    <span aria-hidden="true" className="text-craie-douce">›</span>
-                  </span>
+                  <span aria-hidden="true" className="text-craie-douce">›</span>
                 </Link>
               </li>
             );

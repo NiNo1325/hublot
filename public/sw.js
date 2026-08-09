@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v5';
+const VERSION = 'v6';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -25,6 +25,7 @@ const SHELL = [
   '/decouvrir',
   '/quizz',
   '/parcours',
+  '/lumi',
   '/reglages',
   '/hors-ligne',
   '/manifest.webmanifest',

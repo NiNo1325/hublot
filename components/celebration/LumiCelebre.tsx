@@ -6,6 +6,8 @@ interface LumiCelebreProps {
   rang: number;
   titre: string;
   sousTitre?: string;
+  /** Emblème du progrès, posé sur Lumi (🧭, 🏅, 🏆…). */
+  embleme?: string;
   onFermer: () => void;
 }
 
@@ -14,7 +16,7 @@ interface LumiCelebreProps {
  * un message. Purement positif (ADN non-punitif). On ferme d'une tape n'importe
  * où, ou sur le bouton.
  */
-export function LumiCelebre({ rang, titre, sousTitre, onFermer }: LumiCelebreProps) {
+export function LumiCelebre({ rang, titre, sousTitre, embleme, onFermer }: LumiCelebreProps) {
   return (
     <div
       role="dialog"
@@ -24,6 +26,14 @@ export function LumiCelebre({ rang, titre, sousTitre, onFermer }: LumiCelebrePro
     >
       <div className="relative flex items-center justify-center">
         <Lumi rang={rang} taille={168} etat="fete" />
+        {embleme && (
+          <span
+            className="absolute bottom-3 right-2 flex h-14 w-14 items-center justify-center rounded-full border-2 border-encre bg-encre-clair text-3xl"
+            aria-hidden="true"
+          >
+            {embleme}
+          </span>
+        )}
         <span className="lumi-scintille pointer-events-none absolute -left-4 top-2 text-3xl" aria-hidden="true">
           ✨
         </span>

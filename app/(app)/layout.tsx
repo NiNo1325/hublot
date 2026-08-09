@@ -1,5 +1,8 @@
+import { cards } from '@/content/cards';
+import { domains } from '@/content/domains';
 import { BarreOnglets } from '@/components/nav/BarreOnglets';
 import { CelebrationProvider } from '@/components/celebration/CelebrationProvider';
+import { DetecteurProgres } from '@/components/celebration/DetecteurProgres';
 
 /**
  * Coquille des écrans principaux : le contenu, puis la barre d'onglets fixée en
@@ -14,6 +17,7 @@ import { CelebrationProvider } from '@/components/celebration/CelebrationProvide
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <CelebrationProvider>
+      <DetecteurProgres cards={cards} domains={domains} />
       <div className="flex flex-1 flex-col pb-24">{children}</div>
       <BarreOnglets />
     </CelebrationProvider>

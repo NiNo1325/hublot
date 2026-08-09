@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { DomainDefinition, QuizQuestion, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
@@ -133,16 +132,14 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
                 >
                   {termine ? '✅' : domain.icon}
                 </span>
-                <Link
-                  href={`/decouvrir/${domain.id}`}
-                  className="flex flex-1 items-center justify-between gap-3 rounded-2xl border-2 border-encre-bord bg-encre-clair px-4 py-3 transition-colors hover:border-soleil"
-                >
+                {/* Jalon non cliquable : le chemin n'avance que par « Continuer ».
+                    Pour explorer un monde librement, c'est l'onglet Découvrir. */}
+                <div className="flex flex-1 items-center justify-between gap-3 rounded-2xl border-2 border-encre-bord bg-encre-clair px-4 py-3">
                   <span className="flex flex-col">
                     <span className="font-display text-base text-craie">{domain.labels.fr}</span>
                     <span className="text-sm text-craie-douce">{vues}/{total} cartes</span>
                   </span>
-                  <span aria-hidden="true" className="text-craie-douce">›</span>
-                </Link>
+                </div>
               </li>
             );
           })}

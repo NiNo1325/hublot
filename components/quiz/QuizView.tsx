@@ -260,16 +260,9 @@ export function QuizView({ cards, domains }: QuizViewProps) {
           <button
             type="button"
             onClick={() => setSerie(null)}
-            className="min-h-16 cursor-pointer rounded-full border-2 border-soleil px-8 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
+            className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
           >
             Rejouer
-          </button>
-          <button
-            type="button"
-            onClick={() => router.push('/')}
-            className="min-h-16 cursor-pointer rounded-full border-2 border-encre-bord px-8 font-display text-lg text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-          >
-            Retour au menu
           </button>
         </div>
       </main>
@@ -283,17 +276,10 @@ export function QuizView({ cards, domains }: QuizViewProps) {
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-5 py-8">
-      <header className="flex items-center justify-between gap-4">
+      <header className="flex items-center gap-4">
         <span className="text-sm text-craie-douce">
           Question {index + 1} sur {serie.length}
         </span>
-        <button
-          type="button"
-          onClick={() => router.push('/')}
-          className="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-4 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-        >
-          <span aria-hidden="true">🏠</span> Menu
-        </button>
       </header>
 
       <div className="flex justify-center gap-1" aria-hidden="true">

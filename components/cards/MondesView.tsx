@@ -18,7 +18,7 @@ interface MondesViewProps {
 
 export function MondesView({ cards, domains }: MondesViewProps) {
   const router = useRouter();
-  const { age, ageRange, status } = useAgeRange();
+  const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
   const { cartesMaitrisees } = useCartesMaitrisees();
   const { jouer, enLecture } = useAccrocheAudio();
@@ -36,22 +36,6 @@ export function MondesView({ cards, domains }: MondesViewProps) {
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">
           Qu&apos;est-ce qui t&apos;intéresse&nbsp;?
         </h1>
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={() => router.push('/')}
-            className="flex min-h-12 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-          >
-            <span aria-hidden="true">🏠</span> Menu
-          </button>
-          <button
-            type="button"
-            onClick={() => router.push('/?changer=1')}
-            className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-          >
-            Niveau&nbsp;: {age} ans — changer
-          </button>
-        </div>
       </header>
 
       <ul className="flex flex-wrap justify-center gap-6 sm:gap-8">

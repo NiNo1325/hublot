@@ -22,7 +22,7 @@ const AUCUNE = new Set<string>();
 
 export function DomaineView({ domain, cards }: DomaineViewProps) {
   const router = useRouter();
-  const { age, ageRange, status } = useAgeRange();
+  const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
   const { premium } = useEntitlement();
   const [paywallOuvert, setPaywallOuvert] = useState(false);
@@ -55,22 +55,6 @@ export function DomaineView({ domain, cards }: DomaineViewProps) {
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-10 px-6 py-10">
       <header className="flex flex-col items-center gap-4">
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={() => router.push('/decouvrir')}
-            className="flex min-h-12 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-          >
-            <span aria-hidden="true">←</span> Les mondes
-          </button>
-          <button
-            type="button"
-            onClick={() => router.push('/?changer=1')}
-            className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-          >
-            Niveau&nbsp;: {age} ans — changer
-          </button>
-        </div>
         <h1 className="flex items-center gap-3 font-display text-3xl font-semibold sm:text-4xl">
           <span aria-hidden="true">{domain.icon}</span> {domain.labels.fr}
         </h1>

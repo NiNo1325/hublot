@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v4';
+const VERSION = 'v5';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -24,7 +24,8 @@ const SHELL = [
   '/',
   '/decouvrir',
   '/quizz',
-  '/collection',
+  '/parcours',
+  '/reglages',
   '/hors-ligne',
   '/manifest.webmanifest',
   // Les mondes : une route par domaine, pour que la navigation par domaine

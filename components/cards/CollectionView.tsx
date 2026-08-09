@@ -7,6 +7,9 @@ import { domainStyles } from '@/lib/domain-styles';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { badgesDomaine } from '@/lib/badges';
 import { progressionDomaine } from '@/lib/progression';
+import { rangDepuisEtoiles } from '@/lib/etoiles';
+import { Lumi } from '@/components/mascotte/Lumi';
+import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useCartesVues } from './useCartesVues';
 import { useCartesMaitrisees } from './useCartesMaitrisees';
 
@@ -20,6 +23,7 @@ export function CollectionView({ cards, domains }: CollectionViewProps) {
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
   const { cartesMaitrisees } = useCartesMaitrisees();
+  const { etoiles } = useEtoiles();
 
   useEffect(() => {
     if (status === 'pret' && !ageRange) router.replace('/');
@@ -38,18 +42,29 @@ export function CollectionView({ cards, domains }: CollectionViewProps) {
   });
   const nbExplore = lignes.filter((b) => b.explore).length;
   const nbMaitrise = lignes.filter((b) => b.maitrise).length;
+  const { rang, rangProchain } = rangDepuisEtoiles(etoiles);
+  const reste = rangProchain ? rangProchain.seuil - etoiles : 0;
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-10">
-      <header className="flex flex-col items-center gap-4">
-        <h1 className="font-display text-3xl font-semibold sm:text-4xl">Ma collection</h1>
-        <button
-          type="button"
-          onClick={() => router.push('/')}
-          className="flex min-h-12 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-        >
-          <span aria-hidden="true">🏠</span> Menu
-        </button>
+      <header className="flex flex-col items-center gap-5">
+        <h1 className="font-display text-3xl font-semibold sm:text-4xl">Mon parcours</h1>
+
+        {/* Carte de rang : Lumi grandit avec l'enfant. C'est l'invitation à
+            rejouer, remontée ici depuis l'ancien menu d'accueil. */}
+        <div className="flex w-full max-w-sm flex-col items-center gap-1 rounded-3xl border-2 border-encre-bord bg-encre-clair px-6 py-4">
+          <Lumi rang={rang.index} taille={88} />
+          <p className="font-display text-lg text-craie">
+            <span aria-hidden="true">{rang.icone}</span> {rang.nom} —{' '}
+            <span aria-hidden="true">⭐</span> {etoiles}
+          </p>
+          {rangProchain && (
+            <p className="text-sm text-craie-douce">
+              plus que {reste} <span aria-hidden="true">⭐</span> pour {rangProchain.nom}
+            </p>
+          )}
+        </div>
+
         <p className="text-craie-douce">
           <span aria-hidden="true">🧭</span> {nbExplore}/{domains.length} explorés ·{' '}
           <span aria-hidden="true">🏅</span> {nbMaitrise}/{domains.length} maîtrisés

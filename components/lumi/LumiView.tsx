@@ -95,23 +95,26 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         </p>
       </header>
 
-      {/* L'échelle des rangs : là où Lumi en est, et ce qui l'attend. Bande
-          horizontale de blocs larges. La différence de luminosité (atteint /
-          à venir) suffit à situer l'enfant, sans bordure de couleur. */}
+      {/* L'échelle des rangs : là où Lumi en est, et ce qui l'attend. Les six
+          rangs tiennent dans la largeur (blocs à parts égales, pas de défilement).
+          La différence de luminosité (atteint / à venir) suffit à situer
+          l'enfant, sans bordure de couleur. */}
       <section className="flex flex-col gap-3">
         <h2 className="font-display text-lg text-craie">Les rangs de Lumi</h2>
-        <ol className="flex gap-3 overflow-x-auto pb-2">
+        <ol className="flex gap-1.5">
           {RANGS.map((r) => {
             const atteint = etoiles >= r.seuil;
             return (
               <li
                 key={r.index}
-                className="flex w-32 shrink-0 flex-col items-center gap-1.5 rounded-3xl border-2 border-encre-bord bg-encre-clair px-3 py-4 text-center"
+                className="flex min-w-0 flex-1 flex-col items-center gap-1 rounded-2xl border-2 border-encre-bord bg-encre-clair px-1 py-3 text-center"
                 style={{ opacity: atteint ? 1 : 0.45 }}
               >
-                <Lumi rang={r.index} taille={64} />
-                <span className="font-display text-base text-craie">{r.nom}</span>
-                <span className="text-xs text-craie-douce">
+                <Lumi rang={r.index} taille={40} />
+                <span className="break-words font-display text-[11px] leading-tight text-craie">
+                  {r.nom}
+                </span>
+                <span className="text-[10px] text-craie-douce">
                   {r.seuil} <span aria-hidden="true">⭐</span>
                 </span>
               </li>

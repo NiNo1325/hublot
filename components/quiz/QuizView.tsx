@@ -79,6 +79,9 @@ export function QuizView({ cards, domains }: QuizViewProps) {
   const [dAffilee, setDAffilee] = useState(0);
   // Rang avant le crédit de fin de série, pour détecter un passage de rang.
   const [rangAvant, setRangAvant] = useState<Rang | null>(null);
+  // Périmètre de la série en cours : un monde précis, ou `null` pour « Tout ».
+  // Sert à proposer « sujet suivant » et à rejouer le même sujet en fin de série.
+  const [scope, setScope] = useState<DomainId | null>(null);
 
   const tirageCourant = serie?.[index] ?? null;
 
@@ -127,6 +130,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     .filter((m) => m.n > 0);
 
   const lancer = (domainId: DomainId | null) => {
+    setScope(domainId);
     setSerie(construireSerie(cards, cartesVues, ageRange, domainId));
     setIndex(0);
     setChoisie(null);
@@ -134,6 +138,17 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     setDAffilee(0);
     setRangAvant(null);
   };
+
+  // Le monde jouable suivant, dans l'ordre d'affichage, en cyclant. `null` s'il
+  // n'y a pas d'autre monde à enchaîner (« Tout », ou un seul monde jouable).
+  const idsJouables = mondesJouables.map((m) => m.domain.id);
+  const domaineSuivant = (courant: DomainId | null): DomainId | null => {
+    if (courant === null || idsJouables.length <= 1) return null;
+    const i = idsJouables.indexOf(courant);
+    if (i === -1) return null;
+    return idsJouables[(i + 1) % idsJouables.length];
+  };
+  const nomDomaine = (id: DomainId) => domains.find((d) => d.id === id);
 
   /*
     Aucune carte écoutée parmi celles qui ont des questions : plutôt qu'un
@@ -224,14 +239,23 @@ export function QuizView({ cards, domains }: QuizViewProps) {
   if (index >= serie.length) {
     const rangApres = rangDepuisEtoiles(etoiles);
     const monteEnRang = rangAvant != null && rangApres.rang.index > rangAvant.index;
+    const suivant = domaineSuivant(scope);
+    const suivantDef = suivant ? nomDomaine(suivant) : null;
+    const scopeDef = scope ? nomDomaine(scope) : null;
     return (
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center">
         {/* Lumi félicite l'enfant, dans l'apparence du rang qu'il vient d'atteindre. */}
         <Lumi rang={rangApres.rang.index} taille={120} />
-        <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-          {reussies} bonne{reussies > 1 ? 's' : ''} réponse
-          {reussies > 1 ? 's' : ''} sur {serie.length}
-        </h1>
+        <div className="flex flex-col items-center gap-2">
+          <span className="flex items-center gap-1.5 text-sm text-craie-douce">
+            <span aria-hidden="true">{scopeDef ? scopeDef.icon : '🎲'}</span>
+            {scopeDef ? scopeDef.labels.fr : 'Tout'}
+          </span>
+          <h1 className="font-display text-3xl font-semibold sm:text-4xl">
+            {reussies} bonne{reussies > 1 ? 's' : ''} réponse
+            {reussies > 1 ? 's' : ''} sur {serie.length}
+          </h1>
+        </div>
 
         {/* Étoiles gagnées et total, jamais de sanction. */}
         <div className="flex flex-col items-center gap-2">
@@ -256,13 +280,45 @@ export function QuizView({ cards, domains }: QuizViewProps) {
           Chaque question t&apos;a rappelé quelque chose. Rejoue quand tu veux,
           les questions changent.
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
+
+        {/* Enchaînement guidé : d'un sujet on passe au suivant d'un clic, sans
+            repasser par le menu. */}
+        <div className="flex w-full max-w-xs flex-col items-center gap-3">
+          {suivant && suivantDef ? (
+            <button
+              type="button"
+              onClick={() => lancer(suivant)}
+              className="flex min-h-16 w-full cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-soleil bg-soleil/10 px-6 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
+            >
+              Sujet suivant <span aria-hidden="true">→ {suivantDef.icon}</span>{' '}
+              {suivantDef.labels.fr}
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => lancer(scope)}
+              className="min-h-16 w-full cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-6 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
+            >
+              Rejouer{scope ? ' ce sujet' : ''}
+            </button>
+          )}
+
+          {scope && suivant && (
+            <button
+              type="button"
+              onClick={() => lancer(scope)}
+              className="min-h-14 w-full cursor-pointer rounded-full border-2 border-encre-bord px-6 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+            >
+              Rejouer ce sujet
+            </button>
+          )}
+
           <button
             type="button"
             onClick={() => setSerie(null)}
-            className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
+            className="min-h-14 w-full cursor-pointer rounded-full border-2 border-encre-bord px-6 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
           >
-            Rejouer
+            {scope ? 'Choisir un autre sujet' : 'Choisir un sujet'}
           </button>
         </div>
       </main>
@@ -276,9 +332,14 @@ export function QuizView({ cards, domains }: QuizViewProps) {
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-5 py-8">
-      <header className="flex items-center gap-4">
+      <header className="flex items-center justify-between gap-3">
         <span className="text-sm text-craie-douce">
           Question {index + 1} sur {serie.length}
+        </span>
+        {/* Sujet en cours : on sait toujours où on est. */}
+        <span className="flex items-center gap-1.5 rounded-full border border-encre-bord px-3 py-1 text-xs text-craie-douce">
+          <span aria-hidden="true">{scope ? nomDomaine(scope)?.icon : '🎲'}</span>
+          {scope ? nomDomaine(scope)?.labels.fr : 'Tout'}
         </span>
       </header>
 

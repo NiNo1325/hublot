@@ -9,11 +9,7 @@ import { domains } from '@/content/domains';
   présents. Tout domaine absent d'ici doit avoir son mp3 d'accroche.
 */
 const EN_ATTENTE_ACCROCHES = new Set<string>([
-  'le-son',
   'les-dinosaures',
-  'le-corps',
-  'les-oceans',
-  'la-cuisine',
 ]);
 
 describe('accroches de domaine', () => {

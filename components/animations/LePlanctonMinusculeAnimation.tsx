@@ -1,0 +1,86 @@
+'use client';
+
+import type { CardAnimationProps } from './registry';
+import { miseEnScene } from './shared/phases';
+
+const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/**
+ * Des points minuscules flottent en surface, captent le Soleil, relâchent
+ * des bulles d'air, puis nourrissent une chaîne qui grandit jusqu'à un grand
+ * poisson — le plancton, géant invisible de l'océan.
+ */
+export function LePlanctonMinusculeAnimation({
+  activeBeatId,
+  isPlaying,
+  prefersReducedMotion,
+}: CardAnimationProps) {
+  const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
+  const anime = isPlaying && !prefersReducedMotion;
+  const police = 'var(--font-atkinson), sans-serif';
+  const points = [60, 100, 140, 180, 220, 260, 300, 340];
+  const legende = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+
+  return (
+    <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
+      <rect width="400" height="240" fill="#083344" />
+      <rect width="400" height="60" fill="#0e7490" opacity="0.5" />
+      <circle cx="200" cy="24" r="14" fill="#fde68a" />
+
+      {/* Phase 1 : des êtres minuscules flottent partout */}
+      <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
+        {points.map((x, i) => (
+          <circle key={x} cx={x} cy="80" r="3" fill="#a3e635">
+            {anime && (
+              <animate attributeName="cy" values="76;86;76" dur="2.6s" begin={`${i * 0.2}s`} repeatCount="indefinite" />
+            )}
+          </circle>
+        ))}
+        <text x="16" y="130" fill="#a3e635" fontSize="14" fontFamily={police} style={legende(0)}>
+          des êtres minuscules
+        </text>
+      </g>
+
+      {/* Phase 2 : ils captent la lumière du Soleil */}
+      <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
+        {[100, 200, 300].map((x, i) => (
+          <line key={x} x1="200" y1="30" x2={x} y2="80" stroke="#fde68a" strokeWidth="1.5">
+            {anime && (
+              <animate attributeName="opacity" values="0.2;1;0.2" dur="1.8s" begin={`${i * 0.25}s`} repeatCount="indefinite" />
+            )}
+          </line>
+        ))}
+        <text x="16" y="130" fill="#fde68a" fontSize="14" fontFamily={police} style={legende(1)}>
+          ils captent la lumière
+        </text>
+      </g>
+
+      {/* Phase 3 : ils fabriquent de l'air */}
+      <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
+        {[90, 170, 250, 330].map((x, i) => (
+          <circle key={x} cx={x} cy="80" r="4" fill="#7dd3fc" opacity="0.85">
+            {anime && (
+              <>
+                <animate attributeName="cy" values="80;16" dur="2.2s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.9;0" dur="2.2s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+              </>
+            )}
+          </circle>
+        ))}
+        <text x="16" y="130" fill="#7dd3fc" fontSize="14" fontFamily={police} style={legende(2)}>
+          ils fabriquent de l’air
+        </text>
+      </g>
+
+      {/* Phase 4 : ils nourrissent presque tout l'océan */}
+      <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
+        <ellipse cx="130" cy="150" rx="8" ry="5" fill="#fbbf24" />
+        <path d="M170 150 Q210 130 250 150 Q210 170 170 150 Z" fill="#fb923c" />
+        <path d="M280 150 Q330 120 370 150 Q330 180 280 150 Z" fill="#f97316" />
+        <text x="16" y="200" fill="#f97316" fontSize="14" fontFamily={police} style={legende(3)}>
+          ils nourrissent l’océan
+        </text>
+      </g>
+    </svg>
+  );
+}

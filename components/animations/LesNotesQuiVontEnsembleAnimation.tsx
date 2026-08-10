@@ -1,0 +1,83 @@
+'use client';
+
+import type { CardAnimationProps } from './registry';
+import { miseEnScene } from './shared/phases';
+
+const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/**
+ * Deux notes sonnent bien ensemble quand leurs fréquences forment un rapport
+ * simple de nombres entiers, comme l'octave (2:1) : ce n'est pas qu'une
+ * question de goût, c'est un phénomène physique mesurable.
+ */
+export function LesNotesQuiVontEnsembleAnimation({
+  activeBeatId,
+  isPlaying,
+  prefersReducedMotion,
+}: CardAnimationProps) {
+  const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
+  const anime = isPlaying && !prefersReducedMotion;
+  const police = 'var(--font-atkinson), sans-serif';
+
+  return (
+    <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
+      <rect width="400" height="240" fill="#140b1f" />
+
+      {/* Les touches de piano, toujours visibles, en bas */}
+      {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+        <rect key={i} x={80 + i * 34} y="200" width="30" height="30" rx="3" fill="#f5f3ff" stroke="#3f2e4d" strokeWidth="1.5" />
+      ))}
+
+      {/* Phase 1 : une corde vibre, une note naît */}
+      <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
+        <path d="M80 70 Q200 60 320 70" stroke="#e879f9" strokeWidth="2.5" fill="none">
+          {anime && (
+            <animate
+              attributeName="d"
+              values="M80 70 L320 70;M80 70 Q200 60 320 70;M80 70 L320 70;M80 70 Q200 80 320 70;M80 70 L320 70"
+              dur="0.6s"
+              repeatCount="indefinite"
+            />
+          )}
+        </path>
+        <text x="150" y="50" fill="#e879f9" fontSize="20" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>♪</text>
+        <text x="16" y="176" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>une corde vibre → une note</text>
+      </g>
+
+      {/* Phase 2 : une corde deux fois plus courte, deux fois plus vite */}
+      <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
+        <path d="M80 70 Q200 60 320 70" stroke="#78716c" strokeWidth="2" fill="none" opacity="0.4" />
+        <path d="M140 108 Q200 100 260 108" stroke="#38bdf8" strokeWidth="2.5" fill="none">
+          {anime && (
+            <animate
+              attributeName="d"
+              values="M140 108 L260 108;M140 108 Q200 100 260 108;M140 108 L260 108;M140 108 Q200 116 260 108;M140 108 L260 108"
+              dur="0.3s"
+              repeatCount="indefinite"
+            />
+          )}
+        </path>
+        <text x="16" y="176" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>corde 2 fois plus courte, 2 fois plus vite</text>
+      </g>
+
+      {/* Phase 3 : la même note, une octave plus haut */}
+      <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
+        <path d="M80 60 Q140 42 200 60 Q260 78 320 60" stroke="#e879f9" strokeWidth="2" fill="none" opacity="0.8" />
+        <path d="M140 96 Q170 82 200 96 Q230 110 260 96" stroke="#38bdf8" strokeWidth="2" fill="none" opacity="0.8" />
+        <text x="150" y="40" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>même note, une octave plus haut</text>
+      </g>
+
+      {/* Phase 4 : ça s'emboîte bien, ça sonne joli */}
+      <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
+        <path
+          d="M80 78 Q110 60 140 78 Q170 96 200 78 Q230 60 260 78 Q290 96 320 78"
+          stroke="#a3e635" strokeWidth="3" fill="none"
+        >
+          {anime && <animate attributeName="opacity" values="0.5;1;0.5" dur="1.4s" repeatCount="indefinite" />}
+        </path>
+        <text x="160" y="44" fill="#a3e635" fontSize="18" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>✨</text>
+        <text x="16" y="176" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>rapport 2 pour 1 : ça sonne joli</text>
+      </g>
+    </svg>
+  );
+}

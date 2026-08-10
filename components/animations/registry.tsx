@@ -110,7 +110,60 @@ import { RoseeAnimation } from './RoseeAnimation';
 import { GivreAnimation } from './GivreAnimation';
 import { GoutteFormeAnimation } from './GoutteFormeAnimation';
 
-import { GenericBeatAnimation } from './GenericBeatAnimation';
+import { LaChairDePouleAnimation } from './LaChairDePouleAnimation';
+import { PourquoiOnEternueAnimation } from './PourquoiOnEternueAnimation';
+import { AQuoiServentLesLarmesAnimation } from './AQuoiServentLesLarmesAnimation';
+import { LaPeauNotreBouclierAnimation } from './LaPeauNotreBouclierAnimation';
+import { LesEmpreintesDigitalesAnimation } from './LesEmpreintesDigitalesAnimation';
+import { PourquoiOnAMalAnimation } from './PourquoiOnAMalAnimation';
+import { CommentLesMusclesBougentAnimation } from './CommentLesMusclesBougentAnimation';
+import { CommentOnTientDeboutAnimation } from './CommentOnTientDeboutAnimation';
+import { PourquoiOnADeuxYeuxAnimation } from './PourquoiOnADeuxYeuxAnimation';
+import { LesDentsDeLaitAnimation } from './LesDentsDeLaitAnimation';
+
+import { PourquoiLechoRepondAnimation } from './PourquoiLechoRepondAnimation';
+import { AiguOuGraveAnimation } from './AiguOuGraveAnimation';
+import { PourquoiLesVoixSontDifferentesAnimation } from './PourquoiLesVoixSontDifferentesAnimation';
+import { CommentLoreilleEntendAnimation } from './CommentLoreilleEntendAnimation';
+import { QuandLeBruitFaitMalAnimation } from './QuandLeBruitFaitMalAnimation';
+import { CommentChanteUneGuitareAnimation } from './CommentChanteUneGuitareAnimation';
+import { LaSireneQuiChangeAnimation } from './LaSireneQuiChangeAnimation';
+import { MaVoixEnregistreeAnimation } from './MaVoixEnregistreeAnimation';
+import { LesSonsQuonNentendPasAnimation } from './LesSonsQuonNentendPasAnimation';
+import { LesNotesQuiVontEnsembleAnimation } from './LesNotesQuiVontEnsembleAnimation';
+
+import { LePuzzleDesOsAnimation } from './LePuzzleDesOsAnimation';
+import { LeJourDeLasteroideAnimation } from './LeJourDeLasteroideAnimation';
+import { LesOiseauxSontDesDinosauresAnimation } from './LesOiseauxSontDesDinosauresAnimation';
+import { IlYaTresTresLongtempsAnimation } from './IlYaTresTresLongtempsAnimation';
+import { PourquoiSiGrandsAnimation } from './PourquoiSiGrandsAnimation';
+import { CarnivoreOuHerbivoreAnimation } from './CarnivoreOuHerbivoreAnimation';
+import { LesTracesDePasAnimation } from './LesTracesDePasAnimation';
+import { DesDinosauresAPlumesAnimation } from './DesDinosauresAPlumesAnimation';
+import { PasTousDesDinosauresAnimation } from './PasTousDesDinosauresAnimation';
+import { ApresLesDinosauresAnimation } from './ApresLesDinosauresAnimation';
+
+import { DouViennentLesVaguesAnimation } from './DouViennentLesVaguesAnimation';
+import { LesFleuvesDansLaMerAnimation } from './LesFleuvesDansLaMerAnimation';
+import { PourquoiIlFaitNoirAuFondAnimation } from './PourquoiIlFaitNoirAuFondAnimation';
+import { LaPressionQuiEcraseAnimation } from './LaPressionQuiEcraseAnimation';
+import { LeCorailBatisseurAnimation } from './LeCorailBatisseurAnimation';
+import { LesAnimauxQuiBrillentAnimation } from './LesAnimauxQuiBrillentAnimation';
+import { LesSourcesChaudesDuFondAnimation } from './LesSourcesChaudesDuFondAnimation';
+import { LePlanctonMinusculeAnimation } from './LePlanctonMinusculeAnimation';
+import { PourquoiOnFlotteMieuxDansLaMerAnimation } from './PourquoiOnFlotteMieuxDansLaMerAnimation';
+import { LaVagueGeanteAnimation } from './LaVagueGeanteAnimation';
+
+import { PourquoiLePainGonfleAnimation } from './PourquoiLePainGonfleAnimation';
+import { PourquoiCaDoreAnimation } from './PourquoiCaDoreAnimation';
+import { PourquoiLoignonFaitPleurerAnimation } from './PourquoiLoignonFaitPleurerAnimation';
+import { PourquoiLePimentBruleAnimation } from './PourquoiLePimentBruleAnimation';
+import { PourquoiLePopcornExploseAnimation } from './PourquoiLePopcornExploseAnimation';
+import { PourquoiLeLaitDevientYaourtAnimation } from './PourquoiLeLaitDevientYaourtAnimation';
+import { PourquoiLoeufDurcitAnimation } from './PourquoiLoeufDurcitAnimation';
+import { PourquoiLeSodaPetilleAnimation } from './PourquoiLeSodaPetilleAnimation';
+import { PourquoiLaPommeBrunitAnimation } from './PourquoiLaPommeBrunitAnimation';
+import { PourquoiLeMielNeSePerimePasAnimation } from './PourquoiLeMielNeSePerimePasAnimation';
 
 export interface CardAnimationProps {
   /** Beat en cours de narration, ou `null` au repos (avant lecture). */
@@ -231,63 +284,62 @@ export const animationRegistry: Record<string, ComponentType<CardAnimationProps>
 
   /*
     Cinq nouveaux domaines (le son, les dinosaures, le corps, les océans, la
-    cuisine). En attendant d'éventuelles animations sur mesure, chaque carte
-    utilise l'animation générique, différenciée par son emoji et la teinte de
-    son domaine, et pilotée par ses quatre beats.
+    cuisine), chacun avec ses animations sur mesure, pilotées par les quatre
+    beats standard.
   */
   // Le son
-  'pourquoi-lecho-repond': (p) => <GenericBeatAnimation {...p} emoji="📣" accent="#e879f9" />,
-  'aigu-ou-grave': (p) => <GenericBeatAnimation {...p} emoji="🎚️" accent="#e879f9" />,
-  'pourquoi-les-voix-sont-differentes': (p) => <GenericBeatAnimation {...p} emoji="🗣️" accent="#e879f9" />,
-  'comment-loreille-entend': (p) => <GenericBeatAnimation {...p} emoji="👂" accent="#e879f9" />,
-  'quand-le-bruit-fait-mal': (p) => <GenericBeatAnimation {...p} emoji="🔇" accent="#e879f9" />,
-  'comment-chante-une-guitare': (p) => <GenericBeatAnimation {...p} emoji="🎸" accent="#e879f9" />,
-  'la-sirene-qui-change': (p) => <GenericBeatAnimation {...p} emoji="🚑" accent="#e879f9" />,
-  'ma-voix-enregistree': (p) => <GenericBeatAnimation {...p} emoji="🎙️" accent="#e879f9" />,
-  'les-sons-quon-nentend-pas': (p) => <GenericBeatAnimation {...p} emoji="🐶" accent="#e879f9" />,
-  'les-notes-qui-vont-ensemble': (p) => <GenericBeatAnimation {...p} emoji="🎹" accent="#e879f9" />,
+  'pourquoi-lecho-repond': PourquoiLechoRepondAnimation,
+  'aigu-ou-grave': AiguOuGraveAnimation,
+  'pourquoi-les-voix-sont-differentes': PourquoiLesVoixSontDifferentesAnimation,
+  'comment-loreille-entend': CommentLoreilleEntendAnimation,
+  'quand-le-bruit-fait-mal': QuandLeBruitFaitMalAnimation,
+  'comment-chante-une-guitare': CommentChanteUneGuitareAnimation,
+  'la-sirene-qui-change': LaSireneQuiChangeAnimation,
+  'ma-voix-enregistree': MaVoixEnregistreeAnimation,
+  'les-sons-quon-nentend-pas': LesSonsQuonNentendPasAnimation,
+  'les-notes-qui-vont-ensemble': LesNotesQuiVontEnsembleAnimation,
   // Les dinosaures
-  'le-puzzle-des-os': (p) => <GenericBeatAnimation {...p} emoji="🦴" accent="#c8a97e" />,
-  'le-jour-de-lasteroide': (p) => <GenericBeatAnimation {...p} emoji="☄️" accent="#c8a97e" />,
-  'les-oiseaux-sont-des-dinosaures': (p) => <GenericBeatAnimation {...p} emoji="🐦" accent="#c8a97e" />,
-  'il-y-a-tres-tres-longtemps': (p) => <GenericBeatAnimation {...p} emoji="⏳" accent="#c8a97e" />,
-  'pourquoi-si-grands': (p) => <GenericBeatAnimation {...p} emoji="🦕" accent="#c8a97e" />,
-  'carnivore-ou-herbivore': (p) => <GenericBeatAnimation {...p} emoji="🥩" accent="#c8a97e" />,
-  'les-traces-de-pas': (p) => <GenericBeatAnimation {...p} emoji="👣" accent="#c8a97e" />,
-  'des-dinosaures-a-plumes': (p) => <GenericBeatAnimation {...p} emoji="🪶" accent="#c8a97e" />,
-  'pas-tous-des-dinosaures': (p) => <GenericBeatAnimation {...p} emoji="🐊" accent="#c8a97e" />,
-  'apres-les-dinosaures': (p) => <GenericBeatAnimation {...p} emoji="🦣" accent="#c8a97e" />,
+  'le-puzzle-des-os': LePuzzleDesOsAnimation,
+  'le-jour-de-lasteroide': LeJourDeLasteroideAnimation,
+  'les-oiseaux-sont-des-dinosaures': LesOiseauxSontDesDinosauresAnimation,
+  'il-y-a-tres-tres-longtemps': IlYaTresTresLongtempsAnimation,
+  'pourquoi-si-grands': PourquoiSiGrandsAnimation,
+  'carnivore-ou-herbivore': CarnivoreOuHerbivoreAnimation,
+  'les-traces-de-pas': LesTracesDePasAnimation,
+  'des-dinosaures-a-plumes': DesDinosauresAPlumesAnimation,
+  'pas-tous-des-dinosaures': PasTousDesDinosauresAnimation,
+  'apres-les-dinosaures': ApresLesDinosauresAnimation,
   // Le corps
-  'la-chair-de-poule': (p) => <GenericBeatAnimation {...p} emoji="🥶" accent="#f9a8d4" />,
-  'pourquoi-on-eternue': (p) => <GenericBeatAnimation {...p} emoji="🤧" accent="#f9a8d4" />,
-  'a-quoi-servent-les-larmes': (p) => <GenericBeatAnimation {...p} emoji="😢" accent="#f9a8d4" />,
-  'la-peau-notre-bouclier': (p) => <GenericBeatAnimation {...p} emoji="💦" accent="#f9a8d4" />,
-  'les-empreintes-digitales': (p) => <GenericBeatAnimation {...p} emoji="👆" accent="#f9a8d4" />,
-  'pourquoi-on-a-mal': (p) => <GenericBeatAnimation {...p} emoji="🤕" accent="#f9a8d4" />,
-  'comment-les-muscles-bougent': (p) => <GenericBeatAnimation {...p} emoji="💪" accent="#f9a8d4" />,
-  'comment-on-tient-debout': (p) => <GenericBeatAnimation {...p} emoji="🤸" accent="#f9a8d4" />,
-  'pourquoi-on-a-deux-yeux': (p) => <GenericBeatAnimation {...p} emoji="👀" accent="#f9a8d4" />,
-  'les-dents-de-lait': (p) => <GenericBeatAnimation {...p} emoji="🦷" accent="#f9a8d4" />,
+  'la-chair-de-poule': LaChairDePouleAnimation,
+  'pourquoi-on-eternue': PourquoiOnEternueAnimation,
+  'a-quoi-servent-les-larmes': AQuoiServentLesLarmesAnimation,
+  'la-peau-notre-bouclier': LaPeauNotreBouclierAnimation,
+  'les-empreintes-digitales': LesEmpreintesDigitalesAnimation,
+  'pourquoi-on-a-mal': PourquoiOnAMalAnimation,
+  'comment-les-muscles-bougent': CommentLesMusclesBougentAnimation,
+  'comment-on-tient-debout': CommentOnTientDeboutAnimation,
+  'pourquoi-on-a-deux-yeux': PourquoiOnADeuxYeuxAnimation,
+  'les-dents-de-lait': LesDentsDeLaitAnimation,
   // Les océans
-  'dou-viennent-les-vagues': (p) => <GenericBeatAnimation {...p} emoji="🏄" accent="#60a5fa" />,
-  'les-fleuves-dans-la-mer': (p) => <GenericBeatAnimation {...p} emoji="🔄" accent="#60a5fa" />,
-  'pourquoi-il-fait-noir-au-fond': (p) => <GenericBeatAnimation {...p} emoji="🔦" accent="#60a5fa" />,
-  'la-pression-qui-ecrase': (p) => <GenericBeatAnimation {...p} emoji="🤿" accent="#60a5fa" />,
-  'le-corail-batisseur': (p) => <GenericBeatAnimation {...p} emoji="🪸" accent="#60a5fa" />,
-  'les-animaux-qui-brillent': (p) => <GenericBeatAnimation {...p} emoji="✨" accent="#60a5fa" />,
-  'les-sources-chaudes-du-fond': (p) => <GenericBeatAnimation {...p} emoji="♨️" accent="#60a5fa" />,
-  'le-plancton-minuscule': (p) => <GenericBeatAnimation {...p} emoji="🦠" accent="#60a5fa" />,
-  'pourquoi-on-flotte-mieux-dans-la-mer': (p) => <GenericBeatAnimation {...p} emoji="🏊" accent="#60a5fa" />,
-  'la-vague-geante': (p) => <GenericBeatAnimation {...p} emoji="🌊" accent="#60a5fa" />,
+  'dou-viennent-les-vagues': DouViennentLesVaguesAnimation,
+  'les-fleuves-dans-la-mer': LesFleuvesDansLaMerAnimation,
+  'pourquoi-il-fait-noir-au-fond': PourquoiIlFaitNoirAuFondAnimation,
+  'la-pression-qui-ecrase': LaPressionQuiEcraseAnimation,
+  'le-corail-batisseur': LeCorailBatisseurAnimation,
+  'les-animaux-qui-brillent': LesAnimauxQuiBrillentAnimation,
+  'les-sources-chaudes-du-fond': LesSourcesChaudesDuFondAnimation,
+  'le-plancton-minuscule': LePlanctonMinusculeAnimation,
+  'pourquoi-on-flotte-mieux-dans-la-mer': PourquoiOnFlotteMieuxDansLaMerAnimation,
+  'la-vague-geante': LaVagueGeanteAnimation,
   // La cuisine
-  'pourquoi-le-pain-gonfle': (p) => <GenericBeatAnimation {...p} emoji="🍞" accent="#fde047" />,
-  'pourquoi-ca-dore': (p) => <GenericBeatAnimation {...p} emoji="🍗" accent="#fde047" />,
-  'pourquoi-loignon-fait-pleurer': (p) => <GenericBeatAnimation {...p} emoji="🧅" accent="#fde047" />,
-  'pourquoi-le-piment-brule': (p) => <GenericBeatAnimation {...p} emoji="🌶️" accent="#fde047" />,
-  'pourquoi-le-popcorn-explose': (p) => <GenericBeatAnimation {...p} emoji="🍿" accent="#fde047" />,
-  'pourquoi-le-lait-devient-yaourt': (p) => <GenericBeatAnimation {...p} emoji="🥛" accent="#fde047" />,
-  'pourquoi-loeuf-durcit': (p) => <GenericBeatAnimation {...p} emoji="🥚" accent="#fde047" />,
-  'pourquoi-le-soda-petille': (p) => <GenericBeatAnimation {...p} emoji="🥤" accent="#fde047" />,
-  'pourquoi-la-pomme-brunit': (p) => <GenericBeatAnimation {...p} emoji="🍎" accent="#fde047" />,
-  'pourquoi-le-miel-ne-se-perime-pas': (p) => <GenericBeatAnimation {...p} emoji="🍯" accent="#fde047" />,
+  'pourquoi-le-pain-gonfle': PourquoiLePainGonfleAnimation,
+  'pourquoi-ca-dore': PourquoiCaDoreAnimation,
+  'pourquoi-loignon-fait-pleurer': PourquoiLoignonFaitPleurerAnimation,
+  'pourquoi-le-piment-brule': PourquoiLePimentBruleAnimation,
+  'pourquoi-le-popcorn-explose': PourquoiLePopcornExploseAnimation,
+  'pourquoi-le-lait-devient-yaourt': PourquoiLeLaitDevientYaourtAnimation,
+  'pourquoi-loeuf-durcit': PourquoiLoeufDurcitAnimation,
+  'pourquoi-le-soda-petille': PourquoiLeSodaPetilleAnimation,
+  'pourquoi-la-pomme-brunit': PourquoiLaPommeBrunitAnimation,
+  'pourquoi-le-miel-ne-se-perime-pas': PourquoiLeMielNeSePerimePasAnimation,
 };

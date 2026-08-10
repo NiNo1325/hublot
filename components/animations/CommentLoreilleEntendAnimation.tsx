@@ -1,0 +1,82 @@
+'use client';
+
+import type { CardAnimationProps } from './registry';
+import { miseEnScene } from './shared/phases';
+
+const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/**
+ * Le pavillon n'est qu'une entrée : entendre est un travail qui se fait à
+ * l'intérieur, du tympan jusqu'à la cochlée en passant par les osselets.
+ */
+export function CommentLoreilleEntendAnimation({
+  activeBeatId,
+  isPlaying,
+  prefersReducedMotion,
+}: CardAnimationProps) {
+  const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
+  const anime = isPlaying && !prefersReducedMotion;
+  const police = 'var(--font-atkinson), sans-serif';
+
+  return (
+    <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
+      <rect width="400" height="240" fill="#140b1f" />
+
+      {/* Le trajet complet, en contexte discret, toujours visible */}
+      <path d="M40 100 Q66 60 100 100 Q80 118 100 136 Q66 176 40 136 Z" fill="#3f2e4d" />
+      <rect x="100" y="108" width="70" height="20" fill="#3f2e4d" />
+      <line x1="176" y1="98" x2="176" y2="138" stroke="#6b5b7a" strokeWidth="4" />
+      <circle cx="196" cy="100" r="8" fill="none" stroke="#6b5b7a" strokeWidth="3" />
+      <circle cx="220" cy="118" r="7" fill="none" stroke="#6b5b7a" strokeWidth="3" />
+      <circle cx="242" cy="132" r="6" fill="none" stroke="#6b5b7a" strokeWidth="3" />
+      <path d="M258 132 q10 -22 30 -14 q20 8 8 26 q-10 16 -28 6 q-14 -8 -10 -18 Z" fill="none" stroke="#6b5b7a" strokeWidth="3" />
+      <path d="M300 128 Q330 110 360 118" stroke="#6b5b7a" strokeWidth="2" strokeDasharray="3 4" fill="none" />
+      <circle cx="368" cy="118" r="12" fill="#3f2e4d" />
+
+      {/* Phase 1 : le son entre par le conduit */}
+      <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
+        {[0, 1, 2].map((i) => (
+          <path key={i} d={`M${0 + i * 12} 118 Q${8 + i * 12} 100 ${0 + i * 12} 82`} stroke="#38bdf8" strokeWidth="2.5" fill="none">
+            {anime && <animate attributeName="opacity" values="0.15;1;0.15" dur="1.3s" begin={`${i * 0.25}s`} repeatCount="indefinite" />}
+          </path>
+        ))}
+        <text x="30" y="200" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>le son entre dans l’oreille</text>
+      </g>
+
+      {/* Phase 2 : le tympan tremble */}
+      <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
+        <line x1="176" y1="98" x2="176" y2="138" stroke="#e879f9" strokeWidth="4">
+          {anime && <animate attributeName="x1" values="176;180;176;172;176" dur="0.4s" repeatCount="indefinite" />}
+          {anime && <animate attributeName="x2" values="176;180;176;172;176" dur="0.4s" repeatCount="indefinite" />}
+        </line>
+        <text x="86" y="176" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>le tympan se met à trembler</text>
+      </g>
+
+      {/* Phase 3 : trois osselets relaient la vibration */}
+      <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
+        {[
+          { cx: 196, cy: 100, r: 8, d: '0s' },
+          { cx: 220, cy: 118, r: 7, d: '0.2s' },
+          { cx: 242, cy: 132, r: 6, d: '0.4s' },
+        ].map((o) => (
+          <circle key={o.cx} cx={o.cx} cy={o.cy} r={o.r} fill="none" stroke="#fde047" strokeWidth="3">
+            {anime && <animate attributeName="r" values={`${o.r - 1};${o.r + 2};${o.r - 1}`} dur="0.9s" begin={o.d} repeatCount="indefinite" />}
+          </circle>
+        ))}
+        <text x="180" y="66" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>trois tout petits os</text>
+      </g>
+
+      {/* Phase 4 : la cochlée transforme tout en message nerveux */}
+      <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
+        <path d="M258 132 q10 -22 30 -14 q20 8 8 26 q-10 16 -28 6 q-14 -8 -10 -18 Z" fill="#a3e635" opacity="0.3">
+          {anime && <animate attributeName="opacity" values="0.15;0.55;0.15" dur="1.2s" repeatCount="indefinite" />}
+        </path>
+        <circle cx="330" cy="122" r="3" fill="#a3e635">
+          {anime && <animate attributeName="cx" values="300;362" dur="1s" repeatCount="indefinite" />}
+          {anime && <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />}
+        </circle>
+        <text x="230" y="200" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>un message pour ton cerveau</text>
+      </g>
+    </svg>
+  );
+}

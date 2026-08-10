@@ -6,13 +6,19 @@ export interface Rang {
   seuil: number;
 }
 
+/*
+  Seuils calibrés pour 150 cartes : une question de quizz par carte et par
+  tranche d'âge, donc au plus ~150 étoiles en une traversée complète. « Chercheur »
+  correspond à tout le contenu vu une fois ; les deux derniers rangs récompensent
+  la reprise des quizz. (À réviser si le nombre de cartes change nettement.)
+*/
 export const RANGS: Rang[] = [
   { index: 0, nom: 'Apprenti', icone: '🔭', seuil: 0 },
-  { index: 1, nom: 'Explorateur', icone: '🧭', seuil: 20 },
-  { index: 2, nom: 'Aventurier', icone: '🚀', seuil: 50 },
-  { index: 3, nom: 'Chercheur', icone: '🔬', seuil: 100 },
-  { index: 4, nom: 'Savant', icone: '🎓', seuil: 175 },
-  { index: 5, nom: 'Génie', icone: '🧠', seuil: 275 },
+  { index: 1, nom: 'Explorateur', icone: '🧭', seuil: 30 },
+  { index: 2, nom: 'Aventurier', icone: '🚀', seuil: 75 },
+  { index: 3, nom: 'Chercheur', icone: '🔬', seuil: 150 },
+  { index: 4, nom: 'Savant', icone: '🎓', seuil: 260 },
+  { index: 5, nom: 'Génie', icone: '🧠', seuil: 400 },
 ];
 
 /** Rang courant et rang suivant (ou `null` au dernier) pour un total d'étoiles. */

@@ -4,14 +4,14 @@ import { RANGS, rangDepuisEtoiles, lireEtoiles } from '@/lib/etoiles';
 describe('rangDepuisEtoiles', () => {
   it('donne Apprenti à 0 et sous le premier palier', () => {
     expect(rangDepuisEtoiles(0).rang.nom).toBe('Apprenti');
-    expect(rangDepuisEtoiles(19).rang.nom).toBe('Apprenti');
+    expect(rangDepuisEtoiles(29).rang.nom).toBe('Apprenti');
     expect(rangDepuisEtoiles(0).rangProchain?.nom).toBe('Explorateur');
   });
 
   it('monte de rang pile au seuil', () => {
-    expect(rangDepuisEtoiles(20).rang.nom).toBe('Explorateur');
-    expect(rangDepuisEtoiles(49).rang.nom).toBe('Explorateur');
-    expect(rangDepuisEtoiles(50).rang.nom).toBe('Aventurier');
+    expect(rangDepuisEtoiles(30).rang.nom).toBe('Explorateur');
+    expect(rangDepuisEtoiles(74).rang.nom).toBe('Explorateur');
+    expect(rangDepuisEtoiles(75).rang.nom).toBe('Aventurier');
   });
 
   it('plafonne au dernier rang, sans rang suivant', () => {

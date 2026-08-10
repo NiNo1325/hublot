@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { AgeRange } from '@/lib/types';
 import { VERDICTS, cheminVerdict, type Verdict } from '@/content/quiz/verdicts';
+import { usePauseEnArrierePlan } from '@/lib/usePauseEnArrierePlan';
 
 /** Chemin déterministe, produit par `scripts/generer-audio-quiz.mjs`. */
 function url(
@@ -50,6 +51,9 @@ export function useQuizAudio(age: AgeRange) {
     audio.pause();
     setEnLecture(false);
   }, []);
+
+  // L'application passe en arrière-plan : on coupe la voix du quizz.
+  usePauseEnArrierePlan(arreter);
 
   /**
    * Joue une suite de fichiers à la file.

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { AgeRange, CardBeat } from '@/lib/types';
+import { usePauseEnArrierePlan } from '@/lib/usePauseEnArrierePlan';
 
 /** Durée d'affichage d'un beat quand l'audio est indisponible. */
 const DUREE_BEAT_SILENCIEUX_MS = 6500;
@@ -202,6 +203,18 @@ export function useNarration(
     audioRef.current?.pause();
     setStatus('pause');
   }, [arreterMinuterie]);
+
+  /*
+    L'application passe en arrière-plan (écran verrouillé, applis récentes) : on
+    met la voix en pause plutôt que de la laisser parler dans le vide. On ne
+    touche qu'à une lecture réellement sonore — sinon une carte au repos
+    basculerait à tort en état « pause ». La reprise se fait ensuite à la main.
+  */
+  usePauseEnArrierePlan(
+    useCallback(() => {
+      if (audioRef.current && !audioRef.current.paused) pause();
+    }, [pause]),
+  );
 
   const resume = useCallback(() => {
     const audio = audioRef.current;

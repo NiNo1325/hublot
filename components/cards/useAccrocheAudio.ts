@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { usePauseEnArrierePlan } from '@/lib/usePauseEnArrierePlan';
 
 /**
  * Lecture des accroches : un seul élément Audio réutilisé, qui coupe la
@@ -32,6 +33,17 @@ export function useAccrocheAudio() {
       () => setEnLecture(null),
     );
   }, []);
+
+  // L'application passe en arrière-plan : on coupe l'accroche en cours.
+  usePauseEnArrierePlan(
+    useCallback(() => {
+      const audio = audioRef.current;
+      if (audio && !audio.paused) {
+        audio.pause();
+        setEnLecture(null);
+      }
+    }, []),
+  );
 
   return { jouer, enLecture };
 }

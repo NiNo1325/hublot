@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react';
 import type { DomainDefinition, ScienceCard } from '@/lib/types';
 import { badgesDomaine } from '@/lib/badges';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
-import { useCartesVues } from '@/components/cards/useCartesVues';
-import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { useCartesVues, vuesStockees } from '@/components/cards/useCartesVues';
+import { useCartesMaitrisees, maitriseesStockees } from '@/components/cards/useCartesMaitrisees';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useCelebration } from './CelebrationProvider';
 
@@ -36,10 +36,19 @@ export function DetecteurProgres({ cards, domains }: DetecteurProgresProps) {
   useEffect(() => {
     const vuesAvant = vuesPrec.current;
     const maitAvant = maitPrec.current;
+    // Premier passage : on mémorise l'état sans rien fêter rétroactivement.
+    // La ligne de base est lue DIRECTEMENT dans le stockage, pas dans
+    // `cartesVues` : à l'hydratation, ce dernier vaut encore vide, et partir de
+    // cette valeur transitoire ferait passer la bascule vide→chargé pour un
+    // progrès — l'enfant serait alors félicité à chaque rechargement (dont le
+    // pull-to-refresh).
+    if (vuesAvant === null || maitAvant === null) {
+      vuesPrec.current = vuesStockees();
+      maitPrec.current = maitriseesStockees();
+      return;
+    }
     vuesPrec.current = cartesVues;
     maitPrec.current = cartesMaitrisees;
-    // Premier passage : on mémorise l'état sans rien fêter rétroactivement.
-    if (vuesAvant === null || maitAvant === null) return;
 
     for (const d of domains) {
       const exploreAvant = badgesDomaine(cards, vuesAvant, maitAvant, d.id).explore;

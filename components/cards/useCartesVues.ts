@@ -38,6 +38,18 @@ function lire(): string {
   return readStored(CLE) ?? '';
 }
 
+/**
+ * Lecture directe du vrai état stocké, hors cycle de rendu React.
+ *
+ * À l'hydratation, `useSyncExternalStore` renvoie d'abord l'instantané serveur
+ * (vide) avant de basculer sur le localStorage. Un observateur qui compare les
+ * états (voir `DetecteurProgres`) doit partir de ce vrai état, sinon la bascule
+ * vide→chargé passerait pour un progrès. Appelé uniquement côté client.
+ */
+export function vuesStockees(): Set<string> {
+  return lireVues(readStored(CLE) ?? '');
+}
+
 function lireServeur(): string {
   return '';
 }

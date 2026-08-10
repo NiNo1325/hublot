@@ -27,6 +27,15 @@ function lire(): string {
   return readStored(CLE) ?? '';
 }
 
+/**
+ * Lecture directe du vrai état stocké, hors cycle de rendu React (voir
+ * `vuesStockees` : même raison, éviter que la bascule vide→chargé de
+ * l'hydratation passe pour un progrès). Appelé uniquement côté client.
+ */
+export function maitriseesStockees(): Set<string> {
+  return lireMaitrisees(readStored(CLE) ?? '');
+}
+
 function lireServeur(): string {
   return '';
 }

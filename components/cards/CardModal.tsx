@@ -8,6 +8,7 @@ import { useReducedMotion } from '@/components/animations/shared/useReducedMotio
 import { useNarration } from '@/components/narration/useNarration';
 import { NarrationControls } from '@/components/narration/NarrationControls';
 import { NarrationProgress } from '@/components/narration/NarrationProgress';
+import { useSwipeHorizontal } from '@/lib/useSwipeHorizontal';
 import { useCartesVues } from './useCartesVues';
 
 /**
@@ -49,6 +50,16 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
 
   const Animation = animationRegistry[card.animationId];
   const style = domainStyles[card.domainId];
+
+  /*
+    Balayage horizontal sur l'illustration : gauche pour la scène suivante,
+    droite pour la précédente. On réutilise `allerA`/`reculer`, exactement comme
+    un appui sur les points de progression — la narration reprend au beat visé.
+  */
+  const swipe = useSwipeHorizontal({
+    onLeft: () => allerA(Math.max(0, state.activeIndex) + 1),
+    onRight: reculer,
+  });
 
   /*
     `showModal()` plutôt qu'un focus trap maison : le dialog natif piège le
@@ -109,7 +120,14 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
 
         <div
           className="overflow-hidden rounded-3xl border-2"
-          style={{ borderColor: style.teinte, boxShadow: `0 0 40px ${style.halo}` }}
+          // `touchAction: pan-y` laisse le défilement vertical au navigateur et
+          // nous réserve le geste horizontal, sans conflit.
+          style={{
+            borderColor: style.teinte,
+            boxShadow: `0 0 40px ${style.halo}`,
+            touchAction: 'pan-y',
+          }}
+          {...swipe}
         >
           <AnimationBoundary
             fallback={

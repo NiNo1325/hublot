@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v9';
+const VERSION = 'v10';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -94,7 +94,10 @@ self.addEventListener('push', (event) => {
   const options = {
     body: data.corps || '',
     icon: '/icones/icone-192.png',
-    badge: '/icones/icone-192.png',
+    // Le badge (petite icône monochrome de la barre d'état) n'utilise que le
+    // canal alpha : il faut une silhouette transparente, pas l'icône couleur
+    // opaque — sinon Android affiche un carré blanc.
+    badge: '/icones/badge.png',
     lang: 'fr',
     tag: data.tag || 'hublot',
     data: { url: data.url || '/' },

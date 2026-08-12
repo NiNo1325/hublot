@@ -121,6 +121,12 @@ export function ReglagesView() {
           </button>
         )}
       </section>
+
+      {/* Version du build, en tout petit en bas à droite : pour lever tout doute
+          sur la version qui tourne. */}
+      <p className="mt-auto self-end text-[10px] text-craie-douce/50">
+        build {process.env.NEXT_PUBLIC_BUILD}
+      </p>
     </main>
   );
 }

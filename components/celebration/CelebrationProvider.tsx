@@ -18,6 +18,9 @@ export interface Celebration {
   variante?: 'fete' | 'leger';
   /** Referme la célébration seule après ce délai (ms). Surtout pour `leger`. */
   autoFermerMs?: number;
+  /** Joue le son + la gerbe de confettis. Vrai par défaut pour `fete`. À mettre
+   *  à vrai sur un `leger` qui récompense (série), faux pour un simple accueil. */
+  recompense?: boolean;
 }
 
 const CelebrationContext = createContext<(c: Celebration) => void>(() => {});

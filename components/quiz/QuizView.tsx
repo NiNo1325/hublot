@@ -143,7 +143,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
         rang: rangDepuisEtoiles(etoiles).rang.index,
         titre: 'On y va !',
         variante: 'leger',
-        autoFermerMs: 1400,
+        autoFermerMs: 2000,
       });
     }
   };
@@ -400,7 +400,8 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                         sousTitre: `${enchainees} bonnes réponses d’affilée`,
                         embleme: '🔥',
                         variante: 'leger',
-                        autoFermerMs: 1600,
+                        recompense: true,
+                        autoFermerMs: 3000,
                       });
                     }
                   } else {

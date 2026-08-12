@@ -12,7 +12,16 @@ const CLE = 'push:abonnes';
 
 let redis: Redis | null = null;
 function client(): Redis {
-  if (!redis) redis = Redis.fromEnv();
+  if (redis) return redis;
+  // L'intégration Upstash du Marketplace Vercel pose `KV_REST_API_URL/TOKEN`
+  // (convention KV) ; en local ou ailleurs on accepte aussi les noms natifs
+  // `UPSTASH_REDIS_REST_URL/TOKEN`.
+  const url = process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
+  const token = process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN;
+  if (!url || !token) {
+    throw new Error('Redis non configuré (KV_REST_API_URL / KV_REST_API_TOKEN manquants).');
+  }
+  redis = new Redis({ url, token });
   return redis;
 }
 

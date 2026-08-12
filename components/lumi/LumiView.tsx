@@ -104,24 +104,17 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         </p>
       </header>
 
-      {/* L'échelle des rangs, en frise : une piste où chaque pastille est un rang,
-          la portion parcourue remplie en soleil. On n'inscrit sous les pastilles
-          que le seuil (un nombre court) ; le nom du rang s'affiche en légende, pour
-          celui qu'on touche — les six noms côte à côte se chevauchaient. */}
+      {/* L'échelle des rangs, en frise : une rangée de pastilles (une par rang),
+          puis la barre de progression SOUS les personnages (et non au travers),
+          puis les seuils alignés sous chaque pastille. Le nom du rang s'affiche
+          en légende, pour celui qu'on touche — les six noms côte à côte se
+          chevauchaient. Les trois rangées partagent `justify-between` avec des
+          éléments de 36 px, donc pastilles, barre et seuils restent alignés. */}
       <section className="flex flex-col gap-4">
         <h2 className="font-display text-lg text-craie">Les rangs de Lumi</h2>
-        <div className="relative">
-          {/* La piste et sa portion parcourue, entre les centres des pastilles. */}
-          <span
-            aria-hidden="true"
-            className="absolute left-[18px] right-[18px] top-[18px] h-1 -translate-y-1/2 rounded-full bg-encre-bord"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute left-[18px] top-[18px] h-1 -translate-y-1/2 rounded-full bg-soleil transition-[width] duration-500"
-            style={{ width: `calc((100% - 36px) * ${fractionFrise})` }}
-          />
-          <ol className="relative flex justify-between">
+        <div className="flex flex-col gap-2">
+          {/* Les personnages. */}
+          <ol className="flex justify-between">
             {RANGS.map((r) => {
               const atteint = etoiles >= r.seuil;
               const courant = r.index === rang.index;
@@ -133,21 +126,45 @@ export function LumiView({ cards, domains }: LumiViewProps) {
                     onClick={() => setRangSel(r.index)}
                     aria-pressed={actif}
                     aria-label={`${r.nom}, ${r.seuil} étoiles${atteint ? ', atteint' : ''}`}
-                    className="flex cursor-pointer flex-col items-center gap-1.5"
+                    className="flex cursor-pointer items-center justify-center"
                   >
                     <span
-                      className={`flex items-center justify-center rounded-full ${
+                      className={`flex h-9 w-9 items-center justify-center rounded-full ${
                         actif ? 'ring-2 ring-soleil ring-offset-2 ring-offset-encre' : ''
                       }`}
                       style={{ opacity: atteint ? 1 : 0.4 }}
                     >
                       <Lumi rang={r.index} taille={36} etat={courant ? 'repos' : 'statique'} />
                     </span>
-                    <span className="text-[11px] tabular-nums text-craie-douce">{r.seuil}</span>
                   </button>
                 </li>
               );
             })}
+          </ol>
+
+          {/* La barre, sous les personnages, entre les centres des pastilles. */}
+          <div className="relative h-1.5">
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-[18px] top-0 h-1.5 rounded-full bg-encre-bord"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute left-[18px] top-0 h-1.5 rounded-full bg-soleil transition-[width] duration-500"
+              style={{ width: `calc((100% - 36px) * ${fractionFrise})` }}
+            />
+          </div>
+
+          {/* Les seuils, alignés sous chaque pastille. */}
+          <ol className="flex justify-between">
+            {RANGS.map((r) => (
+              <li
+                key={r.index}
+                className="w-9 text-center text-[11px] tabular-nums text-craie-douce"
+              >
+                {r.seuil}
+              </li>
+            ))}
           </ol>
         </div>
 

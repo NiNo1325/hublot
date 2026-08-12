@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { DomainDefinition, ScienceCard } from '@/lib/types';
 import { useAgeRange } from '@/components/age/useAgeRange';
@@ -32,10 +33,19 @@ export function MondesView({ cards, domains }: MondesViewProps) {
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-10 px-6 py-10">
-      <header className="flex flex-col items-center gap-4">
+      <header className="flex flex-col items-center gap-3 text-center">
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">
           Qu&apos;est-ce qui t&apos;intéresse&nbsp;?
         </h1>
+        <p className="max-w-md text-craie-douce">
+          Ta bibliothèque : explore et revois ce que tu veux, quand tu veux, sans ordre imposé.
+        </p>
+        <Link
+          href="/parcours"
+          className="text-sm text-craie-douce underline-offset-4 transition-colors hover:text-soleil hover:underline"
+        >
+          Envie d&apos;un chemin guidé&nbsp;? → Parcours
+        </Link>
       </header>
 
       <ul className="flex flex-wrap justify-center gap-6 sm:gap-8">

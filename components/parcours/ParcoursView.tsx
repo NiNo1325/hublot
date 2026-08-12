@@ -6,9 +6,12 @@ import type { DomainDefinition, QuizQuestion, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { progressionDomaine } from '@/lib/progression';
 import { ordreParcours, prochaineEtape } from '@/lib/parcours';
+import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { questionsDe } from '@/content/quiz';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
+import { useEtoiles } from '@/components/quiz/useEtoiles';
+import { Lumi } from '@/components/mascotte/Lumi';
 import { CardModal } from '@/components/cards/CardModal';
 import { QuestionUnique } from './QuestionUnique';
 
@@ -36,6 +39,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   const router = useRouter();
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
+  const { etoiles } = useEtoiles();
   const [session, setSession] = useState<Session | null>(null);
 
   const ordre = useMemo(() => ordreParcours(cards, domains), [cards, domains]);
@@ -48,6 +52,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   if (status === 'chargement' || !ageRange) return null;
 
   const decouvertes = ordre.reduce((n, c) => (cartesVues.has(c.id) ? n + 1 : n), 0);
+  const rang = rangDepuisEtoiles(etoiles).rang;
 
   // Après la découverte : on teste la carte, ou on avance s'il n'y a pas de
   // question à cet âge.
@@ -73,8 +78,11 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
       {session?.phase !== 'quizz' && (
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-10">
         <header className="flex flex-col items-center gap-2 text-center">
-          <h1 className="font-display text-3xl font-semibold sm:text-4xl">Ton chemin</h1>
-          <p className="text-sm text-craie-douce">{decouvertes}/{ordre.length} cartes découvertes</p>
+          <Lumi rang={rang.index} taille={72} etat="repos" />
+          <h1 className="font-display text-3xl font-semibold sm:text-4xl">Ton aventure</h1>
+          <p className="text-sm text-craie-douce">
+            Lumi t’accompagne, une carte après l’autre · {decouvertes}/{ordre.length} découvertes
+          </p>
         </header>
 
         {/* Le cœur du mode guidé : une seule action, la prochaine étape. */}
@@ -95,18 +103,28 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
           </button>
         ) : (
           <div className="flex flex-col items-center gap-3 rounded-3xl border-2 border-soleil bg-soleil/10 p-6 text-center">
-            <span className="text-4xl" aria-hidden="true">🎉</span>
-            <p className="font-display text-xl text-soleil">Parcours terminé&nbsp;!</p>
+            <Lumi rang={rang.index} taille={96} etat="fete" />
+            <p className="font-display text-xl text-soleil">Bravo, aventure terminée&nbsp;! 🎉</p>
             <p className="text-craie-douce">
-              Tu as découvert toutes les cartes. Rejoue au quizz quand tu veux.
+              Tu as découvert toutes les cartes. Rejoue au quizz, ou explore
+              librement ce que tu veux revoir.
             </p>
-            <button
-              type="button"
-              onClick={() => router.push('/quizz')}
-              className="min-h-14 cursor-pointer rounded-full border-2 border-soleil px-8 font-display text-base text-soleil transition-transform hover:scale-105 active:scale-95"
-            >
-              Aller au quizz
-            </button>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                onClick={() => router.push('/quizz')}
+                className="min-h-14 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-8 font-display text-base text-soleil transition-transform hover:scale-105 active:scale-95"
+              >
+                Aller au quizz
+              </button>
+              <button
+                type="button"
+                onClick={() => router.push('/decouvrir')}
+                className="min-h-14 cursor-pointer rounded-full border-2 border-encre-bord px-8 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+              >
+                Explorer librement
+              </button>
+            </div>
           </div>
         )}
 

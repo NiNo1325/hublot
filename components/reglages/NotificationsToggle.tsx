@@ -33,6 +33,16 @@ export function NotificationsToggle() {
         if (!vivant) return;
         setSupporte(true);
         setActif(Boolean(abonnement));
+        // Auto-réparation : si le navigateur est abonné, on repousse l'abonnement
+        // au serveur (idempotent), au cas où un enregistrement précédent aurait
+        // échoué — sinon le serveur ignorerait un appareil pourtant « activé ».
+        if (abonnement) {
+          fetch('/api/push/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(abonnement),
+          }).catch(() => {});
+        }
       })
       .catch(() => {
         if (vivant) setSupporte(true);

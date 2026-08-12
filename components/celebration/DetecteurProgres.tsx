@@ -54,9 +54,10 @@ export function DetecteurProgres({ cards, domains }: DetecteurProgresProps) {
       const exploreAvant = badgesDomaine(cards, vuesAvant, maitAvant, d.id).explore;
       const exploreApres = badgesDomaine(cards, cartesVues, cartesMaitrisees, d.id).explore;
       if (!exploreAvant && exploreApres) {
+        // Partie « cartes » : toutes les cartes du monde ont été écoutées.
         celebrer({
           rang: rangIndex,
-          titre: 'Monde exploré !',
+          titre: 'Toutes les cartes écoutées !',
           sousTitre: `${d.icon} ${d.labels.fr}`,
           embleme: '🧭',
         });
@@ -65,9 +66,10 @@ export function DetecteurProgres({ cards, domains }: DetecteurProgresProps) {
       const maitriseAvant = badgesDomaine(cards, vuesAvant, maitAvant, d.id).maitrise;
       const maitriseApres = badgesDomaine(cards, cartesVues, cartesMaitrisees, d.id).maitrise;
       if (!maitriseAvant && maitriseApres) {
+        // Partie « questions » : tout le quiz du monde a été réussi.
         celebrer({
           rang: rangIndex,
-          titre: 'Monde maîtrisé !',
+          titre: 'Tout le quiz réussi !',
           sousTitre: `${d.icon} ${d.labels.fr}`,
           embleme: '🏅',
         });

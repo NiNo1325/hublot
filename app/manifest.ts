@@ -39,5 +39,20 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: 'maskable',
       },
     ],
+    /*
+      Déclare l'application Android correspondante. Sert à
+      `navigator.getInstalledRelatedApps()`, qui renvoie alors sa version (v3,
+      v4…) au web tournant dans la TWA — pour l'afficher dans Réglages.
+      `prefer_related_applications: false` : on ne pousse pas l'app native à la
+      place de l'installation PWA.
+    */
+    related_applications: [
+      {
+        platform: 'play',
+        id: 'com.hublot.app',
+        url: 'https://play.google.com/store/apps/details?id=com.hublot.app',
+      },
+    ],
+    prefer_related_applications: false,
   };
 }

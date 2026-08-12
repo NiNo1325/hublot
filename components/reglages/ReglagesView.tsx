@@ -11,6 +11,7 @@ import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { NotificationsToggle } from './NotificationsToggle';
+import { InfoVersion } from './InfoVersion';
 
 /**
  * Réglages : l'âge (modifiable ici plutôt que par un passage obligé), le mode
@@ -122,11 +123,9 @@ export function ReglagesView() {
         )}
       </section>
 
-      {/* Version du build, en tout petit en bas à droite : pour lever tout doute
-          sur la version qui tourne. */}
-      <p className="mt-auto self-end text-[10px] text-craie-douce/50">
-        build {process.env.NEXT_PUBLIC_BUILD}
-      </p>
+      {/* Versions (app Google Play + build web), en tout petit en bas à droite,
+          pour lever tout doute sur ce qui tourne. */}
+      <InfoVersion />
     </main>
   );
 }

@@ -194,6 +194,20 @@ body {
   Un confetti part du centre, jaillit vers (--dx, --dy), puis retombe (gravité)
   en tournant et en s'effaçant. Les variables sont posées par le composant.
 */
+/*
+  Lumi en feu (série « En pleine forme »). Des flammes vacillent sur sa tête :
+  chacune monte, grandit et s'incline légèrement, en boucle et désynchronisée.
+  Le `translateX(-50%)` de base (posé en style) centre la flamme sur son point ;
+  l'animation le reprend pour ne pas décaler horizontalement.
+*/
+.flamme {
+  animation: flamme-vacille 0.5s ease-in-out infinite;
+}
+@keyframes flamme-vacille {
+  0%, 100% { transform: translateX(-50%) translateY(0) scale(1) rotate(-5deg); opacity: 0.85; }
+  50% { transform: translateX(-50%) translateY(-14%) scale(1.2) rotate(5deg); opacity: 1; }
+}
+
 .recompense-confetti {
   animation: recompense-confetti 2.6s ease-out forwards;
 }

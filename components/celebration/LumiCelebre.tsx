@@ -25,6 +25,18 @@ const CONFETTIS = Array.from({ length: 14 }, (_, i) => {
   };
 });
 
+/*
+  Lumi en feu : cinq flammes sur sa tête, la plus grande au centre. `top` est en
+  pixels depuis le haut du personnage (négatif = au-dessus de la tête).
+*/
+const FLAMMES = [
+  { left: '50%', top: -12, taille: 46, delai: 0 },
+  { left: '31%', top: 2, taille: 32, delai: 0.14 },
+  { left: '69%', top: 2, taille: 32, delai: 0.22 },
+  { left: '17%', top: 22, taille: 24, delai: 0.34 },
+  { left: '83%', top: 22, taille: 24, delai: 0.08 },
+];
+
 interface LumiCelebreProps {
   rang: number;
   titre: string;
@@ -37,6 +49,8 @@ interface LumiCelebreProps {
   autoFermerMs?: number;
   /** Son + gerbe de confettis. Vrai par défaut pour `fete`. */
   recompense?: boolean;
+  /** Embrase Lumi (flammes sur la tête) au lieu de l'emblème dans le coin. */
+  enFeu?: boolean;
   onFermer: () => void;
 }
 
@@ -57,6 +71,7 @@ export function LumiCelebre({
   variante = 'fete',
   autoFermerMs,
   recompense,
+  enFeu,
   onFermer,
 }: LumiCelebreProps) {
   const leger = variante === 'leger';
@@ -92,12 +107,45 @@ export function LumiCelebre({
           />
         )}
 
+        {/* Lueur chaude, derrière Lumi, quand elle est en feu. */}
+        {enFeu && (
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{
+              background:
+                'radial-gradient(circle, rgba(251,146,60,0.55), rgba(251,146,60,0.18) 55%, transparent 72%)',
+            }}
+          />
+        )}
+
         {/* Lumi jaillit. */}
         <span className="recompense-pop inline-flex">
           <Lumi rang={rang} taille={leger ? 128 : 168} etat={leger ? 'content' : 'fete'} />
         </span>
 
-        {embleme && (
+        {/* Flammes sur la tête de Lumi : elle est « en feu » ! */}
+        {enFeu && (
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+            {FLAMMES.map((f, i) => (
+              <span
+                key={i}
+                className={prefersReducedMotion ? 'absolute' : 'flamme absolute'}
+                style={{
+                  left: f.left,
+                  top: f.top,
+                  fontSize: f.taille,
+                  transform: 'translateX(-50%)',
+                  animationDelay: `${f.delai}s`,
+                }}
+              >
+                🔥
+              </span>
+            ))}
+          </div>
+        )}
+
+        {embleme && !enFeu && (
           <span
             className="recompense-pop absolute bottom-3 right-2 flex h-14 w-14 items-center justify-center rounded-full border-2 border-encre bg-encre-clair text-3xl"
             style={{ animationDelay: '0.15s' }}

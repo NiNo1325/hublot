@@ -21,6 +21,9 @@ export interface Celebration {
   /** Joue le son + la gerbe de confettis. Vrai par défaut pour `fete`. À mettre
    *  à vrai sur un `leger` qui récompense (série), faux pour un simple accueil. */
   recompense?: boolean;
+  /** Embrase Lumi (flammes sur le personnage) au lieu d'un emblème dans le coin.
+   *  Pour la série « En pleine forme ! ». */
+  enFeu?: boolean;
 }
 
 const CelebrationContext = createContext<(c: Celebration) => void>(() => {});

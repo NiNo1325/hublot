@@ -398,7 +398,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                         rang: rangDepuisEtoiles(etoiles).rang.index,
                         titre: 'En pleine forme !',
                         sousTitre: `${enchainees} bonnes réponses d’affilée`,
-                        embleme: '🔥',
+                        enFeu: true,
                         variante: 'leger',
                         recompense: true,
                         autoFermerMs: 3000,

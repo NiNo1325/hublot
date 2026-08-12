@@ -31,11 +31,11 @@ const CONFETTIS = Array.from({ length: 14 }, (_, i) => {
   (négatif = sous ses pieds).
 */
 const FLAMMES = [
-  { left: '50%', bottom: -16, taille: 48, delai: 0 },
-  { left: '30%', bottom: -6, taille: 34, delai: 0.14 },
-  { left: '70%', bottom: -6, taille: 34, delai: 0.22 },
-  { left: '15%', bottom: 6, taille: 26, delai: 0.34 },
-  { left: '85%', bottom: 6, taille: 26, delai: 0.08 },
+  { left: '50%', bottom: -14, taille: 32, delai: 0 },
+  { left: '32%', bottom: -8, taille: 24, delai: 0.14 },
+  { left: '68%', bottom: -8, taille: 24, delai: 0.22 },
+  { left: '18%', bottom: 0, taille: 19, delai: 0.34 },
+  { left: '82%', bottom: 0, taille: 19, delai: 0.08 },
 ];
 
 interface LumiCelebreProps {

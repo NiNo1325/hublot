@@ -26,15 +26,16 @@ const CONFETTIS = Array.from({ length: 14 }, (_, i) => {
 });
 
 /*
-  Lumi en feu : cinq flammes sur sa tête, la plus grande au centre. `top` est en
-  pixels depuis le haut du personnage (négatif = au-dessus de la tête).
+  Lumi en feu : cinq flammes à sa base, la plus grande au centre, comme un
+  brasier d'où elle s'élève. `bottom` est en pixels depuis le bas du personnage
+  (négatif = sous ses pieds).
 */
 const FLAMMES = [
-  { left: '50%', top: -12, taille: 46, delai: 0 },
-  { left: '31%', top: 2, taille: 32, delai: 0.14 },
-  { left: '69%', top: 2, taille: 32, delai: 0.22 },
-  { left: '17%', top: 22, taille: 24, delai: 0.34 },
-  { left: '83%', top: 22, taille: 24, delai: 0.08 },
+  { left: '50%', bottom: -16, taille: 48, delai: 0 },
+  { left: '30%', bottom: -6, taille: 34, delai: 0.14 },
+  { left: '70%', bottom: -6, taille: 34, delai: 0.22 },
+  { left: '15%', bottom: 6, taille: 26, delai: 0.34 },
+  { left: '85%', bottom: 6, taille: 26, delai: 0.08 },
 ];
 
 interface LumiCelebreProps {
@@ -111,7 +112,7 @@ export function LumiCelebre({
         {enFeu && (
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            className="pointer-events-none absolute left-1/2 top-[62%] h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full"
             style={{
               background:
                 'radial-gradient(circle, rgba(251,146,60,0.55), rgba(251,146,60,0.18) 55%, transparent 72%)',
@@ -133,7 +134,7 @@ export function LumiCelebre({
                 className={prefersReducedMotion ? 'absolute' : 'flamme absolute'}
                 style={{
                   left: f.left,
-                  top: f.top,
+                  bottom: f.bottom,
                   fontSize: f.taille,
                   transform: 'translateX(-50%)',
                   animationDelay: `${f.delai}s`,

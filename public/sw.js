@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v7';
+const VERSION = 'v8';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -73,6 +73,49 @@ self.addEventListener('activate', (event) => {
           .map((nom) => caches.delete(nom)),
       );
       await self.clients.claim();
+    })(),
+  );
+});
+
+/*
+  Notifications push. On prévient d'une nouveauté (nouvelles cartes) ou d'une
+  mise à jour, même application fermée. Le contenu arrive dans le message push,
+  émis par le serveur ; ici on se contente de l'afficher et d'ouvrir le bon
+  écran au clic.
+*/
+self.addEventListener('push', (event) => {
+  let data = {};
+  try {
+    data = event.data ? event.data.json() : {};
+  } catch {
+    data = { corps: event.data ? event.data.text() : '' };
+  }
+  const titre = data.titre || 'Hublot';
+  const options = {
+    body: data.corps || '',
+    icon: '/icones/icone-192.png',
+    badge: '/icones/icone-192.png',
+    lang: 'fr',
+    tag: data.tag || 'hublot',
+    data: { url: data.url || '/' },
+  };
+  event.waitUntil(self.registration.showNotification(titre, options));
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const cible = new URL(event.notification.data?.url || '/', self.location.origin).href;
+  event.waitUntil(
+    (async () => {
+      const fenetres = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+      // Réutilise un onglet ouvert si possible, plutôt que d'en empiler un neuf.
+      for (const fenetre of fenetres) {
+        if ('focus' in fenetre) {
+          if (fenetre.url !== cible && 'navigate' in fenetre) await fenetre.navigate(cible);
+          return fenetre.focus();
+        }
+      }
+      if (self.clients.openWindow) return self.clients.openWindow(cible);
     })(),
   );
 });

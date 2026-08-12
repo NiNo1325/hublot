@@ -10,6 +10,7 @@ import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
+import { NotificationsToggle } from './NotificationsToggle';
 
 /**
  * Réglages : l'âge (modifiable ici plutôt que par un passage obligé), le mode
@@ -90,6 +91,9 @@ export function ReglagesView() {
         >
           <span aria-hidden="true">🚗</span> {libelleHorsLigne}
         </button>
+
+        {/* Notifications push (n'apparaît que si l'infra est branchée). */}
+        <NotificationsToggle />
 
         {/* Réinitialisation de la progression : geste d'adulte, en deux temps. */}
         {cartesVues.size > 0 && (

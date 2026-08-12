@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useCallback, useContext, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useRef, useState, type ReactNode } from 'react';
 import { LumiCelebre } from './LumiCelebre';
 
 export interface Celebration {
@@ -12,6 +12,12 @@ export interface Celebration {
    *  chaque type de célébration d'un coup d'œil. Absent pour une montée de rang,
    *  où l'évolution de Lumi suffit. */
   embleme?: string;
+  /** `fete` (défaut) : plein écran, bouton, Lumi qui saute — pour un vrai palier.
+   *  `leger` : encouragement bref, Lumi qui rebondit, sans bouton, à refermer
+   *  seul via `autoFermerMs` — pour l'accueil et les séries. */
+  variante?: 'fete' | 'leger';
+  /** Referme la célébration seule après ce délai (ms). Surtout pour `leger`. */
+  autoFermerMs?: number;
 }
 
 const CelebrationContext = createContext<(c: Celebration) => void>(() => {});
@@ -31,19 +37,22 @@ export function useCelebration() {
  * s'enchaînent au lieu de s'écraser.
  */
 export function CelebrationProvider({ children }: { children: ReactNode }) {
-  const [file, setFile] = useState<Celebration[]>([]);
-  const celebrer = useCallback((c: Celebration) => setFile((f) => [...f, c]), []);
+  const [file, setFile] = useState<Array<Celebration & { id: number }>>([]);
+  const idRef = useRef(0);
+  const celebrer = useCallback((c: Celebration) => {
+    idRef.current += 1;
+    const id = idRef.current;
+    setFile((f) => [...f, { ...c, id }]);
+  }, []);
+  const fermer = useCallback(() => setFile((f) => f.slice(1)), []);
   const courante = file[0] ?? null;
 
   return (
     <CelebrationContext.Provider value={celebrer}>
       {children}
-      {courante && (
-        <LumiCelebre
-          {...courante}
-          onFermer={() => setFile((f) => f.slice(1))}
-        />
-      )}
+      {/* La clé remonte le composant à chaque célébration : deux encouragements
+          légers identiques qui s'enchaînent relancent bien leur minuterie. */}
+      {courante && <LumiCelebre key={courante.id} {...courante} onFermer={fermer} />}
     </CelebrationContext.Provider>
   );
 }

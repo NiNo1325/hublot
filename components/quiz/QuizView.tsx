@@ -129,13 +129,23 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     }))
     .filter((m) => m.n > 0);
 
-  const lancer = (domainId: DomainId | null) => {
+  const lancer = (domainId: DomainId | null, accueil = false) => {
     setScope(domainId);
     setSerie(construireSerie(cards, cartesVues, ageRange, domainId));
     setIndex(0);
     setChoisie(null);
     setReussies(0);
     setDAffilee(0);
+    // Lumi encourage au lancement depuis le menu — pas sur « rejouer » ni
+    // « sujet suivant », où l'enfant est déjà lancé.
+    if (accueil) {
+      celebrer({
+        rang: rangDepuisEtoiles(etoiles).rang.index,
+        titre: 'On y va !',
+        variante: 'leger',
+        autoFermerMs: 1400,
+      });
+    }
   };
 
   // Le monde jouable suivant, dans l'ordre d'affichage, en cyclant. `null` s'il
@@ -197,7 +207,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
           {/* Le quizz général en tête, mis en avant : c'est le choix par défaut. */}
           <button
             type="button"
-            onClick={() => lancer(null)}
+            onClick={() => lancer(null, true)}
             className="flex min-h-16 cursor-pointer items-center gap-4 rounded-2xl border-2 border-soleil bg-soleil/10 px-5 font-display text-lg text-soleil transition-transform hover:scale-[1.02] active:scale-95 sm:col-span-2"
           >
             <span className="text-3xl" aria-hidden="true">🎲</span>
@@ -215,7 +225,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
               <button
                 key={domain.id}
                 type="button"
-                onClick={() => lancer(domain.id)}
+                onClick={() => lancer(domain.id, true)}
                 className="flex min-h-16 cursor-pointer items-center gap-3 rounded-2xl border-2 border-encre-bord bg-encre-clair px-4 text-left transition-transform hover:scale-[1.02] active:scale-95"
                 style={{ boxShadow: `0 0 18px ${style.halo}` }}
               >
@@ -242,13 +252,14 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     const scopeDef = scope ? nomDomaine(scope) : null;
     return (
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center">
-        {/* Lumi félicite l'enfant, dans l'apparence du rang qu'il vient d'atteindre. */}
-        <Lumi rang={rangApres.rang.index} taille={120} etat="repos" />
+        {/* Lumi fête l'enfant, dans l'apparence du rang qu'il vient d'atteindre. */}
+        <Lumi rang={rangApres.rang.index} taille={120} etat="fete" />
         <div className="flex flex-col items-center gap-2">
           <span className="flex items-center gap-1.5 text-sm text-craie-douce">
             <span aria-hidden="true">{scopeDef ? scopeDef.icon : '🎲'}</span>
             {scopeDef ? scopeDef.labels.fr : 'Tout'}
           </span>
+          <p className="font-display text-lg text-soleil">Bravo&nbsp;! 🎉</p>
           <h1 className="font-display text-3xl font-semibold sm:text-4xl">
             {reussies} bonne{reussies > 1 ? 's' : ''} réponse
             {reussies > 1 ? 's' : ''} sur {serie.length}
@@ -378,8 +389,20 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                   setChoisie(i);
                   if (reponse.correcte) {
                     setReussies((n) => n + 1);
-                    setDAffilee((d) => d + 1);
+                    const enchainees = dAffilee + 1;
+                    setDAffilee(enchainees);
                     marquerMaitrisee(tirage.carte.id);
+                    // Lumi surgit féliciter les séries : à 3, 6, 9… d'affilée.
+                    if (enchainees >= 3 && enchainees % 3 === 0) {
+                      celebrer({
+                        rang: rangDepuisEtoiles(etoiles).rang.index,
+                        titre: 'En pleine forme !',
+                        sousTitre: `${enchainees} bonnes réponses d’affilée`,
+                        embleme: '🔥',
+                        variante: 'leger',
+                        autoFermerMs: 1600,
+                      });
+                    }
                   } else {
                     // Remise à zéro silencieuse : aucun message de « série perdue ».
                     setDAffilee(0);

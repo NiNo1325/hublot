@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { DomainDefinition, ScienceCard } from '@/lib/types';
@@ -31,6 +31,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
   const { etoiles } = useEtoiles();
   const { cartesVues } = useCartesVues();
   const { cartesMaitrisees } = useCartesMaitrisees();
+  const [rangSel, setRangSel] = useState<number | null>(null);
 
   useEffect(() => {
     if (status === 'pret' && !ageRange) router.replace('/');
@@ -43,6 +44,14 @@ export function LumiView({ cards, domains }: LumiViewProps) {
   const fraction = rangProchain
     ? Math.min(1, Math.max(0, (etoiles - rang.seuil) / (rangProchain.seuil - rang.seuil)))
     : 1;
+
+  // Remplissage de la frise des rangs : segments franchis (index du rang) plus
+  // la fraction en cours, sur les cinq intervalles entre six pastilles.
+  const derniersRangs = RANGS.length - 1;
+  const fractionFrise = rangProchain ? Math.min(1, (rang.index + fraction) / derniersRangs) : 1;
+  // Rang mis en avant sous la frise : celui qu'on touche, sinon le rang courant.
+  const selection = RANGS[rangSel ?? rang.index];
+  const selectionAtteinte = etoiles >= selection.seuil;
 
   const lignes = domains.map((domain) => {
     const { explore, maitrise } = badgesDomaine(cards, cartesVues, cartesMaitrisees, domain.id);
@@ -95,32 +104,66 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         </p>
       </header>
 
-      {/* L'échelle des rangs : là où Lumi en est, et ce qui l'attend. Les six
-          rangs tiennent dans la largeur (blocs à parts égales, pas de défilement).
-          La différence de luminosité (atteint / à venir) suffit à situer
-          l'enfant, sans bordure de couleur. */}
-      <section className="flex flex-col gap-3">
+      {/* L'échelle des rangs, en frise : une piste où chaque pastille est un rang,
+          la portion parcourue remplie en soleil. On n'inscrit sous les pastilles
+          que le seuil (un nombre court) ; le nom du rang s'affiche en légende, pour
+          celui qu'on touche — les six noms côte à côte se chevauchaient. */}
+      <section className="flex flex-col gap-4">
         <h2 className="font-display text-lg text-craie">Les rangs de Lumi</h2>
-        <ol className="flex gap-1.5">
-          {RANGS.map((r) => {
-            const atteint = etoiles >= r.seuil;
-            return (
-              <li
-                key={r.index}
-                className="flex min-w-0 flex-1 flex-col items-center gap-1 rounded-2xl border-2 border-encre-bord bg-encre-clair px-1 py-3 text-center"
-                style={{ opacity: atteint ? 1 : 0.45 }}
-              >
-                <Lumi rang={r.index} taille={40} />
-                <span className="break-words font-display text-[11px] leading-tight text-craie">
-                  {r.nom}
-                </span>
-                <span className="text-[10px] text-craie-douce">
-                  {r.seuil} <span aria-hidden="true">⭐</span>
-                </span>
-              </li>
-            );
-          })}
-        </ol>
+        <div className="relative">
+          {/* La piste et sa portion parcourue, entre les centres des pastilles. */}
+          <span
+            aria-hidden="true"
+            className="absolute left-[18px] right-[18px] top-[18px] h-1 -translate-y-1/2 rounded-full bg-encre-bord"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute left-[18px] top-[18px] h-1 -translate-y-1/2 rounded-full bg-soleil transition-[width] duration-500"
+            style={{ width: `calc((100% - 36px) * ${fractionFrise})` }}
+          />
+          <ol className="relative flex justify-between">
+            {RANGS.map((r) => {
+              const atteint = etoiles >= r.seuil;
+              const courant = r.index === rang.index;
+              const actif = (rangSel ?? rang.index) === r.index;
+              return (
+                <li key={r.index}>
+                  <button
+                    type="button"
+                    onClick={() => setRangSel(r.index)}
+                    aria-pressed={actif}
+                    aria-label={`${r.nom}, ${r.seuil} étoiles${atteint ? ', atteint' : ''}`}
+                    className="flex cursor-pointer flex-col items-center gap-1.5"
+                  >
+                    <span
+                      className={`flex items-center justify-center rounded-full ${
+                        actif ? 'ring-2 ring-soleil ring-offset-2 ring-offset-encre' : ''
+                      }`}
+                      style={{ opacity: atteint ? 1 : 0.4 }}
+                    >
+                      <Lumi rang={r.index} taille={36} etat={courant ? 'repos' : 'statique'} />
+                    </span>
+                    <span className="text-[11px] tabular-nums text-craie-douce">{r.seuil}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+
+        {/* Légende du rang sélectionné (le rang courant par défaut). */}
+        <p aria-live="polite" className="text-center text-sm text-craie">
+          <span aria-hidden="true">{selection.icone}</span>{' '}
+          <span className="font-display">{selection.nom}</span>
+          {' — '}
+          {selectionAtteinte ? (
+            'atteint ✓'
+          ) : (
+            <>
+              plus que {selection.seuil - etoiles} <span aria-hidden="true">⭐</span>
+            </>
+          )}
+        </p>
       </section>
 
       {/* Progression par monde : écoute (→ 🧭) et réussite au quizz (→ 🏅). */}

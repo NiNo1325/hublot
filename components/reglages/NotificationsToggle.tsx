@@ -78,23 +78,33 @@ export function NotificationsToggle() {
     }
   };
 
+  // Rangée pour la carte « Écoute & alertes » : libellé à gauche, interrupteur
+  // à droite, et une ligne d'explication (ou d'erreur) en dessous.
   return (
-    <div className="flex flex-col items-center gap-2">
-      <button
-        type="button"
-        onClick={basculer}
-        disabled={occupe}
-        aria-pressed={actif}
-        className={`flex min-h-14 cursor-pointer items-center gap-2 rounded-full border-2 px-6 text-sm transition-colors disabled:opacity-60 ${
-          actif
-            ? 'border-soleil text-soleil'
-            : 'border-encre-bord text-craie-douce hover:border-soleil hover:text-soleil'
-        }`}
-      >
+    <div className="px-5 py-4">
+      <div className="flex items-center gap-3">
         <span aria-hidden="true">🔔</span>
-        {actif ? 'Notifications activées' : 'Recevoir les nouveautés'}
-      </button>
-      <p className="max-w-xs text-center text-xs text-craie-douce">
+        <span className="flex-1 text-craie">Notifications</span>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={actif}
+          aria-label="Recevoir les notifications"
+          onClick={basculer}
+          disabled={occupe}
+          className={`relative h-7 w-12 shrink-0 cursor-pointer rounded-full transition-colors disabled:opacity-60 ${
+            actif ? 'bg-soleil' : 'bg-encre-bord'
+          }`}
+        >
+          <span
+            aria-hidden="true"
+            className={`absolute top-1 h-5 w-5 rounded-full bg-craie transition-all ${
+              actif ? 'left-6' : 'left-1'
+            }`}
+          />
+        </button>
+      </div>
+      <p className="mt-1 pl-9 text-xs text-craie-douce">
         {message ?? 'Nouvelles cartes et mises à jour de l’application.'}
       </p>
     </div>

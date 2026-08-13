@@ -14,10 +14,20 @@ import { NotificationsToggle } from './NotificationsToggle';
 import { InfoVersion } from './InfoVersion';
 import { ouvrirTutoriel } from '@/components/tutoriel/useTutoriel';
 
+/** Petit intitulé de section, en capitales, au-dessus de chaque carte. */
+function Intitule({ children }: { children: string }) {
+  return (
+    <h2 className="px-2 font-display text-xs font-semibold uppercase tracking-[0.15em] text-craie-douce">
+      {children}
+    </h2>
+  );
+}
+
 /**
- * Réglages : l'âge (modifiable ici plutôt que par un passage obligé), le mode
- * hors-ligne, et la réinitialisation de la progression. Ce sont les trois
- * réglages « d'adulte » qui vivaient dans l'ancien menu d'accueil.
+ * Réglages, rangés par intention plutôt qu'en vrac : le profil (l'âge), l'écoute
+ * et les alertes (hors-ligne, notifications), l'aide (revoir la présentation),
+ * puis en pied de page, à l'écart, le geste rare de réinitialisation et la
+ * version. Chaque groupe est une carte de rangées cohérentes.
  */
 export function ReglagesView() {
   const router = useRouter();
@@ -52,61 +62,79 @@ export function ReglagesView() {
   if (status === 'chargement' || !ageRange || age == null) return null;
 
   const { rang } = rangDepuisEtoiles(etoiles);
-  const libelleHorsLigne =
+  const etatHorsLigne =
     horsLigne.etat === 'maj'
-      ? `Mise à jour disponible — ${enMo(horsLigne.octetsDelta)}`
+      ? 'Mise à jour'
       : horsLigne.etat === 'complet'
-        ? 'Prêt hors connexion'
+        ? 'Prêt ✓'
         : horsLigne.etat === 'telechargement'
-          ? `Téléchargement… ${Math.round((horsLigne.octetsPresents / horsLigne.octetsTotal) * 100)} %`
+          ? `${Math.round((horsLigne.octetsPresents / horsLigne.octetsTotal) * 100)} %`
           : horsLigne.etat === 'partiel'
-            ? 'Téléchargement incomplet'
+            ? 'Incomplet'
             : horsLigne.octetsTotal > 0
-              ? `Écouter sans internet — ${enMo(horsLigne.octetsTotal)}`
-              : 'Écouter sans internet';
+              ? enMo(horsLigne.octetsTotal)
+              : '';
+
+  const rangeeNav =
+    'flex w-full items-center gap-3 px-5 py-4 text-left transition-colors hover:bg-encre-bord/30';
 
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-10 px-6 py-10">
+    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-6 py-10">
       <h1 className="text-center font-display text-3xl font-semibold sm:text-4xl">Réglages</h1>
 
-      {/* Âge */}
-      <section className="flex flex-col items-center gap-6 rounded-3xl border-2 border-encre-bord bg-encre-clair p-6">
-        <h2 className="font-display text-xl text-craie">Ton âge</h2>
-        <SelecteurAge
-          key={age}
-          ageInitial={age}
-          rangLumi={rang.index}
-          labelValider={ageEnregistre ? 'Enregistré ✓' : "Enregistrer l'âge"}
-          onValider={(choisi) => {
-            choisirAge(choisi);
-            setAgeEnregistre(true);
-          }}
-        />
+      {/* Profil */}
+      <section className="flex flex-col gap-3">
+        <Intitule>Profil</Intitule>
+        <div className="flex flex-col items-center gap-5 rounded-3xl border-2 border-encre-bord bg-encre-clair p-6">
+          <SelecteurAge
+            key={age}
+            ageInitial={age}
+            rangLumi={rang.index}
+            labelValider={ageEnregistre ? 'Enregistré ✓' : "Enregistrer l'âge"}
+            onValider={(choisi) => {
+              choisirAge(choisi);
+              setAgeEnregistre(true);
+            }}
+          />
+        </div>
       </section>
 
-      {/* Mode hors-ligne */}
-      <section className="flex flex-col items-center gap-3">
-        <button
-          type="button"
-          onClick={() => router.push('/hors-ligne')}
-          className="flex min-h-14 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-6 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-        >
-          <span aria-hidden="true">🚗</span> {libelleHorsLigne}
-        </button>
+      {/* Écoute & alertes */}
+      <section className="flex flex-col gap-3">
+        <Intitule>Écoute &amp; alertes</Intitule>
+        <div className="divide-y divide-encre-bord overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
+          <button type="button" onClick={() => router.push('/hors-ligne')} className={rangeeNav}>
+            <span aria-hidden="true">🚗</span>
+            <span className="flex-1 text-craie">Écouter sans internet</span>
+            {etatHorsLigne && <span className="text-sm text-craie-douce">{etatHorsLigne}</span>}
+            <span aria-hidden="true" className="text-lg leading-none text-craie-douce">
+              ›
+            </span>
+          </button>
 
-        {/* Notifications push (n'apparaît que si l'infra est branchée). */}
-        <NotificationsToggle />
+          {/* Notifications push (n'apparaît que si l'infra est branchée). */}
+          <NotificationsToggle />
+        </div>
+      </section>
 
-        {/* Revoir la présentation (le tutoriel du premier lancement). */}
-        <button
-          type="button"
-          onClick={() => ouvrirTutoriel()}
-          className="flex min-h-14 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-6 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-        >
-          <span aria-hidden="true">🌟</span> Revoir la présentation
-        </button>
+      {/* Aide */}
+      <section className="flex flex-col gap-3">
+        <Intitule>Aide</Intitule>
+        <div className="overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
+          <button type="button" onClick={() => ouvrirTutoriel()} className={rangeeNav}>
+            <span aria-hidden="true">🌟</span>
+            <span className="flex-1 text-craie">Revoir la présentation</span>
+            <span aria-hidden="true" className="text-lg leading-none text-craie-douce">
+              ›
+            </span>
+          </button>
+        </div>
+      </section>
 
-        {/* Réinitialisation de la progression : geste d'adulte, en deux temps. */}
+      {/* Pied de page : le geste rare de réinitialisation, à l'écart, et les
+          versions (app Google Play + build web) en tout petit, pour lever tout
+          doute sur ce qui tourne. */}
+      <div className="mt-auto flex flex-col items-center gap-4 pt-2">
         {cartesVues.size > 0 && (
           <button
             type="button"
@@ -120,22 +148,17 @@ export function ReglagesView() {
               oublierMaitrisees();
               setConfirmation(false);
             }}
-            className={`min-h-12 cursor-pointer rounded-full border-2 px-6 text-sm transition-colors ${
-              confirmation
-                ? 'border-soleil text-soleil'
-                : 'border-encre-bord text-craie-douce hover:border-soleil hover:text-soleil'
+            className={`min-h-11 cursor-pointer rounded-full px-5 text-xs transition-colors ${
+              confirmation ? 'bg-soleil/15 text-soleil' : 'text-craie-douce/70 hover:text-craie'
             }`}
           >
             {confirmation
               ? 'Confirmer ? Les cartes redeviendront neuves'
-              : `Oublier les ${cartesVues.size} cartes déjà écoutées`}
+              : `Réinitialiser la progression (${cartesVues.size} cartes)`}
           </button>
         )}
-      </section>
-
-      {/* Versions (app Google Play + build web), en tout petit en bas à droite,
-          pour lever tout doute sur ce qui tourne. */}
-      <InfoVersion />
+        <InfoVersion />
+      </div>
     </main>
   );
 }

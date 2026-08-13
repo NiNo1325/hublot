@@ -124,10 +124,10 @@ body {
   transform-origin: center;
 }
 .lumi-content {
-  animation: lumi-content 0.5s ease-out;
+  animation: lumi-content 0.7s ease-out;
 }
 .lumi-fete {
-  animation: lumi-saut 0.7s ease-out;
+  animation: lumi-saut 1s ease-out;
 }
 
 @keyframes lumi-flotte {
@@ -142,18 +142,23 @@ body {
   0%, 90%, 100% { transform: scaleY(1); }
   95% { transform: scaleY(0.12); }
 }
+/* Content : un rebond joyeux avec un petit dandinement. */
 @keyframes lumi-content {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.12); }
-  70% { transform: scale(0.96); }
-  100% { transform: scale(1); }
+  0% { transform: scale(1) rotate(0); }
+  25% { transform: scale(1.14, 0.9) rotate(0); }
+  45% { transform: scale(0.96, 1.06) rotate(-4deg); }
+  65% { transform: scale(1.02, 0.98) rotate(4deg); }
+  100% { transform: scale(1) rotate(0); }
 }
+/* Fête : deux bonds, le second avec une pirouette complète. */
 @keyframes lumi-saut {
-  0% { transform: translateY(0) scale(1); }
-  30% { transform: translateY(-14%) scale(1.06, 0.94); }
-  55% { transform: translateY(0) scale(1); }
-  75% { transform: scale(1.03, 0.97); }
-  100% { transform: scale(1); }
+  0% { transform: translateY(0) rotate(0) scale(1); }
+  18% { transform: translateY(-15%) rotate(0) scale(1.05, 0.95); }
+  36% { transform: translateY(0) rotate(0) scale(0.97, 1.03); }
+  44% { transform: translateY(0) rotate(0) scale(1); }
+  70% { transform: translateY(-22%) rotate(360deg) scale(1); }
+  88% { transform: translateY(0) rotate(360deg) scale(1.04, 0.96); }
+  100% { transform: translateY(0) rotate(360deg) scale(1); }
 }
 
 /* Étincelles d'une célébration : elles scintillent autour de Lumi. */
@@ -163,6 +168,116 @@ body {
 @keyframes lumi-scintille {
   0%, 100% { opacity: 0.4; transform: scale(0.8); }
   50% { opacity: 1; transform: scale(1.15); }
+}
+
+/*
+  Signatures de rang : chaque palier a un détail qui vit en propre, tant que
+  Lumi est animée (`lumi-anime` = tout sauf l'état statique). Les pivots sont
+  donnés en coordonnées du viewBox (`transform-box: view-box`) quand ils portent
+  sur un point précis (l'atome, le fil du pompon), sinon au centre de la pièce.
+*/
+.lumi-anime .lumi-sig-orbite {
+  animation: lumi-orbite 7s linear infinite;
+  transform-box: view-box;
+  transform-origin: 60px 66px;
+}
+@keyframes lumi-orbite {
+  to { transform: rotate(360deg); }
+}
+.lumi-anime .lumi-sig-pompon {
+  animation: lumi-balance 3s ease-in-out infinite;
+  transform-box: view-box;
+  transform-origin: 79px 32px;
+}
+@keyframes lumi-balance {
+  0%, 100% { transform: rotate(9deg); }
+  50% { transform: rotate(-9deg); }
+}
+.lumi-anime .lumi-sig-echarpe {
+  animation: lumi-echarpe 2.4s ease-in-out infinite;
+  transform-box: view-box;
+  transform-origin: 60px 101px;
+}
+@keyframes lumi-echarpe {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(7deg); }
+}
+.lumi-anime .lumi-sig-flammes {
+  animation: lumi-flamme 0.35s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: center top;
+}
+@keyframes lumi-flamme {
+  from { transform: scaleY(0.8) scaleX(1.06); opacity: 0.8; }
+  to { transform: scaleY(1.18) scaleX(0.94); opacity: 1; }
+}
+.lumi-anime .lumi-sig-etincelle,
+.lumi-anime .lumi-sig-scintille {
+  animation: lumi-scintille 1.7s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.lumi-anime .lumi-sig-reflet {
+  animation: lumi-reflet 4s ease-in-out infinite;
+}
+@keyframes lumi-reflet {
+  0%, 82%, 100% { opacity: 0.2; }
+  90% { opacity: 0.95; }
+}
+
+/*
+  Petites humeurs au repos : jouées une fois, à intervalles aléatoires (planifiées
+  côté composant). Elles portent sur le corps ou les yeux, jamais sur le <svg>,
+  pour ne pas écraser le flottement. Début et fin à l'identité : quand la classe
+  s'attarde après la fin de l'animation, rien ne bouge.
+*/
+.lumi-humeur-dandine .lumi-corps {
+  animation: lumi-dandine 1.2s ease-in-out;
+  transform-box: view-box;
+  transform-origin: 60px 108px;
+}
+@keyframes lumi-dandine {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+.lumi-humeur-regarde .lumi-yeux {
+  animation: lumi-regarde 2.2s ease-in-out;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes lumi-regarde {
+  0%, 100% { transform: translateX(0); }
+  25%, 35% { transform: translateX(-16%); }
+  60%, 70% { transform: translateX(13%); }
+}
+.lumi-humeur-clin .lumi-yeux {
+  animation: lumi-clin 0.8s ease-in-out;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes lumi-clin {
+  0%, 30%, 60%, 100% { transform: scaleY(1); }
+  15%, 45% { transform: scaleY(0.12); }
+}
+
+/*
+  Réaction au « poke » : une pirouette d'un instant sur le corps, quand l'enfant
+  touche Lumi (états interactifs seulement).
+*/
+.lumi-interactif {
+  cursor: pointer;
+}
+.lumi-reaction .lumi-corps {
+  animation: lumi-poke 0.8s ease-out;
+  transform-box: view-box;
+  transform-origin: 60px 70px;
+}
+@keyframes lumi-poke {
+  0% { transform: rotate(0) scale(1); }
+  25% { transform: rotate(0) scale(1.14, 0.88); }
+  55% { transform: rotate(180deg) scale(1.02); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
 /*

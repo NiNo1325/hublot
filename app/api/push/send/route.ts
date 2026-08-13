@@ -18,10 +18,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, erreur: 'non autorisé' }, { status: 401 });
   }
 
-  const { titre, corps, url } = (await request.json()) as {
+  const { titre, corps, url, icon } = (await request.json()) as {
     titre?: string;
     corps?: string;
     url?: string;
+    icon?: string;
   };
   if (!titre) {
     return NextResponse.json({ ok: false, erreur: 'titre requis' }, { status: 400 });
@@ -34,7 +35,12 @@ export async function POST(request: Request) {
   );
 
   const abonnes = await listerAbonnements();
-  const charge = JSON.stringify({ titre, corps: corps ?? '', url: url ?? '/' });
+  const charge = JSON.stringify({
+    titre,
+    corps: corps ?? '',
+    url: url ?? '/',
+    ...(icon ? { icon } : {}),
+  });
 
   let envoyes = 0;
   let retires = 0;

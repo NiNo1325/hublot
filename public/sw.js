@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v10';
+const VERSION = 'v11';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -93,7 +93,9 @@ self.addEventListener('push', (event) => {
   const titre = data.titre || 'Hublot';
   const options = {
     body: data.corps || '',
-    icon: '/icones/icone-192.png',
+    // Grande icône couleur : propre au type de notif si le serveur en fournit
+    // une (nouveautés / mise à jour), sinon le logo par défaut.
+    icon: data.icon || '/icones/icone-192.png',
     // Le badge (petite icône monochrome de la barre d'état) n'utilise que le
     // canal alpha : il faut une silhouette transparente, pas l'icône couleur
     // opaque — sinon Android affiche un carré blanc.

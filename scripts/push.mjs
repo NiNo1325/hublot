@@ -32,6 +32,7 @@ if (drapeau('maj')) {
     titre: 'Mise à jour disponible ⬆️',
     corps: 'Une nouvelle version de Hublot est prête. Mets l’application à jour.',
     url: '/',
+    icon: '/icones/notif-maj.png',
   };
 } else if (opt('cartes')) {
   const monde = opt('cartes');
@@ -40,9 +41,10 @@ if (drapeau('maj')) {
     titre: 'Nouvelles cartes 🎉',
     corps: n > 0 ? `${n} nouvelles cartes dans ${monde} !` : `Du nouveau dans ${monde} !`,
     url: '/decouvrir',
+    icon: '/icones/notif-cartes.png',
   };
 } else if (opt('titre')) {
-  message = { titre: opt('titre'), corps: opt('corps') || '', url: opt('url') || '/' };
+  message = { titre: opt('titre'), corps: opt('corps') || '', url: opt('url') || '/', icon: opt('icon') || undefined };
 } else {
   console.error(
     'Précise un message : --maj, ou --cartes "<monde>" --n <N>, ou --titre "…" --corps "…" --url "…".',

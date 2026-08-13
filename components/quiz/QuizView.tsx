@@ -497,6 +497,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                 if (apres.index > avant.index) {
                   celebrer({
                     rang: apres.index,
+                    rangAvant: avant.index,
                     titre: 'Nouveau rang !',
                     sousTitre: `${apres.icone} ${apres.nom}`,
                   });

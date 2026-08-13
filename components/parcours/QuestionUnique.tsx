@@ -115,6 +115,7 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
                       if (apres.index > avant.index) {
                         celebrer({
                           rang: apres.index,
+                          rangAvant: avant.index,
                           titre: 'Nouveau rang !',
                           sousTitre: `${apres.icone} ${apres.nom}`,
                         });

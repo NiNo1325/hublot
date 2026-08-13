@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, type CSSProperties } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useReducedMotion } from '@/components/animations/shared/useReducedMotion';
 import { jouerSonRecompense } from '@/lib/sonRecompense';
@@ -40,6 +40,8 @@ const FLAMMES = [
 
 interface LumiCelebreProps {
   rang: number;
+  /** Rang d'avant : présent et différent, il déclenche la métamorphose. */
+  rangAvant?: number;
   titre: string;
   sousTitre?: string;
   /** Emblème du progrès, posé sur Lumi (🧭, 🏅, 🏆…). */
@@ -66,6 +68,7 @@ interface LumiCelebreProps {
  */
 export function LumiCelebre({
   rang,
+  rangAvant,
   titre,
   sousTitre,
   embleme,
@@ -79,6 +82,19 @@ export function LumiCelebre({
   const feter = variante === 'fete' || recompense === true;
   const prefersReducedMotion = useReducedMotion();
   const anime = feter && !prefersReducedMotion;
+
+  // Métamorphose : quand on monte de rang, Lumi apparaît d'abord dans son
+  // ancienne forme, puis un éclat l'engloutit et elle ressort au nouveau rang.
+  // Le rang affiché bascule au pic de l'éclat (~650 ms), ou tout de suite sous
+  // « animation réduite ». Le basculement vit dans la minuterie, pas dans le
+  // corps de l'effet.
+  const transforme = rangAvant != null && rangAvant !== rang && !leger;
+  const [rangAffiche, setRangAffiche] = useState(transforme ? rangAvant : rang);
+  useEffect(() => {
+    if (!transforme) return;
+    const t = setTimeout(() => setRangAffiche(rang), prefersReducedMotion ? 0 : 650);
+    return () => clearTimeout(t);
+  }, [transforme, prefersReducedMotion, rang]);
 
   useEffect(() => {
     if (feter) jouerSonRecompense();
@@ -120,9 +136,26 @@ export function LumiCelebre({
           />
         )}
 
-        {/* Lumi jaillit. */}
-        <span className="recompense-pop inline-flex">
-          <Lumi rang={rang} taille={leger ? 128 : 168} etat={leger ? 'content' : 'fete'} />
+        {/* Éclat de métamorphose : un flash chaud qui engloutit Lumi au moment
+            où elle change de rang. */}
+        {transforme && anime && (
+          <span
+            aria-hidden="true"
+            className="transformation-eclat pointer-events-none absolute left-1/2 top-1/2 h-48 w-48 rounded-full"
+            style={{
+              background:
+                'radial-gradient(circle, rgba(255,255,255,0.95), rgba(255,207,94,0.6) 40%, transparent 70%)',
+            }}
+          />
+        )}
+
+        {/* Lumi jaillit — ou se métamorphose d'un rang à l'autre. */}
+        <span className={`inline-flex ${transforme ? 'lumi-transformation' : 'recompense-pop'}`}>
+          <Lumi
+            rang={rangAffiche}
+            taille={leger ? 128 : 168}
+            etat={transforme ? 'repos' : leger ? 'content' : 'fete'}
+          />
         </span>
 
         {/* Flammes sur la tête de Lumi : elle est « en feu » ! */}

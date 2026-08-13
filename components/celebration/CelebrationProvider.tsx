@@ -6,6 +6,9 @@ import { LumiCelebre } from './LumiCelebre';
 export interface Celebration {
   /** Rang de Lumi affiché dans la fête. */
   rang: number;
+  /** Rang précédent : s'il diffère de `rang`, Lumi joue une métamorphose
+   *  (ancien rang → éclat → nouveau rang). Pour les montées de rang. */
+  rangAvant?: number;
   titre: string;
   sousTitre?: string;
   /** Emblème du progrès (🧭 exploré, 🏅 maîtrisé, 🏆 parcours…), pour distinguer

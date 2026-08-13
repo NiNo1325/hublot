@@ -281,6 +281,34 @@ body {
 }
 
 /*
+  Métamorphose de montée de rang : Lumi se ramasse, disparaît dans un éclat (le
+  rang bascule côté composant à ce moment ~46 %), puis rejaillit au rang suivant.
+  L'éclat, lui, s'allume et enfle en même temps. Sous « animation réduite », la
+  règle globale neutralise les deux et le rang bascule aussitôt.
+*/
+.lumi-transformation {
+  animation: lumi-transformation 1.4s cubic-bezier(0.34, 1.4, 0.5, 1) both;
+}
+@keyframes lumi-transformation {
+  0% { transform: scale(0.85) rotate(0); }
+  30% { transform: scale(1.12) rotate(-10deg); }
+  44% { transform: scale(0.55) rotate(6deg); }
+  50% { transform: scale(0.5) rotate(0); }
+  68% { transform: scale(1.2) rotate(0); }
+  84% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+.transformation-eclat {
+  animation: transformation-eclat 1.4s ease-out both;
+}
+@keyframes transformation-eclat {
+  0%, 28% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+  46% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  62% { opacity: 0.85; transform: translate(-50%, -50%) scale(1.5); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(2.2); }
+}
+
+/*
   Fête de récompense (overlay LumiCelebre). Trois gestes qui se superposent sur
   environ trois secondes : Lumi surgit (pop), une onde s'échappe d'elle, et une
   gerbe de confettis jaillit puis retombe. Sous « animation réduite », la règle

@@ -12,6 +12,7 @@ import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { NotificationsToggle } from './NotificationsToggle';
 import { InfoVersion } from './InfoVersion';
+import { ouvrirTutoriel } from '@/components/tutoriel/useTutoriel';
 
 /**
  * Réglages : l'âge (modifiable ici plutôt que par un passage obligé), le mode
@@ -95,6 +96,15 @@ export function ReglagesView() {
 
         {/* Notifications push (n'apparaît que si l'infra est branchée). */}
         <NotificationsToggle />
+
+        {/* Revoir la présentation (le tutoriel du premier lancement). */}
+        <button
+          type="button"
+          onClick={() => ouvrirTutoriel()}
+          className="flex min-h-14 cursor-pointer items-center gap-2 rounded-full border-2 border-encre-bord px-6 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+        >
+          <span aria-hidden="true">🌟</span> Revoir la présentation
+        </button>
 
         {/* Réinitialisation de la progression : geste d'adulte, en deux temps. */}
         {cartesVues.size > 0 && (

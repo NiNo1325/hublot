@@ -3,6 +3,7 @@ import { domains } from '@/content/domains';
 import { BarreOnglets } from '@/components/nav/BarreOnglets';
 import { CelebrationProvider } from '@/components/celebration/CelebrationProvider';
 import { DetecteurProgres } from '@/components/celebration/DetecteurProgres';
+import { TutorielGate } from '@/components/tutoriel/TutorielGate';
 
 /**
  * Coquille des écrans principaux : le contenu, puis la barre d'onglets fixée en
@@ -18,6 +19,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <CelebrationProvider>
       <DetecteurProgres cards={cards} domains={domains} />
+      <TutorielGate />
       <div className="flex flex-1 flex-col pb-24">{children}</div>
       <BarreOnglets />
     </CelebrationProvider>

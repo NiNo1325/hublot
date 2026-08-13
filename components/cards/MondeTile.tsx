@@ -43,7 +43,7 @@ export function MondeTile({
 
   return (
     <li
-      className="w-40 sm:w-44"
+      className="w-full"
       style={{ animation: 'allumage 500ms ease-out backwards', animationDelay: `${index * 70}ms` }}
     >
       {/* Chaque monde est une carte auto-contenue : le hublot, le nom, le
@@ -54,7 +54,7 @@ export function MondeTile({
         href={`/decouvrir/${domain.id}`}
         className="group flex cursor-pointer flex-col items-center gap-2 rounded-3xl p-1 transition-transform duration-150 hover:scale-105 active:scale-95"
       >
-        <span className="relative flex h-32 w-32 items-center justify-center sm:h-36 sm:w-36">
+        <span className="relative flex h-24 w-24 items-center justify-center sm:h-32 sm:w-32 lg:h-36 lg:w-36">
           {/* Anneau de progression */}
           <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full -rotate-90" aria-hidden="true">
             <circle cx="50" cy="50" r={R} fill="none" stroke="var(--color-encre-bord)" strokeWidth="6" />
@@ -72,7 +72,7 @@ export function MondeTile({
           </svg>
           {/* Disque + emoji */}
           <span
-            className="flex h-24 w-24 items-center justify-center rounded-full text-5xl sm:h-28 sm:w-28"
+            className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full text-4xl sm:h-24 sm:w-24 sm:text-5xl lg:h-28 lg:w-28"
             style={{
               backgroundColor: 'var(--color-encre-clair)',
               boxShadow: complet ? 'none' : `0 0 28px ${style.halo}`,
@@ -131,7 +131,7 @@ export function MondeTile({
           href={`/decouvrir/${domain.id}`}
           className="flex-1 cursor-pointer rounded-2xl px-1 transition-colors hover:text-craie"
         >
-          <p className="text-center text-sm italic leading-snug text-craie-douce">
+          <p className="text-center text-xs italic leading-snug text-craie-douce sm:text-sm">
             {accroche}
           </p>
         </Link>

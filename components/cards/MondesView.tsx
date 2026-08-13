@@ -48,7 +48,7 @@ export function MondesView({ cards, domains }: MondesViewProps) {
         </Link>
       </header>
 
-      <ul className="flex flex-wrap justify-center gap-6 sm:gap-8">
+      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
         {domains.map((domain, index) => {
           const { vues, total } = progressionDomaine(cards, cartesVues, domain.id);
           const { maitrise } = badgesDomaine(cards, cartesVues, cartesMaitrisees, domain.id);

@@ -50,14 +50,14 @@ export function CardTile({
       <button
         type="button"
         onClick={() => onSelect(card)}
-        className="group flex w-40 cursor-pointer flex-col items-center gap-3 rounded-3xl p-2 transition-transform duration-150 hover:scale-105 active:scale-95 sm:w-44"
+        className="group flex w-full cursor-pointer flex-col items-center gap-3 rounded-3xl p-2 transition-transform duration-150 hover:scale-105 active:scale-95"
         style={{
           animation: 'allumage 500ms ease-out backwards',
           animationDelay: `${index * 70}ms`,
         }}
       >
         <span
-          className="relative flex h-32 w-32 items-center justify-center rounded-full border-4 text-5xl transition-[box-shadow,border-color] duration-500 sm:h-36 sm:w-36"
+          className="relative flex h-24 w-24 items-center justify-center rounded-full border-4 text-4xl transition-[box-shadow,border-color] duration-500 sm:h-32 sm:w-32 sm:text-5xl lg:h-36 lg:w-36"
           style={{
             borderColor: eteinte ? 'var(--color-encre-bord)' : style.teinte,
             backgroundColor: 'var(--color-encre-clair)',

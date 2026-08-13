@@ -1,62 +1,32 @@
 'use client';
 
 import { useState } from 'react';
+import { ecransTuto } from '@/content/tutoriel';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useSwipeHorizontal } from '@/lib/useSwipeHorizontal';
-
-interface EcranTuto {
-  /** Rang de Lumi affiché : elle « grandit » au fil de la présentation. */
-  rang: number;
-  /** Emoji de l'onglet, repris de la barre du bas pour faire le lien. */
-  emoji: string;
-  titre: string;
-  texte: string;
-}
+import { useTutorielAudio } from './useTutorielAudio';
 
 /*
   Lumi présente l'application, un écran par onglet. Elle parle à la première
-  personne, d'un ton chaleureux et simple, et grandit d'un écran à l'autre
-  jusqu'à se présenter elle-même à la fin.
+  personne, grandit d'un écran à l'autre, et chaque écran a une explication
+  vocale (bouton d'écoute), comme les accroches de Découvrir.
 */
-const ECRANS: EcranTuto[] = [
-  {
-    rang: 0,
-    emoji: '🔭',
-    titre: 'Découvrir',
-    texte:
-      "Coucou, moi c'est Lumi ! Ici, tu écoutes des cartes animées qui racontent le monde. Touche un hublot pour commencer.",
-  },
-  {
-    rang: 1,
-    emoji: '🗺️',
-    titre: 'Parcours',
-    texte:
-      'Dans Parcours, je te guide : une carte, puis une petite question, et on avance ensemble, pas à pas.',
-  },
-  {
-    rang: 2,
-    emoji: '🎯',
-    titre: 'Quizz',
-    texte:
-      "Au Quizz, tu joues avec des questions sur ce que tu as déjà écouté. Chaque bonne réponse te fait gagner des étoiles !",
-  },
-  {
-    rang: 4,
-    emoji: '🌟',
-    titre: 'Et moi, Lumi',
-    texte:
-      'Plus tu explores et réussis, plus je grandis : des rangs, des badges, et une petite fête à chaque étape. On y va ?',
-  },
-];
-
 export function Tutoriel({ onFermer }: { onFermer: () => void }) {
   const [index, setIndex] = useState(0);
-  const dernier = index >= ECRANS.length - 1;
-  const suivant = () =>
-    dernier ? onFermer() : setIndex((n) => Math.min(ECRANS.length - 1, n + 1));
-  const precedent = () => setIndex((n) => Math.max(0, n - 1));
+  const { jouer, arreter, enLecture } = useTutorielAudio();
+  const dernier = index >= ecransTuto.length - 1;
+
+  const suivant = () => {
+    arreter();
+    if (dernier) onFermer();
+    else setIndex((n) => Math.min(ecransTuto.length - 1, n + 1));
+  };
+  const precedent = () => {
+    arreter();
+    setIndex((n) => Math.max(0, n - 1));
+  };
   const swipe = useSwipeHorizontal({ onLeft: suivant, onRight: precedent });
-  const ecran = ECRANS[index];
+  const ecran = ecransTuto[index];
 
   return (
     <div
@@ -67,7 +37,7 @@ export function Tutoriel({ onFermer }: { onFermer: () => void }) {
       <button
         type="button"
         onClick={onFermer}
-        className="absolute right-4 top-4 min-h-11 cursor-pointer rounded-full px-4 text-sm text-craie-douce transition-colors hover:text-soleil"
+        className="absolute right-4 top-4 min-h-11 cursor-pointer rounded-full border-2 border-encre-bord bg-encre-clair px-5 font-display text-sm text-craie transition-colors hover:border-soleil hover:text-soleil"
       >
         Passer
       </button>
@@ -82,12 +52,21 @@ export function Tutoriel({ onFermer }: { onFermer: () => void }) {
         <div aria-live="polite" className="flex flex-col items-center gap-3">
           <h2 className="font-display text-2xl text-soleil sm:text-3xl">{ecran.titre}</h2>
           <p className="max-w-xs text-base leading-relaxed text-craie">{ecran.texte}</p>
+          {/* Explication vocale, comme les cartes de Découvrir. */}
+          <button
+            type="button"
+            onClick={() => (enLecture === ecran.id ? arreter() : jouer(ecran.id))}
+            aria-label={enLecture === ecran.id ? 'Arrêter la lecture' : 'Écouter'}
+            className="mt-1 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-lg transition-colors hover:border-soleil hover:text-soleil"
+          >
+            <span aria-hidden="true">{enLecture === ecran.id ? '⏸' : '🔊'}</span>
+          </button>
         </div>
       </div>
 
       {/* Points de progression. */}
       <div className="flex gap-2" aria-hidden="true">
-        {ECRANS.map((_, k) => (
+        {ecransTuto.map((_, k) => (
           <span
             key={k}
             className="h-2 w-2 rounded-full transition-colors"

@@ -13,6 +13,7 @@
     "audio:batch": "tsx --env-file=.env.local scripts/generer-audio-batch.mjs",
     "audio:quiz": "tsx --env-file=.env.local scripts/generer-audio-quiz.mjs",
     "audio:accroches": "tsx --env-file=.env.local scripts/generer-audio-accroches.mjs",
+    "audio:tutoriel": "tsx --env-file=.env.local scripts/generer-audio-tutoriel.mjs",
     "audio:attente": "tsx scripts/maj-attente-audio.mjs",
     "audio:catalogue": "tsx scripts/catalogue-audio.mjs",
     "push": "node --env-file=.env.local scripts/push.mjs",

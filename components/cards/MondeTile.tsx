@@ -123,12 +123,18 @@ export function MondeTile({
       </Link>
 
       {/* Accroche + écoute, poussées en bas de la carte (mt-auto) pour que les
-          boutons s'alignent d'une carte à l'autre. Hors du Link : un bouton ne
-          peut pas vivre dans un <a>. */}
+          boutons s'alignent d'une carte à l'autre. L'accroche est un Link à part
+          (pour entrer dans le domaine en la touchant aussi), et le bouton audio
+          reste hors de tout <a> : un bouton ne peut pas vivre dans un <a>. */}
       <div className="mt-auto flex items-start gap-2 pt-1">
-        <p className="flex-1 text-center text-sm italic leading-snug text-craie-douce">
-          {accroche}
-        </p>
+        <Link
+          href={`/decouvrir/${domain.id}`}
+          className="flex-1 cursor-pointer rounded-2xl px-1 transition-colors hover:text-craie"
+        >
+          <p className="text-center text-sm italic leading-snug text-craie-douce">
+            {accroche}
+          </p>
+        </Link>
         <button
           type="button"
           onClick={onEcouter}

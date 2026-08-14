@@ -13,17 +13,30 @@ import { jouerSonRecompense } from '@/lib/sonRecompense';
   importance à l'écran.
 */
 const EMOJIS_CONFETTI = ['✨', '⭐', '🎉', '🌟', '💫', '🎊'];
-const CONFETTIS = Array.from({ length: 14 }, (_, i) => {
-  const angle = (i / 14) * Math.PI * 2;
-  const distance = 90 + (i % 4) * 18;
-  return {
-    dx: Math.cos(angle) * distance,
-    dy: Math.sin(angle) * distance - 20,
-    rot: (i % 2 ? 1 : -1) * (160 + (i % 5) * 40),
-    delai: (i % 5) * 0.04,
-    emoji: EMOJIS_CONFETTI[i % EMOJIS_CONFETTI.length],
-  };
-});
+function genConfettis(n: number) {
+  return Array.from({ length: n }, (_, i) => {
+    const angle = (i / n) * Math.PI * 2;
+    const distance = 90 + (i % 4) * 18;
+    return {
+      dx: Math.cos(angle) * distance,
+      dy: Math.sin(angle) * distance - 20,
+      rot: (i % 2 ? 1 : -1) * (160 + (i % 5) * 40),
+      delai: (i % 5) * 0.04,
+      emoji: EMOJIS_CONFETTI[i % EMOJIS_CONFETTI.length],
+    };
+  });
+}
+const CONFETTIS = genConfettis(14);
+/*
+  Gerbe graduée selon l'intensité d'une série : quelques éclats au premier
+  palier, puis de plus en plus autour de Lumi. Les angles se répartissent sur
+  tout le cercle quel que soit le nombre.
+*/
+const CONFETTIS_INTENSITE: Record<1 | 2 | 3, ReturnType<typeof genConfettis>> = {
+  1: genConfettis(6),
+  2: genConfettis(11),
+  3: genConfettis(18),
+};
 
 /*
   Lumi en feu : cinq flammes à sa base, la plus grande au centre, comme un
@@ -37,6 +50,19 @@ const FLAMMES = [
   { left: '18%', bottom: 0, taille: 19, delai: 0.34 },
   { left: '82%', bottom: 0, taille: 19, delai: 0.08 },
 ];
+/*
+  Flammes graduées : aucune au premier palier (juste un peu de réaction),
+  quelques petites au deuxième, le brasier complet au troisième.
+*/
+const FLAMMES_INTENSITE: Record<1 | 2 | 3, typeof FLAMMES> = {
+  1: [],
+  2: [
+    { left: '50%', bottom: -10, taille: 22, delai: 0 },
+    { left: '36%', bottom: -4, taille: 16, delai: 0.16 },
+    { left: '64%', bottom: -4, taille: 16, delai: 0.24 },
+  ],
+  3: FLAMMES,
+};
 
 interface LumiCelebreProps {
   rang: number;
@@ -52,8 +78,9 @@ interface LumiCelebreProps {
   autoFermerMs?: number;
   /** Son + gerbe de confettis. Vrai par défaut pour `fete`. */
   recompense?: boolean;
-  /** Embrase Lumi (flammes sur la tête) au lieu de l'emblème dans le coin. */
-  enFeu?: boolean;
+  /** Intensité d'une série (1 → 3) : gradue le nombre d'éléments autour de Lumi
+   *  et les flammes à sa base (aucune à 1, quelques-unes à 2, le brasier à 3). */
+  intensite?: 1 | 2 | 3;
   onFermer: () => void;
 }
 
@@ -75,13 +102,20 @@ export function LumiCelebre({
   variante = 'fete',
   autoFermerMs,
   recompense,
-  enFeu,
+  intensite,
   onFermer,
 }: LumiCelebreProps) {
   const leger = variante === 'leger';
   const feter = variante === 'fete' || recompense === true;
   const prefersReducedMotion = useReducedMotion();
   const anime = feter && !prefersReducedMotion;
+
+  // Célébration graduée d'une série : plus l'enfant enchaîne, plus il y a
+  // d'éléments autour de Lumi, et les flammes s'allument par paliers.
+  const flammes = intensite ? FLAMMES_INTENSITE[intensite] : [];
+  const enFeu = flammes.length > 0;
+  const confettis = intensite ? CONFETTIS_INTENSITE[intensite] : CONFETTIS;
+  const tailleLueur = intensite === 3 ? 'h-48 w-48' : 'h-32 w-32';
 
   // Métamorphose : quand on monte de rang, Lumi apparaît d'abord dans son
   // ancienne forme, puis un éclat l'engloutit et elle ressort au nouveau rang.
@@ -128,7 +162,7 @@ export function LumiCelebre({
         {enFeu && (
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-[62%] h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full"
+            className={`pointer-events-none absolute left-1/2 top-[62%] ${tailleLueur} -translate-x-1/2 -translate-y-1/2 rounded-full`}
             style={{
               background:
                 'radial-gradient(circle, rgba(251,146,60,0.55), rgba(251,146,60,0.18) 55%, transparent 72%)',
@@ -161,7 +195,7 @@ export function LumiCelebre({
         {/* Flammes sur la tête de Lumi : elle est « en feu » ! */}
         {enFeu && (
           <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-            {FLAMMES.map((f, i) => (
+            {flammes.map((f, i) => (
               <span
                 key={i}
                 className={prefersReducedMotion ? 'absolute' : 'flamme absolute'}
@@ -192,7 +226,7 @@ export function LumiCelebre({
         {/* Gerbe de confettis : jaillit puis retombe. */}
         {anime && (
           <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-            {CONFETTIS.map((c, i) => (
+            {confettis.map((c, i) => (
               <span
                 key={i}
                 className="recompense-confetti absolute left-1/2 top-1/2 text-2xl"

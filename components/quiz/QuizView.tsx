@@ -392,13 +392,21 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                     const enchainees = dAffilee + 1;
                     setDAffilee(enchainees);
                     marquerMaitrisee(tirage.carte.id);
-                    // Lumi surgit féliciter les séries : à 3, 6, 9… d'affilée.
+                    // Lumi surgit féliciter les séries : à 3, 6, 9… d'affilée,
+                    // avec une intensité qui monte par paliers (1 → 3).
                     if (enchainees >= 3 && enchainees % 3 === 0) {
+                      const intensite = Math.min(3, enchainees / 3) as 1 | 2 | 3;
+                      const titre =
+                        intensite === 1
+                          ? 'Bien joué !'
+                          : intensite === 2
+                            ? 'En pleine forme !'
+                            : 'En feu ! 🔥';
                       celebrer({
                         rang: rangDepuisEtoiles(etoiles).rang.index,
-                        titre: 'En pleine forme !',
+                        titre,
                         sousTitre: `${enchainees} bonnes réponses d’affilée`,
-                        enFeu: true,
+                        intensite,
                         variante: 'leger',
                         recompense: true,
                         autoFermerMs: 3000,

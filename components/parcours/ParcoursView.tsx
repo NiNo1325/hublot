@@ -13,6 +13,8 @@ import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { CardModal } from '@/components/cards/CardModal';
+import { useLocale } from '@/components/i18n/useLocale';
+import { localise } from '@/lib/i18n/localise';
 import { QuestionUnique } from './QuestionUnique';
 
 interface ParcoursViewProps {
@@ -40,6 +42,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
   const { etoiles } = useEtoiles();
+  const { locale } = useLocale();
   const [session, setSession] = useState<Session | null>(null);
 
   const ordre = useMemo(() => ordreParcours(cards, domains), [cards, domains]);
@@ -57,7 +60,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   // Après la découverte : on teste la carte, ou on avance s'il n'y a pas de
   // question à cet âge.
   const apresDecouverte = (carte: ScienceCard) => {
-    const qs = questionsDe(carte.id, ageRange);
+    const qs = questionsDe(carte.id, ageRange, locale);
     if (qs.length > 0) {
       setSession({ carte, phase: 'quizz', question: tirerQuestion(qs) });
     } else {
@@ -97,7 +100,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
               <span aria-hidden="true">
                 {domains.find((d) => d.id === prochaine.domainId)?.icon}
               </span>
-              {prochaine.content.fr.title[ageRange]}
+              {localise(prochaine.content, locale).title[ageRange]}
             </span>
             <span className="mt-1 font-display text-base text-craie">Continuer&nbsp;→</span>
           </button>
@@ -157,7 +160,9 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
                     Pour explorer un monde librement, c'est l'onglet Découvrir. */}
                 <div className="flex flex-1 items-center justify-between gap-3 rounded-2xl border-2 border-encre-bord bg-encre-clair px-4 py-3">
                   <span className="flex flex-col">
-                    <span className="font-display text-base text-craie">{domain.labels.fr}</span>
+                    <span className="font-display text-base text-craie">
+                      {localise(domain.labels, locale)}
+                    </span>
                     <span className="text-sm text-craie-douce">{vues}/{total} cartes</span>
                   </span>
                 </div>

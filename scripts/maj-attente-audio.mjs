@@ -50,7 +50,7 @@ const beatsIncomplets = cards
 const quizIncomplets = quizCartes
   .filter((quiz) =>
     AGE_RANGES.some((age) =>
-      quiz.questions[age].some((question) =>
+      quiz.questions.fr[age].some((question) =>
         ['question', 'explication'].some(
           (partie) =>
             !existsSync(`public/audio/quiz/${quiz.cardId}/${age}/${question.id}-${partie}.mp3`),

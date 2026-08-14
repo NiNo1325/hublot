@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import type { DomainDefinition } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
+import { useLocale } from '@/components/i18n/useLocale';
+import { localise } from '@/lib/i18n/localise';
 
 interface MondeTileProps {
   domain: DomainDefinition;
@@ -36,10 +38,12 @@ export function MondeTile({
   enLecture,
   maitrise,
 }: MondeTileProps) {
+  const { locale } = useLocale();
   const style = domainStyles[domain.id];
   const complet = total > 0 && vues >= total;
   const fraction = total > 0 ? vues / total : 0;
-  const accroche = domain.accroche.fr;
+  const accroche = localise(domain.accroche, locale);
+  const nom = localise(domain.labels, locale);
 
   return (
     <li
@@ -110,13 +114,13 @@ export function MondeTile({
         </span>
 
         <span className="text-center font-display text-base font-medium text-craie">
-          {domain.labels.fr}
+          {nom}
         </span>
         <span aria-hidden="true" className="text-sm text-craie-douce">
           {vues}/{total}
         </span>
         <span className="sr-only">
-          {domain.labels.fr}, {vues} carte{vues > 1 ? 's' : ''} sur {total} écoutée
+          {nom}, {vues} carte{vues > 1 ? 's' : ''} sur {total} écoutée
           {vues > 1 ? 's' : ''}
           {complet ? ', terminé' : ''}
         </span>

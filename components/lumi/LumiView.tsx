@@ -13,6 +13,8 @@ import { useAgeRange } from '@/components/age/useAgeRange';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { useLocale } from '@/components/i18n/useLocale';
+import { localise } from '@/lib/i18n/localise';
 
 interface LumiViewProps {
   cards: ScienceCard[];
@@ -31,6 +33,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
   const { etoiles } = useEtoiles();
   const { cartesVues } = useCartesVues();
   const { cartesMaitrisees } = useCartesMaitrisees();
+  const { locale } = useLocale();
   const [rangSel, setRangSel] = useState<number | null>(null);
 
   useEffect(() => {
@@ -202,7 +205,9 @@ export function LumiView({ cards, domains }: LumiViewProps) {
                     {domain.icon}
                   </span>
                   <span className="flex flex-col">
-                    <span className="font-display text-lg text-craie">{domain.labels.fr}</span>
+                    <span className="font-display text-lg text-craie">
+                      {localise(domain.labels, locale)}
+                    </span>
                     <span className="text-sm text-craie-douce">
                       <span aria-hidden="true">🧭</span> {vues}/{total} écoutée{total > 1 ? 's' : ''}
                       {' · '}

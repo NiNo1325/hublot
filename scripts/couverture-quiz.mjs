@@ -27,7 +27,7 @@ for (const [domaine, v] of Object.entries(parDomaine)) {
 }
 
 const questions = quizCartes.reduce(
-  (n, q) => n + Object.values(q.questions).flat().length,
+  (n, q) => n + Object.values(q.questions.fr).flat().length,
   0,
 );
 console.log(

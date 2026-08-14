@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { quizCartes } from '@/content/quiz';
 import { ordreLecture } from '@/content/quiz/ordre';
 import { VERDICTS, cheminVerdict } from '@/content/quiz/verdicts';
-import { AGE_RANGES } from '@/lib/types';
+import { AGE_RANGES, LOCALES } from '@/lib/types';
 
 /**
  * Deux défauts remontés par des utilisateurs, et leurs garde-fous.
@@ -14,8 +14,13 @@ import { AGE_RANGES } from '@/lib/types';
  * l'écran en montre une autre, une fois sur deux.
  */
 describe('ordre de lecture des propositions', () => {
+  // Toutes langues confondues : l'ordre dépend de l'identifiant de la question,
+  // que la traduction conserve — un identifiant traduit désynchroniserait
+  // l'affichage du mp3 des 3-5 ans, qui lit les propositions dans cet ordre.
   const questions = quizCartes.flatMap((q) =>
-    AGE_RANGES.flatMap((age) => q.questions[age]),
+    LOCALES.filter((locale) => q.questions[locale]).flatMap((locale) =>
+      AGE_RANGES.flatMap((age) => q.questions[locale]![age]),
+    ),
   );
 
   it('est déterministe', () => {

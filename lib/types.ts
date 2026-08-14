@@ -94,10 +94,14 @@ export interface QuizQuestion {
   explication: string;
 }
 
-/** Questions d'une carte, déclinées par tranche d'âge comme les explications. */
+/**
+ * Questions d'une carte, déclinées par langue puis par tranche d'âge — comme
+ * les explications, et pour la même raison : une langue traduite en partie doit
+ * pouvoir compiler et retomber sur le français.
+ */
 export interface QuizCarte {
   cardId: string;
-  questions: Record<AgeRange, QuizQuestion[]>;
+  questions: Localise<Record<AgeRange, QuizQuestion[]>>;
 }
 
 export interface ScienceCard {

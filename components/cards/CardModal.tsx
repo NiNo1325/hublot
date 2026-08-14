@@ -9,6 +9,8 @@ import { useNarration } from '@/components/narration/useNarration';
 import { NarrationControls } from '@/components/narration/NarrationControls';
 import { NarrationProgress } from '@/components/narration/NarrationProgress';
 import { useSwipeHorizontal } from '@/lib/useSwipeHorizontal';
+import { useLocale } from '@/components/i18n/useLocale';
+import { localise } from '@/lib/i18n/localise';
 import { useCartesVues } from './useCartesVues';
 
 /**
@@ -41,7 +43,9 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
   const prefersReducedMotion = useReducedMotion();
 
   const { marquerVue } = useCartesVues();
-  const beats = card.content.fr.explanation[ageRange].beats;
+  const { locale } = useLocale();
+  const contenu = localise(card.content, locale);
+  const beats = contenu.explanation[ageRange].beats;
   const { state, play, pause, resume, replay, allerA, reculer } = useNarration(
     card.id,
     ageRange,
@@ -105,7 +109,7 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
             id="titre-carte"
             className="font-display text-xl font-semibold sm:text-3xl"
           >
-            {card.content.fr.title[ageRange]}
+            {contenu.title[ageRange]}
           </h2>
           {/* Toujours visible, taille tactile pleine, jamais masqué pendant la lecture. */}
           <button
@@ -141,6 +145,7 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
                 activeBeatId={state.activeBeatId}
                 isPlaying={state.isPlaying}
                 prefersReducedMotion={prefersReducedMotion}
+                locale={locale}
               />
             ) : (
               <div className="flex h-56 items-center justify-center bg-encre-clair text-7xl">

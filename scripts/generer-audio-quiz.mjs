@@ -84,7 +84,9 @@ function aFaire(manifeste) {
   const liste = [];
   for (const carte of quizCartes) {
     for (const age of AGE_RANGES) {
-      for (const question of carte.questions[age]) {
+      // Voix française : les autres langues auront leur propre passe, avec
+      // leurs consignes de diction et leur dossier (`/audio/<locale>/…`).
+      for (const question of carte.questions.fr[age]) {
         const dossier = `${RACINE}/${carte.cardId}/${age}`;
         const morceaux = [
           { suffixe: 'question', texte: texteEnonce(question, age), consigne: CONSIGNES[age] },

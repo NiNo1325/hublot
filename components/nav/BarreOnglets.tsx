@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
+import { useT } from '@/components/i18n/useT';
 
 /**
  * Barre d'onglets du bas : les cinq destinations de l'app, toujours au même
@@ -13,17 +14,22 @@ import { useEtoiles } from '@/components/quiz/useEtoiles';
  * L'onglet Lumi n'a pas d'emoji : c'est la mascotte elle-même, au rang courant,
  * qui suit le progrès de l'enfant. Les autres portent un emoji. L'onglet actif
  * porte `aria-current="page"`.
+ *
+ * Les libellés viennent du dictionnaire d'interface : l'adresse, elle, ne
+ * change pas de langue — traduire les URL casserait les liens partagés et les
+ * raccourcis installés sur l'écran d'accueil.
  */
 const ONGLETS = [
-  { href: '/decouvrir', icone: '🔭', label: 'Découvrir' },
-  { href: '/quizz', icone: '🎯', label: 'Quizz' },
-  { href: '/parcours', icone: '🗺️', label: 'Parcours' },
-  { href: '/lumi', icone: null, label: 'Lumi' },
-  { href: '/reglages', icone: '⚙️', label: 'Réglages' },
+  { href: '/decouvrir', icone: '🔭', cle: 'nav.decouvrir' },
+  { href: '/quizz', icone: '🎯', cle: 'nav.quizz' },
+  { href: '/parcours', icone: '🗺️', cle: 'nav.parcours' },
+  { href: '/lumi', icone: null, cle: 'nav.lumi' },
+  { href: '/reglages', icone: '⚙️', cle: 'nav.reglages' },
 ] as const;
 
 export function BarreOnglets() {
   const pathname = usePathname();
+  const t = useT();
   const { etoiles } = useEtoiles();
   const { rang } = rangDepuisEtoiles(etoiles);
 
@@ -57,7 +63,7 @@ export function BarreOnglets() {
                     <Lumi rang={rang.index} taille={30} />
                   </span>
                 )}
-                <span className="font-display text-xs">{onglet.label}</span>
+                <span className="font-display text-xs">{t(onglet.cle)}</span>
               </Link>
             </li>
           );

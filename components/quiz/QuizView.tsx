@@ -2,7 +2,14 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { AgeRange, DomainDefinition, DomainId, QuizQuestion, ScienceCard } from '@/lib/types';
+import type {
+  AgeRange,
+  DomainDefinition,
+  DomainId,
+  Locale,
+  QuizQuestion,
+  ScienceCard,
+} from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
@@ -14,6 +21,8 @@ import { useCelebration } from '@/components/celebration/CelebrationProvider';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
 import { ordreLecture } from '@/content/quiz/ordre';
+import { useLocale } from '@/components/i18n/useLocale';
+import { localise } from '@/lib/i18n/localise';
 
 interface QuizViewProps {
   cards: ScienceCard[];
@@ -35,8 +44,17 @@ function melanger<T>(liste: T[]): T[] {
   return copie;
 }
 
-function estEligible(carte: ScienceCard, vues: Set<string>, age: AgeRange): boolean {
-  return vues.has(carte.id) && cartesAvecQuiz.has(carte.id) && questionsDe(carte.id, age).length > 0;
+function estEligible(
+  carte: ScienceCard,
+  vues: Set<string>,
+  age: AgeRange,
+  locale: Locale,
+): boolean {
+  return (
+    vues.has(carte.id) &&
+    cartesAvecQuiz.has(carte.id) &&
+    questionsDe(carte.id, age, locale).length > 0
+  );
 }
 
 /*
@@ -51,15 +69,16 @@ function construireSerie(
   vues: Set<string>,
   age: AgeRange,
   domainId: DomainId | null,
+  locale: Locale,
 ): Tirage[] {
   const disponibles = cards.filter(
-    (c) => estEligible(c, vues, age) && (domainId === null || c.domainId === domainId),
+    (c) => estEligible(c, vues, age, locale) && (domainId === null || c.domainId === domainId),
   );
   return melanger(disponibles)
     .slice(0, QUESTIONS_PAR_SERIE)
     .map((carte) => ({
       carte,
-      question: melanger(questionsDe(carte.id, age))[0],
+      question: melanger(questionsDe(carte.id, age, locale))[0],
     }));
 }
 
@@ -67,6 +86,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
   const router = useRouter();
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
+  const { locale } = useLocale();
 
   const { jouer, jouerProposition, jouerVerdict, arreter, enLecture } =
     useQuizAudio(ageRange ?? '6-8');
@@ -118,7 +138,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
 
   if (status === 'chargement' || !ageRange) return null;
 
-  const eligibles = cards.filter((c) => estEligible(c, cartesVues, ageRange));
+  const eligibles = cards.filter((c) => estEligible(c, cartesVues, ageRange, locale));
 
   // Mondes réellement jouables : au moins une carte écoutée qui a une question à
   // cet âge. On ne propose jamais un monde qui donnerait un quizz vide.
@@ -131,7 +151,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
 
   const lancer = (domainId: DomainId | null, accueil = false) => {
     setScope(domainId);
-    setSerie(construireSerie(cards, cartesVues, ageRange, domainId));
+    setSerie(construireSerie(cards, cartesVues, ageRange, domainId, locale));
     setIndex(0);
     setChoisie(null);
     setReussies(0);
@@ -158,6 +178,8 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     return idsJouables[(i + 1) % idsJouables.length];
   };
   const nomDomaine = (id: DomainId) => domains.find((d) => d.id === id);
+  const libelleDomaine = (d: DomainDefinition | undefined) =>
+    d ? localise(d.labels, locale) : '';
 
   /*
     Aucune carte écoutée parmi celles qui ont des questions : plutôt qu'un
@@ -231,7 +253,9 @@ export function QuizView({ cards, domains }: QuizViewProps) {
               >
                 <span className="text-3xl" aria-hidden="true">{domain.icon}</span>
                 <span className="flex flex-col">
-                  <span className="font-display text-lg text-craie">{domain.labels.fr}</span>
+                  <span className="font-display text-lg text-craie">
+                    {localise(domain.labels, locale)}
+                  </span>
                   <span className="text-sm text-craie-douce">
                     {n} carte{n > 1 ? 's' : ''}
                   </span>
@@ -257,7 +281,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
         <div className="flex flex-col items-center gap-2">
           <span className="flex items-center gap-1.5 text-sm text-craie-douce">
             <span aria-hidden="true">{scopeDef ? scopeDef.icon : '🎲'}</span>
-            {scopeDef ? scopeDef.labels.fr : 'Tout'}
+            {scopeDef ? localise(scopeDef.labels, locale) : 'Tout'}
           </span>
           <p className="font-display text-lg text-soleil">Bravo&nbsp;! 🎉</p>
           <h1 className="font-display text-3xl font-semibold sm:text-4xl">
@@ -293,7 +317,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
               className="flex min-h-16 w-full cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-soleil bg-soleil/10 px-6 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
             >
               Sujet suivant <span aria-hidden="true">→ {suivantDef.icon}</span>{' '}
-              {suivantDef.labels.fr}
+              {localise(suivantDef.labels, locale)}
             </button>
           ) : (
             <button
@@ -341,7 +365,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
         {/* Sujet en cours : on sait toujours où on est. */}
         <span className="flex items-center gap-1.5 rounded-full border border-encre-bord px-3 py-1 text-xs text-craie-douce">
           <span aria-hidden="true">{scope ? nomDomaine(scope)?.icon : '🎲'}</span>
-          {scope ? nomDomaine(scope)?.labels.fr : 'Tout'}
+          {scope ? libelleDomaine(nomDomaine(scope)) : 'Tout'}
         </span>
       </header>
 

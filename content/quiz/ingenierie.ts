@@ -12,417 +12,437 @@ export const quiz: QuizCarte[] = [
   {
     cardId: 'pourquoi-les-ponts-tiennent',
     questions: {
-      '3-5': [
-        {
-          id: 'forme-solide',
-          question: 'Quelle forme ne se déforme pas quand on pousse dessus ?',
-          reponses: [
-            { texte: 'Le triangle', icone: '🔺', correcte: true },
-            { texte: 'Le carré', icone: '🟥' },
-          ],
-          explication: 'Le triangle ne bouge pas : c’est la forme la plus solide.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'pourquoi-triangle',
-          question: 'Pourquoi un triangle ne se déforme-t-il pas ?',
-          reponses: [
-            { texte: 'Ses angles dépendent de ses côtés', icone: '📐', correcte: true },
-            { texte: 'Parce qu’il a moins de côtés', icone: '🔢' },
-            { texte: 'Parce qu’il est plus petit', icone: '🤏' },
-          ],
-          explication:
-            'Pour changer ses angles, il faudrait allonger un côté. Un carré, lui, se transforme en losange sans rien allonger.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'arc-poussee',
-          question: 'Comment un arc transmet-il la charge ?',
-          reponses: [
-            { texte: 'En compression, vers ses appuis', icone: '🌉', correcte: true },
-            { texte: 'En traction, vers le haut', icone: '⬆️' },
-            { texte: 'En flexion, au milieu', icone: '〰️' },
-          ],
-          explication:
-            'La poussée latérale explique les contreforts des cathédrales. Le pont suspendu, lui, travaille en traction.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'forme-solide',
+            question: 'Quelle forme ne se déforme pas quand on pousse dessus ?',
+            reponses: [
+              { texte: 'Le triangle', icone: '🔺', correcte: true },
+              { texte: 'Le carré', icone: '🟥' },
+            ],
+            explication: 'Le triangle ne bouge pas : c’est la forme la plus solide.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'pourquoi-triangle',
+            question: 'Pourquoi un triangle ne se déforme-t-il pas ?',
+            reponses: [
+              { texte: 'Ses angles dépendent de ses côtés', icone: '📐', correcte: true },
+              { texte: 'Parce qu’il a moins de côtés', icone: '🔢' },
+              { texte: 'Parce qu’il est plus petit', icone: '🤏' },
+            ],
+            explication:
+              'Pour changer ses angles, il faudrait allonger un côté. Un carré, lui, se transforme en losange sans rien allonger.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'arc-poussee',
+            question: 'Comment un arc transmet-il la charge ?',
+            reponses: [
+              { texte: 'En compression, vers ses appuis', icone: '🌉', correcte: true },
+              { texte: 'En traction, vers le haut', icone: '⬆️' },
+              { texte: 'En flexion, au milieu', icone: '〰️' },
+            ],
+            explication:
+              'La poussée latérale explique les contreforts des cathédrales. Le pont suspendu, lui, travaille en traction.',
+          },
+        ],
+      },
     },
   },
   {
     cardId: 'comment-vole-un-avion',
     questions: {
-      '3-5': [
-        {
-          id: 'aile-pousse',
-          question: 'L’aile pousse l’air vers le bas. Que fait l’air alors ?',
-          reponses: [
-            { texte: 'Il pousse l’avion vers le haut', icone: '⬆️', correcte: true },
-            { texte: 'Il ne fait rien du tout', icone: '🚫' },
-          ],
-          explication: 'Quand tu pousses quelque chose, ça te repousse aussi.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'vol-inverse',
-          question: 'Un avion peut-il voler sur le dos ?',
-          reponses: [
-            { texte: 'Oui, l’aile dévie encore l’air vers le bas', icone: '✈️', correcte: true },
-            { texte: 'Non, la forme de l’aile l’en empêche', icone: '🚫' },
-            { texte: 'Non, il tomberait aussitôt', icone: '⬇️' },
-          ],
-          explication:
-            'C’est la preuve que la forme seule n’explique pas tout : ce qui compte est l’air dévié vers le bas.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'temps-transit',
-          question: 'L’air passant au-dessus de l’aile rejoint-il celui du dessous au bord de fuite ?',
-          reponses: [
-            { texte: 'Non, il arrive nettement en avance', icone: '⏩', correcte: true },
-            { texte: 'Oui, ils se rejoignent exactement', icone: '🤝' },
-            { texte: 'Oui, c’est ce qui crée la portance', icone: '📖' },
-          ],
-          explication:
-            'L’explication du « temps de transit égal » est fausse et mesurée comme telle : elle prédit une portance très inférieure à la réalité.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'aile-pousse',
+            question: 'L’aile pousse l’air vers le bas. Que fait l’air alors ?',
+            reponses: [
+              { texte: 'Il pousse l’avion vers le haut', icone: '⬆️', correcte: true },
+              { texte: 'Il ne fait rien du tout', icone: '🚫' },
+            ],
+            explication: 'Quand tu pousses quelque chose, ça te repousse aussi.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'vol-inverse',
+            question: 'Un avion peut-il voler sur le dos ?',
+            reponses: [
+              { texte: 'Oui, l’aile dévie encore l’air vers le bas', icone: '✈️', correcte: true },
+              { texte: 'Non, la forme de l’aile l’en empêche', icone: '🚫' },
+              { texte: 'Non, il tomberait aussitôt', icone: '⬇️' },
+            ],
+            explication:
+              'C’est la preuve que la forme seule n’explique pas tout : ce qui compte est l’air dévié vers le bas.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'temps-transit',
+            question: 'L’air passant au-dessus de l’aile rejoint-il celui du dessous au bord de fuite ?',
+            reponses: [
+              { texte: 'Non, il arrive nettement en avance', icone: '⏩', correcte: true },
+              { texte: 'Oui, ils se rejoignent exactement', icone: '🤝' },
+              { texte: 'Oui, c’est ce qui crée la portance', icone: '📖' },
+            ],
+            explication:
+              'L’explication du « temps de transit égal » est fausse et mesurée comme telle : elle prédit une portance très inférieure à la réalité.',
+          },
+        ],
+      },
     },
   },
   {
     cardId: 'les-leviers',
     questions: {
-      '3-5': [
-        {
-          id: 'ou-appuyer',
-          question: 'Avec un levier, où faut-il appuyer pour que ce soit facile ?',
-          reponses: [
-            { texte: 'Le plus loin possible du pivot', icone: '📏', correcte: true },
-            { texte: 'Tout près du pivot', icone: '🤏' },
-          ],
-          explication: 'Plus tu appuies loin du point d’appui, moins tu forces.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'gain-perte',
-          question: 'Un levier te fait gagner de la force. Que perds-tu ?',
-          reponses: [
-            { texte: 'De la distance : ta main descend beaucoup', icone: '📐', correcte: true },
-            { texte: 'Rien du tout, c’est gratuit', icone: '🎁' },
-            { texte: 'Du temps seulement', icone: '⏱️' },
-          ],
-          explication:
-            'Un levier ne crée pas d’énergie, il la redistribue : dix centimètres de main pour un centimètre de charge.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'moment-force',
-          question: 'Qu’est-ce qui détermine l’effet d’une force sur une rotation ?',
-          reponses: [
-            { texte: 'La force multipliée par sa distance à l’axe', icone: '⚖️', correcte: true },
-            { texte: 'La force seule', icone: '💪' },
-            { texte: 'La masse de la barre', icone: '🪵' },
-          ],
-          explication:
-            'C’est le moment de force. Il explique aussi pourquoi une poignée de porte est placée loin des gonds.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'ou-appuyer',
+            question: 'Avec un levier, où faut-il appuyer pour que ce soit facile ?',
+            reponses: [
+              { texte: 'Le plus loin possible du pivot', icone: '📏', correcte: true },
+              { texte: 'Tout près du pivot', icone: '🤏' },
+            ],
+            explication: 'Plus tu appuies loin du point d’appui, moins tu forces.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'gain-perte',
+            question: 'Un levier te fait gagner de la force. Que perds-tu ?',
+            reponses: [
+              { texte: 'De la distance : ta main descend beaucoup', icone: '📐', correcte: true },
+              { texte: 'Rien du tout, c’est gratuit', icone: '🎁' },
+              { texte: 'Du temps seulement', icone: '⏱️' },
+            ],
+            explication:
+              'Un levier ne crée pas d’énergie, il la redistribue : dix centimètres de main pour un centimètre de charge.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'moment-force',
+            question: 'Qu’est-ce qui détermine l’effet d’une force sur une rotation ?',
+            reponses: [
+              { texte: 'La force multipliée par sa distance à l’axe', icone: '⚖️', correcte: true },
+              { texte: 'La force seule', icone: '💪' },
+              { texte: 'La masse de la barre', icone: '🪵' },
+            ],
+            explication:
+              'C’est le moment de force. Il explique aussi pourquoi une poignée de porte est placée loin des gonds.',
+          },
+        ],
+      },
     },
   },
   {
     cardId: 'les-engrenages',
     questions: {
-      '3-5': [
-        {
-          id: 'sens-roues',
-          question: 'Deux roues dentées qui se touchent tournent comment ?',
-          reponses: [
-            { texte: 'Dans des sens opposés', icone: '🔄', correcte: true },
-            { texte: 'Dans le même sens', icone: '➡️' },
-          ],
-          explication: 'Quand l’une va vers la droite, l’autre va vers la gauche.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'rapport-dents',
-          question: 'Une roue de 10 dents entraîne une roue de 30. Que fait la grande ?',
-          reponses: [
-            { texte: 'Elle tourne trois fois moins vite', icone: '🐢', correcte: true },
-            { texte: 'Elle tourne trois fois plus vite', icone: '🐇' },
-            { texte: 'Elle tourne à la même vitesse', icone: '⚖️' },
-          ],
-          explication:
-            'Elle tourne plus lentement mais avec trois fois plus de force : le même compromis que le levier.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'puissance-conservee',
-          question: 'Un engrenage peut-il augmenter la puissance transmise ?',
-          reponses: [
-            { texte: 'Non, il la redistribue seulement', icone: '⚖️', correcte: true },
-            { texte: 'Oui, s’il a beaucoup de dents', icone: '⚙️' },
-            { texte: 'Oui, s’il tourne très vite', icone: '💨' },
-          ],
-          explication:
-            'La puissance est le produit du couple par la vitesse : ce qu’on gagne d’un côté se perd de l’autre, aux frottements près.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'sens-roues',
+            question: 'Deux roues dentées qui se touchent tournent comment ?',
+            reponses: [
+              { texte: 'Dans des sens opposés', icone: '🔄', correcte: true },
+              { texte: 'Dans le même sens', icone: '➡️' },
+            ],
+            explication: 'Quand l’une va vers la droite, l’autre va vers la gauche.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'rapport-dents',
+            question: 'Une roue de 10 dents entraîne une roue de 30. Que fait la grande ?',
+            reponses: [
+              { texte: 'Elle tourne trois fois moins vite', icone: '🐢', correcte: true },
+              { texte: 'Elle tourne trois fois plus vite', icone: '🐇' },
+              { texte: 'Elle tourne à la même vitesse', icone: '⚖️' },
+            ],
+            explication:
+              'Elle tourne plus lentement mais avec trois fois plus de force : le même compromis que le levier.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'puissance-conservee',
+            question: 'Un engrenage peut-il augmenter la puissance transmise ?',
+            reponses: [
+              { texte: 'Non, il la redistribue seulement', icone: '⚖️', correcte: true },
+              { texte: 'Oui, s’il a beaucoup de dents', icone: '⚙️' },
+              { texte: 'Oui, s’il tourne très vite', icone: '💨' },
+            ],
+            explication:
+              'La puissance est le produit du couple par la vitesse : ce qu’on gagne d’un côté se perd de l’autre, aux frottements près.',
+          },
+        ],
+      },
     },
   },
   {
     cardId: 'pourquoi-les-bateaux-flottent',
     questions: {
-      '3-5': [
-        {
-          id: 'pate-forme',
-          question: 'Une boule de pâte à modeler coule. Et si tu en fais un bol ?',
-          reponses: [
-            { texte: 'Elle flotte', icone: '🛶', correcte: true },
-            { texte: 'Elle coule pareil', icone: '⬇️' },
-          ],
-          explication: 'C’est la même pâte : c’est la forme creuse qui change tout.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'lourd-flotte',
-          question: 'Un porte-avions de cent mille tonnes flotte. Pourquoi ?',
-          reponses: [
-            { texte: 'Sa coque creuse déplace beaucoup d’eau', icone: '🚢', correcte: true },
-            { texte: 'Parce qu’il est léger', icone: '🪶' },
-            { texte: 'Grâce à ses moteurs', icone: '⚙️' },
-          ],
-          explication:
-            'Ce n’est pas la masse qui décide : une bille de fer de vingt grammes coule, elle.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'archimede',
-          question: 'À quoi est égale la poussée d’Archimède ?',
-          reponses: [
-            { texte: 'Au poids du fluide déplacé', icone: '💧', correcte: true },
-            { texte: 'Au poids de l’objet immergé', icone: '⚓' },
-            { texte: 'À la surface de la coque', icone: '📐' },
-          ],
-          explication:
-            'À l’équilibre, elle compense exactement le poids du navire : un bateau de cent mille tonnes déplace cent mille tonnes d’eau.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'pate-forme',
+            question: 'Une boule de pâte à modeler coule. Et si tu en fais un bol ?',
+            reponses: [
+              { texte: 'Elle flotte', icone: '🛶', correcte: true },
+              { texte: 'Elle coule pareil', icone: '⬇️' },
+            ],
+            explication: 'C’est la même pâte : c’est la forme creuse qui change tout.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'lourd-flotte',
+            question: 'Un porte-avions de cent mille tonnes flotte. Pourquoi ?',
+            reponses: [
+              { texte: 'Sa coque creuse déplace beaucoup d’eau', icone: '🚢', correcte: true },
+              { texte: 'Parce qu’il est léger', icone: '🪶' },
+              { texte: 'Grâce à ses moteurs', icone: '⚙️' },
+            ],
+            explication:
+              'Ce n’est pas la masse qui décide : une bille de fer de vingt grammes coule, elle.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'archimede',
+            question: 'À quoi est égale la poussée d’Archimède ?',
+            reponses: [
+              { texte: 'Au poids du fluide déplacé', icone: '💧', correcte: true },
+              { texte: 'Au poids de l’objet immergé', icone: '⚓' },
+              { texte: 'À la surface de la coque', icone: '📐' },
+            ],
+            explication:
+              'À l’équilibre, elle compense exactement le poids du navire : un bateau de cent mille tonnes déplace cent mille tonnes d’eau.',
+          },
+        ],
+      },
     },
   },
   {
     cardId: 'les-poulies',
     questions: {
-      '3-5': [
-        {
-          id: 'poulie-quoi',
-          question: 'Une poulie, c’est quoi ?',
-          reponses: [
-            { texte: 'Une roue avec une corde dessus', icone: '⚙️', correcte: true },
-            { texte: 'Un gros aimant', icone: '🧲' },
-          ],
-          explication: 'La corde passe sur la roue, et ça aide à tirer.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'poulie-fixe',
-          question: 'Une seule poulie fixe rend-elle la charge plus légère ?',
-          reponses: [
-            { texte: 'Non, elle change juste la direction', icone: '🔄', correcte: true },
-            { texte: 'Oui, deux fois plus légère', icone: '🪶' },
-            { texte: 'Oui, elle supprime le poids', icone: '🚫' },
-          ],
-          explication: 'Le vrai gain vient de plusieurs poulies reliées ensemble.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'poulie-echange',
-          question: 'Avec un palan, on divise la force par deux. Que paie-t-on ?',
-          reponses: [
-            { texte: 'On tire deux fois plus de corde', icone: '📏', correcte: true },
-            { texte: 'Rien, c’est gratuit', icone: '🎁' },
-            { texte: 'On perd du temps seulement', icone: '⏱️' },
-          ],
-          explication:
-            'Comme le levier, la poulie échange de la force contre de la distance : le travail se conserve.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'poulie-quoi',
+            question: 'Une poulie, c’est quoi ?',
+            reponses: [
+              { texte: 'Une roue avec une corde dessus', icone: '⚙️', correcte: true },
+              { texte: 'Un gros aimant', icone: '🧲' },
+            ],
+            explication: 'La corde passe sur la roue, et ça aide à tirer.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'poulie-fixe',
+            question: 'Une seule poulie fixe rend-elle la charge plus légère ?',
+            reponses: [
+              { texte: 'Non, elle change juste la direction', icone: '🔄', correcte: true },
+              { texte: 'Oui, deux fois plus légère', icone: '🪶' },
+              { texte: 'Oui, elle supprime le poids', icone: '🚫' },
+            ],
+            explication: 'Le vrai gain vient de plusieurs poulies reliées ensemble.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'poulie-echange',
+            question: 'Avec un palan, on divise la force par deux. Que paie-t-on ?',
+            reponses: [
+              { texte: 'On tire deux fois plus de corde', icone: '📏', correcte: true },
+              { texte: 'Rien, c’est gratuit', icone: '🎁' },
+              { texte: 'On perd du temps seulement', icone: '⏱️' },
+            ],
+            explication:
+              'Comme le levier, la poulie échange de la force contre de la distance : le travail se conserve.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'comment-avance-une-fusee',
     questions: {
-      '3-5': [
-        {
-          id: 'ballon-lache',
-          question: 'Tu lâches un ballon gonflé. Que fait-il ?',
-          reponses: [
-            { texte: 'Il part de l’autre côté du souffle', icone: '🎈', correcte: true },
-            { texte: 'Il reste sur place', icone: '🚫' },
-          ],
-          explication:
-            'L’air sort d’un côté, le ballon part de l’autre. Une fusée avance exactement pareil.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'fusee-appui',
-          question: 'Sur quoi une fusée s’appuie-t-elle pour avancer ?',
-          reponses: [
-            { texte: 'Sur rien : elle éjecte du gaz', icone: '🚀', correcte: true },
-            { texte: 'Sur l’air, comme une rame sur l’eau', icone: '🌬️' },
-            { texte: 'Sur le sol, qu’elle repousse', icone: '⬇️' },
-          ],
-          explication:
-            'Elle pousse du gaz vers le bas, le gaz la pousse vers le haut. L’air extérieur n’y sert à rien.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'fusee-vide',
-          question: 'Une fusée pousse-t-elle mieux dans le vide ou dans l’air ?',
-          reponses: [
-            { texte: 'Dans le vide', icone: '🌌', correcte: true },
-            { texte: 'Dans l’air, contre lequel elle s’appuie', icone: '💨' },
-            { texte: 'Exactement pareil', icone: '⚖️' },
-          ],
-          explication:
-            'L’atmosphère ne fait que freiner. Le New York Times, qui affirmait le contraire en 1920, s’est rétracté la veille d’Apollo 11.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'ballon-lache',
+            question: 'Tu lâches un ballon gonflé. Que fait-il ?',
+            reponses: [
+              { texte: 'Il part de l’autre côté du souffle', icone: '🎈', correcte: true },
+              { texte: 'Il reste sur place', icone: '🚫' },
+            ],
+            explication:
+              'L’air sort d’un côté, le ballon part de l’autre. Une fusée avance exactement pareil.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'fusee-appui',
+            question: 'Sur quoi une fusée s’appuie-t-elle pour avancer ?',
+            reponses: [
+              { texte: 'Sur rien : elle éjecte du gaz', icone: '🚀', correcte: true },
+              { texte: 'Sur l’air, comme une rame sur l’eau', icone: '🌬️' },
+              { texte: 'Sur le sol, qu’elle repousse', icone: '⬇️' },
+            ],
+            explication:
+              'Elle pousse du gaz vers le bas, le gaz la pousse vers le haut. L’air extérieur n’y sert à rien.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'fusee-vide',
+            question: 'Une fusée pousse-t-elle mieux dans le vide ou dans l’air ?',
+            reponses: [
+              { texte: 'Dans le vide', icone: '🌌', correcte: true },
+              { texte: 'Dans l’air, contre lequel elle s’appuie', icone: '💨' },
+              { texte: 'Exactement pareil', icone: '⚖️' },
+            ],
+            explication:
+              'L’atmosphère ne fait que freiner. Le New York Times, qui affirmait le contraire en 1920, s’est rétracté la veille d’Apollo 11.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'comment-on-freine',
     questions: {
-      '3-5': [
-        {
-          id: 'freiner-place',
-          question: 'Faut-il plus de place pour s’arrêter quand on va vite ?',
-          reponses: [
-            { texte: 'Oui, beaucoup plus', icone: '📏', correcte: true },
-            { texte: 'Non, c’est pareil', icone: '🟰' },
-          ],
-          explication: 'Plus on va vite, beaucoup plus il faut de place pour s’arrêter.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'roue-bloquee',
-          question: 'Bloquer les roues fait-il freiner plus vite ?',
-          reponses: [
-            { texte: 'Non, une roue qui glisse freine moins bien', icone: '🛞', correcte: true },
-            { texte: 'Oui, c’est le freinage maximal', icone: '🛑' },
-            { texte: 'Oui, mais seulement sur route sèche', icone: '☀️' },
-          ],
-          explication:
-            'Une roue bloquée glisse, et on ne peut plus diriger. C’est exactement le problème que l’ABS résout.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'distance-carre',
-          question: 'On double la vitesse : que devient la distance de freinage ?',
-          reponses: [
-            { texte: 'Elle quadruple', icone: '4️⃣', correcte: true },
-            { texte: 'Elle double', icone: '2️⃣' },
-            { texte: 'Elle augmente d’un tiers', icone: '➗' },
-          ],
-          explication:
-            'L’énergie cinétique varie comme le carré de la vitesse : il y a quatre fois plus d’énergie à dissiper.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'freiner-place',
+            question: 'Faut-il plus de place pour s’arrêter quand on va vite ?',
+            reponses: [
+              { texte: 'Oui, beaucoup plus', icone: '📏', correcte: true },
+              { texte: 'Non, c’est pareil', icone: '🟰' },
+            ],
+            explication: 'Plus on va vite, beaucoup plus il faut de place pour s’arrêter.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'roue-bloquee',
+            question: 'Bloquer les roues fait-il freiner plus vite ?',
+            reponses: [
+              { texte: 'Non, une roue qui glisse freine moins bien', icone: '🛞', correcte: true },
+              { texte: 'Oui, c’est le freinage maximal', icone: '🛑' },
+              { texte: 'Oui, mais seulement sur route sèche', icone: '☀️' },
+            ],
+            explication:
+              'Une roue bloquée glisse, et on ne peut plus diriger. C’est exactement le problème que l’ABS résout.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'distance-carre',
+            question: 'On double la vitesse : que devient la distance de freinage ?',
+            reponses: [
+              { texte: 'Elle quadruple', icone: '4️⃣', correcte: true },
+              { texte: 'Elle double', icone: '2️⃣' },
+              { texte: 'Elle augmente d’un tiers', icone: '➗' },
+            ],
+            explication:
+              'L’énergie cinétique varie comme le carré de la vitesse : il y a quatre fois plus d’énergie à dissiper.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'comment-marche-un-frigo',
     questions: {
-      '3-5': [
-        {
-          id: 'frigo-froid',
-          question: 'Le frigo fabrique-t-il du froid ?',
-          reponses: [
-            { texte: 'Non, il enlève la chaleur', icone: '🌡️', correcte: true },
-            { texte: 'Oui, il fabrique du froid', icone: '❄️' },
-          ],
-          explication: 'Il prend la chaleur qui est dedans et il la met dehors.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'frigo-porte',
-          question: 'Si on laisse la porte du frigo ouverte, la cuisine…',
-          reponses: [
-            { texte: 'se réchauffe', icone: '🔥', correcte: true },
-            { texte: 'se rafraîchit', icone: '🧊' },
-            { texte: 'ne change pas', icone: '🟰' },
-          ],
-          explication:
-            'La chaleur retirée ressort dans la même pièce, augmentée de celle que produit le moteur.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'frigo-travail',
-          question: 'Pourquoi un réfrigérateur a-t-il besoin d’électricité ?',
-          reponses: [
-            { texte: 'Pour faire remonter la chaleur du froid vers le chaud', icone: '⬆️', correcte: true },
-            { texte: 'Pour créer du froid à partir de rien', icone: '❄️' },
-            { texte: 'Pour refroidir l’air par ventilation', icone: '🌀' },
-          ],
-          explication:
-            'Le second principe interdit ce transfert sans apport de travail : c’est le rôle du compresseur.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'frigo-froid',
+            question: 'Le frigo fabrique-t-il du froid ?',
+            reponses: [
+              { texte: 'Non, il enlève la chaleur', icone: '🌡️', correcte: true },
+              { texte: 'Oui, il fabrique du froid', icone: '❄️' },
+            ],
+            explication: 'Il prend la chaleur qui est dedans et il la met dehors.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'frigo-porte',
+            question: 'Si on laisse la porte du frigo ouverte, la cuisine…',
+            reponses: [
+              { texte: 'se réchauffe', icone: '🔥', correcte: true },
+              { texte: 'se rafraîchit', icone: '🧊' },
+              { texte: 'ne change pas', icone: '🟰' },
+            ],
+            explication:
+              'La chaleur retirée ressort dans la même pièce, augmentée de celle que produit le moteur.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'frigo-travail',
+            question: 'Pourquoi un réfrigérateur a-t-il besoin d’électricité ?',
+            reponses: [
+              { texte: 'Pour faire remonter la chaleur du froid vers le chaud', icone: '⬆️', correcte: true },
+              { texte: 'Pour créer du froid à partir de rien', icone: '❄️' },
+              { texte: 'Pour refroidir l’air par ventilation', icone: '🌀' },
+            ],
+            explication:
+              'Le second principe interdit ce transfert sans apport de travail : c’est le rôle du compresseur.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'le-micro-ondes',
     questions: {
-      '3-5': [
-        {
-          id: 'micro-milieu',
-          question: 'Le micro-ondes chauffe-t-il par le milieu ?',
-          reponses: [
-            { texte: 'Non, par les bords', icone: '🔥', correcte: true },
-            { texte: 'Oui, par le milieu', icone: '🎯' },
-          ],
-          explication: 'Il chauffe surtout le bord. Le milieu se réchauffe ensuite, tout doucement.',
-        },
-      ],
-      '6-8': [
-        {
-          id: 'micro-eau',
-          question: 'Qu’est-ce que le micro-ondes fait bouger ?',
-          reponses: [
-            { texte: 'L’eau contenue dans les aliments', icone: '💧', correcte: true },
-            { texte: 'L’air autour du plat', icone: '💨' },
-            { texte: 'Le plat lui-même', icone: '🍽️' },
-          ],
-          explication:
-            'Il fait pivoter les molécules d’eau des milliards de fois par seconde : cette agitation, c’est la chaleur.',
-        },
-      ],
-      '9-12': [
-        {
-          id: 'porte-grille',
-          question: 'Pourquoi la porte du micro-ondes est-elle grillagée ?',
-          reponses: [
-            { texte: 'Les trous sont plus petits que la longueur d’onde', icone: '📏', correcte: true },
-            { texte: 'Pour laisser sortir la vapeur', icone: '💨' },
-            { texte: 'Pour renforcer la vitre', icone: '🛡️' },
-          ],
-          explication:
-            'C’est une cage de Faraday : les ondes de douze centimètres sont réfléchies, la lumière passe.',
-        },
-      ],
+      fr: {
+        '3-5': [
+          {
+            id: 'micro-milieu',
+            question: 'Le micro-ondes chauffe-t-il par le milieu ?',
+            reponses: [
+              { texte: 'Non, par les bords', icone: '🔥', correcte: true },
+              { texte: 'Oui, par le milieu', icone: '🎯' },
+            ],
+            explication: 'Il chauffe surtout le bord. Le milieu se réchauffe ensuite, tout doucement.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'micro-eau',
+            question: 'Qu’est-ce que le micro-ondes fait bouger ?',
+            reponses: [
+              { texte: 'L’eau contenue dans les aliments', icone: '💧', correcte: true },
+              { texte: 'L’air autour du plat', icone: '💨' },
+              { texte: 'Le plat lui-même', icone: '🍽️' },
+            ],
+            explication:
+              'Il fait pivoter les molécules d’eau des milliards de fois par seconde : cette agitation, c’est la chaleur.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'porte-grille',
+            question: 'Pourquoi la porte du micro-ondes est-elle grillagée ?',
+            reponses: [
+              { texte: 'Les trous sont plus petits que la longueur d’onde', icone: '📏', correcte: true },
+              { texte: 'Pour laisser sortir la vapeur', icone: '💨' },
+              { texte: 'Pour renforcer la vitre', icone: '🛡️' },
+            ],
+            explication:
+              'C’est une cage de Faraday : les ondes de douze centimètres sont réfléchies, la lumière passe.',
+          },
+        ],
+      },
     },
   },
 ];

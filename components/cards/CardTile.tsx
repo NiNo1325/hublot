@@ -2,6 +2,8 @@
 
 import type { AgeRange, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
+import { useLocale } from '@/components/i18n/useLocale';
+import { localise } from '@/lib/i18n/localise';
 
 interface CardTileProps {
   card: ScienceCard;
@@ -42,8 +44,9 @@ export function CardTile({
   verrouillee,
   onSelect,
 }: CardTileProps) {
+  const { locale } = useLocale();
   const style = domainStyles[card.domainId];
-  const titre = card.content.fr.title[ageRange];
+  const titre = localise(card.content, locale).title[ageRange];
 
   return (
     <li>

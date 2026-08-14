@@ -1,4 +1,5 @@
-import type { AgeRange, QuizQuestion } from '@/lib/types';
+import type { AgeRange, Locale, QuizQuestion } from '@/lib/types';
+import { localise } from '@/lib/i18n/localise';
 import { quiz as sciencesDeLaTerre } from './sciences-de-la-terre';
 import { quiz as astronomie } from './astronomie';
 import { quiz as biologie } from './biologie';
@@ -46,9 +47,19 @@ export const quizCartes = [
 
 const parCarte = new Map(quizCartes.map((q) => [q.cardId, q]));
 
-/** Questions disponibles pour une carte et un âge, éventuellement aucune. */
-export function questionsDe(cardId: string, age: AgeRange): QuizQuestion[] {
-  return parCarte.get(cardId)?.questions[age] ?? [];
+/**
+ * Questions disponibles pour une carte, un âge et une langue, éventuellement
+ * aucune. Une carte dont le quizz n'est pas encore traduit retombe sur le
+ * français : mieux vaut une question dans l'autre langue qu'un quizz vide, qui
+ * ferait purement disparaître la carte du jeu.
+ */
+export function questionsDe(
+  cardId: string,
+  age: AgeRange,
+  locale: Locale,
+): QuizQuestion[] {
+  const questions = parCarte.get(cardId)?.questions;
+  return questions ? localise(questions, locale)[age] : [];
 }
 
 /** Identifiants des cartes disposant de questions. */

@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePauseEnArrierePlan } from '@/lib/usePauseEnArrierePlan';
+import { cheminAudio } from '@/lib/i18n/audio';
+import { useLocale } from '@/components/i18n/useLocale';
 
 /**
  * Lecture des accroches : un seul élément Audio réutilisé, qui coupe la
@@ -9,6 +11,7 @@ import { usePauseEnArrierePlan } from '@/lib/usePauseEnArrierePlan';
  * ou réseau coupé) échoue silencieusement — jamais de blocage.
  */
 export function useAccrocheAudio() {
+  const { locale } = useLocale();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [enLecture, setEnLecture] = useState<string | null>(null);
 
@@ -22,17 +25,20 @@ export function useAccrocheAudio() {
     };
   }, []);
 
-  const jouer = useCallback((domainId: string) => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    audio.pause();
-    audio.src = `/audio/accroches/${domainId}.mp3`;
-    audio.onerror = () => setEnLecture(null);
-    audio.play().then(
-      () => setEnLecture(domainId),
-      () => setEnLecture(null),
-    );
-  }, []);
+  const jouer = useCallback(
+    (domainId: string) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      audio.pause();
+      audio.src = cheminAudio(locale, `accroches/${domainId}.mp3`);
+      audio.onerror = () => setEnLecture(null);
+      audio.play().then(
+        () => setEnLecture(domainId),
+        () => setEnLecture(null),
+      );
+    },
+    [locale],
+  );
 
   // L'application passe en arrière-plan : on coupe l'accroche en cours.
   usePauseEnArrierePlan(

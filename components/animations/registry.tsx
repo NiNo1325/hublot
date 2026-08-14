@@ -1,6 +1,7 @@
 'use client';
 
 import type { ComponentType } from 'react';
+import type { Locale } from '@/lib/types';
 import { CycleDeLEauAnimation } from './CycleDeLEauAnimation';
 import { JourEtNuitAnimation } from './JourEtNuitAnimation';
 import { PhotosyntheseAnimation } from './PhotosyntheseAnimation';
@@ -170,6 +171,12 @@ export interface CardAnimationProps {
   activeBeatId: string | null;
   isPlaying: boolean;
   prefersReducedMotion: boolean;
+  /**
+   * Langue d'affichage. Les illustrations portent leurs propres légendes, en
+   * dur dans le SVG : elles sont donc du contenu à traduire, et chacune lit
+   * cette prop au fur et à mesure que sa traduction arrive.
+   */
+  locale: Locale;
 }
 
 /**

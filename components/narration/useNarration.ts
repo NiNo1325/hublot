@@ -1,8 +1,10 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { AgeRange, CardBeat } from '@/lib/types';
+import type { AgeRange, CardBeat, Locale } from '@/lib/types';
 import { usePauseEnArrierePlan } from '@/lib/usePauseEnArrierePlan';
+import { cheminAudio } from '@/lib/i18n/audio';
+import { useLocale } from '@/components/i18n/useLocale';
 
 /** Durée d'affichage d'un beat quand l'audio est indisponible. */
 const DUREE_BEAT_SILENCIEUX_MS = 6500;
@@ -24,8 +26,13 @@ export interface NarrationState {
 }
 
 /** Chemin déterministe, produit par `scripts/generer-audio.mjs`. */
-function urlBeat(cardId: string, age: AgeRange, beatId: string): string {
-  return `/audio/${cardId}/${age}/${beatId}.mp3`;
+function urlBeat(
+  locale: Locale,
+  cardId: string,
+  age: AgeRange,
+  beatId: string,
+): string {
+  return cheminAudio(locale, `${cardId}/${age}/${beatId}.mp3`);
 }
 
 /**
@@ -42,6 +49,7 @@ export function useNarration(
   beats: CardBeat[],
   demarrageAuto = true,
 ) {
+  const { locale } = useLocale();
   const [status, setStatus] = useState<NarrationStatus>('pret');
   const [activeIndex, setActiveIndex] = useState(-1);
   const [estTermine, setEstTermine] = useState(false);
@@ -114,7 +122,7 @@ export function useNarration(
       */
       let traite = false;
 
-      audio.src = urlBeat(cardId, age, beats[index].id);
+      audio.src = urlBeat(locale, cardId, age, beats[index].id);
       audio.onended = () => {
         if (session !== sessionRef.current) return;
         jouerBeatRef.current?.(index + 1, false);
@@ -150,12 +158,12 @@ export function useNarration(
       // Prépare le beat suivant pendant que celui-ci se joue.
       const suivant = beats[index + 1];
       if (suivant) {
-        const precharge = new Audio(urlBeat(cardId, age, suivant.id));
+        const precharge = new Audio(urlBeat(locale, cardId, age, suivant.id));
         precharge.preload = 'auto';
         prechargeRef.current = precharge;
       }
     },
-    [beats, cardId, age, arreterMinuterie],
+    [beats, cardId, age, locale, arreterMinuterie],
   );
 
   useEffect(() => {
@@ -184,8 +192,9 @@ export function useNarration(
       audioRef.current = null;
       prechargeRef.current = null;
     };
-    // Un changement de carte ou d'âge doit repartir du premier beat.
-  }, [cardId, age, demarrageAuto]);
+    // Un changement de carte, d'âge ou de langue doit repartir du premier beat :
+    // le texte affiché et les fichiers audio changent tous les trois.
+  }, [cardId, age, locale, demarrageAuto]);
 
   const play = useCallback(
     (depuis = 0) => {

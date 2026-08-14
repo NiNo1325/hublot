@@ -7,6 +7,8 @@ import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { useCartesVues, vuesStockees } from '@/components/cards/useCartesVues';
 import { useCartesMaitrisees, maitriseesStockees } from '@/components/cards/useCartesMaitrisees';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
+import { useLocale } from '@/components/i18n/useLocale';
+import { localise } from '@/lib/i18n/localise';
 import { useCelebration } from './CelebrationProvider';
 
 interface DetecteurProgresProps {
@@ -28,6 +30,7 @@ export function DetecteurProgres({ cards, domains }: DetecteurProgresProps) {
   const { cartesVues } = useCartesVues();
   const { cartesMaitrisees } = useCartesMaitrisees();
   const { etoiles } = useEtoiles();
+  const { locale } = useLocale();
   const rangIndex = rangDepuisEtoiles(etoiles).rang.index;
 
   const vuesPrec = useRef<Set<string> | null>(null);
@@ -58,7 +61,7 @@ export function DetecteurProgres({ cards, domains }: DetecteurProgresProps) {
         celebrer({
           rang: rangIndex,
           titre: 'Toutes les cartes écoutées !',
-          sousTitre: `${d.icon} ${d.labels.fr}`,
+          sousTitre: `${d.icon} ${localise(d.labels, locale)}`,
           embleme: '🧭',
         });
       }
@@ -70,7 +73,7 @@ export function DetecteurProgres({ cards, domains }: DetecteurProgresProps) {
         celebrer({
           rang: rangIndex,
           titre: 'Tout le quiz réussi !',
-          sousTitre: `${d.icon} ${d.labels.fr}`,
+          sousTitre: `${d.icon} ${localise(d.labels, locale)}`,
           embleme: '🏅',
         });
       }
@@ -87,7 +90,7 @@ export function DetecteurProgres({ cards, domains }: DetecteurProgresProps) {
         embleme: '🏆',
       });
     }
-  }, [cartesVues, cartesMaitrisees, rangIndex, cards, domains, celebrer]);
+  }, [cartesVues, cartesMaitrisees, rangIndex, cards, domains, celebrer, locale]);
 
   return null;
 }

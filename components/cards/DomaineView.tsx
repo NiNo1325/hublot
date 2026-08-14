@@ -8,6 +8,8 @@ import { estPremium } from '@/content/acces';
 import { premiumActif } from '@/lib/premium/flag';
 import { useEntitlement } from '@/components/premium/useEntitlement';
 import { Paywall } from '@/components/premium/Paywall';
+import { useLocale } from '@/components/i18n/useLocale';
+import { localise } from '@/lib/i18n/localise';
 import { CardGrid } from './CardGrid';
 import { CardModal } from './CardModal';
 import { useCartesVues } from './useCartesVues';
@@ -25,6 +27,7 @@ export function DomaineView({ domain, cards }: DomaineViewProps) {
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
   const { premium } = useEntitlement();
+  const { locale } = useLocale();
   const [paywallOuvert, setPaywallOuvert] = useState(false);
   const [carteOuverte, setCarteOuverte] = useState<ScienceCard | null>(null);
 
@@ -56,7 +59,8 @@ export function DomaineView({ domain, cards }: DomaineViewProps) {
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-10 px-6 py-10">
       <header className="flex flex-col items-center gap-4">
         <h1 className="flex items-center gap-3 font-display text-3xl font-semibold sm:text-4xl">
-          <span aria-hidden="true">{domain.icon}</span> {domain.labels.fr}
+          <span aria-hidden="true">{domain.icon}</span>{' '}
+          {localise(domain.labels, locale)}
         </h1>
       </header>
 

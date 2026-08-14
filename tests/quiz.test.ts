@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { quizCartes } from '@/content/quiz';
 import { cards } from '@/content/cards';
-import { AGE_RANGES } from '@/lib/types';
+import { AGE_RANGES, LOCALES } from '@/lib/types';
 
 /**
  * Cartes livrées avant l'audio de leur quizz, en attente de quota TTS.
@@ -33,12 +33,24 @@ describe('intégrité du quizz', () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
+  /*
+    Chaque langue traduite est vérifiée comme la source : une traduction n'est
+    pas qu'un texte de remplacement, elle doit garder exactement une bonne
+    réponse, ses icônes et un nombre de propositions jouable. Les langues
+    absentes ne produisent pas de cas — rien à vérifier tant qu'on retombe sur
+    le français.
+  */
   const cas = quizCartes.flatMap((q) =>
-    AGE_RANGES.map((age) => [`${q.cardId} — ${age}`, q, age] as const),
+    LOCALES.filter((locale) => q.questions[locale]).flatMap((locale) =>
+      AGE_RANGES.map(
+        (age) =>
+          [`${q.cardId} — ${locale} — ${age}`, q.questions[locale]!, age] as const,
+      ),
+    ),
   );
 
-  it.each(cas)('%s propose des questions valides', (_libelle, quiz, age) => {
-    const questions = quiz.questions[age];
+  it.each(cas)('%s propose des questions valides', (_libelle, parAge, age) => {
+    const questions = parAge[age];
     expect(questions.length, 'aucune question').toBeGreaterThan(0);
 
     for (const question of questions) {
@@ -65,15 +77,18 @@ describe('intégrité du quizz', () => {
     Les plus jeunes ne lisent pas et ne peuvent comparer que deux propositions
     à l'oral. Au-delà, la question devient un test de mémoire.
   */
-  it.each(quizCartes.map((q) => [q.cardId, q] as const))(
-    '%s reste simple pour les 3-5 ans',
-    (_id, quiz) => {
-      for (const question of quiz.questions['3-5']) {
-        expect(question.reponses.length).toBeLessThanOrEqual(2);
-        expect(question.question.length, 'énoncé trop long à écouter').toBeLessThan(90);
-      }
-    },
-  );
+  it.each(
+    quizCartes.flatMap((q) =>
+      LOCALES.filter((locale) => q.questions[locale]).map(
+        (locale) => [`${q.cardId} — ${locale}`, q.questions[locale]!] as const,
+      ),
+    ),
+  )('%s reste simple pour les 3-5 ans', (_libelle, parAge) => {
+    for (const question of parAge['3-5']) {
+      expect(question.reponses.length).toBeLessThanOrEqual(2);
+      expect(question.question.length, 'énoncé trop long à écouter').toBeLessThan(90);
+    }
+  });
 
   /*
     L'audio du quizz est généré hors ligne par `npm run audio:quiz`. Une
@@ -81,12 +96,15 @@ describe('intégrité du quizz', () => {
     ne pourraient pas jouer. Deux fichiers par question, l'énoncé et
     l'explication. Les cartes livrées avant l'audio de leur quizz sont déclarées
     dans EN_ATTENTE_AUDIO_QUIZ (voir en tête de fichier).
+
+    Le français seul : c'est la seule langue enregistrée, l'audio des autres
+    étant une phase à part (régénération TTS complète vers `/audio/<locale>/`).
   */
   const fichiersAudio = quizCartes
     .filter((quiz) => !EN_ATTENTE_AUDIO_QUIZ.has(quiz.cardId))
     .flatMap((quiz) =>
     AGE_RANGES.flatMap((age) =>
-      quiz.questions[age].flatMap((question) =>
+      quiz.questions.fr[age].flatMap((question) =>
         (['question', 'explication'] as const).map(
           (partie) =>
             [

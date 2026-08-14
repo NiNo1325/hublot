@@ -1,25 +1,28 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { AgeRange } from '@/lib/types';
+import type { AgeRange, Locale } from '@/lib/types';
 import { VERDICTS, cheminVerdict, type Verdict } from '@/content/quiz/verdicts';
 import { usePauseEnArrierePlan } from '@/lib/usePauseEnArrierePlan';
+import { cheminAudio } from '@/lib/i18n/audio';
+import { useLocale } from '@/components/i18n/useLocale';
 
 /** Chemin déterministe, produit par `scripts/generer-audio-quiz.mjs`. */
 function url(
+  locale: Locale,
   cardId: string,
   age: AgeRange,
   questionId: string,
   partie: 'question' | 'explication',
 ): string {
-  return `/audio/quiz/${cardId}/${age}/${questionId}-${partie}.mp3`;
+  return cheminAudio(locale, `quiz/${cardId}/${age}/${questionId}-${partie}.mp3`);
 }
 
-function urlVerdict(age: AgeRange, verdict: Verdict): string {
+function urlVerdict(locale: Locale, age: AgeRange, verdict: Verdict): string {
   // Une formulation au hasard : huit fois la même phrase dans une série
   // transformerait l'encouragement en ritournelle.
   const rang = Math.floor(Math.random() * VERDICTS[age][verdict].length);
-  return `/audio/quiz/${cheminVerdict(age, verdict, rang)}.mp3`;
+  return cheminAudio(locale, `quiz/${cheminVerdict(age, verdict, rang)}.mp3`);
 }
 
 /**
@@ -32,6 +35,7 @@ function urlVerdict(age: AgeRange, verdict: Verdict): string {
  * Un fichier absent n'est pas une panne : le quizz reste jouable en silence.
  */
 export function useQuizAudio(age: AgeRange) {
+  const { locale } = useLocale();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [enLecture, setEnLecture] = useState(false);
 
@@ -90,9 +94,9 @@ export function useQuizAudio(age: AgeRange) {
 
   const jouer = useCallback(
     (cardId: string, questionId: string, partie: 'question' | 'explication') => {
-      jouerSuite([url(cardId, age, questionId, partie)]);
+      jouerSuite([url(locale, cardId, age, questionId, partie)]);
     },
-    [age, jouerSuite],
+    [locale, age, jouerSuite],
   );
 
   /*
@@ -102,9 +106,11 @@ export function useQuizAudio(age: AgeRange) {
   */
   const jouerProposition = useCallback(
     (cardId: string, questionId: string, index: number) => {
-      jouerSuite([`/audio/quiz/${cardId}/${age}/${questionId}-prop-${index}.mp3`]);
+      jouerSuite([
+        cheminAudio(locale, `quiz/${cardId}/${age}/${questionId}-prop-${index}.mp3`),
+      ]);
     },
-    [age, jouerSuite],
+    [locale, age, jouerSuite],
   );
 
   /*
@@ -115,11 +121,11 @@ export function useQuizAudio(age: AgeRange) {
   const jouerVerdict = useCallback(
     (cardId: string, questionId: string, verdict: Verdict) => {
       jouerSuite([
-        urlVerdict(age, verdict),
-        url(cardId, age, questionId, 'explication'),
+        urlVerdict(locale, age, verdict),
+        url(locale, cardId, age, questionId, 'explication'),
       ]);
     },
-    [age, jouerSuite],
+    [locale, age, jouerSuite],
   );
 
   return { jouer, jouerProposition, jouerVerdict, arreter, enLecture };

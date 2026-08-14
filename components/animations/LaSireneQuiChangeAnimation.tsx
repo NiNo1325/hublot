@@ -1,9 +1,31 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    arrivee: 'l’ambulance arrive, sirène allumée',
+    devant: 'devant : les ondes tassées, aigu',
+    passage: 'vroum ! elle passe devant toi',
+    derriere: 'derrière : les ondes étirées, grave',
+  },
+  en: {
+    arrivee: 'the ambulance comes, siren on',
+    devant: 'in front: waves squashed, high',
+    passage: 'vroom! it goes right past you',
+    derriere: 'behind: waves stretched, low',
+  },
+};
 
 /**
  * Effet Doppler : la sirène émet toujours le même son, c'est le mouvement du
@@ -14,10 +36,12 @@ export function LaSireneQuiChangeAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -38,7 +62,7 @@ export function LaSireneQuiChangeAnimation({
           <circle cx="36" cy="24" r="6" fill="#1f2937" />
           <rect x="18" y="-6" width="10" height="6" fill="#fde047" />
         </g>
-        <text x="16" y="60" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>l’ambulance arrive, sirène allumée</text>
+        <text x="16" y="60" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.arrivee}</text>
       </g>
 
       {/* Phase 2 : devant elle, les ondes se tassent : aigu */}
@@ -53,7 +77,7 @@ export function LaSireneQuiChangeAnimation({
             {anime && <animate attributeName="opacity" values="0.2;1;0.2" dur="0.8s" begin={`${i * 0.15}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="16" y="60" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>devant : les ondes tassées, aigu</text>
+        <text x="16" y="60" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.devant}</text>
       </g>
 
       {/* Phase 3 : elle te dépasse */}
@@ -63,7 +87,7 @@ export function LaSireneQuiChangeAnimation({
           <circle cx="10" cy="24" r="6" fill="#1f2937" />
           <circle cx="36" cy="24" r="6" fill="#1f2937" />
         </g>
-        <text x="70" y="60" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>vroum ! elle passe devant toi</text>
+        <text x="70" y="60" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.passage}</text>
       </g>
 
       {/* Phase 4 : derrière elle, les ondes s'étirent : grave */}
@@ -78,7 +102,7 @@ export function LaSireneQuiChangeAnimation({
             {anime && <animate attributeName="opacity" values="0.2;1;0.2" dur="1.6s" begin={`${i * 0.25}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="16" y="60" fill="#fb923c" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>derrière : les ondes étirées, grave</text>
+        <text x="16" y="60" fill="#fb923c" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.derriere}</text>
       </g>
     </svg>
   );

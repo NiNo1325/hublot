@@ -79,5 +79,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Where does your voice come from?',
+        '6-8': 'Why voices are all different',
+        '9-12': 'Why every voice is unique',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Air comes out of your lungs and rises up your throat.',
+            },
+            {
+              id: 'deux',
+              text: 'It makes two little cords shake, deep in your throat.',
+            },
+            {
+              id: 'trois',
+              text: 'Your mouth and your nose give that sound its colour.',
+            },
+            {
+              id: 'quatre',
+              text: 'Your throat and mouth have a shape all of their own: your voice is unique!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you speak, air rises from your lungs towards your throat.',
+            },
+            {
+              id: 'deux',
+              text: 'It makes the vocal cords vibrate, two small folds stretched across your throat: that is where the sound of your voice is born.',
+            },
+            {
+              id: 'trois',
+              text: 'The sound then passes through your throat, your mouth and your nose, which reshape it like a sounding box.',
+            },
+            {
+              id: 'quatre',
+              text: 'Since nobody has exactly the same shape of throat, mouth or nose, every voice is unique — even between twins.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'As you speak, air breathed out from the lungs travels up the windpipe to the larynx.',
+            },
+            {
+              id: 'deux',
+              text: 'It makes the vocal cords vibrate, two folds of tissue stretched across the larynx: this vibration creates the raw sound of the voice, not the mouth.',
+            },
+            {
+              id: 'trois',
+              text: 'The sound then passes through the cavities of the throat, mouth and nose, which act as a sounding box and reinforce some frequencies rather than others.',
+            },
+            {
+              id: 'quatre',
+              text: 'The exact shape of those cavities differs from one person to the next: it is this unique combination that gives every voice a colour recognisable among all others.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

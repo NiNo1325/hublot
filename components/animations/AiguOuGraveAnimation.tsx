@@ -1,9 +1,31 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    pincer: 'tu pinces la corde',
+    aigu: 'vite : un son aigu, un sifflet',
+    grave: 'lentement : un son grave, un tambour',
+    courte: 'courte et tendue → plus aigu',
+  },
+  en: {
+    pincer: 'you pluck the string',
+    aigu: 'fast: a high sound, a whistle',
+    grave: 'slow: a low sound, a drum',
+    courte: 'short and tight → higher',
+  },
+};
 
 /**
  * Aigu et grave dépendent de la vitesse de vibration de la corde, sa
@@ -14,10 +36,12 @@ export function AiguOuGraveAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -31,7 +55,7 @@ export function AiguOuGraveAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <path d="M64 100 Q200 100 336 100" stroke="#e879f9" strokeWidth="2.5" fill="none" />
         <path d="M195 100 L205 118 L215 100" fill="none" stroke="#fbcfe8" strokeWidth="2.5" strokeLinecap="round" />
-        <text x="86" y="150" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>tu pinces la corde</text>
+        <text x="86" y="150" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.pincer}</text>
       </g>
 
       {/* Phase 2 : elle vibre vite, le son est aigu */}
@@ -50,7 +74,7 @@ export function AiguOuGraveAnimation({
           d="M64 168 Q79 153 94 168 Q109 183 124 168 Q139 153 154 168 Q169 183 184 168 Q199 153 214 168 Q229 183 244 168 Q259 153 274 168 Q289 183 304 168 Q319 153 336 168"
           stroke="#38bdf8" strokeWidth="2" fill="none"
         />
-        <text x="60" y="212" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>vite : un son aigu, un sifflet</text>
+        <text x="60" y="212" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.aigu}</text>
       </g>
 
       {/* Phase 3 : elle vibre lentement, le son est grave */}
@@ -69,7 +93,7 @@ export function AiguOuGraveAnimation({
           d="M64 168 Q104 128 144 168 Q184 208 224 168 Q264 128 304 168 Q324 148 336 168"
           stroke="#fb923c" strokeWidth="2" fill="none"
         />
-        <text x="48" y="212" fill="#fb923c" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>lentement : un son grave, un tambour</text>
+        <text x="48" y="212" fill="#fb923c" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.grave}</text>
       </g>
 
       {/* Phase 4 : plus courte et plus tendue, elle vibre plus vite */}
@@ -88,7 +112,7 @@ export function AiguOuGraveAnimation({
             />
           )}
         </path>
-        <text x="66" y="150" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>courte et tendue → plus aigu</text>
+        <text x="66" y="150" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.courte}</text>
       </g>
     </svg>
   );

@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The siren that sings differently',
+        '6-8': 'The siren that changes',
+        '9-12': 'The Doppler effect: why a siren changes its sound',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'An ambulance comes towards you, siren wailing.',
+            },
+            {
+              id: 'deux',
+              text: 'In front of it, the sound is all squashed up: it sounds high.',
+            },
+            {
+              id: 'trois',
+              text: 'It goes right past you, vroom!',
+            },
+            {
+              id: 'quatre',
+              text: 'Behind it, the sound stretches out: it sounds low.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'An ambulance races towards you, siren screaming.',
+            },
+            {
+              id: 'deux',
+              text: 'In front of the vehicle, the sound waves pile up against each other: the sound seems higher to you.',
+            },
+            {
+              id: 'trois',
+              text: 'The moment it passes you, the sound changes all at once.',
+            },
+            {
+              id: 'quatre',
+              text: 'Behind it, the waves stretch out, further apart: the sound seems lower. That change is what you hear — not the driver turning the volume down.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'An ambulance moves towards you while giving out a sound of constant frequency.',
+            },
+            {
+              id: 'deux',
+              text: 'Because the vehicle travels in the same direction as the waves it emits, they bunch up in front of it: their frequency as you hear it rises, and the sound seems higher.',
+            },
+            {
+              id: 'trois',
+              text: 'As the vehicle goes past, the relative direction reverses instantly.',
+            },
+            {
+              id: 'quatre',
+              text: 'Behind the ambulance moving away, the waves stretch out and the frequency you hear falls: the sound seems lower. This is the Doppler effect, caused purely by the relative motion of the source; the siren itself never changes frequency.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -1,9 +1,31 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    air: 'le son voyage dans l’air, vers l’oreille',
+    os: 'il traverse aussi les os du crâne',
+    graves: 'les os ajoutent plein de graves',
+    micro: 'le micro capte moins de graves : ça sonne différent',
+  },
+  en: {
+    air: 'sound travels through the air, to the ear',
+    os: 'it also crosses the skull bones',
+    graves: 'bone adds plenty of low notes',
+    micro: 'the mic picks up fewer lows: it sounds different',
+  },
+};
 
 /**
  * Le micro ne déforme rien : c'est notre propre perception qui est enrichie
@@ -14,10 +36,12 @@ export function MaVoixEnregistreeAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -41,7 +65,7 @@ export function MaVoixEnregistreeAnimation({
             />
           )}
         </circle>
-        <text x="16" y="46" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>le son voyage dans l’air, vers l’oreille</text>
+        <text x="16" y="46" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.air}</text>
       </g>
 
       {/* Phase 2 : il traverse aussi les os du crâne */}
@@ -50,13 +74,13 @@ export function MaVoixEnregistreeAnimation({
         <circle r="4" fill="#e879f9">
           {anime && <animateMotion dur="1s" repeatCount="indefinite" path="M132 128 Q170 150 222 110" />}
         </circle>
-        <text x="16" y="46" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>il traverse aussi les os du crâne</text>
+        <text x="16" y="46" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.os}</text>
       </g>
 
       {/* Phase 3 : les os ajoutent des graves */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
         <path d="M100 176 Q130 150 160 176 Q190 202 220 176" stroke="#fb923c" strokeWidth="3" fill="none" />
-        <text x="16" y="46" fill="#fb923c" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>les os ajoutent plein de graves</text>
+        <text x="16" y="46" fill="#fb923c" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.graves}</text>
       </g>
 
       {/* Phase 4 : le micro ne capte que l'air, plus aigu */}
@@ -67,7 +91,7 @@ export function MaVoixEnregistreeAnimation({
           <line x1="0" y1="20" x2="0" y2="30" stroke="#a3e635" strokeWidth="2" />
         </g>
         <path d="M270 150 Q285 140 300 150 Q315 160 330 150" stroke="#a3e635" strokeWidth="2" fill="none" />
-        <text x="16" y="46" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>le micro capte moins de graves : ça sonne différent</text>
+        <text x="16" y="46" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.micro}</text>
       </g>
     </svg>
   );

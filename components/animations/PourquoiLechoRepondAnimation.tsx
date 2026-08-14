@@ -1,9 +1,31 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    crier: 'tu cries : « Hou hou ! »',
+    foncer: 'le son fonce vers le mur',
+    rebondir: 'il rebondit dessus',
+    revenir: 'ça revient, un peu plus tard',
+  },
+  en: {
+    crier: 'you shout: “Hoo hoo!”',
+    foncer: 'the sound races to the wall',
+    rebondir: 'it bounces off it',
+    revenir: 'it comes back, a little later',
+  },
+};
 
 /**
  * L'écho n'est pas une voix qui répond : c'est ton propre cri qui voyage
@@ -14,10 +36,12 @@ export function PourquoiLechoRepondAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -43,7 +67,7 @@ export function PourquoiLechoRepondAnimation({
         {[0, 1].map((i) => (
           <circle key={i} cx={92 + i * 16} cy="150" r={4 + i * 3} fill="none" stroke="#fde047" strokeWidth="1.5" opacity="0.7" />
         ))}
-        <text x="16" y="200" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>tu cries : « Hou hou ! »</text>
+        <text x="16" y="200" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.crier}</text>
       </g>
 
       {/* Phase 2 : le son fonce en ligne droite vers la paroi */}
@@ -53,7 +77,7 @@ export function PourquoiLechoRepondAnimation({
             {anime && <animate attributeName="opacity" values="0.15;1;0.15" dur="1.4s" begin={`${i * 0.3}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="16" y="222" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>le son fonce vers le mur</text>
+        <text x="16" y="222" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.foncer}</text>
       </g>
 
       {/* Phase 3 : il rebondit sur la paroi, comme une balle */}
@@ -68,7 +92,7 @@ export function PourquoiLechoRepondAnimation({
         </defs>
         <path d="M300 150 L332 150" stroke="#e879f9" strokeWidth="3" markerEnd="url(#fleche-echo-1)" />
         <path d="M300 126 L268 126" stroke="#e879f9" strokeWidth="3" markerEnd="url(#fleche-echo-1)" />
-        <text x="220" y="200" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>il rebondit dessus</text>
+        <text x="220" y="200" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.rebondir}</text>
       </g>
 
       {/* Phase 4 : l'écho revient, un peu plus tard */}
@@ -82,7 +106,7 @@ export function PourquoiLechoRepondAnimation({
           <circle r="9" fill="none" stroke="#a3e635" strokeWidth="1.5" />
           <path d="M0 -5 L0 0 L4 2" stroke="#a3e635" strokeWidth="1.5" fill="none" strokeLinecap="round" />
         </g>
-        <text x="100" y="196" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>ça revient, un peu plus tard</text>
+        <text x="100" y="196" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.revenir}</text>
       </g>
     </svg>
   );

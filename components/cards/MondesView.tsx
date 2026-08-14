@@ -7,6 +7,7 @@ import type { DomainDefinition, ScienceCard } from '@/lib/types';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { progressionDomaine } from '@/lib/progression';
 import { badgesDomaine } from '@/lib/badges';
+import { useT } from '@/components/i18n/useT';
 import { MondeTile } from './MondeTile';
 import { useAccrocheAudio } from './useAccrocheAudio';
 import { useCartesVues } from './useCartesVues';
@@ -23,6 +24,7 @@ export function MondesView({ cards, domains }: MondesViewProps) {
   const { cartesVues } = useCartesVues();
   const { cartesMaitrisees } = useCartesMaitrisees();
   const { jouer, enLecture } = useAccrocheAudio();
+  const t = useT();
 
   // Accès direct sans âge choisi : retour à l'accueil.
   useEffect(() => {
@@ -35,16 +37,14 @@ export function MondesView({ cards, domains }: MondesViewProps) {
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-10 px-6 py-10">
       <header className="flex flex-col items-center gap-3 text-center">
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-          Qu&apos;est-ce qui t&apos;intéresse&nbsp;?
+          {t('decouvrir.titre')}
         </h1>
-        <p className="max-w-md text-craie-douce">
-          Ta bibliothèque : explore et revois ce que tu veux, quand tu veux, sans ordre imposé.
-        </p>
+        <p className="max-w-md text-craie-douce">{t('decouvrir.sous-titre')}</p>
         <Link
           href="/parcours"
           className="text-sm text-craie-douce underline-offset-4 transition-colors hover:text-soleil hover:underline"
         >
-          Envie d&apos;un chemin guidé&nbsp;? → Parcours
+          {t('decouvrir.chemin-guide')}
         </Link>
       </header>
 

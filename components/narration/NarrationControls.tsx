@@ -1,5 +1,6 @@
 'use client';
 
+import { useT } from '@/components/i18n/useT';
 import type { NarrationState } from './useNarration';
 
 interface NarrationControlsProps {
@@ -27,6 +28,7 @@ export function NarrationControls({
   onReculer,
 }: NarrationControlsProps) {
   const { status, isPlaying, activeIndex } = state;
+  const t = useT();
 
   /*
     L'action affichée dépend de la progression réelle, pas du seul `status` :
@@ -46,7 +48,7 @@ export function NarrationControls({
           type="button"
           onClick={onReculer}
           className={BOUTON_SECONDAIRE}
-          aria-label="Étape précédente"
+          aria-label={t('narration.precedente')}
         >
           <span aria-hidden="true">⏮</span>
         </button>
@@ -54,26 +56,25 @@ export function NarrationControls({
 
       {isPlaying ? (
         <button type="button" onClick={onPause} className={BOUTON}>
-          <span aria-hidden="true">⏸</span> Pause
+          <span aria-hidden="true">⏸</span> {t('narration.pause')}
         </button>
       ) : status === 'pause' ? (
         <button type="button" onClick={onResume} className={BOUTON}>
-          <span aria-hidden="true">▶</span> Reprendre
+          <span aria-hidden="true">▶</span> {t('narration.reprendre')}
         </button>
       ) : activeIndex === -1 ? (
         <button type="button" onClick={onPlay} className={BOUTON}>
-          <span aria-hidden="true">▶</span> Écouter
+          <span aria-hidden="true">▶</span> {t('narration.ecouter')}
         </button>
       ) : (
         <button type="button" onClick={onReplay} className={BOUTON}>
-          <span aria-hidden="true">↻</span> Réécouter
+          <span aria-hidden="true">↻</span> {t('narration.reecouter')}
         </button>
       )}
 
       {state.isSilent && (
         <p className="w-full text-center text-sm text-craie-douce">
-          Le son n&apos;a pas pu être chargé. L&apos;explication défile à
-          l&apos;écrit.
+          {t('narration.silencieux')}
         </p>
       )}
     </div>

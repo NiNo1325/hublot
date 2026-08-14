@@ -1,7 +1,11 @@
 /**
  * Audite les illustrations des cartes dans un vrai navigateur.
  *
- * Usage : npx tsx scripts/auditer-illustrations.mjs [url]
+ * Usage : npx tsx scripts/auditer-illustrations.mjs [url] [langue]
+ *
+ * La langue restreint l'audit à une seule traduction — le catalogue entier
+ * demande plusieurs minutes, et un traducteur n'a besoin de vérifier que la
+ * sienne. Sans argument, toutes les langues présentes sont auditées.
  *
  * Mesure la position réelle de chaque élément dans le navigateur, plutôt que
  * d'estimer la largeur des textes à partir du nombre de caractères — une
@@ -14,11 +18,18 @@
  *
  * Le viewBox étant fixe, la composition est identique sur mobile et sur
  * ordinateur : un seul passage suffit pour les deux.
+ *
+ * Chaque langue traduite est auditée séparément. Une composition qui tient en
+ * français ne tient pas forcément ailleurs : les légendes changent de longueur
+ * en traduction, et c'est précisément le genre de défaut qu'on ne verrait
+ * jamais à l'œil sur des centaines de cartes.
  */
 import { chromium } from 'playwright';
 import { cards } from '../content/cards/index.ts';
+import { LOCALES } from '../lib/types.ts';
 
 const URL = process.argv[2] ?? 'http://localhost:3001';
+const LANGUE_DEMANDEE = process.argv[3] ?? null;
 const VIEWBOX = { largeur: 400, hauteur: 240 };
 /** En deçà, le recouvrement est trop faible pour gêner la lecture. */
 const SURFACE_MIN = 30;
@@ -43,21 +54,55 @@ const page = await navigateur.newPage({ viewport: { width: 1280, height: 900 } }
 await page.route('**/audio/**', (route) => route.abort());
 
 await page.goto(`${URL}/`);
-await page.evaluate(() =>
-  window.localStorage.setItem('science.ageRange.v1', '9-12'),
-);
+/*
+  L'âge fixe la version du texte auditée. Le tutoriel est marqué vu : sinon sa
+  présentation s'ouvre par-dessus la grille et intercepte tous les clics.
+*/
+await page.evaluate(() => {
+  window.localStorage.setItem('science.ageRange.v1', '9-12');
+  window.localStorage.setItem('science.tutoVu.v1', '1');
+});
 
 const rapport = [];
 
-for (const carte of cards) {
-  await page.goto(`${URL}/decouvrir`);
-  const titre = carte.content.fr.title['9-12'];
+/*
+  Une carte est auditée dans chacune des langues où elle est traduite. Les
+  autres retombent sur le français, déjà couvert par le passage `fr`.
+
+  Les passages sont groupés par langue : la préférence vit dans le stockage
+  local, la poser une fois par langue suffit. La rétablir carte par carte
+  imposerait un rechargement complet à chaque tour — soit le double du travail
+  sur un catalogue qui compte déjà des centaines de passages.
+*/
+const langues = LANGUE_DEMANDEE ? [LANGUE_DEMANDEE] : LOCALES;
+if (LANGUE_DEMANDEE && !LOCALES.includes(LANGUE_DEMANDEE)) {
+  console.error(`Langue inconnue : ${LANGUE_DEMANDEE} (attendu : ${LOCALES.join(', ')})`);
+  process.exit(1);
+}
+
+const passages = langues.flatMap((locale) =>
+  cards.filter((carte) => carte.content[locale]).map((carte) => ({ carte, locale })),
+);
+
+let langueEnCours = null;
+
+for (const { carte, locale } of passages) {
+  if (locale !== langueEnCours) {
+    await page.goto(`${URL}/decouvrir`);
+    await page.evaluate((l) => window.localStorage.setItem('science.locale.v1', l), locale);
+    langueEnCours = locale;
+  }
+  // Les cartes vivent dans la grille de leur monde ; `/decouvrir` n'affiche
+  // que les mondes eux-mêmes.
+  await page.goto(`${URL}/decouvrir/${carte.domainId}`);
+  const titre = carte.content[locale].title['9-12'];
+  const libelle = locale === 'fr' ? carte.id : `${carte.id} (${locale})`;
 
   try {
     await page.getByRole('button', { name: titre }).click({ timeout: 8000 });
     await page.waitForSelector('dialog svg', { timeout: 8000 });
   } catch {
-    rapport.push({ carte: carte.id, type: 'ouverture', detail: 'carte introuvable' });
+    rapport.push({ carte: libelle, type: 'ouverture', detail: 'carte introuvable' });
     continue;
   }
 
@@ -85,8 +130,24 @@ for (const carte of cards) {
       };
     };
 
+    /*
+      Opacité réelle, cumulée avec celle des groupes parents : une illustration
+      porte toutes ses légendes en même temps dans le DOM et n'en montre qu'une
+      par phase, les autres à `opacity: 0`. Sans ce calcul, deux légendes
+      successives posées au même endroit se déclarent superposées alors
+      qu'elles ne paraissent jamais ensemble.
+    */
+    const opaciteReelle = (el) => {
+      let valeur = 1;
+      for (let n = el; n && n !== svg.parentElement; n = n.parentElement) {
+        valeur *= Number(getComputedStyle(n).opacity);
+      }
+      return valeur;
+    };
+
     const textes = [...svg.querySelectorAll('text')].map((el) => ({
       contenu: el.textContent.trim().slice(0, 40),
+      visible: opaciteReelle(el) > 0.05,
       ...lire(el),
     }));
 
@@ -100,24 +161,31 @@ for (const carte of cards) {
 
     if (t.x < -2 || t.x + t.largeur > VIEWBOX.largeur + 2) {
       rapport.push({
-        carte: carte.id,
+        carte: libelle,
         type: 'hors cadre',
         detail: `« ${t.contenu} » dépasse de ${Math.round(t.x + t.largeur - VIEWBOX.largeur)}px`,
       });
     }
     if (t.y + t.hauteur > VIEWBOX.hauteur + 2) {
       rapport.push({
-        carte: carte.id,
+        carte: libelle,
         type: 'hors cadre (bas)',
         detail: `« ${t.contenu} » dépasse de ${Math.round(t.y + t.hauteur - VIEWBOX.hauteur)}px`,
       });
     }
   }
 
-  for (let i = 0; i < mesures.textes.length; i += 1) {
-    for (let j = i + 1; j < mesures.textes.length; j += 1) {
-      const a = mesures.textes[i];
-      const b = mesures.textes[j];
+  /*
+    Le recouvrement ne se juge qu'entre légendes affichées en même temps. Le
+    dépassement de cadre, lui, se juge sur toutes : une légende hors champ
+    l'est à chaque fois qu'elle paraît, visible ou non à l'instant de la mesure.
+  */
+  const visibles = mesures.textes.filter((t) => t.visible);
+
+  for (let i = 0; i < visibles.length; i += 1) {
+    for (let j = i + 1; j < visibles.length; j += 1) {
+      const a = visibles[i];
+      const b = visibles[j];
       if (!a.largeur || !b.largeur) continue;
       /*
         Deux lignes d'un même bloc de légende partagent leur abscisse et se
@@ -129,7 +197,7 @@ for (const carte of cards) {
       const surface = aire(intersection(a, b));
       if (!memeBloc && surface > SURFACE_MIN) {
         rapport.push({
-          carte: carte.id,
+          carte: libelle,
           type: 'textes superposés',
           detail: `« ${a.contenu} » × « ${b.contenu} » (${Math.round(surface)}px²)`,
         });
@@ -142,7 +210,7 @@ for (const carte of cards) {
 await navigateur.close();
 
 if (rapport.length === 0) {
-  console.log(`Aucun défaut détecté sur les ${cards.length} cartes.`);
+  console.log(`Aucun défaut détecté sur ${passages.length} passage(s) de carte.`);
 } else {
   const parCarte = {};
   for (const r of rapport) (parCarte[r.carte] ??= []).push(r);

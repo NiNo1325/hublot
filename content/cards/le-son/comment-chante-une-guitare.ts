@@ -79,5 +79,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The singing guitar',
+        '6-8': 'How a guitar sings',
+        '9-12': 'How a guitar makes its sound',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'You pluck a string and it starts to shake.',
+            },
+            {
+              id: 'deux',
+              text: 'On its own, the string makes a tiny little sound.',
+            },
+            {
+              id: 'trois',
+              text: 'The big wooden box shakes the air and makes the sound loud.',
+            },
+            {
+              id: 'quatre',
+              text: 'A shorter string sings higher.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you pluck a string, it starts vibrating very fast.',
+            },
+            {
+              id: 'deux',
+              text: 'On its own, a guitar string makes a very quiet sound, almost too soft to hear.',
+            },
+            {
+              id: 'trois',
+              text: 'Its vibrations pass into the wood and shake the whole body, which makes the sound much louder, like a loudspeaker.',
+            },
+            {
+              id: 'quatre',
+              text: 'By pressing a finger down to shorten the string, you make it vibrate faster: the note becomes higher.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'By plucking a string, you give it energy, which makes it vibrate at its own natural frequency.',
+            },
+            {
+              id: 'deux',
+              text: 'A string vibrating on its own moves very little air: the sound it makes is almost inaudible.',
+            },
+            {
+              id: 'trois',
+              text: 'Its vibrations travel to the bridge and then to the soundboard, which sets a far larger surface of air moving: it is the body of the guitar that really amplifies the sound, not the hole.',
+            },
+            {
+              id: 'quatre',
+              text: 'Shortening the vibrating length of a string, by pressing it against a fret, raises its frequency of vibration and therefore the pitch of the note.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

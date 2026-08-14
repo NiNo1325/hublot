@@ -79,5 +79,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The sound that comes back',
+        '6-8': 'Why an echo answers',
+        '9-12': 'How an echo is born',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'You shout very loudly: "Hoo hoo!"',
+            },
+            {
+              id: 'deux',
+              text: 'Your shout flies straight towards the wall.',
+            },
+            {
+              id: 'trois',
+              text: 'It hits the wall and sets off again at once.',
+            },
+            {
+              id: 'quatre',
+              text: 'It comes back to your ear, a little bit later.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'You shout facing a wall or a cliff, and your voice sets off through the air.',
+            },
+            {
+              id: 'deux',
+              text: 'The sound races in a straight line as far as that obstacle.',
+            },
+            {
+              id: 'trois',
+              text: 'It cannot pass through, so it bounces off it, like a ball.',
+            },
+            {
+              id: 'quatre',
+              text: 'It comes back to you, but a little later: that is the echo — it is your own sound answering you.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you shout, you make the air vibrate: those vibrations spread out as sound waves in every direction.',
+            },
+            {
+              id: 'deux',
+              text: 'Some of those waves reach an obstacle large enough and hard enough — a wall or a rock face — a few tens of metres away.',
+            },
+            {
+              id: 'trois',
+              text: 'The wave cannot pass through it: it bounces off the surface, just as a ray of light would off a mirror.',
+            },
+            {
+              id: 'quatre',
+              text: 'It returns to your ear slightly later, because sound takes time to cover the distance there and back: that is the echo, and nothing other than your own sound.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

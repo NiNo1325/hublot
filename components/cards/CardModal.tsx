@@ -10,6 +10,7 @@ import { NarrationControls } from '@/components/narration/NarrationControls';
 import { NarrationProgress } from '@/components/narration/NarrationProgress';
 import { useSwipeHorizontal } from '@/lib/useSwipeHorizontal';
 import { useLocale } from '@/components/i18n/useLocale';
+import { useT } from '@/components/i18n/useT';
 import { localise } from '@/lib/i18n/localise';
 import { useCartesVues } from './useCartesVues';
 
@@ -44,6 +45,7 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
 
   const { marquerVue } = useCartesVues();
   const { locale } = useLocale();
+  const t = useT();
   const contenu = localise(card.content, locale);
   const beats = contenu.explanation[ageRange].beats;
   const { state, play, pause, resume, replay, allerA, reculer } = useNarration(
@@ -118,7 +120,7 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
             className="flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-xl transition-colors hover:border-soleil hover:text-soleil sm:h-14 sm:w-14 sm:text-2xl"
           >
             <span aria-hidden="true">✕</span>
-            <span className="sr-only">Fermer la carte</span>
+            <span className="sr-only">{t('carte.fermer')}</span>
           </button>
         </header>
 

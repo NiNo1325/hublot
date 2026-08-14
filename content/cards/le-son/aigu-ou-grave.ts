@@ -79,5 +79,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Does it sound high or low?',
+        '6-8': 'High or low?',
+        '9-12': 'High and low: a question of speed',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A little string shakes very, very fast.',
+            },
+            {
+              id: 'deux',
+              text: 'Fast, fast: that makes a high sound, thin and tiny.',
+            },
+            {
+              id: 'trois',
+              text: 'Slowly, gently: that makes a low sound, big and deep.',
+            },
+            {
+              id: 'quatre',
+              text: 'A short, tight string sings higher.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Pluck a guitar string: it starts to vibrate.',
+            },
+            {
+              id: 'deux',
+              text: 'When it vibrates very fast, it makes a high sound, like a whistle.',
+            },
+            {
+              id: 'trois',
+              text: 'When it vibrates more slowly, it makes a low sound, like a drum.',
+            },
+            {
+              id: 'quatre',
+              text: 'A shorter or tighter string vibrates faster, so it gives a higher sound.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A vibrating string makes a sound whose pitch depends on its frequency of vibration, measured in hertz.',
+            },
+            {
+              id: 'deux',
+              text: 'The faster the vibrations — that is, the higher the frequency — the higher the sound you hear.',
+            },
+            {
+              id: 'trois',
+              text: 'The slower the vibrations, the lower the frequency, and the lower the sound you hear.',
+            },
+            {
+              id: 'quatre',
+              text: 'Shortening a string or tightening it speeds up its vibration, which is why the high strings on an instrument are shorter or tighter.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

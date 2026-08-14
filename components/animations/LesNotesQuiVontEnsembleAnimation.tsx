@@ -1,9 +1,31 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    note: 'une corde vibre → une note',
+    moitie: 'corde 2 fois plus courte, 2 fois plus vite',
+    octave: 'même note, une octave plus haut',
+    rapport: 'rapport 2 pour 1 : ça sonne joli',
+  },
+  en: {
+    note: 'a string vibrates → a note',
+    moitie: 'string half as long, twice as fast',
+    octave: 'same note, one octave higher',
+    rapport: 'a 2 to 1 ratio: it sounds lovely',
+  },
+};
 
 /**
  * Deux notes sonnent bien ensemble quand leurs fréquences forment un rapport
@@ -14,10 +36,12 @@ export function LesNotesQuiVontEnsembleAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -41,7 +65,7 @@ export function LesNotesQuiVontEnsembleAnimation({
           )}
         </path>
         <text x="150" y="50" fill="#e879f9" fontSize="20" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>♪</text>
-        <text x="16" y="176" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>une corde vibre → une note</text>
+        <text x="16" y="176" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.note}</text>
       </g>
 
       {/* Phase 2 : une corde deux fois plus courte, deux fois plus vite */}
@@ -57,14 +81,14 @@ export function LesNotesQuiVontEnsembleAnimation({
             />
           )}
         </path>
-        <text x="16" y="176" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>corde 2 fois plus courte, 2 fois plus vite</text>
+        <text x="16" y="176" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.moitie}</text>
       </g>
 
       {/* Phase 3 : la même note, une octave plus haut */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
         <path d="M80 60 Q140 42 200 60 Q260 78 320 60" stroke="#e879f9" strokeWidth="2" fill="none" opacity="0.8" />
         <path d="M140 96 Q170 82 200 96 Q230 110 260 96" stroke="#38bdf8" strokeWidth="2" fill="none" opacity="0.8" />
-        <text x="150" y="40" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>même note, une octave plus haut</text>
+        <text x="150" y="40" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.octave}</text>
       </g>
 
       {/* Phase 4 : ça s'emboîte bien, ça sonne joli */}
@@ -76,7 +100,7 @@ export function LesNotesQuiVontEnsembleAnimation({
           {anime && <animate attributeName="opacity" values="0.5;1;0.5" dur="1.4s" repeatCount="indefinite" />}
         </path>
         <text x="160" y="44" fill="#a3e635" fontSize="18" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>✨</text>
-        <text x="16" y="176" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>rapport 2 pour 1 : ça sonne joli</text>
+        <text x="16" y="176" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.rapport}</text>
       </g>
     </svg>
   );

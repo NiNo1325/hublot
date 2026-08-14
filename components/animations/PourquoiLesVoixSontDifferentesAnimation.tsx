@@ -1,9 +1,31 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    air: 'l’air remonte de tes poumons',
+    cordes: 'les cordes vocales vibrent',
+    colorer: 'la bouche et le nez la colorent',
+    unique: 'chaque voix est unique',
+  },
+  en: {
+    air: 'air rises from your lungs',
+    cordes: 'the vocal cords vibrate',
+    colorer: 'mouth and nose colour it',
+    unique: 'every voice is unique',
+  },
+};
 
 /**
  * La voix naît sur les cordes vocales, dans la gorge, pas dans la bouche.
@@ -14,10 +36,12 @@ export function PourquoiLesVoixSontDifferentesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -38,7 +62,7 @@ export function PourquoiLesVoixSontDifferentesAnimation({
             {anime && <animate attributeName="opacity" values="0;1;0" dur="1.6s" begin={`${i * 0.5}s`} repeatCount="indefinite" />}
           </circle>
         ))}
-        <text x="200" y="210" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>l’air remonte de tes poumons</text>
+        <text x="200" y="210" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.air}</text>
       </g>
 
       {/* Phase 2 : les cordes vocales vibrent, au fond de la gorge */}
@@ -46,7 +70,7 @@ export function PourquoiLesVoixSontDifferentesAnimation({
         <ellipse cx="140" cy="140" rx="16" ry="4" fill="#e879f9">
           {anime && <animate attributeName="ry" values="2;6;2" dur="0.4s" repeatCount="indefinite" />}
         </ellipse>
-        <text x="190" y="140" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>les cordes vocales vibrent</text>
+        <text x="190" y="140" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.cordes}</text>
       </g>
 
       {/* Phase 3 : la bouche et le nez colorent le son */}
@@ -59,7 +83,7 @@ export function PourquoiLesVoixSontDifferentesAnimation({
             {anime && <animate attributeName="opacity" values="0.2;1;0.2" dur="1.4s" begin={`${i * 0.3}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="200" y="176" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>la bouche et le nez la colorent</text>
+        <text x="200" y="176" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.colorer}</text>
       </g>
 
       {/* Phase 4 : deux silhouettes, deux voix bien différentes */}
@@ -74,7 +98,7 @@ export function PourquoiLesVoixSontDifferentesAnimation({
           d="M282 134 Q310 128 306 140 Q310 152 282 146"
           stroke="#fca5a5" strokeWidth="2" fill="none"
         />
-        <text x="220" y="188" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>chaque voix est unique</text>
+        <text x="220" y="188" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.unique}</text>
       </g>
     </svg>
   );

@@ -1,9 +1,31 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    pincer: 'tu pinces une corde',
+    inaudible: 'seule, presque inaudible',
+    amplifier: 'le bois amplifie, fort !',
+    courte: 'corde plus courte → plus aigu',
+  },
+  en: {
+    pincer: 'you pluck a string',
+    inaudible: 'alone, almost inaudible',
+    amplifier: 'the wood amplifies — loud!',
+    courte: 'shorter string → higher',
+  },
+};
 
 /**
  * Le son n'est pas fabriqué par le trou de la guitare : c'est la corde qui
@@ -13,10 +35,12 @@ export function CommentChanteUneGuitareAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, dejaVu } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -37,7 +61,7 @@ export function CommentChanteUneGuitareAnimation({
       {/* Phase 1 : on pince la corde */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <path d="M40 100 Q60 100 80 100" stroke="#fbcfe8" strokeWidth="2" fill="none" opacity="0.6" />
-        <text x="16" y="150" fill="#fbcfe8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>tu pinces une corde</text>
+        <text x="16" y="150" fill="#fbcfe8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.pincer}</text>
       </g>
 
       {/* Phase 2 : seule, elle produit un son très faible */}
@@ -53,7 +77,7 @@ export function CommentChanteUneGuitareAnimation({
           )}
         </path>
         <path d="M304 106 Q310 108 304 110" stroke="#38bdf8" strokeWidth="1.5" fill="none" opacity="0.7" />
-        <text x="16" y="150" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>seule, presque inaudible</text>
+        <text x="16" y="150" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.inaudible}</text>
       </g>
 
       {/* Phase 3 : la caisse en bois amplifie le son */}
@@ -66,7 +90,7 @@ export function CommentChanteUneGuitareAnimation({
             {anime && <animate attributeName="opacity" values="0.2;1;0.2" dur="1.2s" begin={`${i * 0.25}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="16" y="150" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>le bois amplifie, fort !</text>
+        <text x="16" y="150" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.amplifier}</text>
       </g>
 
       {/* Phase 4 : un doigt raccourcit la corde, la note monte */}
@@ -75,7 +99,7 @@ export function CommentChanteUneGuitareAnimation({
           {anime && <animateTransform attributeName="transform" type="translate" values="0 0; -30 0; 0 0" dur="2s" repeatCount="indefinite" />}
         </circle>
         {dejaVu(3) && <line x1="176" y1="108" x2="300" y2="108" stroke="#e879f9" strokeWidth="2.5" />}
-        <text x="16" y="150" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>corde plus courte → plus aigu</text>
+        <text x="16" y="150" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.courte}</text>
       </g>
     </svg>
   );

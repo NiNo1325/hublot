@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { DomainDefinition } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { useLocale } from '@/components/i18n/useLocale';
+import { useT } from '@/components/i18n/useT';
 import { localise } from '@/lib/i18n/localise';
 
 interface MondeTileProps {
@@ -39,6 +40,7 @@ export function MondeTile({
   maitrise,
 }: MondeTileProps) {
   const { locale } = useLocale();
+  const t = useT();
   const style = domainStyles[domain.id];
   const complet = total > 0 && vues >= total;
   const fraction = total > 0 ? vues / total : 0;
@@ -108,7 +110,7 @@ export function MondeTile({
               className="absolute bottom-1 left-1 flex h-7 w-7 items-center justify-center rounded-full border-[3px] border-encre bg-soleil text-sm"
             >
               <span aria-hidden="true">🏅</span>
-              <span className="sr-only">maîtrisé</span>
+              <span className="sr-only">{t('monde.maitrise')}</span>
             </span>
           )}
         </span>
@@ -120,9 +122,8 @@ export function MondeTile({
           {vues}/{total}
         </span>
         <span className="sr-only">
-          {nom}, {vues} carte{vues > 1 ? 's' : ''} sur {total} écoutée
-          {vues > 1 ? 's' : ''}
-          {complet ? ', terminé' : ''}
+          {t('monde.progression')(nom, vues, total)}
+          {complet ? t('monde.termine') : ''}
         </span>
       </Link>
 
@@ -142,7 +143,7 @@ export function MondeTile({
         <button
           type="button"
           onClick={onEcouter}
-          aria-label={`Écouter : ${accroche}`}
+          aria-label={t('monde.ecouter')(accroche)}
           className="mt-0.5 flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-base transition-colors hover:border-soleil hover:text-soleil"
         >
           <span aria-hidden="true">{enLecture ? '⏸' : '🔊'}</span>

@@ -1,9 +1,31 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    entrer: 'le son entre dans l’oreille',
+    tympan: 'le tympan se met à trembler',
+    osselets: 'trois tout petits os',
+    cerveau: 'un message pour ton cerveau',
+  },
+  en: {
+    entrer: 'sound enters the ear',
+    tympan: 'the eardrum starts to shake',
+    osselets: 'three tiny bones',
+    cerveau: 'a message for your brain',
+  },
+};
 
 /**
  * Le pavillon n'est qu'une entrée : entendre est un travail qui se fait à
@@ -13,10 +35,12 @@ export function CommentLoreilleEntendAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -40,7 +64,7 @@ export function CommentLoreilleEntendAnimation({
             {anime && <animate attributeName="opacity" values="0.15;1;0.15" dur="1.3s" begin={`${i * 0.25}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="30" y="200" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>le son entre dans l’oreille</text>
+        <text x="30" y="200" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.entrer}</text>
       </g>
 
       {/* Phase 2 : le tympan tremble */}
@@ -49,7 +73,7 @@ export function CommentLoreilleEntendAnimation({
           {anime && <animate attributeName="x1" values="176;180;176;172;176" dur="0.4s" repeatCount="indefinite" />}
           {anime && <animate attributeName="x2" values="176;180;176;172;176" dur="0.4s" repeatCount="indefinite" />}
         </line>
-        <text x="86" y="176" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>le tympan se met à trembler</text>
+        <text x="86" y="176" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.tympan}</text>
       </g>
 
       {/* Phase 3 : trois osselets relaient la vibration */}
@@ -63,7 +87,7 @@ export function CommentLoreilleEntendAnimation({
             {anime && <animate attributeName="r" values={`${o.r - 1};${o.r + 2};${o.r - 1}`} dur="0.9s" begin={o.d} repeatCount="indefinite" />}
           </circle>
         ))}
-        <text x="180" y="66" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>trois tout petits os</text>
+        <text x="180" y="66" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.osselets}</text>
       </g>
 
       {/* Phase 4 : la cochlée transforme tout en message nerveux */}
@@ -75,7 +99,7 @@ export function CommentLoreilleEntendAnimation({
           {anime && <animate attributeName="cx" values="300;362" dur="1s" repeatCount="indefinite" />}
           {anime && <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />}
         </circle>
-        <text x="230" y="200" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>un message pour ton cerveau</text>
+        <text x="230" y="200" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.cerveau}</text>
       </g>
     </svg>
   );

@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The noise that hurts your ears',
+        '6-8': 'When noise hurts',
+        '9-12': 'Why noise damages the ear for good',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A very, very loud noise makes big vibrations.',
+            },
+            {
+              id: 'deux',
+              text: 'They shake the little snail inside your ear far too hard.',
+            },
+            {
+              id: 'trois',
+              text: 'Tiny hairs inside it can break.',
+            },
+            {
+              id: 'quatre',
+              text: 'They never grow back: you have to protect your ears!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A very loud sound makes wide, powerful vibrations.',
+            },
+            {
+              id: 'deux',
+              text: 'As they come into the ear, they shake the cochlea violently.',
+            },
+            {
+              id: 'trois',
+              text: 'Inside it, tiny hair cells, which you need in order to hear, can then be damaged or broken.',
+            },
+            {
+              id: 'quatre',
+              text: 'The trouble is that they never grow back: that is why you have to protect your ears from sounds that are too loud, like concerts or fireworks close up.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A very intense sound means unusually wide variations in pressure.',
+            },
+            {
+              id: 'deux',
+              text: 'These excessive vibrations violently shake the fluid held inside the cochlea.',
+            },
+            {
+              id: 'trois',
+              text: 'That turbulence can damage, or even destroy, the hair cells lining the organ, the ones that turn movement into a nerve signal.',
+            },
+            {
+              id: 'quatre',
+              text: 'In humans, these cells do not grow back: their loss is permanent, which makes noise-induced hearing loss irreversible and is the reason ear protection matters.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

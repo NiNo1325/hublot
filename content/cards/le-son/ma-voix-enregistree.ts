@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why my voice sounds odd when recorded',
+        '6-8': 'My recorded voice sounds strange',
+        '9-12': 'Why your recorded voice sounds different',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you talk, the sound comes out of your mouth, into the air.',
+            },
+            {
+              id: 'deux',
+              text: 'But it also travels through the bones of your head, to your ear.',
+            },
+            {
+              id: 'trois',
+              text: 'The bones add lots of deep, low sound to your voice.',
+            },
+            {
+              id: 'quatre',
+              text: 'The recorder only hears the air: your voice sounds higher, different.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you speak, the sound of your voice travels through the air to your ears.',
+            },
+            {
+              id: 'deux',
+              text: 'But it also travels straight through the inside of your head, through the bones of your skull, to your inner ear.',
+            },
+            {
+              id: 'trois',
+              text: 'That path through the bones adds extra low notes to the voice you hear from yourself.',
+            },
+            {
+              id: 'quatre',
+              text: 'A recorder picks up only the sound carried by the air, without those extra low notes: your recorded voice therefore sounds higher to you, and strangely different.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you speak, the sound made by your vocal cords travels through the air to your eardrum.',
+            },
+            {
+              id: 'deux',
+              text: 'At the same time it takes a second path, bone conduction, passing straight through the bones of your skull to the cochlea.',
+            },
+            {
+              id: 'trois',
+              text: 'Bone carries low frequencies especially well, which enriches the voice you hear with extra bass.',
+            },
+            {
+              id: 'quatre',
+              text: 'A microphone records only the airborne path, without that contribution from bone: this is why your recorded voice sounds higher than the one you hear inside your head. That recorded version is in fact the voice everyone else has always heard.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

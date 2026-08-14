@@ -73,6 +73,30 @@ describe('intégrité du quizz', () => {
     }
   });
 
+  /**
+   * Les identifiants de question ne se traduisent pas.
+   *
+   * Ils nomment les fichiers audio et alimentent le hachage d'`ordreLecture`,
+   * qui fixe l'ordre des propositions à l'écran pour coller au mp3 figé des
+   * 3-5 ans. Un identifiant traduit, ou une question ajoutée dans une seule
+   * langue, désynchroniserait la voix et l'affichage sans qu'aucun texte ne
+   * paraisse faux à la relecture.
+   */
+  it.each(
+    quizCartes.flatMap((q) =>
+      LOCALES.filter((locale) => locale !== 'fr' && q.questions[locale]).map(
+        (locale) => [`${q.cardId} — ${locale}`, q, locale] as const,
+      ),
+    ),
+  )('%s garde les identifiants de question du français', (_libelle, quiz, locale) => {
+    for (const age of AGE_RANGES) {
+      expect(
+        quiz.questions[locale]![age].map((question) => question.id),
+        `les identifiants de question doivent rester ceux du français (${age})`,
+      ).toEqual(quiz.questions.fr[age].map((question) => question.id));
+    }
+  });
+
   /*
     Les plus jeunes ne lisent pas et ne peuvent comparer que deux propositions
     à l'oral. Au-delà, la question devient un test de mémoire.

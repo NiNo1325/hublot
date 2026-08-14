@@ -54,6 +54,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'qui-repond',
+            question: 'Who answers you when you shout in the mountains?',
+            reponses: [
+              { texte: 'Nobody — it’s your own shout coming back', icone: '🔁', correcte: true },
+              { texte: 'Someone hiding', icone: '👤' },
+            ],
+            explication:
+              'It’s your own shout bouncing off the rock face and coming back to your ears.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'echo-repond',
+            question: 'When you hear an echo, who is really answering you?',
+            reponses: [
+              { texte: 'Your own sound, bounced back', icone: '🔁', correcte: true },
+              { texte: 'The mountain talking', icone: '🏔️' },
+              { texte: 'A hidden animal', icone: '🦊' },
+            ],
+            explication:
+              'There’s nobody there: your shout simply bounced off a wall or a rock face and came back to you.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'delai-echo',
+            question: 'Why does an echo arrive after a short delay?',
+            reponses: [
+              { texte: 'Sound takes time to travel there and back', icone: '⏱️', correcte: true },
+              { texte: 'The mountain thinks it over before answering', icone: '🏔️' },
+              { texte: 'Your voice slows down as it moves away', icone: '🐌' },
+            ],
+            explication:
+              'Sound travels at a finite speed (about 340 metres per second): the further away the obstacle, the longer the return trip takes.',
+          },
+        ],
+      },
     },
   },
   {
@@ -99,6 +139,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'aigu-rapide',
+            question: 'What makes a high sound high?',
+            reponses: [
+              { texte: 'It vibrates very fast', icone: '🌀', correcte: true },
+              { texte: 'It’s very loud', icone: '🔊' },
+            ],
+            explication:
+              'High or low depends on the speed of vibration, not the volume: a high sound can be very quiet.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'aigu-fort',
+            question: 'Is a high sound always a loud sound?',
+            reponses: [
+              { texte: 'No, it just vibrates faster', icone: '🌀', correcte: true },
+              { texte: 'Yes, high means loud', icone: '🔊' },
+              { texte: 'Yes, the higher it is, the louder it is', icone: '📢' },
+            ],
+            explication:
+              'Pitch (high/low) comes from the speed of vibration; volume (loud/quiet) comes from how big the vibrations are. They are two different things.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'frequence-hauteur',
+            question: 'What tells a high sound apart from a low sound?',
+            reponses: [
+              { texte: 'The frequency of vibration', icone: '📈', correcte: true },
+              { texte: 'The volume', icone: '🔊' },
+              { texte: 'The distance from the source', icone: '📏' },
+            ],
+            explication:
+              'The pitch of a sound is set by its frequency in hertz, whatever its intensity (the volume).',
+          },
+        ],
+      },
     },
   },
   {
@@ -140,6 +220,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Le son est généré par la vibration des cordes vocales dans le larynx ; la bouche agit comme résonateur et articulateur, pas comme source.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'voix-nait-ou',
+            question: 'Where is the sound of your voice born?',
+            reponses: [
+              { texte: 'In your throat', icone: '🗣️', correcte: true },
+              { texte: 'In your mouth', icone: '👄' },
+            ],
+            explication: 'Two little cords deep in your throat are the first thing to vibrate.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'origine-son-voix',
+            question: 'Where does the sound of your voice really come from?',
+            reponses: [
+              { texte: 'From the vocal cords, in the throat', icone: '🗣️', correcte: true },
+              { texte: 'From the tongue', icone: '👅' },
+              { texte: 'From the lips', icone: '💋' },
+            ],
+            explication:
+              'The sound is born in the throat, at the vocal cords. The mouth and tongue only shape it afterwards.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'role-bouche',
+            question: 'What is the mouth’s main role in the voice?',
+            reponses: [
+              { texte: 'Shaping the sound already made by the vocal cords', icone: '👄', correcte: true },
+              { texte: 'Producing the sound of the voice directly', icone: '🗣️' },
+              { texte: 'Amplifying the air coming from the lungs', icone: '💨' },
+            ],
+            explication:
+              'The sound is generated by the vibration of the vocal cords in the larynx; the mouth acts as a resonator and articulator, not as the source.',
           },
         ],
       },
@@ -188,6 +307,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'travail-oreille',
+            question: 'Where does your ear really do its work?',
+            reponses: [
+              { texte: 'Deep inside', icone: '👂', correcte: true },
+              { texte: 'Right at the hole', icone: '🕳️' },
+            ],
+            explication:
+              'It all happens inside: the eardrum, the little bones, then the snail.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'trou-oreille',
+            question: 'The hole in your ear — is that where you hear?',
+            reponses: [
+              { texte: 'No, the work happens inside', icone: '👂', correcte: true },
+              { texte: 'Yes, the hole is what hears', icone: '🕳️' },
+              { texte: 'Yes, it’s the skin around the hole', icone: '🩹' },
+            ],
+            explication:
+              'The hole is only a passage: the real work starts at the eardrum, then carries on with the ossicles and the cochlea.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'role-osselets',
+            question: 'What do the ossicles of the middle ear do?',
+            reponses: [
+              { texte: 'Pass on and amplify the eardrum’s vibrations', icone: '🔗', correcte: true },
+              { texte: 'Filter out unpleasant sounds', icone: '🚫' },
+              { texte: 'Produce the sound you hear themselves', icone: '🔊' },
+            ],
+            explication:
+              'Hammer, anvil and stirrup mechanically relay and amplify the vibration as far as the cochlea, without producing any sound of their own.',
+          },
+        ],
+      },
     },
   },
   {
@@ -230,6 +389,46 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Contrairement à d’autres cellules du corps, les cellules ciliées de la cochlée ne se renouvellent pas : leur destruction est définitive.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'poils-repoussent',
+            question: 'Do broken little hairs in your ear grow back?',
+            reponses: [
+              { texte: 'No, never', icone: '🚫', correcte: true },
+              { texte: 'Yes, always', icone: '🔁' },
+            ],
+            explication:
+              'They don’t grow back: it’s better to protect your ears from very loud noises.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'oreille-repare',
+            question: 'After a concert that was too loud, does the ear always repair itself?',
+            reponses: [
+              { texte: 'No, some damage stays', icone: '🚫', correcte: true },
+              { texte: 'Yes, it heals on its own', icone: '🔁' },
+              { texte: 'Yes, after one night’s sleep', icone: '😴' },
+            ],
+            explication:
+              'Hair cells damaged by a sound that is too loud do not grow back: the loss can be permanent.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'cellules-ciliees',
+            question: 'Do hair cells destroyed by intense noise grow back?',
+            reponses: [
+              { texte: 'No, they don’t regenerate in humans', icone: '🚫', correcte: true },
+              { texte: 'Yes, within a few weeks', icone: '🔁' },
+              { texte: 'Yes, if you rest enough', icone: '😴' },
+            ],
+            explication:
+              'Unlike other cells in the body, the hair cells of the cochlea are not renewed: their destruction is permanent.',
           },
         ],
       },
@@ -278,6 +477,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'son-guitare-ou',
+            question: 'Where does a guitar’s sound mostly come out?',
+            reponses: [
+              { texte: 'From all the wood, vibrating', icone: '🎸', correcte: true },
+              { texte: 'Just from the round hole', icone: '⭕' },
+            ],
+            explication:
+              'It’s the whole wooden body that vibrates and makes the sound, not just the hole.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'trou-seul',
+            question: 'Does a guitar’s sound come only out of the round hole?',
+            reponses: [
+              { texte: 'No, the whole body vibrates', icone: '🎸', correcte: true },
+              { texte: 'Yes, it all comes from the hole', icone: '⭕' },
+              { texte: 'Yes, the hole makes the sound', icone: '🔘' },
+            ],
+            explication:
+              'The hole simply lets out the air set moving by the whole body, which vibrates and amplifies the string’s sound.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'role-rosace',
+            question: 'What role does a guitar’s soundhole play?',
+            reponses: [
+              { texte: 'It lets the air moved by the body radiate out', icone: '🎸', correcte: true },
+              { texte: 'It makes the sound itself', icone: '⭕' },
+              { texte: 'It is purely decorative', icone: '🎨' },
+            ],
+            explication:
+              'The sound comes from the string’s vibration amplified by the soundboard; the soundhole lets the air inside reach the outside, without being the source of the sound.',
+          },
+        ],
+      },
     },
   },
   {
@@ -320,6 +559,46 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'L’effet Doppler est un phénomène de propagation des ondes, pas une action du conducteur : la fréquence émise par la sirène reste constante tout du long.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'qui-change-sirene',
+            question: 'Who makes the siren sing lower afterwards?',
+            reponses: [
+              { texte: 'The ambulance moving away', icone: '🚑', correcte: true },
+              { texte: 'The driver turning the sound down', icone: '🔉' },
+            ],
+            explication:
+              'The sound seems lower because the ambulance is moving away — nobody touches anything.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'sirene-passage',
+            question: 'Why does a siren seem to change its sound as it goes past?',
+            reponses: [
+              { texte: 'Because of the ambulance’s movement', icone: '🚑', correcte: true },
+              { texte: 'The driver turns the volume down', icone: '🔉' },
+              { texte: 'The siren really does change frequency', icone: '🔧' },
+            ],
+            explication:
+              'The siren always gives out the same sound: it’s the movement of the vehicle that makes the sound seem higher as it comes closer, and lower once it has passed.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'conducteur-sirene',
+            question: 'What exactly does the driver do as the ambulance passes you?',
+            reponses: [
+              { texte: 'Nothing: the siren doesn’t change', icone: '🚑', correcte: true },
+              { texte: 'Turns the volume down as it goes past', icone: '🔉' },
+              { texte: 'Changes the siren’s frequency', icone: '🔧' },
+            ],
+            explication:
+              'The Doppler effect is a matter of how waves travel, not something the driver does: the frequency given out by the siren stays constant throughout.',
           },
         ],
       },
@@ -368,6 +647,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'voix-bizarre',
+            question: 'Why does your recorded voice sound strange?',
+            reponses: [
+              { texte: 'You usually hear yourself through your bones too', icone: '🦴', correcte: true },
+              { texte: 'The microphone spoils your voice', icone: '🎙️' },
+            ],
+            explication:
+              'Usually your bones add low notes to your voice; a recording only has the air, so it sounds higher.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'micro-deforme',
+            question: 'Does a microphone really distort your voice?',
+            reponses: [
+              { texte: 'No, it’s you who hears yourself differently', icone: '🦴', correcte: true },
+              { texte: 'Yes, it spoils it', icone: '🎙️' },
+              { texte: 'Yes, it adds high notes', icone: '📈' },
+            ],
+            explication:
+              'The microphone captures the sound in the air faithfully. It’s you who usually hears yourself with extra low notes, thanks to your bones.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'vraie-voix',
+            question: 'Who hears your “real” voice — the recording, or the one you hear in your head?',
+            reponses: [
+              { texte: 'Other people, all along', icone: '👂', correcte: true },
+              { texte: 'You, inside your head', icone: '🧠' },
+              { texte: 'Neither one is real', icone: '❓' },
+            ],
+            explication:
+              'Other people have always heard you through the air, just like the recording. What you hear inside, enriched by bone conduction, is the version that belongs to you alone.',
+          },
+        ],
+      },
     },
   },
   {
@@ -413,6 +732,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'sifflet-chien',
+            question: 'Does a dog whistle make a sound for everyone?',
+            reponses: [
+              { texte: 'No, only for the dog', icone: '🐶', correcte: true },
+              { texte: 'No, it makes no sound at all', icone: '🔇' },
+            ],
+            explication:
+              'The sound is really there, but it’s too high for your ears; the dog can hear it.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'son-existe',
+            question: 'If you hear nothing from a dog whistle, is there really a sound?',
+            reponses: [
+              { texte: 'Yes, but too high for you', icone: '🐶', correcte: true },
+              { texte: 'No, nothing happens', icone: '🔇' },
+              { texte: 'No, the whistle is broken', icone: '🔧' },
+            ],
+            explication:
+              'The whistle does give out a sound, an ultrasound. It exists — simply outside the range your ear can pick up.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'son-inaudible',
+            question: 'Is a sound humans can’t hear necessarily non-existent?',
+            reponses: [
+              { texte: 'No, other species can pick it up', icone: '🐋', correcte: true },
+              { texte: 'Yes, the human ear picks up every sound', icone: '👂' },
+              { texte: 'Yes, without a human ear there is no sound', icone: '🔇' },
+            ],
+            explication:
+              'Ultrasound and infrasound really do exist physically; only our limited hearing range stops us perceiving them.',
+          },
+        ],
+      },
     },
   },
   {
@@ -455,6 +814,46 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Des fréquences dans un rapport de nombres entiers simples, comme l’octave (2:1) ou la quinte (3:2), créent une superposition d’ondes régulière que l’oreille perçoit comme harmonieuse.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'notes-ensemble',
+            question: 'Why do two notes sound good together?',
+            reponses: [
+              { texte: 'Their vibrations fit together', icone: '🎵', correcte: true },
+              { texte: 'It’s just a matter of taste', icone: '👍' },
+            ],
+            explication:
+              'It’s a real relationship between the vibrations, not just a preference.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'question-de-gout',
+            question: 'Two notes that sound good together — is that just a matter of taste?',
+            reponses: [
+              { texte: 'No, their vibrations fit together neatly', icone: '🎵', correcte: true },
+              { texte: 'Yes, it’s completely subjective', icone: '👍' },
+              { texte: 'Yes, it depends what you’re used to', icone: '🎧' },
+            ],
+            explication:
+              'There is a real, simple mathematical ratio between the frequencies of the two notes, which is why the chord sounds pleasant — whatever your taste.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'accord-agreable',
+            question: 'What makes a musical chord pleasant to the ear?',
+            reponses: [
+              { texte: 'A simple ratio between the notes’ frequencies', icone: '🔢', correcte: true },
+              { texte: 'A purely cultural preference', icone: '👍' },
+              { texte: 'The volume the notes are played at', icone: '🔊' },
+            ],
+            explication:
+              'Frequencies in a simple whole-number ratio, like the octave (2:1) or the fifth (3:2), create a regular overlap of waves that the ear hears as harmonious.',
           },
         ],
       },

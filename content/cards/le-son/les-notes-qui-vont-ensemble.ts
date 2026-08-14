@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Sounds that go well together',
+        '6-8': 'Notes that go well together',
+        '9-12': 'Why some notes sound good together',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A string that vibrates gives a musical note.',
+            },
+            {
+              id: 'deux',
+              text: 'A string half as long vibrates twice as fast.',
+            },
+            {
+              id: 'trois',
+              text: 'It sings the same note, but way up high.',
+            },
+            {
+              id: 'quatre',
+              text: 'When vibrations fit nicely together, it sounds lovely to your ear.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A vibrating string makes one exact note.',
+            },
+            {
+              id: 'deux',
+              text: 'If you take a string half as long, it vibrates exactly twice as fast.',
+            },
+            {
+              id: 'trois',
+              text: 'It then plays the same note, but higher: that is what we call an octave.',
+            },
+            {
+              id: 'quatre',
+              text: 'When the vibration speeds of two notes fit together neatly, following simple ratios like two to one, the chord sounds pleasant to the ear — and that is not just a matter of taste.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Every note matches one exact frequency of vibration, measured in hertz.',
+            },
+            {
+              id: 'deux',
+              text: 'A string half as long, at the same tension, vibrates exactly twice as fast: its frequency is doubled.',
+            },
+            {
+              id: 'trois',
+              text: 'A doubled frequency gives the same note one octave higher: it is the simplest frequency ratio there is, two to one.',
+            },
+            {
+              id: 'quatre',
+              text: 'More generally, two notes whose frequencies form a simple whole-number ratio, such as three to two or four to three, produce waves that overlap in a regular pattern: our ear hears that regularity as a harmonious chord — a measurable physical phenomenon, not simply a matter of taste.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

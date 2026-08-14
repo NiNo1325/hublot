@@ -26,6 +26,27 @@ const fr = {
   'nav.parcours': 'Parcours',
   'nav.lumi': 'Lumi',
   'nav.reglages': 'Réglages',
+
+  'decouvrir.titre': 'Qu’est-ce qui t’intéresse ?',
+  'decouvrir.sous-titre':
+    'Ta bibliothèque : explore et revois ce que tu veux, quand tu veux, sans ordre imposé.',
+  'decouvrir.chemin-guide': 'Envie d’un chemin guidé ? → Parcours',
+
+  'monde.maitrise': 'maîtrisé',
+  'monde.ecouter': (accroche: string) => `Écouter : ${accroche}`,
+  'monde.progression': (nom: string, vues: number, total: number) =>
+    `${nom}, ${vues} carte${vues > 1 ? 's' : ''} sur ${total} écoutée${vues > 1 ? 's' : ''}`,
+  'monde.termine': ', terminé',
+
+  'carte.fermer': 'Fermer la carte',
+
+  'narration.precedente': 'Étape précédente',
+  'narration.pause': 'Pause',
+  'narration.reprendre': 'Reprendre',
+  'narration.ecouter': 'Écouter',
+  'narration.reecouter': 'Réécouter',
+  'narration.silencieux':
+    'Le son n’a pas pu être chargé. L’explication défile à l’écrit.',
 };
 
 /** Toutes les clés traduisibles, dérivées de la source française. */
@@ -44,6 +65,28 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'nav.parcours': 'Journey',
     'nav.lumi': 'Lumi',
     'nav.reglages': 'Settings',
+
+    'decouvrir.titre': 'What are you curious about?',
+    'decouvrir.sous-titre':
+      'Your library: explore and revisit whatever you like, whenever you like, in any order.',
+    'decouvrir.chemin-guide': 'Fancy a guided path? → Journey',
+
+    'monde.maitrise': 'mastered',
+    'monde.ecouter': (accroche: string) => `Listen: ${accroche}`,
+    // L'anglais met le singulier au seul 1, là où le français l'étend à 0.
+    'monde.progression': (nom: string, vues: number, total: number) =>
+      `${nom}, ${vues} card${vues === 1 ? '' : 's'} of ${total} listened to`,
+    'monde.termine': ', complete',
+
+    'carte.fermer': 'Close the card',
+
+    'narration.precedente': 'Previous step',
+    'narration.pause': 'Pause',
+    'narration.reprendre': 'Resume',
+    'narration.ecouter': 'Listen',
+    'narration.reecouter': 'Listen again',
+    'narration.silencieux':
+      'The sound could not be loaded. The explanation scrolls as text.',
   },
 };
 

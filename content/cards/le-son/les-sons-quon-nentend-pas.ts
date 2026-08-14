@@ -79,5 +79,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': "The sounds you can't hear",
+        '6-8': "The sounds we can't hear",
+        '9-12': 'Ultrasound and infrasound: the sounds beyond our reach',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Your ear only hears some sounds — not too high, not too low.',
+            },
+            {
+              id: 'deux',
+              text: 'A dog whistle makes a sound that is too high: you hear nothing at all.',
+            },
+            {
+              id: 'trois',
+              text: 'But the dog hears it perfectly well!',
+            },
+            {
+              id: 'quatre',
+              text: 'And a very, very low sound — elephants and whales can hear that one too.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Your ear picks up only part of all the sounds that exist, one precise range of frequencies.',
+            },
+            {
+              id: 'deux',
+              text: 'A dog whistle gives out a sound too high for you: to your ears, it is complete silence.',
+            },
+            {
+              id: 'trois',
+              text: 'But to a dog, whose ear picks up sounds far higher than yours, that whistle is perfectly audible.',
+            },
+            {
+              id: 'quatre',
+              text: 'The other way round, sounds too low for you — infrasound — are used by elephants and whales to talk to each other across very long distances.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The human ear picks up frequencies between roughly twenty and twenty thousand hertz: that is our audible range.',
+            },
+            {
+              id: 'deux',
+              text: 'A sound above twenty thousand hertz is ultrasound: too high for our ears, it produces no sensation of sound in us at all.',
+            },
+            {
+              id: 'trois',
+              text: 'A dog, whose ear reaches up to about sixty thousand hertz, hears that same ultrasound perfectly well — the sound of a special whistle, for instance.',
+            },
+            {
+              id: 'quatre',
+              text: 'At the other end, infrasound, below twenty hertz, is inaudible to us but put to full use by elephants and whales, which communicate this way across tens of kilometres.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

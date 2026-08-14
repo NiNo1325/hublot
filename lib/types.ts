@@ -1,11 +1,20 @@
 /**
  * Types partagés de l'application.
  *
- * `Locale` est volontairement une union à un seul membre : la V1 est en français
- * uniquement, mais les structures de contenu sont déjà indexées par locale pour
- * que l'ajout d'une langue ne demande pas de refonte du modèle de données.
+ * Le français est la langue source (toujours présente) ; l'anglais s'ajoute au
+ * fil de la traduction. Le contenu est indexé par locale via `Localise<T>` :
+ * la clé `fr` est requise, les autres sont optionnelles, si bien qu'un contenu
+ * pas encore traduit compile et retombe simplement sur le français à l'écran.
  */
-export type Locale = 'fr';
+export type Locale = 'fr' | 'en';
+export const LOCALES = ['fr', 'en'] as const;
+
+/**
+ * Valeur déclinée par langue. `fr` (source) est garanti ; les autres langues
+ * arrivent progressivement — d'où leur optionalité. À la lecture, on fait
+ * `valeur[locale] ?? valeur.fr` pour retomber sur le français si besoin.
+ */
+export type Localise<T> = { fr: T } & Partial<Record<Locale, T>>;
 
 export const AGE_RANGES = ['3-5', '6-8', '9-12'] as const;
 export type AgeRange = (typeof AGE_RANGES)[number];
@@ -37,9 +46,9 @@ export interface DomainDefinition {
    * construites dynamiquement, elles doivent être écrites en toutes lettres.
    */
   color: string;
-  labels: Record<Locale, string>;
+  labels: Localise<string>;
   /** Phrase courte qui intrigue, affichée sur la grille des mondes. */
-  accroche: Record<Locale, string>;
+  accroche: Localise<string>;
 }
 
 /**
@@ -99,5 +108,5 @@ export interface ScienceCard {
   animationId: string;
   /** Emoji affiché sur la tuile, avant ouverture de la carte. */
   thumbnail: string;
-  content: Record<Locale, CardContent>;
+  content: Localise<CardContent>;
 }

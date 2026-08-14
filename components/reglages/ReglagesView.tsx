@@ -13,6 +13,13 @@ import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { NotificationsToggle } from './NotificationsToggle';
 import { InfoVersion } from './InfoVersion';
 import { ouvrirTutoriel } from '@/components/tutoriel/useTutoriel';
+import { useLocale } from '@/components/i18n/useLocale';
+import { type Locale } from '@/lib/types';
+
+const LANGUES: { code: Locale; nom: string; drapeau: string }[] = [
+  { code: 'fr', nom: 'Français', drapeau: '🇫🇷' },
+  { code: 'en', nom: 'English', drapeau: '🇬🇧' },
+];
 
 /** Petit intitulé de section, en capitales, au-dessus de chaque carte. */
 function Intitule({ children }: { children: string }) {
@@ -36,6 +43,7 @@ export function ReglagesView() {
   const { etoiles, oublierEtoiles } = useEtoiles();
   const { oublierMaitrisees } = useCartesMaitrisees();
   const { resume: horsLigne } = useHorsLigne();
+  const { locale, choisirLocale } = useLocale();
 
   const [confirmation, setConfirmation] = useState(false);
   const [ageEnregistre, setAgeEnregistre] = useState(false);
@@ -96,6 +104,31 @@ export function ReglagesView() {
               setAgeEnregistre(true);
             }}
           />
+        </div>
+      </section>
+
+      {/* Langue */}
+      <section className="flex flex-col gap-3">
+        <Intitule>Langue</Intitule>
+        <div className="grid grid-cols-2 gap-3">
+          {LANGUES.map((l) => {
+            const actif = locale === l.code;
+            return (
+              <button
+                key={l.code}
+                type="button"
+                onClick={() => choisirLocale(l.code)}
+                aria-pressed={actif}
+                className={`flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-3xl border-2 text-craie transition-colors ${
+                  actif
+                    ? 'border-soleil bg-soleil/10 text-soleil'
+                    : 'border-encre-bord bg-encre-clair hover:border-soleil'
+                }`}
+              >
+                <span aria-hidden="true">{l.drapeau}</span> {l.nom}
+              </button>
+            );
+          })}
         </div>
       </section>
 

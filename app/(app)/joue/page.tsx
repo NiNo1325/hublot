@@ -26,11 +26,18 @@ export default function JouePage() {
           teinte: '#fb7185',
         },
         {
-          href: null,
+          href: '/joue/memo',
           emoji: '🃏',
           titre: t('jeu.memo.titre'),
           texte: t('jeu.memo.texte'),
           teinte: '#a3e635',
+        },
+        {
+          href: '/joue/memo-cartes',
+          emoji: '🗂️',
+          titre: t('jeu.memo-cartes.titre'),
+          texte: t('jeu.memo-cartes.texte'),
+          teinte: '#38bdf8',
         },
         {
           href: '/joue/chrono',

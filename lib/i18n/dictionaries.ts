@@ -181,12 +181,12 @@ const fr = {
     'Lumi t’emmène de carte en carte, avec une petite question après chacune.',
 
   'hub.joue.titre': 'À quoi joue-t-on ?',
-  'hub.joue.texte': 'Des jeux sur ce que tu as déjà écouté.',
+  'hub.joue.texte': 'Quatre façons de jouer avec les cartes.',
   'jeu.quizz.titre': 'Quizz',
   'jeu.quizz.texte':
     'Des questions sur tes cartes. Chaque bonne réponse te fait gagner une étoile.',
-  'jeu.memo.titre': 'Mémo',
-  'jeu.memo.texte': 'Retrouve les paires d’illustrations, de mémoire.',
+  'jeu.memo.titre': 'Mémo des images',
+  'jeu.memo.texte': 'Retrouve les paires identiques, de mémoire. Dès 3 ans.',
   'jeu.chrono.titre': 'Défi chrono',
   'jeu.chrono.texte': 'Le quizz, mais contre la montre.',
 
@@ -213,6 +213,22 @@ const fr = {
   'chrono.trop-jeune.titre': 'Ce jeu est pour les plus grands',
   'chrono.trop-jeune.texte':
     'Le chrono va trop vite pour qu’on ait le temps de tout écouter. Va plutôt faire le quizz : là, on prend le temps.',
+
+  'jeu.memo-cartes.titre': 'Mémo des cartes',
+  'jeu.memo-cartes.texte': 'Retrouve chaque dessin et le nom de sa carte.',
+  'memo.images.titre': 'Mémo des images',
+  'memo.images.regle': 'Retourne les tuiles deux par deux et retrouve les paires identiques.',
+  'memo.cartes.titre': 'Mémo des cartes',
+  'memo.cartes.regle': 'Retourne les tuiles deux par deux et associe chaque dessin au nom de sa carte.',
+  'memo.demarrer': 'Commencer',
+  'memo.coups': (n: number) => `${n} coup${n > 1 ? 's' : ''}`,
+  'memo.bravo': 'Toutes les paires trouvées ! 🎉',
+  'memo.rejouer': 'Nouvelle partie',
+  'memo.tuile-cachee': 'Tuile cachée',
+  'memo.trop-jeune.titre': 'Ce mémo demande de lire',
+  'memo.trop-jeune.texte':
+    'Celui-ci associe un dessin au nom écrit de sa carte. Le mémo des images, lui, est fait pour toi.',
+  'memo.vers-images': 'Aller au mémo des images',
 };
 
 /** Toutes les clés traduisibles, dérivées de la source française. */
@@ -387,12 +403,12 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       'Lumi takes you from card to card, with a little question after each one.',
 
     'hub.joue.titre': 'What shall we play?',
-    'hub.joue.texte': 'Games about what you have already listened to.',
+    'hub.joue.texte': 'Four ways to play with the cards.',
     'jeu.quizz.titre': 'Quiz',
     'jeu.quizz.texte':
       'Questions about your cards. Every right answer earns you a star.',
-    'jeu.memo.titre': 'Memory',
-    'jeu.memo.texte': 'Find the matching pairs of illustrations, from memory.',
+    'jeu.memo.titre': 'Picture memory',
+    'jeu.memo.texte': 'Find the matching pairs, from memory. From age 3.',
     'jeu.chrono.titre': 'Time challenge',
     'jeu.chrono.texte': 'The quiz, but against the clock.',
 
@@ -419,6 +435,23 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'chrono.trop-jeune.titre': 'This game is for older children',
     'chrono.trop-jeune.texte':
       'The clock runs too fast to listen to everything. Try the quiz instead: there, you can take your time.',
+
+    'jeu.memo-cartes.titre': 'Card memory',
+    'jeu.memo-cartes.texte': 'Match each picture with the name of its card.',
+    'memo.images.titre': 'Picture memory',
+    'memo.images.regle': 'Turn the tiles over two at a time and find the matching pairs.',
+    'memo.cartes.titre': 'Card memory',
+    'memo.cartes.regle':
+      'Turn the tiles over two at a time and match each picture with the name of its card.',
+    'memo.demarrer': 'Start',
+    'memo.coups': (n: number) => `${n} move${n === 1 ? '' : 's'}`,
+    'memo.bravo': 'All the pairs found! 🎉',
+    'memo.rejouer': 'New game',
+    'memo.tuile-cachee': 'Hidden tile',
+    'memo.trop-jeune.titre': 'This memory game needs reading',
+    'memo.trop-jeune.texte':
+      'This one matches a picture with the written name of its card. Picture memory is the one made for you.',
+    'memo.vers-images': 'Go to picture memory',
   },
 };
 

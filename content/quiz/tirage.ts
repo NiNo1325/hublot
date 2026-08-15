@@ -1,4 +1,5 @@
 import type { AgeRange, DomainId, Locale, QuizQuestion, ScienceCard } from '@/lib/types';
+import { melanger } from '@/lib/melanger';
 import { questionsDe, cartesAvecQuiz } from './index';
 
 /**
@@ -11,20 +12,12 @@ import { questionsDe, cartesAvecQuiz } from './index';
  * corrigée que d'un côté.
  */
 
+export { melanger };
+
 /** Une question tirée, et la carte dont elle vient. */
 export interface Tirage {
   carte: ScienceCard;
   question: QuizQuestion;
-}
-
-/** Mélange sans modifier la source. */
-export function melanger<T>(liste: T[]): T[] {
-  const copie = [...liste];
-  for (let i = copie.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copie[i], copie[j]] = [copie[j], copie[i]];
-  }
-  return copie;
 }
 
 /**

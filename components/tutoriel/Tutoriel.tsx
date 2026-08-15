@@ -50,9 +50,13 @@ export function Tutoriel({ onFermer }: { onFermer: () => void }) {
       <div {...swipe} style={{ touchAction: 'pan-y' }} className="flex flex-col items-center gap-6">
         <div className="relative flex items-center justify-center" aria-hidden="true">
           <Lumi rang={ecran.rang} taille={148} etat="repos" />
-          <span className="absolute bottom-0 right-0 flex h-14 w-14 items-center justify-center rounded-full border-2 border-encre bg-encre-clair text-3xl">
-            {ecran.emoji}
-          </span>
+          {/* Pas de pastille pour l'écran de Lumi : son onglet n'a pas d'emoji,
+              la mascotte affichée ici est déjà l'icône que l'enfant retrouvera. */}
+          {ecran.emoji && (
+            <span className="absolute bottom-0 right-0 flex h-14 w-14 items-center justify-center rounded-full border-2 border-encre bg-encre-clair text-3xl">
+              {ecran.emoji}
+            </span>
+          )}
         </div>
         <div aria-live="polite" className="flex flex-col items-center gap-3">
           <h2 className="font-display text-2xl text-soleil sm:text-3xl">{localise(ecran.titre, locale)}</h2>

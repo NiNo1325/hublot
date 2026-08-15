@@ -17,8 +17,13 @@ export interface EcranTuto {
   id: string;
   /** Rang de Lumi affiché : elle « grandit » au fil de la présentation. */
   rang: number;
-  /** Emoji de l'onglet, repris de la barre du bas pour faire le lien. */
-  emoji: string;
+  /**
+   * Emoji de l'onglet, repris de la barre du bas pour faire le lien. `null`
+   * pour Lumi, dont l'onglet n'a pas d'emoji : c'est la mascotte elle-même qui
+   * lui sert d'icône, et lui coller une étoile romprait le rapprochement que
+   * cet écran est censé établir.
+   */
+  emoji: string | null;
   titre: Localise<string>;
   texte: Localise<string>;
 }
@@ -47,7 +52,7 @@ export const ecransTuto: EcranTuto[] = [
   {
     id: 'lumi',
     rang: 4,
-    emoji: '🌟',
+    emoji: null,
     titre: { fr: 'Et moi, Lumi', en: 'And me, Lumi' },
     texte: {
       fr: 'Chaque bonne réponse te donne une étoile, et les étoiles me font grandir. Tu me trouves ici, avec tout ce que tu as déjà exploré.',

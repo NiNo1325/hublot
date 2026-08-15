@@ -112,10 +112,13 @@ const fr = {
     `encore ${n} question${n > 1 ? 's' : ''} à réussir pour 🏅`,
   'lumi.monde-complet': 'les deux badges sont à toi ✓',
   'cabinet.titre': 'Le cabinet de curiosités',
-  'cabinet.texte': 'Dépense tes étoiles en objets de savant. Chacun t’apprend quelque chose.',
+  'cabinet.texte':
+    'Remplis ton étagère avec tes étoiles. Touche un objet : il t’apprend quelque chose.',
   'cabinet.solde': (n: number) => `il te reste ${n}`,
   'cabinet.etagere': (n: number, total: number) => `Ton étagère · ${n} sur ${total}`,
-  'cabinet.a-decouvrir': 'À rapporter',
+  'cabinet.emplacement': (nom: string, prix: number) =>
+    `${nom}, place vide, ${prix} étoiles`,
+  'cabinet.manque': (n: number) => `Il te manque ${n} ⭐ pour le rapporter sur ton étagère.`,
   'cabinet.gagner': 'Les étoiles se gagnent en répondant juste, dans les jeux et le parcours.',
   'cabinet.retour': 'Retour à Lumi',
   'lumi.vers-cabinet': 'Le cabinet de curiosités',
@@ -359,10 +362,13 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       `${n} more question${n === 1 ? '' : 's'} to answer for 🏅`,
     'lumi.monde-complet': 'both badges are yours ✓',
     'cabinet.titre': 'The cabinet of curiosities',
-    'cabinet.texte': 'Spend your stars on a scientist’s objects. Each one teaches you something.',
+    'cabinet.texte':
+      'Fill your shelf with your stars. Touch an object: it teaches you something.',
     'cabinet.solde': (n: number) => `you have ${n} left`,
     'cabinet.etagere': (n: number, total: number) => `Your shelf · ${n} of ${total}`,
-    'cabinet.a-decouvrir': 'To bring home',
+    'cabinet.emplacement': (nom: string, prix: number) =>
+      `${nom}, empty spot, ${prix} stars`,
+    'cabinet.manque': (n: number) => `You need ${n} more ⭐ to bring it to your shelf.`,
     'cabinet.gagner': 'Stars are earned by answering correctly, in the games and the journey.',
     'cabinet.retour': 'Back to Lumi',
     'lumi.vers-cabinet': 'The cabinet of curiosities',

@@ -6,7 +6,7 @@ import {
   solde,
   totalDepense,
 } from '@/lib/portefeuille';
-import { objetsCabinet } from '@/content/cabinet';
+import { OBJETS_PAR_PLANCHE, objetsCabinet } from '@/content/cabinet';
 
 /**
  * La règle d'or du porte-monnaie : les étoiles gagnées ne baissent jamais, donc
@@ -97,5 +97,14 @@ describe('catalogue du cabinet', () => {
   it('coûte plus qu’une traversée complète du contenu', () => {
     const total = objetsCabinet.reduce((n, o) => n + o.prix, 0);
     expect(total).toBeGreaterThan(300);
+  });
+
+  /*
+    L'étagère se remplit par planches de quatre. Un catalogue qui n'en serait
+    pas un multiple laisserait une planche tronquée, qu'un enfant lirait comme
+    un défaut d'affichage et non comme une place à remplir.
+  */
+  it('remplit des planches entières', () => {
+    expect(objetsCabinet.length % OBJETS_PAR_PLANCHE).toBe(0);
   });
 });

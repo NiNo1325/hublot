@@ -25,6 +25,13 @@ export interface ObjetCabinet {
   fait: Localise<string>;
 }
 
+/**
+ * Objets par planche de l'étagère. Quatre tiennent sur la largeur d'un
+ * téléphone, et le catalogue en compte un multiple exact : une planche à moitié
+ * vide se lirait comme un bug plutôt que comme une place à remplir.
+ */
+export const OBJETS_PAR_PLANCHE = 4;
+
 export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'aimant',

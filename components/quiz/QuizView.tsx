@@ -2,14 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type {
-  AgeRange,
-  DomainDefinition,
-  DomainId,
-  Locale,
-  QuizQuestion,
-  ScienceCard,
-} from '@/lib/types';
+import type { DomainDefinition, DomainId, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
@@ -19,8 +12,13 @@ import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useCelebration } from '@/components/celebration/CelebrationProvider';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
-import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
 import { ordreLecture } from '@/content/quiz/ordre';
+import {
+  construireSerie,
+  cartesEligibles,
+  melanger,
+  type Tirage,
+} from '@/content/quiz/tirage';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
 import { useT } from '@/components/i18n/useT';
@@ -28,59 +26,6 @@ import { useT } from '@/components/i18n/useT';
 interface QuizViewProps {
   cards: ScienceCard[];
   domains: DomainDefinition[];
-}
-
-interface Tirage {
-  carte: ScienceCard;
-  question: QuizQuestion;
-}
-
-/** Mélange sans modifier la source. */
-function melanger<T>(liste: T[]): T[] {
-  const copie = [...liste];
-  for (let i = copie.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copie[i], copie[j]] = [copie[j], copie[i]];
-  }
-  return copie;
-}
-
-function estEligible(
-  carte: ScienceCard,
-  vues: Set<string>,
-  age: AgeRange,
-  locale: Locale,
-): boolean {
-  return (
-    vues.has(carte.id) &&
-    cartesAvecQuiz.has(carte.id) &&
-    questionsDe(carte.id, age, locale).length > 0
-  );
-}
-
-/*
-  Longueur d'une série. Un monde compte dix cartes : plafonner à dix (et non
-  huit) permet de toutes les couvrir en une partie — donc de maîtriser un
-  domaine entier d'un coup quand ses dix cartes sont écoutées.
-*/
-const QUESTIONS_PAR_SERIE = 10;
-
-function construireSerie(
-  cards: ScienceCard[],
-  vues: Set<string>,
-  age: AgeRange,
-  domainId: DomainId | null,
-  locale: Locale,
-): Tirage[] {
-  const disponibles = cards.filter(
-    (c) => estEligible(c, vues, age, locale) && (domainId === null || c.domainId === domainId),
-  );
-  return melanger(disponibles)
-    .slice(0, QUESTIONS_PAR_SERIE)
-    .map((carte) => ({
-      carte,
-      question: melanger(questionsDe(carte.id, age, locale))[0],
-    }));
 }
 
 export function QuizView({ cards, domains }: QuizViewProps) {
@@ -140,7 +85,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
 
   if (status === 'chargement' || !ageRange) return null;
 
-  const eligibles = cards.filter((c) => estEligible(c, cartesVues, ageRange, locale));
+  const eligibles = cartesEligibles(cards, cartesVues, ageRange, locale);
 
   // Mondes réellement jouables : au moins une carte écoutée qui a une question à
   // cet âge. On ne propose jamais un monde qui donnerait un quizz vide.

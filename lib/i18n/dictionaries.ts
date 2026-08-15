@@ -198,6 +198,21 @@ const fr = {
     'Vingt personnes, mille ans de curiosité. Touche un portrait pour savoir ce qu’on lui doit.',
   'savants.fermer': 'Fermer la fiche',
   'savants.cartes': 'À écouter ensuite',
+
+  'chrono.titre': 'Défi chrono',
+  'chrono.texte': (secondes: number) =>
+    `${secondes} secondes, un maximum de bonnes réponses. Pas d’explications : on file.`,
+  'chrono.demarrer': 'C’est parti !',
+  'chrono.podium': 'Tes meilleurs scores',
+  'chrono.score': (n: number) => `${n} bonne${n > 1 ? 's' : ''} réponse${n > 1 ? 's' : ''}`,
+  'chrono.record': 'Nouveau record ! 🎉',
+  'chrono.fin': (n: number) =>
+    `${n} bonne${n > 1 ? 's' : ''} réponse${n > 1 ? 's' : ''} en une minute`,
+  'chrono.rejouer': 'Rejouer',
+  'chrono.retour': 'Retour aux jeux',
+  'chrono.trop-jeune.titre': 'Ce jeu est pour les plus grands',
+  'chrono.trop-jeune.texte':
+    'Le chrono va trop vite pour qu’on ait le temps de tout écouter. Va plutôt faire le quizz : là, on prend le temps.',
 };
 
 /** Toutes les clés traduisibles, dérivées de la source française. */
@@ -389,6 +404,21 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       'Twenty people, a thousand years of curiosity. Touch a portrait to find out what we owe them.',
     'savants.fermer': 'Close the profile',
     'savants.cartes': 'Listen to next',
+
+    'chrono.titre': 'Time challenge',
+    'chrono.texte': (secondes: number) =>
+      `${secondes} seconds, as many right answers as you can. No explanations: off we go.`,
+    'chrono.demarrer': 'Let’s go!',
+    'chrono.podium': 'Your best scores',
+    'chrono.score': (n: number) => `${n} right answer${n === 1 ? '' : 's'}`,
+    'chrono.record': 'New record! 🎉',
+    'chrono.fin': (n: number) =>
+      `${n} right answer${n === 1 ? '' : 's'} in one minute`,
+    'chrono.rejouer': 'Play again',
+    'chrono.retour': 'Back to the games',
+    'chrono.trop-jeune.titre': 'This game is for older children',
+    'chrono.trop-jeune.texte':
+      'The clock runs too fast to listen to everything. Try the quiz instead: there, you can take your time.',
   },
 };
 

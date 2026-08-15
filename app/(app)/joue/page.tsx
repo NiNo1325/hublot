@@ -33,7 +33,7 @@ export default function JouePage() {
           teinte: '#a3e635',
         },
         {
-          href: null,
+          href: '/joue/chrono',
           emoji: '⏱️',
           titre: t('jeu.chrono.titre'),
           texte: t('jeu.chrono.texte'),

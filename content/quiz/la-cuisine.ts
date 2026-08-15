@@ -517,7 +517,7 @@ export const quiz: QuizCarte[] = [
             id: 'oeuf-proteines',
             question: 'Que fait la chaleur aux protéines du blanc d\'œuf ?',
             reponses: [
-              { texte: 'Elle les déroule et elles s\'accrochent entre elles', icone: '🥚', correcte: true },
+              { texte: 'Elle les déplie, et elles s\'accrochent les unes aux autres', icone: '🥚', correcte: true },
               { texte: 'Elle les fait fondre comme du beurre', icone: '🧈' },
               { texte: 'Elle ne change rien à l\'intérieur', icone: '🟰' },
             ],

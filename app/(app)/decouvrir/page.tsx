@@ -34,6 +34,13 @@ export default function DecouvrirPage() {
           texte: t('mode.parcours.texte'),
           teinte: '#38bdf8',
         },
+        {
+          href: '/savants',
+          emoji: '🏛️',
+          titre: t('mode.savants.titre'),
+          texte: t('mode.savants.texte'),
+          teinte: '#e879f9',
+        },
       ]}
     />
   );

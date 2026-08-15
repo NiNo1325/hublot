@@ -189,6 +189,15 @@ const fr = {
   'jeu.memo.texte': 'Retrouve les paires d’illustrations, de mémoire.',
   'jeu.chrono.titre': 'Défi chrono',
   'jeu.chrono.texte': 'Le quizz, mais contre la montre.',
+
+  'mode.savants.titre': 'Le mur des savants',
+  'mode.savants.texte':
+    'Celles et ceux qui ont trouvé tout ça avant toi, et ce qu’on raconte sur eux.',
+  'savants.titre': 'Le mur des savants',
+  'savants.texte':
+    'Vingt personnes, mille ans de curiosité. Touche un portrait pour savoir ce qu’on lui doit.',
+  'savants.fermer': 'Fermer la fiche',
+  'savants.cartes': 'À écouter ensuite',
 };
 
 /** Toutes les clés traduisibles, dérivées de la source française. */
@@ -371,6 +380,15 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'jeu.memo.texte': 'Find the matching pairs of illustrations, from memory.',
     'jeu.chrono.titre': 'Time challenge',
     'jeu.chrono.texte': 'The quiz, but against the clock.',
+
+    'mode.savants.titre': 'The wall of scientists',
+    'mode.savants.texte':
+      'The people who worked all this out before you, and the stories told about them.',
+    'savants.titre': 'The wall of scientists',
+    'savants.texte':
+      'Twenty people, a thousand years of curiosity. Touch a portrait to find out what we owe them.',
+    'savants.fermer': 'Close the profile',
+    'savants.cartes': 'Listen to next',
   },
 };
 

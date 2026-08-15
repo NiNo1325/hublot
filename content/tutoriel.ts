@@ -1,12 +1,17 @@
+import type { Localise } from '@/lib/types';
+
 /**
  * Contenu du tutoriel de présentation, guidé par Lumi.
  *
  * Extrait ici (données pures, sans JSX) pour être partagé par le composant
  * `Tutoriel` et le script de génération audio `generer-audio-tutoriel.mjs` : le
  * texte lu à voix haute est ainsi toujours celui affiché.
+ *
+ * Un écran par onglet, dans l'ordre de la barre du bas. Le tutoriel ne raconte
+ * pas ce qu'on peut faire, il dit où ça se trouve : un enfant qui vient de le
+ * voir doit savoir quel bouton toucher, pas se souvenir d'une promesse. Les
+ * `id` nomment les fichiers audio.
  */
-import type { Localise } from '@/lib/types';
-
 export interface EcranTuto {
   /** Identifiant stable, sert au nom du fichier audio. */
   id: string;
@@ -25,28 +30,18 @@ export const ecransTuto: EcranTuto[] = [
     emoji: '🔭',
     titre: { fr: 'Découvrir', en: 'Explore' },
     texte: {
-      fr: "Coucou, moi c'est Lumi ! Ici, tu écoutes des cartes animées qui racontent le monde. Touche un hublot pour commencer.",
-      en: 'Hello, I’m Lumi! Here you listen to animated cards that tell you about the world. Touch a porthole to begin.',
+      fr: "Coucou, moi c'est Lumi ! Ici, tu trouves toutes les cartes à écouter. Tu choisis librement, ou tu me laisses te guider d'une carte à l'autre.",
+      en: 'Hello, I’m Lumi! This is where all the cards to listen to live. You choose freely, or you let me guide you from one card to the next.',
     },
   },
   {
-    id: 'parcours',
-    rang: 1,
-    emoji: '🗺️',
-    titre: { fr: 'Parcours', en: 'Journey' },
-    texte: {
-      fr: 'Dans Parcours, je te guide : une carte, puis une petite question, et on avance ensemble, pas à pas.',
-      en: 'In Journey I guide you: a card, then a little question, and we move on together, step by step.',
-    },
-  },
-  {
-    id: 'quizz',
+    id: 'joue',
     rang: 2,
-    emoji: '🎯',
-    titre: { fr: 'Quizz', en: 'Quiz' },
+    emoji: '🎮',
+    titre: { fr: 'Joue', en: 'Play' },
     texte: {
-      fr: "Au Quizz, tu joues avec des questions sur ce que tu as déjà écouté. Chaque bonne réponse te fait gagner des étoiles !",
-      en: 'In the Quiz you play with questions about what you have already listened to. Every right answer earns you a star!',
+      fr: 'Ici, on joue avec ce que tu as appris : des questions, des paires à retrouver, et un défi contre la montre.',
+      en: 'Here we play with what you have learnt: questions, pairs to match, and a challenge against the clock.',
     },
   },
   {
@@ -55,8 +50,18 @@ export const ecransTuto: EcranTuto[] = [
     emoji: '🌟',
     titre: { fr: 'Et moi, Lumi', en: 'And me, Lumi' },
     texte: {
-      fr: 'Plus tu explores et réussis, plus je grandis : des rangs, des badges, et une petite fête à chaque étape. On y va ?',
-      en: 'The more you explore and get right, the more I grow: ranks, badges, and a little celebration at every step. Shall we?',
+      fr: 'Chaque bonne réponse te donne une étoile, et les étoiles me font grandir. Tu me trouves ici, avec tout ce que tu as déjà exploré.',
+      en: 'Every right answer gives you a star, and the stars make me grow. You’ll find me here, with everything you have explored so far.',
+    },
+  },
+  {
+    id: 'reglages',
+    rang: 5,
+    emoji: '⚙️',
+    titre: { fr: 'Réglages', en: 'Settings' },
+    texte: {
+      fr: 'Et là, avec un adulte : ton âge, la langue, et le téléchargement pour écouter en voiture, sans internet. On y va ?',
+      en: 'And here, with a grown-up: your age, the language, and the download so you can listen in the car, with no internet. Shall we?',
     },
   },
 ];

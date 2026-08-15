@@ -104,6 +104,8 @@ const fr = {
   'lumi.bilan': (explores: number, maitrises: number, total: number) =>
     `${explores}/${total} explorés · ${maitrises}/${total} maîtrisés`,
   'lumi.rangs': 'Les rangs de Lumi',
+  'lumi.origine-etoiles':
+    'Une étoile par bonne réponse, dans les jeux et le parcours. Écouter une carte ne donne pas d’étoile — mais c’est ce qui te permet de répondre.',
   'lumi.rang-atteint': 'atteint ✓',
   'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
     `${nom}, ${seuil} étoiles${atteint ? ', atteint' : ''}`,
@@ -332,6 +334,8 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'lumi.bilan': (explores: number, maitrises: number, total: number) =>
       `${explores}/${total} explored · ${maitrises}/${total} mastered`,
     'lumi.rangs': 'Lumi’s ranks',
+    'lumi.origine-etoiles':
+      'One star for every right answer, in the games and the journey. Listening to a card earns no star — but it is what lets you answer.',
     'lumi.rang-atteint': 'reached ✓',
     'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
       `${nom}, ${seuil} stars${atteint ? ', reached' : ''}`,

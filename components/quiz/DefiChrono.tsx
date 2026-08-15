@@ -14,6 +14,7 @@ import { Lumi } from '@/components/mascotte/Lumi';
 import { useCelebration } from '@/components/celebration/CelebrationProvider';
 import { construireSerie, melanger, type Tirage } from '@/content/quiz/tirage';
 import { useEtoiles } from './useEtoiles';
+import { useQuizAudio } from './useQuizAudio';
 import { useCompteARebours } from './useCompteARebours';
 import { useMeilleursScores } from './useMeilleursScores';
 
@@ -55,6 +56,9 @@ export function DefiChrono({ cards }: DefiChronoProps) {
   const { scores, enregistrerScore, estUnRecord } = useMeilleursScores();
   const celebrer = useCelebration();
   const chrono = useCompteARebours(DUREE_S);
+  const { jouer, jouerProposition, arreter: arreterVoix, enLecture } = useQuizAudio(
+    ageRange ?? '6-8',
+  );
   const { arreter: arreterChrono } = chrono;
 
   const [serie, setSerie] = useState<Tirage[] | null>(null);
@@ -293,6 +297,25 @@ export function DefiChrono({ cards }: DefiChronoProps) {
         <p className="flex-1 font-display text-xl leading-snug sm:text-2xl">
           {tirage.question.question}
         </p>
+        {/*
+          Écouter l'énoncé, comme au quizz. Rien ne se lance tout seul ici : le
+          chrono tourne, et imposer la voix coûterait à l'enfant un temps qu'il
+          n'a pas choisi de dépenser. Le bouton laisse ce choix.
+        */}
+        <button
+          type="button"
+          onClick={() =>
+            enLecture
+              ? arreterVoix()
+              : jouer(tirage.carte.id, tirage.question.id, 'question')
+          }
+          className="flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-xl transition-colors hover:border-soleil hover:text-soleil"
+        >
+          <span aria-hidden="true">{enLecture ? '⏸' : '🔊'}</span>
+          <span className="sr-only">
+            {enLecture ? t('quizz.arreter') : t('quizz.ecouter-question')}
+          </span>
+        </button>
       </div>
 
       <ul className="flex flex-col gap-3">
@@ -300,12 +323,12 @@ export function DefiChrono({ cards }: DefiChronoProps) {
           const estChoisie = choisie === i;
           const revelee = choisie !== null && reponse.correcte;
           return (
-            <li key={reponse.texte}>
+            <li key={reponse.texte} className="flex items-stretch gap-2">
               <button
                 type="button"
                 disabled={choisie !== null}
                 onClick={() => repondre(i)}
-                className="flex min-h-20 w-full cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 text-left transition-transform hover:scale-[1.02] active:scale-95 disabled:cursor-default disabled:hover:scale-100"
+                className="flex min-h-20 flex-1 cursor-pointer items-center gap-4 rounded-2xl border-2 p-4 text-left transition-transform hover:scale-[1.02] active:scale-95 disabled:cursor-default disabled:hover:scale-100"
                 style={{
                   borderColor: revelee
                     ? '#34d399'
@@ -322,8 +345,28 @@ export function DefiChrono({ cards }: DefiChronoProps) {
                 <span className="text-3xl" aria-hidden="true">
                   {reponse.icone}
                 </span>
-                <span className="text-lg text-craie">{reponse.texte}</span>
+                <span className="flex-1 text-lg text-craie">{reponse.texte}</span>
               </button>
+
+              {/* Comme au quizz : un lecteur débutant peut vouloir se faire
+                  relire une proposition. Le bouton vit hors du bouton de
+                  réponse, qui ne peut pas en contenir un autre. */}
+              {ageRange === '6-8' && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    jouerProposition(
+                      tirage.carte.id,
+                      tirage.question.id,
+                      tirage.question.reponses.indexOf(reponse),
+                    )
+                  }
+                  aria-label={t('quizz.ecouter-reponse')(reponse.texte)}
+                  className="flex w-14 shrink-0 cursor-pointer items-center justify-center rounded-2xl border-2 border-encre-bord text-xl transition-colors hover:border-soleil hover:text-soleil"
+                >
+                  <span aria-hidden="true">🔊</span>
+                </button>
+              )}
             </li>
           );
         })}

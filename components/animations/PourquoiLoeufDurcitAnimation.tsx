@@ -41,8 +41,20 @@ export function PourquoiLoeufDurcitAnimation({
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
       <rect width="400" height="240" fill="#1a1610" />
 
-      {/* La coquille d'œuf ouverte, toujours visible */}
-      <path d="M140 90 Q200 60 260 90 L268 120 L132 120 Z" fill="#78716c" />
+      {/*
+        La scène remonte de trente pixels : la demi-coquille retirée occupait
+        le haut du cadre, et sans elle l'œuf se retrouvait tassé en bas avec
+        un vide au-dessus.
+      */}
+      <g transform="translate(0 -30)">
+
+      {/*
+        Le contour du blanc, toujours visible : c'est la scène dans laquelle
+        tout se passe. Une demi-coquille avait été dessinée au-dessus, mais
+        détachée de l'œuf et vue de face elle ne se lisait pas — un trapèze
+        gris qui n'évoquait rien. Le contour seul est plus clair que l'objet
+        mal rendu.
+      */}
       <ellipse cx="200" cy="170" rx="70" ry="46" fill="none" stroke="#78716c" strokeWidth="3" />
 
       {/* Phase 1 : le blanc cru, protéines pliées en pelotes */}
@@ -86,6 +98,7 @@ export function PourquoiLoeufDurcitAnimation({
         <ellipse cx="200" cy="170" rx="66" ry="42" fill="#fde047" />
         <ellipse cx="200" cy="170" rx="26" ry="18" fill="#fbbf24" />
         <text x="88" y="216" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.dur}</text>
+      </g>
       </g>
     </svg>
   );

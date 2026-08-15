@@ -118,6 +118,13 @@ export function LumiView({ cards, domains }: LumiViewProps) {
           éléments de 36 px, donc pastilles, barre et seuils restent alignés. */}
       <section className="flex flex-col gap-4">
         <h2 className="font-display text-lg text-craie">{t('lumi.rangs')}</h2>
+        {/*
+          D'où viennent les étoiles. Rien ne le disait, et l'enfant qui écoutait
+          des cartes sans voir son rang bouger pouvait croire le compteur cassé.
+        */}
+        <p className="text-sm leading-relaxed text-craie-douce">
+          {t('lumi.origine-etoiles')}
+        </p>
         <div className="flex flex-col gap-2">
           {/* Les personnages. */}
           <ol className="flex justify-between">

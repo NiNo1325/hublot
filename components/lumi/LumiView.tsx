@@ -7,6 +7,7 @@ import type { DomainDefinition, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { badgesDomaine } from '@/lib/badges';
 import { progressionDomaine } from '@/lib/progression';
+import { bilanGlobal, prochaineEtapeDomaine } from '@/lib/prochaine-etape';
 import { rangDepuisEtoiles, RANGS } from '@/lib/etoiles';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useAgeRange } from '@/components/age/useAgeRange';
@@ -62,10 +63,12 @@ export function LumiView({ cards, domains }: LumiViewProps) {
     const { explore, maitrise } = badgesDomaine(cards, cartesVues, cartesMaitrisees, domain.id);
     const { vues, total } = progressionDomaine(cards, cartesVues, domain.id);
     const reussies = progressionDomaine(cards, cartesMaitrisees, domain.id).vues;
-    return { domain, explore, maitrise, vues, total, reussies };
+    const manque = prochaineEtapeDomaine(cards, cartesVues, cartesMaitrisees, domain.id);
+    return { domain, explore, maitrise, vues, total, reussies, manque };
   });
   const nbExplore = lignes.filter((l) => l.explore).length;
   const nbMaitrise = lignes.filter((l) => l.maitrise).length;
+  const bilan = bilanGlobal(cards, cartesVues, cartesMaitrisees);
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-10">
@@ -107,6 +110,14 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         <p className="text-craie-douce">
           <span aria-hidden="true">🧭</span>{' '}
           {t('lumi.bilan')(nbExplore, nbMaitrise, domains.length)}
+        </p>
+        {/*
+          Le compte de badges ne dit rien de la distance parcourue : quinze
+          mondes non terminés s'affichent « 0/15 » qu'on ait écouté deux cartes
+          ou cent quarante. Le décompte en cartes situe l'enfant pour de bon.
+        */}
+        <p className="text-sm text-craie-douce">
+          {t('lumi.bilan-cartes')(bilan.cartesEcoutees, bilan.cartesReussies, bilan.cartesTotal)}
         </p>
       </header>
 
@@ -196,9 +207,15 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         </p>
       </section>
 
-      {/* Progression par monde : écoute (→ 🧭) et réussite au quizz (→ 🏅). */}
+      {/*
+        Progression par monde : écoute (→ 🧭) et réussite au quizz (→ 🏅). Les
+        deux médailles étaient affichées sans jamais être expliquées, et sans
+        dire ce qui manquait pour les décrocher.
+      */}
+      <p className="text-sm leading-relaxed text-craie-douce">{t('lumi.badges-legende')}</p>
+
       <ul className="flex flex-col gap-3">
-        {lignes.map(({ domain, explore, maitrise, vues, total, reussies }) => {
+        {lignes.map(({ domain, explore, maitrise, vues, total, reussies, manque }) => {
           const style = domainStyles[domain.id];
           return (
             <li key={domain.id}>
@@ -221,6 +238,18 @@ export function LumiView({ cards, domains }: LumiViewProps) {
                     <span className="text-sm text-craie-douce">
                       <span aria-hidden="true">🧭</span>{' '}
                       {t('lumi.monde')(vues, reussies, total)}
+                    </span>
+                    {/* Ce qui est à portée : la seule ligne qui appelle à revenir. */}
+                    <span
+                      className={`text-sm ${
+                        manque.type === 'complet' ? 'text-soleil' : 'text-craie-douce/80'
+                      }`}
+                    >
+                      {manque.type === 'complet'
+                        ? t('lumi.monde-complet')
+                        : manque.type === 'ecouter'
+                          ? t('lumi.reste-ecouter')(manque.combien)
+                          : t('lumi.reste-reussir')(manque.combien)}
                     </span>
                   </span>
                 </span>

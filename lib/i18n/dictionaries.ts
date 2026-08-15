@@ -103,6 +103,14 @@ const fr = {
   'lumi.rang-max': 'Rang maximum atteint ! 🎉',
   'lumi.bilan': (explores: number, maitrises: number, total: number) =>
     `${explores}/${total} explorés · ${maitrises}/${total} maîtrisés`,
+  'lumi.bilan-cartes': (ecoutees: number, reussies: number, total: number) =>
+    `${ecoutees} carte${ecoutees > 1 ? 's' : ''} écoutée${ecoutees > 1 ? 's' : ''} sur ${total} · ${reussies} réussie${reussies > 1 ? 's' : ''} au quizz`,
+  'lumi.badges-legende': 'Deux badges par monde : 🧭 quand tu as écouté toutes ses cartes, 🏅 quand tu as réussi toutes ses questions.',
+  'lumi.reste-ecouter': (n: number) =>
+    `encore ${n} carte${n > 1 ? 's' : ''} à écouter pour 🧭`,
+  'lumi.reste-reussir': (n: number) =>
+    `encore ${n} question${n > 1 ? 's' : ''} à réussir pour 🏅`,
+  'lumi.monde-complet': 'les deux badges sont à toi ✓',
   'lumi.rangs': 'Les rangs de Lumi',
   'lumi.origine-etoiles':
     'Lumi grandit avec tes étoiles. Tu en gagnes une à chaque bonne réponse, dans les jeux et dans le parcours. Écouter une carte n’en donne pas : c’est ce qui t’apprend à répondre.',
@@ -333,6 +341,14 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'lumi.rang-max': 'Highest rank reached! 🎉',
     'lumi.bilan': (explores: number, maitrises: number, total: number) =>
       `${explores}/${total} explored · ${maitrises}/${total} mastered`,
+    'lumi.bilan-cartes': (ecoutees: number, reussies: number, total: number) =>
+      `${ecoutees} card${ecoutees === 1 ? '' : 's'} of ${total} listened to · ${reussies} answered in the quiz`,
+    'lumi.badges-legende': 'Two badges per world: 🧭 once you have listened to all its cards, 🏅 once you have answered all its questions.',
+    'lumi.reste-ecouter': (n: number) =>
+      `${n} more card${n === 1 ? '' : 's'} to listen to for 🧭`,
+    'lumi.reste-reussir': (n: number) =>
+      `${n} more question${n === 1 ? '' : 's'} to answer for 🏅`,
+    'lumi.monde-complet': 'both badges are yours ✓',
     'lumi.rangs': 'Lumi’s ranks',
     'lumi.origine-etoiles':
       'Lumi grows with your stars. You earn one for every right answer, in the games and in the journey. Listening to a card earns none: it is what teaches you the answer.',

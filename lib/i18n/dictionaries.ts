@@ -109,6 +109,63 @@ const fr = {
     `${nom}, ${seuil} étoiles${atteint ? ', atteint' : ''}`,
   'lumi.monde': (vues: number, reussies: number, total: number) =>
     `${vues}/${total} écoutée${total > 1 ? 's' : ''} · ${reussies}/${total} réussie${total > 1 ? 's' : ''}`,
+
+  'reglages.titre': 'Réglages',
+  'reglages.profil': 'Profil',
+  'reglages.langue': 'Langue',
+  'reglages.ecoute': 'Écoute & alertes',
+  'reglages.aide': 'Aide',
+  'reglages.age-enregistre': 'Enregistré ✓',
+  'reglages.enregistrer-age': 'Enregistrer l’âge',
+  'reglages.hors-ligne': 'Écouter sans internet',
+  'reglages.hors-ligne.maj': 'Mise à jour',
+  'reglages.hors-ligne.pret': 'Prêt ✓',
+  'reglages.hors-ligne.incomplet': 'Incomplet',
+  'reglages.tutoriel': 'Revoir la présentation',
+  'reglages.reinitialiser': (n: number) => `Réinitialiser la progression (${n} cartes)`,
+  'reglages.confirmer': 'Confirmer ? Les cartes redeviendront neuves',
+
+  'tuto.aria': 'Présentation de Hublot',
+  'tuto.passer': 'Passer',
+  'tuto.arreter': 'Arrêter la lecture',
+  'tuto.ecouter': 'Écouter',
+  'tuto.suivant': 'Suivant',
+  'tuto.commencer': 'C’est parti !',
+
+  'age.moins': 'Un an de moins',
+  'age.plus': 'Un an de plus',
+  'narration.etapes': 'Étapes de l’explication',
+  'parcours.une-question': 'Une question sur cette carte',
+  'notifications.aria': 'Recevoir les notifications',
+  'notifications.texte': 'Nouvelles cartes et mises à jour de l’application.',
+  'parcours.quitter': 'Quitter le parcours',
+
+  'hl.mo': (n: number) => `${n} Mo`,
+  'hl.titre': 'Écouter sans internet',
+  'hl.texte':
+    'En voiture, en avion, ou quand le réseau ne suit pas. Une fois les cartes téléchargées, tout fonctionne sans connexion.',
+  'hl.indisponible':
+    'Ce navigateur ne permet pas le téléchargement hors connexion. L’application reste utilisable en ligne.',
+  'hl.detail': (e: string) => `Détail : ${e}`,
+  'hl.maj-dispo': (taille: string) => `Mise à jour disponible — ${taille}`,
+  'hl.pret': (taille: string) => `Prêt hors connexion — ${taille}`,
+  'hl.en-cours': (fait: string, total: string) => `Téléchargement… ${fait} sur ${total}`,
+  'hl.incomplet': (fait: string, total: string) => `Incomplet — ${fait} sur ${total}`,
+  'hl.a-telecharger': (taille: string) => `À télécharger — ${taille}`,
+  'hl.telechargement': 'Téléchargement en cours…',
+  'hl.mettre-a-jour': 'Mettre à jour',
+  'hl.reprendre': 'Reprendre le téléchargement',
+  'hl.tout': 'Tout télécharger',
+  'hl.liberer': 'Libérer l’espace',
+  'hl.conseil':
+    'À télécharger de préférence en wifi. Le téléchargement peut être interrompu et repris : ce qui est déjà là n’est pas redemandé.',
+  'hl.installer-titre': 'Installe Hublot sur ton écran d’accueil',
+  'hl.installer-texte':
+    'pour que le téléchargement soit conservé. Sans installation, le téléphone peut l’effacer quand il manque de place. Dans le menu du navigateur : « Installer l’application » ou « Ajouter à l’écran d’accueil ».',
+  'hl.retour': 'Retour au menu',
+
+  'carte.deja-ecoutee': ', déjà écoutée',
+  'carte.verrouillee': ', premium — à débloquer',
 };
 
 /** Toutes les clés traduisibles, dérivées de la source française. */
@@ -211,6 +268,63 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       `${nom}, ${seuil} stars${atteint ? ', reached' : ''}`,
     'lumi.monde': (vues: number, reussies: number, total: number) =>
       `${vues}/${total} listened to · ${reussies}/${total} answered`,
+
+    'reglages.titre': 'Settings',
+    'reglages.profil': 'Profile',
+    'reglages.langue': 'Language',
+    'reglages.ecoute': 'Listening & alerts',
+    'reglages.aide': 'Help',
+    'reglages.age-enregistre': 'Saved ✓',
+    'reglages.enregistrer-age': 'Save age',
+    'reglages.hors-ligne': 'Listen without internet',
+    'reglages.hors-ligne.maj': 'Updating',
+    'reglages.hors-ligne.pret': 'Ready ✓',
+    'reglages.hors-ligne.incomplet': 'Incomplete',
+    'reglages.tutoriel': 'See the introduction again',
+    'reglages.reinitialiser': (n: number) => `Reset progress (${n} cards)`,
+    'reglages.confirmer': 'Are you sure? The cards will all become new again',
+
+    'tuto.aria': 'Introduction to Hublot',
+    'tuto.passer': 'Skip',
+    'tuto.arreter': 'Stop playing',
+    'tuto.ecouter': 'Listen',
+    'tuto.suivant': 'Next',
+    'tuto.commencer': 'Let’s go!',
+
+    'age.moins': 'One year younger',
+    'age.plus': 'One year older',
+    'narration.etapes': 'Steps of the explanation',
+    'parcours.une-question': 'A question about this card',
+    'notifications.aria': 'Receive notifications',
+    'notifications.texte': 'New cards and app updates.',
+    'parcours.quitter': 'Leave the journey',
+
+    'hl.mo': (n: number) => `${n} MB`,
+    'hl.titre': 'Listen without internet',
+    'hl.texte':
+      'In the car, on a plane, or when the signal gives up. Once the cards are downloaded, everything works with no connection.',
+    'hl.indisponible':
+      'This browser cannot download for offline use. The app still works online.',
+    'hl.detail': (e: string) => `Details: ${e}`,
+    'hl.maj-dispo': (taille: string) => `Update available — ${taille}`,
+    'hl.pret': (taille: string) => `Ready offline — ${taille}`,
+    'hl.en-cours': (fait: string, total: string) => `Downloading… ${fait} of ${total}`,
+    'hl.incomplet': (fait: string, total: string) => `Incomplete — ${fait} of ${total}`,
+    'hl.a-telecharger': (taille: string) => `To download — ${taille}`,
+    'hl.telechargement': 'Downloading…',
+    'hl.mettre-a-jour': 'Update',
+    'hl.reprendre': 'Resume the download',
+    'hl.tout': 'Download everything',
+    'hl.liberer': 'Free up the space',
+    'hl.conseil':
+      'Best downloaded over Wi-Fi. The download can be interrupted and resumed: whatever is already there is not fetched again.',
+    'hl.installer-titre': 'Install Hublot on your home screen',
+    'hl.installer-texte':
+      'so the download is kept. Without installing, the phone may erase it when it runs short of space. In the browser menu: “Install app” or “Add to Home Screen”.',
+    'hl.retour': 'Back to the menu',
+
+    'carte.deja-ecoutee': ', already listened to',
+    'carte.verrouillee': ', premium — to unlock',
   },
 };
 

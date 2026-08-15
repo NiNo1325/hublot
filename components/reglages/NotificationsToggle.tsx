@@ -7,6 +7,7 @@ import {
   activerNotifications,
   desactiverNotifications,
 } from '@/lib/push/client';
+import { useT } from '@/components/i18n/useT';
 
 /**
  * Interrupteur « Recevoir les nouveautés » (côté parent).
@@ -17,6 +18,7 @@ import {
  * l'abonnement réel du navigateur, pas une préférence stockée à part.
  */
 export function NotificationsToggle() {
+  const t = useT();
   const [supporte, setSupporte] = useState(false);
   const [actif, setActif] = useState(false);
   const [occupe, setOccupe] = useState(false);
@@ -89,7 +91,7 @@ export function NotificationsToggle() {
           type="button"
           role="switch"
           aria-checked={actif}
-          aria-label="Recevoir les notifications"
+          aria-label={t('notifications.aria')}
           onClick={basculer}
           disabled={occupe}
           className={`relative h-7 w-12 shrink-0 cursor-pointer rounded-full transition-colors disabled:opacity-60 ${
@@ -105,7 +107,7 @@ export function NotificationsToggle() {
         </button>
       </div>
       <p className="mt-1 pl-9 text-xs text-craie-douce">
-        {message ?? 'Nouvelles cartes et mises à jour de l’application.'}
+        {message ?? t('notifications.texte')}
       </p>
     </div>
   );

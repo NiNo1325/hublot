@@ -62,7 +62,7 @@ export const card: ScienceCard = {
           beats: [
             {
               id: 'un',
-              text: 'Le couteau rompt les cellules de l\'oignon, séparant des composés qui restaient jusque-là bien à l\'écart les uns des autres.',
+              text: 'Le couteau rompt les cellules de l\'oignon, libérant des composés qui restaient jusque-là bien à l\'écart les uns des autres.',
             },
             {
               id: 'deux',

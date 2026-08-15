@@ -2,6 +2,9 @@
 
 import { useState } from 'react';
 import { ecransTuto } from '@/content/tutoriel';
+import { useLocale } from '@/components/i18n/useLocale';
+import { useT } from '@/components/i18n/useT';
+import { localise } from '@/lib/i18n/localise';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useSwipeHorizontal } from '@/lib/useSwipeHorizontal';
 import { useTutorielAudio } from './useTutorielAudio';
@@ -27,11 +30,13 @@ export function Tutoriel({ onFermer }: { onFermer: () => void }) {
   };
   const swipe = useSwipeHorizontal({ onLeft: suivant, onRight: precedent });
   const ecran = ecransTuto[index];
+  const { locale } = useLocale();
+  const t = useT();
 
   return (
     <div
       role="dialog"
-      aria-label="Présentation de Hublot"
+      aria-label={t('tuto.aria')}
       className="fixed inset-0 z-[60] flex flex-col items-center justify-center gap-8 bg-encre px-6 text-center"
     >
       <button
@@ -39,7 +44,7 @@ export function Tutoriel({ onFermer }: { onFermer: () => void }) {
         onClick={onFermer}
         className="absolute right-4 top-4 min-h-11 cursor-pointer rounded-full border-2 border-encre-bord bg-encre-clair px-5 font-display text-sm text-craie transition-colors hover:border-soleil hover:text-soleil"
       >
-        Passer
+        {t('tuto.passer')}
       </button>
 
       <div {...swipe} style={{ touchAction: 'pan-y' }} className="flex flex-col items-center gap-6">
@@ -50,13 +55,13 @@ export function Tutoriel({ onFermer }: { onFermer: () => void }) {
           </span>
         </div>
         <div aria-live="polite" className="flex flex-col items-center gap-3">
-          <h2 className="font-display text-2xl text-soleil sm:text-3xl">{ecran.titre}</h2>
-          <p className="max-w-xs text-base leading-relaxed text-craie">{ecran.texte}</p>
+          <h2 className="font-display text-2xl text-soleil sm:text-3xl">{localise(ecran.titre, locale)}</h2>
+          <p className="max-w-xs text-base leading-relaxed text-craie">{localise(ecran.texte, locale)}</p>
           {/* Explication vocale, comme les cartes de Découvrir. */}
           <button
             type="button"
             onClick={() => (enLecture === ecran.id ? arreter() : jouer(ecran.id))}
-            aria-label={enLecture === ecran.id ? 'Arrêter la lecture' : 'Écouter'}
+            aria-label={enLecture === ecran.id ? t('tuto.arreter') : t('tuto.ecouter')}
             className="mt-1 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-lg transition-colors hover:border-soleil hover:text-soleil"
           >
             <span aria-hidden="true">{enLecture === ecran.id ? '⏸' : '🔊'}</span>
@@ -90,7 +95,7 @@ export function Tutoriel({ onFermer }: { onFermer: () => void }) {
           onClick={suivant}
           className="min-h-12 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-8 font-display text-base text-soleil transition-transform hover:scale-105 active:scale-95"
         >
-          {dernier ? "C'est parti !" : 'Suivant'}
+          {dernier ? t('tuto.commencer') : t('tuto.suivant')}
         </button>
       </div>
     </div>

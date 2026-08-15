@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Lumi } from '@/components/mascotte/Lumi';
+import { useT } from '@/components/i18n/useT';
 
 interface SelecteurAgeProps {
   ageInitial: number;
@@ -24,6 +25,7 @@ export function SelecteurAge({
   labelValider,
   onValider,
 }: SelecteurAgeProps) {
+  const t = useT();
   const [ageEdite, setAgeEdite] = useState(ageInitial);
 
   return (
@@ -37,7 +39,7 @@ export function SelecteurAge({
           type="button"
           onClick={() => setAgeEdite((a) => Math.max(3, a - 1))}
           disabled={ageEdite <= 3}
-          aria-label="Un an de moins"
+          aria-label={t('age.moins')}
           className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-4 border-encre-bord font-display text-4xl text-craie transition-colors hover:border-soleil hover:text-soleil disabled:cursor-default disabled:opacity-30"
         >
           −
@@ -53,7 +55,7 @@ export function SelecteurAge({
           type="button"
           onClick={() => setAgeEdite((a) => Math.min(12, a + 1))}
           disabled={ageEdite >= 12}
-          aria-label="Un an de plus"
+          aria-label={t('age.plus')}
           className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-full border-4 border-encre-bord font-display text-4xl text-craie transition-colors hover:border-soleil hover:text-soleil disabled:cursor-default disabled:opacity-30"
         >
           +

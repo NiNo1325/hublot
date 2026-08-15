@@ -1,16 +1,22 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useT } from '@/components/i18n/useT';
 import { useHorsLigne } from './useHorsLigne';
 
-/** Un poids lisible par un parent, jamais des octets bruts. */
-export function enMo(octets: number): string {
-  return `${Math.round(octets / 1024 / 1024)} Mo`;
+/**
+ * Un poids lisible par un parent, jamais des octets bruts. La fonction ne rend
+ * que le nombre : l'unité est traduite (« Mo » / « MB ») via le dictionnaire.
+ */
+export function enMo(octets: number): number {
+  return Math.round(octets / 1024 / 1024);
 }
 
 export function HorsLigneView() {
   const router = useRouter();
   const { resume, telecharger, supprimer } = useHorsLigne();
+  const t = useT();
+  const mo = (octets: number) => t('hl.mo')(enMo(octets));
   const { etat, octetsPresents, octetsTotal, octetsDelta, persistant, erreur } =
     resume;
 
@@ -26,19 +32,17 @@ export function HorsLigneView() {
           🚗
         </span>
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-          Écouter sans internet
+          {t('hl.titre')}
         </h1>
         <p className="text-craie-douce">
-          En voiture, en avion, ou quand le réseau ne suit pas. Une fois les
-          cartes téléchargées, tout fonctionne sans connexion.
+          {t('hl.texte')}
         </p>
       </header>
 
       {etat === 'indisponible' ? (
         <p className="rounded-2xl border-2 border-encre-bord p-5 text-craie-douce">
-          Ce navigateur ne permet pas le téléchargement hors connexion.
-          L&apos;application reste utilisable en ligne.
-          {erreur && <span className="mt-2 block text-sm">Détail : {erreur}</span>}
+          {t('hl.indisponible')}
+          {erreur && <span className="mt-2 block text-sm">{t('hl.detail')(erreur)}</span>}
         </p>
       ) : (
         <div className="flex flex-col gap-5 rounded-3xl border-2 border-encre-bord bg-encre-clair p-6">
@@ -63,14 +67,14 @@ export function HorsLigneView() {
 
           <p className="font-display text-lg">
             {maj
-              ? `Mise à jour disponible — ${enMo(octetsDelta)}`
+              ? t('hl.maj-dispo')(mo(octetsDelta))
               : etat === 'complet'
-                ? `Prêt hors connexion — ${enMo(octetsTotal)}`
+                ? t('hl.pret')(mo(octetsTotal))
                 : enCours
-                  ? `Téléchargement… ${enMo(octetsPresents)} sur ${enMo(octetsTotal)}`
+                  ? t('hl.en-cours')(mo(octetsPresents), mo(octetsTotal))
                   : etat === 'partiel'
-                    ? `Incomplet — ${enMo(octetsPresents)} sur ${enMo(octetsTotal)}`
-                    : `À télécharger — ${enMo(octetsTotal)}`}
+                    ? t('hl.incomplet')(mo(octetsPresents), mo(octetsTotal))
+                    : t('hl.a-telecharger')(mo(octetsTotal))}
           </p>
 
           {/*
@@ -96,12 +100,12 @@ export function HorsLigneView() {
                 className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-8 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95 disabled:cursor-default disabled:opacity-60 disabled:hover:scale-100"
               >
                 {enCours
-                  ? 'Téléchargement en cours…'
+                  ? t('hl.telechargement')
                   : maj
-                    ? 'Mettre à jour'
+                    ? t('hl.mettre-a-jour')
                     : etat === 'partiel'
-                      ? 'Reprendre le téléchargement'
-                      : 'Tout télécharger'}
+                      ? t('hl.reprendre')
+                      : t('hl.tout')}
               </button>
             )}
 
@@ -111,7 +115,7 @@ export function HorsLigneView() {
                 onClick={supprimer}
                 className="min-h-16 cursor-pointer rounded-full border-2 border-encre-bord px-6 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
               >
-                Libérer l&apos;espace
+                {t('hl.liberer')}
               </button>
             )}
           </div>
@@ -121,8 +125,7 @@ export function HorsLigneView() {
             mobiles doit pouvoir renoncer en connaissance de cause.
           */}
           <p className="text-sm text-craie-douce">
-            À télécharger de préférence en wifi. Le téléchargement peut être
-            interrompu et repris : ce qui est déjà là n&apos;est pas redemandé.
+            {t('hl.conseil')}
           </p>
 
           {/*
@@ -134,12 +137,9 @@ export function HorsLigneView() {
           {persistant === false && (
             <p className="rounded-2xl border-2 border-soleil/40 bg-soleil/5 p-4 text-sm text-craie-douce">
               <span className="font-display text-soleil">
-                Installe Hublot sur ton écran d&apos;accueil
+                {t('hl.installer-titre')}
               </span>{' '}
-              pour que le téléchargement soit conservé. Sans installation, le
-              téléphone peut l&apos;effacer quand il manque de place. Dans le menu
-              du navigateur&nbsp;: «&nbsp;Installer l&apos;application&nbsp;» ou
-              «&nbsp;Ajouter à l&apos;écran d&apos;accueil&nbsp;».
+              {t('hl.installer-texte')}
             </p>
           )}
         </div>
@@ -150,7 +150,7 @@ export function HorsLigneView() {
         onClick={() => router.push('/')}
         className="min-h-12 cursor-pointer self-center rounded-full border-2 border-encre-bord px-6 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
       >
-        Retour au menu
+        {t('hl.retour')}
       </button>
     </main>
   );

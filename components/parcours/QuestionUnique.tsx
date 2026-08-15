@@ -11,6 +11,7 @@ import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useCelebration } from '@/components/celebration/CelebrationProvider';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
+import { useT } from '@/components/i18n/useT';
 
 /** Mélange sans modifier la source. */
 function melanger<T>(liste: T[]): T[] {
@@ -43,6 +44,7 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
   const { marquerMaitrisee } = useCartesMaitrisees();
   const celebrer = useCelebration();
   const { locale } = useLocale();
+  const t = useT();
   const [choisie, setChoisie] = useState<number | null>(null);
   const style = domainStyles[card.domainId];
 
@@ -67,14 +69,14 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-5 py-8">
       <header className="flex items-center justify-between gap-3">
-          <p className="text-sm text-craie-douce">Une question sur cette carte</p>
+          <p className="text-sm text-craie-douce">{t('parcours.une-question')}</p>
           <button
             type="button"
             onClick={onQuitter}
             className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-lg transition-colors hover:border-soleil hover:text-soleil"
           >
             <span aria-hidden="true">✕</span>
-            <span className="sr-only">Quitter le parcours</span>
+            <span className="sr-only">{t('parcours.quitter')}</span>
           </button>
         </header>
 
@@ -94,7 +96,7 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
           >
             <span aria-hidden="true">{enLecture ? '⏸' : '🔊'}</span>
             <span className="sr-only">
-              {enLecture ? 'Arrêter la lecture' : 'Écouter la question'}
+              {enLecture ? t('quizz.arreter') : t('quizz.ecouter-question')}
             </span>
           </button>
         </div>
@@ -119,7 +121,7 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
                         celebrer({
                           rang: apres.index,
                           rangAvant: avant.index,
-                          titre: 'Nouveau rang !',
+                          titre: t('fete.nouveau-rang'),
                           sousTitre: `${apres.icone} ${localise(apres.nom, locale)}`,
                         });
                       }
@@ -162,7 +164,7 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
                         question.reponses.indexOf(reponse),
                       )
                     }
-                    aria-label={`Écouter la réponse : ${reponse.texte}`}
+                    aria-label={t('quizz.ecouter-reponse')(reponse.texte)}
                     className="flex w-14 shrink-0 cursor-pointer items-center justify-center rounded-2xl border-2 border-encre-bord text-xl transition-colors hover:border-soleil hover:text-soleil"
                   >
                     <span aria-hidden="true">🔊</span>
@@ -179,7 +181,7 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
               className="font-display text-lg"
               style={{ color: justeChoisie ? '#34d399' : '#ffb627' }}
             >
-              {justeChoisie ? 'Bravo, c’est ça !' : 'Pas tout à fait…'}
+              {justeChoisie ? t('quizz.juste') : t('quizz.presque')}
             </p>
             <p className="text-base leading-relaxed text-craie-douce">
               {question.explication}
@@ -192,7 +194,7 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
               }}
               className="min-h-16 cursor-pointer self-start rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
             >
-              Continuer&nbsp;→
+              {t('parcours.continuer')}
             </button>
           </div>
         )}

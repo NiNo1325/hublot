@@ -40,9 +40,9 @@ function aFaire(manifeste) {
   const liste = [];
   for (const ecran of ecransTuto) {
     const chemin = `${RACINE}/${ecran.id}.mp3`;
-    const attendu = empreinte(ecran.texte);
+    const attendu = empreinte(ecran.texte.fr);
     if (manifeste[ecran.id]?.empreinte === attendu && existsSync(chemin)) continue;
-    liste.push({ cle: ecran.id, chemin, texte: ecran.texte, attendu });
+    liste.push({ cle: ecran.id, chemin, texte: ecran.texte.fr, attendu });
   }
   return liste;
 }

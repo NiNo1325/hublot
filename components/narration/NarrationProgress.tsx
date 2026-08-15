@@ -1,6 +1,7 @@
 'use client';
 
 import type { CardBeat } from '@/lib/types';
+import { useT } from '@/components/i18n/useT';
 
 interface NarrationProgressProps {
   beats: CardBeat[];
@@ -23,9 +24,11 @@ export function NarrationProgress({
   activeIndex,
   onSelect,
 }: NarrationProgressProps) {
+  const t = useT();
+
   return (
     <ol
-      aria-label="Étapes de l’explication"
+      aria-label={t('narration.etapes')}
       className="flex w-full items-center gap-2"
     >
       {beats.map((beat, index) => {

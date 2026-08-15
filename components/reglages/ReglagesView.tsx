@@ -14,6 +14,7 @@ import { NotificationsToggle } from './NotificationsToggle';
 import { InfoVersion } from './InfoVersion';
 import { ouvrirTutoriel } from '@/components/tutoriel/useTutoriel';
 import { useLocale } from '@/components/i18n/useLocale';
+import { useT } from '@/components/i18n/useT';
 import { type Locale } from '@/lib/types';
 
 const LANGUES: { code: Locale; nom: string; drapeau: string }[] = [
@@ -44,6 +45,7 @@ export function ReglagesView() {
   const { oublierMaitrisees } = useCartesMaitrisees();
   const { resume: horsLigne } = useHorsLigne();
   const { locale, choisirLocale } = useLocale();
+  const t = useT();
 
   const [confirmation, setConfirmation] = useState(false);
   const [ageEnregistre, setAgeEnregistre] = useState(false);
@@ -72,15 +74,15 @@ export function ReglagesView() {
   const { rang } = rangDepuisEtoiles(etoiles);
   const etatHorsLigne =
     horsLigne.etat === 'maj'
-      ? 'Mise à jour'
+      ? t('reglages.hors-ligne.maj')
       : horsLigne.etat === 'complet'
-        ? 'Prêt ✓'
+        ? t('reglages.hors-ligne.pret')
         : horsLigne.etat === 'telechargement'
           ? `${Math.round((horsLigne.octetsPresents / horsLigne.octetsTotal) * 100)} %`
           : horsLigne.etat === 'partiel'
-            ? 'Incomplet'
+            ? t('reglages.hors-ligne.incomplet')
             : horsLigne.octetsTotal > 0
-              ? enMo(horsLigne.octetsTotal)
+              ? t('hl.mo')(enMo(horsLigne.octetsTotal))
               : '';
 
   const rangeeNav =
@@ -88,17 +90,17 @@ export function ReglagesView() {
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-6 py-10">
-      <h1 className="text-center font-display text-3xl font-semibold sm:text-4xl">Réglages</h1>
+      <h1 className="text-center font-display text-3xl font-semibold sm:text-4xl">{t('reglages.titre')}</h1>
 
       {/* Profil */}
       <section className="flex flex-col gap-3">
-        <Intitule>Profil</Intitule>
+        <Intitule>{t('reglages.profil')}</Intitule>
         <div className="flex flex-col items-center gap-5 rounded-3xl border-2 border-encre-bord bg-encre-clair p-6">
           <SelecteurAge
             key={age}
             ageInitial={age}
             rangLumi={rang.index}
-            labelValider={ageEnregistre ? 'Enregistré ✓' : "Enregistrer l'âge"}
+            labelValider={ageEnregistre ? t('reglages.age-enregistre') : t('reglages.enregistrer-age')}
             onValider={(choisi) => {
               choisirAge(choisi);
               setAgeEnregistre(true);
@@ -109,7 +111,7 @@ export function ReglagesView() {
 
       {/* Langue */}
       <section className="flex flex-col gap-3">
-        <Intitule>Langue</Intitule>
+        <Intitule>{t('reglages.langue')}</Intitule>
         <div className="grid grid-cols-2 gap-3">
           {LANGUES.map((l) => {
             const actif = locale === l.code;
@@ -134,11 +136,11 @@ export function ReglagesView() {
 
       {/* Écoute & alertes */}
       <section className="flex flex-col gap-3">
-        <Intitule>Écoute &amp; alertes</Intitule>
+        <Intitule>{t('reglages.ecoute')}</Intitule>
         <div className="divide-y divide-encre-bord overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
           <button type="button" onClick={() => router.push('/hors-ligne')} className={rangeeNav}>
             <span aria-hidden="true">🚗</span>
-            <span className="flex-1 text-craie">Écouter sans internet</span>
+            <span className="flex-1 text-craie">{t('reglages.hors-ligne')}</span>
             {etatHorsLigne && <span className="text-sm text-craie-douce">{etatHorsLigne}</span>}
             <span aria-hidden="true" className="text-lg leading-none text-craie-douce">
               ›
@@ -152,11 +154,11 @@ export function ReglagesView() {
 
       {/* Aide */}
       <section className="flex flex-col gap-3">
-        <Intitule>Aide</Intitule>
+        <Intitule>{t('reglages.aide')}</Intitule>
         <div className="overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
           <button type="button" onClick={() => ouvrirTutoriel()} className={rangeeNav}>
             <span aria-hidden="true">🌟</span>
-            <span className="flex-1 text-craie">Revoir la présentation</span>
+            <span className="flex-1 text-craie">{t('reglages.tutoriel')}</span>
             <span aria-hidden="true" className="text-lg leading-none text-craie-douce">
               ›
             </span>
@@ -186,8 +188,8 @@ export function ReglagesView() {
             }`}
           >
             {confirmation
-              ? 'Confirmer ? Les cartes redeviendront neuves'
-              : `Réinitialiser la progression (${cartesVues.size} cartes)`}
+              ? t('reglages.confirmer')
+              : t('reglages.reinitialiser')(cartesVues.size)}
           </button>
         )}
         <InfoVersion />

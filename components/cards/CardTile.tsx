@@ -4,6 +4,7 @@ import type { AgeRange, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
+import { useT } from '@/components/i18n/useT';
 
 interface CardTileProps {
   card: ScienceCard;
@@ -45,6 +46,7 @@ export function CardTile({
   onSelect,
 }: CardTileProps) {
   const { locale } = useLocale();
+  const t = useT();
   const style = domainStyles[card.domainId];
   const titre = localise(card.content, locale).title[ageRange];
 
@@ -118,8 +120,8 @@ export function CardTile({
           être dit. C'est la redondance qu'impose la règle d'accessibilité du
           projet — jamais d'information portée par le seul rendu.
         */}
-        {dejaJouee && <span className="sr-only">, déjà écoutée</span>}
-        {verrouillee && <span className="sr-only">, premium — à débloquer</span>}
+        {dejaJouee && <span className="sr-only">{t('carte.deja-ecoutee')}</span>}
+        {verrouillee && <span className="sr-only">{t('carte.verrouillee')}</span>}
       </button>
     </li>
   );

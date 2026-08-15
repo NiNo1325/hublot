@@ -71,7 +71,7 @@ export const card: ScienceCard = {
             },
             {
               id: 'trois',
-              text: 'Cette fermentation produit de l\'acide lactique, qui fait baisser l\'acidité du lait.',
+              text: 'Cette fermentation produit de l\'acide lactique, qui fait baisser le pH du lait.',
             },
             {
               id: 'quatre',

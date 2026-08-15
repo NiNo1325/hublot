@@ -10,18 +10,34 @@ import { writeFile, readFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { ecransTuto } from '../content/tutoriel.ts';
-import { BASE_API as BASE, VOIX, cle, versMp3 } from './lib/audio.mjs';
+import {
+  BASE_API as BASE,
+  VOIX,
+  cle,
+  localeDemandee,
+  racineAudio,
+  versMp3,
+} from './lib/audio.mjs';
 import { ecrireCatalogue } from './catalogue-audio.mjs';
 
 const MODELE = 'gemini-3.1-flash-tts-preview';
-const RACINE = 'public/audio/tutoriel';
+const LOCALE = localeDemandee(process.argv.slice(2));
+const RACINE = racineAudio(LOCALE, 'tutoriel');
 const MANIFESTE = `${RACINE}/manifeste.json`;
 const PAR_LOT = 40;
 const SONDAGE_MS = 20000;
 
-const CONSIGNE =
-  "Tu es Lumi, la petite mascotte de l'application. Dis cette phrase à un enfant, " +
-  "d'une voix douce, chaleureuse et enjouée, comme si tu te présentais à lui :\n\n";
+/* La consigne est écrite dans la langue qu'elle fait lire (cf. lib/audio.mjs). */
+const CONSIGNES = {
+  fr:
+    "Tu es Lumi, la petite mascotte de l'application. Dis cette phrase à un enfant, " +
+    "d'une voix douce, chaleureuse et enjouée, comme si tu te présentais à lui :\n\n",
+  en:
+    'You are Lumi, the little mascot of the app. Say this sentence to a child, ' +
+    'in English with a British accent, in a gentle, warm and playful voice, as ' +
+    'if you were introducing yourself to them:\n\n',
+};
+const CONSIGNE = CONSIGNES[LOCALE];
 
 function empreinte(texte) {
   return createHash('sha256').update(`${VOIX}|${CONSIGNE}|${texte}`).digest('hex').slice(0, 16);
@@ -40,9 +56,11 @@ function aFaire(manifeste) {
   const liste = [];
   for (const ecran of ecransTuto) {
     const chemin = `${RACINE}/${ecran.id}.mp3`;
-    const attendu = empreinte(ecran.texte.fr);
+    const texteEcran = ecran.texte[LOCALE];
+    if (!texteEcran) continue;
+    const attendu = empreinte(texteEcran);
     if (manifeste[ecran.id]?.empreinte === attendu && existsSync(chemin)) continue;
-    liste.push({ cle: ecran.id, chemin, texte: ecran.texte.fr, attendu });
+    liste.push({ cle: ecran.id, chemin, texte: texteEcran, attendu });
   }
   return liste;
 }

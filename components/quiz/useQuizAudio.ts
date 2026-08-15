@@ -5,6 +5,7 @@ import type { AgeRange, Locale } from '@/lib/types';
 import { VERDICTS, cheminVerdict, type Verdict } from '@/content/quiz/verdicts';
 import { usePauseEnArrierePlan } from '@/lib/usePauseEnArrierePlan';
 import { cheminAudio } from '@/lib/i18n/audio';
+import { localise } from '@/lib/i18n/localise';
 import { useLocale } from '@/components/i18n/useLocale';
 
 /** Chemin déterministe, produit par `scripts/generer-audio-quiz.mjs`. */
@@ -21,7 +22,8 @@ function url(
 function urlVerdict(locale: Locale, age: AgeRange, verdict: Verdict): string {
   // Une formulation au hasard : huit fois la même phrase dans une série
   // transformerait l'encouragement en ritournelle.
-  const rang = Math.floor(Math.random() * VERDICTS[age][verdict].length);
+  const formulations = localise(VERDICTS, locale)[age][verdict];
+  const rang = Math.floor(Math.random() * formulations.length);
   return cheminAudio(locale, `quiz/${cheminVerdict(age, verdict, rang)}.mp3`);
 }
 

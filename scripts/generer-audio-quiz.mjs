@@ -15,35 +15,66 @@ import { quizCartes } from '../content/quiz/index.ts';
 import { ordreLecture } from '../content/quiz/ordre.ts';
 import { VERDICTS, cheminVerdict } from '../content/quiz/verdicts.ts';
 import { AGE_RANGES } from '../lib/types.ts';
-import { BASE_API as BASE, VOIX, cle, versMp3 } from './lib/audio.mjs';
+import {
+  BASE_API as BASE,
+  VOIX,
+  cle,
+  localeDemandee,
+  racineAudio,
+  versMp3,
+} from './lib/audio.mjs';
 import { ecrireCatalogue } from './catalogue-audio.mjs';
 
 const MODELE = 'gemini-3.1-flash-tts-preview';
-const RACINE = 'public/audio/quiz';
+const LOCALE = localeDemandee(process.argv.slice(2));
+const RACINE = racineAudio(LOCALE, 'quiz');
 const MANIFESTE = `${RACINE}/manifeste.json`;
 const PAR_LOT = 40;
 const SONDAGE_MS = 20000;
 
-const CONSIGNES = {
-  '3-5':
-    "Lis cette question à un enfant de quatre ans, lentement, d'une voix douce " +
-    'et encourageante. Marque une nette pause avant chaque proposition :\n\n',
-  '6-8':
-    "Pose cette question à un enfant de sept ans, d'une voix chaleureuse et " +
-    'joueuse, sans précipitation :\n\n',
-  '9-12':
-    "Pose cette question à un enfant de onze ans, d'un ton naturel et complice, " +
-    'débit normal :\n\n',
+/* La consigne est écrite dans la langue qu'elle fait lire (cf. lib/audio.mjs). */
+const TOUTES_CONSIGNES = {
+  fr: {
+    '3-5':
+      "Lis cette question à un enfant de quatre ans, lentement, d'une voix douce " +
+      'et encourageante. Marque une nette pause avant chaque proposition :\n\n',
+    '6-8':
+      "Pose cette question à un enfant de sept ans, d'une voix chaleureuse et " +
+      'joueuse, sans précipitation :\n\n',
+    '9-12':
+      "Pose cette question à un enfant de onze ans, d'un ton naturel et complice, " +
+      'débit normal :\n\n',
+  },
+  en: {
+    '3-5':
+      'Read this question in English, in a British accent, to a four-year-old ' +
+      'child, slowly, in a gentle and encouraging voice. Pause clearly before ' +
+      'each option:\n\n',
+    '6-8':
+      'Ask this question in English, in a British accent, to a seven-year-old ' +
+      'child, in a warm and playful voice, without rushing:\n\n',
+    '9-12':
+      'Ask this question in English, in a British accent, to an eleven-year-old ' +
+      'child, in a natural, companionable tone, at a normal pace:\n\n',
+  },
 };
+const CONSIGNES = TOUTES_CONSIGNES[LOCALE];
 
 /*
   Lecture d'une proposition isolée (bouton « écouter » par réponse, en 6-8).
   Une réponse n'est pas une question : on la lit comme une option qu'on soupèse,
   sans l'intonation montante d'une interrogation.
 */
-const CONSIGNE_PROPOSITION =
-  "Lis cette réponse possible à un enfant de sept ans, d'une voix chaleureuse " +
-  'et posée, comme une option parmi d’autres, sans intonation de question :\n\n';
+const CONSIGNES_PROPOSITION = {
+  fr:
+    "Lis cette réponse possible à un enfant de sept ans, d'une voix chaleureuse " +
+    'et posée, comme une option parmi d’autres, sans intonation de question :\n\n',
+  en:
+    'Read this possible answer in English, in a British accent, to a ' +
+    'seven-year-old child, in a warm and steady voice, as one option among ' +
+    'others, with no questioning intonation:\n\n',
+};
+const CONSIGNE_PROPOSITION = CONSIGNES_PROPOSITION[LOCALE];
 
 /**
  * Texte réellement prononcé pour l'énoncé.
@@ -60,8 +91,10 @@ function texteEnonce(question, age) {
   if (age !== '3-5') return question.question;
   const propositions = ordreLecture(question)
     .map((r) => r.texte)
-    .join(' ? Ou bien : ');
-  return `${question.question} Est-ce que : ${propositions} ?`;
+    .join(LOCALE === 'fr' ? ' ? Ou bien : ' : '? Or: ');
+  return LOCALE === 'fr'
+    ? `${question.question} Est-ce que : ${propositions} ?`
+    : `${question.question} Is it: ${propositions}?`;
 }
 
 function empreinte(texte, consigne) {
@@ -84,9 +117,11 @@ function aFaire(manifeste) {
   const liste = [];
   for (const carte of quizCartes) {
     for (const age of AGE_RANGES) {
-      // Voix française : les autres langues auront leur propre passe, avec
-      // leurs consignes de diction et leur dossier (`/audio/<locale>/…`).
-      for (const question of carte.questions.fr[age]) {
+      // Un quizz non traduit n'est pas repris en doublon sous la racine d'une
+      // autre langue : on ne génère que ce que cette langue possède vraiment.
+      const parAge = carte.questions[LOCALE];
+      if (!parAge) continue;
+      for (const question of parAge[age]) {
         const dossier = `${RACINE}/${carte.cardId}/${age}`;
         const morceaux = [
           { suffixe: 'question', texte: texteEnonce(question, age), consigne: CONSIGNES[age] },
@@ -125,7 +160,7 @@ function aFaire(manifeste) {
   */
   for (const age of AGE_RANGES) {
     for (const verdict of ['juste', 'presque']) {
-      VERDICTS[age][verdict].forEach((texte, rang) => {
+      (VERDICTS[LOCALE] ?? VERDICTS.fr)[age][verdict].forEach((texte, rang) => {
         const cleM = cheminVerdict(age, verdict, rang);
         const chemin = `${RACINE}/${cleM}.mp3`;
         const dossier = chemin.slice(0, chemin.lastIndexOf('/'));

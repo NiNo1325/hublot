@@ -1,6 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { LOCALES, type Locale } from '@/lib/types';
+import { useLocale } from '@/components/i18n/useLocale';
 
 const CACHE_AUDIO = 'hublot-audio';
 const CATALOGUE = '/audio/catalogue.json';
@@ -104,11 +106,28 @@ async function preparerShell(): Promise<void> {
   await Promise.allSettled([...ressources].map((url) => fetch(url)));
 }
 
-async function chargerCatalogue(): Promise<FichierAudio[]> {
+/**
+ * Le catalogue liste toutes les langues ; on ne retient que la sienne.
+ *
+ * Sans ce filtre, un enfant francophone téléchargerait aussi la voix anglaise —
+ * plusieurs dizaines de mégaoctets qu'il n'entendra jamais, sur des données
+ * mobiles. Le français vit à la racine, les autres langues dans leur dossier :
+ * c'est ce qui permet de trancher sur le seul chemin.
+ */
+function deLaLangue(fichiers: FichierAudio[], locale: Locale): FichierAudio[] {
+  const autres = LOCALES.filter((l) => l !== 'fr').map((l) => `/audio/${l}/`);
+  return fichiers.filter((f) =>
+    locale === 'fr'
+      ? !autres.some((prefixe) => f.chemin.startsWith(prefixe))
+      : f.chemin.startsWith(`/audio/${locale}/`),
+  );
+}
+
+async function chargerCatalogue(locale: Locale): Promise<FichierAudio[]> {
   const reponse = await fetch(CATALOGUE, { cache: 'no-store' });
   if (!reponse.ok) throw new Error(`catalogue introuvable (${reponse.status})`);
   const donnees = await reponse.json();
-  return donnees.fichiers as FichierAudio[];
+  return deLaLangue(donnees.fichiers as FichierAudio[], locale);
 }
 
 async function lireSentinelle(): Promise<Sentinelle> {
@@ -166,6 +185,7 @@ function aTelecharger(
  * ce qui est déjà en cache n'est simplement pas redemandé.
  */
 export function useHorsLigne() {
+  const { locale } = useLocale();
   const [resume, setResume] = useState<ResumeHorsLigne>({
     etat: 'inconnu',
     octetsPresents: 0,
@@ -186,7 +206,7 @@ export function useHorsLigne() {
     try {
       // Le catalogue est rechargé à chaque fois (le service worker le sert en
       // réseau d'abord) : c'est ce qui permet de voir une mise à jour publiée.
-      const fichiers = await chargerCatalogue();
+      const fichiers = await chargerCatalogue(locale);
       catalogueRef.current = fichiers;
 
       const total = fichiers.reduce((n, f) => n + f.octets, 0);
@@ -225,7 +245,7 @@ export function useHorsLigne() {
         erreur: erreur instanceof Error ? erreur.message : 'erreur inconnue',
       }));
     }
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     rafraichir();
@@ -247,7 +267,7 @@ export function useHorsLigne() {
       // servent à rien si la grille reste blanche faute de JavaScript.
       await preparerShell();
 
-      const fichiers = await chargerCatalogue();
+      const fichiers = await chargerCatalogue(locale);
       catalogueRef.current = fichiers;
       const total = fichiers.reduce((n, f) => n + f.octets, 0);
 
@@ -328,7 +348,7 @@ export function useHorsLigne() {
     } finally {
       enCoursRef.current = false;
     }
-  }, [rafraichir]);
+  }, [rafraichir, locale]);
 
   const supprimer = useCallback(async () => {
     await caches.delete(CACHE_AUDIO);

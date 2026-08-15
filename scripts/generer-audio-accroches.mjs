@@ -10,18 +10,33 @@ import { writeFile, readFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { domains } from '../content/domains.ts';
-import { BASE_API as BASE, VOIX, cle, versMp3 } from './lib/audio.mjs';
+import {
+  BASE_API as BASE,
+  VOIX,
+  cle,
+  localeDemandee,
+  racineAudio,
+  versMp3,
+} from './lib/audio.mjs';
 import { ecrireCatalogue } from './catalogue-audio.mjs';
 
 const MODELE = 'gemini-3.1-flash-tts-preview';
-const RACINE = 'public/audio/accroches';
+const LOCALE = localeDemandee(process.argv.slice(2));
+const RACINE = racineAudio(LOCALE, 'accroches');
 const MANIFESTE = `${RACINE}/manifeste.json`;
 const PAR_LOT = 40;
 const SONDAGE_MS = 20000;
 
-const CONSIGNE =
-  "Lis cette petite phrase à un enfant, d'une voix intrigante et enjouée, comme " +
-  'pour éveiller sa curiosité :\n\n';
+/* La consigne est écrite dans la langue qu'elle fait lire (cf. lib/audio.mjs). */
+const CONSIGNES = {
+  fr:
+    "Lis cette petite phrase à un enfant, d'une voix intrigante et enjouée, comme " +
+    'pour éveiller sa curiosité :\n\n',
+  en:
+    'Read this short sentence to a child, in English with a British accent, in ' +
+    'an intriguing and playful voice, to spark their curiosity:\n\n',
+};
+const CONSIGNE = CONSIGNES[LOCALE];
 
 function empreinte(texte) {
   return createHash('sha256').update(`${VOIX}|${CONSIGNE}|${texte}`).digest('hex').slice(0, 16);
@@ -39,7 +54,8 @@ async function lireManifeste() {
 function aFaire(manifeste) {
   const liste = [];
   for (const domaine of domains) {
-    const texte = domaine.accroche.fr;
+    const texte = domaine.accroche[LOCALE];
+    if (!texte) continue;
     const chemin = `${RACINE}/${domaine.id}.mp3`;
     const attendu = empreinte(texte);
     if (manifeste[domaine.id]?.empreinte === attendu && existsSync(chemin)) continue;

@@ -22,6 +22,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync, statSync } from 'node:fs';
 import { glob } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
+import { LOCALES } from '../lib/types.ts';
 
 const RACINE = 'public/audio';
 const DESTINATION = `${RACINE}/catalogue.json`;
@@ -43,23 +44,24 @@ function empreinteDe(entree) {
 
 /** (Re)génère le catalogue depuis les fichiers réellement présents. */
 export async function ecrireCatalogue() {
-  const manifestes = {
-    ...Object.fromEntries(
-      Object.entries(await lireManifeste(`${RACINE}/manifeste.json`)).map(
-        ([cle, valeur]) => [`${cle}.mp3`, empreinteDe(valeur)],
-      ),
-    ),
-    ...Object.fromEntries(
-      Object.entries(await lireManifeste(`${RACINE}/quiz/manifeste.json`)).map(
-        ([cle, valeur]) => [`quiz/${cle}.mp3`, empreinteDe(valeur)],
-      ),
-    ),
-    ...Object.fromEntries(
-      Object.entries(await lireManifeste(`${RACINE}/accroches/manifeste.json`)).map(
-        ([cle, valeur]) => [`accroches/${cle}.mp3`, empreinteDe(valeur)],
-      ),
-    ),
-  };
+  /*
+    Les manifestes sont autant que de (langue × famille de sons). Les parcourir
+    plutôt que les nommer un à un évite ce qui s'était produit : le tutoriel,
+    ajouté après, n'avait jamais été branché ici, et ses fichiers étaient donc
+    retéléchargés à chaque mise à jour faute d'empreinte. Une langue nouvelle
+    tomberait dans le même piège.
+  */
+  const manifestes = {};
+  for (const langue of ['', ...LOCALES.filter((l) => l !== 'fr')]) {
+    const prefixeLangue = langue ? `${langue}/` : '';
+    for (const famille of ['', 'quiz', 'accroches', 'tutoriel']) {
+      const prefixe = `${prefixeLangue}${famille ? `${famille}/` : ''}`;
+      const entrees = await lireManifeste(`${RACINE}/${prefixe}manifeste.json`);
+      for (const [cle, valeur] of Object.entries(entrees)) {
+        manifestes[`${prefixe}${cle}.mp3`] = empreinteDe(valeur);
+      }
+    }
+  }
 
   const fichiers = [];
   for await (const chemin of glob(`${RACINE}/**/*.mp3`)) {

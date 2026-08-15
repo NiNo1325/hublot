@@ -1,7 +1,7 @@
 /**
  * Génère l'audio manquant via l'API Batch de Gemini.
  *
- * Usage : npm run audio:batch
+ * Usage : npm run audio:batch [langue]   (fr par défaut)
  *
  * L'API interactive est limitée à quelques dizaines de requêtes par jour et
  * par modèle, indépendamment du budget. L'API Batch dispose de son propre
@@ -17,11 +17,22 @@ import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { cards } from '../content/cards/index.ts';
 import { AGE_RANGES } from '../lib/types.ts';
-import { BASE_API as BASE, CONSIGNES_CARTES as CONSIGNES, VOIX, cle, versMp3 } from './lib/audio.mjs';
+import {
+  BASE_API as BASE,
+  CONSIGNES_CARTES,
+  VOIX,
+  cle,
+  localeDemandee,
+  racineAudio,
+  versMp3,
+} from './lib/audio.mjs';
 import { ecrireCatalogue } from './catalogue-audio.mjs';
 
 const MODELE = 'gemini-3.1-flash-tts-preview';
-const RACINE = 'public/audio';
+const LOCALE = localeDemandee(process.argv.slice(2));
+const CONSIGNES = CONSIGNES_CARTES[LOCALE];
+const RACINE = racineAudio(LOCALE);
+/* Un manifeste par langue : il vit dans la racine de la langue. */
 const MANIFESTE = `${RACINE}/manifeste.json`;
 
 /**
@@ -57,7 +68,11 @@ async function aFaire(manifeste) {
   const liste = [];
   for (const carte of cards) {
     for (const age of AGE_RANGES) {
-      for (const beat of carte.content.fr.explanation[age].beats) {
+      // Une carte non traduite n'est pas générée deux fois : `localise`
+      // retomberait sur le français et produirait un doublon sous /en.
+      const contenu = carte.content[LOCALE];
+      if (!contenu) continue;
+      for (const beat of contenu.explanation[age].beats) {
         const chemin = `${RACINE}/${carte.id}/${age}/${beat.id}.mp3`;
         const attendu = empreinte(beat.text, age);
         const entree = lireEntree(manifeste[`${carte.id}/${age}/${beat.id}`]);

@@ -60,9 +60,13 @@ describe('ordre de lecture des propositions', () => {
  * n'existait qu'à l'écran, donc précisément là où il ne peut pas le lire.
  */
 describe('audio des verdicts', () => {
+  /*
+    Le français seul pour les fichiers : c'est la seule voix enregistrée à ce
+    stade, les autres langues ayant leur propre passe de génération.
+  */
   const cas = AGE_RANGES.flatMap((age) =>
     (['juste', 'presque'] as const).flatMap((verdict) =>
-      VERDICTS[age][verdict].map(
+      VERDICTS.fr[age][verdict].map(
         (_, rang) =>
           [
             `${age}/${verdict}-${rang + 1}`,
@@ -72,12 +76,15 @@ describe('audio des verdicts', () => {
     ),
   );
 
-  it('prévoit plusieurs formulations par âge', () => {
-    for (const age of AGE_RANGES) {
-      expect(VERDICTS[age].juste.length).toBeGreaterThanOrEqual(3);
-      expect(VERDICTS[age].presque.length).toBeGreaterThanOrEqual(3);
-    }
-  });
+  it.each(LOCALES.filter((l) => VERDICTS[l]))(
+    'prévoit plusieurs formulations par âge en %s',
+    (locale) => {
+      for (const age of AGE_RANGES) {
+        expect(VERDICTS[locale]![age].juste.length).toBeGreaterThanOrEqual(3);
+        expect(VERDICTS[locale]![age].presque.length).toBeGreaterThanOrEqual(3);
+      }
+    },
+  );
 
   it.each(cas)('%s a son fichier audio', (_libelle, chemin) => {
     expect(existsSync(chemin), `manquant : ${chemin} — lance « npm run audio:quiz »`).toBe(

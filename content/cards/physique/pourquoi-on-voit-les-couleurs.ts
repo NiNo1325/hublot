@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The colours inside light',
+        '6-8': 'Why we see colours',
+        '9-12': 'Light, absorption and perception',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'lumiere-blanche',
+              text: 'Sunlight looks all white, but really it is hiding every colour at once.',
+            },
+            {
+              id: 'decomposition',
+              text: 'When it goes through raindrops, the colours come apart and make a rainbow.',
+            },
+            {
+              id: 'absorption',
+              text: 'A red apple keeps every colour for itself, except red, which it sends back to your eyes.',
+            },
+            {
+              id: 'noir',
+              text: 'And in complete darkness, nothing has a colour any more. Without light, there is no colour at all.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'lumiere-blanche',
+              text: 'White light is a mixture of every colour. Newton proved it with a prism, then put them back together to get white again.',
+            },
+            {
+              id: 'decomposition',
+              text: 'Each colour is bent slightly differently when it moves from one material into another. That is how a prism, or a raindrop, separates them and makes a rainbow appear.',
+            },
+            {
+              id: 'absorption',
+              text: 'An object does not make its own colour: it absorbs part of the light it receives and sends the rest back. A green leaf absorbs the red and the blue, and sends the green back to you.',
+            },
+            {
+              id: 'noir',
+              text: 'So the colour is not in the object alone: you need light, an object, and an eye. Change the light and the colour changes — which is why a piece of clothing looks different in a shop and in the sunshine, and why everything looks grey at night.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'lumiere-blanche',
+              text: 'Visible light is an electromagnetic wave whose wavelength runs from about 380 nanometres for violet to 750 for red. White is not a colour in itself, but the sum of that spectrum.',
+            },
+            {
+              id: 'decomposition',
+              text: 'The refractive index of a material depends on the wavelength: this is dispersion. Each colour is therefore bent by its own angle. In a rainbow, the light is refracted as it enters the drop, reflected at the back, then refracted again on the way out — hence the arc, always seen at about 42 degrees from the point opposite the Sun.',
+            },
+            {
+              id: 'absorption',
+              text: 'The colour of an object results from selective absorption by its molecules: the absorbed wavelengths excite the electrons, the others are scattered. Chlorophyll absorbs red and blue, which is why leaves look green.',
+            },
+            {
+              id: 'noir',
+              text: 'Perception adds a further layer: our three types of retinal cone sample the spectrum, and the brain reconstructs the colour. That is why two different spectra can look identical — a screen only produces red, green and blue, and simulates all the rest. In dim light, only the rods work: they do not tell colours apart, and the world appears in shades of grey.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

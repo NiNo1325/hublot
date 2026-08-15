@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why we sleep',
+        '6-8': 'What sleep is for',
+        '9-12': 'Sleep, memory and recovery',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'repos',
+              text: 'When you sleep, your body rests, but your head carries on working.',
+            },
+            {
+              id: 'memoire',
+              text: 'It tidies away everything you learnt during the day, the way you put toys back in the right boxes.',
+            },
+            {
+              id: 'grandir',
+              text: 'The night is also when you grow the most, and when your little scratches heal.',
+            },
+            {
+              id: 'reves',
+              text: 'And sometimes you dream. Everybody dreams, even if we do not always remember it when we wake up.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'repos',
+              text: 'People often think the brain switches off during sleep. That is false: it stays very busy, and some of its areas work even harder than they do in the daytime.',
+            },
+            {
+              id: 'memoire',
+              text: 'One of its main jobs is sorting through memories. What was learnt during the day is replayed and moved across into lasting memory. That is why a night’s sleep really does help you remember a lesson.',
+            },
+            {
+              id: 'grandir',
+              text: 'The body makes the most of it too: growth hormone is released mainly during deep sleep, muscles repair themselves and the immune defences build back up.',
+            },
+            {
+              id: 'reves',
+              text: 'Sleep is organised in cycles of about ninety minutes. The most vivid dreams come in a stage where the eyes move quickly under the eyelids, while the rest of the body is almost paralysed — which stops you living your dreams out for real.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'repos',
+              text: 'Sleep alternates between slow-wave and REM stages, in cycles of about ninety minutes. Brain activity never ceases: it changes in nature, and the change can be measured on an electroencephalogram.',
+            },
+            {
+              id: 'memoire',
+              text: 'During deep slow-wave sleep, the circuits active during learning are replayed and memories are transferred from the hippocampus to the cortex. Depriving someone of sleep after they have learnt something clearly degrades what they retain — a result reproduced many times over.',
+            },
+            {
+              id: 'grandir',
+              text: 'The glymphatic system, which clears metabolic waste out of the brain, is far more efficient during sleep: the space between cells widens and cerebrospinal fluid circulates more freely. Growth hormone secretion and tissue repair are concentrated there too.',
+            },
+            {
+              id: 'reves',
+              text: 'No animal that has been studied does entirely without sleep, which points to a vital function. Its exact purpose is still debated, though: memory consolidation, metabolic cleaning and emotional regulation are all documented, without any single explanation carrying the day. This is a field where research is still under way.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

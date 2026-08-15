@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Hard, runny or flown away',
+        '6-8': 'The three states of matter',
+        '9-12': 'States of matter and changes of state',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'solide',
+              text: 'An ice cube is hard. You can hold it in your hand, and it always keeps the same shape.',
+            },
+            {
+              id: 'liquide',
+              text: 'If you leave it somewhere warm, it melts and becomes water. Water flows and takes the shape of the glass.',
+            },
+            {
+              id: 'gaz',
+              text: 'And if we boil it, it flies off into the air, so tiny that you cannot see it at all.',
+            },
+            {
+              id: 'reversible',
+              text: 'But nothing has gone! Put it back in the cold and it becomes water again, then an ice cube.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'solide',
+              text: 'In a solid, the particles are packed tightly against one another and vibrate on the spot. That is why a solid keeps its shape.',
+            },
+            {
+              id: 'liquide',
+              text: 'As it warms up, the particles jiggle about more and manage to slide over one another. The liquid flows and takes the shape of its container.',
+            },
+            {
+              id: 'gaz',
+              text: 'Heat it further and they break away and shoot off in every direction. Water vapour is completely invisible. The white cloud above a saucepan is not vapour, but fine droplets that have already cooled.',
+            },
+            {
+              id: 'reversible',
+              text: 'These changes can be undone, and matter is never lost. A kilo of ice gives a kilo of water, then a kilo of vapour. Only the jiggling of the particles has changed.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'solide',
+              text: 'The state depends on the contest between thermal agitation and the forces of cohesion. In a crystalline solid, the particles occupy ordered positions and have no freedom other than to vibrate.',
+            },
+            {
+              id: 'liquide',
+              text: 'At melting point, the energy supplied is enough to break that order without separating the particles. They stay in contact but become mobile: the volume barely changes, the shape is no longer imposed.',
+            },
+            {
+              id: 'gaz',
+              text: 'At vaporisation, the particles break free completely and occupy all the space available. The volume increases here by a factor of about one thousand seven hundred — it is this expansion that made steam engines possible.',
+            },
+            {
+              id: 'reversible',
+              text: 'These are physical changes, not chemical ones: water molecules remain water molecules. Note that during a change of state the temperature does not move, even though the heating continues — the energy goes into breaking bonds, not into raising the temperature. That is why a mixture of water and ice stays at zero degrees.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

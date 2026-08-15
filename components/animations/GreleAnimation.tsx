@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['orage', 'monte-descend', 'couches', 'tombe'] as const;
+
+const LEGENDES = {
+  fr: {
+    orage: 'un orage violent',
+    monteDescend: 'il monte et descend',
+    couches: 'des couches de glace',
+    tombe: 'trop lourd, il tombe',
+  },
+  en: {
+    orage: 'a violent storm',
+    monteDescend: 'it goes up and down',
+    couches: 'layers of ice',
+    tombe: 'too heavy, it falls',
+  },
+};
 
 /**
  * La grêle n'est pas de la neige en boule : dans un orage, le grêlon monte et
@@ -14,10 +30,12 @@ export function GreleAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -41,7 +59,7 @@ export function GreleAnimation({
             </path>
           </g>
         ))}
-        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>un orage violent</text>
+        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>{legende.orage}</text>
       </g>
 
       {/* Phase 2 : le grêlon monte et descend */}
@@ -50,7 +68,7 @@ export function GreleAnimation({
         <circle cx="250" cy="120" r="9" fill="#dbeafe">
           {anime && <animate attributeName="cy" values="150;92;150" dur="3s" repeatCount="indefinite" />}
         </circle>
-        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>il monte et descend</text>
+        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>{legende.monteDescend}</text>
       </g>
 
       {/* Phase 3 : les couches de glace */}
@@ -59,7 +77,7 @@ export function GreleAnimation({
         <circle cx="250" cy="104" r="19" fill="none" stroke="#7dd3fc" strokeWidth="2" />
         <circle cx="250" cy="104" r="12" fill="none" stroke="#38bdf8" strokeWidth="2" />
         <circle cx="250" cy="104" r="5" fill="#0ea5e9" />
-        <text x="240" y="200" fill="#bae6fd" fontSize="15" fontFamily={police}>des couches de glace</text>
+        <text x="240" y="200" fill="#bae6fd" fontSize="15" fontFamily={police}>{legende.couches}</text>
       </g>
 
       {/* Phase 4 : trop lourd, il tombe */}
@@ -67,7 +85,7 @@ export function GreleAnimation({
         <circle cx="150" cy="110" r="12" fill="#e0f2fe">
           {anime && <animate attributeName="cy" values="80;168" dur="1.4s" repeatCount="indefinite" />}
         </circle>
-        <text x="230" y="224" fill="#e0f2fe" fontSize="15" fontFamily={police}>trop lourd, il tombe</text>
+        <text x="230" y="224" fill="#e0f2fe" fontSize="15" fontFamily={police}>{legende.tombe}</text>
       </g>
     </svg>
   );

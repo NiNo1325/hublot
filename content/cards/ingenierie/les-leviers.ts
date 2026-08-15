@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Lifting without straining',
+        '6-8': 'Levers',
+        '9-12': 'Simple machines and the moment of a force',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'lourd',
+              text: 'Some things are far too heavy for you to lift with your hands.',
+            },
+            {
+              id: 'barre',
+              text: 'But with a stick resting on a stone, you press down on one end and the rock lifts up at the other.',
+            },
+            {
+              id: 'distance',
+              text: 'The further from the stone you press, the easier it is. Try it on a see-saw, you feel it straight away.',
+            },
+            {
+              id: 'echange',
+              text: 'But watch out: your hand has to go down a long way, and the rock only rises a tiny bit.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'lourd',
+              text: 'A lever is a rigid bar that swings around a resting point, called the pivot.',
+            },
+            {
+              id: 'barre',
+              text: 'What counts is not only the force you apply, but also its distance from the pivot. A small force far from the pivot can balance a large force placed right beside it.',
+            },
+            {
+              id: 'distance',
+              text: 'Press twice as far away and you need only half the force. That is the principle behind the wheelbarrow, the nutcracker, the pair of scissors, and even your forearm when you carry something.',
+            },
+            {
+              id: 'echange',
+              text: 'Nothing comes free, though: what you gain in force, you lose in distance. To lift the load by one centimetre, your hand has to travel ten. A lever does not create energy, it redistributes it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'lourd',
+              text: 'The effect of a force on a rotation is measured by its moment: the force multiplied by the perpendicular distance to the axis. Two equal and opposite moments give balance.',
+            },
+            {
+              id: 'barre',
+              text: 'Hence the relation force times distance equals force times distance, on either side of the pivot. It also explains why a door handle is fitted far from the hinges: the same effort produces a far greater moment there.',
+            },
+            {
+              id: 'distance',
+              text: 'Levers fall into three classes, according to the relative positions of the pivot, the load and the effort. Tweezers belong to the third: they magnify the movement at the cost of a greater force — the opposite of a wheelbarrow. Your biceps works the same way, which is what gives you quick, precise movements.',
+            },
+            {
+              id: 'echange',
+              text: 'Conservation of energy imposes the trade-off: the work supplied, force multiplied by displacement, cannot increase. No simple machine creates energy. “Give me a place to stand and I shall move the Earth”, said Archimedes — he would have had to move his end of the lever an astronomical distance.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

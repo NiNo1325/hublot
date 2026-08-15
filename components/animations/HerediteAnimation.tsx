@@ -1,9 +1,32 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['notice', 'moitie', 'combinaison', 'unique'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor. Le typage
+  impose à `en` de reprendre exactement les clés du français : une légende
+  oubliée ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    adn: 'ton ADN',
+    parent1: 'parent 1',
+    parent2: 'parent 2',
+    moitieMoitie: 'moitié-moitié, sans mélange',
+    unique: 'une combinaison unique au monde',
+  },
+  en: {
+    adn: 'your DNA',
+    parent1: 'parent 1',
+    parent2: 'parent 2',
+    moitieMoitie: 'half and half, no blending',
+    unique: 'a combination like no other',
+  },
+};
 
 /**
  * Les jetons hérités gardent leur couleur d'origine au lieu de se fondre en
@@ -14,9 +37,11 @@ export function HerediteAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -35,14 +60,14 @@ export function HerediteAnimation({
             </g>
           );
         })}
-        <text x="22" y="232" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">ton ADN</text>
+        <text x="22" y="232" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.adn}</text>
       </g>
 
       {/* Les deux parents */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         {[
-          { x: 160, couleur: '#38bdf8', label: 'parent 1' },
-          { x: 300, couleur: '#fb7185', label: 'parent 2' },
+          { x: 160, couleur: '#38bdf8', label: legende.parent1 },
+          { x: 300, couleur: '#fb7185', label: legende.parent2 },
         ].map(({ x, couleur, label }) => (
           <g key={x}>
             <circle cx={x} cy="52" r="20" fill={couleur} opacity="0.9" />
@@ -67,14 +92,14 @@ export function HerediteAnimation({
           </circle>
         ))}
         <text x="163" y="154" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          moitié-moitié, sans mélange
+          {legende.moitieMoitie}
         </text>
       </g>
 
       {/* Unicité */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="112" y="216" fill="#c4b5fd" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          une combinaison unique au monde
+          {legende.unique}
         </text>
       </g>
     </svg>

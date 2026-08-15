@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Plankton, ever so small',
+        '6-8': 'Plankton, tiny but mighty',
+        '9-12': 'Plankton, an invisible giant',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Tiny living things float in the sea, so small you can hardly see them: plankton.',
+            },
+            {
+              id: 'deux',
+              text: 'Lots of them catch the light of the Sun, just like plants do.',
+            },
+            {
+              id: 'trois',
+              text: 'That way, they make air for us to breathe.',
+            },
+            {
+              id: 'quatre',
+              text: 'And they feed almost every animal in the ocean.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Plankton is billions of tiny living things drifting near the surface of the oceans, far too small to fight against the currents.',
+            },
+            {
+              id: 'deux',
+              text: 'A large part of it, the phytoplankton, catches sunlight to make its own food, just like the plants on land.',
+            },
+            {
+              id: 'trois',
+              text: 'While doing so, it releases oxygen into the water and into the air: it is thought to make more than half of everything we breathe.',
+            },
+            {
+              id: 'quatre',
+              text: 'Plankton is also the first food of the marine food chain: without it, fish, whales and very nearly the whole ocean would disappear.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Plankton covers all the organisms, often microscopic, that drift wherever the currents carry them because they cannot swim against them.',
+            },
+            {
+              id: 'deux',
+              text: 'Phytoplankton, made up of single-celled algae, carries out photosynthesis exactly as land plants do, using sunlight, water and carbon dioxide.',
+            },
+            {
+              id: 'trois',
+              text: 'This photosynthesis is thought to produce between half and two thirds of the oxygen in the Earth’s atmosphere, more than all the world’s forests put together.',
+            },
+            {
+              id: 'quatre',
+              text: 'Phytoplankton is also the base of almost every ocean food chain: zooplankton, fish, and even the largest whales depend on it, directly or indirectly.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

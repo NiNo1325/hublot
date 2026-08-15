@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The pattern on your fingers',
+        '6-8': 'Fingerprints',
+        '9-12': 'Why your fingerprints are unique',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Look at your fingertips: they are covered in little lines that draw swirls.',
+            },
+            {
+              id: 'deux',
+              text: 'This pattern was made before you were even born.',
+            },
+            {
+              id: 'trois',
+              text: 'These little lines help you grab hold of things properly.',
+            },
+            {
+              id: 'quatre',
+              text: 'Your pattern exists only on your own fingers: nobody else has exactly the same one, not even a twin.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Your fingertips are covered in fine lines that draw loops, whorls and arches: those are your fingerprints.',
+            },
+            {
+              id: 'deux',
+              text: 'This pattern formed long before you were born, while you were growing inside your mum’s tummy.',
+            },
+            {
+              id: 'trois',
+              text: 'These ridges increase the friction against objects: they help you take hold of things and grip them firmly.',
+            },
+            {
+              id: 'quatre',
+              text: 'The exact pattern depends on tiny accidents of growth: even identical twins, who share exactly the same genes, have different fingerprints.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The fingertips carry a relief of friction ridges, arranged into loops, whorls or arches depending on the person.',
+            },
+            {
+              id: 'deux',
+              text: 'This pattern forms during life in the womb, under the influence of the pressure of the amniotic fluid and the growth of the tissues, at a stage where the smallest local chance event shapes the final design.',
+            },
+            {
+              id: 'trois',
+              text: 'These ridges increase friction with surfaces and make it easier to grip objects.',
+            },
+            {
+              id: 'quatre',
+              text: 'Because they depend on the chance events of development and not on genes alone, fingerprints are unique to each individual: even two identical twins, with exactly the same genes, have different fingerprints.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

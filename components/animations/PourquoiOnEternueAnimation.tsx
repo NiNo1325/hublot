@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    poussiere: 'une poussière chatouille',
+    capteur: 'un capteur prévient le cerveau',
+    ordre: '« expulse-la ! »',
+    atchoum: 'Atchoum !',
+  },
+  en: {
+    poussiere: 'a speck of dust tickles',
+    capteur: 'a sensor alerts the brain',
+    ordre: '“blow it out!”',
+    atchoum: 'Atishoo!',
+  },
+};
 
 /**
  * Un profil de tête reste visible en permanence : la poussière entre par la
@@ -14,10 +30,12 @@ export function PourquoiOnEternueAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, dejaVu } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
   const eclate = dejaVu(3);
 
   return (
@@ -47,7 +65,7 @@ export function PourquoiOnEternueAnimation({
             <animate attributeName="cy" values="122;116;126;118" dur="2.4s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="20" y="34" fill="#a3a3a3" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>une poussière chatouille</text>
+        <text x="20" y="34" fill="#a3a3a3" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.poussiere}</text>
       </g>
 
       {/* Phase 2 : le nerf prévient le cerveau */}
@@ -62,7 +80,7 @@ export function PourquoiOnEternueAnimation({
             <animate attributeName="r" values="18;26;18" dur="1.4s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="20" y="200" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>un capteur prévient le cerveau</text>
+        <text x="20" y="200" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.capteur}</text>
       </g>
 
       {/* Phase 3 : le cerveau ordonne l'expulsion */}
@@ -72,7 +90,7 @@ export function PourquoiOnEternueAnimation({
             <animate attributeName="opacity" values="0.2;1;0.2" dur="1.2s" repeatCount="indefinite" />
           )}
         </path>
-        <text x="200" y="34" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>« expulse-la ! »</text>
+        <text x="200" y="34" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.ordre}</text>
       </g>
 
       {/* Phase 4 : atchoum, l'air chasse l'intrus */}
@@ -96,7 +114,7 @@ export function PourquoiOnEternueAnimation({
             <animate attributeName="opacity" values="1;0" dur="1s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="150" y="200" fill="#fbbf24" fontSize="18" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>Atchoum !</text>
+        <text x="150" y="200" fill="#fbbf24" fontSize="18" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.atchoum}</text>
       </g>
     </svg>
   );

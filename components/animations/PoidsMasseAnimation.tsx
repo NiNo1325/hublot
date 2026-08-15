@@ -1,16 +1,39 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['balance', 'deux-choses', 'sur-la-lune', 'apesanteur'] as const;
 
-/** Trois lieux, une seule masse, trois poids. */
+/**
+ * Trois lieux, une seule masse, trois poids. Le nom du lieu est une légende
+ * comme les autres : il vit dans LEGENDES, la colonne ne garde que sa clé.
+ */
 const LIEUX = [
-  { x: 50, nom: 'Terre', poids: '600 N' },
-  { x: 180, nom: 'Lune', poids: '100 N' },
-  { x: 306, nom: 'orbite', poids: '0 N' },
-];
+  { x: 50, cle: 'terre', poids: '600 N' },
+  { x: 180, cle: 'lune', poids: '100 N' },
+  { x: 306, cle: 'orbite', poids: '0 N' },
+] as const;
+
+const LEGENDES = {
+  fr: {
+    terre: 'Terre',
+    lune: 'Lune',
+    orbite: 'orbite',
+    masse: 'la masse ne change jamais',
+    poids: 'le poids dépend de l’astre',
+    chuteLibre: 'en orbite, tout tombe ensemble',
+  },
+  en: {
+    terre: 'Earth',
+    lune: 'Moon',
+    orbite: 'orbit',
+    masse: 'the mass never changes',
+    poids: 'the weight depends on the world',
+    chuteLibre: 'in orbit, all falls together',
+  },
+};
 
 /**
  * La ligne des masses est identique dans les trois colonnes, celle des poids
@@ -21,16 +44,18 @@ export function PoidsMasseAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
       <rect width="400" height="240" fill="#0f1b33" />
 
       {LIEUX.map((lieu, i) => (
-        <g key={lieu.nom}>
+        <g key={lieu.cle}>
           {/* Le sol de chaque lieu, absent en orbite */}
           {i < 2 && (
             <line x1={lieu.x - 8} y1="126" x2={lieu.x + 62} y2="126" stroke="#475569" strokeWidth="3" />
@@ -52,7 +77,7 @@ export function PoidsMasseAnimation({
             )}
           </g>
           <text x={lieu.x} y="60" fill="#e2e8f0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-            {lieu.nom}
+            {legende[lieu.cle]}
           </text>
           {/* La masse : identique partout */}
           <text x={lieu.x} y="154" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
@@ -68,17 +93,17 @@ export function PoidsMasseAnimation({
       ))}
 
       <text x="14" y="32" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-        la masse ne change jamais
+        {legende.masse}
       </text>
 
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <text x="14" y="210" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le poids dépend de l’astre
+          {legende.poids}
         </text>
       </g>
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="14" y="234" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          en orbite, tout tombe ensemble
+          {legende.chuteLibre}
         </text>
       </g>
     </svg>

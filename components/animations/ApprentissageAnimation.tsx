@@ -1,9 +1,33 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['exemples', 'erreurs', 'ajuste', 'comprend-pas'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    exemples: 'des milliers d’exemples',
+    reglages: 'des réglages qu’on ajuste',
+    erreur: 'l’erreur baisse',
+    regularites: 'elle trouve des régularités dans des chiffres',
+    pasChat: 'elle ne sait pas ce qu’est un chat',
+  },
+  en: {
+    exemples: 'thousands of examples',
+    reglages: 'settings we adjust',
+    erreur: 'the error drops',
+    regularites: 'it finds patterns in numbers',
+    pasChat: 'it does not know what a cat is',
+  },
+};
 
 /**
  * La courbe d'erreur descend sans jamais atteindre zéro, et la dernière phase
@@ -14,9 +38,11 @@ export function ApprentissageAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -31,7 +57,7 @@ export function ApprentissageAnimation({
           </g>
         ))}
         <text x="22" y="94" fill="#22d3ee" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des milliers d&apos;exemples
+          {legende.exemples}
         </text>
       </g>
 
@@ -49,7 +75,7 @@ export function ApprentissageAnimation({
           </circle>
         ))}
         <text x="168" y="158" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des réglages qu&apos;on ajuste
+          {legende.reglages}
         </text>
       </g>
 
@@ -66,7 +92,7 @@ export function ApprentissageAnimation({
           )}
         </path>
         <text x="264" y="132" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l&apos;erreur baisse
+          {legende.erreur}
         </text>
       </g>
 
@@ -74,10 +100,10 @@ export function ApprentissageAnimation({
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <rect x="34" y="158" width="332" height="58" rx="10" fill="#1b2a4a" stroke="#fb7185" strokeWidth="2" />
         <text x="10" y="184" fill="#f5f0e6" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          elle trouve des régularités dans des chiffres
+          {legende.regularites}
         </text>
         <text x="52" y="210" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          elle ne sait pas ce qu&apos;est un chat
+          {legende.pasChat}
         </text>
       </g>
     </svg>

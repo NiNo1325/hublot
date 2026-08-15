@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['voit', 'cri', 'echo', 'image'] as const;
+
+const LEGENDES = {
+  fr: {
+    voit: 'elle voit très bien',
+    cri: 'elle crie dans le noir',
+    echo: 'l’écho revient',
+    image: 'elle voit avec le son',
+  },
+  en: {
+    voit: 'it sees very well',
+    cri: 'it calls in the dark',
+    echo: 'the echo returns',
+    image: 'it sees with sound',
+  },
+};
 
 /**
  * La chauve-souris n'est pas aveugle (yeux ouverts en phase « voit ») : dans le
@@ -14,10 +30,12 @@ export function EcholocationAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -38,7 +56,7 @@ export function EcholocationAnimation({
         <circle cx="330" cy="46" r="15" fill="#fbbf24" />
         <circle cx="69" cy="96" r="2" fill="#fde047" />
         <circle cx="75" cy="96" r="2" fill="#fde047" />
-        <text x="20" y="200" fill="#fde047" fontSize="15" fontFamily={police}>elle voit très bien</text>
+        <text x="20" y="200" fill="#fde047" fontSize="15" fontFamily={police}>{legende.voit}</text>
       </g>
 
       {/* Phase 2 : le cri — ondes qui partent vers la droite */}
@@ -48,7 +66,7 @@ export function EcholocationAnimation({
             {anime && <animate attributeName="opacity" values="0.2;1;0.2" dur="1.8s" begin={`${i * 0.3}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>elle crie dans le noir</text>
+        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>{legende.cri}</text>
       </g>
 
       {/* Phase 3 : l'écho — ondes qui reviennent vers la gauche */}
@@ -58,14 +76,14 @@ export function EcholocationAnimation({
             {anime && <animate attributeName="opacity" values="0.2;1;0.2" dur="1.8s" begin={`${i * 0.3}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="250" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>l’écho revient</text>
+        <text x="250" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.echo}</text>
       </g>
 
       {/* Phase 4 : l'image — l'obstacle localisé */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <line x1="96" y1="96" x2="312" y2="96" stroke="#c4b5fd" strokeWidth="2" strokeDasharray="5 5" />
         <circle cx="320" cy="96" r="14" fill="none" stroke="#c4b5fd" strokeWidth="2" />
-        <text x="230" y="224" fill="#c4b5fd" fontSize="15" fontFamily={police}>elle voit avec le son</text>
+        <text x="230" y="224" fill="#c4b5fd" fontSize="15" fontFamily={police}>{legende.image}</text>
       </g>
     </svg>
   );

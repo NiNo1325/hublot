@@ -51,6 +51,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'papillon-ailes',
+            question: 'Are a butterfly’s two wings exactly the same?',
+            reponses: [
+              { texte: 'Almost, but not quite', icone: '🦋', correcte: true },
+              { texte: 'Yes, exactly identical', icone: '🪞' },
+            ],
+            explication: 'Very close up, the two sides are never perfectly the same.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'flocon-axes',
+            question: 'How many axes of symmetry does a snowflake have?',
+            reponses: [
+              { texte: 'Six', icone: '❄️', correcte: true },
+              { texte: 'Only one', icone: '1️⃣' },
+              { texte: 'An infinite number', icone: '♾️' },
+            ],
+            explication:
+              'Six, because of the way water molecules lock together as they freeze.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'symetrie-rotation',
+            question: 'A five-pointed star looks unchanged after a turn of how much?',
+            reponses: [
+              { texte: 'Seventy-two degrees', icone: '⭐', correcte: true },
+              { texte: 'Forty-five degrees', icone: '📐' },
+              { texte: 'One hundred and eighty degrees', icone: '🔄' },
+            ],
+            explication:
+              'Three hundred and sixty divided by five. That is rotational symmetry, quite distinct from reflection symmetry.',
+          },
+        ],
+      },
     },
   },
   {
@@ -92,6 +131,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Plus la règle est fine, plus le résultat augmente : le littoral n’a pas de longueur unique.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'fougere-parties',
+            question: 'On a fern, what does one little leaf look like?',
+            reponses: [
+              { texte: 'The whole big leaf', icone: '🌿', correcte: true },
+              { texte: 'Nothing in particular', icone: '❓' },
+            ],
+            explication: 'Every part looks like the whole: that is what a fractal is.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'poumons-surface',
+            question: 'Why do your lungs use a fractal shape?',
+            reponses: [
+              { texte: 'To offer a huge surface in very little space', icone: '🫁', correcte: true },
+              { texte: 'To look prettier', icone: '🎨' },
+              { texte: 'To weigh less', icone: '🪶' },
+            ],
+            explication:
+              'Their exchange surface is as big as a tennis court, folded up inside your chest.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'longueur-cote',
+            question: 'What is the exact length of a coastline?',
+            reponses: [
+              { texte: 'It depends on how fine the measurement is', icone: '📏', correcte: true },
+              { texte: 'A fixed value, measurable once and for all', icone: '📐' },
+              { texte: 'It is infinite', icone: '♾️' },
+            ],
+            explication:
+              'The finer the ruler, the larger the result: a coastline has no single length.',
           },
         ],
       },
@@ -139,6 +217,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'piece-memoire',
+            question: 'You got heads five times. Does the coin remember?',
+            reponses: [
+              { texte: 'No, not at all', icone: '🪙', correcte: true },
+              { texte: 'Yes, so tails will come up', icone: '🔮' },
+            ],
+            explication: 'On every toss, heads and tails have the same chance.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'erreur-parieur',
+            question: 'After five heads, what is the chance of getting tails?',
+            reponses: [
+              { texte: 'One in two, as always', icone: '⚖️', correcte: true },
+              { texte: 'Bigger, it has to even out', icone: '📈' },
+              { texte: 'Smaller, the run carries on', icone: '📉' },
+            ],
+            explication:
+              'That is the gambler’s fallacy: every toss is independent of the ones before.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'loi-grands-nombres',
+            question: 'What exactly does the law of large numbers say?',
+            reponses: [
+              { texte: 'The relative frequency converges towards the probability', icone: '📊', correcte: true },
+              { texte: 'The gap between heads and tails ends up cancelling out', icone: '⚖️' },
+              { texte: 'Chance corrects the runs that came before', icone: '🔄' },
+            ],
+            explication:
+              'It is the frequency that converges, not the absolute gap, which actually tends to grow. Chance does not correct itself, it dilutes itself.',
+          },
+        ],
+      },
     },
   },
   {
@@ -180,6 +297,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'L’argument diagonal de Cantor le démontre : aucune liste ne peut contenir tous les nombres à virgule entre zéro et un.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'dernier-nombre',
+            question: 'Is there a very last number?',
+            reponses: [
+              { texte: 'No, you can always add one', icone: '♾️', correcte: true },
+              { texte: 'Yes, the biggest one of all', icone: '🔢' },
+            ],
+            explication: 'Whatever number you say, you can always go bigger.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'pairs-entiers',
+            question: 'Are there as many even numbers as whole numbers?',
+            reponses: [
+              { texte: 'Yes, you can match them one to one', icone: '🔗', correcte: true },
+              { texte: 'No, half as many', icone: '➗' },
+              { texte: 'No, infinitely fewer', icone: '♾️' },
+            ],
+            explication:
+              'Each whole number is matched with its double, missing none: the two sets are the same size.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'infinis-tailles',
+            question: 'Are all infinities the same size?',
+            reponses: [
+              { texte: 'No, the reals outnumber the whole numbers', icone: '📈', correcte: true },
+              { texte: 'Yes, infinity is infinity', icone: '♾️' },
+              { texte: 'The question makes no sense', icone: '❓' },
+            ],
+            explication:
+              'Cantor’s diagonal argument proves it: no list can contain every decimal number between zero and one.',
           },
         ],
       },
@@ -227,6 +383,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'zero-utile',
+            question: 'What is the zero for in the number one hundred?',
+            reponses: [
+              { texte: 'To show there is nothing in that place', icone: '0️⃣', correcte: true },
+              { texte: 'Nothing, it is just for decoration', icone: '🎀' },
+            ],
+            explication: 'Without the zero, we could not write a hundred.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'diviser-par-zero',
+            question: 'What is twelve divided by zero?',
+            reponses: [
+              { texte: 'There is no answer', icone: '🚫', correcte: true },
+              { texte: 'Zero', icone: '0️⃣' },
+              { texte: 'Infinity', icone: '♾️' },
+            ],
+            explication:
+              'With packs of zero, you never reach twelve: the question simply has no answer.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'zero-histoire',
+            question: 'Zero as a number in its own right appeared…',
+            reponses: [
+              { texte: 'In India, around the seventh century', icone: '🇮🇳', correcte: true },
+              { texte: 'With the Romans', icone: '🏛️' },
+              { texte: 'In Europe, in the Middle Ages', icone: '🏰' },
+            ],
+            explication:
+              'Brahmagupta set out its rules in 628. Europe rejected it for a long time before adopting it through Arab mathematicians.',
+          },
+        ],
+      },
     },
   },
   {
@@ -267,6 +462,44 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Trois ordres de grandeur d’écart : confondre les deux fausse un budget par mille.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'milliard-plus',
+            question: 'Is a billion bigger than a million?',
+            reponses: [
+              { texte: 'Yes, much bigger', icone: '📈', correcte: true },
+              { texte: 'No, it is the same', icone: '🟰' },
+            ],
+            explication: 'A billion is a thousand times bigger than a million!',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'million-secondes',
+            question: 'A million seconds is roughly…',
+            reponses: [
+              { texte: 'Eleven days', icone: '📅', correcte: true },
+              { texte: 'Thirty-two years', icone: '🎂' },
+              { texte: 'One hour', icone: '⏰' },
+            ],
+            explication: 'Eleven days for a million; but thirty-two years for a billion.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'facteur-mille',
+            question: 'By how much does a billion exceed a million?',
+            reponses: [
+              { texte: 'By a factor of a thousand', icone: '🔢', correcte: true },
+              { texte: 'By a factor of ten', icone: '🔟' },
+              { texte: 'By only a little', icone: '➕' },
+            ],
+            explication:
+              'Three orders of magnitude apart: confusing the two throws a budget out by a thousand.',
           },
         ],
       },
@@ -313,6 +546,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'enclos-forme',
+            question: 'Same string: which pen holds the most sheep?',
+            reponses: [
+              { texte: 'A nice round pen', icone: '⭕', correcte: true },
+              { texte: 'A long, very thin pen', icone: '➖' },
+            ],
+            explication: 'The more compact the shape, the more room there is inside.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'meme-tour',
+            question: 'Two fields have the same length of fence. Do they have the same area?',
+            reponses: [
+              { texte: 'Not necessarily', icone: '🤷', correcte: true },
+              { texte: 'Yes, always', icone: '✅' },
+              { texte: 'Yes, if both are rectangles', icone: '🟦' },
+            ],
+            explication:
+              'With twenty metres of fence: nine square metres as a long rectangle, twenty-five as a square.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'isoperimetrique',
+            question: 'For a fixed perimeter, which shape encloses the largest area?',
+            reponses: [
+              { texte: 'The disc', icone: '⭕', correcte: true },
+              { texte: 'The square', icone: '⬜' },
+              { texte: 'The longest, thinnest rectangle', icone: '▭' },
+            ],
+            explication:
+              'This is the isoperimetric problem. The disc beats every other shape — hence the round soap bubble.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'les-pourcentages',
@@ -353,6 +625,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Un point de pourcentage n’est pas un pour cent. Les deux formulations sont exactes — on retient souvent celle qui impressionne.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'moitie-de-quoi',
+            question: 'Is half a big cake the same as half a small one?',
+            reponses: [
+              { texte: 'No, it depends on the cake', icone: '🍰', correcte: true },
+              { texte: 'Yes, it is the same thing', icone: '🟰' },
+            ],
+            explication: 'A share only means something if you know what it is a share of.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'baisse-puis-hausse',
+            question: 'A price falls by 50 %, then rises by 50 %. What is it worth?',
+            reponses: [
+              { texte: 'Three quarters of the starting price', icone: '📉', correcte: true },
+              { texte: 'Exactly the starting price', icone: '🟰' },
+              { texte: 'A quarter more than at the start', icone: '📈' },
+            ],
+            explication:
+              'The rise applies to the price that has already come down: a hundred becomes fifty, then seventy-five.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'points-pourcentage',
+            question: 'A rate goes from 2 % to 3 %. By how much has it risen?',
+            reponses: [
+              { texte: 'By one point, that is by 50 %', icone: '↗️', correcte: true },
+              { texte: 'By 1 % only', icone: '1️⃣' },
+              { texte: 'By 150 %', icone: '📈' },
+            ],
+            explication:
+              'A percentage point is not a per cent. Both statements are exact — people usually remember the one that impresses more.',
           },
         ],
       },
@@ -399,6 +710,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'moyenne-geant',
+            question: 'A giant walks into the class. The average height…',
+            reponses: [
+              { texte: 'jumps up all at once', icone: '📈', correcte: true },
+              { texte: 'does not move', icone: '🟰' },
+            ],
+            explication: 'One single very different value is enough to shift the average.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'moyenne-mediane',
+            question: 'Ten people have 20 €, one has 1000 €. What is the median?',
+            reponses: [
+              { texte: '20 €', icone: '🎯', correcte: true },
+              { texte: '109 €', icone: '📊' },
+              { texte: '1000 €', icone: '💰' },
+            ],
+            explication:
+              'The median is the middle value: it resists extremes, unlike the average.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'revenu-median',
+            question: 'Why is the mean income always higher than the median income?',
+            reponses: [
+              { texte: 'Because the distribution is skewed towards the top', icone: '📈', correcte: true },
+              { texte: 'Because low incomes are badly counted', icone: '📉' },
+              { texte: 'It is a statistical coincidence', icone: '🎲' },
+            ],
+            explication:
+              'Very high incomes pull the mean upwards without moving the median by a single penny.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'le-paradoxe-des-anniversaires',
@@ -439,6 +789,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Deux cent cinquante-trois paires à vingt-trois personnes, mille deux cent vingt-cinq à cinquante. L’intuition, elle, raisonne linéairement.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'deux-anniversaires',
+            question: 'Two children in your class, the same birthday?',
+            reponses: [
+              { texte: 'It happens quite often', icone: '🎂', correcte: true },
+              { texte: 'It is almost impossible', icone: '🚫' },
+            ],
+            explication: 'You have to compare everybody two by two: that makes a lot of chances.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'combien-personnes',
+            question: 'In a group, how many people do you need for a one in two chance that two of them have the same birthday?',
+            reponses: [
+              { texte: 'Twenty-three', icone: '🎯', correcte: true },
+              { texte: 'One hundred and eighty', icone: '💯' },
+              { texte: 'Three hundred and sixty-five', icone: '📅' },
+            ],
+            explication:
+              'Twenty-three people form two hundred and fifty-three pairs: that many chances to coincide.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'paires-carre',
+            question: 'Why do two people in a group of twenty-three often have the same birthday?',
+            reponses: [
+              { texte: 'The number of pairs grows as the square of the group size', icone: '📐', correcte: true },
+              { texte: 'Because some days of the year are more common', icone: '📅' },
+              { texte: 'Because the year is only 365 days long', icone: '🗓️' },
+            ],
+            explication:
+              'Two hundred and fifty-three pairs at twenty-three people, one thousand two hundred and twenty-five at fifty. Our intuition, though, reasons linearly.',
           },
         ],
       },

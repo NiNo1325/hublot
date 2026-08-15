@@ -1,9 +1,29 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['trois', 'reaction', 'etouffer', 'pas-chose'] as const;
+
+/* Les trois sommets du triangle et les deux conclusions : du contenu, pas du
+   décor. Le typage impose à `en` de reprendre exactement les clés de `fr`. */
+const LEGENDES = {
+  fr: {
+    chaleur: 'chaleur',
+    bois: 'bois',
+    oxygene: 'oxygène',
+    etouffe: 'sans oxygène, ça s’arrête',
+    pasChose: 'le feu n’est pas une chose : c’est une réaction',
+  },
+  en: {
+    chaleur: 'heat',
+    bois: 'wood',
+    oxygene: 'oxygen',
+    etouffe: 'no oxygen, it stops',
+    pasChose: 'fire is not a thing: it is a reaction',
+  },
+};
 
 /**
  * Le triangle du feu est dessiné explicitement, et l'un de ses côtés
@@ -14,10 +34,12 @@ export function FeuAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const etouffe = phase === 2;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -30,13 +52,13 @@ export function FeuAnimation({
           fill="none" stroke="#fb923c" strokeWidth="3"
           style={{ opacity: etouffe ? 0.25 : 1, transition: 'opacity 600ms ease' }}
         />
-        <text x="66" y="46" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">chaleur</text>
-        <text x="4" y="186" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">bois</text>
+        <text x="66" y="46" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.chaleur}</text>
+        <text x="4" y="186" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.bois}</text>
         <text
           x="128" y="186" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif"
           style={{ opacity: etouffe ? 0.2 : 1, transition: 'opacity 600ms ease' }}
         >
-          oxygène
+          {legende.oxygene}
         </text>
       </g>
 
@@ -58,14 +80,14 @@ export function FeuAnimation({
           style={{ transition: 'y 700ms ease' }}
         />
         <text x="196" y="196" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          sans oxygène, ça s&apos;arrête
+          {legende.etouffe}
         </text>
       </g>
 
       {/* Le feu n'est pas une matière */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="18" y="216" fill="#b9c4da" fontSize="15" fontFamily="var(--font-atkinson), sans-serif">
-          le feu n&apos;est pas une chose : c&apos;est une réaction
+          {legende.pasChose}
         </text>
       </g>
     </svg>

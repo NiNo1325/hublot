@@ -55,6 +55,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'vague-transporte-eau',
+            question: 'Does the wave push the water all the way to the beach?',
+            reponses: [
+              { texte: 'No, the water stays where it is', icone: '🌊', correcte: true },
+              { texte: 'Yes, it carries it to the sand', icone: '🏖️' },
+            ],
+            explication:
+              'It is not the water that moves along but the movement, like a Mexican wave in a stadium.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'vague-mouvement-voyage',
+            question: 'When a wave reaches the beach, what has really made the journey?',
+            reponses: [
+              { texte: 'The movement, not the water itself', icone: '🔄', correcte: true },
+              { texte: 'The water itself, all the way from the open sea', icone: '💧' },
+              { texte: 'The wind, pushing the water along in front of it', icone: '🌬️' },
+            ],
+            explication:
+              'Each drop turns round on the spot: it is the energy that travels, not a mass of water from out at sea.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'vague-trajectoire-orbitale',
+            question: 'A wave crosses hundreds of kilometres of ocean. What does the water do?',
+            reponses: [
+              { texte: 'It traces a circle almost on the spot', icone: '🔄', correcte: true },
+              { texte: 'It is carried all the way to the shore', icone: '🌊' },
+              { texte: 'It evaporates along the way', icone: '💨' },
+            ],
+            explication:
+              'Only the energy travels: each particle of water stays, on average, in the same place, following an orbital path.',
+          },
+        ],
+      },
     },
   },
   {
@@ -96,6 +136,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'En refroidissant, l’eau devient plus lourde et plonge, entraînant une circulation à l’échelle du globe.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'mer-bouge-sans-vague',
+            question: 'Between the waves, does the water of the sea move?',
+            reponses: [
+              { texte: 'Yes, very gently', icone: '🔄', correcte: true },
+              { texte: 'No, it always stays still', icone: '🧊' },
+            ],
+            explication: 'Great invisible currents carry the water all the way around the Earth.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'courant-marin-definition',
+            question: 'What is an ocean current?',
+            reponses: [
+              { texte: 'A great river of water moving through the ocean', icone: '🔄', correcte: true },
+              { texte: 'Water that is completely still', icone: '🧊' },
+              { texte: 'A wave that never stops', icone: '🌊' },
+            ],
+            explication:
+              'Even far from the waves, the water of the oceans is always on the move, driven by heat and cold.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'eau-froide-plonge',
+            question: 'Why does cold water sink towards the bottom near the poles?',
+            reponses: [
+              { texte: 'Because it becomes denser as it cools', icone: '🌡️', correcte: true },
+              { texte: 'Because the poles suck the water down', icone: '⬇️' },
+              { texte: 'Because the sea there is motionless', icone: '🧊' },
+            ],
+            explication:
+              'As it cools, the water becomes heavier and sinks, driving a circulation on a global scale.',
           },
         ],
       },
@@ -143,6 +222,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'fond-clair-plein-jour',
+            question: 'Right at the bottom of the sea, in broad daylight, is it light?',
+            reponses: [
+              { texte: 'No, it is pitch dark', icone: '🌑', correcte: true },
+              { texte: 'Yes, just like at the surface', icone: '☀️' },
+            ],
+            explication: 'The light of the Sun does not reach that far down: it fades away on the way.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'noir-au-fond-midi',
+            question: 'Why is it dark at the bottom of the ocean, even at midday?',
+            reponses: [
+              { texte: 'The water absorbs all the light little by little', icone: '🔦', correcte: true },
+              { texte: 'The Sun never lights up the sea', icone: '⛔' },
+              { texte: 'It is always light, just as at the surface', icone: '☀️' },
+            ],
+            explication:
+              'Each metre of water filters out a little more of the light, until none of it is left.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'couleur-disparait-premiere',
+            question: 'Which colour of light disappears first underwater?',
+            reponses: [
+              { texte: 'Red', icone: '🔴', correcte: true },
+              { texte: 'Blue', icone: '🔵' },
+              { texte: 'All of them at the same time', icone: '🌈' },
+            ],
+            explication:
+              'Red is absorbed within the very first metres; blue travels far deeper, which is where the colour of the abyss comes from.',
+          },
+        ],
+      },
     },
   },
   {
@@ -184,6 +302,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'La pression de l’eau écrase le corps quelle que soit la quantité d’air disponible : il faut une structure rigide, pas juste de l’air.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'eau-ecrase-fort',
+            question: 'Right at the bottom of the sea, does the water squash hard?',
+            reponses: [
+              { texte: 'Yes, very hard', icone: '🤏', correcte: true },
+              { texte: 'No, not at all', icone: '🙅' },
+            ],
+            explication: 'There is so much water above that it pushes down enormously.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'sous-marin-solide',
+            question: 'Why do you need a very strong submarine to go really deep?',
+            reponses: [
+              { texte: 'Because the weight of the water crushes', icone: '🤿', correcte: true },
+              { texte: 'Because it is too cold', icone: '❄️' },
+              { texte: 'Because there is not enough air', icone: '💨' },
+            ],
+            explication:
+              'It is not air that runs short, it is the enormous weight of all the water above that crushes.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'plongeur-air-suffisant',
+            question: 'Could a diver with enough air go down to a thousand metres unprotected?',
+            reponses: [
+              { texte: 'No, the pressure would crush them', icone: '🤿', correcte: true },
+              { texte: 'Yes, if they have enough air', icone: '💨' },
+              { texte: 'Yes, if they hold their breath', icone: '🫁' },
+            ],
+            explication:
+              'Water pressure crushes the body whatever amount of air is available: what is needed is a rigid structure, not simply air.',
           },
         ],
       },
@@ -231,6 +388,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'corail-caillou',
+            question: 'Is coral a stone?',
+            reponses: [
+              { texte: 'No, a tiny animal', icone: '🪸', correcte: true },
+              { texte: 'Yes, a stone', icone: '🪨' },
+            ],
+            explication: 'Coral is very much alive: it is a tiny little animal.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'corail-nature',
+            question: 'What is coral?',
+            reponses: [
+              { texte: 'An animal that builds a hard case', icone: '🪸', correcte: true },
+              { texte: 'A sea plant', icone: '🌿' },
+              { texte: 'A rock that grows', icone: '🪨' },
+            ],
+            explication:
+              'Coral is an animal, a cousin of the jellyfish, that builds its own chalky skeleton.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'recif-composition',
+            question: 'What is a coral reef made of?',
+            reponses: [
+              { texte: 'Chalky skeletons built up by animals', icone: '🪸', correcte: true },
+              { texte: 'Cooled volcanic rock', icone: '🌋' },
+              { texte: 'Petrified seaweed', icone: '🌿' },
+            ],
+            explication:
+              'Coral polyps secrete a skeleton of calcium carbonate that builds up over centuries to form the reef.',
+          },
+        ],
+      },
     },
   },
   {
@@ -272,6 +468,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'La réaction chimique convertit l’essentiel de son énergie en lumière plutôt qu’en chaleur : on parle de lumière froide.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'lampe-electrique',
+            question: 'Do these animals switch on a real electric torch?',
+            reponses: [
+              { texte: 'No, the light comes from their body', icone: '✨', correcte: true },
+              { texte: 'Yes, an electric torch', icone: '🔦' },
+            ],
+            explication: 'Their body makes the light itself, thanks to a chemical reaction.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'origine-lumiere-animale',
+            question: 'Where does the light of the glowing animals of the deep sea come from?',
+            reponses: [
+              { texte: 'From a chemical reaction in their body', icone: '✨', correcte: true },
+              { texte: 'From an electric battery', icone: '🔋' },
+              { texte: 'From the reflection of the Sun', icone: '☀️' },
+            ],
+            explication:
+              'It is a cold light, made chemically, with no electricity and no flame.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'bioluminescence-chaleur',
+            question: 'Does the light produced by bioluminescence give off heat?',
+            reponses: [
+              { texte: 'No, almost none, unlike a light bulb', icone: '💡', correcte: true },
+              { texte: 'Yes, as much as a flame', icone: '🔥' },
+              { texte: 'Yes, but only underwater', icone: '🌊' },
+            ],
+            explication:
+              'The chemical reaction turns almost all of its energy into light rather than heat: this is what we call cold light.',
           },
         ],
       },
@@ -320,6 +555,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'vie-sans-soleil',
+            question: 'Right at the bottom of the sea, is there life without the Sun?',
+            reponses: [
+              { texte: 'Yes, near the hot chimneys', icone: '♨️', correcte: true },
+              { texte: 'No, nothing lives without the Sun', icone: '🚫' },
+            ],
+            explication:
+              'Near these hot springs, bacteria and animals live perfectly well without any light.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'bacteries-cheminee-nourriture',
+            question: 'How do the bacteria of the hot vents feed themselves, with no light?',
+            reponses: [
+              { texte: 'Thanks to the minerals in the hot water', icone: '♨️', correcte: true },
+              { texte: 'They do not eat at all', icone: '⛔' },
+              { texte: 'They wait for the light of the Sun', icone: '☀️' },
+            ],
+            explication:
+              'They turn the chemical energy of the minerals into food, with no need for photosynthesis.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'toute-vie-depend-soleil',
+            question: 'Does all life on Earth depend on the Sun for its food?',
+            reponses: [
+              { texte: 'No, some ecosystems live on pure chemistry', icone: '♨️', correcte: true },
+              { texte: 'Yes, without exception', icone: '☀️' },
+              { texte: 'No, but only plants escape the rule', icone: '🌿' },
+            ],
+            explication:
+              'Around hydrothermal vents, chemosynthetic bacteria draw their energy from minerals, quite independently of the Sun.',
+          },
+        ],
+      },
     },
   },
   {
@@ -361,6 +636,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Le phytoplancton océanique produirait entre la moitié et les deux tiers de l’oxygène atmosphérique, davantage que l’ensemble des forêts terrestres.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'air-vient-de',
+            question: 'Where does a big part of the air we breathe come from?',
+            reponses: [
+              { texte: 'From the plankton in the sea', icone: '🦠', correcte: true },
+              { texte: 'Only from the trees', icone: '🌳' },
+            ],
+            explication: 'Plankton makes a great deal of the air you breathe too.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'oxygene-plus-grande-partie',
+            question: 'Who makes the biggest part of the oxygen in the air?',
+            reponses: [
+              { texte: 'The plankton of the oceans', icone: '🦠', correcte: true },
+              { texte: 'Only the trees', icone: '🌳' },
+              { texte: 'Only the fish', icone: '🐟' },
+            ],
+            explication:
+              'Phytoplankton produces more than half of the oxygen we breathe, as much as all the forests or more.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'oxygene-atmospherique-source',
+            question: 'Which statement about atmospheric oxygen is correct?',
+            reponses: [
+              { texte: 'Phytoplankton produces most of it', icone: '🦠', correcte: true },
+              { texte: 'It comes only from forests', icone: '🌳' },
+              { texte: 'It is produced only by the deep oceans', icone: '🌊' },
+            ],
+            explication:
+              'Ocean phytoplankton is thought to produce between half and two thirds of atmospheric oxygen, more than all the forests on land put together.',
           },
         ],
       },
@@ -408,6 +722,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'flotte-pareil-bain',
+            question: 'Do you float the same in the sea and in the bath?',
+            reponses: [
+              { texte: 'No, better in the sea', icone: '🏊', correcte: true },
+              { texte: 'Yes, exactly the same', icone: '🟰' },
+            ],
+            explication: 'Sea water is salty, and it holds you up a little better than water with no salt.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'flotte-mieux-mer-piscine',
+            question: 'Why do you float more easily in the sea than in a swimming pool?',
+            reponses: [
+              { texte: 'Because salt water is denser', icone: '🧂', correcte: true },
+              { texte: 'Because the sea is colder', icone: '❄️' },
+              { texte: 'Because you float the same everywhere', icone: '🟰' },
+            ],
+            explication:
+              'Salt makes water heavier for the same amount, so it pushes the body upwards harder.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'mer-morte-flottaison',
+            question: 'Why do you float almost effortlessly in the Dead Sea?',
+            reponses: [
+              { texte: 'Its very high salinity makes it extremely dense', icone: '🧂', correcte: true },
+              { texte: 'The water there is warmer than elsewhere', icone: '🌡️' },
+              { texte: 'You float the same in any water, salty or not', icone: '🟰' },
+            ],
+            explication:
+              'The denser the water, the stronger the upthrust: at thirty per cent salt, that push alone is almost enough on its own.',
+          },
+        ],
+      },
     },
   },
   {
@@ -449,6 +802,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Une vague de vent n’agite que la surface ; un tsunami, né d’un séisme, met en mouvement l’océan sur toute sa profondeur.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'tsunami-vague-vent',
+            question: 'Is a tsunami just a big wave made by the wind?',
+            reponses: [
+              { texte: 'No, it comes from an earthquake', icone: '🌍', correcte: true },
+              { texte: 'Yes, a wind wave', icone: '🌬️' },
+            ],
+            explication: 'A tsunami is born from an earthquake under the ocean, not from the wind.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'tsunami-declencheur',
+            question: 'What sets off a tsunami most of the time?',
+            reponses: [
+              { texte: 'An undersea earthquake', icone: '🌍', correcte: true },
+              { texte: 'A big wind storm', icone: '🌬️' },
+              { texte: 'Very heavy rain', icone: '🌧️' },
+            ],
+            explication:
+              'Ground moving suddenly at the bottom of the ocean shifts an enormous mass of water, far more than a gust of wind ever could.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'tsunami-vs-vague-vent',
+            question: 'How does a tsunami differ from a wave formed by the wind?',
+            reponses: [
+              { texte: 'It moves the whole column of water, not just the surface', icone: '🌍', correcte: true },
+              { texte: 'It is always slower', icone: '🐢' },
+              { texte: 'It only happens during storms', icone: '🌬️' },
+            ],
+            explication:
+              'A wind wave only stirs the surface; a tsunami, born from an earthquake, sets the ocean in motion over its whole depth.',
           },
         ],
       },

@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    surface: 'la surface chauffe',
+    sucres: 'sucres et protéines',
+    nouveau: 'ça devient nouveau',
+    dore: 'doré et parfumé',
+  },
+  en: {
+    surface: 'the surface heats up',
+    sucres: 'sugars and proteins',
+    nouveau: 'something new forms',
+    dore: 'golden and fragrant',
+  },
+};
 
 /**
  * La réaction de Maillard transforme sucres et protéines en surface, sous
@@ -14,10 +30,12 @@ export function PourquoiCaDoreAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -37,7 +55,7 @@ export function PourquoiCaDoreAnimation({
             {anime && <animate attributeName="opacity" values="0.3;1;0.3" dur="1.6s" begin={`${i * 0.3}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="90" y="210" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>la surface chauffe</text>
+        <text x="90" y="210" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.surface}</text>
       </g>
 
       {/* Phase 2 : sucres et protéines se rencontrent */}
@@ -49,7 +67,7 @@ export function PourquoiCaDoreAnimation({
         <circle cx="230" cy="158" r="6" fill="#f472b6">
           {anime && <animate attributeName="cx" values="230;204;204" dur="1.8s" repeatCount="indefinite" />}
         </circle>
-        <text x="82" y="210" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>sucres et protéines</text>
+        <text x="82" y="210" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.sucres}</text>
       </g>
 
       {/* Phase 3 : une réaction crée des molécules nouvelles */}
@@ -72,7 +90,7 @@ export function PourquoiCaDoreAnimation({
             />
           );
         })}
-        <text x="76" y="210" fill="#fb923c" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>ça devient nouveau</text>
+        <text x="76" y="210" fill="#fb923c" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.nouveau}</text>
       </g>
 
       {/* Phase 4 : c'est doré, et ça sent bon */}
@@ -85,7 +103,7 @@ export function PourquoiCaDoreAnimation({
             )}
           </path>
         ))}
-        <text x="100" y="210" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>doré et parfumé</text>
+        <text x="100" y="210" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.dore}</text>
       </g>
     </svg>
   );

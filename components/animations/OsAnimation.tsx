@@ -1,9 +1,30 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['pas-morts', 'vivant', 'moelle', 'reparation'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor. Le typage
+  impose à `en` de reprendre exactement les clés du français : une légende
+  oubliée ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    vivant: 'un os est vivant',
+    remodelage: 'démoli et refait sans cesse',
+    moelle: 'la moelle fait ton sang',
+    ressoude: 'et il se ressoude seul',
+  },
+  en: {
+    vivant: 'a bone is alive',
+    remodelage: 'demolished and rebuilt',
+    moelle: 'the marrow makes your blood',
+    ressoude: 'and it mends itself',
+  },
+};
 
 /**
  * L'os est dessiné en coupe, avec ses vaisseaux et sa moelle apparents : c'est
@@ -14,10 +35,12 @@ export function OsAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const casse = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -37,7 +60,7 @@ export function OsAnimation({
           </line>
         ))}
         <text x="14" y="32" fill="#dc2626" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          un os est vivant
+          {legende.vivant}
         </text>
       </g>
 
@@ -58,7 +81,7 @@ export function OsAnimation({
           </g>
         ))}
         <text x="14" y="72" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          démoli et refait sans cesse
+          {legende.remodelage}
         </text>
       </g>
 
@@ -75,7 +98,7 @@ export function OsAnimation({
           </circle>
         ))}
         <text x="14" y="190" fill="#be5b7a" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          la moelle fait ton sang
+          {legende.moelle}
         </text>
       </g>
 
@@ -93,7 +116,7 @@ export function OsAnimation({
           )}
         </ellipse>
         <text x="14" y="214" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          et il se ressoude seul
+          {legende.ressoude}
         </text>
       </g>
     </svg>

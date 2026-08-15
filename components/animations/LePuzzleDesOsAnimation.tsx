@@ -1,9 +1,29 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    deterrer: 'on déterre de vieux os',
+    assembler: 'on les assemble',
+    oiseau: 'oiseau',
+    crocodile: 'crocodile',
+    completer: 'on complète les indices',
+    vie: 'et on lui redonne vie',
+  },
+  en: {
+    deterrer: 'we dig up old bones',
+    assembler: 'we fit them together',
+    oiseau: 'bird',
+    crocodile: 'crocodile',
+    completer: 'we fill in the gaps',
+    vie: 'and we bring it back to life',
+  },
+};
 
 /**
  * Les os fouillés en phase 1 sont exactement ceux qui s'assemblent en phase 2 :
@@ -14,10 +34,12 @@ export function LePuzzleDesOsAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -37,7 +59,7 @@ export function LePuzzleDesOsAnimation({
         <ellipse cx="130" cy="204" rx="20" ry="8" fill="#e8ddc8" stroke="#c8a97e" strokeWidth="2" />
         <ellipse cx="210" cy="212" rx="14" ry="7" fill="#e8ddc8" stroke="#c8a97e" strokeWidth="2" />
         <ellipse cx="280" cy="200" rx="17" ry="7" fill="#e8ddc8" stroke="#c8a97e" strokeWidth="2" />
-        <text x="14" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>on déterre de vieux os</text>
+        <text x="14" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.deterrer}</text>
       </g>
 
       {/* Phase 2 : en laboratoire, les os s'assemblent comme un puzzle */}
@@ -58,7 +80,7 @@ export function LePuzzleDesOsAnimation({
             </path>
           ))}
         </g>
-        <text x="14" y="30" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>on les assemble</text>
+        <text x="14" y="30" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.assembler}</text>
       </g>
 
       {/* Squelette assemblé, garde sa place dès qu'il existe */}
@@ -80,13 +102,13 @@ export function LePuzzleDesOsAnimation({
         />
         <g transform="translate(46 46)">
           <path d="M0 0 q10 -10 20 -2 q-4 6 -14 8 Z" fill="#7dd3fc" />
-          <text x="-8" y="20" fill="#7dd3fc" fontSize="12" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>oiseau</text>
+          <text x="-8" y="20" fill="#7dd3fc" fontSize="12" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.oiseau}</text>
         </g>
         <g transform="translate(320 40)">
           <path d="M0 8 q14 -10 30 0 q-6 6 -14 6 q-8 0 -16 -6 Z" fill="#86efac" />
-          <text x="-4" y="30" fill="#86efac" fontSize="12" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>crocodile</text>
+          <text x="-4" y="30" fill="#86efac" fontSize="12" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.crocodile}</text>
         </g>
-        <text x="14" y="30" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>on complète les indices</text>
+        <text x="14" y="30" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.completer}</text>
       </g>
 
       {/* Phase 4 : muscles et peau lui redonnent vie */}
@@ -96,7 +118,7 @@ export function LePuzzleDesOsAnimation({
           fill="#c8a97e" opacity="0.85"
         />
         <circle cx="150" cy="98" r="3" fill="#0f1b33" />
-        <text x="14" y="222" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>et on lui redonne vie</text>
+        <text x="14" y="222" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.vie}</text>
       </g>
     </svg>
   );

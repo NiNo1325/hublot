@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The number for nothing',
+        '6-8': 'Zero',
+        '9-12': 'Zero: place value and division',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'rien',
+              text: 'Zero is the number that means “there are none at all”.',
+            },
+            {
+              id: 'place',
+              text: 'But it also helps us write big numbers. Without it, we could not write a hundred.',
+            },
+            {
+              id: 'invention',
+              text: 'People counted for a very, very long time before anyone had the idea of zero.',
+            },
+            {
+              id: 'division',
+              text: 'And it does odd things: sharing sweets between zero children does not mean anything.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'rien',
+              text: 'Zero plays two different roles. It stands for a quantity of nothing, and it marks an empty place in the writing of a number.',
+            },
+            {
+              id: 'place',
+              text: 'It is the second role that changed everything. In 105, the zero shows that there are no tens. Without it, there would be no way to tell 15 from 105 except by an ambiguous gap.',
+            },
+            {
+              id: 'invention',
+              text: 'The Romans had no zero, which made their sums very laborious — try multiplying XLVII by XIX. Zero as a number appeared in India around the fifth century, then reached Europe through Arab mathematicians.',
+            },
+            {
+              id: 'division',
+              text: 'Dividing by zero is impossible. Dividing twelve by three means asking how many packs of three you can make. With packs of zero, you never reach twelve, however many you take. So it is not “infinity”: the question simply has no answer.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'rien',
+              text: 'Zero is the identity element of addition: adding zero changes nothing. It is also absorbing for multiplication, since any number multiplied by zero gives zero.',
+            },
+            {
+              id: 'place',
+              text: 'Place-value notation needs a symbol for empty columns. It is what makes possible the written methods of calculation you use — unthinkable in Roman numerals, which have no positional structure.',
+            },
+            {
+              id: 'invention',
+              text: 'Brahmagupta, in 628, was the first to treat zero as a number in its own right and to state its rules of calculation. Europe long rejected it as a suspect notion; Fibonacci helped establish it in the thirteenth century.',
+            },
+            {
+              id: 'division',
+              text: 'Division by zero is undefined, not “infinite”. The reason is structural: dividing by a amounts to multiplying by the inverse of a, and zero has no inverse. Giving it one would make arithmetic contradictory — you could then prove that 1 equals 2. It is a good example of a rule that is not arbitrary, but necessary for the whole system to hold together.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

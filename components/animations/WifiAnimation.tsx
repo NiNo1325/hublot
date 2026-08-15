@@ -1,9 +1,31 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['pas-internet', 'ondes-radio', 'portee', 'partage'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    internet: 'internet',
+    wifi: 'le wifi : quelques mètres',
+    murs: 'les murs absorbent',
+    partage: 'tout le monde partage',
+  },
+  en: {
+    internet: 'internet',
+    wifi: 'Wi-Fi: just a few metres',
+    murs: 'walls soak it up',
+    partage: 'everyone shares it',
+  },
+};
 
 /**
  * Le trait plein s'arrête à la box et le câble part vers la droite : la
@@ -14,9 +36,11 @@ export function WifiAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -27,7 +51,7 @@ export function WifiAnimation({
       <circle cx="58" cy="126" r="3" fill="#4ade80" />
       <path d="M90 118 q40 -40 96 -40 q60 0 84 -14" fill="none" stroke="#475569" strokeWidth="3" />
       <text x="288" y="70" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-        internet
+        {legende.internet}
       </text>
 
       {/* Les ondes : le wifi, sur quelques mètres */}
@@ -46,7 +70,7 @@ export function WifiAnimation({
           </circle>
         ))}
         <text x="14" y="32" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le wifi : quelques mètres
+          {legende.wifi}
         </text>
       </g>
 
@@ -57,7 +81,7 @@ export function WifiAnimation({
           <line key={i} x1="212" y1={110 + i * 28} x2="238" y2={110 + i * 28} stroke="#f87171" strokeWidth="2" strokeDasharray="3 5" />
         ))}
         <text x="14" y="210" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          les murs absorbent
+          {legende.murs}
         </text>
       </g>
 
@@ -71,7 +95,7 @@ export function WifiAnimation({
           </rect>
         ))}
         <text x="14" y="234" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          tout le monde partage
+          {legende.partage}
         </text>
       </g>
     </svg>

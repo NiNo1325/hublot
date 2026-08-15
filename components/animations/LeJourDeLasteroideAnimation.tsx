@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    impact: 'un astéroïde percute la Terre',
+    poussiere: 'la poussière voile le ciel',
+    faim: 'plus rien ne pousse, plus rien à manger',
+    survivants: 'les plus petits survivent, cachés',
+  },
+  en: {
+    impact: 'an asteroid strikes the Earth',
+    poussiere: 'dust veils the sky',
+    faim: 'nothing grows, nothing left to eat',
+    survivants: 'the smallest survive, in hiding',
+  },
+};
 
 /**
  * Le Soleil, allumé dès le début, s'éteint peu à peu avec la poussière : sa
@@ -14,10 +30,12 @@ export function LeJourDeLasteroideAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -46,7 +64,7 @@ export function LeJourDeLasteroideAnimation({
             <animate attributeName="opacity" values="0.9;0" dur="0.6s" begin="1.05s" fill="freeze" />
           </circle>
         )}
-        <text x="14" y="30" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>un astéroïde percute la Terre</text>
+        <text x="14" y="30" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.impact}</text>
       </g>
 
       {/* Phase 2 : la poussière cache le Soleil */}
@@ -58,7 +76,7 @@ export function LeJourDeLasteroideAnimation({
             )}
           </ellipse>
         ))}
-        <text x="14" y="30" fill="#a8a29e" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>la poussière voile le ciel</text>
+        <text x="14" y="30" fill="#a8a29e" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.poussiere}</text>
       </g>
 
       {/* Phase 3 : sans lumière, les plantes et les grands animaux dépérissent */}
@@ -67,7 +85,7 @@ export function LeJourDeLasteroideAnimation({
         <g stroke="#57534e" strokeWidth="3" fill="none" opacity="0.7">
           <path d="M180 196 q30 -50 20 -84 q-14 8 -18 30 M200 112 q18 -10 26 -30" />
         </g>
-        <text x="14" y="228" fill="#78350f" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>plus rien ne pousse, plus rien à manger</text>
+        <text x="14" y="228" fill="#78350f" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.faim}</text>
       </g>
 
       {/* Phase 4 : les petits animaux cachés survivent */}
@@ -75,7 +93,7 @@ export function LeJourDeLasteroideAnimation({
         <path d="M320 196 q10 -26 40 -26 l0 26 Z" fill="#3b2a1d" />
         <circle cx="342" cy="188" r="7" fill="#c8a97e" />
         <circle cx="345" cy="186" r="1.4" fill="#0f1b33" />
-        <text x="150" y="228" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>les plus petits survivent, cachés</text>
+        <text x="150" y="228" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.survivants}</text>
       </g>
     </svg>
   );

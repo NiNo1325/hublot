@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The current that lights up',
+        '6-8': 'Electricity',
+        '9-12': 'Current, voltage and circuits',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'circuit',
+              text: 'To light a bulb, you need a wire going out from the battery and another one coming back.',
+            },
+            {
+              id: 'boucle',
+              text: 'If you cut the path anywhere, everything goes out. The current needs a complete loop.',
+            },
+            {
+              id: 'electrons',
+              text: 'Inside the wire, tiny invisible things push each other along, all the way round.',
+            },
+            {
+              id: 'chaleur',
+              text: 'As they go through the bulb, they make it get very hot, and that is how it shines.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'circuit',
+              text: 'An electric circuit needs a source, such as a battery, some conducting wires, and something to power.',
+            },
+            {
+              id: 'boucle',
+              text: 'The circuit has to form a closed loop. A switch does nothing more than open or close that loop. Open, and no current flows at all.',
+            },
+            {
+              id: 'electrons',
+              text: 'In metals, some electrons are free to move about. The battery sets them going, and each one nudges its neighbour along the wire.',
+            },
+            {
+              id: 'chaleur',
+              text: 'Watch out for a common mistake: those electrons creep along, a few millimetres per second. What travels at almost the speed of light is the push passed from one to the next — like a pipe already full of water, where the water comes out the instant you turn the tap.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'circuit',
+              text: 'A current is an ordered movement of electric charges, measured in amperes. Voltage, in volts, is the difference in potential energy that sets those charges moving.',
+            },
+            {
+              id: 'boucle',
+              text: 'A closed circuit is necessary because charges do not pile up: as much goes into a component as comes out of it. Ohm’s law links these quantities — the voltage is the resistance multiplied by the current.',
+            },
+            {
+              id: 'electrons',
+              text: 'The drift speed of electrons in a typical copper wire is of the order of a tenth of a millimetre per second. The signal, on the other hand, travels at a sizeable fraction of the speed of light, because the electric field sets itself up almost instantly along the conductor.',
+            },
+            {
+              id: 'chaleur',
+              text: 'A historical curiosity: the conventional direction of the current was fixed before the electron was discovered, from plus to minus. Electrons in fact flow the other way. The convention was kept, because it changes no calculation — a fine example of an early mistake that turned out to be harmless.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

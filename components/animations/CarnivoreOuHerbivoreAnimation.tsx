@@ -1,9 +1,29 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    forme: 'on regarde la forme de la dent',
+    pointue: 'pointue : elle découpait la viande',
+    plate: 'plate : elle broyait les plantes',
+    carnivore: 'carnivore',
+    herbivore: 'herbivore',
+    repas: 'on devine son repas',
+  },
+  en: {
+    forme: 'we look at the shape of the tooth',
+    pointue: 'pointed: it sliced meat',
+    plate: 'flat: it ground up plants',
+    carnivore: 'carnivore',
+    herbivore: 'herbivore',
+    repas: 'we work out its meal',
+  },
+};
 
 /**
  * Une seule dent, sous la loupe, change de forme selon la phase : pointue
@@ -14,10 +34,12 @@ export function CarnivoreOuHerbivoreAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -30,7 +52,7 @@ export function CarnivoreOuHerbivoreAnimation({
       {/* Phase 1 : on examine la forme de la dent fossilisée */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <path d="M200 84 L212 132 L200 144 L188 132 Z" fill="#e8ddc8" />
-        <text x="30" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>on regarde la forme de la dent</text>
+        <text x="30" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.forme}</text>
       </g>
 
       {/* Phase 2 : pointue et recourbée, elle a découpé de la viande */}
@@ -42,7 +64,7 @@ export function CarnivoreOuHerbivoreAnimation({
             )}
           </path>
         ))}
-        <text x="30" y="30" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>pointue : elle découpait la viande</text>
+        <text x="30" y="30" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.pointue}</text>
       </g>
 
       {/* Phase 3 : plate et large, elle a broyé des plantes */}
@@ -54,20 +76,20 @@ export function CarnivoreOuHerbivoreAnimation({
             )}
           </path>
         ))}
-        <text x="30" y="30" fill="#86efac" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>plate : elle broyait les plantes</text>
+        <text x="30" y="30" fill="#86efac" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.plate}</text>
       </g>
 
       {/* Phase 4 : la dentition seule révèle le menu */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <g transform="translate(90 190)">
           <path d="M-10 -8 L2 -8 L2 8 L-10 8 Z" fill="#f87171" />
-          <text x="-30" y="28" fill="#f87171" fontSize="13" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>carnivore</text>
+          <text x="-30" y="28" fill="#f87171" fontSize="13" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.carnivore}</text>
         </g>
         <g transform="translate(300 190)">
           <path d="M-8 -10 Q4 -10 4 10 Q-8 10 -8 -10 Z" fill="#86efac" />
-          <text x="-32" y="28" fill="#86efac" fontSize="13" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>herbivore</text>
+          <text x="-32" y="28" fill="#86efac" fontSize="13" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.herbivore}</text>
         </g>
-        <text x="110" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>on devine son repas</text>
+        <text x="110" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.repas}</text>
       </g>
     </svg>
   );

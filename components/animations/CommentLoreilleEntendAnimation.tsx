@@ -99,7 +99,7 @@ export function CommentLoreilleEntendAnimation({
           {anime && <animate attributeName="cx" values="300;362" dur="1s" repeatCount="indefinite" />}
           {anime && <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />}
         </circle>
-        <text x="230" y="200" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.cerveau}</text>
+        <text x="180" y="200" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.cerveau}</text>
       </g>
     </svg>
   );

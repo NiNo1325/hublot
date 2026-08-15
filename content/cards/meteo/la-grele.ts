@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Hail',
+        '6-8': 'How hail forms',
+        '9-12': 'How hail forms',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'orage',
+              text: 'Hail comes from a big storm cloud, with wind blowing very hard upwards.',
+            },
+            {
+              id: 'monte-descend',
+              text: 'A little ball of ice goes up, comes down, goes up again, pushed by the wind.',
+            },
+            {
+              id: 'couches',
+              text: 'Each time, a new layer of ice sticks around it. It gets bigger.',
+            },
+            {
+              id: 'tombe',
+              text: 'When it is too heavy, the wind cannot hold it any more: it falls. That’s a hailstone!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'orage',
+              text: 'Hail is not snow rolled into a ball. It is made inside storm clouds, which are crossed by violent upward air currents.',
+            },
+            {
+              id: 'monte-descend',
+              text: 'A frozen droplet is snatched upwards, falls back, then is thrown up again, over and over. It makes several round trips.',
+            },
+            {
+              id: 'couches',
+              text: 'Each time it passes through the freezing zones, a new layer of ice settles around it. The hailstone grows like an onion, layer after layer.',
+            },
+            {
+              id: 'tombe',
+              text: 'When it becomes too heavy for the wind to carry, it falls to the ground. The biggest ones can reach the size of a golf ball.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'orage',
+              text: 'Hailstones only form in violent thunderstorms, the ones that harbour powerful updraughts strong enough to lift heavy objects.',
+            },
+            {
+              id: 'monte-descend',
+              text: 'An ice embryo is sucked up towards the top of the cloud, falls back under its own weight, then is carried upwards again. It can make many such round trips inside the cloud.',
+            },
+            {
+              id: 'couches',
+              text: 'On each climb into the freezing layers, a film of supercooled water freezes on its surface. The hailstone builds up concentric layers, clear or opaque depending on how fast the freezing happened — a stack you can read, in cross-section, like the rings of a tree.',
+            },
+            {
+              id: 'tombe',
+              text: 'It keeps growing as long as the updraught is strong enough to hold it. As soon as its weight wins, it drops — and the more powerful the storm was, the bigger it is. That is why hail comes with the most intense storms, and not simply with cold weather.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

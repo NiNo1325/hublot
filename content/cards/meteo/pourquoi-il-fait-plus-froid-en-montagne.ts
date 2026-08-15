@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The cold up the mountain',
+        '6-8': 'Why it is colder up a mountain',
+        '9-12': 'Why it is colder up a mountain',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'sommet-neige',
+              text: 'Right at the top of mountains there is snow, even in summer. It is very cold up there.',
+            },
+            {
+              id: 'pas-le-soleil',
+              text: 'But up there we are a little closer to the sun. So why is it not warmer?',
+            },
+            {
+              id: 'air-rare',
+              text: 'Because the higher you go, the less air there is around you.',
+            },
+            {
+              id: 'retient-moins',
+              text: 'And it is the air that keeps the warmth in. Less air, so more cold!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'sommet-neige',
+              text: 'On mountain tops it freezes and the snow stays all year round. The higher you climb, the colder it gets.',
+            },
+            {
+              id: 'pas-le-soleil',
+              text: 'People often think it is because you are closer to the Sun. But the Sun is 150 million kilometres away: climbing a few kilometres changes nothing at all.',
+            },
+            {
+              id: 'air-rare',
+              text: 'The real reason is the air. The higher you go, the thinner the air becomes: there is less and less of it.',
+            },
+            {
+              id: 'retient-moins',
+              text: 'And it is the air, warmed by the ground, that holds the heat. Up high, thin air holds it badly and lets it escape: so it is cold.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'sommet-neige',
+              text: 'The temperature drops by about 6 °C for every 1000 metres of altitude. That is why high summits stay snow-covered even in midsummer.',
+            },
+            {
+              id: 'pas-le-soleil',
+              text: 'The idea of being “closer to the Sun” does not hold up: at 150 million kilometres away, climbing a few kilometres is utterly negligible. Distance to the Sun is not what matters.',
+            },
+            {
+              id: 'air-rare',
+              text: 'At altitude, the pressure falls and the air thins out. The Sun, for its part, barely heats the air directly: it mainly heats the ground, which then warms the air in contact with it.',
+            },
+            {
+              id: 'retient-moins',
+              text: 'The higher you go, the further you are from that heated ground, and the harder the thin air finds it to keep the heat: fewer molecules to store it, and it spreads out as it rises. The result is a steady cooling with altitude — the opposite of the intuition that higher means closer to the Sun and therefore warmer.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

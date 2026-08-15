@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Snow',
+        '6-8': 'How snow forms',
+        '9-12': 'How snow forms',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'pas-pluie-gelee',
+              text: 'Snow is not rain that froze on the way down.',
+            },
+            {
+              id: 'vapeur-au-froid',
+              text: 'Way up high, where it is very cold, the water in the air turns straight into ice.',
+            },
+            {
+              id: 'cristal-six',
+              text: 'It makes a tiny crystal with six arms, like a little star.',
+            },
+            {
+              id: 'flocon',
+              text: 'Lots of crystals stick together and fall down: those are the snowflakes!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'pas-pluie-gelee',
+              text: 'People often think snow is rain that freezes as it falls. That’s wrong: frozen rain gives ice on the road, not snow.',
+            },
+            {
+              id: 'vapeur-au-froid',
+              text: 'In very cold clouds, water vapour does not become a droplet first: it turns directly into ice.',
+            },
+            {
+              id: 'cristal-six',
+              text: 'That ice grows into a tiny crystal that always has six arms, because of the way water molecules fit together.',
+            },
+            {
+              id: 'flocon',
+              text: 'As they fall, the crystals catch on one another and make snowflakes. Since each one meets different conditions, no two are ever the same.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'pas-pluie-gelee',
+              text: 'Snow is not frozen rain. A raindrop that freezes as it falls produces sleet or glaze ice — clear ice, with no star shape at all.',
+            },
+            {
+              id: 'vapeur-au-froid',
+              text: 'A snowflake is born another way: in a cloud below freezing, water vapour settles directly as a solid onto a microscopic speck of dust. It goes from gas to ice with no liquid stage — that is deposition.',
+            },
+            {
+              id: 'cristal-six',
+              text: 'Water molecules bond at fixed angles that impose a six-sided symmetry: every snow crystal has six arms. Its exact shape — star, plate, needle — depends on the temperatures and humidity it passes through.',
+            },
+            {
+              id: 'flocon',
+              text: 'The crystal grows as it falls, picks up other crystals, and becomes a flake. Each flake follows a unique path through the cloud, so its final shape is unique too: that is where the idea that no two snowflakes are alike comes from.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

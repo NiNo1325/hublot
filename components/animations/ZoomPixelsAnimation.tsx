@@ -1,12 +1,34 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['zoomer', 'grille', 'inventer', 'compresser'] as const;
 
 /** Quatre par quatre gros pixels : tout ce que contient la zone agrandie. */
 const PIXELS = ['#cbd5e1', '#94a3b8', '#64748b', '#94a3b8'];
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    agrandir: 'on agrandit',
+    rien: 'rien à inventer',
+    carres: 'des carrés, pas du détail',
+    compression: 'et la compression en jette',
+  },
+  en: {
+    agrandir: 'we zoom in',
+    rien: 'nothing to find',
+    carres: 'squares, not detail',
+    compression: 'and compression drops more',
+  },
+};
 
 /**
  * L'agrandissement montre les mêmes quatre couleurs, en plus gros : rien n'est
@@ -17,9 +39,11 @@ export function ZoomPixelsAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -34,7 +58,7 @@ export function ZoomPixelsAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <line x1="98" y1="108" x2="196" y2="108" stroke="#fbbf24" strokeWidth="2" strokeDasharray="5 5" />
         <text x="14" y="32" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          on agrandit
+          {legende.agrandir}
         </text>
       </g>
 
@@ -58,7 +82,7 @@ export function ZoomPixelsAnimation({
           ?
         </text>
         <text x="252" y="30" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          rien à inventer
+          {legende.rien}
         </text>
       </g>
 
@@ -72,10 +96,10 @@ export function ZoomPixelsAnimation({
           </rect>
         ))}
         <text x="14" y="210" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des carrés, pas du détail
+          {legende.carres}
         </text>
         <text x="14" y="234" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          et la compression en jette
+          {legende.compression}
         </text>
       </g>
     </svg>

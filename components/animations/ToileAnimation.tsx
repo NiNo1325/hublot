@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['rayons', 'spirale', 'marche', 'proie'] as const;
+
+const LEGENDES = {
+  fr: {
+    rayons: 'les fils secs',
+    spirale: 'la spirale colle',
+    marche: 'elle marche sur le sec',
+    proie: 'la proie est piégée',
+  },
+  en: {
+    rayons: 'the dry threads',
+    spirale: 'the spiral is sticky',
+    marche: 'it walks on the dry',
+    proie: 'the prey is trapped',
+  },
+};
 
 const CX = 188;
 const CY = 100;
@@ -25,10 +41,12 @@ export function ToileAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   const anneaux = [26, 44, 62];
 
@@ -63,12 +81,12 @@ export function ToileAnimation({
 
       {/* Phase 1 : les fils secs */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
-        <text x="20" y="200" fill="#cbd5e1" fontSize="15" fontFamily={police}>les fils secs</text>
+        <text x="20" y="200" fill="#cbd5e1" fontSize="15" fontFamily={police}>{legende.rayons}</text>
       </g>
 
       {/* Phase 2 : la spirale colle */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
-        <text x="20" y="224" fill="#f6c453" fontSize="15" fontFamily={police}>la spirale colle</text>
+        <text x="20" y="224" fill="#f6c453" fontSize="15" fontFamily={police}>{legende.spirale}</text>
       </g>
 
       {/* Phase 3 : l'araignée marche sur les rayons secs */}
@@ -83,7 +101,7 @@ export function ToileAnimation({
             )),
           )}
         </g>
-        <text x="228" y="200" fill="#38bdf8" fontSize="15" fontFamily={police}>elle marche sur le sec</text>
+        <text x="228" y="200" fill="#38bdf8" fontSize="15" fontFamily={police}>{legende.marche}</text>
       </g>
 
       {/* Phase 4 : la proie piégée sur la spirale */}
@@ -94,7 +112,7 @@ export function ToileAnimation({
             {anime && <animate attributeName="opacity" values="1;0.4;1" dur="0.8s" repeatCount="indefinite" />}
           </path>
         </g>
-        <text x="228" y="224" fill="#a3e635" fontSize="15" fontFamily={police}>la proie est piégée</text>
+        <text x="228" y="224" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.proie}</text>
       </g>
     </svg>
   );

@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The other side of the Moon',
+        '6-8': 'Why we always see the same face',
+        '9-12': 'Synchronous rotation and the far side',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'toujours-pareille',
+              text: 'Look carefully at the Moon: it always shows the same pattern. Always the same side.',
+            },
+            {
+              id: 'elle-tourne',
+              text: 'Lots of people think it does not spin round. But it does, it really spins!',
+            },
+            {
+              id: 'verrouillage',
+              text: 'It spins at just the right speed: one turn on itself while it goes once round the Earth.',
+            },
+            {
+              id: 'face-cachee',
+              text: 'So we never see its other side. It really is there, and it is not all dark: the Sun lights it up too.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'toujours-pareille',
+              text: 'The Moon always shows us the same face. People often conclude that it does not spin on itself — and it is exactly the opposite.',
+            },
+            {
+              id: 'elle-tourne',
+              text: 'To keep the same side turned towards us, it actually has to spin: one turn on itself for one turn of orbit. Walk round a table keeping your eyes fixed on its centre: by the time you get back, you will have made one full turn on yourself.',
+            },
+            {
+              id: 'verrouillage',
+              text: 'That perfect match is no accident. The Earth slightly deforms the Moon, and this bulge slowed its rotation over billions of years, until it settled exactly. This is called tidal locking.',
+            },
+            {
+              id: 'face-cachee',
+              text: 'The other side is not the “dark side”: it gets as much sunshine as ours — it is even the side in broad daylight when we see the new Moon. It is only hidden, and nobody had seen it before 1959, when a Soviet probe photographed it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'toujours-pareille',
+              text: 'The Moon is in synchronous rotation: its own rotation period, twenty-seven and a third days, is exactly equal to its orbital period.',
+            },
+            {
+              id: 'elle-tourne',
+              text: 'The common error is to believe that an absence of rotation would produce this result. The opposite is true: a body with no rotation of its own would present every one of its faces to the Earth in turn over the course of an orbit.',
+            },
+            {
+              id: 'verrouillage',
+              text: 'The synchronisation results from the torque the Earth exerts on the Moon’s tidal bulge, which dissipated its rotational energy until it locked. The phenomenon is general: most of the large satellites in the solar system are locked to their planet. Libration — a wobble caused by the eccentricity and the inclination of the orbit — nevertheless allows about fifty-nine per cent of the lunar surface to be observed from the Earth.',
+            },
+            {
+              id: 'face-cachee',
+              text: 'The expression “dark side” is a misnomer: the hidden hemisphere receives as much sunlight as the other, and is in broad daylight at new Moon. Photographed for the first time by Luna 3 in 1959, it turned out to be very different: its crust is thicker and it is almost devoid of the great basaltic seas that mark the visible face.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'That one is not a dinosaur!',
+        '6-8': 'Not all of them are dinosaurs!',
+        '9-12': 'Pterosaurs and plesiosaurs: close cousins, not dinosaurs',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The pterosaur flew in the sky with big wings made of skin.',
+            },
+            {
+              id: 'deux',
+              text: 'The plesiosaur swam in the sea with a very long neck.',
+            },
+            {
+              id: 'trois',
+              text: 'Their skeletons do not look like the skeletons of dinosaurs.',
+            },
+            {
+              id: 'quatre',
+              text: 'They are cousins of the dinosaurs, but not dinosaurs!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The pterosaur flew thanks to a great wing of skin stretched between its body and one enormously long finger.',
+            },
+            {
+              id: 'deux',
+              text: 'The plesiosaur, for its part, lived in the ocean and swam with four large flippers and, in some species, a huge neck.',
+            },
+            {
+              id: 'trois',
+              text: 'Looking at their skeletons, scientists see straight away that they are very different from those of the dinosaurs, especially around the hips.',
+            },
+            {
+              id: 'quatre',
+              text: 'The pterosaur and the plesiosaur are reptiles that lived at the same time as the dinosaurs, but they are their cousins, not dinosaurs.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Pterosaurs form a group of flying reptiles whose membrane wing is held out by a fourth finger of extraordinary length, an anatomical solution unique to the group.',
+            },
+            {
+              id: 'deux',
+              text: 'Plesiosaurs are marine reptiles fitted with four paddle-shaped flippers and, in some species, a neck of more than seventy vertebrae.',
+            },
+            {
+              id: 'trois',
+              text: 'The criterion that defines the dinosaurs rests above all on the structure of the hip joint, which neither pterosaurs nor plesiosaurs possess: they belong to separate reptile groups.',
+            },
+            {
+              id: 'quatre',
+              text: 'Pterosaurs and plesiosaurs are reptiles contemporary with the dinosaurs, joined to them by a distant common ancestor, but they are not dinosaurs in the strict scientific sense.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

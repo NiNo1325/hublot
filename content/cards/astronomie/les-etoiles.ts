@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The little lights in the sky',
+        '6-8': 'What a star is',
+        '9-12': 'Stars, distances and light travel time',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'soleils',
+              text: 'Every star you see at night is a sun, like ours. They are just very, very far away.',
+            },
+            {
+              id: 'notre-soleil',
+              text: 'Our sun looks huge because it is the closest one to us. The others look tiny.',
+            },
+            {
+              id: 'voyage',
+              text: 'Their light travels for years before it reaches your eyes.',
+            },
+            {
+              id: 'passe',
+              text: 'So when you look at a star, you see it as it was a very long time ago.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'soleils',
+              text: 'A star is an enormous ball of gas that makes its own light and its own heat, thanks to the reactions going on in its core.',
+            },
+            {
+              id: 'notre-soleil',
+              text: 'The Sun is a perfectly ordinary star. It looks huge to us only because it is close by: the next star along is more than two hundred thousand times further away.',
+            },
+            {
+              id: 'voyage',
+              text: 'Light is the fastest thing in the universe: three hundred thousand kilometres per second. It would take a little over a second to go from the Earth to the Moon.',
+            },
+            {
+              id: 'passe',
+              text: 'Even at that speed, it takes more than four years to come from the nearest star. So you see that star as it was four years ago. Looking at the sky is looking at the past.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'soleils',
+              text: 'A star is a sphere of plasma held together by its own gravity, in which nuclear fusion turns hydrogen into helium. That reaction supplies the energy it radiates and stops the star collapsing in on itself.',
+            },
+            {
+              id: 'notre-soleil',
+              text: 'The Sun is a medium-sized yellow dwarf. Stars differ in their mass, which sets their colour, their lifespan and their end: the most massive burn fast and explode as supernovae, the smallest live for hundreds of billions of years.',
+            },
+            {
+              id: 'voyage',
+              text: 'Distances are measured in light years: the distance light covers in one year, about nine thousand five hundred billion kilometres. Proxima Centauri is 4.2 light years away.',
+            },
+            {
+              id: 'passe',
+              text: 'To observe is therefore to look back in time. Distant galaxies appear to us as they were billions of years ago. Some of the stars visible tonight may already have ceased to exist — their light, though, carries on its journey.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

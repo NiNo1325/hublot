@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The Sun’s planets',
+        '6-8': 'The planets, and the emptiness between them',
+        '9-12': 'The solar system at its true scale',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'famille',
+              text: 'Eight planets go round the Sun. The Earth is one of them.',
+            },
+            {
+              id: 'distances',
+              text: 'In drawings, they look very close together. Really, they are very, very far from one another.',
+            },
+            {
+              id: 'vide',
+              text: 'Between them there is nothing at all. Empty space, for a very, very long way.',
+            },
+            {
+              id: 'rocheuses-gazeuses',
+              text: 'Some are hard like a stone. Others are made of gas: you could never walk on them.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'famille',
+              text: 'Eight planets go round the Sun. Book drawings show them lined up neatly side by side — and that is exactly what misleads.',
+            },
+            {
+              id: 'distances',
+              text: 'If the Sun were a football, the Earth would be a two-millimetre bead twenty-four metres away, and Neptune another bead seven hundred metres away.',
+            },
+            {
+              id: 'vide',
+              text: 'Between those beads there is almost nothing. The solar system is mostly empty — and the eight planets hardly ever line up, whatever the pictures show.',
+            },
+            {
+              id: 'rocheuses-gazeuses',
+              text: 'The first four are small and rocky. The next four are giant and gaseous: going down into Jupiter, you would never meet any ground, only gas that gets thicker and thicker.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'famille',
+              text: 'Eight planets — four terrestrial, four giant — plus the dwarf planets, which Pluto has belonged to since 2006. Textbook diagrams are always wrong on at least one point: the scale.',
+            },
+            {
+              id: 'distances',
+              text: 'On a scale where the Sun would be twenty-two centimetres across, the Earth would be a two-millimetre bead placed twenty-four metres away, and Neptune would be seven hundred and ten metres away. No page can respect the sizes and the distances at the same time: you have to choose, and the choice is always to lie about the distances.',
+            },
+            {
+              id: 'vide',
+              text: 'The consequence is spectacular: placed end to end, the seven other planets would fit into the gap between the Earth and the Moon. All the rest is empty. A strict alignment of the eight planets is in fact so improbable that it does not occur within the lifetime of a civilisation.',
+            },
+            {
+              id: 'rocheuses-gazeuses',
+              text: 'The terrestrial planets have a solid surface, the giants have none: going down into Jupiter, the gas grows steadily denser until it becomes liquid, without your ever crossing any ground. Jupiter alone weighs more than twice all the other planets put together.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

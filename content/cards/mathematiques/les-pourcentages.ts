@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Half of what?',
+        '6-8': 'Percentages and their traps',
+        '9-12': 'Percentages: what multiplies does not add up',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'part',
+              text: 'One per cent is one tiny piece out of a hundred pieces. Like a slice of cake.',
+            },
+            {
+              id: 'de-quoi',
+              text: 'But a piece of what? Half of a big cake is not the same as half of a small one.',
+            },
+            {
+              id: 'aller-retour',
+              text: 'And if you take away half, then put back half of what is left, you do not have your whole cake!',
+            },
+            {
+              id: 'points',
+              text: 'So you must always ask: half of what?',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'part',
+              text: 'A percentage is not a quantity, it is a share. Twenty per cent means twenty out of a hundred.',
+            },
+            {
+              id: 'de-quoi',
+              text: 'Hence the first rule: a percentage means nothing until you know what it is a share of. Ten per cent off a hundred euros is ten euros; off ten euros, it is one euro.',
+            },
+            {
+              id: 'aller-retour',
+              text: 'Now here is the trap that almost everybody falls into. A price of a hundred euros drops by fifty per cent: it falls to fifty. Then it goes back up by fifty per cent: it does not return to a hundred, but to seventy-five. Because the rise applies to fifty, not to a hundred.',
+            },
+            {
+              id: 'points',
+              text: 'Remember it: a fall and a rise of the same percentage never cancel each other out. To get from fifty back to a hundred, you would need a rise of a hundred per cent.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'part',
+              text: 'A percentage is a proportion, so a ratio with no units. It only takes on meaning once it is referred to its base.',
+            },
+            {
+              id: 'de-quoi',
+              text: 'Ignoring that base produces empty statements. “The risk doubles” says nothing until you know whether it goes from one in a million to two in a million, or from one in ten to two in ten. That is the whole difference between relative risk and absolute risk, and it is the device most used in alarming headlines.',
+            },
+            {
+              id: 'aller-retour',
+              text: 'Successive changes multiply instead of adding up. A fall of fifty per cent followed by a rise of fifty per cent gives 0.5 multiplied by 1.5, that is 0.75: a quarter is missing. To make up for a fall of x, you need a rise of x divided by one minus x — so a hundred per cent after a halving.',
+            },
+            {
+              id: 'points',
+              text: 'One last confusion, common in the press: going from two to three per cent is a rise of one percentage point, but also a rise of fifty per cent. Both statements are exact and describe the same fact. Hence how easily the one that impresses most is the one people remember.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

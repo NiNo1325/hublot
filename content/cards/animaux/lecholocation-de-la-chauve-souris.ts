@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The bat in the dark',
+        '6-8': 'How the bat echolocates',
+        '9-12': 'How the bat echolocates',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'voit',
+              text: 'The bat has eyes and it sees very well. It is not blind!',
+            },
+            {
+              id: 'cri',
+              text: 'At night, in the dark, it makes little squeaks, very high ones.',
+            },
+            {
+              id: 'echo',
+              text: 'The squeak bumps into a mosquito, then comes back to its ears, like a ball bouncing.',
+            },
+            {
+              id: 'image',
+              text: 'That way it knows where the mosquito is, even without seeing it. It “sees” with sound!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'voit',
+              text: 'People often say “as blind as a bat”. That is wrong: a bat sees perfectly well with its eyes.',
+            },
+            {
+              id: 'cri',
+              text: 'But at night, in complete darkness, sight is not enough. So it gives out very high squeaks, too high for our ears.',
+            },
+            {
+              id: 'echo',
+              text: 'These sounds travel out, bounce off an insect or a wall, and come back: that is the echo.',
+            },
+            {
+              id: 'image',
+              text: 'The longer the echo takes to come back, the further away the obstacle is. Its brain puts all these echoes together and “draws” what is around it. That is echolocation.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'voit',
+              text: 'Despite the saying, bats are not blind: most of them see very well. Echolocation does not replace sight, it completes it when it is too dark.',
+            },
+            {
+              id: 'cri',
+              text: 'They give out ultrasound — sounds too high for the human ear — in bursts, sometimes dozens a second as they close in on prey.',
+            },
+            {
+              id: 'echo',
+              text: 'Like any sound, these waves travel through the air and bounce off whatever they meet. Part of them comes back to the bat as an echo.',
+            },
+            {
+              id: 'image',
+              text: 'The delay gives the distance, the loudness the size, the direction the position. By analysing these echoes, the brain rebuilds a genuine sound picture of the scene — precise enough to catch a mosquito in mid-flight in total darkness.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -1,18 +1,36 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['chaud', 'monte', 'remplace', 'vent'] as const;
+
+const LEGENDES = {
+  fr: {
+    chaud: 'chaud',
+    frais: 'frais',
+    accourt: 'l’air frais accourt',
+    vent: 'ce mouvement, c’est le vent',
+  },
+  en: {
+    chaud: 'warm',
+    frais: 'cool',
+    accourt: 'cool air rushes in',
+    vent: 'this movement is the wind',
+  },
+};
 
 /** Le circuit de convection complet : monte au chaud, redescend au froid. */
 export function VentAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -35,8 +53,8 @@ export function VentAnimation({
             )}
           </line>
         ))}
-        <text x="24" y="212" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">chaud</text>
-        <text x="330" y="212" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">frais</text>
+        <text x="24" y="212" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.chaud}</text>
+        <text x="330" y="212" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.frais}</text>
       </g>
 
       {/* L'air chaud monte */}
@@ -63,7 +81,7 @@ export function VentAnimation({
           </circle>
         ))}
         <text x="238" y="126" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l&apos;air frais accourt
+          {legende.accourt}
         </text>
       </g>
 
@@ -78,7 +96,7 @@ export function VentAnimation({
           )}
         </path>
         <text x="106" y="30" fill="#f5f0e6" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          ce mouvement, c&apos;est le vent
+          {legende.vent}
         </text>
       </g>
     </svg>

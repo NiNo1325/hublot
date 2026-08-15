@@ -1,9 +1,21 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['part', 'de-quoi', 'aller-retour', 'points'] as const;
+
+const LEGENDES = {
+  fr: {
+    quart: '75 € : il manque un quart',
+    multiplie: 'ça se multiplie, pas s’ajoute',
+  },
+  en: {
+    quart: '75 €: a quarter is missing',
+    multiplie: 'it multiplies, it doesn’t add',
+  },
+};
 
 /**
  * Les trois barres sont à l'échelle : trois cents pixels pour cent euros. La
@@ -14,9 +26,11 @@ export function PourcentagesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, dejaVu } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -58,10 +72,10 @@ export function PourcentagesAnimation({
       {/* Le quart manquant, et la règle qui l'explique */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="14" y="210" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          75 € : il manque un quart
+          {legende.quart}
         </text>
         <text x="14" y="234" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          ça se multiplie, pas s’ajoute
+          {legende.multiplie}
         </text>
       </g>
     </svg>

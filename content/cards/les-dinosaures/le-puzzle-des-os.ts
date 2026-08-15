@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The bone game',
+        '6-8': 'The bone jigsaw',
+        '9-12': 'Rebuilding a dinosaur skeleton',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Scientists dig into the ground and find old bones hidden in the rock.',
+            },
+            {
+              id: 'deux',
+              text: 'They clean each bone very gently, then fit them together like a big jigsaw.',
+            },
+            {
+              id: 'trois',
+              text: 'Some pieces are missing! So we look at animals today to guess what is missing.',
+            },
+            {
+              id: 'quatre',
+              text: 'Then we imagine its muscles, its skin, and how it stood up.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Palaeontologists dig patiently into the rock and find very old bones there, sometimes millions of years old.',
+            },
+            {
+              id: 'deux',
+              text: 'In the laboratory, each bone is cleaned with great care, and then the scientists try to fit them together like the pieces of an enormous jigsaw.',
+            },
+            {
+              id: 'trois',
+              text: 'Since pieces are nearly always missing, the scientists compare them with the skeletons of animals alive today, such as birds or crocodiles, to fill the gaps.',
+            },
+            {
+              id: 'quatre',
+              text: 'Finally, we picture the muscles, the skin and the posture, to bring back to life an animal that vanished millions of years ago.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Palaeontologists search layers of sedimentary rock for fossilised bones, fieldwork that can take weeks.',
+            },
+            {
+              id: 'deux',
+              text: 'Once freed from the rock and stabilised, the bones are catalogued and then assembled using comparative anatomy, because a complete skeleton is extremely rare.',
+            },
+            {
+              id: 'trois',
+              text: 'The missing bones are estimated by comparison with closely related species, among them birds and crocodiles, the nearest living relatives of the dinosaurs.',
+            },
+            {
+              id: 'quatre',
+              text: 'Muscles, tissues and posture remain to be reconstructed, a far more uncertain stage that explains why the appearance of a single species keeps changing as new discoveries are made.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

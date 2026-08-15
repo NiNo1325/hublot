@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['chute', 'attraction', 'plume', 'lune'] as const;
+
+const LEGENDES = {
+  fr: {
+    attire: 'la Terre attire',
+    airFreine: "l'air freine",
+    sansAir: 'sur la Lune : sans air',
+    avecAir: "sur Terre : avec l'air",
+  },
+  en: {
+    attire: 'the Earth pulls',
+    airFreine: 'the air slows it',
+    sansAir: 'on the Moon: no air',
+    avecAir: 'on Earth: with air',
+  },
+};
 
 /**
  * La phase « plume » montre les deux objets côte à côte : avec air, la plume
@@ -20,10 +36,12 @@ export function GraviteAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const sansAir = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -50,7 +68,7 @@ export function GraviteAnimation({
           </g>
         ))}
         <text x="150" y="58" fill="#7dd3fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          la Terre attire
+          {legende.attire}
         </text>
       </g>
 
@@ -81,13 +99,13 @@ export function GraviteAnimation({
             <line x1="366" y1="150" x2="366" y2="108" stroke="#fb923c" strokeWidth="4" />
             <path d="M359 114 L366 98 L373 114 Z" fill="#fb923c" />
             <text x="248" y="150" fill="#fb923c" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-              l&apos;air freine
+              {legende.airFreine}
             </text>
           </g>
         )}
 
         <text x="58" y="34" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          {sansAir ? 'sur la Lune : sans air' : "sur Terre : avec l'air"}
+          {sansAir ? legende.sansAir : legende.avecAir}
         </text>
       </g>
 

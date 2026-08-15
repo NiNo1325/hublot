@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    angles: 'deux angles un peu différents',
+    saute: 'l’objet a l’air de sauter',
+    compare: 'il compare, sans arrêt',
+    distance: 'et devine la distance',
+  },
+  en: {
+    angles: 'two slightly different angles',
+    saute: 'the object seems to jump',
+    compare: 'it compares, non-stop',
+    distance: 'and works out the distance',
+  },
+};
 
 /**
  * Deux yeux, un objet devant eux : chaque œil vise sous un angle légèrement
@@ -15,10 +31,12 @@ export function PourquoiOnADeuxYeuxAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -37,7 +55,7 @@ export function PourquoiOnADeuxYeuxAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <line x1="130" y1="190" x2="200" y2="80" stroke="#38bdf8" strokeWidth="2" strokeDasharray="4 4" />
         <line x1="270" y1="190" x2="200" y2="80" stroke="#4ade80" strokeWidth="2" strokeDasharray="4 4" />
-        <text x="60" y="34" fill="#a3a3a3" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>deux angles un peu différents</text>
+        <text x="60" y="34" fill="#a3a3a3" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.angles}</text>
       </g>
 
       {/* Phase 2 : ferme un œil, puis l'autre : l'objet saute */}
@@ -57,7 +75,7 @@ export function PourquoiOnADeuxYeuxAnimation({
             <animate attributeName="opacity" values="0;0;1;0" dur="1.8s" repeatCount="indefinite" />
           )}
         </rect>
-        <text x="90" y="230" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>l’objet a l’air de sauter</text>
+        <text x="90" y="230" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.saute}</text>
       </g>
 
       {/* Phase 3 : le cerveau compare les deux images */}
@@ -73,7 +91,7 @@ export function PourquoiOnADeuxYeuxAnimation({
             <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" repeatCount="indefinite" />
           )}
         </path>
-        <text x="230" y="230" fill="#a3a3a3" fontSize="14" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>il compare, sans arrêt</text>
+        <text x="230" y="230" fill="#a3a3a3" fontSize="14" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.compare}</text>
       </g>
 
       {/* Phase 4 : il en déduit la distance, le relief */}
@@ -81,7 +99,7 @@ export function PourquoiOnADeuxYeuxAnimation({
         {phase === 3 && [26, 40, 54].map((r, i) => (
           <circle key={r} cx="200" cy="80" r={r} fill="none" stroke="#fbbf24" strokeWidth="2" opacity={0.7 - i * 0.2} />
         ))}
-        <text x="70" y="34" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>et devine la distance</text>
+        <text x="70" y="34" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.distance}</text>
       </g>
     </svg>
   );

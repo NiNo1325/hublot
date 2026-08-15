@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The very, very big wave',
+        '6-8': 'The tsunami, the giant wave',
+        '9-12': 'The tsunami, a wave born of an earthquake',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Sometimes the ground shakes right at the bottom of the sea.',
+            },
+            {
+              id: 'deux',
+              text: 'That pushes a huge amount of water all at once.',
+            },
+            {
+              id: 'trois',
+              text: 'This wave races very, very fast across the ocean.',
+            },
+            {
+              id: 'quatre',
+              text: 'When it reaches the beach, it turns into a huge wall of water.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A tsunami often begins with an undersea earthquake, a tremor that suddenly shakes the floor of the ocean.',
+            },
+            {
+              id: 'deux',
+              text: 'That movement of the ground shifts an enormous mass of water all at once, from the seabed right up to the surface.',
+            },
+            {
+              id: 'trois',
+              text: 'The disturbance then races away at astonishing speed, sometimes more than seven hundred kilometres an hour out at sea, without anyone on a boat really noticing it.',
+            },
+            {
+              id: 'quatre',
+              text: 'As it nears the coast, where the water becomes shallower, the wave slows down but gains enormously in height, until it forms a real wall of water breaking over the land.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A tsunami is most often triggered by an undersea earthquake that abruptly shifts a section of the ocean floor along a fault.',
+            },
+            {
+              id: 'deux',
+              text: 'That shift lifts or lowers the entire column of water above it, creating a disturbance that stirs the ocean over its whole depth, unlike a wind wave, which only ruffles the surface.',
+            },
+            {
+              id: 'trois',
+              text: 'In the open sea, this disturbance travels at speeds that can exceed seven hundred kilometres an hour, often less than a metre high and almost imperceptible.',
+            },
+            {
+              id: 'quatre',
+              text: 'On reaching the continental slope, where the water quickly becomes shallower, the wave slows down but its energy concentrates: its height rises sharply, sometimes to several tens of metres, before it breaks over the coast.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

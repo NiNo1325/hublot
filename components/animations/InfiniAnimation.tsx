@@ -1,9 +1,23 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['compter', 'jamais-fini', 'pas-un-nombre', 'entre'] as const;
+
+const LEGENDES = {
+  fr: {
+    dernier: 'jamais de dernier : ce n’est pas un nombre',
+    pairs: 'autant de pairs que d’entiers',
+    plusGrands: 'et certains infinis sont plus grands que d’autres',
+  },
+  en: {
+    dernier: 'never a last one: not a number',
+    pairs: 'as many evens as integers',
+    plusGrands: 'and some infinities are bigger than others',
+  },
+};
 
 /**
  * La phase clé montre l'appariement entier ↔ double : c'est la démonstration
@@ -14,9 +28,11 @@ export function InfiniAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   const entiers = [1, 2, 3, 4, 5];
 
@@ -42,7 +58,7 @@ export function InfiniAnimation({
       {/* L'infini n'est pas un nombre */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <text x="13" y="102" fill="#a5b4fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          jamais de dernier : ce n&apos;est pas un nombre
+          {legende.dernier}
         </text>
       </g>
 
@@ -63,14 +79,14 @@ export function InfiniAnimation({
           </g>
         ))}
         <text x="146" y="172" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          autant de pairs que d&apos;entiers
+          {legende.pairs}
         </text>
       </g>
 
       {/* Des infinis plus grands que d'autres */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="28" y="226" fill="#c4b5fd" fontSize="14" fontFamily="var(--font-atkinson), sans-serif">
-          et certains infinis sont plus grands que d&apos;autres
+          {legende.plusGrands}
         </text>
       </g>
     </svg>

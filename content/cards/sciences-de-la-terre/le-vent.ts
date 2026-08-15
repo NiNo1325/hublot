@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Where the wind comes from',
+        '6-8': 'How the wind is born',
+        '9-12': 'Pressure, convection and circulation',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'chaud',
+              text: 'The sun does not warm everywhere the same. Some places get much hotter than others.',
+            },
+            {
+              id: 'monte',
+              text: 'Warm air is lighter, so it climbs up, very gently, towards the sky.',
+            },
+            {
+              id: 'remplace',
+              text: 'It leaves an empty place down below. The cooler air next door rushes in to fill it.',
+            },
+            {
+              id: 'vent',
+              text: 'That hurrying air is the wind! It blows on your cheek because air is moving from one place to another.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'chaud',
+              text: 'The Sun heats the surface of the Earth unevenly: land warms up faster than the sea, and the equator receives more energy than the poles.',
+            },
+            {
+              id: 'monte',
+              text: 'Warmed air expands, becomes less dense than the air around it, and rises. The pressure at ground level then falls, right at that spot.',
+            },
+            {
+              id: 'remplace',
+              text: 'Next door, where the air is cooler and denser, the pressure is higher. And air always moves from areas of high pressure towards areas of low pressure.',
+            },
+            {
+              id: 'vent',
+              text: 'That movement is the wind. The bigger the difference in pressure, the harder it blows. At the coast, the breeze comes off the sea in the afternoon, because the land has warmed up faster than the water.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'chaud',
+              text: 'Uneven solar heating is the engine of the whole atmospheric circulation. It comes down to the angle at which sunlight strikes each latitude, and to the very different heat capacities of oceans and continents.',
+            },
+            {
+              id: 'monte',
+              text: 'Heated air expands, its density falls, and buoyancy makes it rise: that is a convection cell. A low-pressure area forms at ground level beneath the rising air.',
+            },
+            {
+              id: 'remplace',
+              text: 'The pressure gradient generates a force that sets the air in motion. The closer together the isobars on a weather map, the more violent the wind.',
+            },
+            {
+              id: 'vent',
+              text: 'The rotation of the Earth then deflects these movements: this is the Coriolis force, which turns winds to the right in the northern hemisphere and to the left in the southern one. That is why depressions coil into a spiral, in opposite directions depending on the hemisphere.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

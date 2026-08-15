@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Wheels with teeth',
+        '6-8': 'How gears work',
+        '9-12': 'Gear ratio',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'dents',
+              text: 'A gear is a wheel with teeth all the way round, like a little crown.',
+            },
+            {
+              id: 'sens',
+              text: 'When two wheels touch, one turns one way and the other turns the other way.',
+            },
+            {
+              id: 'vitesse',
+              text: 'If a small wheel turns a big one, the big one goes much more slowly.',
+            },
+            {
+              id: 'echange',
+              text: 'But it pushes much harder. You choose: either quick or strong, never both.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'dents',
+              text: 'The teeth of a gear slot into those of its neighbour. The movement is passed on without slipping, which a plain belt cannot promise.',
+            },
+            {
+              id: 'sens',
+              text: 'Two wheels in contact always turn in opposite directions. To keep the same direction, you slip a third one in between, or you use a chain — as on a bicycle.',
+            },
+            {
+              id: 'vitesse',
+              text: 'What counts is the number of teeth. A ten-tooth wheel driving a thirty-tooth wheel makes it turn three times more slowly: for every full turn of the small pinion, the big one moves only a third of a turn.',
+            },
+            {
+              id: 'echange',
+              text: 'In exchange for that slowness, the big wheel turns with three times more force. It is exactly the same bargain as the lever: what you gain on one side, you lose on the other. Changing gear on a bicycle is nothing but choosing that bargain.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'dents',
+              text: 'A gear transmits motion without slipping, and therefore keeps a strictly constant ratio. The tooth profile, an involute of a circle, guarantees steady contact and torque passed on without jolts.',
+            },
+            {
+              id: 'sens',
+              text: 'Two external wheels in mesh turn in opposite directions. A gear train lets you adjust the direction, the ratio and the output axis at once; a bevel gear even sends the motion off at ninety degrees.',
+            },
+            {
+              id: 'vitesse',
+              text: 'The gear ratio is the quotient of the numbers of teeth. Torque varies in inverse proportion to angular speed: dividing the speed by three multiplies the torque by three, friction aside.',
+            },
+            {
+              id: 'echange',
+              text: 'Power, the product of torque and angular speed, is conserved — a gear redistributes it, it does not create it. Real efficiency often passes ninety-five per cent, the rest being dissipated as heat. It is the same principle as the lever, applied to rotation.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

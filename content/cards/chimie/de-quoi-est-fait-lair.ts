@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The air you cannot see',
+        '6-8': 'What air is made of',
+        '9-12': 'Composition and atmospheric pressure',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'invisible',
+              text: 'You cannot see the air. But it really is there: wave your hand and you feel it on your skin.',
+            },
+            {
+              id: 'matiere',
+              text: 'It is not nothing! Blow into a balloon: it is air that fills it up and makes it all round.',
+            },
+            {
+              id: 'melange',
+              text: 'Air is a mix of several gases. Only a little bit of it is the part you breathe.',
+            },
+            {
+              id: 'pression',
+              text: 'And there is so much of it above you that it presses on your shoulders, without you feeling it.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'invisible',
+              text: 'Air is invisible and has no smell, which makes it seem like nothing at all. Yet it really is matter, made of particles that move about all the time.',
+            },
+            {
+              id: 'matiere',
+              text: 'It even has a mass: one litre of air weighs about 1.2 grams. The air in a classroom weighs as much as a child. To check, simply weigh a balloon empty, then blown up.',
+            },
+            {
+              id: 'melange',
+              text: 'Unlike what most people imagine, oxygen is not its main ingredient. Air is about seventy-eight per cent nitrogen and only twenty-one per cent oxygen. The rest is a mixture of rare gases and carbon dioxide.',
+            },
+            {
+              id: 'pression',
+              text: 'The column of air above you presses down with about one kilogram per square centimetre. You do not feel it because your body pushes back just as hard. It is this pressure that makes a drink climb up a straw: you do not suck it up, the air pushes it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'invisible',
+              text: 'The atmosphere is a mixture of gases whose molecules travel at about five hundred metres per second at room temperature, colliding with one another endlessly.',
+            },
+            {
+              id: 'matiere',
+              text: 'Its density at sea level is 1.225 kilograms per cubic metre. The whole atmosphere weighs around five million billion tonnes, and grows less dense the higher you go.',
+            },
+            {
+              id: 'melange',
+              text: 'Composition of dry air by volume: 78 % nitrogen, 21 % oxygen, 0.9 % argon, and about 0.04 % carbon dioxide. That last fraction, tiny as it is, is enough to alter the climate because the molecule absorbs infrared radiation — the amount is not what makes the effect.',
+            },
+            {
+              id: 'pression',
+              text: 'Pressure at sea level is about 1013 hectopascals, or ten tonnes on a square metre. It comes from the weight of the column of air, and it falls off with altitude. Torricelli measured it as early as 1643 with a column of mercury — and it is pressure, not some kind of ‘suction’, that makes a straw or a rubber sucker work.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

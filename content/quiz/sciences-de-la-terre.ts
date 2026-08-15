@@ -50,6 +50,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'ou-va-leau',
+            question: 'The sun warms the sea. Where does the water go?',
+            reponses: [
+              { texte: 'It rises into the sky', icone: '☁️', correcte: true },
+              { texte: 'It disappears for ever', icone: '🕳️' },
+            ],
+            explication: 'The water rises into the sky, then it falls back down as rain.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'nuage-fait-de',
+            question: 'What is a cloud made of?',
+            reponses: [
+              { texte: 'Tiny drops of water', icone: '💧', correcte: true },
+              { texte: 'Smoke', icone: '💨' },
+              { texte: 'Cotton wool', icone: '☁️' },
+            ],
+            explication:
+              'A cloud is made of droplets so small that they float in the air.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'quantite-eau',
+            question: 'Does the amount of water on Earth change?',
+            reponses: [
+              { texte: 'No, it is always the same', icone: '♻️', correcte: true },
+              { texte: 'Yes, it goes down as it evaporates', icone: '📉' },
+              { texte: 'Yes, rain makes more of it', icone: '🌧️' },
+            ],
+            explication:
+              'Water goes round without being lost: the water you drink may already have been drunk by a dinosaur.',
+          },
+        ],
+      },
     },
   },
   {
@@ -91,6 +130,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               "En remontant, la pression baisse et les gaz forment des bulles : c'est leur expansion qui projette le magma.",
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'lave-quoi',
+            question: 'The lava coming out of a volcano — what is it?',
+            reponses: [
+              { texte: 'Red-hot rock', icone: '🪨', correcte: true },
+              { texte: 'Fire', icone: '🔥' },
+            ],
+            explication: 'Lava is melted rock, burning hot, but it is not fire.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'pourquoi-monte',
+            question: 'Why does magma rise towards the surface?',
+            reponses: [
+              { texte: 'Because it is lighter than the rock around it', icone: '🎈', correcte: true },
+              { texte: 'Because the Earth pushes it up with wind', icone: '🌬️' },
+              { texte: 'Because the sun pulls it upwards', icone: '☀️' },
+            ],
+            explication:
+              'Less dense than the solid rock, magma rises like a bubble in water.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'explosif',
+            question: 'What makes an eruption explosive?',
+            reponses: [
+              { texte: 'The dissolved gases expanding', icone: '🫧', correcte: true },
+              { texte: 'The temperature of the lava', icone: '🌡️' },
+              { texte: 'The height of the volcano', icone: '⛰️' },
+            ],
+            explication:
+              'As it rises, the pressure falls and the gases form bubbles: it is their expansion that throws the magma out.',
           },
         ],
       },
@@ -138,6 +216,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'sol-morceaux',
+            question: 'What is the ground of the Earth made of?',
+            reponses: [
+              { texte: 'Big pieces that move', icone: '🧩', correcte: true },
+              { texte: 'One single block that never moves', icone: '🟫' },
+            ],
+            explication: 'The ground is made of big plates that slide along very slowly.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'sol-souvre',
+            question: 'During an earthquake, does the ground open up into a chasm?',
+            reponses: [
+              { texte: 'No, the plates slide against each other', icone: '↔️', correcte: true },
+              { texte: 'Yes, a big hole swallows everything', icone: '🕳️' },
+              { texte: 'Yes, but only at night', icone: '🌙' },
+            ],
+            explication:
+              'The ground does not open up as it does in films: it is the buildings that are dangerous.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'ondes-p-s',
+            question: 'Which waves arrive first during an earthquake?',
+            reponses: [
+              { texte: 'P waves, compression waves', icone: '⚡', correcte: true },
+              { texte: 'S waves, shear waves', icone: '🌊' },
+              { texte: 'Both at exactly the same time', icone: '⏱️' },
+            ],
+            explication:
+              'P waves travel faster: that gap makes it possible to locate the focus and raise the alarm.',
+          },
+        ],
+      },
     },
   },
   {
@@ -182,6 +299,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'fossile-rare',
+            question: 'Are fossils easy to find everywhere?',
+            reponses: [
+              { texte: 'No, they are very rare', icone: '💎', correcte: true },
+              { texte: 'Yes, they are everywhere', icone: '🦴' },
+            ],
+            explication: 'Almost every animal disappears without leaving a trace.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'os-ou-pierre',
+            question: 'Is a fossil the original bone?',
+            reponses: [
+              { texte: 'No, it is a copy of it in stone', icone: '🪨', correcte: true },
+              { texte: 'Yes, the bone has just dried out', icone: '🦴' },
+              { texte: 'Yes, it was frozen', icone: '🧊' },
+            ],
+            explication:
+              'Minerals slowly replaced the material of the bone, keeping its shape.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'absence-preuve',
+            question: 'No fossil of a species has ever been found. Does that prove it never existed?',
+            reponses: [
+              { texte: 'No, the record is very incomplete', icone: '📖', correcte: true },
+              { texte: 'Yes, otherwise we would have found one', icone: '🔍' },
+              { texte: 'Yes, fossilisation always happens', icone: '✅' },
+            ],
+            explication:
+              'Fossilisation is so unlikely that the absence of a fossil never proves the absence of a species.',
+          },
+        ],
+      },
     },
   },
   {
@@ -222,6 +378,44 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'C’est la différence d’attraction entre les deux faces de la Terre qui compte : deux bourrelets, pas une aspiration.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'qui-fait-marees',
+            question: 'What makes the sea rise and fall?',
+            reponses: [
+              { texte: 'The Moon, from very far away', icone: '🌙', correcte: true },
+              { texte: 'The wind blowing', icone: '🌬️' },
+            ],
+            explication: 'It is the Moon pulling on the water of the oceans.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'combien-marees',
+            question: 'How many high tides are there each day?',
+            reponses: [
+              { texte: 'Two', icone: '2️⃣', correcte: true },
+              { texte: 'Only one', icone: '1️⃣' },
+              { texte: 'None', icone: '🚫' },
+            ],
+            explication: 'The sea bulges up on both sides of the Earth: two high tides a day.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'lune-aspire',
+            question: 'Does the Moon suck the water upwards?',
+            reponses: [
+              { texte: 'No, it stretches it out on both sides', icone: '↔️', correcte: true },
+              { texte: 'Yes, like a magnet', icone: '🧲' },
+              { texte: 'Yes, but on one side only', icone: '⬆️' },
+            ],
+            explication:
+              'What counts is the difference in pull between the two sides of the Earth: two bulges, not a suction.',
           },
         ],
       },
@@ -269,6 +463,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'air-chaud',
+            question: 'What does the air do when it gets nice and warm?',
+            reponses: [
+              { texte: 'It goes up', icone: '⬆️', correcte: true },
+              { texte: 'It goes down', icone: '⬇️' },
+            ],
+            explication: 'Warm air is lighter, so it rises, and that is how the wind is made.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'origine-vent',
+            question: 'Where does the wind come from?',
+            reponses: [
+              { texte: 'From differences in temperature and pressure', icone: '🌡️', correcte: true },
+              { texte: 'From trees waving their branches', icone: '🌳' },
+              { texte: 'From the clouds spinning round', icone: '☁️' },
+            ],
+            explication:
+              'The Sun heats unevenly: air moves from areas of high pressure towards low ones.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'coriolis',
+            question: 'Why do depressions coil into a spiral?',
+            reponses: [
+              { texte: 'Because of the rotation of the Earth', icone: '🌍', correcte: true },
+              { texte: 'Because of the pull of the Moon', icone: '🌙' },
+              { texte: 'Because of the shape of the mountains', icone: '⛰️' },
+            ],
+            explication:
+              'The Coriolis force deflects the winds, in opposite directions depending on the hemisphere.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'pourquoi-le-ciel-est-bleu',
@@ -309,6 +542,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Même cause que le ciel bleu de midi — la diffusion — mais sur une épaisseur d’atmosphère bien plus grande.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'ciel-couleur',
+            question: 'What makes the sky blue?',
+            reponses: [
+              { texte: 'The air, which sends the blue back', icone: '🌬️', correcte: true },
+              { texte: 'The sea, reflected in it', icone: '🌊' },
+            ],
+            explication: 'It is the air that scatters the blue everywhere above you.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'ciel-desert',
+            question: 'Above the desert, far away from the sea, what colour is the sky?',
+            reponses: [
+              { texte: 'Blue, like everywhere else', icone: '🔵', correcte: true },
+              { texte: 'Yellow, like the sand', icone: '🟡' },
+              { texte: 'Grey, with no sea to reflect', icone: '⬜' },
+            ],
+            explication:
+              'The sky is not blue because it reflects the sea: it is the air itself that scatters the blue.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'soleil-couchant',
+            question: 'Why is the setting Sun red?',
+            reponses: [
+              { texte: 'Its light crosses more air, so the blue is scattered away', icone: '🌅', correcte: true },
+              { texte: 'It gives out more heat at the end of the day', icone: '🌡️' },
+              { texte: 'It is starting to go out', icone: '🕯️' },
+            ],
+            explication:
+              'Same cause as the blue midday sky — scattering — but through a far greater thickness of atmosphere.',
           },
         ],
       },
@@ -355,6 +627,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'mer-riviere',
+            question: 'Is the water in a river salty?',
+            reponses: [
+              { texte: 'No, it is fresh', icone: '💧', correcte: true },
+              { texte: 'Yes, like the sea', icone: '🌊' },
+            ],
+            explication: 'Only the sea is salty. River water is fresh.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'sel-vient-de',
+            question: 'Where does the salt in the sea come from?',
+            reponses: [
+              { texte: 'From the rocks of the continents', icone: '🪨', correcte: true },
+              { texte: 'From the bottom of the ocean', icone: '🕳️' },
+              { texte: 'From the fish', icone: '🐟' },
+            ],
+            explication:
+              'Rain wears the rocks away and rivers carry the salt to the sea, and have done for billions of years.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'salinite-stable',
+            question: 'Is the sea becoming saltier and saltier over time?',
+            reponses: [
+              { texte: 'No, as much settles back out as arrives', icone: '⚖️', correcte: true },
+              { texte: 'Yes, without a break since the beginning', icone: '📈' },
+              { texte: 'No, because evaporation carries the salt away too', icone: '💨' },
+            ],
+            explication:
+              'It is a steady state: evaporites, sediments and the oceanic crust remove salt at the rate the rivers bring it in.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'dou-vient-le-petrole',
@@ -398,6 +709,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'petrole-dinos',
+            question: 'Does oil come from the dinosaurs?',
+            reponses: [
+              { texte: 'No, from tiny creatures in the sea', icone: '🌊', correcte: true },
+              { texte: 'Yes, from the big dinosaurs', icone: '🦕' },
+            ],
+            explication: 'It comes from plankton, tiny things that floated in the oceans.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'petrole-origine',
+            question: 'What is oil made from, to begin with?',
+            reponses: [
+              { texte: 'Plankton that sank to the sea floor', icone: '🦠', correcte: true },
+              { texte: 'Buried dinosaurs', icone: '🦕' },
+              { texte: 'Melted rock', icone: '🌋' },
+            ],
+            explication:
+              'Algae and microscopic organisms, buried and then heated for millions of years.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'charbon-petrole',
+            question: 'Do coal and oil have the same origin?',
+            reponses: [
+              { texte: 'No: forests for one, marine plankton for the other', icone: '🌲', correcte: true },
+              { texte: 'Yes, both come from forests', icone: '🌳' },
+              { texte: 'Yes, both come from plankton', icone: '🦠' },
+            ],
+            explication:
+              'Coal comes from the forests of the Carboniferous, oil from plankton. Both store solar energy.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'le-sol-est-vivant',
@@ -438,6 +788,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'La formation d’un sol produit environ un centimètre par siècle ; l’érosion peut l’emporter en quelques années.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'terre-vivante',
+            question: 'Is the soil in the garden alive?',
+            reponses: [
+              { texte: 'Yes, full of creatures inside', icone: '🪱', correcte: true },
+              { texte: 'No, it is just dust', icone: '🌫️' },
+            ],
+            explication: 'A single handful holds more living things than the Earth has people.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'combien-habitants',
+            question: 'How many living things are there in a spoonful of soil?',
+            reponses: [
+              { texte: 'Billions', icone: '🦠', correcte: true },
+              { texte: 'A few dozen', icone: '🔟' },
+              { texte: 'None, apart from the odd worm', icone: '🪱' },
+            ],
+            explication:
+              'Bacteria and fungi are counted there in billions, and in kilometres of threads.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'sol-renouvelable',
+            question: 'Is soil a renewable resource?',
+            reponses: [
+              { texte: 'Not on our timescale: a century per centimetre', icone: '⏳', correcte: true },
+              { texte: 'Yes, it re-forms every year', icone: '🔁' },
+              { texte: 'Yes, you just have to add fertiliser', icone: '🧪' },
+            ],
+            explication:
+              'Soil forms at about one centimetre per century; erosion can carry it away in a few years.',
           },
         ],
       },

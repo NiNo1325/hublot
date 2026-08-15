@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['flotte', 'gravite-existe', 'chute', 'orbite'] as const;
+
+const LEGENDES = {
+  fr: {
+    graviteLa: 'la gravité est là',
+    gravite90: 'à 90 %',
+    tombent: 'ils tombent…',
+    stationAussi: 'la station aussi',
+    ratent: 'si vite qu’ils ratent toujours la Terre',
+  },
+  en: {
+    graviteLa: 'gravity is here',
+    gravite90: 'at 90%',
+    tombent: 'they are falling…',
+    stationAussi: 'and so is the station',
+    ratent: 'so fast they always miss the Earth',
+  },
+};
 
 /**
  * La flèche de gravité reste présente à toutes les phases : la carte affirme
@@ -14,9 +32,11 @@ export function ApesanteurAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -52,20 +72,20 @@ export function ApesanteurAnimation({
         <line x1="300" y1="70" x2="300" y2="128" stroke="#ffb627" strokeWidth="4" />
         <path d="M292 120 L300 138 L308 120 Z" fill="#ffb627" />
         <text x="256" y="58" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          la gravité est là
+          {legende.graviteLa}
         </text>
         <text x="256" y="74" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          à 90 %
+          {legende.gravite90}
         </text>
       </g>
 
       {/* Ils tombent ensemble */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <text x="26" y="112" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          ils tombent…
+          {legende.tombent}
         </text>
         <text x="26" y="130" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          la station aussi
+          {legende.stationAussi}
         </text>
       </g>
 
@@ -73,7 +93,7 @@ export function ApesanteurAnimation({
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <circle cx="200" cy="300" r="238" fill="none" stroke="#2c3f66" strokeWidth="2" strokeDasharray="6 8" />
         <text x="61" y="222" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          si vite qu&apos;ils ratent toujours la Terre
+          {legende.ratent}
         </text>
       </g>
     </svg>

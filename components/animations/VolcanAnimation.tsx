@@ -1,9 +1,15 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['profondeur', 'remontee', 'pression', 'eruption'] as const;
+
+const LEGENDES = {
+  fr: { rocheFondue: 'roche fondue' },
+  en: { rocheFondue: 'molten rock' },
+};
 
 /**
  * La lave est orange vif et la chambre magmatique rouge sombre : le contraste
@@ -13,9 +19,11 @@ export function VolcanAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, dejaVu } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -30,7 +38,7 @@ export function VolcanAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <path d="M0 214 h400 v26 H0 Z" fill="#7f1d1d" />
         <text x="12" y="232" fill="#fca5a5" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          roche fondue
+          {legende.rocheFondue}
         </text>
       </g>
 

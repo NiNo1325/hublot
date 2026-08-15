@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The ball that slows down',
+        '6-8': 'Why things end up stopping',
+        '9-12': 'Inertia: nothing stops without a reason',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'lancer',
+              text: 'You roll a ball along the ground. It goes, it slows down, and it stops.',
+            },
+            {
+              id: 'frottement',
+              text: 'It does not stop all by itself: the ground slows it down, and the air does too, very gently.',
+            },
+            {
+              id: 'glace',
+              text: 'On ice, there is far less to slow it down. The same ball slides much further.',
+            },
+            {
+              id: 'espace',
+              text: 'And in space, nothing slows it at all. What you throw keeps going, and going.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'lancer',
+              text: 'People often think that a moving object always stops by itself in the end, and that you have to keep pushing to keep going. That is what everyday life shows — and it is wrong.',
+            },
+            {
+              id: 'frottement',
+              text: 'Slowing down needs a cause, exactly as speeding up does. Here that cause is called friction: the ground gripping, the air resisting.',
+            },
+            {
+              id: 'glace',
+              text: 'Take away a little friction and the difference leaps out at you: a puck travels three metres on gravel, and tens of metres on an ice rink. The push at the start was the very same one.',
+            },
+            {
+              id: 'espace',
+              text: 'Take it away completely, and nothing stops the movement. The Voyager probes, launched in 1977, are still speeding along, their engines switched off for tens of years.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'lancer',
+              text: 'Aristotle’s idea — a body only moves for as long as you push it — fits everyday experience so well that it held for two thousand years before being overturned.',
+            },
+            {
+              id: 'frottement',
+              text: 'The principle of inertia replaced it: with no outside force, a body keeps its speed and its direction. What calls for an explanation is therefore not that it carries on, but that it stops. The answer lies in friction — solid against solid, air resistance — which are forces in their own right.',
+            },
+            {
+              id: 'glace',
+              text: 'Reduce them, and the conclusion can be checked with the naked eye. A curling stone slides some thirty metres on ice; on tarmac, the same push would not take it beyond arm’s length.',
+            },
+            {
+              id: 'espace',
+              text: 'In interstellar space, there is almost nothing left to slow things down. The Voyager probes are travelling at more than seventeen kilometres per second without having relit their main engine for decades: not because something is pushing them, but because nothing is holding them back.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

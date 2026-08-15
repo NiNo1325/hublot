@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Iron that goes rusty',
+        '6-8': 'Why iron rusts',
+        '9-12': 'The slow oxidation of iron',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'observer',
+              text: 'An old nail left outside turns orange and all rough. We say it is rusting.',
+            },
+            {
+              id: 'eau-air',
+              text: 'To rust, iron needs two things at the same time: water and air.',
+            },
+            {
+              id: 'transformation',
+              text: 'Rust is not dirt sitting on top. It is the iron itself changing, very slowly.',
+            },
+            {
+              id: 'protection',
+              text: 'To stop it, we put on paint: it keeps the water and the air away from the iron.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'observer',
+              text: 'Rust is that orange, crumbly layer that covers iron left in damp air.',
+            },
+            {
+              id: 'eau-air',
+              text: 'People often think that water is what makes iron rust. That is only half the story: you need water and oxygen from the air. An iron object in water with no air does not rust.',
+            },
+            {
+              id: 'transformation',
+              text: 'Rust is not laid on top of the iron: the iron joins up with oxygen and becomes a new material. It is a kind of burning, but so slow that it makes no flame and no heat you can feel.',
+            },
+            {
+              id: 'protection',
+              text: 'Because rust flakes away, it leaves the iron underneath free to rust in turn, until the whole thing is eaten through. To protect it, we seal it off: paint, oil, or a thin coat of another metal.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'observer',
+              text: 'Rust is the product of the corrosion of iron: a hydrated iron oxide, orange and porous.',
+            },
+            {
+              id: 'eau-air',
+              text: 'It requires water and oxygen to be present at the same time. The experiment proves it: a nail in water that has been boiled and then sealed from the air under a layer of oil does not rust; nor does a nail in dry air. You need both.',
+            },
+            {
+              id: 'transformation',
+              text: 'It is a redox reaction: the iron gives up electrons to oxygen, with water acting as the go-between. The metal is chemically converted into an oxide — the same kind of reaction as combustion, but spread over months.',
+            },
+            {
+              id: 'protection',
+              text: 'Unlike aluminium, whose oxide forms a protective film that clings to the surface, rust is crumbly and drops off, exposing fresh iron. So we fight it with barriers — paint, galvanising with zinc — or with alloys such as stainless steel, which coat themselves in an invisible protective layer.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

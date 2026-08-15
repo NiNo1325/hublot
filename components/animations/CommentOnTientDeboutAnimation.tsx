@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    tubes: 'des tubes remplis de liquide',
+    liquide: 'le liquide se déplace',
+    alerte: '« attention, tu penches ! »',
+    rattrape: 'et il se rattrape seul',
+  },
+  en: {
+    tubes: 'tubes filled with liquid',
+    liquide: 'the liquid shifts',
+    alerte: '“careful, you’re tipping!”',
+    rattrape: 'and it catches itself',
+  },
+};
 
 /**
  * Une tête, ses canaux remplis de liquide et un petit bonhomme en équilibre
@@ -14,10 +30,12 @@ export function CommentOnTientDeboutAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
   const penche = phase >= 1 && phase <= 2;
 
   return (
@@ -48,12 +66,12 @@ export function CommentOnTientDeboutAnimation({
 
       {/* Phase 1 : des tubes remplis de liquide */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
-        <text x="180" y="34" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>des tubes remplis de liquide</text>
+        <text x="180" y="34" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.tubes}</text>
       </g>
 
       {/* Phase 2 : le liquide bouge quand la tête bouge */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
-        <text x="180" y="200" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>le liquide se déplace</text>
+        <text x="180" y="200" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.liquide}</text>
       </g>
 
       {/* Phase 3 : ça prévient le cerveau */}
@@ -63,12 +81,12 @@ export function CommentOnTientDeboutAnimation({
             <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite" />
           )}
         </path>
-        <text x="20" y="34" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>« attention, tu penches ! »</text>
+        <text x="20" y="34" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.alerte}</text>
       </g>
 
       {/* Phase 4 : le corps se rattrape */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <text x="20" y="34" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>et il se rattrape seul</text>
+        <text x="20" y="34" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.rattrape}</text>
       </g>
     </svg>
   );

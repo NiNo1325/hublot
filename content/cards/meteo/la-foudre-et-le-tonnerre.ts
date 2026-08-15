@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Lightning and thunder',
+        '6-8': 'Lightning and thunder',
+        '9-12': 'Lightning and thunder',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'charge',
+              text: 'Inside a big storm cloud, electricity builds up, like when you rub a balloon on your hair.',
+            },
+            {
+              id: 'etincelle',
+              text: 'All at once, a huge spark leaps down towards the ground: that’s the lightning!',
+            },
+            {
+              id: 'lumiere-avant',
+              text: 'We see the flash straight away. But the noise, the thunder, comes later.',
+            },
+            {
+              id: 'compter',
+              text: 'So we count: one, two, three… The longer we count, the further away the storm is.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'charge',
+              text: 'Inside a storm cloud, the churning air separates tiny electric charges. Little by little, an enormous amount of electricity piles up.',
+            },
+            {
+              id: 'etincelle',
+              text: 'When it is too much, everything discharges at once: a gigantic electric spark rips through the air. That is lightning, and it heats the air instantly — which is where the rumble of thunder comes from.',
+            },
+            {
+              id: 'lumiere-avant',
+              text: 'We always see the flash before we hear the thunder. Yet both are born at the same moment! It is simply that light travels much faster than sound.',
+            },
+            {
+              id: 'compter',
+              text: 'You can even measure it: count the seconds between the flash and the thunder, and divide by three. That gives the distance in kilometres. If the two arrive almost together, the storm is right overhead.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'charge',
+              text: 'A storm cloud is a static electricity machine: violent air currents rub droplets and ice crystals together, separating the charges — positive at the top, negative at the bottom.',
+            },
+            {
+              id: 'etincelle',
+              text: 'When the difference in charge becomes enormous, the air — an insulator until then — gives way: a conducting channel opens and a colossal discharge runs through it. Lightning heats the air to nearly 30,000 °C; it expands violently, and that shock wave is the thunder.',
+            },
+            {
+              id: 'lumiere-avant',
+              text: 'Lightning and thunder are produced at the very same instant. But light races along at 300,000 km/s and reaches us almost immediately, while sound covers only about 340 metres per second. The gap is therefore no accident: it comes from the difference in speed.',
+            },
+            {
+              id: 'compter',
+              text: 'That gap can be read like a stopwatch. Sound takes about 3 seconds to travel a kilometre: counting the seconds between the flash and the thunder, then dividing by three, gives the distance to the strike. A shrinking interval signals a storm coming closer.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

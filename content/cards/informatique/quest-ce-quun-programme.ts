@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The recipe computers follow',
+        '6-8': 'What a program is',
+        '9-12': 'Algorithms and execution',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'recette',
+              text: 'A program is a list of orders, like the recipe for a cake: do this, then do that.',
+            },
+            {
+              id: 'ordre',
+              text: 'The order matters a lot. If you put the cake in the oven before adding the flour, it does not work.',
+            },
+            {
+              id: 'exact',
+              text: 'The computer does exactly what is written. It never guesses what you meant to say.',
+            },
+            {
+              id: 'bug',
+              text: 'So when it goes wrong, it is not the computer that made the mistake: the order was badly written.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'recette',
+              text: 'An algorithm is a series of precise instructions that solves a problem. A program is that algorithm written in a language the machine can carry out.',
+            },
+            {
+              id: 'ordre',
+              text: 'The instructions follow one another in a strict order. You can also ask for a repeat — “do that ten times” — or for a choice — “if the door is shut, then knock”.',
+            },
+            {
+              id: 'exact',
+              text: 'The computer applies every instruction to the letter, never reading anything into what you intended. Tell it to move forward when there is a wall in front of it, and it will walk into the wall.',
+            },
+            {
+              id: 'bug',
+              text: 'A bug is almost never a breakdown: it is a badly written instruction, or a case nobody had thought of. Programming is mostly learning to describe a task without leaving anything unsaid.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'recette',
+              text: 'An algorithm is a finite, unambiguous procedure that, starting from input data, produces a result in a finite number of steps. The idea is centuries older than computing: Euclid’s algorithm dates from antiquity.',
+            },
+            {
+              id: 'ordre',
+              text: 'Three structures are enough to express anything: the sequence, the condition and the loop. That result, known as the structured program theorem, means any program can be written with those tools alone.',
+            },
+            {
+              id: 'exact',
+              text: 'The processor carries out elementary instructions — add, compare, move a piece of data — billions of times a second. The code you write is translated into that form by a compiler or an interpreter. No layer of the system understands the goal being pursued.',
+            },
+            {
+              id: 'bug',
+              text: 'Two correct algorithms can be wildly unequal: looking for a word page by page in a dictionary of a million entries takes up to a million tries, whereas a binary search needs twenty. That is why we ask not only whether a program works, but at what cost.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    declencheur: 'froid ou peur',
+    muscle: 'un muscle tire',
+    bosse: 'la chair de poule',
+    souvenir: 'chez toi, un souvenir',
+  },
+  en: {
+    declencheur: 'cold or fear',
+    muscle: 'a muscle pulls',
+    bosse: 'goose bumps',
+    souvenir: 'on you, a leftover',
+  },
+};
 
 /**
  * Le poil et son minuscule muscle sont vus en coupe : le muscle se
@@ -14,10 +30,12 @@ export function LaChairDePouleAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, dejaVu } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
   const tire = dejaVu(1);
   const dresse = dejaVu(2);
 
@@ -53,17 +71,17 @@ export function LaChairDePouleAnimation({
       {/* Phase 1 : le déclencheur, froid ou peur */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <path d="M336 36 v26 M324 42 l24 14 M324 56 l24 -14" stroke="#7dd3fc" strokeWidth="3" fill="none" />
-        <text x="20" y="34" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>froid ou peur</text>
+        <text x="20" y="34" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.declencheur}</text>
       </g>
 
       {/* Phase 2 : le muscle tire sur la racine */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
-        <text x="20" y="200" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>un muscle tire</text>
+        <text x="20" y="200" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.muscle}</text>
       </g>
 
       {/* Phase 3 : le poil se dresse, la bosse apparaît */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
-        <text x="222" y="200" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>la chair de poule</text>
+        <text x="222" y="200" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.bosse}</text>
       </g>
 
       {/* Phase 4 : chez un animal poilu, ça réchauffe vraiment */}
@@ -76,7 +94,7 @@ export function LaChairDePouleAnimation({
             )}
           </circle>
         ))}
-        <text x="20" y="224" fill="#a3a3a3" fontSize="14" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>chez toi, un souvenir</text>
+        <text x="20" y="224" fill="#a3a3a3" fontSize="14" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.souvenir}</text>
       </g>
     </svg>
   );

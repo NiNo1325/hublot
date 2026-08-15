@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Hot and cold',
+        '6-8': 'How heat travels',
+        '9-12': 'Heat, transfer and insulation',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'sens',
+              text: 'Heat always goes from hot to cold. A hot chocolate left on the table cools down bit by bit.',
+            },
+            {
+              id: 'pas-de-froid',
+              text: 'The cold does not go into the chocolate. Really, it is the chocolate’s heat that leaves.',
+            },
+            {
+              id: 'manteau',
+              text: 'Your coat does not give you heat. It keeps yours close to you, so it does not go away.',
+            },
+            {
+              id: 'equilibre',
+              text: 'If you wait a very long time, the chocolate gets as cold as the room. Then it stops changing.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'sens',
+              text: 'Heat always moves the same way: from what is hot towards what is cold. Never the other way round on its own.',
+            },
+            {
+              id: 'pas-de-froid',
+              text: 'We say “the cold is getting in”, but cold is not a thing. It is simply the absence of heat. When you open the window in winter, it is not the cold coming in, it is your heat going out.',
+            },
+            {
+              id: 'manteau',
+              text: 'A coat makes no heat at all: it traps air, which is a poor conductor, and slows down the escape of yours. That is why a blanket would never warm up an ice cube — it would only stop it melting quickly.',
+            },
+            {
+              id: 'equilibre',
+              text: 'Heat keeps moving until everything is at the same temperature. Drop an ice cube into a glass of lukewarm water: the water’s heat passes into the cube, which melts, until everything is equally cool.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'sens',
+              text: 'Heat is a transfer of energy tied to the agitation of particles: the more they move, the hotter it is. It passes spontaneously from the hot body to the cold one, until they reach thermal equilibrium. This is a fundamental principle of physics.',
+            },
+            {
+              id: 'pas-de-froid',
+              text: 'Cold is not an entity: it is a lack of agitation, and therefore a lack of energy. Talking about “cold getting in” turns reality on its head — only heat moves, and always towards whatever is less hot.',
+            },
+            {
+              id: 'manteau',
+              text: 'Insulating means slowing that transfer down. Heat travels in three ways: by contact from one particle to the next, by the movement of a fluid, and by radiation. Good insulators — wool, feathers, double glazing — trap still air, which conducts heat very badly.',
+            },
+            {
+              id: 'equilibre',
+              text: 'At equilibrium the exchanges cancel out: there is no net transfer left. That is why a vacuum flask keeps things hot just as well as cold — all it does is slow the journey towards that equilibrium, in both directions.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

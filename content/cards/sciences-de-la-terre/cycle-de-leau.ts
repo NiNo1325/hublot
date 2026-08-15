@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Water on a journey',
+        '6-8': 'The journey of water',
+        '9-12': 'The water cycle',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'evaporation',
+              text: 'The sun warms the sea. The water goes all light and floats up into the sky.',
+            },
+            {
+              id: 'condensation',
+              text: 'Way up there, it is cold. The tiny drops huddle together and make a cloud.',
+            },
+            {
+              id: 'precipitation',
+              text: 'The cloud gets very heavy. Then it rains!',
+            },
+            {
+              id: 'ruissellement',
+              text: 'The rain slides over the ground and goes back to the sea. And the water sets off again.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'evaporation',
+              text: 'The sun warms the water in the oceans. Some of it turns into invisible vapour and rises into the air: that is evaporation.',
+            },
+            {
+              id: 'condensation',
+              text: 'The higher you go, the colder it gets. The vapour turns back into tiny droplets, and millions of droplets together make a cloud.',
+            },
+            {
+              id: 'precipitation',
+              text: 'Inside the cloud, the droplets stick to one another and grow. When they are too heavy to float, they fall: that is rain.',
+            },
+            {
+              id: 'ruissellement',
+              text: 'The water that lands on the ground runs into streams and rivers, which carry it back to the sea. And the journey begins again, never stopping.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'evaporation',
+              text: 'The Sun’s energy gives water molecules at the surface enough heat to escape as a gas. That is evaporation. Plants add to it as well, releasing vapour through their leaves: this is called transpiration.',
+            },
+            {
+              id: 'condensation',
+              text: 'High up, the temperature drops. Water vapour condenses around tiny specks of dust floating in the air and becomes liquid again as droplets. A cloud is nothing but those droplets held up in the air.',
+            },
+            {
+              id: 'precipitation',
+              text: 'The droplets merge and gain mass until their weight wins out over the rising currents that were holding them up. They then fall as precipitation: rain, snow or hail, depending on the temperature.',
+            },
+            {
+              id: 'ruissellement',
+              text: 'On the ground, some of the water runs off towards rivers and oceans, and some soaks in and feeds the reserves underground. Nothing is lost: the amount of water on Earth has been practically the same for billions of years. The water you drink today may already have been drunk by a dinosaur.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

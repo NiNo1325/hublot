@@ -1,17 +1,35 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['soleils', 'notre-soleil', 'voyage', 'passe'] as const;
+
+const LEGENDES = {
+  fr: {
+    notreSoleil: 'notre Soleil',
+    voyage: 'la lumière voyage des années',
+    passe1: 'tu la vois telle qu’elle était',
+    passe2: 'il y a des années',
+  },
+  en: {
+    notreSoleil: 'our Sun',
+    voyage: 'light travels for years',
+    passe1: 'you see it as it was',
+    passe2: 'years ago',
+  },
+};
 
 export function EtoilesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   const etoiles = [
     [56, 44], [128, 30], [196, 58], [268, 36], [336, 62],
@@ -40,7 +58,7 @@ export function EtoilesAnimation({
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <circle cx="66" cy="180" r="26" fill="#ffb627" />
         <text x="18" y="222" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          notre Soleil
+          {legende.notreSoleil}
         </text>
       </g>
 
@@ -54,7 +72,7 @@ export function EtoilesAnimation({
           )}
         </circle>
         <text x="150" y="146" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          la lumière voyage des années
+          {legende.voyage}
         </text>
       </g>
 
@@ -62,10 +80,10 @@ export function EtoilesAnimation({
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <path d="M112 176 q-10 12 0 24 q10 -12 0 -24 z" fill="#b9c4da" />
         <text x="121" y="200" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          tu la vois telle qu&apos;elle était
+          {legende.passe1}
         </text>
         <text x="126" y="218" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          il y a des années
+          {legende.passe2}
         </text>
       </g>
     </svg>

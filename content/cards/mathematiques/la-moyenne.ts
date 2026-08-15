@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Sharing into equal parts',
+        '6-8': 'The average describes nobody',
+        '9-12': 'Mean, median and spread',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'calcul',
+              text: 'To make an average, you put everything together, then share it into equal parts.',
+            },
+            {
+              id: 'trompe',
+              text: 'But watch out: if a giant walks into the class, the average height no longer fits anybody at all.',
+            },
+            {
+              id: 'mediane',
+              text: 'So instead we look at the one in the middle, when everybody lines up from smallest to tallest.',
+            },
+            {
+              id: 'dispersion',
+              text: 'And one single number never tells you whether everybody is alike or not.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'calcul',
+              text: 'You know how to work out an average: add everything up and divide by the number of values. It is very useful — and very easy to read wrongly.',
+            },
+            {
+              id: 'trompe',
+              text: 'Imagine ten people in a room, each earning twenty euros. The average is twenty. Now let in somebody who earns a thousand: the average jumps to a hundred and nine, even though ten people out of eleven still have twenty euros. It no longer describes anybody.',
+            },
+            {
+              id: 'mediane',
+              text: 'Hence the value of the median: the middle value once everything is put in order. Here it is twenty, which describes the situation far better. A single extreme value barely moves it.',
+            },
+            {
+              id: 'dispersion',
+              text: 'And above all, no single number is enough. Two classes can have exactly the same average even though everybody is alike in one and not at all in the other. You also need to know how far the values spread out.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'calcul',
+              text: 'The arithmetic mean is the centre of gravity of a distribution. It is real information, but partial — and it is that partiality that produces most misreadings.',
+            },
+            {
+              id: 'trompe',
+              text: 'It is sensitive to extreme values: a single outlying observation shifts it as much as hundreds of ordinary ones. That is why, in any distribution of incomes — strongly skewed to the right — the mean income systematically exceeds the median income.',
+            },
+            {
+              id: 'mediane',
+              text: 'The median splits the population into two equal halves. Its robustness can be measured: you have to move half the observations to change it arbitrarily, against a single one for the mean. As soon as a distribution is skewed, it is the median that describes the typical case.',
+            },
+            {
+              id: 'dispersion',
+              text: 'No measure of the centre is enough on its own: it needs a measure of spread alongside it, standard deviation or interquartile range. Anscombe’s quartet shows this spectacularly — four data sets sharing the same means, the same variances and even the same regression line, yet whose scatter plots have nothing in common. Summing up a population with a single number always means accepting the loss of what matters most.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

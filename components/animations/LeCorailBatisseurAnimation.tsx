@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    animal: 'un tout petit animal',
+    coque: 'il fabrique une coque',
+    millions: 'des millions collés',
+    recif: 'un récif plein de vie',
+  },
+  en: {
+    animal: 'a tiny little animal',
+    coque: 'it builds a hard case',
+    millions: 'millions stuck together',
+    recif: 'a reef full of life',
+  },
+};
 
 /**
  * Zoom qui part d'un unique polype (un animal, pas une roche), lui voit
@@ -14,11 +30,13 @@ export function LeCorailBatisseurAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, dejaVu } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
-  const legende = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const apparition = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const legende = localise(LEGENDES, locale);
 
   const polype = (cx: number, cy: number, scale: number, key: number) => (
     <g key={key} transform={`translate(${cx} ${cy}) scale(${scale})`}>
@@ -59,8 +77,8 @@ export function LeCorailBatisseurAnimation({
             />
           )}
         </g>
-        <text x="120" y="196" fill="#fda4af" fontSize="15" fontFamily={police} style={legende(0)}>
-          un tout petit animal
+        <text x="120" y="196" fill="#fda4af" fontSize="15" fontFamily={police} style={apparition(0)}>
+          {legende.animal}
         </text>
       </g>
 
@@ -68,8 +86,8 @@ export function LeCorailBatisseurAnimation({
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <path d="M182 118 L182 100 Q200 88 218 100 L218 118 Z" fill="#fef3c7" opacity="0.85" />
         {polype(200, 106, 1.2, 1)}
-        <text x="120" y="196" fill="#fef3c7" fontSize="15" fontFamily={police} style={legende(1)}>
-          il fabrique une coque
+        <text x="120" y="196" fill="#fef3c7" fontSize="15" fontFamily={police} style={apparition(1)}>
+          {legende.coque}
         </text>
       </g>
 
@@ -93,8 +111,8 @@ export function LeCorailBatisseurAnimation({
             {polype(cx, cy, 0.6, i + 2)}
           </g>
         ))}
-        <text x="110" y="196" fill="#fde68a" fontSize="15" fontFamily={police} style={legende(2)}>
-          des millions collés
+        <text x="110" y="196" fill="#fde68a" fontSize="15" fontFamily={police} style={apparition(2)}>
+          {legende.millions}
         </text>
       </g>
 
@@ -114,8 +132,8 @@ export function LeCorailBatisseurAnimation({
               </ellipse>
             </g>
           ))}
-        <text x="130" y="216" fill="#fb923c" fontSize="15" fontFamily={police} style={legende(3)}>
-          un récif plein de vie
+        <text x="130" y="216" fill="#fb923c" fontSize="15" fontFamily={police} style={apparition(3)}>
+          {legende.recif}
         </text>
       </g>
     </svg>

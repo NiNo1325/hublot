@@ -1,9 +1,21 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['observer', 'lune', 'deux-cotes', 'rythme'] as const;
+
+const LEGENDES = {
+  fr: {
+    mareeHaute: 'marée haute',
+    rythme: 'deux marées hautes par jour',
+  },
+  en: {
+    mareeHaute: 'high tide',
+    rythme: 'two high tides a day',
+  },
+};
 
 /**
  * Deux bourrelets d'eau, l'un vers la Lune, l'autre à l'opposé : c'est
@@ -14,10 +26,12 @@ export function MareesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const etire = phase >= 2;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -56,10 +70,10 @@ export function MareesAnimation({
       {/* Étiquettes des deux marées hautes */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <text x="238" y="118" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          marée haute
+          {legende.mareeHaute}
         </text>
         <text x="10" y="118" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          marée haute
+          {legende.mareeHaute}
         </text>
       </g>
 
@@ -75,7 +89,7 @@ export function MareesAnimation({
           )}
         </circle>
         <text x="12" y="228" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          deux marées hautes par jour
+          {legende.rythme}
         </text>
       </g>
     </svg>

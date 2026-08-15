@@ -1,9 +1,29 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['lourd', 'barre', 'distance', 'echange'] as const;
+
+const LEGENDES = {
+  fr: {
+    lourd: 'lourd',
+    pivot: 'pivot',
+    court: 'court',
+    long: 'long : peu de force suffit',
+    mainDescend: 'ta main descend beaucoup',
+    montePeu: 'ça monte peu',
+  },
+  en: {
+    lourd: 'heavy',
+    pivot: 'pivot',
+    court: 'short',
+    long: 'long: little force needed',
+    mainDescend: 'your hand drops far',
+    montePeu: 'it barely rises',
+  },
+};
 
 /**
  * Les deux flèches de déplacement sont dessinées à l'échelle : la main
@@ -14,10 +34,12 @@ export function LeviersAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const abaisse = phase >= 2;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -32,7 +54,7 @@ export function LeviersAnimation({
         />
         <text x="76" y={abaisse ? 124 : 144} fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif"
           style={{ transition: 'y 900ms ease' }}>
-          lourd
+          {legende.lourd}
         </text>
       </g>
 
@@ -43,7 +65,7 @@ export function LeviersAnimation({
         </g>
         <path d="M150 186 l-16 26 h32 z" fill="#b9c4da" />
         <text x="126" y="230" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          pivot
+          {legende.pivot}
         </text>
       </g>
 
@@ -51,8 +73,8 @@ export function LeviersAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <line x1="98" y1="164" x2="150" y2="164" stroke="#34d399" strokeWidth="2.5" strokeDasharray="4 4" />
         <line x1="150" y1="164" x2="330" y2="164" stroke="#34d399" strokeWidth="2.5" strokeDasharray="4 4" />
-        <text x="108" y="176" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">court</text>
-        <text x="186" y="156" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">long : peu de force suffit</text>
+        <text x="108" y="176" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.court}</text>
+        <text x="186" y="156" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.long}</text>
         <circle cx="330" cy="176" r="11" fill="#38bdf8">
           {anime && phase === 2 && (
             <animate attributeName="cy" values="168;186;168" dur="2s" repeatCount="indefinite" />
@@ -65,12 +87,12 @@ export function LeviersAnimation({
         <g>
           <line x1="356" y1="130" x2="356" y2="200" stroke="#ffb627" strokeWidth="4" />
           <path d="M348 192 L356 208 L364 192 Z" fill="#ffb627" />
-          <text x="188" y="122" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">ta main descend beaucoup</text>
+          <text x="188" y="122" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.mainDescend}</text>
         </g>
         <g>
           <line x1="52" y1="150" x2="52" y2="168" stroke="#ffb627" strokeWidth="4" />
           <path d="M44 156 L52 142 L60 156 Z" fill="#ffb627" />
-          <text x="14" y="186" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">ça monte peu</text>
+          <text x="14" y="186" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.montePeu}</text>
         </g>
       </g>
     </svg>

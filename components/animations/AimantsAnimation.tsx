@@ -1,9 +1,33 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['attraction', 'poles', 'pas-tout', 'boussole'] as const;
+
+/*
+  Les lettres N et S des barreaux ne sont pas ici : elles s'écrivent de la même
+  façon dans les deux langues, et la couleur les double pour qui ne lit pas.
+*/
+const LEGENDES = {
+  fr: {
+    opposesTitre: 'opposés :',
+    opposes: 'ils collent',
+    pareilsTitre: 'pareils :',
+    pareils: 'se repoussent',
+    aluminium: 'aluminium : rien',
+    fer: 'fer : attiré',
+  },
+  en: {
+    opposesTitre: 'opposite:',
+    opposes: 'they stick',
+    pareilsTitre: 'the same:',
+    pareils: 'they push apart',
+    aluminium: 'aluminium: nothing',
+    fer: 'iron: pulled',
+  },
+};
 
 /**
  * Un barreau aimanté à deux pôles. Le nord est corail, le sud craie : la
@@ -47,9 +71,11 @@ export function AimantsAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -92,10 +118,10 @@ export function AimantsAnimation({
           <path d="M262 86 L250 92 L262 98 Z" fill="#4ade80" />
         </g>
         <text x="14" y="66" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          opposés :
+          {legende.opposesTitre}
         </text>
         <text x="14" y="86" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          ils collent
+          {legende.opposes}
         </text>
 
         {/* Pôles identiques (N face à N) : ils se repoussent. Flèches divergentes. */}
@@ -108,10 +134,10 @@ export function AimantsAnimation({
           <path d="M278 182 L290 188 L278 194 Z" fill="#f87171" />
         </g>
         <text x="14" y="162" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          pareils :
+          {legende.pareilsTitre}
         </text>
         <text x="14" y="182" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          se repoussent
+          {legende.pareils}
         </text>
       </g>
 
@@ -122,11 +148,11 @@ export function AimantsAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <rect x="206" y="118" width="30" height="52" rx="6" fill="#94a3b8" />
         <text x="196" y="188" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          aluminium : rien
+          {legende.aluminium}
         </text>
         <rect x="292" y="118" width="30" height="52" rx="6" fill="#64748b" />
         <text x="284" y="212" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          fer : attiré
+          {legende.fer}
         </text>
         <path d="M276 144 h-28" stroke="#34d399" strokeWidth="3" strokeLinecap="round" />
         <path d="M252 138 l-8 6 l8 6" fill="none" stroke="#34d399" strokeWidth="3" strokeLinecap="round" />

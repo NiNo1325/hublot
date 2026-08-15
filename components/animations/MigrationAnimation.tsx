@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['nourriture', 'depart', 'boussole', 'retour'] as const;
+
+const LEGENDES = {
+  fr: {
+    nourriture: 'plus rien à manger',
+    sud: 'sud',
+    depart: 'vers les pays chauds',
+    boussole: 'soleil, étoiles, aimant',
+    retour: 'retour au printemps',
+  },
+  en: {
+    nourriture: 'nothing left to eat',
+    sud: 'south',
+    depart: 'to the warm countries',
+    boussole: 'sun, stars, magnet',
+    retour: 'back in spring',
+  },
+};
 
 /** Un oiseau stylisé (silhouette en « M »). */
 function Oiseau({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
@@ -26,10 +44,12 @@ export function MigrationAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -47,7 +67,7 @@ export function MigrationAnimation({
           <circle cx="0" cy="14" r="8" fill="#f43f5e" />
           <line x1="-16" y1="-24" x2="18" y2="26" stroke="#f43f5e" strokeWidth="4" />
         </g>
-        <text x="20" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>plus rien à manger</text>
+        <text x="20" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.nourriture}</text>
       </g>
 
       {/* Phase 2 : départ vers le sud */}
@@ -58,8 +78,8 @@ export function MigrationAnimation({
         <Oiseau x={230} y={58} />
         <line x1="120" y1="110" x2="300" y2="140" stroke="#fbbf24" strokeWidth="3" strokeDasharray="6 5" />
         <path d="M296 132 L308 142 L294 148 Z" fill="#fbbf24" />
-        <text x="316" y="150" fill="#fbbf24" fontSize="15" fontFamily={police}>sud</text>
-        <text x="20" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>vers les pays chauds</text>
+        <text x="316" y="150" fill="#fbbf24" fontSize="15" fontFamily={police}>{legende.sud}</text>
+        <text x="20" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>{legende.depart}</text>
       </g>
 
       {/* Phase 3 : la boussole — soleil, étoiles, champ magnétique */}
@@ -79,7 +99,7 @@ export function MigrationAnimation({
             {anime && <animateTransform attributeName="transform" type="rotate" values="-12;12;-12" dur="3s" repeatCount="indefinite" />}
           </path>
         </g>
-        <text x="230" y="200" fill="#38bdf8" fontSize="15" fontFamily={police}>soleil, étoiles, aimant</text>
+        <text x="230" y="200" fill="#38bdf8" fontSize="15" fontFamily={police}>{legende.boussole}</text>
       </g>
 
       {/* Phase 4 : le retour au printemps */}
@@ -91,7 +111,7 @@ export function MigrationAnimation({
         <Oiseau x={210} y={54} />
         <line x1="300" y1="120" x2="120" y2="96" stroke="#a3e635" strokeWidth="3" strokeDasharray="6 5" />
         <path d="M126 88 L114 94 L128 102 Z" fill="#a3e635" />
-        <text x="230" y="224" fill="#a3e635" fontSize="15" fontFamily={police}>retour au printemps</text>
+        <text x="230" y="224" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.retour}</text>
       </g>
     </svg>
   );

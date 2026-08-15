@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    microbes: 'elle arrête les microbes',
+    glande: 'une glande fait la sueur',
+    vapeur: 'elle devient vapeur',
+    rafraichit: 'ça rafraîchit',
+  },
+  en: {
+    microbes: 'it stops the germs',
+    glande: 'a gland makes sweat',
+    vapeur: 'it turns to vapour',
+    rafraichit: 'it cools you down',
+  },
+};
 
 /**
  * La peau en coupe, en bas de l'écran, sert aux deux rôles montrés par la
@@ -14,10 +30,12 @@ export function LaPeauNotreBouclierAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, dejaVu } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -43,7 +61,7 @@ export function LaPeauNotreBouclierAnimation({
             <path d="M-4 0 h8 M0 -4 v8" transform={`translate(${90 + i * 110} 90)`} stroke="#166534" strokeWidth="1.5" />
           </g>
         ))}
-        <text x="20" y="30" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>elle arrête les microbes</text>
+        <text x="20" y="30" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.microbes}</text>
       </g>
 
       {/* Phase 2 : la glande fabrique une goutte de sueur */}
@@ -53,7 +71,7 @@ export function LaPeauNotreBouclierAnimation({
             <animate attributeName="cy" values="200;168" dur="1.8s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="20" y="220" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>une glande fait la sueur</text>
+        <text x="20" y="220" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.glande}</text>
       </g>
 
       {/* Phase 3 : la sueur s'évapore */}
@@ -68,7 +86,7 @@ export function LaPeauNotreBouclierAnimation({
             )}
           </path>
         ))}
-        <text x="240" y="140" fill="#e0f2fe" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>elle devient vapeur</text>
+        <text x="240" y="140" fill="#e0f2fe" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.vapeur}</text>
       </g>
 
       {/* Phase 4 : la température baisse */}
@@ -80,7 +98,7 @@ export function LaPeauNotreBouclierAnimation({
           style={{ transition: 'y 700ms ease, height 700ms ease' }}
         />
         <circle cx="67" cy="140" r="9" fill="#38bdf8" />
-        <text x="20" y="200" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>ça rafraîchit</text>
+        <text x="20" y="200" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.rafraichit}</text>
       </g>
     </svg>
   );

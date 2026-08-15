@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'How we don’t fall over',
+        '6-8': 'How we keep our balance',
+        '9-12': 'The sense of balance',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Deep inside your ear there are little tubes filled with liquid.',
+            },
+            {
+              id: 'deux',
+              text: 'When you move your head, that liquid moves too, a bit like water in a glass.',
+            },
+            {
+              id: 'trois',
+              text: 'It warns your brain: “Careful, you are tipping over!”',
+            },
+            {
+              id: 'quatre',
+              text: 'So your body catches itself all on its own, and you don’t fall.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Deep inside each ear, tiny channels filled with liquid lie hidden.',
+            },
+            {
+              id: 'deux',
+              text: 'As soon as you turn or tilt your head, that liquid shifts along the channels, like water in a glass you tip.',
+            },
+            {
+              id: 'trois',
+              text: 'Small sensors feel this movement and send the news to your brain: it then knows exactly which way your head is facing.',
+            },
+            {
+              id: 'quatre',
+              text: 'Your brain adjusts your muscles straight away to keep your balance. If this system is thrown off, by spinning round very fast for instance, you feel dizzy.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'In the inner ear sits an organ called the vestibular apparatus, made up of channels filled with fluid.',
+            },
+            {
+              id: 'deux',
+              text: 'Any movement of the head shifts this fluid, which bends the tiny sensory hairs lining the channels.',
+            },
+            {
+              id: 'trois',
+              text: 'These hairs turn the movement into a nerve signal, sent to the brain, which thereby keeps track at every moment of the position and motion of the head.',
+            },
+            {
+              id: 'quatre',
+              text: 'The brain combines this information with sight and with the sensors in the muscles to adjust the balance of the body: sight alone is not enough, as standing upright with your eyes shut shows. When the system is disturbed, after spinning very fast for example, the result is a feeling of dizziness.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

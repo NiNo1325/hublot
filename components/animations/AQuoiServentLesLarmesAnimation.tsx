@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    humide: 'toujours un peu humide',
+    intrus: 'un intrus, et ça rince',
+    emotion: 'une grosse émotion',
+    protege: 'ça nettoie et protège',
+  },
+  en: {
+    humide: 'always a little moist',
+    intrus: 'an intruder, and it rinses',
+    emotion: 'a big emotion',
+    protege: 'it cleans and protects',
+  },
+};
 
 /**
  * Un seul œil reste à l'écran d'un bout à l'autre : d'abord un film discret
@@ -14,10 +30,12 @@ export function AQuoiServentLesLarmesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -38,7 +56,7 @@ export function AQuoiServentLesLarmesAnimation({
             <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.6s" repeatCount="indefinite" />
           )}
         </path>
-        <text x="20" y="34" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>toujours un peu humide</text>
+        <text x="20" y="34" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.humide}</text>
       </g>
 
       {/* Phase 2 : un intrus, rincé par une larme */}
@@ -52,7 +70,7 @@ export function AQuoiServentLesLarmesAnimation({
             <animateTransform attributeName="transform" type="translate" values="0 0; 0 30" dur="1.8s" repeatCount="indefinite" />
           )}
         </path>
-        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>un intrus, et ça rince</text>
+        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.intrus}</text>
       </g>
 
       {/* Phase 3 : une émotion forte, un flot plus abondant */}
@@ -72,13 +90,13 @@ export function AQuoiServentLesLarmesAnimation({
             )}
           </path>
         ))}
-        <text x="180" y="34" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>une grosse émotion</text>
+        <text x="180" y="34" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.emotion}</text>
       </g>
 
       {/* Phase 4 : dans tous les cas, ça nettoie et protège */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <path d="M164 92 Q200 66 236 92 L236 118 Q200 150 164 118 Z" fill="none" stroke="#a3e635" strokeWidth="3" />
-        <text x="20" y="216" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>ça nettoie et protège</text>
+        <text x="20" y="216" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.protege}</text>
       </g>
     </svg>
   );

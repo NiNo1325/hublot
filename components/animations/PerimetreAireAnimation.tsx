@@ -1,9 +1,23 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['corde', 'long-et-fin', 'carre', 'rond'] as const;
+
+const LEGENDES = {
+  fr: {
+    tour: '20 m de tour',
+    ficelle: 'même ficelle, trois enclos',
+    place: 'le tour ne dit pas la place',
+  },
+  en: {
+    tour: '20 m all round',
+    ficelle: 'same string, three pens',
+    place: 'the edge doesn’t tell the area',
+  },
+};
 
 /**
  * Les trois formes sont dessinées à la même échelle, neuf pixels par mètre, et
@@ -15,9 +29,11 @@ export function PerimetreAireAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, dejaVu } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -31,7 +47,7 @@ export function PerimetreAireAnimation({
           )}
         </line>
         <text x="214" y="32" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          20 m de tour
+          {legende.tour}
         </text>
       </g>
 
@@ -60,10 +76,10 @@ export function PerimetreAireAnimation({
       </g>
 
       <text x="14" y="210" fill="#cbd5e1" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-        même ficelle, trois enclos
+        {legende.ficelle}
       </text>
       <text x="14" y="234" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-        le tour ne dit pas la place
+        {legende.place}
       </text>
     </svg>
   );

@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Animals that glow',
+        '6-8': 'The animals that glow in the dark',
+        '9-12': 'Bioluminescence, a living light',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Right at the bottom of the sea it is very dark. But some animals light up like lamps.',
+            },
+            {
+              id: 'deux',
+              text: 'Inside their bodies, a little chemical magic makes light.',
+            },
+            {
+              id: 'trois',
+              text: 'This light is not hot at all.',
+            },
+            {
+              id: 'quatre',
+              text: 'It helps them attract, or hide, or find one another.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'In the complete darkness of the deep sea, many sea animals can make their own light.',
+            },
+            {
+              id: 'deux',
+              text: 'That light comes from a chemical reaction inside their bodies, between two special substances.',
+            },
+            {
+              id: 'trois',
+              text: 'Unlike a bulb or a flame, this light gives off almost no heat: we call it cold light.',
+            },
+            {
+              id: 'quatre',
+              text: 'Depending on the species, it serves to lure prey, to frighten off a predator, to hide, or to find a mate in the dark.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'In the ocean depths, where no sunlight reaches, a great variety of organisms produce their own light: this is bioluminescence.',
+            },
+            {
+              id: 'deux',
+              text: 'It comes from a chemical reaction between a molecule called luciferin and an enzyme, luciferase, which releases energy in the form of photons.',
+            },
+            {
+              id: 'trois',
+              text: 'This reaction turns almost all of its energy into light rather than heat, which makes it a far more efficient process than an ordinary bulb.',
+            },
+            {
+              id: 'quatre',
+              text: 'The uses vary from species to species: a lure to attract prey, a dazzling flash to escape a predator, camouflage by counter-illumination, or a signal to recognise a mate of the same species.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

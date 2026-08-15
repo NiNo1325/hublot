@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The Moon that changes',
+        '6-8': 'Why the Moon changes shape',
+        '9-12': 'The phases of the Moon',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'lune-eclairee',
+              text: 'The Moon makes no light of its own. It is the sun that lights it up, like a lamp.',
+            },
+            {
+              id: 'moitie',
+              text: 'The sun always lights up one half of the Moon. The other half stays in the dark.',
+            },
+            {
+              id: 'tour',
+              text: 'The Moon goes round the Earth. So we do not always see the same part of the bright side.',
+            },
+            {
+              id: 'formes',
+              text: 'That is why it looks all round, then like a crescent, then almost hidden. But it never really changes shape.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'lune-eclairee',
+              text: 'The Moon makes no light at all: it reflects the Sun’s light, like a rather dull mirror.',
+            },
+            {
+              id: 'moitie',
+              text: 'The Sun lights up one half of the Moon at all times. That lit half always exists, even when we cannot see it.',
+            },
+            {
+              id: 'tour',
+              text: 'The Moon takes about a month to travel round the Earth. Depending on where it is, we see that lit half face on, from the side, or hardly at all.',
+            },
+            {
+              id: 'formes',
+              text: 'Many people think it is the Earth’s shadow that hides the Moon. That is wrong: that is an eclipse, and it is very rare. The phases come only from our point of view changing.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'lune-eclairee',
+              text: 'The Moon is a dark body: it sends back only about twelve per cent of the sunlight it receives, roughly like worn asphalt. It looks bright to us only by contrast with the night sky.',
+            },
+            {
+              id: 'moitie',
+              text: 'The Sun always lights exactly one lunar hemisphere. There is therefore no permanently dark “far side”: the face we never see has day and night just like the other.',
+            },
+            {
+              id: 'tour',
+              text: 'In about twenty-nine and a half days, the Moon completes its orbit around the Earth. The angle between the Sun, the Earth and the Moon changes continuously, and with it the fraction of the lit hemisphere that we can see.',
+            },
+            {
+              id: 'formes',
+              text: 'The idea that the phases are the Earth’s shadow is a confusion with a lunar eclipse, which happens only at certain full moons, a few times a year. If the phases came from a shadow, that shadow would always be circular — yet the quarter moon shows a straight edge, which a spherical shadow cannot produce.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'When the Moon hides the Sun',
+        '6-8': 'Why eclipses are rare',
+        '9-12': 'Eclipses: nodes, shadow and coincidence',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'pourquoi-pas-tous-les-mois',
+              text: 'Sometimes the Moon goes right in front of the Sun, and it turns dark in the middle of the day.',
+            },
+            {
+              id: 'inclinaison',
+              text: 'It almost never happens, because the Moon usually goes past a little above or a little below.',
+            },
+            {
+              id: 'deux-sortes',
+              text: 'Other times, it is the Earth that puts its shadow on the Moon. Then the Moon turns all red.',
+            },
+            {
+              id: 'coincidence',
+              text: 'And do you know why the Moon hides the Sun so exactly? It is an amazing coincidence.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'pourquoi-pas-tous-les-mois',
+              text: 'You already know that the phases do not come from the Earth’s shadow. But then why does that shadow not fall on the Moon at every full Moon?',
+            },
+            {
+              id: 'inclinaison',
+              text: 'Because the Moon’s orbit is slightly tilted, by about five degrees. Most of the time it therefore passes a little above or a little below the line-up. The three bodies truly line up only a few times a year.',
+            },
+            {
+              id: 'deux-sortes',
+              text: 'There are then two cases. The Moon passes in front of the Sun: that is a solar eclipse, visible only in a narrow band a few hundred kilometres wide. Or the Earth casts its shadow on the Moon: that is a lunar eclipse, visible from the whole night side of the planet — and the Moon turns red there, lit by all the Earth’s sunsets at once.',
+            },
+            {
+              id: 'coincidence',
+              text: 'The most astonishing part is still to come. The Sun is about four hundred times bigger than the Moon, but also four hundred times further away: so the two look exactly the same size in the sky. It is a coincidence, and it will not last — the Moon drifts a little further away every year.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'pourquoi-pas-tous-les-mois',
+              text: 'If the lunar orbit lay in the plane of the ecliptic, there would be a lunar eclipse at every full Moon and a solar eclipse at every new Moon, twenty-four a year.',
+            },
+            {
+              id: 'inclinaison',
+              text: 'It is tilted by about five degrees. An eclipse therefore only occurs if the alignment coincides with the Moon passing through a node of its orbit — the point where it crosses the plane of the ecliptic. Hence the eclipse seasons, two a year, and a total of four to seven eclipses annually of all types combined.',
+            },
+            {
+              id: 'deux-sortes',
+              text: 'A solar eclipse requires the Moon’s cone of shadow to reach the ground: the band of totality rarely exceeds two hundred and fifty kilometres across, and totality itself lasts a few minutes. A lunar eclipse, by contrast, is visible from the whole night hemisphere and lasts for hours. The Moon takes on a coppery hue because the Earth’s atmosphere refracts and reddens sunlight: what lights it is the sum of every sunrise and sunset on the planet.',
+            },
+            {
+              id: 'coincidence',
+              text: 'The near equality of the apparent diameters — half a degree each — is fortuitous: the Sun is four hundred times larger and four hundred times further away. It is also temporary. The tides move the Moon nearly four centimetres further away each year; in a few hundred million years, total solar eclipses will have disappeared, replaced by annular ones.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

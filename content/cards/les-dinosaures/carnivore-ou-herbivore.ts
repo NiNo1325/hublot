@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'What did it eat?',
+        '6-8': 'Meat-eater or plant-eater?',
+        '9-12': 'Carnivore or herbivore: what the teeth reveal',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'To know what a dinosaur ate, we look at its old fossil teeth.',
+            },
+            {
+              id: 'deux',
+              text: 'Pointy, sharp teeth: those are for eating meat.',
+            },
+            {
+              id: 'trois',
+              text: 'Flat, wide teeth: those are for eating plants.',
+            },
+            {
+              id: 'quatre',
+              text: 'That way we can guess its dinner, without ever seeing it eat!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'To work out what a long-dead dinosaur ate, scientists look closely at the shape of its fossilised teeth.',
+            },
+            {
+              id: 'deux',
+              text: 'Long, pointed teeth, often curved backwards, were made for slicing flesh: that is the sign of a meat-eater, a carnivore.',
+            },
+            {
+              id: 'trois',
+              text: 'Flat, wide teeth, sometimes shaped like a leaf, were made for grinding tough plants: that is the sign of a plant-eater, a herbivore.',
+            },
+            {
+              id: 'quatre',
+              text: 'Simply by studying the teeth, we can put together the menu of an animal that nobody has ever seen eating.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Analysing dental morphology, sometimes alongside microscopic wear marks or fossilised stomach contents, makes it possible to reconstruct the diet of an extinct species.',
+            },
+            {
+              id: 'deux',
+              text: 'Blade-like teeth, flattened from side to side and often serrated like a steak knife, point to a carnivorous diet adapted to slicing flesh.',
+            },
+            {
+              id: 'trois',
+              text: 'Flat teeth with a broad crown, or leaf-shaped teeth bearing wear ridges, point to a herbivorous diet adapted to grinding fibrous plant matter.',
+            },
+            {
+              id: 'quatre',
+              text: 'This comparative method, combined with other clues such as the claws or the position of the eyes, reconstructs a diet with good reliability, despite the absence of any direct observation.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

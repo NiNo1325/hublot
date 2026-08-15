@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Frost',
+        '6-8': 'Where frost comes from',
+        '9-12': 'Where frost comes from',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'pas-rosee-gelee',
+              text: 'Frost is those pretty white patterns on the windows in winter.',
+            },
+            {
+              id: 'surface-glacee',
+              text: 'It appears when the window or the grass is very cold, well below zero.',
+            },
+            {
+              id: 'depot-direct',
+              text: 'The water in the air then turns straight into ice, without making a drop first.',
+            },
+            {
+              id: 'cristaux',
+              text: 'It draws lots of little white crystals, like feathers made of ice.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'pas-rosee-gelee',
+              text: 'People think frost is dew that froze afterwards. That is not it: it never goes through the little water droplet stage.',
+            },
+            {
+              id: 'surface-glacee',
+              text: 'Frost forms when the surface — window, grass, car — is already well below zero degrees.',
+            },
+            {
+              id: 'depot-direct',
+              text: 'The water vapour in the air then turns directly into ice on that cold surface, with no liquid stage. This is called deposition.',
+            },
+            {
+              id: 'cristaux',
+              text: 'That is why frost makes fine crystals shaped like feathers and needles, quite unlike a simple frozen droplet, which would be smooth and round.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'pas-rosee-gelee',
+              text: 'Frost is not frozen dew. Dew forms above zero, as drops; frost follows an entirely different route.',
+            },
+            {
+              id: 'surface-glacee',
+              text: 'It appears when the surface is already below 0 °C. The air touching it is saturated with water vapour, but too cold to form liquid water.',
+            },
+            {
+              id: 'depot-direct',
+              text: 'The vapour then passes straight from the gaseous state to the solid state, fixing itself onto the surface: this is deposition, the reverse of sublimation. No droplet exists at any point.',
+            },
+            {
+              id: 'cristaux',
+              text: 'Like snow, this deposit arranges itself into ice crystals: frost draws feathers, needles and ferns, never round drops. Its crystalline shape gives away its origin — solidified vapour, not frozen water.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

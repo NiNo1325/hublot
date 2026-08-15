@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The rocket that goes up',
+        '6-8': 'How a rocket moves',
+        '9-12': 'Action and reaction: how rockets fly',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'ballon',
+              text: 'Blow up a balloon, then let go without tying it. Off it shoots, very fast, the opposite way to the air rushing out.',
+            },
+            {
+              id: 'pousser',
+              text: 'A rocket does the same: it blows gas downwards very hard, and that pushes it upwards.',
+            },
+            {
+              id: 'sans-air',
+              text: 'Way up high there is no air at all. And it still works: it needs nothing to lean on.',
+            },
+            {
+              id: 'etages',
+              text: 'When a big piece is empty, the rocket drops it. Lighter now, it climbs even better.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'ballon',
+              text: 'The balloon you let go explains everything: it is not the air outside that pushes it, it is the air coming out of it.',
+            },
+            {
+              id: 'pousser',
+              text: 'Every time one thing pushes another, it is pushed back just as hard and the opposite way. A rocket throws tonnes of burning gas downwards; the gas pushes it upwards.',
+            },
+            {
+              id: 'sans-air',
+              text: 'People often imagine that a rocket leans on the air, like an oar on water. That is wrong: in a vacuum it pushes even better, since there is no air left to slow it down.',
+            },
+            {
+              id: 'etages',
+              text: 'The heaviest thing in a rocket is its fuel. As it burns, the rocket drops the stages that have become empty shells: no point dragging an empty tank all the way to space.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'ballon',
+              text: 'The principle is Newton’s third law: every action comes with an equal and opposite reaction. A deflating balloon is the household demonstration of it.',
+            },
+            {
+              id: 'pousser',
+              text: 'A rocket engine ejects matter — the combustion gases — at several kilometres per second. The momentum carried backwards is exactly matched by the momentum the rocket gains forwards. The thrust depends only on the flow rate of the gas and its exhaust speed.',
+            },
+            {
+              id: 'sans-air',
+              text: 'In 1920, a New York Times editorial scolded Robert Goddard for not knowing that a rocket would have nothing to push against in a vacuum. The paper retracted in 1969, the day before Apollo 11 lifted off: a vacuum improves the efficiency, and the atmosphere only slows things down.',
+            },
+            {
+              id: 'etages',
+              text: 'Hence staging. The final speed depends on the ratio between the mass at launch and the mass on arrival: dropping the emptied tanks along the way improves that ratio, and that is precisely what puts orbit within reach.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -1,12 +1,34 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['promesse', 'local', 'qui-voit', 'vraiment'] as const;
 
 /** Les trois observateurs que le mode privé ne concerne pas. */
 const OBSERVATEURS = [252, 306, 360];
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    appareil: 'seulement sur cet appareil',
+    site: 'le site te voit',
+    reseau: 'le réseau aussi',
+    anonymat: 'ce n’est pas l’anonymat',
+  },
+  en: {
+    appareil: 'only on this device',
+    site: 'the site sees you',
+    reseau: 'the network too',
+    anonymat: 'this is not anonymity',
+  },
+};
 
 /**
  * Le cadre pointillé s'arrête à l'appareil : tout le pouvoir du mode privé
@@ -17,9 +39,11 @@ export function NavigationPriveeAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -38,7 +62,7 @@ export function NavigationPriveeAnimation({
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <rect x="36" y="66" width="164" height="108" rx="6" fill="none" stroke="#4ade80" strokeWidth="3" strokeDasharray="7 6" />
         <text x="14" y="42" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          seulement sur cet appareil
+          {legende.appareil}
         </text>
       </g>
 
@@ -58,17 +82,17 @@ export function NavigationPriveeAnimation({
           <line key={x} x1={x - 30} y1="140" x2="206" y2="124" stroke="#f87171" strokeWidth="2" strokeDasharray="4 4" />
         ))}
         <text x="238" y="190" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le site te voit
+          {legende.site}
         </text>
         <text x="238" y="214" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le réseau aussi
+          {legende.reseau}
         </text>
       </g>
 
       {/* La conclusion */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="14" y="234" fill="#e2e8f0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          ce n’est pas l’anonymat
+          {legende.anonymat}
         </text>
       </g>
     </svg>

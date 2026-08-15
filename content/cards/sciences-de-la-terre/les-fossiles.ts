@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Traces from long ago',
+        '6-8': 'How a fossil forms',
+        '9-12': 'Fossilisation and the archives of the Earth',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'mort',
+              text: 'A very very long time ago, animals lived here. Long before the grandparents of your grandparents.',
+            },
+            {
+              id: 'enfouissement',
+              text: 'When one of them died in just the right place, sand and mud covered it up very gently.',
+            },
+            {
+              id: 'pierre',
+              text: 'Over millions of years, its bones turned into stone, keeping the very same shape.',
+            },
+            {
+              id: 'rare',
+              text: 'It is very rare! Almost every animal disappears without leaving a trace. Finding a fossil is a real treasure.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'mort',
+              text: 'When an animal dies, it is usually eaten or broken down, and after a few weeks nothing is left of it.',
+            },
+            {
+              id: 'enfouissement',
+              text: 'For a fossil to form, the body has to be buried quickly — in the mud of a lake, the sand of a delta — which shields it from the air and from scavengers.',
+            },
+            {
+              id: 'pierre',
+              text: 'Water moving through the sediment leaves minerals in the tiniest hollows of the bone. Little by little, the original material is replaced by rock. So a fossil is not the bone itself: it is its copy in stone, down to the last detail.',
+            },
+            {
+              id: 'rare',
+              text: 'This chain of events is so unlikely that perhaps one species in a thousand has left a trace. Fossils are incomplete archives, and that is why every new find can change what we thought we knew.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'mort',
+              text: 'Fossilisation demands exceptional conditions. In most cases, bacterial decay, predation and erosion wipe out every trace within a few years.',
+            },
+            {
+              id: 'enfouissement',
+              text: 'Rapid burial in an oxygen-poor setting halts decomposition. Sedimentary environments — lakes, deltas, sea floors — are therefore over-represented in the fossil record, which skews our picture of ancient ecosystems.',
+            },
+            {
+              id: 'pierre',
+              text: 'Permineralisation substitutes dissolved minerals — silica, calcite, pyrite — for the organic material, often down to the scale of individual cells. Other modes exist: casts, imprints, amber, or traces of activity such as footprints.',
+            },
+            {
+              id: 'rare',
+              text: 'Dating combines stratigraphy, which puts the layers in order, and radiometric dating, which measures the decay of isotopes to give an absolute age. The record is patchy by its very nature: the absence of a fossil never proves the absence of a species, and that caution is a constant in palaeontology.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

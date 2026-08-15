@@ -84,5 +84,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The same birthday',
+        '6-8': 'The birthday paradox',
+        '9-12': 'Why twenty-three is enough',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'intuition',
+              text: 'In a class, two children can have their birthday on the same day. We think that is very rare.',
+            },
+            {
+              id: 'paires',
+              text: 'But you must not compare everybody with you. You have to compare everybody, two by two!',
+            },
+            {
+              id: 'vingt-trois',
+              text: 'And that makes many, many more comparisons than we think. So it happens often.',
+            },
+            {
+              id: 'coincidences',
+              text: 'Coincidences are far less rare than they look.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'intuition',
+              text: 'How many people do you need in a room for a one in two chance that two of them were born on the same day? Most people answer around a hundred and eighty. The real answer is twenty-three.',
+            },
+            {
+              id: 'paires',
+              text: 'The mistake comes from what we compare. We ask “who has the same birthday as me?”, which is only twenty-two comparisons. But the question is about any pair at all: with twenty-three people, there are two hundred and fifty-three of them.',
+            },
+            {
+              id: 'vingt-trois',
+              text: 'Two hundred and fifty-three chances, each of them unlikely, end up making the coincidence likely. At twenty-three people you pass one chance in two; at fifty, you reach near certainty — ninety-seven per cent.',
+            },
+            {
+              id: 'coincidences',
+              text: 'The lesson goes far beyond birthdays. We judge coincidences badly because we count the chances from one single point of view. As soon as there are many people and many chances, the extraordinary becomes expected.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'intuition',
+              text: 'The birthday paradox is not one in the logical sense: there is no contradiction, only a considerable gap between intuition and calculation.',
+            },
+            {
+              id: 'paires',
+              text: 'You go through the complementary probability: the probability that all the birthdays are different. It is 365 over 365, multiplied by 364 over 365, then by 363 over 365, and so on. For twenty-three people, that product falls to 0.493 — so the probability that at least two coincide is 0.507.',
+            },
+            {
+              id: 'vingt-trois',
+              text: 'The deep reason is combinatorial: the number of pairs grows as the square of the group size, not in proportion to it. For n people there are n times n minus one, divided by two, pairs — that is two hundred and fifty-three for twenty-three, and one thousand two hundred and twenty-five for fifty. Our intuition, meanwhile, reasons linearly.',
+            },
+            {
+              id: 'coincidences',
+              text: 'This bias explains a great deal of misplaced astonishment: lotteries won twice, improbable sequences, matches between profiles. As soon as the chances are numerous, rare events become likely somewhere. So the useful question is never “what is the probability of this happening to me?”, but “what is the probability of this happening to somebody?”.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

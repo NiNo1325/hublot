@@ -85,5 +85,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Energy changes shape',
+        '6-8': 'Nobody makes energy',
+        '9-12': 'Conservation and degradation of energy',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'produire',
+              text: 'People say we “make” electricity. Really, nobody makes energy.',
+            },
+            {
+              id: 'conserver',
+              text: 'We take it from somewhere and change its shape. The wind makes things turn, and that gives current.',
+            },
+            {
+              id: 'degrader',
+              text: 'Each time, a little goes off as heat. Touch a gadget that is working: it feels warm.',
+            },
+            {
+              id: 'soleil',
+              text: 'And right at the start, nearly all of that energy comes from the Sun.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'produire',
+              text: 'A power station does not create energy, and your phone does not destroy any. It sounds absurd, and yet that is the rule: energy can be neither created nor made to disappear.',
+            },
+            {
+              id: 'conserver',
+              text: 'All it ever does is change form. The wind turns a wind turbine, the movement becomes electricity, the electricity becomes light, sound and heat. The total amount does not budge one bit.',
+            },
+            {
+              id: 'degrader',
+              text: 'So why do we have to keep producing more of it? Because at every change, part of it goes off as scattered heat, spread everywhere and far too thinned out to be used again. What we consume is not the energy, then, but its quality: its power to still do something.',
+            },
+            {
+              id: 'soleil',
+              text: 'Nearly all the energy we use comes from the Sun: the wind, the water behind dams, our food, oil. The exceptions can be counted on the fingers of one hand — nuclear power, geothermal heat, the tides.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'produire',
+              text: 'The first law of thermodynamics states it: the energy of an isolated system is conserved. “Producing” and “consuming” energy are therefore, quite literally, figures of speech.',
+            },
+            {
+              id: 'conserver',
+              text: 'What takes place is a conversion. A thermal power station converts chemical energy into heat, the heat into mechanical energy, then into electrical energy. At every stage the total is rigorously conserved — losses included, which are not losses in the strict sense.',
+            },
+            {
+              id: 'degrader',
+              text: 'The second law resolves the paradox: conversions degrade energy. A growing share ends up as low-temperature heat, diffuse and unusable; entropy increases. What runs short is never the energy — its quantity is constant — but the usable energy. Carnot even showed that the efficiency of a heat engine is capped by the two temperatures it works between, and nothing else.',
+            },
+            {
+              id: 'soleil',
+              text: 'Almost all our sources go back to the Sun: wind, hydro, biomass, hydrocarbons — stored sunlight, sometimes hundreds of millions of years old. The exceptions are nuclear fission, geothermal heat and the tides. And perpetual motion remains impossible, not for want of technology, but as a matter of principle.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

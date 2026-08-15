@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The fridge that pushes the heat outside',
+        '6-8': 'How a fridge works',
+        '9-12': 'The heat pump and the open-door paradox',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'pas-de-froid',
+              text: 'A fridge does not make cold. It takes away the heat that is inside.',
+            },
+            {
+              id: 'deplacer',
+              text: 'It picks the heat up inside, and it puts it out in the kitchen.',
+            },
+            {
+              id: 'grille-chaude',
+              text: 'Touch the back of the fridge: it is warm! That is where the heat comes out.',
+            },
+            {
+              id: 'porte-ouverte',
+              text: 'So if you leave the door open to cool the room down… it gets warmer!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'pas-de-froid',
+              text: 'Cold is not a substance: there is only heat, and heat moves about. So a fridge does not make cold — it removes the heat that is inside.',
+            },
+            {
+              id: 'deplacer',
+              text: 'And it does better than that: it pushes the heat the wrong way. Left alone, heat always travels from hot to cold; a fridge makes it climb back up from cold to hot. That is exactly why it needs a motor and electricity.',
+            },
+            {
+              id: 'grille-chaude',
+              text: 'A gas is squeezed, which warms it up; it then hands its heat over to the grille at the back of the appliance — touch it, it is warm. Then the gas is allowed to expand: it turns very cold and goes back to soak up the heat from the food. And the cycle starts again, over and over.',
+            },
+            {
+              id: 'porte-ouverte',
+              text: 'Which leads to a surprising result: leaving the fridge door open does not cool the kitchen down, it warms it up. All the heat taken out comes back into the same room, plus the heat the motor makes.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'pas-de-froid',
+              text: 'A refrigerator is a heat pump. It does not produce cold — the idea has no physical meaning — it transfers thermal energy from a cold source to a hot one.',
+            },
+            {
+              id: 'deplacer',
+              text: 'That transfer runs against the spontaneous direction of heat exchange, which the second law would make impossible without an outside input. Hence the compressor: the work supplied is exactly what allows the upstream transfer. Efficiency is measured by a coefficient of performance, often greater than one — which is no miracle, since the heat is not created but moved.',
+            },
+            {
+              id: 'grille-chaude',
+              text: 'The cycle exploits the changes of state of a refrigerant fluid. Compressed, it heats up and condenses in the rear condenser, releasing its latent heat. Abruptly expanded, it cools down and evaporates in the inner evaporator, absorbing the heat from the food.',
+            },
+            {
+              id: 'porte-ouverte',
+              text: 'The energy balance explains the open-door paradox: the heat extracted is dumped into the same room, plus the work done by the compressor. The room therefore has to get warmer. An air conditioner only cools because its condenser sits outside — and a heating heat pump is nothing but the same appliance turned around.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

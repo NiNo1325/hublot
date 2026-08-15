@@ -83,5 +83,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The foam that spills over',
+        '6-8': 'The vinegar volcano',
+        '9-12': 'A chemical reaction',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'melange',
+              text: 'We put a white powder in the bottom of a pot, and pour vinegar on top.',
+            },
+            {
+              id: 'reaction',
+              text: 'Straight away it starts making bubbles, with a little fizzing noise.',
+            },
+            {
+              id: 'gaz',
+              text: 'The bubbles are full of a brand new gas that was not there before. The mixture made it.',
+            },
+            {
+              id: 'mousse',
+              text: 'There are so many bubbles that they climb up and spill out of the pot, like foam. It is not hot, and it does not hurt at all.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'melange',
+              text: 'The white powder is called bicarbonate of soda. Vinegar is a liquid acid. On their own, neither of them makes any bubbles.',
+            },
+            {
+              id: 'reaction',
+              text: 'The moment they meet, they react together and change. It is not like mixing sand and water, where each one stays exactly what it was.',
+            },
+            {
+              id: 'gaz',
+              text: 'This change makes a gas: carbon dioxide, the very same one you breathe out. Every bubble is filled with it.',
+            },
+            {
+              id: 'mousse',
+              text: 'The gas forms so fast that it pushes the liquid upwards and makes it spill over. The foam is neither hot nor dangerous — it is simply liquid full of bubbles.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'melange',
+              text: 'Sodium bicarbonate is a base; vinegar contains acetic acid. An acid-base reaction begins the moment they come into contact.',
+            },
+            {
+              id: 'reaction',
+              text: 'This is a chemical change, not a simple mixture: the atoms rearrange themselves and form new substances. There is no way to get the original bicarbonate and vinegar back, unlike salt dissolved in water, which evaporation alone will separate.',
+            },
+            {
+              id: 'gaz',
+              text: 'The reaction produces water, dissolved sodium acetate, and carbon dioxide gas. That gas, invisible and barely soluble, escapes as bubbles.',
+            },
+            {
+              id: 'mousse',
+              text: 'A gas takes up far more room than the solid and liquid reactants: it is this sudden expansion that causes the overflow. Nothing to do with a real volcano, where it is molten rock rising under pressure.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

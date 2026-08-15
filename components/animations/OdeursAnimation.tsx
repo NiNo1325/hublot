@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['molecules', 'voyage', 'nez', 'habitude'] as const;
+
+/* Les légendes disent l'argument : de vraies molécules, un vrai trajet. Le
+   typage impose à `en` de reprendre exactement les clés de `fr`. */
+const LEGENDES = {
+  fr: {
+    molecules: 'de vraies molécules',
+    voyage: 'elles voyagent dans l’air',
+    capteurs: 'des capteurs les attrapent',
+    habitude: 'et on s’y habitue vite',
+  },
+  en: {
+    molecules: 'real molecules',
+    voyage: 'they travel through the air',
+    capteurs: 'sensors catch them',
+    habitude: 'and you soon get used to it',
+  },
+};
 
 /**
  * Les molécules quittent physiquement le gâteau et traversent le cadre
@@ -14,9 +32,11 @@ export function OdeursAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -39,7 +59,7 @@ export function OdeursAnimation({
           </circle>
         ))}
         <text x="14" y="32" fill="#a78bfa" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          de vraies molécules
+          {legende.molecules}
         </text>
       </g>
 
@@ -57,7 +77,7 @@ export function OdeursAnimation({
         ))}
         <path d="M112 148 q60 18 118 -6 q40 -16 88 -6" fill="none" stroke="#334155" strokeWidth="2" strokeDasharray="4 6" />
         <text x="14" y="186" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          elles voyagent dans l’air
+          {legende.voyage}
         </text>
       </g>
 
@@ -74,14 +94,14 @@ export function OdeursAnimation({
           </g>
         ))}
         <text x="14" y="210" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des capteurs les attrapent
+          {legende.capteurs}
         </text>
       </g>
 
       {/* L'adaptation : le signal s'éteint */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="14" y="234" fill="#64748b" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          et on s’y habitue vite
+          {legende.habitude}
         </text>
       </g>
     </svg>

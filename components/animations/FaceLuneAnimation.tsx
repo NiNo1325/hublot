@@ -1,6 +1,7 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = [
@@ -9,6 +10,21 @@ const PHASES = [
   'verrouillage',
   'face-cachee',
 ] as const;
+
+const LEGENDES = {
+  fr: {
+    memeCote: 'toujours le même côté',
+    unTour: 'un tour sur elle-même',
+    vue1959: 'vue en 1959',
+    pasSombre: 'pas une face sombre',
+  },
+  en: {
+    memeCote: 'always the same side',
+    unTour: 'one turn on itself',
+    vue1959: 'seen in 1959',
+    pasSombre: 'not a dark side',
+  },
+};
 
 /** Trois positions d'orbite ; le repère reste tourné vers la Terre partout. */
 const POSITIONS = [
@@ -26,9 +42,11 @@ export function FaceLuneAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -57,7 +75,7 @@ export function FaceLuneAnimation({
       ))}
 
       <text x="14" y="30" fill="#cbd5e1" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-        toujours le même côté
+        {legende.memeCote}
       </text>
 
       {/* Le verrouillage : un tour sur soi par tour d'orbite */}
@@ -65,7 +83,7 @@ export function FaceLuneAnimation({
         <path d="M150 196 q40 14 76 -6" fill="none" stroke="#38bdf8" strokeWidth="3" />
         <path d="M220 184 L232 190 L220 198 Z" fill="#38bdf8" />
         <text x="14" y="210" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          un tour sur elle-même
+          {legende.unTour}
         </text>
       </g>
 
@@ -80,10 +98,10 @@ export function FaceLuneAnimation({
           <circle key={`${c.x}-${c.y}`} cx={c.x} cy={c.y} r={c.r} fill="#64748b" />
         ))}
         <text x="286" y="122" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          vue en 1959
+          {legende.vue1959}
         </text>
         <text x="14" y="234" fill="#fde047" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          pas une face sombre
+          {legende.pasSombre}
         </text>
       </g>
     </svg>

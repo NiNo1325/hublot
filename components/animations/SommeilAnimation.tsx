@@ -1,9 +1,30 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['repos', 'memoire', 'grandir', 'reves'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor. Le typage
+  impose à `en` de reprendre exactement les clés du français : une légende
+  oubliée ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    travaille: 'le cerveau travaille',
+    souvenirs: 'les souvenirs se rangent',
+    repare: 'le corps se répare',
+    reve: 'et parfois, on rêve',
+  },
+  en: {
+    travaille: 'the brain is working',
+    souvenirs: 'memories get sorted',
+    repare: 'the body mends',
+    reve: 'sometimes, we dream',
+  },
+};
 
 /**
  * Le cerveau est représenté actif pendant tout le sommeil : la carte affirme
@@ -13,9 +34,11 @@ export function SommeilAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -46,7 +69,7 @@ export function SommeilAnimation({
           </circle>
         ))}
         <text x="150" y="120" fill="#a5b4fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le cerveau travaille
+          {legende.travaille}
         </text>
       </g>
 
@@ -63,7 +86,7 @@ export function SommeilAnimation({
           </g>
         ))}
         <text x="188" y="94" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          les souvenirs se rangent
+          {legende.souvenirs}
         </text>
       </g>
 
@@ -71,7 +94,7 @@ export function SommeilAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <path d="M300 140 l10 -18 l10 18 l18 4 l-14 14 l4 18 l-18 -10 l-18 10 l4 -18 l-14 -14 z" fill="#a3e635" opacity="0.9" />
         <text x="239" y="196" fill="#a3e635" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le corps se répare
+          {legende.repare}
         </text>
       </g>
 
@@ -85,7 +108,7 @@ export function SommeilAnimation({
           </circle>
         ))}
         <text x="186" y="46" fill="#c4b5fd" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          et parfois, on rêve
+          {legende.reve}
         </text>
       </g>
     </svg>

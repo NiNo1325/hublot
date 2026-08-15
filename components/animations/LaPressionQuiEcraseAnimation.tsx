@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    eauDessus: 'plus d’eau au-dessus',
+    pousse: 'ça pousse partout',
+    ecrase: 'ça écraserait un corps mou',
+    coque: 'une coque très solide',
+  },
+  en: {
+    eauDessus: 'more water above',
+    pousse: 'it pushes everywhere',
+    ecrase: 'it would crush a soft body',
+    coque: 'a very strong hull',
+  },
+};
 
 /**
  * Un objet mou descend le long d'une colonne d'eau : des flèches le pressent
@@ -14,11 +30,13 @@ export function LaPressionQuiEcraseAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
-  const legende = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const apparition = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -36,8 +54,8 @@ export function LaPressionQuiEcraseAnimation({
           {anime && <animate attributeName="height" values="10;60;10" dur="2.4s" repeatCount="indefinite" />}
         </rect>
         <circle cx="200" cy="70" r="12" fill="#e0f2fe" />
-        <text x="60" y="46" fill="#e0f2fe" fontSize="14" fontFamily={police} style={legende(0)}>
-          plus d’eau au-dessus
+        <text x="60" y="46" fill="#e0f2fe" fontSize="14" fontFamily={police} style={apparition(0)}>
+          {legende.eauDessus}
         </text>
       </g>
 
@@ -58,8 +76,8 @@ export function LaPressionQuiEcraseAnimation({
             </line>
           );
         })}
-        <text x="60" y="160" fill="#60a5fa" fontSize="14" fontFamily={police} style={legende(1)}>
-          ça pousse partout
+        <text x="60" y="160" fill="#60a5fa" fontSize="14" fontFamily={police} style={apparition(1)}>
+          {legende.pousse}
         </text>
       </g>
 
@@ -70,8 +88,8 @@ export function LaPressionQuiEcraseAnimation({
             <animate attributeName="ry" values="14;5;14" dur="1.8s" repeatCount="indefinite" />
           )}
         </ellipse>
-        <text x="60" y="190" fill="#fca5a5" fontSize="14" fontFamily={police} style={legende(2)}>
-          ça écraserait un corps mou
+        <text x="60" y="190" fill="#fca5a5" fontSize="14" fontFamily={police} style={apparition(2)}>
+          {legende.ecrase}
         </text>
       </g>
 
@@ -79,8 +97,8 @@ export function LaPressionQuiEcraseAnimation({
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <ellipse cx="200" cy="150" rx="30" ry="18" fill="#1e293b" stroke="#93c5fd" strokeWidth="4" />
         <circle cx="200" cy="150" r="6" fill="#93c5fd" />
-        <text x="60" y="216" fill="#93c5fd" fontSize="14" fontFamily={police} style={legende(3)}>
-          une coque très solide
+        <text x="60" y="216" fill="#93c5fd" fontSize="14" fontFamily={police} style={apparition(3)}>
+          {legende.coque}
         </text>
       </g>
     </svg>

@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The invisible force',
+        '6-8': 'How magnets work',
+        '9-12': 'Magnetism and poles',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'attraction',
+              text: 'A magnet can grab hold of some things without touching them. It looks like magic, but it is science.',
+            },
+            {
+              id: 'poles',
+              text: 'Every magnet has two ends that are not the same. Two ends that match push each other away, and refuse to stick.',
+            },
+            {
+              id: 'pas-tout',
+              text: 'Careful: a magnet does not pull on everything. Try it on a drinks can, and you will see it does not hold.',
+            },
+            {
+              id: 'boussole',
+              text: 'And the most amazing part: the Earth is itself an enormous magnet. That is why a compass always points north.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'attraction',
+              text: 'A magnet acts at a distance, through empty space, through paper or through water. That invisible zone of influence is called a magnetic field.',
+            },
+            {
+              id: 'poles',
+              text: 'Every magnet has two poles, north and south. Two different poles attract, two identical poles push apart. And if you cut a magnet in two, you never get a lone pole: each piece immediately has two poles of its own.',
+            },
+            {
+              id: 'pas-tout',
+              text: 'People often say that magnets attract metals. That is not accurate: they attract iron, nickel and cobalt, but not aluminium or copper. A drinks can does not stick, even though it really is metal.',
+            },
+            {
+              id: 'boussole',
+              text: 'The Earth makes its own magnetic field, produced by liquid iron moving inside its core. A compass needle is a small magnet that lines itself up with it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'attraction',
+              text: 'Magnetism comes from the movement of electric charges. In a permanent magnet, it is the electrons of the atoms which, through their spin, behave like minute loops of current.',
+            },
+            {
+              id: 'poles',
+              text: 'In most materials these moments cancel out, because they point in random directions. In iron they line up in regions called domains. Magnetising an object means aligning its domains; heating it strongly scrambles them and makes it lose its magnetisation.',
+            },
+            {
+              id: 'pas-tout',
+              text: 'Only ferromagnetic materials — iron, nickel, cobalt and certain alloys — become lastingly magnetised. Aluminium and copper barely react at all. No magnetic monopole has ever been observed: cutting a magnet always recreates two poles.',
+            },
+            {
+              id: 'boussole',
+              text: 'The Earth’s field comes from currents of liquid iron in the outer core, a mechanism called the dynamo effect. A curiosity of vocabulary: the Earth’s magnetic north pole is physically a south pole, since it attracts the north pole of the needle. This field deflects part of the solar wind and protects the atmosphere.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

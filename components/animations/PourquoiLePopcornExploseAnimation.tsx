@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    goutte: 'une goutte d’eau dedans',
+    vapeur: 'la vapeur chauffe fort',
+    pousse: 'ça pousse très fort',
+    pop: 'pop ! ça explose',
+  },
+  en: {
+    goutte: 'a drop of water inside',
+    vapeur: 'the steam gets very hot',
+    pousse: 'it pushes very hard',
+    pop: 'pop! it bursts',
+  },
+};
 
 /**
  * Chaque grain renferme une goutte d'eau enfermée dans une coque étanche : la
@@ -14,10 +30,12 @@ export function PourquoiLePopcornExploseAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -30,7 +48,7 @@ export function PourquoiLePopcornExploseAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <ellipse cx="200" cy="150" rx="26" ry="30" fill="#fde68a" stroke="#a16207" strokeWidth="3" />
         <ellipse cx="200" cy="154" rx="7" ry="9" fill="#7dd3fc" />
-        <text x="76" y="210" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>une goutte d’eau dedans</text>
+        <text x="76" y="210" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.goutte}</text>
       </g>
 
       {/* Phase 2 : la vapeur chauffe et grossit */}
@@ -41,7 +59,7 @@ export function PourquoiLePopcornExploseAnimation({
             {anime && <animate attributeName="r" values="3;6;3" dur="1s" begin={`${i * 0.25}s`} repeatCount="indefinite" />}
           </circle>
         ))}
-        <text x="82" y="210" fill="#bae6fd" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>la vapeur chauffe fort</text>
+        <text x="82" y="210" fill="#bae6fd" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.vapeur}</text>
       </g>
 
       {/* Phase 3 : la pression pousse contre la coque */}
@@ -65,7 +83,7 @@ export function PourquoiLePopcornExploseAnimation({
             />
           );
         })}
-        <text x="86" y="210" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>ça pousse très fort</text>
+        <text x="86" y="210" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.pousse}</text>
       </g>
 
       {/* Phase 4 : la coque cède, le grain explose */}
@@ -88,7 +106,7 @@ export function PourquoiLePopcornExploseAnimation({
             )}
           </circle>
         ))}
-        <text x="112" y="210" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>pop ! ça explose</text>
+        <text x="112" y="210" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.pop}</text>
       </g>
     </svg>
   );

@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why honey lasts for ever',
+        '6-8': 'Why honey never goes off',
+        '9-12': 'Why honey never goes off',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Honey is full, full of sugar and has almost no water.',
+            },
+            {
+              id: 'deux',
+              text: 'The little creatures that spoil food need water.',
+            },
+            {
+              id: 'trois',
+              text: 'The sugar in honey keeps all the water for itself.',
+            },
+            {
+              id: 'quatre',
+              text: 'So the little creatures cannot live in honey.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Honey is made almost entirely of sugar, with very little water in it.',
+            },
+            {
+              id: 'deux',
+              text: 'But microbes, those tiny living things that make food go rotten, absolutely need water to live.',
+            },
+            {
+              id: 'trois',
+              text: 'In honey, the sugar is so concentrated that it holds on to every drop of water around it.',
+            },
+            {
+              id: 'quatre',
+              text: 'So the microbes find no water to use and cannot grow: honey keeps for a very, very long time.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Honey is an extremely concentrated sugar solution, with a very low water content.',
+            },
+            {
+              id: 'deux',
+              text: 'Micro-organisms need available water to absorb their nutrients and multiply.',
+            },
+            {
+              id: 'trois',
+              text: 'In honey, the sugar molecules hold on to almost all the water by osmosis, leaving it unusable for them.',
+            },
+            {
+              id: 'quatre',
+              text: 'Deprived of water, microbes can neither feed nor divide: well-kept honey can stay safe to eat for centuries, unlike most foods.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

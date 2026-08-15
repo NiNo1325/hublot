@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Stopping takes room',
+        '6-8': 'How braking really works',
+        '9-12': 'Braking: grip and the square of the speed',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'pedale',
+              text: 'To stop a bike, you squeeze the brakes. They rub on the wheel and slow it down.',
+            },
+            {
+              id: 'adherence',
+              text: 'But it is the tyre that grips the road. On sand or water, it grips a lot less.',
+            },
+            {
+              id: 'bloquer',
+              text: 'If the wheel locks and starts to slide, you do not stop any better. And you cannot steer any more.',
+            },
+            {
+              id: 'carre-vitesse',
+              text: 'The faster you go, the more room you need to stop. A lot more, not just a bit.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'pedale',
+              text: 'Braking is not holding the wheel back: it is turning movement into heat. The pads rub, everything warms up, and the speed drops.',
+            },
+            {
+              id: 'adherence',
+              text: 'Except that none of this helps if the tyre does not hold the road. It is the grip between tyre and ground that sets the limit — not how powerful the brakes are.',
+            },
+            {
+              id: 'bloquer',
+              text: 'Which brings a surprise: locking the wheels does not stop you sooner. A locked wheel slides, and a sliding tyre brakes worse than a rolling one. On top of that, you can no longer steer. That is the problem ABS solves, by releasing and squeezing the brake several times a second.',
+            },
+            {
+              id: 'carre-vitesse',
+              text: 'And the distance does not follow the speed: it follows its square. At fifty kilometres per hour, it takes about a dozen metres to stop. At a hundred, it takes four times as much — not twice.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'pedale',
+              text: 'A brake is an energy converter: it dissipates the vehicle’s kinetic energy as heat, through friction. Hence the discs heating up, and brake fade — the loss of effectiveness once they go beyond their working temperature.',
+            },
+            {
+              id: 'adherence',
+              text: 'The maximum deceleration is not set by the brakes but by the coefficient of grip between tyre and road surface: around 0.8 on dry asphalt, 0.1 on black ice. Beyond that, the tyre slides however hard you press.',
+            },
+            {
+              id: 'bloquer',
+              text: 'Now the coefficient of sliding friction is lower than the coefficient of static grip. A locked wheel therefore brakes worse than a wheel held right at the edge of sliding, and loses all steering ability. ABS modulates the pressure to keep the tyre just short of that limit.',
+            },
+            {
+              id: 'carre-vitesse',
+              text: 'Kinetic energy is one half m v squared: doubling the speed quadruples the energy to dissipate, and so the braking distance. Adding the reaction time, which grows in proportion to the speed, gives about twenty-eight metres at fifty kilometres per hour and close to eighty at a hundred. That is the physical justification for speed limits.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

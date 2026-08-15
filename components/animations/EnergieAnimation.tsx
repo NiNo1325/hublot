@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['produire', 'conserver', 'degrader', 'soleil'] as const;
+
+const LEGENDES = {
+  fr: {
+    conversion: 'ça change de forme',
+    total: 'rien ne se crée, rien ne se perd',
+    chaleur: 'une part part en chaleur',
+    soleil: 'presque tout vient du Soleil',
+  },
+  en: {
+    conversion: 'it changes form',
+    total: 'nothing is created, nothing lost',
+    chaleur: 'some of it goes off as heat',
+    soleil: 'nearly all comes from the Sun',
+  },
+};
 
 /**
  * La barre du bas garde exactement la même longueur d'un bout à l'autre : la
@@ -14,10 +30,12 @@ export function EnergieAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const degrade = phase >= 2;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -59,7 +77,7 @@ export function EnergieAnimation({
           </g>
         ))}
         <text x="14" y="132" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          ça change de forme
+          {legende.conversion}
         </text>
       </g>
 
@@ -76,17 +94,17 @@ export function EnergieAnimation({
       />
 
       <text x="14" y="32" fill="#e2e8f0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-        rien ne se crée, rien ne se perd
+        {legende.total}
       </text>
 
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <text x="14" y="210" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          une part part en chaleur
+          {legende.chaleur}
         </text>
       </g>
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="14" y="234" fill="#fde047" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          presque tout vient du Soleil
+          {legende.soleil}
         </text>
       </g>
     </svg>

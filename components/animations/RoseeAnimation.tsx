@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['air-humide', 'nuit-froide', 'condense', 'matin'] as const;
+
+const LEGENDES = {
+  fr: {
+    eauDansAir: 'de l’eau dans l’air',
+    feuilleRefroidit: 'la feuille refroidit',
+    surPlace: 'des gouttes sur place',
+    matin: 'au matin, la rosée',
+  },
+  en: {
+    eauDansAir: 'water in the air',
+    feuilleRefroidit: 'the leaf cools down',
+    surPlace: 'drops form on the spot',
+    matin: 'in the morning, dew',
+  },
+};
 
 /**
  * La rosée ne tombe pas du ciel : la vapeur de l'air (points) se condense sur la
@@ -14,10 +30,12 @@ export function RoseeAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   // Une feuille avec sa nervure, toujours visible.
   const feuille = (
@@ -40,7 +58,7 @@ export function RoseeAnimation({
             {anime && <animate attributeName="cy" values={`${y};${y - 5};${y}`} dur="3s" begin={`${i * 0.2}s`} repeatCount="indefinite" />}
           </circle>
         ))}
-        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>de l’eau dans l’air</text>
+        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>{legende.eauDansAir}</text>
       </g>
 
       {/* Phase 2 : la nuit, la feuille refroidit */}
@@ -50,7 +68,7 @@ export function RoseeAnimation({
         {[160, 210, 260].map((x) => (
           <line key={x} x1={x} y1="118" x2={x} y2="132" stroke="#38bdf8" strokeWidth="2" />
         ))}
-        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>la feuille refroidit</text>
+        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>{legende.feuilleRefroidit}</text>
       </g>
 
       {/* Phase 3 : les gouttes se forment sur place (pas du ciel) */}
@@ -65,7 +83,7 @@ export function RoseeAnimation({
             {anime && <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" begin={`${i * 0.3}s`} repeatCount="indefinite" />}
           </path>
         ))}
-        <text x="222" y="200" fill="#bae6fd" fontSize="15" fontFamily={police}>des gouttes sur place</text>
+        <text x="222" y="200" fill="#bae6fd" fontSize="15" fontFamily={police}>{legende.surPlace}</text>
       </g>
 
       {/* Phase 4 : au matin, la rosée */}
@@ -74,7 +92,7 @@ export function RoseeAnimation({
         {[[150, 130], [180, 122], [212, 126], [244, 121], [270, 128]].map(([x, y], i) => (
           <path key={i} d={`M${x} ${y - 7} q-5 7 0 11 a5 5 0 0 0 0 -11 Z`} fill="#e0f2fe" />
         ))}
-        <text x="230" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>au matin, la rosée</text>
+        <text x="230" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>{legende.matin}</text>
       </g>
     </svg>
   );

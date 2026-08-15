@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['motif', 'repetition', 'nature', 'limite'] as const;
+
+const LEGENDES = {
+  fr: {
+    partie: 'la partie = le tout',
+    partout: 'partout dans la nature',
+    nature: 'la nature s’arrête,',
+    maths: 'les maths continuent',
+  },
+  en: {
+    partie: 'the part = the whole',
+    partout: 'everywhere in nature',
+    nature: 'nature stops,',
+    maths: 'maths carries on',
+  },
+};
 
 /**
  * L'arbre est engendré récursivement à la volée : c'est la démonstration même
@@ -31,9 +47,11 @@ export function FractalesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, auRepos } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   /* La profondeur croît avec la narration : la règle se déploie sous les yeux. */
   const profondeur = auRepos ? 5 : Math.min(3 + phase * 2, 8);
@@ -71,7 +89,7 @@ export function FractalesAnimation({
           ))}
         </g>
         <text x="228" y="168" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          la partie = le tout
+          {legende.partie}
         </text>
       </g>
 
@@ -81,17 +99,17 @@ export function FractalesAnimation({
         <text x="304" y="60" fontSize="26">❄️</text>
         <text x="342" y="60" fontSize="26">🥦</text>
         <text x="205" y="84" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          partout dans la nature
+          {legende.partout}
         </text>
       </g>
 
       {/* La limite : le réel s'arrête, le modèle non. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="211" y="212" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          la nature s&apos;arrête,
+          {legende.nature}
         </text>
         <text x="211" y="232" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          les maths continuent
+          {legende.maths}
         </text>
       </g>
     </svg>

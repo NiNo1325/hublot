@@ -1,6 +1,7 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['interrupteurs', 'deux-chiffres', 'combinaisons', 'tout-est-nombre'] as const;
@@ -8,13 +9,30 @@ const PHASES = ['interrupteurs', 'deux-chiffres', 'combinaisons', 'tout-est-nomb
 /** 1011 en binaire vaut onze — la valeur citée dans l'explication 9-12. */
 const MOTIF = [1, 0, 1, 1];
 
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    image: 'une image',
+  },
+  en: {
+    image: 'a picture',
+  },
+};
+
 export function BinaireAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -94,7 +112,7 @@ export function BinaireAnimation({
           );
         })}
         <text x="288" y="130" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          une image
+          {legende.image}
         </text>
       </g>
     </svg>

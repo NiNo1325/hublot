@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Both sides the same',
+        '6-8': 'Symmetry',
+        '9-12': 'Symmetry and transformations',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'miroir',
+              text: 'Look at a butterfly: its left wing and its right wing are the same, like in a mirror.',
+            },
+            {
+              id: 'pliage',
+              text: 'If you folded the butterfly down the middle, the two wings would land exactly on top of each other.',
+            },
+            {
+              id: 'nature',
+              text: 'There are some everywhere: flowers, snowflakes, leaves, and even your face.',
+            },
+            {
+              id: 'presque',
+              text: 'But if you look very closely, the two sides are never quite the same. Almost, but not exactly.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'miroir',
+              text: 'A shape is symmetrical when a line splits it into two halves that mirror each other. That line is called an axis of symmetry.',
+            },
+            {
+              id: 'pliage',
+              text: 'The test is simple: fold the drawing along that line. If the two halves land perfectly on top of each other, the line really is an axis of symmetry.',
+            },
+            {
+              id: 'nature',
+              text: 'A square has four axes, a circle has an infinite number, and the letter A has only one. A snowflake has six, because of the way its water molecules lock together as they freeze.',
+            },
+            {
+              id: 'presque',
+              text: 'In nature, symmetry is never exact: one wing is always a little different from the other. That is approximate symmetry. Only mathematical shapes are perfectly symmetrical.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'miroir',
+              text: 'In mathematics, a symmetry is a transformation that leaves a shape unchanged. Reflection symmetry is the most familiar: every point is sent to the other side of an axis, at an equal distance and at right angles to it.',
+            },
+            {
+              id: 'pliage',
+              text: 'It is not the only one. Point symmetry turns the shape a half-turn around a point. Rotational symmetry leaves it identical after a turn of a given angle: a five-pointed star is unchanged every seventy-two degrees.',
+            },
+            {
+              id: 'nature',
+              text: 'These symmetries shape matter itself. A salt crystal is cubic because its ions stack in a regular pattern; a snowflake has six branches because water molecules bond at one hundred and four degrees. The visible form reveals an invisible organisation.',
+            },
+            {
+              id: 'presque',
+              text: 'The essential distinction is between the model and the real world. A natural object is never rigorously symmetrical: growth, accidents and surroundings introduce departures. Mathematical symmetry is an ideal that the world approaches, and measuring that gap is often more instructive than the symmetry itself.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The little hairs that stand up',
+        '6-8': 'Goose bumps',
+        '9-12': 'Where goose bumps come from',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you are cold, or a little bit scared, your skin changes.',
+            },
+            {
+              id: 'deux',
+              text: 'Tiny muscles, hidden under your skin, pull on every single hair.',
+            },
+            {
+              id: 'trois',
+              text: 'Then your hairs stand up, and your skin goes all bumpy.',
+            },
+            {
+              id: 'quatre',
+              text: 'On very furry animals, it keeps them warm. On you, it is just a little memory of our ancestors.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you are cold or frightened, your body reacts all by itself, without you even thinking about it.',
+            },
+            {
+              id: 'deux',
+              text: 'Under your skin, tiny muscles tighten up and pull on the root of every hair.',
+            },
+            {
+              id: 'trois',
+              text: 'Each hair stands upright, and a small bump appears around it: those are goose bumps.',
+            },
+            {
+              id: 'quatre',
+              text: 'On a nicely furred animal, the raised hairs trap warm air against the skin. On you, this reflex hardly warms you at all: it is a leftover inherited from far hairier ancestors.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Cold or fear sets off an automatic reaction of the body, commanded by the nervous system.',
+            },
+            {
+              id: 'deux',
+              text: 'Tiny muscles called arrector pili muscles, attached to the base of each hair, contract.',
+            },
+            {
+              id: 'trois',
+              text: 'Each hair stands upright, and the skin forms a small bump all around it.',
+            },
+            {
+              id: 'quatre',
+              text: 'In animals with thick fur, the raised hairs trap an insulating layer of air and hold in the heat. We have far too little hair for that to warm us properly: goose bumps are a reflex inherited from our much hairier ancestors, not real heating.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

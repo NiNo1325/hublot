@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['dinosaures', 'plancton', 'enfoui', 'epuisable'] as const;
+
+const LEGENDES = {
+  fr: {
+    dinosaures: 'pas les dinosaures',
+    plancton: 'du plancton',
+    duree: 'des millions d’années',
+    combustion: 'brûlé en quelques secondes',
+  },
+  en: {
+    dinosaures: 'not the dinosaurs',
+    plancton: 'plankton',
+    duree: 'millions of years',
+    combustion: 'burnt in a few seconds',
+  },
+};
 
 /**
  * Le dinosaure est barré dès la première phase, et le plancton tombe ensuite
@@ -14,9 +30,11 @@ export function PetroleAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -33,7 +51,7 @@ export function PetroleAnimation({
         <path d="M262 40 q10 -22 30 -18 q16 4 14 18 l14 0 l-6 8 l-46 0 z" fill="#4ade80" />
         <line x1="252" y1="46" x2="332" y2="6" stroke="#f87171" strokeWidth="4" />
         <text x="14" y="32" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          pas les dinosaures
+          {legende.dinosaures}
         </text>
       </g>
 
@@ -47,7 +65,7 @@ export function PetroleAnimation({
           </circle>
         ))}
         <text x="14" y="112" fill="#a7f3d0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          du plancton
+          {legende.plancton}
         </text>
       </g>
 
@@ -59,7 +77,7 @@ export function PetroleAnimation({
           <path d="M354 176 L360 192 L366 176 Z" fill="#a16207" />
         </g>
         <text x="14" y="210" fill="#a16207" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des millions d’années
+          {legende.duree}
         </text>
       </g>
 
@@ -71,7 +89,7 @@ export function PetroleAnimation({
           )}
         </path>
         <text x="14" y="234" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          brûlé en quelques secondes
+          {legende.combustion}
         </text>
       </g>
     </svg>

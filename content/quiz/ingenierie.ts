@@ -51,6 +51,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'forme-solide',
+            question: 'Which shape does not change when you push on it?',
+            reponses: [
+              { texte: 'The triangle', icone: '🔺', correcte: true },
+              { texte: 'The square', icone: '🟥' },
+            ],
+            explication: 'The triangle does not budge: it is the strongest shape.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'pourquoi-triangle',
+            question: 'Why can a triangle not change shape?',
+            reponses: [
+              { texte: 'Its angles depend on its sides', icone: '📐', correcte: true },
+              { texte: 'Because it has fewer sides', icone: '🔢' },
+              { texte: 'Because it is smaller', icone: '🤏' },
+            ],
+            explication:
+              'To change its angles, you would have to lengthen a side. A square, on the other hand, turns into a diamond without anything getting longer.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'arc-poussee',
+            question: 'How does an arch pass the load on?',
+            reponses: [
+              { texte: 'In compression, towards its supports', icone: '🌉', correcte: true },
+              { texte: 'In tension, upwards', icone: '⬆️' },
+              { texte: 'In bending, in the middle', icone: '〰️' },
+            ],
+            explication:
+              'The sideways thrust explains the buttresses of cathedrals. A suspension bridge, by contrast, works in tension.',
+          },
+        ],
+      },
     },
   },
   {
@@ -92,6 +131,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'L’explication du « temps de transit égal » est fausse et mesurée comme telle : elle prédit une portance très inférieure à la réalité.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'aile-pousse',
+            question: 'The wing pushes the air down. What does the air do then?',
+            reponses: [
+              { texte: 'It pushes the aeroplane up', icone: '⬆️', correcte: true },
+              { texte: 'It does nothing at all', icone: '🚫' },
+            ],
+            explication: 'When you push something, it pushes you back too.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'vol-inverse',
+            question: 'Can an aeroplane fly upside down?',
+            reponses: [
+              { texte: 'Yes, the wing still turns the air downwards', icone: '✈️', correcte: true },
+              { texte: 'No, the shape of the wing stops it', icone: '🚫' },
+              { texte: 'No, it would drop straight away', icone: '⬇️' },
+            ],
+            explication:
+              'That is the proof that the shape alone does not explain everything: what counts is the air turned downwards.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'temps-transit',
+            question: 'Does the air going over the wing meet the air from below at the trailing edge?',
+            reponses: [
+              { texte: 'No, it arrives well ahead', icone: '⏩', correcte: true },
+              { texte: 'Yes, they meet up exactly', icone: '🤝' },
+              { texte: 'Yes, and that is what creates lift', icone: '📖' },
+            ],
+            explication:
+              'The “equal transit time” explanation is wrong, and measured to be so: it predicts far less lift than is really there.',
           },
         ],
       },
@@ -139,6 +217,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'ou-appuyer',
+            question: 'With a lever, where should you press to make it easy?',
+            reponses: [
+              { texte: 'As far from the pivot as you can', icone: '📏', correcte: true },
+              { texte: 'Right next to the pivot', icone: '🤏' },
+            ],
+            explication: 'The further from the resting point you press, the less you have to strain.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'gain-perte',
+            question: 'A lever gains you force. What do you lose?',
+            reponses: [
+              { texte: 'Distance: your hand goes down a long way', icone: '📐', correcte: true },
+              { texte: 'Nothing at all, it comes free', icone: '🎁' },
+              { texte: 'Only time', icone: '⏱️' },
+            ],
+            explication:
+              'A lever does not create energy, it redistributes it: ten centimetres of hand for one centimetre of load.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'moment-force',
+            question: 'What decides the effect of a force on a rotation?',
+            reponses: [
+              { texte: 'The force multiplied by its distance from the axis', icone: '⚖️', correcte: true },
+              { texte: 'The force on its own', icone: '💪' },
+              { texte: 'The mass of the bar', icone: '🪵' },
+            ],
+            explication:
+              'It is the moment of the force. It also explains why a door handle is fitted far from the hinges.',
+          },
+        ],
+      },
     },
   },
   {
@@ -180,6 +297,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'La puissance est le produit du couple par la vitesse : ce qu’on gagne d’un côté se perd de l’autre, aux frottements près.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'sens-roues',
+            question: 'How do two toothed wheels that touch turn?',
+            reponses: [
+              { texte: 'In opposite directions', icone: '🔄', correcte: true },
+              { texte: 'In the same direction', icone: '➡️' },
+            ],
+            explication: 'When one goes to the right, the other goes to the left.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'rapport-dents',
+            question: 'A 10-tooth wheel drives a 30-tooth wheel. What does the big one do?',
+            reponses: [
+              { texte: 'It turns three times more slowly', icone: '🐢', correcte: true },
+              { texte: 'It turns three times faster', icone: '🐇' },
+              { texte: 'It turns at the same speed', icone: '⚖️' },
+            ],
+            explication:
+              'It turns more slowly but with three times more force: the same bargain as the lever.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'puissance-conservee',
+            question: 'Can a gear increase the power passed on?',
+            reponses: [
+              { texte: 'No, it only redistributes it', icone: '⚖️', correcte: true },
+              { texte: 'Yes, if it has plenty of teeth', icone: '⚙️' },
+              { texte: 'Yes, if it turns very fast', icone: '💨' },
+            ],
+            explication:
+              'Power is torque multiplied by speed: what you gain on one side is lost on the other, friction aside.',
           },
         ],
       },
@@ -227,6 +383,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'pate-forme',
+            question: 'A ball of modelling clay sinks. What if you make a bowl of it?',
+            reponses: [
+              { texte: 'It floats', icone: '🛶', correcte: true },
+              { texte: 'It sinks just the same', icone: '⬇️' },
+            ],
+            explication: 'It is the very same clay: the hollow shape changes everything.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'lourd-flotte',
+            question: 'An aircraft carrier of a hundred thousand tonnes floats. Why?',
+            reponses: [
+              { texte: 'Its hollow hull pushes aside a lot of water', icone: '🚢', correcte: true },
+              { texte: 'Because it is light', icone: '🪶' },
+              { texte: 'Thanks to its engines', icone: '⚙️' },
+            ],
+            explication:
+              'It is not the mass that decides: an iron ball of twenty grams sinks, after all.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'archimede',
+            question: 'What is the upthrust of Archimedes equal to?',
+            reponses: [
+              { texte: 'The weight of the fluid displaced', icone: '💧', correcte: true },
+              { texte: 'The weight of the submerged object', icone: '⚓' },
+              { texte: 'The surface area of the hull', icone: '📐' },
+            ],
+            explication:
+              'At equilibrium it exactly balances the weight of the ship: a vessel of a hundred thousand tonnes displaces a hundred thousand tonnes of water.',
+          },
+        ],
+      },
     },
   },
   {
@@ -267,6 +462,44 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Comme le levier, la poulie échange de la force contre de la distance : le travail se conserve.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'poulie-quoi',
+            question: 'What is a pulley?',
+            reponses: [
+              { texte: 'A wheel with a rope over it', icone: '⚙️', correcte: true },
+              { texte: 'A big magnet', icone: '🧲' },
+            ],
+            explication: 'The rope runs over the wheel, and that helps you pull.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'poulie-fixe',
+            question: 'Does a single fixed pulley make the load lighter?',
+            reponses: [
+              { texte: 'No, it only changes the direction', icone: '🔄', correcte: true },
+              { texte: 'Yes, twice as light', icone: '🪶' },
+              { texte: 'Yes, it takes the weight away', icone: '🚫' },
+            ],
+            explication: 'The real gain comes from several pulleys linked together.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'poulie-echange',
+            question: 'A block and tackle halves the force. What do you pay for it?',
+            reponses: [
+              { texte: 'You pull twice as much rope', icone: '📏', correcte: true },
+              { texte: 'Nothing, it comes free', icone: '🎁' },
+              { texte: 'You only lose time', icone: '⏱️' },
+            ],
+            explication:
+              'Like the lever, a pulley trades force for distance: the work is conserved.',
           },
         ],
       },
@@ -314,6 +547,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'ballon-lache',
+            question: 'You let go of a blown-up balloon. What does it do?',
+            reponses: [
+              { texte: 'It shoots off away from the puff of air', icone: '🎈', correcte: true },
+              { texte: 'It stays where it is', icone: '🚫' },
+            ],
+            explication:
+              'The air comes out one way, the balloon goes the other. A rocket moves in exactly the same way.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'fusee-appui',
+            question: 'What does a rocket lean on to move forward?',
+            reponses: [
+              { texte: 'Nothing: it throws gas out behind it', icone: '🚀', correcte: true },
+              { texte: 'The air, like an oar on water', icone: '🌬️' },
+              { texte: 'The ground, which it pushes away', icone: '⬇️' },
+            ],
+            explication:
+              'It pushes gas downwards, and the gas pushes it upwards. The air outside plays no part at all.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'fusee-vide',
+            question: 'Does a rocket push better in a vacuum or in air?',
+            reponses: [
+              { texte: 'In a vacuum', icone: '🌌', correcte: true },
+              { texte: 'In air, which it leans on', icone: '💨' },
+              { texte: 'Exactly the same in both', icone: '⚖️' },
+            ],
+            explication:
+              'The atmosphere only slows it down. The New York Times, which claimed the opposite in 1920, retracted the day before Apollo 11.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'comment-on-freine',
@@ -354,6 +627,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'L’énergie cinétique varie comme le carré de la vitesse : il y a quatre fois plus d’énergie à dissiper.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'freiner-place',
+            question: 'Do you need more room to stop when you go fast?',
+            reponses: [
+              { texte: 'Yes, a lot more', icone: '📏', correcte: true },
+              { texte: 'No, it is the same', icone: '🟰' },
+            ],
+            explication: 'The faster you go, the more room you need to stop — a lot more.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'roue-bloquee',
+            question: 'Does locking the wheels make you brake faster?',
+            reponses: [
+              { texte: 'No, a sliding wheel brakes worse', icone: '🛞', correcte: true },
+              { texte: 'Yes, that is the hardest braking there is', icone: '🛑' },
+              { texte: 'Yes, but only on a dry road', icone: '☀️' },
+            ],
+            explication:
+              'A locked wheel slides, and you can no longer steer. That is exactly the problem ABS solves.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'distance-carre',
+            question: 'You double the speed: what happens to the braking distance?',
+            reponses: [
+              { texte: 'It quadruples', icone: '4️⃣', correcte: true },
+              { texte: 'It doubles', icone: '2️⃣' },
+              { texte: 'It grows by a third', icone: '➗' },
+            ],
+            explication:
+              'Kinetic energy varies as the square of the speed: there is four times as much energy to dissipate.',
           },
         ],
       },
@@ -400,6 +712,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'frigo-froid',
+            question: 'Does a fridge make cold?',
+            reponses: [
+              { texte: 'No, it takes the heat away', icone: '🌡️', correcte: true },
+              { texte: 'Yes, it makes cold', icone: '❄️' },
+            ],
+            explication: 'It takes the heat that is inside and puts it outside.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'frigo-porte',
+            question: 'If you leave the fridge door open, the kitchen…',
+            reponses: [
+              { texte: 'gets warmer', icone: '🔥', correcte: true },
+              { texte: 'gets cooler', icone: '🧊' },
+              { texte: 'stays the same', icone: '🟰' },
+            ],
+            explication:
+              'The heat taken out comes back into the same room, plus the heat the motor makes.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'frigo-travail',
+            question: 'Why does a refrigerator need electricity?',
+            reponses: [
+              { texte: 'To push the heat back up from cold to hot', icone: '⬆️', correcte: true },
+              { texte: 'To create cold out of nothing', icone: '❄️' },
+              { texte: 'To cool the air by blowing it about', icone: '🌀' },
+            ],
+            explication:
+              'The second law forbids that transfer without work being supplied: that is what the compressor is for.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'le-micro-ondes',
@@ -440,6 +791,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'C’est une cage de Faraday : les ondes de douze centimètres sont réfléchies, la lumière passe.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'micro-milieu',
+            question: 'Does a microwave heat from the middle?',
+            reponses: [
+              { texte: 'No, from the edges', icone: '🔥', correcte: true },
+              { texte: 'Yes, from the middle', icone: '🎯' },
+            ],
+            explication: 'It mostly heats the edge. The middle warms up afterwards, very slowly.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'micro-eau',
+            question: 'What does a microwave set moving?',
+            reponses: [
+              { texte: 'The water inside the food', icone: '💧', correcte: true },
+              { texte: 'The air around the dish', icone: '💨' },
+              { texte: 'The dish itself', icone: '🍽️' },
+            ],
+            explication:
+              'It makes the water molecules spin round billions of times a second: that jiggling is heat.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'porte-grille',
+            question: 'Why does a microwave door have a metal mesh in it?',
+            reponses: [
+              { texte: 'The holes are smaller than the wavelength', icone: '📏', correcte: true },
+              { texte: 'To let the steam out', icone: '💨' },
+              { texte: 'To strengthen the glass', icone: '🛡️' },
+            ],
+            explication:
+              'It is a Faraday cage: the twelve-centimetre waves are reflected, and light goes through.',
           },
         ],
       },

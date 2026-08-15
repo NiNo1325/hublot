@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['decouper', 'atome', 'vide', 'assembler'] as const;
+
+const LEGENDES = {
+  fr: {
+    couper: 'on ne peut plus couper',
+    noyau: 'noyau',
+    vide: 'le reste est vide',
+    repulsion: 'les électrons se repoussent',
+  },
+  en: {
+    couper: 'you cannot cut further',
+    noyau: 'nucleus',
+    vide: 'the rest is empty',
+    repulsion: 'the electrons push apart',
+  },
+};
 
 /**
  * Le noyau est dessiné volontairement minuscule au centre d'un très grand
@@ -14,9 +30,11 @@ export function AtomesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -32,7 +50,7 @@ export function AtomesAnimation({
           <rect key={m.x} x={m.x} y={124 - m.taille / 2} width={m.taille} height={m.taille} rx="3" fill="#d4a373" />
         ))}
         <text x="14" y="32" fill="#d4a373" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          on ne peut plus couper
+          {legende.couper}
         </text>
       </g>
 
@@ -41,7 +59,7 @@ export function AtomesAnimation({
         <circle cx="256" cy="118" r="78" fill="none" stroke="#334155" strokeWidth="2" strokeDasharray="4 6" />
         <circle cx="256" cy="118" r="4" fill="#f87171" />
         <text x="266" y="112" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          noyau
+          {legende.noyau}
         </text>
       </g>
 
@@ -61,7 +79,7 @@ export function AtomesAnimation({
           </circle>
         ))}
         <text x="14" y="210" fill="#64748b" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le reste est vide
+          {legende.vide}
         </text>
       </g>
 
@@ -78,7 +96,7 @@ export function AtomesAnimation({
           </g>
         ))}
         <text x="14" y="234" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          les électrons se repoussent
+          {legende.repulsion}
         </text>
       </g>
     </svg>

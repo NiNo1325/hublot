@@ -15,6 +15,7 @@ import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
+import { useT } from '@/components/i18n/useT';
 
 interface LumiViewProps {
   cards: ScienceCard[];
@@ -34,6 +35,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
   const { cartesVues } = useCartesVues();
   const { cartesMaitrisees } = useCartesMaitrisees();
   const { locale } = useLocale();
+  const t = useT();
   const [rangSel, setRangSel] = useState<number | null>(null);
 
   useEffect(() => {
@@ -68,12 +70,12 @@ export function LumiView({ cards, domains }: LumiViewProps) {
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-10">
       <header className="flex flex-col items-center gap-5">
-        <h1 className="font-display text-3xl font-semibold sm:text-4xl">Ton évolution</h1>
+        <h1 className="font-display text-3xl font-semibold sm:text-4xl">{t('lumi.titre')}</h1>
 
         <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-3xl border-2 border-encre-bord bg-encre-clair px-6 py-5">
           <Lumi rang={rang.index} taille={104} etat="repos" interactif />
           <p className="font-display text-lg text-craie">
-            <span aria-hidden="true">{rang.icone}</span> {rang.nom} —{' '}
+            <span aria-hidden="true">{rang.icone}</span> {localise(rang.nom, locale)} —{' '}
             <span aria-hidden="true">⭐</span> {etoiles}
           </p>
           <div className="w-full">
@@ -83,7 +85,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
               aria-valuemin={0}
               aria-valuemax={100}
               aria-valuenow={Math.round(fraction * 100)}
-              aria-label="Progression vers le rang suivant"
+              aria-label={t('lumi.progression-rang')}
             >
               <div
                 className="h-full rounded-full bg-soleil transition-[width] duration-500"
@@ -92,18 +94,19 @@ export function LumiView({ cards, domains }: LumiViewProps) {
             </div>
             {rangProchain ? (
               <p className="mt-1.5 text-center text-sm text-craie-douce">
-                plus que {reste} <span aria-hidden="true">⭐</span> pour{' '}
-                <span aria-hidden="true">{rangProchain.icone}</span> {rangProchain.nom}
+                {t('lumi.reste')(reste)} <span aria-hidden="true">⭐</span> {t('lumi.pour')}{' '}
+                <span aria-hidden="true">{rangProchain.icone}</span>{' '}
+                {localise(rangProchain.nom, locale)}
               </p>
             ) : (
-              <p className="mt-1.5 text-center text-sm text-soleil">Rang maximum atteint&nbsp;! 🎉</p>
+              <p className="mt-1.5 text-center text-sm text-soleil">{t('lumi.rang-max')}</p>
             )}
           </div>
         </div>
 
         <p className="text-craie-douce">
-          <span aria-hidden="true">🧭</span> {nbExplore}/{domains.length} explorés ·{' '}
-          <span aria-hidden="true">🏅</span> {nbMaitrise}/{domains.length} maîtrisés
+          <span aria-hidden="true">🧭</span>{' '}
+          {t('lumi.bilan')(nbExplore, nbMaitrise, domains.length)}
         </p>
       </header>
 
@@ -114,7 +117,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
           chevauchaient. Les trois rangées partagent `justify-between` avec des
           éléments de 36 px, donc pastilles, barre et seuils restent alignés. */}
       <section className="flex flex-col gap-4">
-        <h2 className="font-display text-lg text-craie">Les rangs de Lumi</h2>
+        <h2 className="font-display text-lg text-craie">{t('lumi.rangs')}</h2>
         <div className="flex flex-col gap-2">
           {/* Les personnages. */}
           <ol className="flex justify-between">
@@ -128,7 +131,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
                     type="button"
                     onClick={() => setRangSel(r.index)}
                     aria-pressed={actif}
-                    aria-label={`${r.nom}, ${r.seuil} étoiles${atteint ? ', atteint' : ''}`}
+                    aria-label={t('lumi.rang-aria')(localise(r.nom, locale), r.seuil, atteint)}
                     className="flex cursor-pointer items-center justify-center"
                   >
                     <span
@@ -174,13 +177,13 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         {/* Légende du rang sélectionné (le rang courant par défaut). */}
         <p aria-live="polite" className="text-center text-sm text-craie">
           <span aria-hidden="true">{selection.icone}</span>{' '}
-          <span className="font-display">{selection.nom}</span>
+          <span className="font-display">{localise(selection.nom, locale)}</span>
           {' — '}
           {selectionAtteinte ? (
-            'atteint ✓'
+            t('lumi.rang-atteint')
           ) : (
             <>
-              plus que {selection.seuil - etoiles} <span aria-hidden="true">⭐</span>
+              {t('lumi.reste')(selection.seuil - etoiles)} <span aria-hidden="true">⭐</span>
             </>
           )}
         </p>
@@ -209,9 +212,8 @@ export function LumiView({ cards, domains }: LumiViewProps) {
                       {localise(domain.labels, locale)}
                     </span>
                     <span className="text-sm text-craie-douce">
-                      <span aria-hidden="true">🧭</span> {vues}/{total} écoutée{total > 1 ? 's' : ''}
-                      {' · '}
-                      <span aria-hidden="true">🏅</span> {reussies}/{total} réussie{total > 1 ? 's' : ''}
+                      <span aria-hidden="true">🧭</span>{' '}
+                      {t('lumi.monde')(vues, reussies, total)}
                     </span>
                   </span>
                 </span>

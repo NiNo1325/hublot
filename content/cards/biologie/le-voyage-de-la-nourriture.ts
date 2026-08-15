@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Where your food goes',
+        '6-8': 'The journey of your food',
+        '9-12': 'Digestion, from the first metre to the last',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'avaler',
+              text: 'When you swallow, the food does not fall down on its own: muscles push it, the way you squeeze a tube of toothpaste.',
+            },
+            {
+              id: 'estomac',
+              text: 'It lands in your stomach, a pouch that mixes it and squashes it until it turns into mush.',
+            },
+            {
+              id: 'intestin',
+              text: 'Then it goes into a very long tube, all curled up. That is where your body takes what it needs to grow.',
+            },
+            {
+              id: 'sortie',
+              text: 'Whatever is no use carries on to the end, and comes out when you go to the toilet.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'avaler',
+              text: 'An astronaut can eat upside down. So food does not go down because it falls: muscles push it all along the tube, like a wave.',
+            },
+            {
+              id: 'estomac',
+              text: 'The stomach is not the end of the journey, only a stop along the way. It kneads the food with an acid liquid and turns it into mush, over two or three hours.',
+            },
+            {
+              id: 'intestin',
+              text: 'The real work comes afterwards, in the small intestine: seven metres of folded tube, lined with thousands of tiny bumps. It is there, and almost only there, that food passes into the blood.',
+            },
+            {
+              id: 'sortie',
+              text: 'The large intestine then takes back the water, and billions of bacteria finish the job. From the meal to the toilet, the journey lasts about a day.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'avaler',
+              text: 'Swallowing is a muscular reflex: the oesophagus drives food along with successive waves of contraction, called peristalsis. Gravity plays no part at all — which is why you can drink lying down, or in weightlessness.',
+            },
+            {
+              id: 'estomac',
+              text: 'The stomach is a chemical grinder, not a place of absorption. Hydrochloric acid and enzymes attack mainly the proteins there; apart from alcohol and a few medicines, almost nothing passes into the blood.',
+            },
+            {
+              id: 'intestin',
+              text: 'Absorption takes place in the small intestine, about seven metres long. Villi and microvilli multiply the exchange surface up to some thirty square metres, the size of a large room. Nutrients and water cross the wall and join the blood.',
+            },
+            {
+              id: 'sortie',
+              text: 'The colon recovers the remaining water and houses a microbiota of several hundred species, which digests fibres our own enzymes cannot cut up. From the meal to the way out, twenty-four to forty-eight hours go by.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

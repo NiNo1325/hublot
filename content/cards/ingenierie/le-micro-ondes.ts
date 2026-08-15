@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The box that makes things hot',
+        '6-8': 'A microwave does not cook from the inside',
+        '9-12': 'Dielectric heating and the Faraday cage',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'de-linterieur',
+              text: 'A microwave does not heat from the middle, whatever people say.',
+            },
+            {
+              id: 'agiter-leau',
+              text: 'It shakes the water that is inside the food. And when things wobble a lot, they get hot.',
+            },
+            {
+              id: 'deux-centimetres',
+              text: 'But it does not go far: just the edge. The middle warms up afterwards, very slowly.',
+            },
+            {
+              id: 'metal',
+              text: 'And never any metal inside: it makes sparks.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'de-linterieur',
+              text: 'People keep saying that a microwave cooks from the inside out. That is wrong — and it is rather the other way round.',
+            },
+            {
+              id: 'agiter-leau',
+              text: 'It gives off waves that make the water molecules in the food spin round on the spot, billions of times a second. That jiggling is exactly what heat is: the food warms up because its water is shaking, not because a flame is touching it.',
+            },
+            {
+              id: 'deux-centimetres',
+              text: 'Only the waves get no further in than a centimetre or two. Past that, it is the heat that creeps slowly towards the middle, just as in an ordinary oven. That is why a thick dish stays cold in the centre, and why you have to stir it and let it stand.',
+            },
+            {
+              id: 'metal',
+              text: 'Two rules then make sense. No metal: the waves build up charges in it that end as sparks. And the mesh on the door is not decoration — its holes are far smaller than the waves, which therefore cannot get out, while light, far finer, goes through without any trouble.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'de-linterieur',
+              text: 'Cooking “from the inside” is a stubborn myth. The energy deposited is greatest at the surface and falls off exponentially towards the centre.',
+            },
+            {
+              id: 'agiter-leau',
+              text: 'The magnetron emits radiation at 2.45 gigahertz. Water molecules, being polar, try to line up with the alternating electric field, and that motion dissipates energy through molecular friction: this is dielectric heating. Fats and sugars respond less, and ice far less than liquid water — hence defrosting in cycles broken up by pauses.',
+            },
+            {
+              id: 'deux-centimetres',
+              text: 'The penetration depth in moist food is of the order of a centimetre. The centre of a thick piece is therefore heated only by conduction, exactly as in a conventional oven. Hence the cold spots, and the importance of the standing time — a matter of food safety as much as of comfort.',
+            },
+            {
+              id: 'metal',
+              text: 'Metal is a problem because of its conductivity: the field induces currents in it and concentrates on the edges, to the point of ionising the air. The mesh on the door, for its part, forms a Faraday cage: its perforations of a few millimetres are far smaller than the twelve-centimetre wavelength, which is therefore reflected — whereas visible light, with a wavelength a hundred thousand times shorter, passes freely.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

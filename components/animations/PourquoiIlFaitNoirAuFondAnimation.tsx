@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    entre: 'la lumière entre',
+    absorbe: 'l’eau l’absorbe',
+    rouge: 'le rouge s’efface',
+    nuit: 'nuit noire, tout en bas',
+  },
+  en: {
+    entre: 'the light comes in',
+    absorbe: 'the water drinks it',
+    rouge: 'red fades first',
+    nuit: 'pitch dark at the bottom',
+  },
+};
 
 /**
  * Une colonne de profondeur : la lumière entre par le haut, s'absorbe peu à
@@ -14,11 +30,13 @@ export function PourquoiIlFaitNoirAuFondAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
-  const legende = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const apparition = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -37,8 +55,8 @@ export function PourquoiIlFaitNoirAuFondAnimation({
             )}
           </line>
         ))}
-        <text x="60" y="236" fill="#fef3c7" fontSize="14" fontFamily={police} style={legende(0)}>
-          la lumière entre
+        <text x="60" y="236" fill="#fef3c7" fontSize="14" fontFamily={police} style={apparition(0)}>
+          {legende.entre}
         </text>
       </g>
 
@@ -51,8 +69,8 @@ export function PourquoiIlFaitNoirAuFondAnimation({
             )}
           </line>
         ))}
-        <text x="60" y="140" fill="#fde68a" fontSize="14" fontFamily={police} style={legende(1)}>
-          l’eau l’absorbe
+        <text x="60" y="140" fill="#fde68a" fontSize="14" fontFamily={police} style={apparition(1)}>
+          {legende.absorbe}
         </text>
       </g>
 
@@ -63,16 +81,16 @@ export function PourquoiIlFaitNoirAuFondAnimation({
         <rect x="60" y="74" width="300" height="18" fill="#facc15" />
         <rect x="60" y="96" width="300" height="26" fill="#22c55e" />
         <rect x="60" y="126" width="300" height="60" fill="#0ea5e9" />
-        <text x="60" y="210" fill="#ef4444" fontSize="14" fontFamily={police} style={legende(2)}>
-          le rouge s’efface
+        <text x="60" y="210" fill="#ef4444" fontSize="14" fontFamily={police} style={apparition(2)}>
+          {legende.rouge}
         </text>
       </g>
 
       {/* Phase 4 : au-delà, obscurité totale */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <rect x="40" y="186" width="320" height="42" fill="#000000" />
-        <text x="60" y="212" fill="#94a3b8" fontSize="14" fontFamily={police} style={legende(3)}>
-          nuit noire, tout en bas
+        <text x="60" y="212" fill="#94a3b8" fontSize="14" fontFamily={police} style={apparition(3)}>
+          {legende.nuit}
         </text>
       </g>
     </svg>

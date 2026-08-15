@@ -1,9 +1,15 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['lune-eclairee', 'moitie', 'tour', 'formes'] as const;
+
+const LEGENDES = {
+  fr: { vuDepuisLaTerre: 'vu depuis la Terre' },
+  en: { vuDepuisLaTerre: 'seen from Earth' },
+};
 
 /**
  * La dernière phase montre les quatre aspects vus depuis la Terre, avec des
@@ -14,9 +20,11 @@ export function PhasesLuneAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -81,7 +89,7 @@ export function PhasesLuneAnimation({
         ))}
         <circle cx="284" cy="192" r="16" fill="#f5f0e6" />
         <text x="239" y="222" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          vu depuis la Terre
+          {legende.vuDepuisLaTerre}
         </text>
       </g>
     </svg>

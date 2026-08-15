@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['observer', 'eau-air', 'transformation', 'protection'] as const;
+
+/* Les légendes nomment les deux ingrédients et la transformation : du contenu.
+   Le typage impose à `en` de reprendre exactement les clés de `fr`. */
+const LEGENDES = {
+  fr: {
+    eau: 'eau',
+    oxygene: '+ oxygène de l’air',
+    transformation: 'le fer se transforme',
+    protection: 'la peinture le protège',
+  },
+  en: {
+    eau: 'water',
+    oxygene: '+ oxygen from air',
+    transformation: 'the iron changes',
+    protection: 'paint protects it',
+  },
+};
 
 /**
  * Les deux ingrédients — eau et air — sont montrés ensemble : la carte corrige
@@ -14,11 +32,13 @@ export function RouilleAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const rouille = phase >= 2;
   const protege = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -53,7 +73,7 @@ export function RouilleAnimation({
           </path>
         ))}
         <text x="96" y="34" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          eau
+          {legende.eau}
         </text>
         {/* Air / oxygène */}
         {[250, 285, 320].map((x, i) => (
@@ -64,7 +84,7 @@ export function RouilleAnimation({
           </circle>
         ))}
         <text x="248" y="30" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          + oxygène de l’air
+          {legende.oxygene}
         </text>
       </g>
 
@@ -78,14 +98,14 @@ export function RouilleAnimation({
           </rect>
         ))}
         <text x="120" y="210" fill="#b45309" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le fer se transforme
+          {legende.transformation}
         </text>
       </g>
 
       {/* La protection */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="120" y="230" fill="#a855f7" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          la peinture le protège
+          {legende.protection}
         </text>
       </g>
     </svg>

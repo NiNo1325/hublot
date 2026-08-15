@@ -1,11 +1,23 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['lumiere-blanche', 'decomposition', 'absorption', 'noir'] as const;
 
 const SPECTRE = ['#ef4444', '#f97316', '#facc15', '#22c55e', '#38bdf8', '#6366f1', '#a855f7'];
+
+const LEGENDES = {
+  fr: {
+    rouge: 'seul le rouge repart',
+    noir: 'sans lumière, aucune couleur',
+  },
+  en: {
+    rouge: 'only red comes back',
+    noir: 'no light, no colour',
+  },
+};
 
 /**
  * La pomme est dessinée grise sous le faisceau, et seul le rayon rouge en
@@ -15,10 +27,12 @@ export function CouleursAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const eteint = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -60,7 +74,7 @@ export function CouleursAnimation({
             <line x1="286" y1="150" x2="238" y2="150" stroke="#ef4444" strokeWidth="4" strokeLinecap="round" />
             <path d="M244 142 L230 150 L244 158 Z" fill="#ef4444" />
             <text x="216" y="182" fill="#ef4444" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-              seul le rouge repart
+              {legende.rouge}
             </text>
           </>
         )}
@@ -69,7 +83,7 @@ export function CouleursAnimation({
       {/* Sans lumière, pas de couleur */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="120" y="220" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          sans lumière, aucune couleur
+          {legende.noir}
         </text>
       </g>
     </svg>

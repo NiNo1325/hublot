@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['reserves', 'ralenti', 'economie', 'reveil'] as const;
+
+const LEGENDES = {
+  fr: {
+    reserves: 'faire des réserves',
+    ralenti: 'cœur lent, corps froid',
+    economie: 'presque zéro énergie',
+    reveil: 'réveil au printemps',
+  },
+  en: {
+    reserves: 'building up reserves',
+    ralenti: 'slow heart, cold body',
+    economie: 'almost zero energy',
+    reveil: 'waking up in spring',
+  },
+};
 
 /**
  * L'hibernation n'est pas un long sommeil : le corps se met au ralenti extrême.
@@ -14,10 +30,12 @@ export function HibernationAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -40,7 +58,7 @@ export function HibernationAnimation({
         <rect x="114" y="64" width="12" height="6" rx="2" fill="#5b3a18" />
         <line x1="132" y1="88" x2="176" y2="128" stroke="#a3e635" strokeWidth="3" />
         <path d="M170 120 L180 130 L166 132 Z" fill="#a3e635" />
-        <text x="20" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>faire des réserves</text>
+        <text x="20" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.reserves}</text>
       </g>
 
       {/* Phase 2 : le ralenti — cœur lent + thermomètre bas */}
@@ -56,7 +74,7 @@ export function HibernationAnimation({
           <rect x="-2" y="4" width="4" height="10" fill="#38bdf8" />
           <circle cx="0" cy="18" r="7" fill="#38bdf8" />
         </g>
-        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>cœur lent, corps froid</text>
+        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>{legende.ralenti}</text>
       </g>
 
       {/* Phase 3 : l'économie — presque zéro énergie, pas un simple dodo */}
@@ -71,7 +89,7 @@ export function HibernationAnimation({
           <text x="0" y="0" fill="#93a4c4" fontSize="20" fontFamily={police}>Zzz</text>
           <line x1="-6" y1="-16" x2="42" y2="6" stroke="#f43f5e" strokeWidth="4" />
         </g>
-        <text x="220" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>presque zéro énergie</text>
+        <text x="220" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.economie}</text>
       </g>
 
       {/* Phase 4 : le réveil au printemps */}
@@ -83,7 +101,7 @@ export function HibernationAnimation({
         })}
         <circle cx="192" cy="146" r="2.6" fill="#0f1b12" />
         <circle cx="208" cy="146" r="2.6" fill="#0f1b12" />
-        <text x="220" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>réveil au printemps</text>
+        <text x="220" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>{legende.reveil}</text>
       </g>
     </svg>
   );

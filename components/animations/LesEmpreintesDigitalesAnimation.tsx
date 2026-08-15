@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    tourbillons: 'plein de tourbillons',
+    avantNaissance: 'formé avant ta naissance',
+    attraper: 'ça aide à attraper',
+    unique: 'personne n’a le même',
+  },
+  en: {
+    tourbillons: 'lots of little swirls',
+    avantNaissance: 'formed before you were born',
+    attraper: 'it helps you grip',
+    unique: 'nobody has the same',
+  },
+};
 
 /** Cinq boucles concentriques et décalées : un tourbillon, pas des cercles parfaits. */
 const BOUCLES = [
@@ -31,10 +47,12 @@ export function LesEmpreintesDigitalesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -53,14 +71,14 @@ export function LesEmpreintesDigitalesAnimation({
             <animateTransform attributeName="transform" type="rotate" values="0 200 110;360 200 110" dur="6s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="20" y="34" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>plein de tourbillons</text>
+        <text x="20" y="34" fill="#f9a8d4" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.tourbillons}</text>
       </g>
 
       {/* Phase 2 : formé avant la naissance */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <circle cx="80" cy="180" r="30" fill="#7c3f56" />
         <path d="M80 168 Q92 170 92 180 Q92 190 80 188" fill="none" stroke="#fbcfe8" strokeWidth="2" />
-        <text x="20" y="228" fill="#fbcfe8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>formé avant ta naissance</text>
+        <text x="20" y="228" fill="#fbcfe8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.avantNaissance}</text>
       </g>
 
       {/* Phase 3 : ça aide à attraper */}
@@ -71,7 +89,7 @@ export function LesEmpreintesDigitalesAnimation({
           )}
         </circle>
         <path d="M296 118 l-14 -6 M296 142 l-14 6" stroke="#4ade80" strokeWidth="2.5" />
-        <text x="250" y="200" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>ça aide à attraper</text>
+        <text x="250" y="200" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.attraper}</text>
       </g>
 
       {/* Phase 4 : unique, même entre jumeaux */}
@@ -82,7 +100,7 @@ export function LesEmpreintesDigitalesAnimation({
             <path key={d} d={d} fill="none" stroke="#be5b7a" strokeWidth="4" opacity="0.5" />
           ))}
         </g>
-        <text x="20" y="222" fill="#38bdf8" fontSize="14" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>personne n’a le même</text>
+        <text x="20" y="222" fill="#38bdf8" fontSize="14" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.unique}</text>
       </g>
     </svg>
   );

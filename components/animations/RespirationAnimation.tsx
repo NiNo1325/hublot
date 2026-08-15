@@ -1,9 +1,28 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['muscle', 'poumons', 'oxygene', 'expirer'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor. Le typage
+  impose à `en` de reprendre exactement les clés du français : une légende
+  oubliée ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    diaphragme: 'le diaphragme commande',
+    oxygene: 'O₂ vers le sang',
+    co2: 'CO₂ ressort',
+  },
+  en: {
+    diaphragme: 'the diaphragm is in charge',
+    oxygene: 'O₂ to the blood',
+    co2: 'CO₂ goes out',
+  },
+};
 
 /**
  * Le diaphragme s'abaisse à l'inspiration et les poumons se gonflent en même
@@ -14,9 +33,11 @@ export function RespirationAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -56,7 +77,7 @@ export function RespirationAnimation({
           )}
         </path>
         <text x="128" y="192" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le diaphragme commande
+          {legende.diaphragme}
         </text>
       </g>
 
@@ -68,7 +89,7 @@ export function RespirationAnimation({
           )}
         </circle>
         <text x="286" y="70" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          O₂ vers le sang
+          {legende.oxygene}
         </text>
       </g>
 
@@ -79,7 +100,7 @@ export function RespirationAnimation({
           )}
         </circle>
         <text x="14" y="70" fill="#9ca3af" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          CO₂ ressort
+          {legende.co2}
         </text>
       </g>
     </svg>

@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    couteau: 'le couteau coupe',
+    gaz: 'un gaz s’échappe',
+    monte: 'il monte vers l’œil',
+    larmes: 'l’œil pleure pour se laver',
+  },
+  en: {
+    couteau: 'the knife cuts',
+    gaz: 'a gas escapes',
+    monte: 'it rises to the eye',
+    larmes: 'the eye cries to wash itself',
+  },
+};
 
 /**
  * La coupe brise les cellules de l'oignon et libère une substance soufrée qui
@@ -14,10 +30,12 @@ export function PourquoiLoignonFaitPleurerAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -42,7 +60,7 @@ export function PourquoiLoignonFaitPleurerAnimation({
         <path d="M60 100 L110 148 L64 152 Z" fill="#cbd5e1">
           {anime && <animate attributeName="opacity" values="1;0.4;1" dur="1.4s" repeatCount="indefinite" />}
         </path>
-        <text x="20" y="200" fill="#cbd5e1" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>le couteau coupe</text>
+        <text x="20" y="200" fill="#cbd5e1" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.couteau}</text>
       </g>
 
       {/* Phase 2 : un gaz soufré s'échappe de la coupe */}
@@ -52,7 +70,7 @@ export function PourquoiLoignonFaitPleurerAnimation({
             {anime && <animate attributeName="cy" values="140;120" dur="1.6s" begin={`${i * 0.3}s`} repeatCount="indefinite" />}
           </circle>
         ))}
-        <text x="20" y="200" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>un gaz s’échappe</text>
+        <text x="20" y="200" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.gaz}</text>
       </g>
 
       {/* Phase 3 : le gaz monte jusqu'au visage */}
@@ -65,7 +83,7 @@ export function PourquoiLoignonFaitPleurerAnimation({
             )}
           </circle>
         ))}
-        <text x="20" y="200" fill="#86efac" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>il monte vers l’œil</text>
+        <text x="20" y="200" fill="#86efac" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.monte}</text>
       </g>
 
       {/* Phase 4 : les larmes coulent pour rincer l'œil */}
@@ -75,7 +93,7 @@ export function PourquoiLoignonFaitPleurerAnimation({
             <animate attributeName="opacity" values="0;1;1;0" dur="1.8s" repeatCount="indefinite" />
           )}
         </path>
-        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>l’œil pleure pour se laver</text>
+        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.larmes}</text>
       </g>
     </svg>
   );

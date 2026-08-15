@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['lourd', 'boule', 'creux', 'place'] as const;
+
+const LEGENDES = {
+  fr: {
+    boule: 'en boule : coule',
+    coque: 'en coque : flotte',
+    eau: 'l’eau',
+    repousse: 'repousse',
+    place: 'ce qui compte : la place occupée',
+  },
+  en: {
+    boule: 'a ball: it sinks',
+    coque: 'a hull: it floats',
+    eau: 'the water',
+    repousse: 'pushes up',
+    place: 'what counts: the room taken up',
+  },
+};
 
 /**
  * La boule coule et la coque flotte, avec la même matière : c'est la
@@ -13,9 +31,11 @@ export function FlottaisonAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -33,7 +53,7 @@ export function FlottaisonAnimation({
           )}
         </circle>
         <text x="46" y="228" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          en boule : coule
+          {legende.boule}
         </text>
       </g>
 
@@ -45,7 +65,7 @@ export function FlottaisonAnimation({
           )}
         </path>
         <text x="196" y="84" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          en coque : flotte
+          {legende.coque}
         </text>
       </g>
 
@@ -58,13 +78,13 @@ export function FlottaisonAnimation({
           </g>
         ))}
         <text x="312" y="164" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l&apos;eau
+          {legende.eau}
         </text>
         <text x="312" y="180" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          repousse
+          {legende.repousse}
         </text>
         <text x="103" y="34" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          ce qui compte : la place occupée
+          {legende.place}
         </text>
       </g>
     </svg>

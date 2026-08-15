@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The water that squashes',
+        '6-8': 'The pressure that crushes',
+        '9-12': 'Pressure, an invisible weight',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The deeper we go in the sea, the more water there is above us.',
+            },
+            {
+              id: 'deux',
+              text: 'All that water is heavy, and it pushes very hard.',
+            },
+            {
+              id: 'trois',
+              text: 'Very deep down, it would squash a soft little body.',
+            },
+            {
+              id: 'quatre',
+              text: 'To go right to the bottom, you need a very strong submarine.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Every metre you go down adds still more water above your head.',
+            },
+            {
+              id: 'deux',
+              text: 'All that weight of water presses in from every side at once: that is what we call pressure.',
+            },
+            {
+              id: 'trois',
+              text: 'The deeper you go, the higher the pressure, and far down it can crush anything that is not strong enough, even with plenty of air in reserve.',
+            },
+            {
+              id: 'quatre',
+              text: 'That is why the submarines that explore the deep sea are built with thick, very tough walls.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Water pressure increases with depth, because it is the weight of the whole column of water sitting above.',
+            },
+            {
+              id: 'deux',
+              text: 'Roughly every ten metres, the pressure rises by about one atmosphere, the weight of the air around us at the surface.',
+            },
+            {
+              id: 'trois',
+              text: 'At the bottom of the great ocean trenches, eleven thousand metres down, the pressure is over a thousand times that at the surface — enough to crush an unprepared object in an instant, whatever air supply it carries.',
+            },
+            {
+              id: 'quatre',
+              text: 'The submersibles able to reach those depths have a spherical hull of titanium or very thick steel, the only shape that spreads such an enormous pressure evenly.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

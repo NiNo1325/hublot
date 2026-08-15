@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Heads or tails',
+        '6-8': 'Chance',
+        '9-12': 'Probability and the law of large numbers',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'lancer',
+              text: 'When you toss a coin, you cannot know beforehand whether it will be heads or tails.',
+            },
+            {
+              id: 'memoire',
+              text: 'Even if you have had heads five times in a row, the coin does not remember it at all.',
+            },
+            {
+              id: 'chance-egale',
+              text: 'On every new toss, heads and tails have exactly the same chance of coming up. Always.',
+            },
+            {
+              id: 'beaucoup',
+              text: 'But if you toss for a very long time, you will get about as many heads as tails.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'lancer',
+              text: 'A probability measures the chance of something happening. For a fair coin, heads has one chance in two.',
+            },
+            {
+              id: 'memoire',
+              text: 'Lots of people think that after five heads in a row, tails “has to” come up. That is wrong: the coin has no memory. The probability is still one in two, exactly as on the first toss.',
+            },
+            {
+              id: 'chance-egale',
+              text: 'Every toss is independent of the ones before. Five heads in a row happens once in thirty-two — it is rare, but it is not abnormal, and above all it changes nothing about the next toss.',
+            },
+            {
+              id: 'beaucoup',
+              text: 'Over a very large number of tosses, the proportion of heads gets close to half. Careful, though: this is not the past tosses being made up for, it is simply that a gap of ten becomes tiny once you have tossed a million times.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'lancer',
+              text: 'The probability of an event is the ratio of favourable cases to possible cases, when those cases are equally likely. With a six-sided die, getting an even number is three out of six, that is one half.',
+            },
+            {
+              id: 'memoire',
+              text: 'Two events are independent when the outcome of one does not change the probability of the other. Believing that a run of heads makes tails more likely is the gambler’s fallacy — a piece of reasoning that has ruined many a player.',
+            },
+            {
+              id: 'chance-egale',
+              text: 'The probability of five heads in a row is a half to the power five, about three per cent. But once those five heads have come up, the sixth toss is still a half: the past is over, only the present state of the system counts.',
+            },
+            {
+              id: 'beaucoup',
+              text: 'The law of large numbers states that the observed frequency converges towards the theoretical probability as the number of trials grows. One essential subtlety: it is the relative frequency that converges, not the absolute gap, which actually tends to grow. Chance does not correct itself, it dilutes itself.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    chair: 'la chair touche l’air',
+    oxygene: 'l’oxygène les rencontre',
+    marron: 'ça devient marron',
+    citron: 'le citron la ralentit',
+  },
+  en: {
+    chair: 'the flesh meets the air',
+    oxygene: 'oxygen meets them',
+    marron: 'it turns brown',
+    citron: 'lemon slows it down',
+  },
+};
 
 /**
  * Couper la pomme met en contact ses enzymes et l'oxygène de l'air, qui
@@ -14,10 +30,12 @@ export function PourquoiLaPommeBrunitAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -33,7 +51,7 @@ export function PourquoiLaPommeBrunitAnimation({
         <line x1="200" y1="70" x2="200" y2="200" stroke="#fefce8" strokeWidth="3" strokeDasharray="6 4">
           {anime && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.4s" repeatCount="indefinite" />}
         </line>
-        <text x="40" y="222" fill="#fefce8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>la chair touche l’air</text>
+        <text x="40" y="222" fill="#fefce8" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.chair}</text>
       </g>
 
       {/* Phase 2 : l'oxygène rencontre les enzymes */}
@@ -44,7 +62,7 @@ export function PourquoiLaPommeBrunitAnimation({
           </circle>
         ))}
         <circle cx="180" cy="130" r="6" fill="none" stroke="#fbbf24" strokeWidth="2" />
-        <text x="34" y="222" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>l’oxygène les rencontre</text>
+        <text x="34" y="222" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.oxygene}</text>
       </g>
 
       {/* Phase 3 : ça devient marron */}
@@ -52,7 +70,7 @@ export function PourquoiLaPommeBrunitAnimation({
         <path d="M200 76 Q150 78 150 140 Q150 194 200 194 Z" fill="#92400e">
           {anime && phase === 2 && <animate attributeName="opacity" values="0.4;1;0.4" dur="1.6s" repeatCount="indefinite" />}
         </path>
-        <text x="86" y="222" fill="#92400e" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>ça devient marron</text>
+        <text x="86" y="222" fill="#92400e" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.marron}</text>
       </g>
 
       {/* Phase 4 : le citron ralentit le brunissement */}
@@ -60,7 +78,7 @@ export function PourquoiLaPommeBrunitAnimation({
         <path d="M200 76 Q150 78 150 140 Q150 194 200 194 Z" fill="#d6a35c" />
         <circle cx="170" cy="100" r="10" fill="#fde047" />
         <path d="M164 100 q6 -8 12 0" stroke="#a16207" strokeWidth="2" fill="none" />
-        <text x="56" y="222" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>le citron la ralentit</text>
+        <text x="56" y="222" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.citron}</text>
       </g>
     </svg>
   );

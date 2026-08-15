@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The sheep pen',
+        '6-8': 'The fence and the room inside',
+        '9-12': 'Perimeter and area: two different things',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'corde',
+              text: 'With a piece of string, you make a pen for your sheep. The string never changes length.',
+            },
+            {
+              id: 'long-et-fin',
+              text: 'If the pen is very long and very thin, there is almost no room inside. Two sheep, and it is already full.',
+            },
+            {
+              id: 'carre',
+              text: 'With the same string, you make a square. And now many more sheep fit inside!',
+            },
+            {
+              id: 'rond',
+              text: 'Best of all is a circle. Still the same string, and even more room.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'corde',
+              text: 'Two fields can have exactly the same length of fence and not at all the same area. It sounds impossible, and yet you can check it with a twenty-metre piece of string.',
+            },
+            {
+              id: 'long-et-fin',
+              text: 'Make a rectangle nine metres by one. The way round really is twenty metres — and there are only nine square metres inside.',
+            },
+            {
+              id: 'carre',
+              text: 'With the same string, make a square five metres along each side. The way round is still twenty metres, but the area is twenty-five square metres: nearly three times more, without a single extra centimetre of string.',
+            },
+            {
+              id: 'rond',
+              text: 'And as a circle, you reach nearly thirty-two square metres. So the way round tells you nothing about the room inside: the more compact the shape, the more it holds.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'corde',
+              text: 'Perimeter and area are two independent quantities. We link them instinctively — bigger perimeter, bigger area — and the mistake is remarkably resistant to teaching.',
+            },
+            {
+              id: 'long-et-fin',
+              text: 'The counter-example takes two rectangles of the same perimeter, twenty metres. Nine by one encloses nine square metres. Flatten it further, nine point five by nought point five: the perimeter has not moved by a centimetre, and the area has fallen below five square metres. You can make it tend towards zero at constant perimeter.',
+            },
+            {
+              id: 'carre',
+              text: 'In the other direction there is a limit. For a fixed perimeter, the rectangle of greatest area is the square: five by five, twenty-five square metres. You cannot do better with four right angles.',
+            },
+            {
+              id: 'rond',
+              text: 'Allowing every possible shape, the maximum is the disc — about thirty-one point eight square metres for the same twenty-metre perimeter. This is the isoperimetric problem, known since antiquity and proved only in the nineteenth century. It is also why a soap bubble is round: it encloses its volume with the least possible surface.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

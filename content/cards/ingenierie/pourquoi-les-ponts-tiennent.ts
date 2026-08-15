@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The bridge that does not fall down',
+        '6-8': 'Why bridges stay up',
+        '9-12': 'Forces and structures',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'poids',
+              text: 'When a car drives over a bridge, it presses down on it very hard. And yet the bridge does not break.',
+            },
+            {
+              id: 'carre',
+              text: 'If you make a square out of four straws, you can squash it ever so gently: it leans over to one side.',
+            },
+            {
+              id: 'triangle',
+              text: 'But a triangle made of three straws will not budge, however hard you push. The triangle is the strongest shape.',
+            },
+            {
+              id: 'repartition',
+              text: 'So bridges are built with lots of triangles. Each one carries a little bit of the weight, and all together they are very strong.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'poids',
+              text: 'A bridge has to hold up its own weight, plus the weight of everything that crosses it. That weight presses downwards, all the time.',
+            },
+            {
+              id: 'carre',
+              text: 'Make a square out of four sticks joined at the corners: it squashes easily into a diamond. Its angles can change without the sticks getting any longer.',
+            },
+            {
+              id: 'triangle',
+              text: 'A triangle, on the other hand, cannot change shape. To change its angles, you would have to lengthen or shorten one of its sides. That is why the triangle is the basic shape of almost every roof frame and crane.',
+            },
+            {
+              id: 'repartition',
+              text: 'Arches work differently: they slide the weight along their curve down to the piers, and then down to the ground. The ground holds everything — and that is why the shape of a bridge counts as much as the material it is made of.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'poids',
+              text: 'A bridge carries two kinds of load: its dead load, that is to say its own weight, and its live load, that of vehicles, wind or snow. The structure has to take both without deforming for good.',
+            },
+            {
+              id: 'carre',
+              text: 'A hinged quadrilateral is not rigid: its angles can vary while the lengths of its sides stay the same. Under a sideways load, it turns into a diamond and collapses.',
+            },
+            {
+              id: 'triangle',
+              text: 'The triangle is the only figure that cannot be deformed: the lengths of its three sides fix its angles entirely. A triangulated structure then works only in tension and compression, two kinds of loading that materials withstand far better than bending.',
+            },
+            {
+              id: 'repartition',
+              text: 'An arch turns the vertical load into compression directed towards its supports — hence the buttresses of cathedrals, which take up the sideways thrust. A suspension bridge reverses the principle: the cables work in tension and pass the load on to the towers and then to the anchorages. Three solutions, one and the same problem: leading the forces down to the ground.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

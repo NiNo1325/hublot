@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Soap and dirty hands',
+        '6-8': 'Why soap cleans',
+        '9-12': 'Soap: a molecule with two ends',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'gras',
+              text: 'Your hands are covered in grease. You hold them under the water: the water slides off, and the grease stays.',
+            },
+            {
+              id: 'deux-bouts',
+              text: 'Soap has a secret. Each of its tiny little bits loves water on one side, and grease on the other.',
+            },
+            {
+              id: 'entourer',
+              text: 'So they come and surround the greasy patch and grab it from every side.',
+            },
+            {
+              id: 'emporter',
+              text: 'Now the water can carry it away. The soap has killed nothing: it has unstuck the dirt.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'gras',
+              text: 'Water on its own does not remove grease: the two do not mix, like the oil and vinegar you shake up and which separate again at once.',
+            },
+            {
+              id: 'deux-bouts',
+              text: 'A soap molecule has two opposite ends: a head that adores water, and a long tail that adores grease. It is this double nature that does all the work.',
+            },
+            {
+              id: 'entourer',
+              text: 'The tails dive into the drop of grease, and the heads stay turned towards the water. The dirt ends up shut inside a tiny bubble, loved by the water all around it.',
+            },
+            {
+              id: 'emporter',
+              text: 'Rinsing carries these bubbles off, and the grease with them. The soap has destroyed nothing: it has acted as a go-between for two things that push each other away.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'gras',
+              text: 'Water is a polar molecule, fats are not: they do not attract one another, and water flows around grease instead of dissolving it. Rubbing harder changes nothing.',
+            },
+            {
+              id: 'deux-bouts',
+              text: 'A soap is a surfactant: a long hydrophobic carbon chain ending in a hydrophilic ionic head. The same molecule is therefore at home in both environments at once.',
+            },
+            {
+              id: 'entourer',
+              text: 'Above a certain concentration, these molecules organise themselves spontaneously into micelles: the tails imprison the droplet of grease, the heads form a surface that water accepts. The dirt becomes something the water can carry.',
+            },
+            {
+              id: 'emporter',
+              text: 'Rinsing flushes the micelles away. So the soap has killed nothing and dissolved nothing — it has lowered the tension between water and grease. Against enveloped viruses, however, it does more: their envelope is greasy too, so it breaks it apart.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

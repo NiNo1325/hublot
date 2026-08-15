@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['question', 'pas-camouflage', 'mouches', 'moins-piques'] as const;
+
+const LEGENDES = {
+  fr: {
+    question: 'pourquoi ces rayures ?',
+    camouflage: 'il se voit de loin',
+    mouches: 'les mouches dérapent',
+    piques: 'moins de piqûres',
+  },
+  en: {
+    question: 'why these stripes?',
+    camouflage: 'it is seen from afar',
+    mouches: 'the flies skid off',
+    piques: 'fewer bites',
+  },
+};
 
 /**
  * Les rayures ne servent pas à se camoufler (le zèbre se voit de loin dans la
@@ -14,10 +30,12 @@ export function ZebreAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -46,13 +64,13 @@ export function ZebreAnimation({
       {/* Phase 1 : la question */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <text x="250" y="70" fill="#1f2937" fontSize="34" fontFamily={police}>?</text>
-        <text x="20" y="200" fill="#1f2937" fontSize="15" fontFamily={police}>pourquoi ces rayures ?</text>
+        <text x="20" y="200" fill="#1f2937" fontSize="15" fontFamily={police}>{legende.question}</text>
       </g>
 
       {/* Phase 2 : pas un camouflage — il se voit de loin */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <ellipse cx="170" cy="112" rx="80" ry="44" fill="none" stroke="#f43f5e" strokeWidth="3" strokeDasharray="7 6" />
-        <text x="20" y="224" fill="#7f1d1d" fontSize="15" fontFamily={police}>il se voit de loin</text>
+        <text x="20" y="224" fill="#7f1d1d" fontSize="15" fontFamily={police}>{legende.camouflage}</text>
       </g>
 
       {/* Phase 3 : les mouches dérapent sur les rayures */}
@@ -65,7 +83,7 @@ export function ZebreAnimation({
             </circle>
           </g>
         ))}
-        <text x="230" y="200" fill="#0f172a" fontSize="15" fontFamily={police}>les mouches dérapent</text>
+        <text x="230" y="200" fill="#0f172a" fontSize="15" fontFamily={police}>{legende.mouches}</text>
       </g>
 
       {/* Phase 4 : moins de piqûres */}
@@ -74,7 +92,7 @@ export function ZebreAnimation({
           <circle r="20" fill="#f5f5f5" />
           <path d="M-9 2 l6 6 l12 -14" stroke="#16a34a" strokeWidth="4" fill="none" />
         </g>
-        <text x="230" y="224" fill="#14532d" fontSize="15" fontFamily={police}>moins de piqûres</text>
+        <text x="230" y="224" fill="#14532d" fontSize="15" fontFamily={police}>{legende.piques}</text>
       </g>
     </svg>
   );

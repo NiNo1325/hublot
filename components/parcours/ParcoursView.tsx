@@ -15,6 +15,7 @@ import { Lumi } from '@/components/mascotte/Lumi';
 import { CardModal } from '@/components/cards/CardModal';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
+import { useT } from '@/components/i18n/useT';
 import { QuestionUnique } from './QuestionUnique';
 
 interface ParcoursViewProps {
@@ -43,6 +44,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   const { cartesVues } = useCartesVues();
   const { etoiles } = useEtoiles();
   const { locale } = useLocale();
+  const t = useT();
   const [session, setSession] = useState<Session | null>(null);
 
   const ordre = useMemo(() => ordreParcours(cards, domains), [cards, domains]);
@@ -82,9 +84,9 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
       <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-6 py-10">
         <header className="flex flex-col items-center gap-2 text-center">
           <Lumi rang={rang.index} taille={72} etat="repos" />
-          <h1 className="font-display text-3xl font-semibold sm:text-4xl">Ton aventure</h1>
+          <h1 className="font-display text-3xl font-semibold sm:text-4xl">{t('parcours.titre')}</h1>
           <p className="text-sm text-craie-douce">
-            Lumi t’accompagne, une carte après l’autre · {decouvertes}/{ordre.length} découvertes
+            {t('parcours.avancement')(decouvertes, ordre.length)}
           </p>
         </header>
 
@@ -95,22 +97,21 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
             onClick={() => setSession({ carte: prochaine, phase: 'decouverte' })}
             className="flex cursor-pointer flex-col gap-1 rounded-3xl border-2 border-soleil bg-soleil/10 p-5 text-left transition-transform hover:scale-[1.01] active:scale-95"
           >
-            <span className="text-sm text-craie-douce">Prochaine étape</span>
+            <span className="text-sm text-craie-douce">{t('parcours.prochaine')}</span>
             <span className="flex items-center gap-3 font-display text-xl text-soleil">
               <span aria-hidden="true">
                 {domains.find((d) => d.id === prochaine.domainId)?.icon}
               </span>
               {localise(prochaine.content, locale).title[ageRange]}
             </span>
-            <span className="mt-1 font-display text-base text-craie">Continuer&nbsp;→</span>
+            <span className="mt-1 font-display text-base text-craie">{t('parcours.continuer')}</span>
           </button>
         ) : (
           <div className="flex flex-col items-center gap-3 rounded-3xl border-2 border-soleil bg-soleil/10 p-6 text-center">
             <Lumi rang={rang.index} taille={96} etat="fete" />
-            <p className="font-display text-xl text-soleil">Bravo, aventure terminée&nbsp;! 🎉</p>
+            <p className="font-display text-xl text-soleil">{t('parcours.fini.titre')}</p>
             <p className="text-craie-douce">
-              Tu as découvert toutes les cartes. Rejoue au quizz, ou explore
-              librement ce que tu veux revoir.
+              {t('parcours.fini.texte')}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <button
@@ -118,14 +119,14 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
                 onClick={() => router.push('/quizz')}
                 className="min-h-14 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-8 font-display text-base text-soleil transition-transform hover:scale-105 active:scale-95"
               >
-                Aller au quizz
+                {t('parcours.fini.quizz')}
               </button>
               <button
                 type="button"
                 onClick={() => router.push('/decouvrir')}
                 className="min-h-14 cursor-pointer rounded-full border-2 border-encre-bord px-8 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
               >
-                Explorer librement
+                {t('parcours.fini.explorer')}
               </button>
             </div>
           </div>
@@ -163,7 +164,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
                     <span className="font-display text-base text-craie">
                       {localise(domain.labels, locale)}
                     </span>
-                    <span className="text-sm text-craie-douce">{vues}/{total} cartes</span>
+                    <span className="text-sm text-craie-douce">{t('parcours.jalon')(vues, total)}</span>
                   </span>
                 </div>
               </li>

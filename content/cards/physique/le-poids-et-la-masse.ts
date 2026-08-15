@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Lighter on the Moon',
+        '6-8': 'Weight and mass',
+        '9-12': 'Mass, weight and weightlessness',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'balance',
+              text: 'On the Moon, you could jump very, very high. You would be much lighter.',
+            },
+            {
+              id: 'deux-choses',
+              text: 'And yet you would be exactly the same! There would still be just as much of you.',
+            },
+            {
+              id: 'sur-la-lune',
+              text: 'What changes is how hard the Moon pulls you down. It pulls six times less hard.',
+            },
+            {
+              id: 'apesanteur',
+              text: 'And in a rocket, you weigh nothing at all — without losing a single gram.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'balance',
+              text: 'Bathroom scales do not quite tell you what you think. Standing on the Moon, they would show six times less.',
+            },
+            {
+              id: 'deux-choses',
+              text: 'They are two different things. Mass is the amount of stuff you are made of: it does not change anywhere. Weight is the force with which a world pulls on you: it depends on the world.',
+            },
+            {
+              id: 'sur-la-lune',
+              text: 'On the Moon your mass would be the same to the gram, but your weight six times smaller — which is why the Apollo astronauts bounced along. On Jupiter you would weigh more than twice as much, still with exactly the same mass.',
+            },
+            {
+              id: 'apesanteur',
+              text: 'In orbit you float, and yet gravity there is almost as strong as on the ground. What is happening: everything falls together, so nothing presses on anything. The mass is still there — pushing a heavy object inside the station takes exactly the same effort as down here.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'balance',
+              text: 'The confusion between weight and mass is kept alive by everyday language and by scales, which display kilograms when what they actually measure is a force.',
+            },
+            {
+              id: 'deux-choses',
+              text: 'Mass is an intrinsic property, in kilograms: it measures both a body’s inertia and how strongly it couples to gravity. Weight is a force, in newtons — the mass multiplied by the local acceleration due to gravity, about 9.8 metres per second squared on Earth.',
+            },
+            {
+              id: 'sur-la-lune',
+              text: 'On the Moon that acceleration is 1.62: the weight is divided by six, the mass is unchanged. Electronic scales calibrated on Earth would therefore read a false value there, whereas a balance scale, which compares two masses, would stay exact.',
+            },
+            {
+              id: 'apesanteur',
+              text: 'Weightlessness in orbit is not an absence of gravity: four hundred kilometres up, it is still about 8.7. It is a state of free fall — the station and the people inside it fall with the same acceleration, so no contact force acts between them. Inertia remains, though: moving a module of several tonnes there takes the same work as on the ground.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

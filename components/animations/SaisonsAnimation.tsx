@@ -1,9 +1,30 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['inclinaison', 'ete', 'hiver', 'distance'] as const;
+
+/*
+  Les deux légendes de saison partagent la même ligne (y = 182) : celle d'été
+  démarre à x = 26 et celle d'hiver à x = 196. La version anglaise d'« été »
+  doit donc rester aussi courte que le français, sous peine de la recouvrir.
+*/
+const LEGENDES = {
+  fr: {
+    ete: 'été : rayons droits',
+    hiver: 'hiver : rayons en biais',
+    axe: 'l’axe garde toujours la même direction',
+    distance: 'la distance ne change presque pas',
+  },
+  en: {
+    ete: 'summer: direct rays',
+    hiver: 'winter: slanted rays',
+    axe: 'the axis always points the same way',
+    distance: 'the distance barely changes',
+  },
+};
 
 /** Terre inclinée, avec son axe et son hémisphère nord marqué. */
 function Terre({ x, y }: { x: number; y: number }) {
@@ -27,9 +48,11 @@ export function SaisonsAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -53,7 +76,7 @@ export function SaisonsAnimation({
           </line>
         ))}
         <text x="26" y="182" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          été : rayons droits
+          {legende.ete}
         </text>
       </g>
 
@@ -71,21 +94,21 @@ export function SaisonsAnimation({
           </line>
         ))}
         <text x="196" y="182" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          hiver : rayons en biais
+          {legende.hiver}
         </text>
       </g>
 
       {/* L'axe conserve sa direction sur toute l'orbite */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <text x="69" y="30" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l&apos;axe garde toujours la même direction
+          {legende.axe}
         </text>
       </g>
 
       {/* La distance n'explique rien : elle varie à peine, et à contretemps. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="86" y="234" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          la distance ne change presque pas
+          {legende.distance}
         </text>
         {phase === 3 && (
           <line x1="88" y1="120" x2="312" y2="120" stroke="#fb7185" strokeWidth="2" strokeDasharray="4 6" />

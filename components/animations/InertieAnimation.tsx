@@ -1,9 +1,23 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['lancer', 'frottement', 'glace', 'espace'] as const;
+
+const LEGENDES = {
+  fr: {
+    frottement: 'le sol et l’air freinent',
+    glace: 'sur la glace : bien plus loin',
+    espace: 'dans l’espace : rien ne freine',
+  },
+  en: {
+    frottement: 'the ground and air slow it',
+    glace: 'on ice: much further',
+    espace: 'in space: nothing slows it',
+  },
+};
 
 /**
  * Trois pistes superposées, parcourues par la même poussée de départ : c'est
@@ -14,9 +28,11 @@ export function InertieAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -42,7 +58,7 @@ export function InertieAnimation({
           </g>
         ))}
         <text x="150" y="64" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le sol et l’air freinent
+          {legende.frottement}
         </text>
       </g>
 
@@ -55,7 +71,7 @@ export function InertieAnimation({
           )}
         </circle>
         <text x="14" y="138" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          sur la glace : bien plus loin
+          {legende.glace}
         </text>
       </g>
 
@@ -75,7 +91,7 @@ export function InertieAnimation({
           )}
         </g>
         <text x="14" y="232" fill="#e2e8f0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          dans l’espace : rien ne freine
+          {legende.espace}
         </text>
       </g>
     </svg>

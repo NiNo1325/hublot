@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why an egg goes hard',
+        '6-8': 'Why an egg hardens',
+        '9-12': 'Why an egg hardens',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A raw egg is runny and a bit see-through.',
+            },
+            {
+              id: 'deux',
+              text: 'You put it into hot water.',
+            },
+            {
+              id: 'trois',
+              text: 'The heat tangles up everything inside.',
+            },
+            {
+              id: 'quatre',
+              text: 'The white goes hard and white, for ever.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A raw egg is runny, soft and almost see-through.',
+            },
+            {
+              id: 'deux',
+              text: 'It is filled with tiny proteins, folded up on themselves like little balls of wool.',
+            },
+            {
+              id: 'trois',
+              text: 'The heat of cooking unwinds these balls, and they hook on to one another.',
+            },
+            {
+              id: 'quatre',
+              text: 'They form a solid: the white turns firm and opaque, and it will never be runny again.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Raw egg white is made mostly of water and of proteins folded into compact coils.',
+            },
+            {
+              id: 'deux',
+              text: 'Heat supplies enough energy to unfold these proteins: this is denaturation.',
+            },
+            {
+              id: 'trois',
+              text: 'Once unfolded, the proteins form new bonds with each other and weave a solid network.',
+            },
+            {
+              id: 'quatre',
+              text: 'This network traps the water and makes the whole thing firm and opaque: unlike butter, which melts and then sets again, this change is irreversible.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

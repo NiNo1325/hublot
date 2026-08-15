@@ -1,6 +1,7 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = [
@@ -9,6 +10,21 @@ const PHASES = [
   'deux-sortes',
   'coincidence',
 ] as const;
+
+const LEGENDES = {
+  fr: {
+    orbitePenchee: 'l’orbite est penchée',
+    pasChaquePleineLune: 'pas à chaque pleine Lune',
+    ombreRougit: 'l’ombre rougit la Lune',
+    memeTaille: 'même taille apparente : hasard',
+  },
+  en: {
+    orbitePenchee: 'the orbit is tilted',
+    pasChaquePleineLune: 'not at every full Moon',
+    ombreRougit: 'the shadow reddens it',
+    memeTaille: 'same apparent size: chance',
+  },
+};
 
 /**
  * L'orbite lunaire est dessinée nettement inclinée par rapport à la ligne
@@ -19,10 +35,12 @@ export function EclipsesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const alignee = phase >= 2;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -48,12 +66,12 @@ export function EclipsesAnimation({
           style={{ transition: 'cy 1400ms ease' }}
         />
         <text x="14" y="70" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l’orbite est penchée
+          {legende.orbitePenchee}
         </text>
       </g>
 
       <text x="14" y="32" fill="#e2e8f0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-        pas à chaque pleine Lune
+        {legende.pasChaquePleineLune}
       </text>
 
       {/* L'ombre de la Terre, et la Lune qui rougit dedans */}
@@ -65,7 +83,7 @@ export function EclipsesAnimation({
           )}
         </circle>
         <text x="14" y="210" fill="#b91c1c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l’ombre rougit la Lune
+          {legende.ombreRougit}
         </text>
       </g>
 
@@ -78,7 +96,7 @@ export function EclipsesAnimation({
           )}
         </circle>
         <text x="14" y="234" fill="#fde047" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          même taille apparente : hasard
+          {legende.memeTaille}
         </text>
       </g>
     </svg>

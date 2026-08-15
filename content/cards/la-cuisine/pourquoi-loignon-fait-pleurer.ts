@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why onions make you cry',
+        '6-8': 'Why onions make you cry',
+        '9-12': 'Why onions make you cry',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you cut an onion, you break its little cells.',
+            },
+            {
+              id: 'deux',
+              text: 'They let something invisible escape.',
+            },
+            {
+              id: 'trois',
+              text: 'It floats gently up to your eyes.',
+            },
+            {
+              id: 'quatre',
+              text: 'So your eyes make tears to wash themselves.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you cut an onion, the knife breaks thousands of its very tiny cells.',
+            },
+            {
+              id: 'deux',
+              text: 'These cells release a substance that contains sulphur.',
+            },
+            {
+              id: 'trois',
+              text: 'That substance turns straight away into an invisible gas, which drifts up through the air towards your face.',
+            },
+            {
+              id: 'quatre',
+              text: 'When this gas touches your eyes, they make tears to rinse themselves and stay protected.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The knife ruptures the onion’s cells, freeing compounds that had until then been kept well apart from one another.',
+            },
+            {
+              id: 'deux',
+              text: 'Their meeting sets off a chemical reaction that produces a volatile sulphur compound.',
+            },
+            {
+              id: 'trois',
+              text: 'This gas escapes and reaches the moist surface of your eyes, where it turns into a mildly irritating substance.',
+            },
+            {
+              id: 'quatre',
+              text: 'The tear reflex is then triggered to dilute and flush away that irritation: it is neither the smell nor the juice that stings, but a gas created only at the moment of cutting.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

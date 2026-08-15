@@ -1,9 +1,30 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['dix-pour-cent', 'partout', 'gauche-droite', 'plasticite'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor. Le typage
+  impose à `en` de reprendre exactement les clés du français : une légende
+  oubliée ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    mythe: '« 10 % » : faux',
+    energie: '20 % de l’énergie',
+    echange: 'les deux moitiés échangent',
+    apprendre: 'apprendre change le réseau',
+  },
+  en: {
+    mythe: '“10 %”: false',
+    energie: '20 % of energy',
+    echange: 'the two halves swap signals',
+    apprendre: 'learning changes the network',
+  },
+};
 
 /** Régions réparties sur les deux hémisphères, toutes actives à leur tour. */
 const REGIONS = [
@@ -25,9 +46,11 @@ export function CerveauAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -42,7 +65,7 @@ export function CerveauAnimation({
         <rect x="132" y="140" width="144" height="30" fill="#7f2b45" opacity="0.7" />
         <line x1="126" y1="176" x2="282" y2="132" stroke="#f87171" strokeWidth="4" />
         <text x="14" y="30" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          « 10 % » : faux
+          {legende.mythe}
         </text>
       </g>
 
@@ -56,7 +79,7 @@ export function CerveauAnimation({
           </circle>
         ))}
         <text x="230" y="30" fill="#fde047" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          20 % de l’énergie
+          {legende.energie}
         </text>
       </g>
 
@@ -78,7 +101,7 @@ export function CerveauAnimation({
           </g>
         ))}
         <text x="14" y="210" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          les deux moitiés échangent
+          {legende.echange}
         </text>
       </g>
 
@@ -98,7 +121,7 @@ export function CerveauAnimation({
           </line>
         ))}
         <text x="14" y="234" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          apprendre change le réseau
+          {legende.apprendre}
         </text>
       </g>
     </svg>

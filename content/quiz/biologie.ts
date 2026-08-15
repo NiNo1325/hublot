@@ -50,6 +50,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'plante-nourriture',
+            question: 'How does a plant find its food?',
+            reponses: [
+              { texte: 'It makes it with light', icone: '☀️', correcte: true },
+              { texte: 'It eats the soil', icone: '🟫' },
+            ],
+            explication: 'With light, water and air, the plant makes its own food.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'gaz-rejete',
+            question: 'Which gas does a plant give off as it makes its sugar?',
+            reponses: [
+              { texte: 'Oxygen', icone: '🫧', correcte: true },
+              { texte: 'Carbon dioxide', icone: '💨' },
+              { texte: 'Only water vapour', icone: '💧' },
+            ],
+            explication:
+              'Plants give off the oxygen we breathe: they feed their world at the same time as themselves.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'masse-arbre',
+            question: 'Where does most of the mass of a tree come from?',
+            reponses: [
+              { texte: 'From carbon taken out of the air', icone: '💨', correcte: true },
+              { texte: 'From minerals drawn out of the soil', icone: '🟫' },
+              { texte: 'From water absorbed by the roots', icone: '💧' },
+            ],
+            explication:
+              'A tree is largely solidified air: the soil supplies only water and minerals.',
+          },
+        ],
+      },
     },
   },
   {
@@ -91,6 +130,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Leur paroi ne fait qu’une cellule d’épaisseur : tout l’intérêt du système tient dans cet échange.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'coeur-role',
+            question: 'What is your heart for?',
+            reponses: [
+              { texte: 'Pushing blood all round your body', icone: '❤️', correcte: true },
+              { texte: 'Making the blood', icone: '🏭' },
+            ],
+            explication: 'The heart is a muscle that pushes the blood without ever stopping.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'sang-bleu',
+            question: 'Is the blood in your veins blue?',
+            reponses: [
+              { texte: 'No, it is dark red', icone: '🩸', correcte: true },
+              { texte: 'Yes, it turns blue without oxygen', icone: '💙' },
+              { texte: 'Yes, you can see it through the skin', icone: '👀' },
+            ],
+            explication:
+              'Blood is never blue. Veins look bluish because the skin scatters the light.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'echange-capillaires',
+            question: 'Where does oxygen pass from the blood into the cells?',
+            reponses: [
+              { texte: 'In the capillaries', icone: '🕸️', correcte: true },
+              { texte: 'In the large arteries', icone: '🫀' },
+              { texte: 'Straight inside the heart', icone: '❤️' },
+            ],
+            explication:
+              'Their wall is a single cell thick: the whole point of the system lies in that exchange.',
           },
         ],
       },
@@ -138,6 +216,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'microbes-gentils',
+            question: 'Are all microbes nasty?',
+            reponses: [
+              { texte: 'No, lots of them help us', icone: '😊', correcte: true },
+              { texte: 'Yes, they all make you ill', icone: '🤒' },
+            ],
+            explication: 'It is microbes that make yoghurt, bread and cheese.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'microbiote-role',
+            question: 'What are the microbes in your tummy for?',
+            reponses: [
+              { texte: 'They help you digest', icone: '🦠', correcte: true },
+              { texte: 'They are no use at all', icone: '🚫' },
+              { texte: 'They make you ill', icone: '🤒' },
+            ],
+            explication:
+              'They digest what your own enzymes cannot handle, and they make vitamins.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'penicilline',
+            question: 'Where does penicillin, the first antibiotic, come from?',
+            reponses: [
+              { texte: 'From a mould', icone: '🍄', correcte: true },
+              { texte: 'From a medicinal plant', icone: '🌿' },
+              { texte: 'From a mineral', icone: '🪨' },
+            ],
+            explication:
+              'A micro-organism gave us the means to fight the others: the aim is balance, not elimination.',
+          },
+        ],
+      },
     },
   },
   {
@@ -179,6 +296,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'L’espace entre les cellules s’élargit et le liquide circule davantage : le nettoyage est bien plus efficace la nuit.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'cerveau-nuit',
+            question: 'What does your head do while you sleep?',
+            reponses: [
+              { texte: 'It tidies away what you learnt', icone: '🧠', correcte: true },
+              { texte: 'It switches off completely', icone: '🌑' },
+            ],
+            explication: 'The brain carries on working: it sorts through your memories.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'sommeil-memoire',
+            question: 'Why does sleeping help you remember a lesson?',
+            reponses: [
+              { texte: 'The brain replays and files memories', icone: '🧠', correcte: true },
+              { texte: 'Because you are resting your eyes', icone: '👀' },
+              { texte: 'Sleep has no effect on it', icone: '🚫' },
+            ],
+            explication:
+              'What was learnt is replayed during the night and moved across into lasting memory.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'glymphatique',
+            question: 'What does the glymphatic system do during sleep?',
+            reponses: [
+              { texte: 'It clears waste out of the brain', icone: '🧹', correcte: true },
+              { texte: 'It makes the dreams', icone: '💭' },
+              { texte: 'It slows the heart down', icone: '❤️' },
+            ],
+            explication:
+              'The space between cells widens and the fluid circulates more: the cleaning is far more efficient at night.',
           },
         ],
       },
@@ -226,6 +382,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'moitie-moitie',
+            question: 'Where does your “instruction booklet” come from?',
+            reponses: [
+              { texte: 'Half from your mum, half from your dad', icone: '🧬', correcte: true },
+              { texte: 'Entirely from your mum', icone: '👩' },
+            ],
+            explication: 'You receive half from each, and that is what makes you unique.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'saut-generation',
+            question: 'Can a feature skip a generation?',
+            reponses: [
+              { texte: 'Yes, we receive whole versions of genes', icone: '🔁', correcte: true },
+              { texte: 'No, everything blends like two paints', icone: '🎨' },
+              { texte: 'No, you always look like your parents', icone: '👪' },
+            ],
+            explication:
+              'Heredity is not a blend: a feature can be passed on without showing, then reappear later.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'mendel-darwin',
+            question: 'Why was blending heredity a problem for Darwin?',
+            reponses: [
+              { texte: 'It would have diluted all variation in a few generations', icone: '💧', correcte: true },
+              { texte: 'It made evolution far too fast', icone: '⚡' },
+              { texte: 'It contradicted the existence of species', icone: '🦋' },
+            ],
+            explication:
+              'Mendel’s particulate heredity answers the objection: variations are kept instead of diluted.',
+          },
+        ],
+      },
     },
   },
   {
@@ -267,6 +462,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'L’air inspiré contient 21 % d’oxygène, l’air expiré encore 16 % : on n’en prélève qu’une fraction.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'muscle-respire',
+            question: 'What makes the air come into your chest?',
+            reponses: [
+              { texte: 'A muscle under the lungs', icone: '💪', correcte: true },
+              { texte: 'The lungs puff up on their own', icone: '🎈' },
+            ],
+            explication: 'It is the diaphragm: when it goes down, the air comes in by itself.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'diaphragme',
+            question: 'What is the breathing muscle called?',
+            reponses: [
+              { texte: 'The diaphragm', icone: '🫁', correcte: true },
+              { texte: 'The heart', icone: '❤️' },
+              { texte: 'The stomach', icone: '🍽️' },
+            ],
+            explication:
+              'As it drops, it makes the chest bigger, and air rushes in to fill the space.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'oxygene-pur',
+            question: 'Do we breathe pure oxygen?',
+            reponses: [
+              { texte: 'No, air is only one fifth oxygen', icone: '💨', correcte: true },
+              { texte: 'Yes, we breathe oxygen in', icone: '🫧' },
+              { texte: 'Yes, and then we give oxygen back', icone: '♻️' },
+            ],
+            explication:
+              'Inhaled air holds 21 % oxygen, exhaled air still 16 %: we only take out a fraction.',
           },
         ],
       },
@@ -314,6 +548,46 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'tete-en-bas',
+            question: 'Can you swallow upside down?',
+            reponses: [
+              { texte: 'Yes, muscles push it along', icone: '💪', correcte: true },
+              { texte: 'No, it would come back up', icone: '🙃' },
+            ],
+            explication:
+              'Food does not fall down on its own: muscles push it all along the way.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'ou-passe-sang',
+            question: 'Where does food pass into the blood?',
+            reponses: [
+              { texte: 'In the small intestine', icone: '🌀', correcte: true },
+              { texte: 'In the stomach', icone: '🫙' },
+              { texte: 'In the mouth', icone: '👄' },
+            ],
+            explication:
+              'The stomach only grinds and prepares. It is the small intestine that passes nutrients into the blood.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'role-estomac',
+            question: 'What is the stomach mainly for?',
+            reponses: [
+              { texte: 'Grinding food and attacking it chemically', icone: '⚗️', correcte: true },
+              { texte: 'Absorbing the nutrients', icone: '🩸' },
+              { texte: 'Storing the body’s water', icone: '💧' },
+            ],
+            explication:
+              'Apart from alcohol and a few medicines, almost nothing passes into the blood there: absorption happens further on.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'le-cerveau',
@@ -354,6 +628,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'La latéralisation existe pour certaines fonctions, comme le langage, mais elle ne fonde aucune typologie de personnalité.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'cerveau-travaille',
+            question: 'Does your brain work while you are asleep?',
+            reponses: [
+              { texte: 'Yes, all the time', icone: '🌙', correcte: true },
+              { texte: 'No, it stops', icone: '🛑' },
+            ],
+            explication: 'It never stops, not even at night.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'dix-pour-cent-mythe',
+            question: 'Do we really use only ten per cent of our brain?',
+            reponses: [
+              { texte: 'No, we use all of it', icone: '🧠', correcte: true },
+              { texte: 'Yes, geniuses use more of it', icone: '🎓' },
+              { texte: 'Yes, the rest is asleep', icone: '😴' },
+            ],
+            explication:
+              'The brain uses a fifth of your energy: a body would never pay that price for an organ nine tenths useless.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'gauche-droite-mythe',
+            question: 'Are there “left-brained” and “right-brained” people?',
+            reponses: [
+              { texte: 'No, no overall dominance has ever been found', icone: '🔬', correcte: true },
+              { texte: 'Yes: the logical ones and the creative ones', icone: '🎨' },
+              { texte: 'Yes, it depends on your dominant hand', icone: '✋' },
+            ],
+            explication:
+              'Lateralisation does exist for some functions, such as language, but it is no basis for sorting people into types.',
           },
         ],
       },
@@ -400,6 +713,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'os-vivants',
+            question: 'Are your bones alive?',
+            reponses: [
+              { texte: 'Yes, like the rest of you', icone: '❤️', correcte: true },
+              { texte: 'No, they are like stones', icone: '🪨' },
+            ],
+            explication: 'There is blood inside them, and they mend themselves.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'qui-repare',
+            question: 'Who repairs a broken bone?',
+            reponses: [
+              { texte: 'The bone itself', icone: '🦴', correcte: true },
+              { texte: 'The plaster cast', icone: '🩹' },
+              { texte: 'The doctor, by sticking it back', icone: '💉' },
+            ],
+            explication:
+              'The plaster cast only holds it still. It is the bone, very much alive, that builds the repair.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'moelle-role',
+            question: 'What is bone marrow for?',
+            reponses: [
+              { texte: 'Making the cells of the blood', icone: '🩸', correcte: true },
+              { texte: 'Cushioning impacts', icone: '🛡️' },
+              { texte: 'Storing fat, and nothing else', icone: '🧈' },
+            ],
+            explication:
+              'Haematopoiesis produces hundreds of billions of blood cells there every day.',
+          },
+        ],
+      },
     },
   },  {
     cardId: 'levolution',
@@ -440,6 +792,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Plus de quatre-vingt-dix-neuf pour cent des espèces ayant existé sont éteintes. Parler d’espèce « plus évoluée » n’a pas de sens.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'singe-grand-parent',
+            question: 'Do humans come from monkeys?',
+            reponses: [
+              { texte: 'No, we share a grandparent', icone: '👵', correcte: true },
+              { texte: 'Yes, straight from them', icone: '🐒' },
+            ],
+            explication: 'Like two cousins: a shared ancestor, but one does not come from the other.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'girafe-cou',
+            question: 'How did the giraffe end up with such a long neck?',
+            reponses: [
+              { texte: 'The ones born with a longer neck had more young', icone: '🦒', correcte: true },
+              { texte: 'By stretching its neck up towards the leaves', icone: '🌿' },
+              { texte: 'Because it needed one', icone: '🎯' },
+            ],
+            explication:
+              'An individual does not adapt during its own life: it is the offspring that change, over thousands of generations.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'evolution-but',
+            question: 'Does evolution have a goal?',
+            reponses: [
+              { texte: 'No, none at all — and it guarantees no progress', icone: '🎲', correcte: true },
+              { texte: 'Yes, the perfection of each species', icone: '✨' },
+              { texte: 'Yes, intelligence', icone: '🧠' },
+            ],
+            explication:
+              'More than ninety-nine per cent of the species that have existed are extinct. Calling a species “more evolved” means nothing.',
           },
         ],
       },

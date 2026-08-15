@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Summer and winter',
+        '6-8': 'Why there are seasons',
+        '9-12': 'The tilt of the Earth’s axis',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'inclinaison',
+              text: 'The Earth leans a little to one side, like a spinning top that spins askew.',
+            },
+            {
+              id: 'ete',
+              text: 'When your country leans towards the sun, its rays come straight down. It is hot: that is summer.',
+            },
+            {
+              id: 'hiver',
+              text: 'Six months later, your country leans the other way. The rays arrive slanted and warm less: that is winter.',
+            },
+            {
+              id: 'distance',
+              text: 'It is not because we are closer to the sun! We are even very close to it right in the middle of winter.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'inclinaison',
+              text: 'The axis the Earth spins around is tilted by about twenty-three degrees. That tilt does not change while it travels round the Sun.',
+            },
+            {
+              id: 'ete',
+              text: 'When your hemisphere leans towards the Sun, the rays arrive almost straight down and concentrate their heat on a small area. The days are longer too. That is summer.',
+            },
+            {
+              id: 'hiver',
+              text: 'Six months later, the same hemisphere leans the other way. The rays strike at a slant and spread over a larger area: they warm less. The nights grow longer. That is winter.',
+            },
+            {
+              id: 'distance',
+              text: 'People often say it is hot in summer because the Earth is closer to the Sun. That is wrong: it is closest in early January, when it is winter in Europe. And at that very moment it is summer in Australia.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'inclinaison',
+              text: 'The Earth’s axis of rotation is tilted by 23.4 degrees from the plane of its orbit, and keeps a fixed direction in space throughout the year.',
+            },
+            {
+              id: 'ete',
+              text: 'When a hemisphere is tilted towards the Sun, the angle of incidence is high: the same beam of light is spread over a smaller area, so the energy received per square metre goes up. The hours of daylight also grow longer, which raises the total further still.',
+            },
+            {
+              id: 'hiver',
+              text: 'Six months later, the situation is reversed. The grazing rays spread over a larger area and cross a greater thickness of atmosphere, which absorbs more of them.',
+            },
+            {
+              id: 'distance',
+              text: 'The Earth–Sun distance does vary, but by only three per cent, and in the opposite direction to intuition: perihelion falls in early January. If distance governed the seasons, both hemispheres would have summer at the same time — yet they are always opposite. It is the tilt, and the tilt alone, that explains them.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

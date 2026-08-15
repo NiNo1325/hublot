@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['intuition', 'paires', 'vingt-trois', 'coincidences'] as const;
+
+const LEGENDES = {
+  fr: {
+    comparaisons: '22 comparaisons',
+    paires: '253 paires',
+    personnes: '23 personnes : 1 sur 2',
+    frequentes: 'les coïncidences sont fréquentes',
+  },
+  en: {
+    comparaisons: '22 comparisons',
+    paires: '253 pairs',
+    personnes: '23 people: 1 in 2',
+    frequentes: 'coincidences are common',
+  },
+};
 
 const CENTRE = { x: 244, y: 112 };
 const RAYON = 76;
@@ -29,9 +45,11 @@ export function AnniversairesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -70,20 +88,20 @@ export function AnniversairesAnimation({
 
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <text x="14" y="32" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          22 comparaisons
+          {legende.comparaisons}
         </text>
       </g>
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <text x="14" y="60" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          253 paires
+          {legende.paires}
         </text>
         <text x="14" y="210" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          23 personnes : 1 sur 2
+          {legende.personnes}
         </text>
       </g>
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="14" y="234" fill="#e2e8f0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          les coïncidences sont fréquentes
+          {legende.frequentes}
         </text>
       </g>
     </svg>

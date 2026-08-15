@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    manger: 'il mange presque toute la journée',
+    cou: 'le cou atteint la cime',
+    os: 'ses os sont creux, comme des pailles',
+    legers: 'plus légers, malgré la taille',
+    bus: 'long comme plusieurs bus',
+  },
+  en: {
+    manger: 'it eats nearly all day long',
+    cou: 'the neck reaches the treetops',
+    os: 'its bones are hollow, like straws',
+    legers: 'lighter, despite the size',
+    bus: 'as long as several buses',
+  },
+};
 
 /**
  * Le même long cou sert deux fois : il mâche sans relâche en phase 1, puis
@@ -14,10 +32,12 @@ export function PourquoiSiGrandsAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -29,7 +49,7 @@ export function PourquoiSiGrandsAnimation({
         <ellipse cx="220" cy="176" rx="60" ry="24" fill="#c8a97e" />
         <path d="M160 172 Q120 150 108 176" stroke="#c8a97e" strokeWidth="18" strokeLinecap="round" fill="none" />
         <path d="M96 176 q-2 -14 10 -18 q2 10 -2 18 M110 176 q4 -16 16 -18 q0 12 -8 18" fill="#4ade80" />
-        <text x="14" y="30" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>il mange presque toute la journée</text>
+        <text x="14" y="30" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.manger}</text>
       </g>
 
       {/* Phase 2 : son long cou atteint les feuilles sans bouger le corps */}
@@ -44,7 +64,7 @@ export function PourquoiSiGrandsAnimation({
           )}
         </path>
         <path d="M60 30 q40 -14 70 6 q-30 14 -70 -6 Z" fill="#4ade80" />
-        <text x="14" y="30" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>le cou atteint la cime</text>
+        <text x="14" y="30" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.cou}</text>
       </g>
 
       {/* Phase 3 : ses os sont creux, comme des pailles */}
@@ -54,8 +74,8 @@ export function PourquoiSiGrandsAnimation({
         {[0, 1, 2].map((i) => (
           <circle key={i} cx={150 + i * 50} cy="105" r="8" fill="#0f1b33" opacity="0.9" />
         ))}
-        <text x="14" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>ses os sont creux, comme des pailles</text>
-        <text x="14" y="150" fill="#a8a29e" fontSize="13" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>plus légers, malgré la taille</text>
+        <text x="14" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.os}</text>
+        <text x="14" y="150" fill="#a8a29e" fontSize="13" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.legers}</text>
       </g>
 
       {/* Phase 4 : plus long que plusieurs bus mis bout à bout */}
@@ -71,7 +91,7 @@ export function PourquoiSiGrandsAnimation({
             <rect key={i} x={30 + i * 82} y="182" width="70" height="18" rx="3" />
           ))}
         </g>
-        <text x="14" y="228" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>long comme plusieurs bus</text>
+        <text x="14" y="228" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.bus}</text>
       </g>
     </svg>
   );

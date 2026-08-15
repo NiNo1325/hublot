@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['vitesse', 'aile', 'reaction', 'main'] as const;
+
+const LEGENDES = {
+  fr: {
+    airArrive: 'l’air arrive',
+    ailePoussee: 'l’aile est poussée en haut',
+    airPousse: 'l’air est poussé en bas',
+    surLeDos: 'sur le dos, ça vole aussi',
+  },
+  en: {
+    airArrive: 'the air comes in',
+    ailePoussee: 'the wing is pushed up',
+    airPousse: 'the air is pushed down',
+    surLeDos: 'upside down, it flies too',
+  },
+};
 
 /**
  * L'air est montré arrivant horizontalement et repartant vers le bas : c'est
@@ -14,9 +30,11 @@ export function PortanceAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -48,7 +66,7 @@ export function PortanceAnimation({
           </path>
         ))}
         <text x="20" y="66" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l&apos;air arrive
+          {legende.airArrive}
         </text>
       </g>
 
@@ -58,14 +76,14 @@ export function PortanceAnimation({
           <line x1="200" y1="104" x2="200" y2="44" stroke="#34d399" strokeWidth="5" />
           <path d="M192 52 L200 34 L208 52 Z" fill="#34d399" />
           <text x="96" y="24" fill="#34d399" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-            l&apos;aile est poussée en haut
+            {legende.ailePoussee}
           </text>
         </g>
         <g>
           <line x1="240" y1="132" x2="240" y2="186" stroke="#fb7185" strokeWidth="5" />
           <path d="M232 178 L240 196 L248 178 Z" fill="#fb7185" />
           <text x="104" y="228" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-            l&apos;air est poussé en bas
+            {legende.airPousse}
           </text>
         </g>
       </g>
@@ -77,7 +95,7 @@ export function PortanceAnimation({
           <path d="M-6 -2 l10 -16 l8 0 l-4 16 z" fill="#ffb627" />
         </g>
         <text x="14" y="204" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          sur le dos, ça vole aussi
+          {legende.surLeDos}
         </text>
       </g>
     </svg>

@@ -1,9 +1,23 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['souhait', 'grain', 'chauffe', 'pluie'] as const;
+
+const LEGENDES = {
+  fr: {
+    grain: 'un grain de poussière',
+    airBrille: '80 km : c’est l’air qui brille',
+    pluie: 'des dizaines par heure, aux mêmes dates',
+  },
+  en: {
+    grain: 'a speck of dust',
+    airBrille: '80 km: the air is what glows',
+    pluie: 'dozens an hour, always the same dates',
+  },
+};
 
 const ETOILES = [
   { x: 40, y: 40 },
@@ -23,9 +37,11 @@ export function EtoilesFilantesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -54,7 +70,7 @@ export function EtoilesFilantesAnimation({
         <circle cx="70" cy="180" r="26" fill="none" stroke="#94a3b8" strokeWidth="2" />
         <circle cx="70" cy="180" r="3" fill="#cbd5e1" />
         <text x="104" y="186" fill="#cbd5e1" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          un grain de poussière
+          {legende.grain}
         </text>
       </g>
 
@@ -70,7 +86,7 @@ export function EtoilesFilantesAnimation({
           </circle>
         ))}
         <text x="14" y="142" fill="#fdba74" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          80 km : c’est l’air qui brille
+          {legende.airBrille}
         </text>
       </g>
 
@@ -91,7 +107,7 @@ export function EtoilesFilantesAnimation({
           </line>
         ))}
         <text x="14" y="234" fill="#fef9c3" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des dizaines par heure, aux mêmes dates
+          {legende.pluie}
         </text>
       </g>
     </svg>

@@ -1,9 +1,32 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['secret', 'essais', 'longueur', 'un-par-porte'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+
+  « P@ssw0rd! » n'y figure pas : c'est un mot de passe cité littéralement, pas
+  une phrase à traduire.
+*/
+const LEGENDES = {
+  fr: {
+    essais: 'des milliards d’essais',
+    quatreMots: 'chat lune bateau pomme',
+    parPorte: 'un secret par porte',
+  },
+  en: {
+    essais: 'billions of tries',
+    quatreMots: 'cat moon boat apple',
+    parPorte: 'one secret per door',
+  },
+};
 
 /** Portes du dernier temps, chacune avec sa propre clé. */
 const PORTES = [
@@ -21,9 +44,11 @@ export function MotDePasseAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -46,7 +71,7 @@ export function MotDePasseAnimation({
           </rect>
         ))}
         <text x="76" y="44" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des milliards d’essais
+          {legende.essais}
         </text>
       </g>
 
@@ -58,7 +83,7 @@ export function MotDePasseAnimation({
         <rect x="14" y="100" width="30" height="14" rx="3" fill="#f87171" />
 
         <text x="14" y="148" fill="#86efac" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          chat lune bateau pomme
+          {legende.quatreMots}
         </text>
         <rect x="14" y="156" width="330" height="14" rx="3" fill="#4ade80">
           {anime && phase === 2 && (
@@ -81,7 +106,7 @@ export function MotDePasseAnimation({
           </g>
         ))}
         <text x="14" y="206" fill="#cbd5e1" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          un secret par porte
+          {legende.parPorte}
         </text>
       </g>
     </svg>

@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['image-larme', 'petite-ronde', 'air-dessous', 'coussin'] as const;
+
+const LEGENDES = {
+  fr: {
+    pasLarme: 'pas une larme',
+    ronde: 'petite = ronde',
+    airDessous: 'l’air pousse dessous',
+    coussin: 'comme un coussin',
+  },
+  en: {
+    pasLarme: 'not a teardrop',
+    ronde: 'small = round',
+    airDessous: 'air pushes from below',
+    coussin: 'like a cushion',
+  },
+};
 
 /**
  * Une goutte de pluie n'a pas la forme d'une larme (barrée) : petite, elle est
@@ -14,10 +30,12 @@ export function GoutteFormeAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -27,14 +45,14 @@ export function GoutteFormeAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <path d="M200 54 Q234 108 200 132 Q166 108 200 54 Z" fill="#38bdf8" />
         <line x1="160" y1="52" x2="240" y2="134" stroke="#f43f5e" strokeWidth="5" />
-        <text x="20" y="200" fill="#fca5a5" fontSize="15" fontFamily={police}>pas une larme</text>
+        <text x="20" y="200" fill="#fca5a5" fontSize="15" fontFamily={police}>{legende.pasLarme}</text>
       </g>
 
       {/* Phase 2 : petite goutte = ronde */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <circle cx="200" cy="96" r="28" fill="#7dd3fc" />
         <circle cx="190" cy="86" r="7" fill="#bae6fd" opacity="0.7" />
-        <text x="20" y="224" fill="#7dd3fc" fontSize="15" fontFamily={police}>petite = ronde</text>
+        <text x="20" y="224" fill="#7dd3fc" fontSize="15" fontFamily={police}>{legende.ronde}</text>
       </g>
 
       {/* Phase 3 : en tombant, l'air pousse par en dessous */}
@@ -48,14 +66,14 @@ export function GoutteFormeAnimation({
             </path>
           </g>
         ))}
-        <text x="222" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>l’air pousse dessous</text>
+        <text x="222" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.airDessous}</text>
       </g>
 
       {/* Phase 4 : la vraie forme, un coussin */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <path d="M168 104 Q168 70 200 70 Q232 70 232 104 Q232 116 200 116 Q168 116 168 104 Z" fill="#38bdf8" />
         <path d="M186 82 q8 -6 16 0" stroke="#bae6fd" strokeWidth="3" fill="none" opacity="0.7" />
-        <text x="232" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>comme un coussin</text>
+        <text x="232" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>{legende.coussin}</text>
       </g>
     </svg>
   );

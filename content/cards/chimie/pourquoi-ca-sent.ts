@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'When something smells lovely',
+        '6-8': 'Why things smell',
+        '9-12': 'Smell, a chemical sense',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'molecules',
+              text: 'When the cake smells lovely, it is because tiny little bits of cake have gone off into the air.',
+            },
+            {
+              id: 'voyage',
+              text: 'They float all the way to you. That is why a smell takes a moment to cross the room.',
+            },
+            {
+              id: 'nez',
+              text: 'They go into your nose and tickle tiny little sensors, which tell your brain.',
+            },
+            {
+              id: 'habitude',
+              text: 'And if you stay a long time, you smell nothing any more: your nose has got used to it.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'molecules',
+              text: 'Smelling is not receiving a picture or a sound from far away: it is touching. Molecules have come loose from the object and are floating in the air.',
+            },
+            {
+              id: 'voyage',
+              text: 'So they have to travel all the way to you, carried by the moving air. Hence the time a smell takes to cross a room — and the fact that a hot dish smells far stronger: heat releases many more molecules.',
+            },
+            {
+              id: 'nez',
+              text: 'Right at the top of your nose, millions of sensors catch them. Each type of sensor recognises one shape of molecule, and it is the combination of the ones that switch on that makes the smell — rather as letters make a word.',
+            },
+            {
+              id: 'habitude',
+              text: 'After a few minutes you smell nothing at all: the sensors stop reporting whatever does not change. That is why you never smell your own house, while visitors notice it at once.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'molecules',
+              text: 'Smell is a chemical sense, not a sense that works at a distance: odour molecules, volatile and generally light, must physically reach the lining of the nose to be detected.',
+            },
+            {
+              id: 'voyage',
+              text: 'How readily they evaporate depends on temperature and molecular mass, which is why a hot dish smells stronger. How they travel depends on the movement of the air: a smell does not spread like a wave, it is carried by currents and then diffuses — hence how slow it is compared with sound or light.',
+            },
+            {
+              id: 'nez',
+              text: 'The olfactory epithelium carries neurons fitted with receptors, of which humans have about four hundred working types. One molecule activates several of them to different degrees, and it is this combined profile that the olfactory bulb decodes: four hundred receptors are therefore enough to tell apart an immense number of smells. This arrangement won Richard Axel and Linda Buck the Nobel Prize in 2004.',
+            },
+            {
+              id: 'habitude',
+              text: 'Olfactory adaptation is rapid: the receptors become desensitised within minutes when the stimulus stays constant. The system is built to signal change, not state — the same logic that makes you forget the feel of your clothes moments after putting them on.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

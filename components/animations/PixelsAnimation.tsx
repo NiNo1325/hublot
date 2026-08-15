@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['points', 'trois-couleurs', 'melange', 'loupe'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    primaires: 'rouge, vert, bleu',
+    melange: 'rouge + vert = jaune',
+  },
+  en: {
+    primaires: 'red, green, blue',
+    melange: 'red + green = yellow',
+  },
+};
 
 /**
  * La phase « loupe » agrandit un pixel pour révéler ses trois sous-pixels
@@ -14,9 +32,11 @@ export function PixelsAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   /* Petite image : un smiley grossier, en pixels colorés. */
   const grille = [
@@ -68,14 +88,14 @@ export function PixelsAnimation({
         <circle cx="284" cy="50" r="12" fill="#22c55e" />
         <circle cx="318" cy="50" r="12" fill="#3b82f6" />
         <text x="230" y="90" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          rouge, vert, bleu
+          {legende.primaires}
         </text>
       </g>
 
       {/* Le mélange : rouge + vert = jaune */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <text x="212" y="214" fill="#facc15" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          rouge + vert = jaune
+          {legende.melange}
         </text>
         {anime && phase === 2 && (
           <circle cx="330" cy="209" r="9" fill="#facc15">

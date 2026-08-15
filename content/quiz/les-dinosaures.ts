@@ -50,6 +50,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'squelette-entier',
+            question: 'Do we find a whole dinosaur in the ground?',
+            reponses: [
+              { texte: 'No, just bits of bone', icone: '🦴', correcte: true },
+              { texte: 'Yes, all in one piece', icone: '🦕' },
+            ],
+            explication: 'Bones are nearly always missing: the rest has to be worked out.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'squelette-complet',
+            question: 'When a dinosaur is dug up, do we find its whole skeleton?',
+            reponses: [
+              { texte: 'No, bones are nearly always missing', icone: '🦴', correcte: true },
+              { texte: 'Yes, almost always complete', icone: '🦕' },
+              { texte: 'Yes, with the skin still on it', icone: '🦎' },
+            ],
+            explication:
+              'Complete skeletons are extremely rare: most of the bones are missing and are worked out by comparison.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'un-seul-individu',
+            question: 'Is a dinosaur skeleton on display in a museum made from the bones of a single animal?',
+            reponses: [
+              { texte: 'Not always: casts fill in the gaps', icone: '🧩', correcte: true },
+              { texte: 'Yes, always one complete individual', icone: '🦴' },
+              { texte: 'No, they are invented sculptures', icone: '🎨' },
+            ],
+            explication:
+              'Many skeletons on display mix real bones with casts, and even borrow pieces from other individuals of the same species.',
+          },
+        ],
+      },
     },
   },
   {
@@ -91,6 +130,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Les données géologiques montrent une coïncidence précise entre l’impact et la limite Crétacé-Paléogène : l’extinction a été soudaine à l’échelle des temps géologiques.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'pourquoi-disparu',
+            question: 'Why did the dinosaurs disappear?',
+            reponses: [
+              { texte: 'A giant rock fell from the sky', icone: '☄️', correcte: true },
+              { texte: 'They just wandered off', icone: '🚶' },
+            ],
+            explication: 'An asteroid changed everything on Earth, and the dinosaurs could not adapt.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'disparition-seule',
+            question: 'Did the dinosaurs die out on their own, for no particular reason?',
+            reponses: [
+              { texte: 'No, an asteroid turned the climate upside down', icone: '☄️', correcte: true },
+              { texte: 'Yes, they faded away naturally', icone: '🦕' },
+              { texte: 'Yes, they grew old and died', icone: '⏳' },
+            ],
+            explication:
+              'This was not a slow, natural fading away: one sudden event, an asteroid impact, turned the climate upside down in very little time.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'extinction-progressive',
+            question: 'Did the extinction of the non-avian dinosaurs unfold over millions of years?',
+            reponses: [
+              { texte: 'No, it was set off in a very short time', icone: '☄️', correcte: true },
+              { texte: 'Yes, a slow and natural decline', icone: '📉' },
+              { texte: 'Yes, through a very gradual change of climate', icone: '🌡️' },
+            ],
+            explication:
+              'The geological record shows a precise coincidence between the impact and the Cretaceous-Palaeogene boundary: the extinction was sudden on a geological timescale.',
           },
         ],
       },
@@ -138,6 +216,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'tous-disparu',
+            question: 'Did all the dinosaurs disappear?',
+            reponses: [
+              { texte: 'No, birds are dinosaurs', icone: '🐦', correcte: true },
+              { texte: 'Yes, there are none left', icone: '🚫' },
+            ],
+            explication: 'The birds of today are the children of the feathered dinosaurs.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'dinosaures-vivants',
+            question: 'Are there still any dinosaurs alive today?',
+            reponses: [
+              { texte: 'Yes, they are the birds', icone: '🐦', correcte: true },
+              { texte: 'No, not one of them survived', icone: '🚫' },
+              { texte: 'Yes, but only giant lizards', icone: '🦎' },
+            ],
+            explication:
+              'Birds are the direct descendants of the small feathered dinosaurs that survived the extinction.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'pigeon-tyrannosaure',
+            question: 'Is the pigeon you pass in the street related to Tyrannosaurus?',
+            reponses: [
+              { texte: 'Yes, they are both dinosaurs', icone: '🐦', correcte: true },
+              { texte: 'No, no family link at all', icone: '🚫' },
+              { texte: 'Only by resemblance, not by ancestry', icone: '🎭' },
+            ],
+            explication:
+              'Cladistically, birds form a group of theropod dinosaurs just as Tyrannosaurus does: they share a common ancestor.',
+          },
+        ],
+      },
     },
   },
   {
@@ -179,6 +296,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Le Stégosaure a disparu environ quatre-vingts millions d’années avant l’apparition du Tyrannosaure : ils n’ont jamais pu se croiser.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'hommes-cavernes',
+            question: 'Did cave people ever see a dinosaur?',
+            reponses: [
+              { texte: 'No, never', icone: '🚫', correcte: true },
+              { texte: 'Yes, they hunted them', icone: '🏹' },
+            ],
+            explication: 'The dinosaurs had disappeared long before the very first people.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'chasse-dinosaure',
+            question: 'Could a prehistoric human have hunted a dinosaur?',
+            reponses: [
+              { texte: 'No, they never met', icone: '🚫', correcte: true },
+              { texte: 'Yes, with a spear', icone: '🏹' },
+              { texte: 'Yes, but only the small ones', icone: '🦎' },
+            ],
+            explication:
+              'Sixty-six million years separate the last non-bird dinosaur from the first human.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'trex-stegosaure',
+            question: 'Did Tyrannosaurus and Stegosaurus live at the same time?',
+            reponses: [
+              { texte: 'No, eighty million years lie between them', icone: '⏳', correcte: true },
+              { texte: 'Yes, they lived side by side', icone: '🤝' },
+              { texte: 'Yes, give or take a few million years', icone: '📆' },
+            ],
+            explication:
+              'Stegosaurus died out about eighty million years before Tyrannosaurus appeared: the two could never have met.',
           },
         ],
       },
@@ -226,6 +382,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'trex-plus-grand',
+            question: 'Was the tyrannosaur the biggest dinosaur of all?',
+            reponses: [
+              { texte: 'No, plant-eaters were far bigger', icone: '🦕', correcte: true },
+              { texte: 'Yes, the biggest of them all', icone: '🦖' },
+            ],
+            explication: 'The long-necked plant-eaters were far bigger than the tyrannosaur.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'type-plus-grand',
+            question: 'Which kind of dinosaur included the largest species?',
+            reponses: [
+              { texte: 'The long-necked plant-eaters', icone: '🦕', correcte: true },
+              { texte: 'The meat-eaters, like the tyrannosaur', icone: '🦖' },
+              { texte: 'The feathered dinosaurs', icone: '🪶' },
+            ],
+            explication:
+              'The plant-eating sauropods, such as Diplodocus or Argentinosaurus, were far bigger than the tyrannosaur.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'argentinosaurus-trex',
+            question: 'Was Argentinosaurus bigger than Tyrannosaurus rex?',
+            reponses: [
+              { texte: 'Yes, far longer and far heavier', icone: '🦕', correcte: true },
+              { texte: 'No, the tyrannosaur was the biggest', icone: '🦖' },
+              { texte: 'They were exactly the same size', icone: '🟰' },
+            ],
+            explication:
+              'At thirty-five metres, Argentinosaurus dwarfed the twelve metres of the tyrannosaur: the largest dinosaurs were herbivores.',
+          },
+        ],
+      },
     },
   },
   {
@@ -267,6 +462,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Les grands prédateurs comme le tyrannosaure ont marqué l’imaginaire, mais herbivores et omnivores composaient la majorité des espèces.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'tous-viande',
+            question: 'Did all the dinosaurs eat meat?',
+            reponses: [
+              { texte: 'No, lots of them ate plants', icone: '🌿', correcte: true },
+              { texte: 'Yes, every one of them', icone: '🥩' },
+            ],
+            explication: 'Most dinosaurs were plant-eaters, not meat-eaters.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'majorite-carnivore',
+            question: 'Were most dinosaur species meat-eaters?',
+            reponses: [
+              { texte: 'No, the majority ate plants', icone: '🌿', correcte: true },
+              { texte: 'Yes, nearly all of them hunted', icone: '🥩' },
+              { texte: 'Yes, because of the tyrannosaur', icone: '🦖' },
+            ],
+            explication:
+              'The tyrannosaur is famous, but the great majority of known dinosaur species were plant-eaters.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'predateur-feroce',
+            question: 'Can we treat “dinosaur” as another word for “fierce predator”?',
+            reponses: [
+              { texte: 'No, most of them grazed on plants', icone: '🌿', correcte: true },
+              { texte: 'Yes, they all hunted in packs', icone: '🦖' },
+              { texte: 'Yes, only the small ones ate plants', icone: '🦎' },
+            ],
+            explication:
+              'Big predators like the tyrannosaur captured the imagination, but herbivores and omnivores made up the majority of species.',
           },
         ],
       },
@@ -314,6 +548,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'fossile-os',
+            question: 'Is a fossil always a bone?',
+            reponses: [
+              { texte: 'No, it can be a footprint', icone: '👣', correcte: true },
+              { texte: 'Yes, always a bone', icone: '🦴' },
+            ],
+            explication: 'A footprint left in the rock is a fossil too.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'fossile-os-dent',
+            question: 'Does a fossil have to be a bone or a tooth?',
+            reponses: [
+              { texte: 'No, a footprint can be a fossil', icone: '👣', correcte: true },
+              { texte: 'Yes, bones only', icone: '🦴' },
+              { texte: 'Yes, teeth only', icone: '🦷' },
+            ],
+            explication:
+              'A trace of activity kept in the rock, such as a print or a trackway, is called a trace fossil.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'empreintes-moins-utiles',
+            question: 'Do fossilised footprints teach us less than bones do?',
+            reponses: [
+              { texte: 'No, they record how the animal behaved', icone: '👣', correcte: true },
+              { texte: 'Yes, they only show the shape of the foot', icone: '🦶' },
+              { texte: 'Yes, only bones are of scientific use', icone: '🦴' },
+            ],
+            explication:
+              'Unlike bones, fossilised trackways record real behaviour: speed, gait, life in a group — things that bones on their own never tell us.',
+          },
+        ],
+      },
     },
   },
   {
@@ -355,6 +628,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Pour certaines espèces exceptionnellement fossilisées, l’analyse des mélanosomes donne des couleurs fondées sur des preuves, même si beaucoup d’espèces restent hypothétiques.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'gris-sans-plumes',
+            question: 'Were all the dinosaurs grey, with no feathers?',
+            reponses: [
+              { texte: 'No, some had colourful feathers', icone: '🪶', correcte: true },
+              { texte: 'Yes, all grey and bare', icone: '🦎' },
+            ],
+            explication: 'Some dinosaurs had feathers in bright colours.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'couleur-connue',
+            question: 'Do we really know what colour some dinosaurs were?',
+            reponses: [
+              { texte: 'Yes, thanks to grains found in their feathers', icone: '🔬', correcte: true },
+              { texte: 'No, it is always completely made up', icone: '🎨' },
+              { texte: 'Yes, but only in black and white', icone: '⚫' },
+            ],
+            explication:
+              'Fossilised melanosomes let us bring back some of the real colours: it is not pure invention.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'apparence-imaginaire',
+            question: 'Is the colourful look of dinosaurs in books purely imaginary?',
+            reponses: [
+              { texte: 'Not always: some colours are reconstructed scientifically', icone: '🔬', correcte: true },
+              { texte: 'Yes, entirely invented by the artists', icone: '🎨' },
+              { texte: 'Yes, since no trace of a feather ever survives', icone: '🚫' },
+            ],
+            explication:
+              'For a few exceptionally fossilised species, analysing the melanosomes gives colours grounded in evidence, even if many species remain guesswork.',
           },
         ],
       },
@@ -402,6 +714,45 @@ export const quiz: QuizCarte[] = [
           },
         ],
       },
+      en: {
+        '3-5': [
+          {
+            id: 'pterosaure-dinosaure',
+            question: 'Is the flying pterosaur a dinosaur?',
+            reponses: [
+              { texte: 'No, it is a flying cousin', icone: '🦅', correcte: true },
+              { texte: 'Yes, a flying dinosaur', icone: '🦕' },
+            ],
+            explication: 'The pterosaur is a flying reptile, a cousin of the dinosaurs, not a dinosaur.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'plesiosaure-dinosaure',
+            question: 'Was the plesiosaur that swam in the sea a dinosaur?',
+            reponses: [
+              { texte: 'No, it is a cousin, a sea reptile', icone: '🌊', correcte: true },
+              { texte: 'Yes, a water dinosaur', icone: '🦕' },
+              { texte: 'Yes, a giant fish', icone: '🐟' },
+            ],
+            explication:
+              'The plesiosaur never set foot on land and its skeleton is clearly different from a dinosaur’s: it is not a dinosaur.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'reptile-automatiquement',
+            question: 'Is any large prehistoric reptile automatically a dinosaur?',
+            reponses: [
+              { texte: 'No, there were other groups of reptiles', icone: '🦎', correcte: true },
+              { texte: 'Yes, by definition', icone: '✅' },
+              { texte: 'Yes, if it lived in the Cretaceous', icone: '📅' },
+            ],
+            explication:
+              'Flying pterosaurs and marine plesiosaurs lived at the same time, but their anatomy, and the hip in particular, places them outside the dinosaur group.',
+          },
+        ],
+      },
     },
   },
   {
@@ -443,6 +794,45 @@ export const quiz: QuizCarte[] = [
             ],
             explication:
               'Les dinosaures non aviens s’éteignent il y a soixante-six millions d’années, les mammouths seulement il y a environ dix mille ans.',
+          },
+        ],
+      },
+      en: {
+        '3-5': [
+          {
+            id: 'mammouths-dinosaures',
+            question: 'Did mammoths live with the dinosaurs?',
+            reponses: [
+              { texte: 'No, long after them', icone: '🦣', correcte: true },
+              { texte: 'Yes, all together', icone: '🦕' },
+            ],
+            explication: 'Mammoths turned up a very long time after the dinosaurs had disappeared.',
+          },
+        ],
+        '6-8': [
+          {
+            id: 'mammouth-croise-dinosaure',
+            question: 'Could a mammoth have come across a dinosaur?',
+            reponses: [
+              { texte: 'No, millions of years lie between them', icone: '⏳', correcte: true },
+              { texte: 'Yes, they lived at the same time', icone: '🤝' },
+              { texte: 'Yes, but only the small dinosaurs', icone: '🦎' },
+            ],
+            explication:
+              'The non-bird dinosaurs had died out long before the very first mammoths appeared.',
+          },
+        ],
+        '9-12': [
+          {
+            id: 'ecart-temps',
+            question: 'How much time separates the end of the non-avian dinosaurs from the end of the mammoths?',
+            reponses: [
+              { texte: 'About sixty-five million years', icone: '⏳', correcte: true },
+              { texte: 'Only a few thousand years', icone: '📅' },
+              { texte: 'They died out at the same time', icone: '🟰' },
+            ],
+            explication:
+              'The non-avian dinosaurs died out sixty-six million years ago, the mammoths only about ten thousand years ago.',
           },
         ],
       },

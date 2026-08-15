@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['dents', 'sens', 'vitesse', 'echange'] as const;
+
+const LEGENDES = {
+  fr: {
+    petit: '10 dents',
+    grand: '30 dents',
+    rapport: '3 tours du petit = 1 tour du grand',
+    compromis: '3 fois plus lent, 3 fois plus fort',
+  },
+  en: {
+    petit: '10 teeth',
+    grand: '30 teeth',
+    rapport: '3 turns of the small = 1 of the big',
+    compromis: '3 times slower, 3 times stronger',
+  },
+};
 
 /** Roue dentée générée : rayon, nombre de dents et sens de rotation. */
 function Roue({
@@ -48,9 +64,11 @@ export function EngrenagesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -59,26 +77,26 @@ export function EngrenagesAnimation({
       {/* Petit pignon : 10 dents, rapide */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <Roue cx={126} cy={120} rayon={38} dents={10} couleur="#fb923c" duree={3} inverse={false} anime={anime} />
-        <text x="98" y="192" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">10 dents</text>
+        <text x="98" y="192" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.petit}</text>
       </g>
 
       {/* Grande roue : 30 dents, trois fois plus lente, sens inverse */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <Roue cx={248} cy={120} rayon={72} dents={30} couleur="#38bdf8" duree={9} inverse anime={anime} />
-        <text x="222" y="212" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">30 dents</text>
+        <text x="222" y="212" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.grand}</text>
       </g>
 
       {/* Le rapport */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <text x="20" y="34" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          3 tours du petit = 1 tour du grand
+          {legende.rapport}
         </text>
       </g>
 
       {/* Le compromis, identique à celui du levier */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="20" y="58" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          3 fois plus lent, 3 fois plus fort
+          {legende.compromis}
         </text>
       </g>
     </svg>

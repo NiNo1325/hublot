@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The aeroplane that stays up in the air',
+        '6-8': 'Why an aeroplane flies',
+        '9-12': 'Lift',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'vitesse',
+              text: 'To take off, an aeroplane first has to roll very, very fast down the runway.',
+            },
+            {
+              id: 'aile',
+              text: 'Its wings are tilted a little. As it moves forward, they push the air downwards.',
+            },
+            {
+              id: 'reaction',
+              text: 'And when you push something, it pushes you back too. So the air pushes the aeroplane upwards.',
+            },
+            {
+              id: 'main',
+              text: 'Try it in a car: put your hand out of the window and tilt it a little. You feel your hand rise all by itself.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'vitesse',
+              text: 'An airliner takes off at around two hundred and fifty kilometres per hour. Without that speed, its wings are no use at all.',
+            },
+            {
+              id: 'aile',
+              text: 'The wing is tilted and curved. As it slices through the air, it turns a huge amount of air downwards — several tonnes every second on a large aeroplane.',
+            },
+            {
+              id: 'reaction',
+              text: 'Now every time you push on something, that something pushes back, with the same force and in the opposite direction. The wing pushes the air down, so the air pushes the wing up. That push is called lift.',
+            },
+            {
+              id: 'main',
+              text: 'People often say the air travels faster over the top because the path up there is longer. That is wrong: an aeroplane can fly upside down, which would be impossible if the shape alone explained everything. What counts is the air turned downwards.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'vitesse',
+              text: 'Lift grows with the square of the speed, the wing area and the density of the air. Doubling the speed quadruples the lift — hence the importance of the take-off speed.',
+            },
+            {
+              id: 'aile',
+              text: 'Through its profile and its angle of attack, the wing forces the airflow into a downward turn called downwash. The flow leaves the trailing edge pointing towards the ground, carrying momentum in that direction.',
+            },
+            {
+              id: 'reaction',
+              text: 'By Newton’s third law, the wing feels an equal and opposite force, directed upwards. The description in terms of pressure and the one in terms of deflection do not compete: they are two readings of the same phenomenon, the low pressure over the upper surface being precisely what curves the flow.',
+            },
+            {
+              id: 'main',
+              text: 'The so-called “equal transit time” explanation — the air that splits at the front supposedly having to meet again at the trailing edge — is wrong, and measured to be wrong: the air over the upper surface arrives well ahead. It also predicts far less lift than is actually observed, and explains neither inverted flight nor the flight of a flat wing.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

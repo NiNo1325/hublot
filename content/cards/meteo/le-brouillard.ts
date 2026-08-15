@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Fog',
+        '6-8': 'Where fog comes from',
+        '9-12': 'Where fog comes from',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'soir',
+              text: 'In the evening, when the sun goes away, the air right near the ground turns cold.',
+            },
+            {
+              id: 'condense',
+              text: 'So the water in the air turns into tiny little drops, just above the ground.',
+            },
+            {
+              id: 'nuage-au-sol',
+              text: 'Those drops make something like a cloud, but down here: that’s the fog!',
+            },
+            {
+              id: 'leve',
+              text: 'In the morning the sun warms everything, the drops go away, and the fog lifts.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'soir',
+              text: 'People think fog comes down from the sky. Wrong: it all happens down below. In the evening, the air near the ground cools.',
+            },
+            {
+              id: 'condense',
+              text: 'As it cools, that air can no longer hold all its water vapour. The vapour condenses into a multitude of droplets, right at ground level.',
+            },
+            {
+              id: 'nuage-au-sol',
+              text: 'That mist of droplets is exactly a cloud — except it is sitting at ground level instead of up high. That is why you cannot see very far in it.',
+            },
+            {
+              id: 'leve',
+              text: 'In the morning the sun warms the air, the droplets evaporate and become invisible vapour again. The fog “lifts”: it vanishes where it stood.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'soir',
+              text: 'Fog does not fall from the sky: it forms right at ground level. On a clear, still night, the ground loses its heat and chills the thin layer of air touching it.',
+            },
+            {
+              id: 'condense',
+              text: 'When that air reaches its dew point, its water vapour condenses around microscopic dust particles, forming suspended droplets — the very same process as in a cloud.',
+            },
+            {
+              id: 'nuage-au-sol',
+              text: 'Fog is therefore literally a cloud at ground level. Several types are distinguished according to the cause of the cooling: radiation fog at night, or advection fog when humid air passes over a cold surface.',
+            },
+            {
+              id: 'leve',
+              text: 'It clears when the air warms back above the dew point: the droplets evaporate. We say the fog “lifts”, but it does not rise — it simply turns back into invisible vapour, right where it was.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

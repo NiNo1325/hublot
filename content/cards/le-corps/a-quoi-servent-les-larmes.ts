@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The tears in our eyes',
+        '6-8': 'What tears are for',
+        '9-12': 'The role of tears',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Your eyes make tears all the time, even when you are not crying.',
+            },
+            {
+              id: 'deux',
+              text: 'If an eyelash or a speck of dust gets into your eye, more tears come to rinse it out.',
+            },
+            {
+              id: 'trois',
+              text: 'When you are very happy, very sad or very moved, even more tears run down.',
+            },
+            {
+              id: 'quatre',
+              text: 'Tears wash and protect your eyes, and sometimes they show what you feel, too.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Your eyes make tears all the time, even when you are not crying: they keep the eye moist and clean.',
+            },
+            {
+              id: 'deux',
+              text: 'As soon as an eyelash, a speck of dust or a little smoke irritates your eye, tear production shoots up to rinse it out.',
+            },
+            {
+              id: 'trois',
+              text: 'A very strong emotion — joy, sadness or anger — can also set off a flood of tears far bigger than usual.',
+            },
+            {
+              id: 'quatre',
+              text: 'In every case, tears clean and protect the eye; sometimes, on top of that, they go along with what you are feeling.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The lacrimal gland constantly produces a thin film of tears that cleans, moistens and protects the surface of the eye from microbes.',
+            },
+            {
+              id: 'deux',
+              text: 'An irritation (dust, an eyelash, an onion) triggers a reflex rush of tears meant to flush the intruder out quickly.',
+            },
+            {
+              id: 'trois',
+              text: 'An intense emotion activates a different circuit, linked to the emotional brain, which also causes tears to be produced in quantity.',
+            },
+            {
+              id: 'quatre',
+              text: 'Whether continuous, reflex or emotional, tears carry out the same mission of cleaning and protecting the eye. So we do not cry from sadness alone: joy or anger make tears flow just as readily.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

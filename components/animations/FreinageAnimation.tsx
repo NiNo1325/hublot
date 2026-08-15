@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['pedale', 'adherence', 'bloquer', 'carre-vitesse'] as const;
+
+const LEGENDES = {
+  fr: {
+    freins: 'les freins chauffent',
+    accroche: 'tout dépend de l’accroche',
+    bloquee: 'roue bloquée : moins bien',
+    cinquante: '50 km/h',
+    cent: '100 km/h : ×4',
+  },
+  en: {
+    freins: 'the brakes heat up',
+    accroche: 'it all rests on the grip',
+    bloquee: 'locked wheel: worse',
+    cinquante: '50 km/h',
+    cent: '100 km/h: ×4',
+  },
+};
 
 /**
  * Les deux barres du bas sont à l'échelle : celle de cent kilomètres par heure
@@ -15,9 +33,11 @@ export function FreinageAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -37,7 +57,7 @@ export function FreinageAnimation({
           </path>
         ))}
         <text x="14" y="32" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          les freins chauffent
+          {legende.freins}
         </text>
       </g>
 
@@ -55,7 +75,7 @@ export function FreinageAnimation({
           </g>
         ))}
         <text x="14" y="106" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          tout dépend de l’accroche
+          {legende.accroche}
         </text>
       </g>
 
@@ -65,7 +85,7 @@ export function FreinageAnimation({
           <rect key={x} x={x} y="126" width="18" height="5" fill="#f87171" />
         ))}
         <text x="14" y="140" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          roue bloquée : moins bien
+          {legende.bloquee}
         </text>
       </g>
 
@@ -73,7 +93,7 @@ export function FreinageAnimation({
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <rect x="100" y="176" width="60" height="14" rx="3" fill="#7dd3fc" />
         <text x="14" y="188" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          50 km/h
+          {legende.cinquante}
         </text>
         <rect x="100" y="206" width="240" height="14" rx="3" fill="#f87171">
           {anime && phase === 3 && (
@@ -81,7 +101,7 @@ export function FreinageAnimation({
           )}
         </rect>
         <text x="14" y="218" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          100 km/h : ×4
+          {legende.cent}
         </text>
       </g>
     </svg>

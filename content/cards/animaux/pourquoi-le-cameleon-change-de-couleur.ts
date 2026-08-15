@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The chameleon',
+        '6-8': 'Why the chameleon changes colour',
+        '9-12': 'Why the chameleon changes colour',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'humeur',
+              text: 'When the chameleon is calm, it stays green and quiet.',
+            },
+            {
+              id: 'signal',
+              text: 'But if it is cross, or wants to show off, it turns bright colours to tell the others.',
+            },
+            {
+              id: 'temperature',
+              text: 'When it is cold, it goes all dark to warm up in the sun.',
+            },
+            {
+              id: 'mecanisme',
+              text: 'It is not to hide: its colours are messages!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'humeur',
+              text: 'At rest, the chameleon wears dull colours. Its colour depends above all on its mood.',
+            },
+            {
+              id: 'signal',
+              text: 'Facing a rival, or trying to charm a female, it lights up in bright colours. That is a signal it sends to another chameleon.',
+            },
+            {
+              id: 'temperature',
+              text: 'It also matches its colour to the temperature: darker to soak up the sun’s heat, lighter when it gets too hot.',
+            },
+            {
+              id: 'mecanisme',
+              text: 'So no, it does not turn pink on a pink wall to hide. Its colours make it easy to spot: they are there to talk, not to disappear.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'humeur',
+              text: 'A chameleon’s colour reflects its state first of all: when calm, it wears quiet shades.',
+            },
+            {
+              id: 'signal',
+              text: 'Excited, threatened or displaying, it turns vivid. These colours are a language aimed at its own kind: to dominate a rival, to impress, or to court a female.',
+            },
+            {
+              id: 'temperature',
+              text: 'Colour also serves as a thermostat: dark skin absorbs more of the sun’s heat, pale skin sends it back. It warms up or cools down by changing shade.',
+            },
+            {
+              id: 'mecanisme',
+              text: 'The most surprising part is the mechanism: under its skin, tiny crystals reflect light. By changing the spacing between them, the chameleon changes the colour sent back — it is not shifting pigments about, it is sorting light. Camouflage is therefore not the point: its colours make it conspicuous, in order to communicate.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

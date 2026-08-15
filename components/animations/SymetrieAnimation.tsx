@@ -1,9 +1,21 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['miroir', 'pliage', 'nature', 'presque'] as const;
+
+const LEGENDES = {
+  fr: {
+    axes: 'six axes',
+    jamais: 'jamais exactement pareil',
+  },
+  en: {
+    axes: 'six axes',
+    jamais: 'never exactly the same',
+  },
+};
 
 /* Deux lobes par aile — sans l'aile inférieure, la silhouette ne se lit pas. */
 const AILE_HAUTE = 'M0 -20 C -34 -62 -78 -46 -66 -12 C -58 8 -24 4 0 -4 Z';
@@ -27,10 +39,12 @@ export function SymetrieAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const imparfait = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -85,14 +99,14 @@ export function SymetrieAnimation({
           )}
         </g>
         <text x="278" y="150" fill="#7dd3fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          six axes
+          {legende.axes}
         </text>
       </g>
 
       {/* L'écart au modèle, mesuré. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="175" y="196" fill="#b9c4da" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          jamais exactement pareil
+          {legende.jamais}
         </text>
       </g>
     </svg>

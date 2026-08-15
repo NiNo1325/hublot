@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'How our muscles move',
+        '6-8': 'How muscles move',
+        '9-12': 'How muscles really work',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A muscle can do one thing only: pull, never push.',
+            },
+            {
+              id: 'deux',
+              text: 'When it works, it gets shorter and harder.',
+            },
+            {
+              id: 'trois',
+              text: 'By pulling on the bone, it bends your arm.',
+            },
+            {
+              id: 'quatre',
+              text: 'To straighten your arm again, another muscle on the other side pulls in its turn.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A muscle can do one thing only: tighten up and pull. It can never push.',
+            },
+            {
+              id: 'deux',
+              text: 'When it tightens, the muscle gets shorter and harder: you can feel it by bending your arm.',
+            },
+            {
+              id: 'trois',
+              text: 'Attached to the bone by a tendon, it pulls on it like a rope, and your arm bends.',
+            },
+            {
+              id: 'quatre',
+              text: 'To straighten the arm again, you need a second muscle, on the other side, which tightens in its turn and pulls the opposite way.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A skeletal muscle can only exert a pulling force: it is physically incapable of pushing.',
+            },
+            {
+              id: 'deux',
+              text: 'When it contracts, its fibres shorten, which reduces the overall length of the muscle.',
+            },
+            {
+              id: 'trois',
+              text: 'Joined to the bone by a tendon, the contracted muscle pulls on it like a cable, producing a bending movement — of the arm at the elbow, for example.',
+            },
+            {
+              id: 'quatre',
+              text: 'Since a muscle cannot push to reverse that movement, muscles work in opposing pairs: when the biceps contracts to bend the arm, it is the triceps, on the other side, that contracts in its turn to straighten it.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

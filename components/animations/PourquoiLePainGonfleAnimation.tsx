@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    levure: 'la levure vit dedans',
+    sucre: 'elle mange le sucre',
+    bulles: 'des bulles arrivent',
+    gonfle: 'la pâte gonfle bien',
+  },
+  en: {
+    levure: 'the yeast lives in it',
+    sucre: 'it eats the sugar',
+    bulles: 'bubbles appear',
+    gonfle: 'the dough puffs up',
+  },
+};
 
 /**
  * La levure est vivante : elle mange le sucre de la pâte et rejette du gaz
@@ -14,10 +30,12 @@ export function PourquoiLePainGonfleAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -33,7 +51,7 @@ export function PourquoiLePainGonfleAnimation({
         <circle cx="200" cy="134" r="7" fill="#a78bfa">
           {anime && <animate attributeName="r" values="6;8;6" dur="2.2s" repeatCount="indefinite" />}
         </circle>
-        <text x="64" y="200" fill="#a78bfa" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>la levure vit dedans</text>
+        <text x="64" y="200" fill="#a78bfa" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.levure}</text>
       </g>
 
       {/* Phase 2 : elle mange le sucre de la farine */}
@@ -47,7 +65,7 @@ export function PourquoiLePainGonfleAnimation({
           </rect>
         ))}
         <circle cx="200" cy="134" r="8" fill="#a78bfa" />
-        <text x="70" y="200" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>elle mange le sucre</text>
+        <text x="70" y="200" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.sucre}</text>
       </g>
 
       {/* Phase 3 : plein de bulles de gaz apparaissent */}
@@ -63,7 +81,7 @@ export function PourquoiLePainGonfleAnimation({
             {anime && <animate attributeName="r" values="3;6;3" dur="1.4s" begin={`${i * 0.3}s`} repeatCount="indefinite" />}
           </circle>
         ))}
-        <text x="62" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>des bulles arrivent</text>
+        <text x="62" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.bulles}</text>
       </g>
 
       {/* Phase 4 : la pâte gonfle et déborde du saladier */}
@@ -80,7 +98,7 @@ export function PourquoiLePainGonfleAnimation({
             )}
           </circle>
         ))}
-        <text x="80" y="212" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>la pâte gonfle bien</text>
+        <text x="80" y="212" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.gonfle}</text>
       </g>
     </svg>
   );

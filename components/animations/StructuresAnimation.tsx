@@ -1,9 +1,21 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['poids', 'carre', 'triangle', 'repartition'] as const;
+
+const LEGENDES = {
+  fr: {
+    deforme: 'se déforme',
+    immobile: 'ne bouge pas',
+  },
+  en: {
+    deforme: 'gives way',
+    immobile: 'holds firm',
+  },
+};
 
 /**
  * Le carré se déforme visiblement en losange, le triangle reste immobile sous
@@ -14,10 +26,12 @@ export function StructuresAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const deformer = anime && phase === 1;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -53,7 +67,7 @@ export function StructuresAnimation({
             )}
           </polygon>
           <text x="60" y="208" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-            se déforme
+            {legende.deforme}
           </text>
         </g>
       </g>
@@ -65,7 +79,7 @@ export function StructuresAnimation({
           fill="none" stroke="#34d399" strokeWidth="6" strokeLinejoin="round"
         />
         <text x="192" y="208" fill="#34d399" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          ne bouge pas
+          {legende.immobile}
         </text>
       </g>
 

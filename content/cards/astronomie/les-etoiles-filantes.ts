@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The streak of light in the night',
+        '6-8': 'Shooting stars',
+        '9-12': 'Meteors: what really glows',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'souhait',
+              text: 'At night, sometimes, a streak of light shoots across the sky. People say a star has fallen.',
+            },
+            {
+              id: 'grain',
+              text: 'But stars do not fall. What shoots past is a tiny little stone, smaller than a grain of rice.',
+            },
+            {
+              id: 'chauffe',
+              text: 'It arrives so fast that it goes red hot, and the air around it lights up. That light is what you see.',
+            },
+            {
+              id: 'pluie',
+              text: 'On some nights of the year, lots of them go past. That is called a shower of shooting stars.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'souhait',
+              text: 'A shooting star is not a star falling. A real star is a sun, enormous and immensely far away: it cannot fall on us.',
+            },
+            {
+              id: 'grain',
+              text: 'What crosses the sky is a speck of dust, often smaller than a grain of rice, that had been travelling through space for a very long time.',
+            },
+            {
+              id: 'chauffe',
+              text: 'It enters the air at a crazy speed, tens of kilometres per second. The air it crushes in front of it goes red hot and starts to glow, very high up, around eighty kilometres. The speck itself vanishes in a second.',
+            },
+            {
+              id: 'pluie',
+              text: 'Every year, the Earth crosses trails of dust left behind by comets. On those nights, dozens are counted every hour — and always on the same dates.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'souhait',
+              text: 'The name misleads: nothing falls from a star. The phenomenon is called a meteor, and it plays out in our own atmosphere, not in the depths of the sky.',
+            },
+            {
+              id: 'grain',
+              text: 'The object responsible is a meteoroid: most often a grain weighing a few milligrams, debris left by a comet or torn from an asteroid.',
+            },
+            {
+              id: 'chauffe',
+              text: 'It enters the atmosphere at between eleven and seventy-two kilometres per second. It is not really friction that heats it, but the air it violently compresses in front of it: that gas, raised to thousands of degrees, ionises and glows. The trail forms at around eighty kilometres, far lower than the space station.',
+            },
+            {
+              id: 'pluie',
+              text: 'If a fragment survives and reaches the ground, we no longer speak of a meteor but of a meteorite. The showers — the Perseids in August, the Geminids in December — come back every year because the Earth’s orbit crosses the same trail of debris.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

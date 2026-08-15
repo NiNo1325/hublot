@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Everything falls down',
+        '6-8': 'Why things fall',
+        '9-12': 'Gravity',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'chute',
+              text: 'When you let go of something, it always falls downwards. Never upwards, never sideways.',
+            },
+            {
+              id: 'attraction',
+              text: 'It is the Earth pulling everything towards it. You cannot see what pulls, but it pulls all the time.',
+            },
+            {
+              id: 'plume',
+              text: 'A feather falls more slowly than a marble. Not because it is light: it is the air slowing it down, like a tiny parachute.',
+            },
+            {
+              id: 'lune',
+              text: 'The Earth even pulls on the Moon, very, very far away in the sky. That is why the Moon stays with us.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'chute',
+              text: 'Everything you let go of falls to the ground. The force that pulls objects towards the Earth is called gravity.',
+            },
+            {
+              id: 'attraction',
+              text: 'Gravity comes from the Earth itself: because it is enormous, it attracts everything around it. And you attract the Earth too — but you are so small that it does not show.',
+            },
+            {
+              id: 'plume',
+              text: 'People often think that heavy objects fall faster. That is wrong. If a feather falls slowly, it is because the air slows it down. Without air, a feather and a hammer fall at exactly the same speed.',
+            },
+            {
+              id: 'lune',
+              text: 'Astronauts checked it on the Moon, where there is no air: they dropped a hammer and a feather, and both touched the ground at the same moment.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'chute',
+              text: 'Gravity is the mutual attraction that exists between any two objects that have mass. It is stronger the larger the masses are, and the closer the objects are.',
+            },
+            {
+              id: 'attraction',
+              text: 'The attraction goes both ways: the Earth pulls on you, and you pull on the Earth with exactly the same force. But since the Earth is thousands of billions of billions of times more massive than you, it is you who moves, and not the Earth.',
+            },
+            {
+              id: 'plume',
+              text: 'Every object falls with the same acceleration, whatever its mass. A feather seems to contradict this only because of air resistance. In a vacuum, a hammer and a feather fall in strictly the same way.',
+            },
+            {
+              id: 'lune',
+              text: 'In 1971, the astronaut David Scott carried out this experiment on the Moon, which has no atmosphere: hammer and feather touched the ground at the same instant. The Moon itself does not escape because the Earth’s gravity holds on to it — it is permanently falling towards the Earth, but its speed makes it miss, which is what puts it in orbit.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

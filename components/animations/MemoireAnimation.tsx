@@ -1,9 +1,33 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['deux-memoires', 'vive', 'stockage', 'enregistrer'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    vive: 'mémoire vive',
+    stockage: 'stockage',
+    rapide: 'rapide, mais oublie tout',
+    lent: 'lent, mais garde tout',
+    coupure: 'plus de courant : tout s’efface à gauche',
+  },
+  en: {
+    vive: 'working memory',
+    stockage: 'storage',
+    rapide: 'fast, but forgets it all',
+    lent: 'slow, but keeps it all',
+    coupure: 'no power: the left side is wiped',
+  },
+};
 
 /**
  * À la phase finale, la mémoire vive se vide et le stockage conserve : c'est
@@ -13,10 +37,12 @@ export function MemoireAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const coupure = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -25,7 +51,7 @@ export function MemoireAnimation({
       {/* Mémoire vive : rapide, volatile */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <rect x="30" y="58" width="146" height="110" rx="10" fill="#1b2a4a" stroke="#22d3ee" strokeWidth="2.5" />
-        <text x="46" y="46" fill="#22d3ee" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">mémoire vive</text>
+        <text x="46" y="46" fill="#22d3ee" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">{legende.vive}</text>
         {Array.from({ length: 6 }).map((_, i) => (
           <rect
             key={i}
@@ -39,14 +65,14 @@ export function MemoireAnimation({
           </rect>
         ))}
         <text x="42" y="188" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          rapide, mais oublie tout
+          {legende.rapide}
         </text>
       </g>
 
       {/* Stockage : lent, permanent */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <rect x="224" y="58" width="146" height="110" rx="10" fill="#1b2a4a" stroke="#34d399" strokeWidth="2.5" />
-        <text x="248" y="46" fill="#34d399" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">stockage</text>
+        <text x="248" y="46" fill="#34d399" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">{legende.stockage}</text>
         {Array.from({ length: 6 }).map((_, i) => (
           <rect
             key={i}
@@ -55,7 +81,7 @@ export function MemoireAnimation({
           />
         ))}
         <text x="213" y="188" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          lent, mais garde tout
+          {legende.lent}
         </text>
       </g>
 
@@ -68,7 +94,7 @@ export function MemoireAnimation({
       {/* Coupure de courant */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="31" y="216" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          plus de courant : tout s&apos;efface à gauche
+          {legende.coupure}
         </text>
       </g>
     </svg>

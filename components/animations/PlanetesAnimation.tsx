@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['famille', 'distances', 'vide', 'rocheuses-gazeuses'] as const;
+
+const LEGENDES = {
+  fr: {
+    dessins: 'sur les dessins',
+    vraieEchelle: 'à la vraie échelle',
+    vide: 'surtout du vide',
+    types: '4 rocheuses, 4 géantes',
+  },
+  en: {
+    dessins: 'in the drawings',
+    vraieEchelle: 'at the true scale',
+    vide: 'mostly empty',
+    types: '4 rocky, 4 giant',
+  },
+};
 
 /** Le rang schématique des manuels : planètes serrées, régulièrement espacées. */
 const SCHEMA = [60, 96, 132, 168, 214, 258, 302, 346];
@@ -22,10 +38,12 @@ export function PlanetesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const typees = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -41,7 +59,7 @@ export function PlanetesAnimation({
           <circle key={x} cx={x} cy="72" r={TAILLES[i]} fill="#94a3b8" />
         ))}
         <text x="14" y="30" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          sur les dessins
+          {legende.dessins}
         </text>
       </g>
 
@@ -62,7 +80,7 @@ export function PlanetesAnimation({
           </circle>
         ))}
         <text x="14" y="140" fill="#e2e8f0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          à la vraie échelle
+          {legende.vraieEchelle}
         </text>
       </g>
 
@@ -70,14 +88,14 @@ export function PlanetesAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <line x1="60" y1="196" x2="376" y2="196" stroke="#475569" strokeWidth="2" strokeDasharray="5 7" />
         <text x="14" y="210" fill="#64748b" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          surtout du vide
+          {legende.vide}
         </text>
       </g>
 
       {/* Quatre rocheuses, quatre géantes */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="14" y="234" fill="#f59e0b" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          4 rocheuses, 4 géantes
+          {legende.types}
         </text>
       </g>
     </svg>

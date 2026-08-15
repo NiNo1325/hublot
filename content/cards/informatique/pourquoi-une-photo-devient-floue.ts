@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The photo that turns into squares',
+        '6-8': 'Why you cannot “enhance” a photo',
+        '9-12': 'Zooming in invents no information',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'zoomer',
+              text: 'You make a photo bigger on the screen. Bigger, and bigger.',
+            },
+            {
+              id: 'grille',
+              text: 'And there you see squares! The photo was made of tiny coloured squares.',
+            },
+            {
+              id: 'inventer',
+              text: 'If a little thing was not photographed, it is nowhere at all. You cannot make it appear.',
+            },
+            {
+              id: 'compresser',
+              text: 'So to see tiny things properly, you have to take the photo from up close.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'zoomer',
+              text: 'In films, a detective calls out “zoom in, enhance”, and the blurry face turns sharp. That does not exist.',
+            },
+            {
+              id: 'grille',
+              text: 'A digital photo is a grid of numbers, one per little coloured square. Enlarging it only stretches those squares: the screen shows you exactly the same numbers, bigger.',
+            },
+            {
+              id: 'inventer',
+              text: 'Whatever was not recorded when the picture was taken is stored nowhere. No software can go and fetch it, because there is nothing to fetch.',
+            },
+            {
+              id: 'compresser',
+              text: 'It gets worse. To take up less room, a JPEG file deliberately throws away details the eye barely notices. And each time the image is saved again, a little more disappears — for good.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'zoomer',
+              text: '“Zoom and enhance” is an invention of scriptwriters. Enlarging a raster image creates no information: the algorithm merely interpolates between existing pixels.',
+            },
+            {
+              id: 'grille',
+              text: 'An image is a table of values, one per pixel and per colour channel. Its resolution sets a hard limit on what it holds. The sampling theorem states as much: beyond a certain fineness, the detail was never captured, and nothing can bring it back.',
+            },
+            {
+              id: 'inventer',
+              text: 'Artificial intelligence models appear to contradict this. Yet they restore nothing: they manufacture a plausible detail, learnt from other images. The result is sharp and can be entirely false. A face rebuilt this way is a hypothesis, never a proof.',
+            },
+            {
+              id: 'compresser',
+              text: 'On top of that comes lossy compression. JPEG cuts the image into blocks, converts it into frequencies and removes those the eye perceives poorly. The operation is irreversible: saving several times degrades it cumulatively, which is known as generation loss.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

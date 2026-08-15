@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why you float well in the sea',
+        '6-8': 'Why you float better in the sea',
+        '9-12': 'Buoyancy: why the sea holds you up better',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Sea water has salt in it, and that makes it heavier than the water in a swimming pool.',
+            },
+            {
+              id: 'deux',
+              text: 'This heavier water pushes upwards harder.',
+            },
+            {
+              id: 'trois',
+              text: 'So your body floats more easily.',
+            },
+            {
+              id: 'quatre',
+              text: 'In a very, very salty sea, you can float without even moving.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Salt water holds dissolved salt as well as water: for the same amount, it is heavier than fresh water, and we say it is denser.',
+            },
+            {
+              id: 'deux',
+              text: 'This denser water pushes your body upwards with more force than fresh water does, like a hand under your back; that push is called upthrust.',
+            },
+            {
+              id: 'trois',
+              text: 'That is why it is easier to float in the sea than in a fresh-water pool or in a lake.',
+            },
+            {
+              id: 'quatre',
+              text: 'In a very salty sea such as the Dead Sea, the water is so dense that you float almost without any effort at all, lying flat on the surface.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Sea water contains about thirty-five grams of dissolved salt per litre, which makes it denser than fresh water.',
+            },
+            {
+              id: 'deux',
+              text: 'According to Archimedes’ principle, the force pushing a body upwards depends on the density of the liquid it displaces: the denser the water, the stronger that push.',
+            },
+            {
+              id: 'trois',
+              text: 'For one and the same human body, the upthrust is therefore greater in the sea than in fresh water, which makes floating easier.',
+            },
+            {
+              id: 'quatre',
+              text: 'In the Dead Sea, whose salinity exceeds thirty per cent, the water is so dense that buoyancy there is almost total, even for someone who cannot swim.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

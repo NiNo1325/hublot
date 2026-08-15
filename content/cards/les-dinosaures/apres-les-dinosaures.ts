@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'After the dinosaurs',
+        '6-8': 'After the dinosaurs: the mammoths',
+        '9-12': 'The rise of the mammals and the Ice Age',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'After the dinosaurs were gone, little furry animals slowly grew bigger.',
+            },
+            {
+              id: 'deux',
+              text: 'Much, much later, a very cold time came along: the Ice Age.',
+            },
+            {
+              id: 'trois',
+              text: 'That is when the woolly mammoth and the sabre-toothed tiger lived.',
+            },
+            {
+              id: 'quatre',
+              text: 'They died out too, but much, much later than the dinosaurs.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Once the non-bird dinosaurs had died out, mammals, small and hidden away until then, were able to spread out and grow bigger, taking over the space left empty.',
+            },
+            {
+              id: 'deux',
+              text: 'Tens of millions of years later, the Earth went through several very cold spells that we group together under the name Ice Age.',
+            },
+            {
+              id: 'trois',
+              text: 'That was the time of the woolly mammoth, wrapped in thick fur, and of the fearsome sabre-toothed tiger.',
+            },
+            {
+              id: 'quatre',
+              text: 'These animals died out only about ten thousand years ago, which is tens of millions of years after the dinosaurs.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'After the Cretaceous-Palaeogene extinction, mammals, small-bodied until then, went through a rapid evolutionary radiation and colonised the ecological niches left vacant.',
+            },
+            {
+              id: 'deux',
+              text: 'Much later, during the Pleistocene, which began about two point six million years ago, a succession of glaciations shaped the ecosystems of the northern hemisphere.',
+            },
+            {
+              id: 'trois',
+              text: 'The megafauna of that period included the woolly mammoth, adapted to the cold by its thick fur and small ears, and Smilodon, the sabre-toothed cat.',
+            },
+            {
+              id: 'quatre',
+              text: 'This megafauna died out about ten thousand years ago, at the end of the last glaciation, nearly sixty-five million years after the last non-avian dinosaurs.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

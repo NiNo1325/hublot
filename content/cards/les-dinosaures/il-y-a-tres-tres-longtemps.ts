@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'A very long time ago',
+        '6-8': 'A very, very long time ago',
+        '9-12': 'Dinosaurs and humans: millions of years apart',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The dinosaurs lived a very, very, very long time ago.',
+            },
+            {
+              id: 'deux',
+              text: 'It was long before there were any people on Earth.',
+            },
+            {
+              id: 'trois',
+              text: 'Between the dinosaurs and you, a huge amount of time went by.',
+            },
+            {
+              id: 'quatre',
+              text: 'Humans arrived right at the very end of the story.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The dinosaurs lived between about two hundred and thirty and sixty-six million years ago.',
+            },
+            {
+              id: 'deux',
+              text: 'The very first humans, on the other hand, appeared only a few million years ago: long after the non-bird dinosaurs had died out.',
+            },
+            {
+              id: 'trois',
+              text: 'Between the last non-bird dinosaur and the first human, so much time went by that it is almost impossible to picture.',
+            },
+            {
+              id: 'quatre',
+              text: 'If you squeeze the whole history of the Earth into a single year, humans turn up only in the very last minutes of the thirty-first of December.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Non-avian dinosaurs dominated land ecosystems from the Late Triassic to the Cretaceous, roughly from two hundred and thirty to sixty-six million years ago.',
+            },
+            {
+              id: 'deux',
+              text: 'The genus Homo appears only about two to three million years ago, and Homo sapiens only three hundred thousand years ago.',
+            },
+            {
+              id: 'trois',
+              text: 'Tyrannosaurus is therefore closer in time to us than to Stegosaurus: eighty million years already separated the two, more than the gap between Tyrannosaurus and a human today.',
+            },
+            {
+              id: 'quatre',
+              text: 'Scaled to a calendar year covering the whole history of the Earth, our species occupies only the very last seconds before midnight on the thirty-first of December.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

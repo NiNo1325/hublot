@@ -47,6 +47,68 @@ const fr = {
   'narration.reecouter': 'Réécouter',
   'narration.silencieux':
     'Le son n’a pas pu être chargé. L’explication défile à l’écrit.',
+
+  'quizz.vide.titre': 'Écoute d’abord quelques cartes',
+  'quizz.vide.texte':
+    'Le quizz ne pose des questions que sur les cartes que tu as déjà écoutées. Va en découvrir une ou deux, puis reviens jouer.',
+  'quizz.vide.action': 'Découvrir des cartes',
+  'quizz.menu.titre': 'Sur quoi joue-t-on ?',
+  'quizz.menu.texte': 'Choisis un monde, ou joue sur tout à la fois.',
+  'quizz.tout': 'Tout',
+  'quizz.menu.total': (n: number) => `${n} carte${n > 1 ? 's' : ''} au total`,
+  'quizz.menu.cartes': (n: number) => `${n} carte${n > 1 ? 's' : ''}`,
+  'quizz.progression': (i: number, n: number) => `Question ${i} sur ${n}`,
+  'quizz.arreter': 'Arrêter la lecture',
+  'quizz.ecouter-question': 'Écouter la question',
+  'quizz.ecouter-reponse': (texte: string) => `Écouter la réponse : ${texte}`,
+  'quizz.juste': 'Bravo, c’est ça !',
+  'quizz.presque': 'Pas tout à fait…',
+  'quizz.suivante': 'Question suivante',
+  'quizz.resultat': 'Voir le résultat',
+  'quizz.fin.bravo': 'Bravo ! 🎉',
+  'quizz.fin.score': (justes: number, total: number) =>
+    `${justes} bonne${justes > 1 ? 's' : ''} réponse${justes > 1 ? 's' : ''} sur ${total}`,
+  'quizz.fin.total': (etoiles: number) => `${etoiles} au total —`,
+  'quizz.fin.texte':
+    'Chaque question t’a rappelé quelque chose. Rejoue quand tu veux, les questions changent.',
+  'quizz.fin.suivant': 'Sujet suivant',
+  'quizz.fin.rejouer': 'Rejouer',
+  'quizz.fin.rejouer-sujet': 'Rejouer ce sujet',
+  'quizz.fin.autre-sujet': 'Choisir un autre sujet',
+  'quizz.fin.choisir-sujet': 'Choisir un sujet',
+
+  'fete.on-y-va': 'On y va !',
+  'fete.bien-joue': 'Bien joué !',
+  'fete.en-forme': 'En pleine forme !',
+  'fete.en-feu': 'En feu ! 🔥',
+  'fete.serie': (n: number) => `${n} bonnes réponses d’affilée`,
+  'fete.nouveau-rang': 'Nouveau rang !',
+
+  'parcours.titre': 'Ton aventure',
+  'parcours.avancement': (faites: number, total: number) =>
+    `Lumi t’accompagne, une carte après l’autre · ${faites}/${total} découvertes`,
+  'parcours.prochaine': 'Prochaine étape',
+  'parcours.continuer': 'Continuer →',
+  'parcours.fini.titre': 'Bravo, aventure terminée ! 🎉',
+  'parcours.fini.texte':
+    'Tu as découvert toutes les cartes. Rejoue au quizz, ou explore librement ce que tu veux revoir.',
+  'parcours.fini.quizz': 'Aller au quizz',
+  'parcours.fini.explorer': 'Explorer librement',
+  'parcours.jalon': (vues: number, total: number) => `${vues}/${total} cartes`,
+
+  'lumi.titre': 'Ton évolution',
+  'lumi.progression-rang': 'Progression vers le rang suivant',
+  'lumi.reste': (reste: number) => `plus que ${reste}`,
+  'lumi.pour': 'pour',
+  'lumi.rang-max': 'Rang maximum atteint ! 🎉',
+  'lumi.bilan': (explores: number, maitrises: number, total: number) =>
+    `${explores}/${total} explorés · ${maitrises}/${total} maîtrisés`,
+  'lumi.rangs': 'Les rangs de Lumi',
+  'lumi.rang-atteint': 'atteint ✓',
+  'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
+    `${nom}, ${seuil} étoiles${atteint ? ', atteint' : ''}`,
+  'lumi.monde': (vues: number, reussies: number, total: number) =>
+    `${vues}/${total} écoutée${total > 1 ? 's' : ''} · ${reussies}/${total} réussie${total > 1 ? 's' : ''}`,
 };
 
 /** Toutes les clés traduisibles, dérivées de la source française. */
@@ -87,6 +149,68 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'narration.reecouter': 'Listen again',
     'narration.silencieux':
       'The sound could not be loaded. The explanation scrolls as text.',
+
+    'quizz.vide.titre': 'Listen to a few cards first',
+    'quizz.vide.texte':
+      'The quiz only asks about cards you have already listened to. Go and discover one or two, then come back and play.',
+    'quizz.vide.action': 'Discover some cards',
+    'quizz.menu.titre': 'What shall we play on?',
+    'quizz.menu.texte': 'Pick a world, or play on everything at once.',
+    'quizz.tout': 'Everything',
+    'quizz.menu.total': (n: number) => `${n} card${n === 1 ? '' : 's'} in total`,
+    'quizz.menu.cartes': (n: number) => `${n} card${n === 1 ? '' : 's'}`,
+    'quizz.progression': (i: number, n: number) => `Question ${i} of ${n}`,
+    'quizz.arreter': 'Stop playing',
+    'quizz.ecouter-question': 'Listen to the question',
+    'quizz.ecouter-reponse': (texte: string) => `Listen to the answer: ${texte}`,
+    'quizz.juste': 'Well done, that’s it!',
+    'quizz.presque': 'Not quite…',
+    'quizz.suivante': 'Next question',
+    'quizz.resultat': 'See the result',
+    'quizz.fin.bravo': 'Well done! 🎉',
+    'quizz.fin.score': (justes: number, total: number) =>
+      `${justes} right answer${justes === 1 ? '' : 's'} out of ${total}`,
+    'quizz.fin.total': (etoiles: number) => `${etoiles} in total —`,
+    'quizz.fin.texte':
+      'Every question reminded you of something. Play again whenever you like — the questions change.',
+    'quizz.fin.suivant': 'Next topic',
+    'quizz.fin.rejouer': 'Play again',
+    'quizz.fin.rejouer-sujet': 'Play this topic again',
+    'quizz.fin.autre-sujet': 'Choose another topic',
+    'quizz.fin.choisir-sujet': 'Choose a topic',
+
+    'fete.on-y-va': 'Here we go!',
+    'fete.bien-joue': 'Nicely done!',
+    'fete.en-forme': 'On a roll!',
+    'fete.en-feu': 'On fire! 🔥',
+    'fete.serie': (n: number) => `${n} right answers in a row`,
+    'fete.nouveau-rang': 'New rank!',
+
+    'parcours.titre': 'Your adventure',
+    'parcours.avancement': (faites: number, total: number) =>
+      `Lumi walks with you, one card at a time · ${faites}/${total} discovered`,
+    'parcours.prochaine': 'Next step',
+    'parcours.continuer': 'Continue →',
+    'parcours.fini.titre': 'Well done, adventure complete! 🎉',
+    'parcours.fini.texte':
+      'You have discovered every card. Play the quiz again, or explore freely whatever you fancy revisiting.',
+    'parcours.fini.quizz': 'Go to the quiz',
+    'parcours.fini.explorer': 'Explore freely',
+    'parcours.jalon': (vues: number, total: number) => `${vues}/${total} cards`,
+
+    'lumi.titre': 'How you are growing',
+    'lumi.progression-rang': 'Progress towards the next rank',
+    'lumi.reste': (reste: number) => `only ${reste} more`,
+    'lumi.pour': 'to reach',
+    'lumi.rang-max': 'Highest rank reached! 🎉',
+    'lumi.bilan': (explores: number, maitrises: number, total: number) =>
+      `${explores}/${total} explored · ${maitrises}/${total} mastered`,
+    'lumi.rangs': 'Lumi’s ranks',
+    'lumi.rang-atteint': 'reached ✓',
+    'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
+      `${nom}, ${seuil} stars${atteint ? ', reached' : ''}`,
+    'lumi.monde': (vues: number, reussies: number, total: number) =>
+      `${vues}/${total} listened to · ${reussies}/${total} answered`,
   },
 };
 

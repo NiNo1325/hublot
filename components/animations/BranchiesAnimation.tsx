@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['oxygene-dans-leau', 'avale', 'branchies', 'rejet'] as const;
+
+const LEGENDES = {
+  fr: {
+    oxygene: 'de l’oxygène caché',
+    avale: 'l’eau entre par la bouche',
+    branchies: 'les branchies le captent',
+    rejet: 'l’eau ressort, appauvrie',
+  },
+  en: {
+    oxygene: 'hidden oxygen',
+    avale: 'water enters by the mouth',
+    branchies: 'the gills capture it',
+    rejet: 'water leaves, drained',
+  },
+};
 
 /** Points d'oxygène dissous dispersés dans l'eau. */
 const OXYGENE = [
@@ -25,10 +41,12 @@ export function BranchiesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -59,14 +77,14 @@ export function BranchiesAnimation({
       {/* Phase 1 : de l'oxygène caché dans l'eau */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <circle cx="40" cy="60" r="8" fill="none" stroke="#7dd3fc" strokeWidth="2" />
-        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>de l’oxygène caché</text>
+        <text x="20" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>{legende.oxygene}</text>
       </g>
 
       {/* Phase 2 : l'eau entre par la bouche */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <line x1="70" y1="114" x2="112" y2="114" stroke="#38bdf8" strokeWidth="3" />
         <path d="M106 108 L118 114 L106 120 Z" fill="#38bdf8" />
-        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>l’eau entre par la bouche</text>
+        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>{legende.avale}</text>
       </g>
 
       {/* Phase 3 : les branchies captent l'oxygène (points → sang) */}
@@ -78,14 +96,14 @@ export function BranchiesAnimation({
         ))}
         <line x1="168" y1="110" x2="196" y2="110" stroke="#a3e635" strokeWidth="2.5" />
         <path d="M190 105 L200 110 L190 115 Z" fill="#a3e635" />
-        <text x="220" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>les branchies le captent</text>
+        <text x="220" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.branchies}</text>
       </g>
 
       {/* Phase 4 : l'eau ressort sans oxygène */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <path d="M150 128 Q150 150 130 158" stroke="#93a4c4" strokeWidth="3" fill="none" />
         <path d="M136 150 L128 160 L142 160 Z" fill="#93a4c4" />
-        <text x="220" y="224" fill="#93a4c4" fontSize="15" fontFamily={police}>l’eau ressort, appauvrie</text>
+        <text x="220" y="224" fill="#93a4c4" fontSize="15" fontFamily={police}>{legende.rejet}</text>
       </g>
     </svg>
   );

@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The little teeth that fall out',
+        '6-8': 'Milk teeth',
+        '9-12': 'Why milk teeth fall out',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you are little, you first have very small teeth: your milk teeth.',
+            },
+            {
+              id: 'deux',
+              text: 'Under each one, a bigger tooth is slowly growing.',
+            },
+            {
+              id: 'trois',
+              text: 'That big tooth nibbles away the root of the little tooth, bit by bit.',
+            },
+            {
+              id: 'quatre',
+              text: 'Then the milk tooth falls out all by itself, and the big tooth takes its place.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Your first teeth, which came through when you were a baby, are called milk teeth: they are smaller than grown-up ones.',
+            },
+            {
+              id: 'deux',
+              text: 'Under each milk tooth, a bigger, permanent tooth forms and pushes little by little towards the top.',
+            },
+            {
+              id: 'trois',
+              text: 'As it pushes, this permanent tooth gnaws away the root of the milk tooth, which grows more and more fragile.',
+            },
+            {
+              id: 'quatre',
+              text: 'Once the root is well and truly gnawed away, the milk tooth comes loose and falls out, leaving room for the permanent tooth.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The twenty milk teeth, which appeared in early childhood, are smaller and fewer than the thirty-two permanent teeth still to come.',
+            },
+            {
+              id: 'deux',
+              text: 'Under each milk tooth, the bud of a permanent tooth develops and gradually migrates towards the surface of the gum.',
+            },
+            {
+              id: 'trois',
+              text: 'As it advances, the permanent tooth exerts a pressure that causes the root of the milk tooth to be resorbed: specialised cells slowly dissolve that root.',
+            },
+            {
+              id: 'quatre',
+              text: 'With no root left to hold it, the milk tooth comes loose and falls out, letting the permanent tooth take its place. A milk tooth therefore falls out because its root has been resorbed, not because it is damaged.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

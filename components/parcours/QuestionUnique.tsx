@@ -9,6 +9,8 @@ import { useQuizAudio } from '@/components/quiz/useQuizAudio';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useCelebration } from '@/components/celebration/CelebrationProvider';
+import { useLocale } from '@/components/i18n/useLocale';
+import { localise } from '@/lib/i18n/localise';
 
 /** Mélange sans modifier la source. */
 function melanger<T>(liste: T[]): T[] {
@@ -40,6 +42,7 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
   const { etoiles, gagnerEtoiles } = useEtoiles();
   const { marquerMaitrisee } = useCartesMaitrisees();
   const celebrer = useCelebration();
+  const { locale } = useLocale();
   const [choisie, setChoisie] = useState<number | null>(null);
   const style = domainStyles[card.domainId];
 
@@ -117,7 +120,7 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
                           rang: apres.index,
                           rangAvant: avant.index,
                           titre: 'Nouveau rang !',
-                          sousTitre: `${apres.icone} ${apres.nom}`,
+                          sousTitre: `${apres.icone} ${localise(apres.nom, locale)}`,
                         });
                       }
                     }

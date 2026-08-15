@@ -1,11 +1,28 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['recette', 'ordre', 'exact', 'bug'] as const;
 
-const INSTRUCTIONS = ['avance', 'tourne', 'avance', 'ramasse'];
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre — ici jusqu'aux instructions affichées dans la liste.
+  Les passer par `localise` fait plus que traduire : le typage impose à chaque
+  langue de reprendre exactement les clés du français, donc une légende oubliée
+  en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    instructions: ['avance', 'tourne', 'avance', 'ramasse'],
+    aLaLettre: 'il fait ce qui est écrit, rien d’autre',
+  },
+  en: {
+    instructions: ['move', 'turn', 'move', 'pick up'],
+    aLaLettre: 'it does what is written, nothing else',
+  },
+};
 
 /**
  * Le robot exécute la liste pas à pas, puis fonce dans le mur à la phase
@@ -15,9 +32,11 @@ export function AlgorithmeAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -26,7 +45,7 @@ export function AlgorithmeAnimation({
       {/* La liste d'instructions */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <rect x="18" y="44" width="140" height="150" rx="10" fill="#1b2a4a" stroke="#22d3ee" strokeWidth="2.5" />
-        {INSTRUCTIONS.map((mot, i) => (
+        {legende.instructions.map((mot, i) => (
           <g key={i}>
             <text x="34" y={78 + i * 32} fill="#67e8f9" fontSize="18" fontFamily="var(--font-atkinson), monospace">
               {i + 1}. {mot}
@@ -81,7 +100,7 @@ export function AlgorithmeAnimation({
               </path>
             ))}
             <text x="69" y="222" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-              il fait ce qui est écrit, rien d&apos;autre
+              {legende.aLaLettre}
             </text>
           </>
         )}

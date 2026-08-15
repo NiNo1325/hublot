@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The great blue sky',
+        '6-8': 'Why the sky is blue',
+        '9-12': 'The blue sky and the red Sun',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'regarder',
+              text: 'Look up: in the daytime, the sky is all blue. And yet you cannot see the air.',
+            },
+            {
+              id: 'lumiere-blanche',
+              text: 'Sunlight looks white, but it is hiding all the colours of the rainbow.',
+            },
+            {
+              id: 'diffusion',
+              text: 'As it goes through the air, the blue scatters in every direction. That is what you see, everywhere above you.',
+            },
+            {
+              id: 'couchant',
+              text: 'In the evening, the light goes through much more air. The blue is lost on the way, and the sky turns orange.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'regarder',
+              text: 'Many people think the sky is blue because it reflects the sea. But above the desert, far away from any ocean, it is blue too.',
+            },
+            {
+              id: 'lumiere-blanche',
+              text: 'Sunlight looks white, and yet it contains every colour, from red to violet. A rainbow only separates them.',
+            },
+            {
+              id: 'diffusion',
+              text: 'When that light passes through the air, the specks of air send the blue off in all directions, far more than the red. This scattered blue reaches you from everywhere at once: the whole sky looks blue.',
+            },
+            {
+              id: 'couchant',
+              text: 'At sunset, the light arrives from the side and crosses a far greater thickness of air. The blue was scattered away long before: only the orange and the red are left.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'regarder',
+              text: 'A widespread idea holds that the sky is blue because it reflects the oceans. The Sahara and the summits of the Andes, far from any sea, have exactly the same sky: the explanation lies elsewhere.',
+            },
+            {
+              id: 'lumiere-blanche',
+              text: 'Sunlight mixes together every visible wavelength. Only one feature matters here: violet and blue are the shortest, red the longest.',
+            },
+            {
+              id: 'diffusion',
+              text: 'Air molecules deflect light more strongly the shorter its wavelength: this is Rayleigh scattering. Blue is therefore sent off in every direction and reaches you from the whole sky, while red carries on almost straight ahead. Violet is scattered even more, but the Sun gives out little of it and the eye is barely sensitive to it: the mixture that reaches us is blue.',
+            },
+            {
+              id: 'couchant',
+              text: 'At the horizon, the rays cross a thickness of atmosphere several tens of times greater. The blue has been scattered far from your line of sight, and only the long wavelengths still get through. The setting Sun is red for exactly the same reason that the midday sky is blue.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

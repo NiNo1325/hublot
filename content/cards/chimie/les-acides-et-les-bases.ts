@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'What makes your tongue tingle',
+        '6-8': 'Acids and their opposite',
+        '9-12': 'Acids and bases: a symmetrical scale',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'piquant',
+              text: 'A lemon makes your tongue tingle. That is what we call an acid.',
+            },
+            {
+              id: 'echelle',
+              text: 'There are very gentle acids, like lemon, and very strong acids you must never touch.',
+            },
+            {
+              id: 'bases',
+              text: 'And there is the opposite of acids. Soap is one of them. It can be dangerous too.',
+            },
+            {
+              id: 'neutraliser',
+              text: 'If you mix an acid and its opposite, the two cancel each other out, and almost nothing is left.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'piquant',
+              text: 'You know the sour taste of acids well: lemon, vinegar, green apple. So an acid is not always a danger — you eat some every day.',
+            },
+            {
+              id: 'echelle',
+              text: 'What matters is the strength, which we measure with the pH, from zero to fourteen. Seven is neutral, like pure water. Below that it is acidic, above that it is basic. And each step is worth ten times the one before.',
+            },
+            {
+              id: 'bases',
+              text: 'The commonest mistake is to believe that only acids are dangerous. Strong bases — caustic soda, drain cleaner — burn the skin just as well, sometimes worse. And they give no warning through a sharp taste.',
+            },
+            {
+              id: 'neutraliser',
+              text: 'Put together, an acid and a base neutralise each other and give water and a salt. That is what bicarbonate does to vinegar. It is also why your stomach, which is very acidic, has to be protected by a layer of mucus.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'piquant',
+              text: 'An acid gives away a proton, a base takes one up. This definition, due to Brønsted and Lowry, says nothing about how dangerous something is: the citric acid in a lemon and the hydrochloric acid in a laboratory belong to exactly the same family.',
+            },
+            {
+              id: 'echelle',
+              text: 'The pH is the opposite of the base-ten logarithm of the hydrogen ion concentration. The consequence is often missed: because the scale is logarithmic, a pH of three is ten times more acidic than a pH of four, and a hundred times more than a pH of five. Gastric juice sits at around one or two.',
+            },
+            {
+              id: 'bases',
+              text: 'The symmetry is complete, and the popular belief is wrong: caustic soda, at pH fourteen, is at least as corrosive as the strong acids. It saponifies the fats in the skin — precisely the mechanism by which soap is made.',
+            },
+            {
+              id: 'neutraliser',
+              text: 'An acid and a base react to form water and a salt. Living things use buffer systems to withstand such swings: the pH of blood is held between 7.35 and 7.45, and a shift of a few tenths is enough to put life in danger.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

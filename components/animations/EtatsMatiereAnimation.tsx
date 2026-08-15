@@ -1,6 +1,7 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['solide', 'liquide', 'gaz', 'reversible'] as const;
@@ -8,13 +9,32 @@ const PHASES = ['solide', 'liquide', 'gaz', 'reversible'] as const;
 /** Trois grilles de particules : serrées, glissantes, dispersées. */
 const RANGEE = [0, 1, 2, 3, 4];
 
+/* Les trois états sont nommés sous leur grille : c'est du contenu. Le typage
+   impose à `en` de reprendre exactement les clés de `fr`. */
+const LEGENDES = {
+  fr: {
+    solide: 'solide',
+    liquide: 'liquide',
+    gaz: 'gaz (invisible)',
+    reversible: 'rien ne se perd, tout revient',
+  },
+  en: {
+    solide: 'solid',
+    liquide: 'liquid',
+    gaz: 'gas (invisible)',
+    reversible: 'nothing is lost, all comes back',
+  },
+};
+
 export function EtatsMatiereAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -36,7 +56,7 @@ export function EtatsMatiereAnimation({
             </circle>
           )),
         )}
-        <text x="42" y="186" fill="#7dd3fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">solide</text>
+        <text x="42" y="186" fill="#7dd3fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">{legende.solide}</text>
       </g>
 
       {/* Liquide : même densité, mais les particules glissent */}
@@ -55,7 +75,7 @@ export function EtatsMatiereAnimation({
             </circle>
           )),
         )}
-        <text x="168" y="186" fill="#38bdf8" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">liquide</text>
+        <text x="168" y="186" fill="#38bdf8" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">{legende.liquide}</text>
       </g>
 
       {/* Gaz : dispersé, invisible — le nuage blanc n'en est pas */}
@@ -71,7 +91,7 @@ export function EtatsMatiereAnimation({
             )}
           </circle>
         ))}
-        <text x="256" y="186" fill="#bae6fd" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">gaz (invisible)</text>
+        <text x="256" y="186" fill="#bae6fd" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">{legende.gaz}</text>
       </g>
 
       {/* Réversibilité : rien ne se perd */}
@@ -80,7 +100,7 @@ export function EtatsMatiereAnimation({
         <path d="M266 204 l8 6 l-8 6" fill="none" stroke="#ffb627" strokeWidth="3" strokeLinecap="round" />
         <path d="M132 204 l-8 6 l8 6" fill="none" stroke="#ffb627" strokeWidth="3" strokeLinecap="round" />
         <text x="128" y="232" fill="#ffb627" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
-          rien ne se perd, tout revient
+          {legende.reversible}
         </text>
       </g>
     </svg>

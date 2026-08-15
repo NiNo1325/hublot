@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'What a computer forgets',
+        '6-8': 'How a computer remembers',
+        '9-12': 'Working memory and storage',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'deux-memoires',
+              text: 'A computer has two kinds of memory, just like you: one for right now, one for a long time.',
+            },
+            {
+              id: 'vive',
+              text: 'The first one is used while it works. It is very fast, but it keeps nothing once you switch off.',
+            },
+            {
+              id: 'stockage',
+              text: 'The second one keeps your drawings and your photos, even when the computer is off all night.',
+            },
+            {
+              id: 'enregistrer',
+              text: 'That is why you have to save! If you do not, your work stays in the memory that forgets.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'deux-memoires',
+              text: 'A computer uses two very different memories, and muddling them up explains a lot of nasty surprises.',
+            },
+            {
+              id: 'vive',
+              text: 'The working memory holds whatever the machine is busy with right now. It is extremely fast, but it needs electricity all the time to hold on to what is in it. Cut the power, and everything is wiped instantly.',
+            },
+            {
+              id: 'stockage',
+              text: 'Storage — a hard disk or flash memory — keeps data with no power at all, for years. In exchange it is far slower: that is why the computer copies files from it into the working memory before using them.',
+            },
+            {
+              id: 'enregistrer',
+              text: 'When you write a text, at first it exists only in the working memory. Saving means copying it into storage. A power cut before you save makes it all disappear — not because anything broke, but because that memory is simply built that way.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'deux-memoires',
+              text: 'Computers arrange their memories in a hierarchy: processor registers, cache memory, random-access memory, storage. The further down you go, the greater the capacity and the lower the speed — by a factor that can reach a million.',
+            },
+            {
+              id: 'vive',
+              text: 'Dynamic random-access memory stores each bit in a minuscule capacitor that discharges within a few milliseconds. It therefore has to be refreshed thousands of times a second: that is what makes it volatile, and costly in energy.',
+            },
+            {
+              id: 'stockage',
+              text: 'Flash memory traps electrons in an insulated gate, where they stay with no power supply. A hard disk instead orients magnetic domains on a spinning platter. Both keep information with the power off, with retention times of the order of a decade.',
+            },
+            {
+              id: 'enregistrer',
+              text: 'This hierarchy is an economic compromise: fast memory is expensive per gigabyte. A well-designed system keeps whatever is used most often in the fast levels — that is the principle of locality, and it is what makes a computer usable despite the slowness of storage.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

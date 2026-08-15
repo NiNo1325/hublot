@@ -1,9 +1,29 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    mammiferes: 'les petits mammifères grandissent',
+    froid: 'une période de grand froid arrive',
+    megafaune: 'le mammouth et le tigre à dents de sabre',
+    dinosaures: 'dinosaures : -66 millions d’années',
+    mammouths: 'mammouths : -10 000 ans',
+    plusTard: 'des dizaines de millions d’années plus tard',
+  },
+  en: {
+    mammiferes: 'the small mammals grow bigger',
+    froid: 'a spell of great cold arrives',
+    megafaune: 'the mammoth and the sabre-toothed tiger',
+    dinosaures: 'dinosaurs: -66 million years',
+    mammouths: 'mammoths: -10,000 years',
+    plusTard: 'tens of millions of years later',
+  },
+};
 
 /**
  * Le même petit mammifère grandit à travers les phases, jusqu'à devenir
@@ -14,10 +34,12 @@ export function ApresLesDinosauresAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -34,7 +56,7 @@ export function ApresLesDinosauresAnimation({
             <circle cx="20" cy="-24" r="7" fill="#c8a97e" />
           </g>
         ))}
-        <text x="14" y="30" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>les petits mammifères grandissent</text>
+        <text x="14" y="30" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.mammiferes}</text>
       </g>
 
       {/* Phase 2 : bien plus tard, le froid s'installe */}
@@ -47,7 +69,7 @@ export function ApresLesDinosauresAnimation({
             )}
           </text>
         ))}
-        <text x="14" y="30" fill="#e0f2fe" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>une période de grand froid arrive</text>
+        <text x="14" y="30" fill="#e0f2fe" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.froid}</text>
       </g>
 
       {/* Phase 3 : mammouth laineux et tigre à dents de sabre */}
@@ -62,17 +84,17 @@ export function ApresLesDinosauresAnimation({
           <circle cx="-24" cy="-8" r="12" fill="#a8a29e" />
           <path d="M-30 -2 L-40 20" stroke="#f5f0e6" strokeWidth="3" strokeLinecap="round" />
         </g>
-        <text x="14" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>le mammouth et le tigre à dents de sabre</text>
+        <text x="14" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.megafaune}</text>
       </g>
 
       {/* Phase 4 : ils ont disparu bien après les dinosaures */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <line x1="30" y1="120" x2="370" y2="120" stroke="#3f3a55" strokeWidth="3" />
         <circle cx="50" cy="120" r="6" fill="#c8a97e" />
-        <text x="30" y="106" fill="#c8a97e" fontSize="12" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>dinosaures : -66 millions d&apos;années</text>
+        <text x="30" y="106" fill="#c8a97e" fontSize="12" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.dinosaures}</text>
         <circle cx="356" cy="120" r="6" fill="#7dd3fc" />
-        <text x="230" y="146" fill="#7dd3fc" fontSize="12" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>mammouths : -10 000 ans</text>
-        <text x="14" y="200" fill="#e5e7eb" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>des dizaines de millions d&apos;années plus tard</text>
+        <text x="230" y="146" fill="#7dd3fc" fontSize="12" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.mammouths}</text>
+        <text x="14" y="200" fill="#e5e7eb" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.plusTard}</text>
       </g>
     </svg>
   );

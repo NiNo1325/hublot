@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['vapeur-invisible', 'refroidit', 'gouttelettes', 'flotte'] as const;
+
+const LEGENDES = {
+  fr: {
+    vapeur: 'vapeur : invisible',
+    refroidit: 'l’air se refroidit',
+    gouttelettes: 'gouttelettes : visible',
+    flotte: 'si léger que ça flotte',
+  },
+  en: {
+    vapeur: 'vapour: invisible',
+    refroidit: 'the air cools down',
+    gouttelettes: 'droplets: visible',
+    flotte: 'so light it floats',
+  },
+};
 
 const GOUTTES = [
   [150, 74],
@@ -26,10 +42,12 @@ export function NuagesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -46,7 +64,7 @@ export function NuagesAnimation({
             </path>
           </g>
         ))}
-        <text x="20" y="200" fill="#94a3b8" fontSize="15" fontFamily={police}>vapeur : invisible</text>
+        <text x="20" y="200" fill="#94a3b8" fontSize="15" fontFamily={police}>{legende.vapeur}</text>
       </g>
 
       {/* Phase 2 : l'air se refroidit en montant */}
@@ -58,7 +76,7 @@ export function NuagesAnimation({
         </g>
         <path d="M60 150 L60 80" stroke="#7dd3fc" strokeWidth="2" strokeDasharray="4 4" />
         <path d="M55 88 L60 76 L65 88 Z" fill="#7dd3fc" />
-        <text x="20" y="224" fill="#7dd3fc" fontSize="15" fontFamily={police}>l’air se refroidit</text>
+        <text x="20" y="224" fill="#7dd3fc" fontSize="15" fontFamily={police}>{legende.refroidit}</text>
       </g>
 
       {/* Phase 3 : les gouttelettes apparaissent (le nuage visible) */}
@@ -66,7 +84,7 @@ export function NuagesAnimation({
         {GOUTTES.map(([cx, cy], i) => (
           <circle key={i} cx={cx} cy={cy} r="7" fill="#dbeafe" opacity="0.92" />
         ))}
-        <text x="200" y="200" fill="#dbeafe" fontSize="15" fontFamily={police}>gouttelettes : visible</text>
+        <text x="200" y="200" fill="#dbeafe" fontSize="15" fontFamily={police}>{legende.gouttelettes}</text>
       </g>
 
       {/* Phase 4 : si léger que ça flotte */}
@@ -79,7 +97,7 @@ export function NuagesAnimation({
             </path>
           </g>
         ))}
-        <text x="210" y="224" fill="#a3e635" fontSize="15" fontFamily={police}>si léger que ça flotte</text>
+        <text x="210" y="224" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.flotte}</text>
       </g>
     </svg>
   );

@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why bread gets bigger',
+        '6-8': 'Why bread puffs up',
+        '9-12': 'Why bread rises',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Yeast is hiding in the dough. It is alive, and very tiny.',
+            },
+            {
+              id: 'deux',
+              text: 'It eats the sugar hidden in the dough. Yum!',
+            },
+            {
+              id: 'trois',
+              text: 'After eating, it makes lots of little bubbles.',
+            },
+            {
+              id: 'quatre',
+              text: 'The bubbles puff the dough up, like a balloon.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'In bread dough there is yeast: a tiny living thing you cannot see with your eyes alone.',
+            },
+            {
+              id: 'deux',
+              text: 'The yeast eats the sugar in the flour, just like you eat an afternoon snack.',
+            },
+            {
+              id: 'trois',
+              text: 'As it digests that sugar, it gives off a gas: lots of little bubbles appear in the dough.',
+            },
+            {
+              id: 'quatre',
+              text: 'The bubbles grow and push the dough out on every side: it puffs up before it even goes into the oven.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Yeast is a living microscopic fungus, added to the flour, the water and the salt.',
+            },
+            {
+              id: 'deux',
+              text: 'It feeds on the sugars in the flour through its metabolism.',
+            },
+            {
+              id: 'trois',
+              text: 'This digestion, called fermentation, produces carbon dioxide, which forms bubbles of gas.',
+            },
+            {
+              id: 'quatre',
+              text: 'Trapped in the elastic network of the dough, the bubbles make it rise; the heat of the oven then sets that structure, it does not create it.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

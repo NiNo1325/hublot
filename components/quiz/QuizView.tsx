@@ -23,6 +23,7 @@ import { questionsDe, cartesAvecQuiz } from '@/content/quiz';
 import { ordreLecture } from '@/content/quiz/ordre';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
+import { useT } from '@/components/i18n/useT';
 
 interface QuizViewProps {
   cards: ScienceCard[];
@@ -87,6 +88,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
   const { locale } = useLocale();
+  const t = useT();
 
   const { jouer, jouerProposition, jouerVerdict, arreter, enLecture } =
     useQuizAudio(ageRange ?? '6-8');
@@ -161,7 +163,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     if (accueil) {
       celebrer({
         rang: rangDepuisEtoiles(etoiles).rang.index,
-        titre: 'On y va !',
+        titre: t('fete.on-y-va'),
         variante: 'leger',
         autoFermerMs: 2000,
       });
@@ -193,18 +195,17 @@ export function QuizView({ cards, domains }: QuizViewProps) {
           🎯
         </span>
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-          Écoute d&apos;abord quelques cartes
+          {t('quizz.vide.titre')}
         </h1>
         <p className="max-w-md text-craie-douce">
-          Le quizz ne pose des questions que sur les cartes que tu as déjà
-          écoutées. Va en découvrir une ou deux, puis reviens jouer.
+          {t('quizz.vide.texte')}
         </p>
         <button
           type="button"
           onClick={() => router.push('/decouvrir')}
           className="min-h-16 cursor-pointer rounded-full border-2 border-soleil px-8 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
         >
-          Découvrir des cartes
+          {t('quizz.vide.action')}
         </button>
       </main>
     );
@@ -218,10 +219,10 @@ export function QuizView({ cards, domains }: QuizViewProps) {
             🎯
           </span>
           <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-            Sur quoi joue-t-on&nbsp;?
+            {t('quizz.menu.titre')}
           </h1>
           <p className="text-craie-douce">
-            Choisis un monde, ou joue sur tout à la fois.
+            {t('quizz.menu.texte')}
           </p>
         </header>
 
@@ -234,9 +235,9 @@ export function QuizView({ cards, domains }: QuizViewProps) {
           >
             <span className="text-3xl" aria-hidden="true">🎲</span>
             <span className="flex flex-col text-left">
-              <span>Tout</span>
+              <span>{t('quizz.tout')}</span>
               <span className="text-sm font-normal text-craie-douce">
-                {eligibles.length} carte{eligibles.length > 1 ? 's' : ''} au total
+                {t('quizz.menu.total')(eligibles.length)}
               </span>
             </span>
           </button>
@@ -257,7 +258,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                     {localise(domain.labels, locale)}
                   </span>
                   <span className="text-sm text-craie-douce">
-                    {n} carte{n > 1 ? 's' : ''}
+                    {t('quizz.menu.cartes')(n)}
                   </span>
                 </span>
               </button>
@@ -281,12 +282,11 @@ export function QuizView({ cards, domains }: QuizViewProps) {
         <div className="flex flex-col items-center gap-2">
           <span className="flex items-center gap-1.5 text-sm text-craie-douce">
             <span aria-hidden="true">{scopeDef ? scopeDef.icon : '🎲'}</span>
-            {scopeDef ? localise(scopeDef.labels, locale) : 'Tout'}
+            {scopeDef ? localise(scopeDef.labels, locale) : t('quizz.tout')}
           </span>
-          <p className="font-display text-lg text-soleil">Bravo&nbsp;! 🎉</p>
+          <p className="font-display text-lg text-soleil">{t('quizz.fin.bravo')}</p>
           <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-            {reussies} bonne{reussies > 1 ? 's' : ''} réponse
-            {reussies > 1 ? 's' : ''} sur {serie.length}
+            {t('quizz.fin.score')(reussies, serie.length)}
           </h1>
         </div>
 
@@ -296,15 +296,15 @@ export function QuizView({ cards, domains }: QuizViewProps) {
             +{reussies} <span aria-hidden="true">⭐</span>
           </p>
           <p className="text-craie-douce">
-            <span aria-hidden="true">⭐</span> {etoiles} au total —{' '}
-            <span aria-hidden="true">{rangApres.rang.icone}</span> {rangApres.rang.nom}
+            <span aria-hidden="true">⭐</span> {t('quizz.fin.total')(etoiles)}{' '}
+            <span aria-hidden="true">{rangApres.rang.icone}</span>{' '}
+            {localise(rangApres.rang.nom, locale)}
           </p>
         </div>
 
         {/* Aucun échec possible : on encourage, on ne sanctionne pas. */}
         <p className="max-w-md text-craie-douce">
-          Chaque question t&apos;a rappelé quelque chose. Rejoue quand tu veux,
-          les questions changent.
+          {t('quizz.fin.texte')}
         </p>
 
         {/* Enchaînement guidé : d'un sujet on passe au suivant d'un clic, sans
@@ -316,7 +316,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
               onClick={() => lancer(suivant)}
               className="flex min-h-16 w-full cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-soleil bg-soleil/10 px-6 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
             >
-              Sujet suivant <span aria-hidden="true">→ {suivantDef.icon}</span>{' '}
+              {t('quizz.fin.suivant')} <span aria-hidden="true">→ {suivantDef.icon}</span>{' '}
               {localise(suivantDef.labels, locale)}
             </button>
           ) : (
@@ -325,7 +325,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
               onClick={() => lancer(scope)}
               className="min-h-16 w-full cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-6 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
             >
-              Rejouer{scope ? ' ce sujet' : ''}
+              {scope ? t('quizz.fin.rejouer-sujet') : t('quizz.fin.rejouer')}
             </button>
           )}
 
@@ -335,7 +335,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
               onClick={() => lancer(scope)}
               className="min-h-14 w-full cursor-pointer rounded-full border-2 border-encre-bord px-6 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
             >
-              Rejouer ce sujet
+              {t('quizz.fin.rejouer-sujet')}
             </button>
           )}
 
@@ -344,7 +344,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
             onClick={() => setSerie(null)}
             className="min-h-14 w-full cursor-pointer rounded-full border-2 border-encre-bord px-6 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
           >
-            {scope ? 'Choisir un autre sujet' : 'Choisir un sujet'}
+            {scope ? t('quizz.fin.autre-sujet') : t('quizz.fin.choisir-sujet')}
           </button>
         </div>
       </main>
@@ -360,12 +360,12 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-5 py-8">
       <header className="flex items-center justify-between gap-3">
         <span className="text-sm text-craie-douce">
-          Question {index + 1} sur {serie.length}
+          {t('quizz.progression')(index + 1, serie.length)}
         </span>
         {/* Sujet en cours : on sait toujours où on est. */}
         <span className="flex items-center gap-1.5 rounded-full border border-encre-bord px-3 py-1 text-xs text-craie-douce">
           <span aria-hidden="true">{scope ? nomDomaine(scope)?.icon : '🎲'}</span>
-          {scope ? libelleDomaine(nomDomaine(scope)) : 'Tout'}
+          {scope ? libelleDomaine(nomDomaine(scope)) : t('quizz.tout')}
         </span>
       </header>
 
@@ -395,7 +395,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
         >
           <span aria-hidden="true">{enLecture ? '⏸' : '🔊'}</span>
           <span className="sr-only">
-            {enLecture ? 'Arrêter la lecture' : 'Écouter la question'}
+            {enLecture ? t('quizz.arreter') : t('quizz.ecouter-question')}
           </span>
         </button>
       </div>
@@ -422,14 +422,14 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                       const intensite = Math.min(3, enchainees / 3) as 1 | 2 | 3;
                       const titre =
                         intensite === 1
-                          ? 'Bien joué !'
+                          ? t('fete.bien-joue')
                           : intensite === 2
-                            ? 'En pleine forme !'
-                            : 'En feu ! 🔥';
+                            ? t('fete.en-forme')
+                            : t('fete.en-feu');
                       celebrer({
                         rang: rangDepuisEtoiles(etoiles).rang.index,
                         titre,
-                        sousTitre: `${enchainees} bonnes réponses d’affilée`,
+                        sousTitre: t('fete.serie')(enchainees),
                         intensite,
                         variante: 'leger',
                         recompense: true,
@@ -491,7 +491,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                       tirage.question.reponses.indexOf(reponse),
                     )
                   }
-                  aria-label={`Écouter la réponse : ${reponse.texte}`}
+                  aria-label={t('quizz.ecouter-reponse')(reponse.texte)}
                   className="flex w-14 shrink-0 cursor-pointer items-center justify-center rounded-2xl border-2 border-encre-bord text-xl transition-colors hover:border-soleil hover:text-soleil"
                 >
                   <span aria-hidden="true">🔊</span>
@@ -508,10 +508,10 @@ export function QuizView({ cards, domains }: QuizViewProps) {
             className="font-display text-lg"
             style={{ color: justeChoisie ? '#34d399' : '#ffb627' }}
           >
-            {justeChoisie ? 'Bravo, c’est ça !' : 'Pas tout à fait…'}
+            {justeChoisie ? t('quizz.juste') : t('quizz.presque')}
           </p>
           {justeChoisie && dAffilee >= 3 && (
-            <p className="font-display text-base text-soleil">En pleine forme&nbsp;! 🔥</p>
+            <p className="font-display text-base text-soleil">{t('fete.en-forme')} 🔥</p>
           )}
           <p className="text-base leading-relaxed text-craie-douce">
             {tirage.question.explication}
@@ -530,8 +530,8 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                   celebrer({
                     rang: apres.index,
                     rangAvant: avant.index,
-                    titre: 'Nouveau rang !',
-                    sousTitre: `${apres.icone} ${apres.nom}`,
+                    titre: t('fete.nouveau-rang'),
+                    sousTitre: `${apres.icone} ${localise(apres.nom, locale)}`,
                   });
                 }
               }
@@ -540,7 +540,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
             }}
             className="min-h-16 cursor-pointer self-start rounded-full border-2 border-soleil px-8 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
           >
-            {index + 1 >= serie.length ? 'Voir le résultat' : 'Question suivante'}
+            {index + 1 >= serie.length ? t('quizz.resultat') : t('quizz.suivante')}
           </button>
         </div>
       )}

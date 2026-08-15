@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The hurricane',
+        '6-8': 'The hurricane',
+        '9-12': 'The hurricane',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'mer-chaude',
+              text: 'A hurricane is born over the sea, when the water is nice and warm.',
+            },
+            {
+              id: 'spirale',
+              text: 'The wind starts turning round and round, faster and faster, like a huge spinning top.',
+            },
+            {
+              id: 'oeil',
+              text: 'And right in the middle there is a very calm spot: that’s the eye of the hurricane.',
+            },
+            {
+              id: 'structure',
+              text: 'The wind does not go just anywhere: it turns neatly around that middle.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'mer-chaude',
+              text: 'A hurricane forms over the warm seas of the tropics. The warm water sends humid air rising, and that gives the whirlwind all its energy.',
+            },
+            {
+              id: 'spirale',
+              text: 'The winds then coil into a gigantic spiral of cloud, hundreds of kilometres wide, turning faster and faster.',
+            },
+            {
+              id: 'oeil',
+              text: 'At the exact centre lies the eye: a surprisingly calm and often clear zone, where the sky can even be blue.',
+            },
+            {
+              id: 'structure',
+              text: 'Contrary to what people believe, the wind does not blow at random: everything is organised in a spiral around that central eye.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'mer-chaude',
+              text: 'A hurricane is born over a sea of at least 26 °C. The warm water evaporates a great deal of vapour; as it rises and condenses, that vapour releases heat, the fuel that feeds the storm.',
+            },
+            {
+              id: 'spirale',
+              text: 'Air drawn towards the centre is deflected by the Earth’s rotation (the Coriolis effect), which coils the winds into a spiral. The system organises itself into cloud bands turning at speeds that can exceed 250 km/h.',
+            },
+            {
+              id: 'oeil',
+              text: 'At its heart, the air sinks back down, which clears the clouds away: this is the eye, calm and clear, ringed by the eyewall, the band where the winds are most violent.',
+            },
+            {
+              id: 'structure',
+              text: 'A hurricane is therefore the opposite of chaos: a remarkably structured heat engine, a giant spiral organised around an axis. To think it disordered is to mistake its violence for randomness — its strength comes precisely from its organisation.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

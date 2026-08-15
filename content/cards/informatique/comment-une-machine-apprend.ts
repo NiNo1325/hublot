@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The machine that practises',
+        '6-8': 'How a machine learns',
+        '9-12': 'Machine learning and bias',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'exemples',
+              text: 'To learn to recognise a cat, the machine looks at thousands of photos of cats.',
+            },
+            {
+              id: 'erreurs',
+              text: 'At first it gets it wrong every time. We tell it “no, that one is a dog”, and it starts again.',
+            },
+            {
+              id: 'ajuste',
+              text: 'Each time it is wrong, it changes the way it looks just a tiny bit, and gets it wrong a little less.',
+            },
+            {
+              id: 'comprend-pas',
+              text: 'But it does not know what a cat is. It has never stroked one. It only spots shapes.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'exemples',
+              text: 'You do not program a machine to recognise a cat by describing its whiskers to it. You show it thousands of pictures already labelled, and it works out on its own what tells them apart.',
+            },
+            {
+              id: 'erreurs',
+              text: 'To begin with, its answers are pure chance. Every time it is wrong, we measure by how much, then nudge its internal settings a little — there can be millions of them.',
+            },
+            {
+              id: 'ajuste',
+              text: 'Repeated millions of times, that correction ends up making its answers right. This is training in the literal sense: plenty of tries, plenty of mistakes, small adjustments.',
+            },
+            {
+              id: 'comprend-pas',
+              text: 'It still understands nothing for all that. It has found patterns in numbers. And if all your cat photos had been taken on a sofa, it might very well have learnt to recognise... sofas.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'exemples',
+              text: 'In supervised learning, a model is given input-output pairs and has to infer the relationship that links them. Its quality depends entirely on how many such examples there are and how representative they are.',
+            },
+            {
+              id: 'erreurs',
+              text: 'A cost function measures the gap between the prediction and the expected answer. The algorithm works out in which direction to change each parameter in order to narrow that gap, then takes a small step in that direction — this is gradient descent.',
+            },
+            {
+              id: 'ajuste',
+              text: 'Repeated over millions of examples, the process adjusts parameters that sometimes number in the billions. Nothing is programmed explicitly: the behaviour emerges from the data. That is also why a decision made by the model cannot always be explained.',
+            },
+            {
+              id: 'comprend-pas',
+              text: 'The system optimises a statistical correlation, with no notion of meaning or of cause. The direct consequence: a model trained on biased data reproduces those biases faithfully, and presents them with the appearance of objectivity. Knowing where the data came from therefore matters as much as the algorithm itself.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

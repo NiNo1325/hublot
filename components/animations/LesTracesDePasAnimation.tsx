@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    boue: 'un pas dans la boue molle',
+    pierre: 'la boue devient pierre',
+    mesure: 'on mesure la distance des pas',
+    groupe: 'ils marchaient en groupe',
+  },
+  en: {
+    boue: 'a step in the soft mud',
+    pierre: 'the mud turns to stone',
+    mesure: 'we measure the steps',
+    groupe: 'they walked in a group',
+  },
+};
 
 /**
  * La même piste de trois empreintes traverse les quatre phases : fraîche
@@ -14,10 +30,12 @@ export function LesTracesDePasAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
   const empreintes = [90, 190, 290];
 
   return (
@@ -34,7 +52,7 @@ export function LesTracesDePasAnimation({
           )}
         </path>
         <ellipse cx="170" cy="176" rx="16" ry="7" fill="#3b2a1d" />
-        <text x="14" y="30" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>un pas dans la boue molle</text>
+        <text x="14" y="30" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.boue}</text>
       </g>
 
       {/* Empreintes, présentes dès la phase 1, dont la couleur change avec le temps */}
@@ -53,7 +71,7 @@ export function LesTracesDePasAnimation({
             <animate attributeName="width" values="0;400" dur="2.2s" repeatCount="indefinite" />
           )}
         </rect>
-        <text x="14" y="30" fill="#9ca3af" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>la boue devient pierre</text>
+        <text x="14" y="30" fill="#9ca3af" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.pierre}</text>
       </g>
 
       {/* Phase 3 : on mesure la distance entre chaque pas */}
@@ -63,7 +81,7 @@ export function LesTracesDePasAnimation({
         {[90, 190, 290].map((x) => (
           <line key={x} x1={x} y1="192" x2={x} y2="208" stroke="#fbbf24" strokeWidth="2" />
         ))}
-        <text x="14" y="30" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>on mesure la distance des pas</text>
+        <text x="14" y="30" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.mesure}</text>
       </g>
 
       {/* Phase 4 : plusieurs pistes côte à côte révèlent un groupe */}
@@ -75,7 +93,7 @@ export function LesTracesDePasAnimation({
             ))}
           </g>
         ))}
-        <text x="14" y="30" fill="#86efac" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>ils marchaient en groupe</text>
+        <text x="14" y="30" fill="#86efac" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.groupe}</text>
       </g>
     </svg>
   );

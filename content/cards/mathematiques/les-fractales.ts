@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Shapes inside shapes',
+        '6-8': 'Fractals',
+        '9-12': 'Fractals and self-similarity',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'motif',
+              text: 'Look at a fern: every little leaf looks like the whole big leaf.',
+            },
+            {
+              id: 'repetition',
+              text: 'And on that little leaf, there are even tinier ones, all the same again.',
+            },
+            {
+              id: 'nature',
+              text: 'It is like that for trees, for romanesco broccoli, and even for lightning in the sky.',
+            },
+            {
+              id: 'limite',
+              text: 'But it does not go on for ever. If you look very, very closely, it stops in the end.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'motif',
+              text: 'A fractal is a shape whose every part looks like the whole. That is called self-similarity.',
+            },
+            {
+              id: 'repetition',
+              text: 'You build one by repeating a very simple rule. Take a triangle, remove the middle one, start again on each triangle left — after a few rounds the drawing looks complicated, even though the rule is not.',
+            },
+            {
+              id: 'nature',
+              text: 'Nature uses this trick everywhere: trees, lungs, river networks, snowflakes. It fills a lot of space with very few instructions. Your lungs fit inside your chest and still offer an exchange surface as big as a tennis court.',
+            },
+            {
+              id: 'limite',
+              text: 'In mathematics, the repetition is infinite. In nature, never: a tree stops at its smallest twigs, a fern after only a few levels.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'motif',
+              text: 'A fractal shows similar structures at every scale of observation. Zooming in does not simplify the figure — unlike a circle, which ends up looking like a straight line.',
+            },
+            {
+              id: 'repetition',
+              text: 'Fractals come from iterative processes: apply a rule, then apply it again to the result, indefinitely. The Sierpiński triangle and the Koch snowflake are each defined in a single sentence, yet their outlines look endlessly complex.',
+            },
+            {
+              id: 'nature',
+              text: 'Their dimension is not a whole number. The Koch curve has a dimension of about 1.26: more than a line, less than a surface. In practice, measuring a coastline gives a result that grows as the ruler used gets finer — a coastline has no single length.',
+            },
+            {
+              id: 'limite',
+              text: 'Natural self-similarity is statistical and bounded: it holds over a few orders of magnitude, then stops, limited by the size of cells or atoms. Here again, the mathematical fractal is a model that reality approaches without ever reaching it.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

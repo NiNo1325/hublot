@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The zebra’s stripes',
+        '6-8': 'Why zebras have stripes',
+        '9-12': 'Why zebras have stripes',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'question',
+              text: 'The zebra is covered in black and white stripes. But why?',
+            },
+            {
+              id: 'pas-camouflage',
+              text: 'It is not to hide: out on the savannah, you can see it very well from far away!',
+            },
+            {
+              id: 'mouches',
+              text: 'The stripes bother the little flies that bite: they cannot manage to land on them.',
+            },
+            {
+              id: 'moins-piques',
+              text: 'So the zebra gets bitten less. Its stripes are a bit like its own fly spray!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'question',
+              text: 'Why does a zebra wear those black and white stripes that show up so much?',
+            },
+            {
+              id: 'pas-camouflage',
+              text: 'For a long time people thought it was to hide in the grass. But on the short grass of the savannah, a striped zebra can be spotted from far away: camouflage does not explain it.',
+            },
+            {
+              id: 'mouches',
+              text: 'Scientists have noticed that horseflies — big biting flies — avoid landing on striped surfaces. The stripes throw them off just as they come in to land.',
+            },
+            {
+              id: 'moins-piques',
+              text: 'The result: a zebra is bitten far less than a plain-coated horse. And those flies carry diseases. So the stripes are probably above all a protection against bites.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'question',
+              text: 'Zebra stripes have puzzled people for a long time. Several explanations have been put forward: camouflage, recognising one another, controlling heat, protection from flies.',
+            },
+            {
+              id: 'pas-camouflage',
+              text: 'Camouflage holds up badly: on the open savannah those contrasts make the zebra very visible, and its predators mostly see in shades of grey. That idea is now largely set aside.',
+            },
+            {
+              id: 'mouches',
+              text: 'Experiments point towards biting flies. By covering horses in striped coats, researchers found that horseflies slow down, skid and leave again without managing to land: the stripes disturb what they see as they come in.',
+            },
+            {
+              id: 'moins-piques',
+              text: 'These horseflies carry diseases that are sometimes fatal. A coat that strongly reduces bites therefore offers a real survival advantage. It is the best-supported hypothesis so far — science has not said its last word, but the stripes act first of all as an anti-fly shield, not a cloak of invisibility.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

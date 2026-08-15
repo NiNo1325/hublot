@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Coral, a tiny animal',
+        '6-8': 'Coral, an animal that builds',
+        '9-12': 'Coral, architect of the reefs',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Coral is not a stone: it is a tiny little animal.',
+            },
+            {
+              id: 'deux',
+              text: 'It builds itself a hard little house, like a shell.',
+            },
+            {
+              id: 'trois',
+              text: 'Millions of little corals live all stuck together.',
+            },
+            {
+              id: 'quatre',
+              text: 'Together they make a reef where lots of sea animals live.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Coral looks like a plant or a rock, but it really is an animal, a tiny cousin of the jellyfish.',
+            },
+            {
+              id: 'deux',
+              text: 'Each little coral builds a hard chalky case around itself, like a skeleton worn on the outside.',
+            },
+            {
+              id: 'trois',
+              text: 'Millions of these tiny animals live stuck together, generation after generation.',
+            },
+            {
+              id: 'quatre',
+              text: 'Their piled-up skeletons slowly build a coral reef, a huge shelter where thousands of species find food and safety.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Coral is an animal, the coral polyp, related to jellyfish and sea anemones, and it is neither a plant nor a rock.',
+            },
+            {
+              id: 'deux',
+              text: 'Each polyp secretes an external skeleton of calcium carbonate around itself, which remains in place after the polyp dies.',
+            },
+            {
+              id: 'trois',
+              text: 'Colonies of millions of genetically identical polyps live packed together, each adding its share to the shared skeleton.',
+            },
+            {
+              id: 'quatre',
+              text: 'Built up over centuries, these skeletons form a coral reef, a structure that shelters nearly a quarter of all known marine species while covering only a minute fraction of the oceans.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

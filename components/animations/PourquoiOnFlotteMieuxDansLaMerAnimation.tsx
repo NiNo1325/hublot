@@ -1,9 +1,29 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    eauDouce: 'eau douce',
+    eauSalee: 'eau salée',
+    sel: 'le sel se dissout',
+    pousse: 'ça pousse plus fort',
+    flotte: 'on flotte plus haut',
+    merMorte: 'la mer Morte, sans effort',
+  },
+  en: {
+    eauDouce: 'fresh water',
+    eauSalee: 'salt water',
+    sel: 'the salt dissolves',
+    pousse: 'it pushes up harder',
+    flotte: 'you float higher',
+    merMorte: 'the Dead Sea, no effort',
+  },
+};
 
 /**
  * Deux colonnes côte à côte, eau douce et eau salée : le sel qui se dissout
@@ -14,11 +34,13 @@ export function PourquoiOnFlotteMieuxDansLaMerAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
-  const legende = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const apparition = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -27,10 +49,10 @@ export function PourquoiOnFlotteMieuxDansLaMerAnimation({
       <rect x="220" y="40" width="160" height="180" fill="#0369a1" opacity="0.85" />
       {/* Étiquettes permanentes des deux colonnes */}
       <text x="42" y="34" fill="#93c5fd" fontSize="13" fontFamily={police}>
-        eau douce
+        {legende.eauDouce}
       </text>
       <text x="242" y="34" fill="#facc15" fontSize="13" fontFamily={police}>
-        eau salée
+        {legende.eauSalee}
       </text>
 
       {/* Phase 1 : le sel se dissout dans l'eau de mer */}
@@ -42,8 +64,8 @@ export function PourquoiOnFlotteMieuxDansLaMerAnimation({
             )}
           </rect>
         ))}
-        <text x="20" y="228" fill="#facc15" fontSize="13" fontFamily={police} style={legende(0)}>
-          le sel se dissout
+        <text x="20" y="228" fill="#facc15" fontSize="13" fontFamily={police} style={apparition(0)}>
+          {legende.sel}
         </text>
       </g>
 
@@ -51,8 +73,8 @@ export function PourquoiOnFlotteMieuxDansLaMerAnimation({
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <line x1="100" y1="180" x2="100" y2="150" stroke="#60a5fa" strokeWidth="4" markerEnd="url(#flecheDouce)" />
         <line x1="300" y1="180" x2="300" y2="110" stroke="#facc15" strokeWidth="4" markerEnd="url(#flecheSalee)" />
-        <text x="20" y="228" fill="#facc15" fontSize="13" fontFamily={police} style={legende(1)}>
-          ça pousse plus fort
+        <text x="20" y="228" fill="#facc15" fontSize="13" fontFamily={police} style={apparition(1)}>
+          {legende.pousse}
         </text>
       </g>
 
@@ -64,16 +86,16 @@ export function PourquoiOnFlotteMieuxDansLaMerAnimation({
             <animate attributeName="cy" values="108;102;108" dur="2.4s" repeatCount="indefinite" />
           )}
         </ellipse>
-        <text x="20" y="228" fill="#e0f2fe" fontSize="13" fontFamily={police} style={legende(2)}>
-          on flotte plus haut
+        <text x="20" y="228" fill="#e0f2fe" fontSize="13" fontFamily={police} style={apparition(2)}>
+          {legende.flotte}
         </text>
       </g>
 
       {/* Phase 4 : la mer Morte, on flotte presque sans effort */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <ellipse cx="300" cy="96" rx="30" ry="8" fill="#fef9c3" />
-        <text x="20" y="228" fill="#fef9c3" fontSize="13" fontFamily={police} style={legende(3)}>
-          la mer Morte, sans effort
+        <text x="20" y="228" fill="#fef9c3" fontSize="13" fontFamily={police} style={apparition(3)}>
+          {legende.merMorte}
         </text>
       </g>
 

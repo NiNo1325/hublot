@@ -1,18 +1,33 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['roue-corde', 'direction', 'plusieurs', 'echange'] as const;
+
+const LEGENDES = {
+  fr: {
+    tirer: 'tu tires vers le bas',
+    moinsForce: 'moins de force',
+    plusCorde: 'mais beaucoup plus de corde à tirer',
+  },
+  en: {
+    tirer: 'you pull downwards',
+    moinsForce: 'less force',
+    plusCorde: 'but far more rope to pull',
+  },
+};
 
 /**
  * La phase « échange » montre la contrepartie : la main tire une longue
  * longueur de corde pour un petit déplacement de la charge — le même
  * compromis que le levier et l'engrenage.
  */
-export function PouliesAnimation({ activeBeatId }: CardAnimationProps) {
+export function PouliesAnimation({ activeBeatId, locale }: CardAnimationProps) {
   // Animation statique : chaque phase révèle son groupe par simple opacité.
   const { opacite } = miseEnScene(PHASES, activeBeatId);
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -36,7 +51,7 @@ export function PouliesAnimation({ activeBeatId }: CardAnimationProps) {
         <line x1="168" y1="106" x2="168" y2="150" stroke="#ffb627" strokeWidth="4" />
         <path d="M162 144 L168 160 L174 144 Z" fill="#ffb627" />
         <text x="180" y="130" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          tu tires vers le bas
+          {legende.tirer}
         </text>
       </g>
 
@@ -50,7 +65,7 @@ export function PouliesAnimation({ activeBeatId }: CardAnimationProps) {
         <path d="M264 66 v70 a16 16 0 0 0 32 0 M296 66 v70" stroke="#e2e8f0" strokeWidth="3" fill="none" />
         <rect x="283" y="166" width="30" height="30" rx="4" fill="#64748b" />
         <text x="230" y="30" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          moins de force
+          {legende.moinsForce}
         </text>
       </g>
 
@@ -59,7 +74,7 @@ export function PouliesAnimation({ activeBeatId }: CardAnimationProps) {
         <line x1="264" y1="140" x2="264" y2="210" stroke="#ffb627" strokeWidth="4" strokeDasharray="6 4" />
         <path d="M258 204 L264 220 L270 204 Z" fill="#ffb627" />
         <text x="120" y="230" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          mais beaucoup plus de corde à tirer
+          {legende.plusCorde}
         </text>
       </g>
     </svg>

@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Two eyes to see better',
+        '6-8': 'Why we have two eyes',
+        '9-12': 'Two eyes for seeing depth',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Your two eyes don’t see exactly the same picture.',
+            },
+            {
+              id: 'deux',
+              text: 'Close one eye, then the other: look, the thing in front of you seems to jump!',
+            },
+            {
+              id: 'trois',
+              text: 'Your brain compares these two slightly different pictures all the time.',
+            },
+            {
+              id: 'quatre',
+              text: 'Thanks to that comparison, it works out whether things are near you or far away.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Because your two eyes are set a little apart, each one sees the world from a slightly different angle.',
+            },
+            {
+              id: 'deux',
+              text: 'Try it: close your right eye, then your left eye. A nearby object seems to “jump” from one side to the other.',
+            },
+            {
+              id: 'trois',
+              text: 'Your brain receives these two pictures at the same time and compares them non-stop.',
+            },
+            {
+              id: 'quatre',
+              text: 'By comparing the small differences between the two pictures, it works out how far away things are: that is what gives you depth vision.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Since the eyes are a few centimetres apart, each one captures a slightly shifted image of the scene: this is binocular disparity.',
+            },
+            {
+              id: 'deux',
+              text: 'By closing each eye in turn, you can see that the apparent position of a nearby object shifts noticeably against the background.',
+            },
+            {
+              id: 'trois',
+              text: 'The brain receives both images and compares them continuously in the visual cortex.',
+            },
+            {
+              id: 'quatre',
+              text: 'The size of the shift between the two images tells the brain directly how far away objects are: the greater the gap, the closer the object. The second eye is therefore not a mere spare wheel: it is the comparison of the two images that gives us the perception of depth.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

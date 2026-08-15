@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why fizzy drinks bubble',
+        '6-8': 'Why fizzy drinks bubble',
+        '9-12': 'Why fizzy drinks bubble',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'In the closed bottle, gas is shut in very tight.',
+            },
+            {
+              id: 'deux',
+              text: 'You open it: at last the gas can get out.',
+            },
+            {
+              id: 'trois',
+              text: 'It makes lots of little bubbles that rise up.',
+            },
+            {
+              id: 'quatre',
+              text: 'If you wait too long, all the gas leaves: the drink goes flat.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Before the bottle is closed, gas is shut into the drink under very high pressure.',
+            },
+            {
+              id: 'deux',
+              text: 'As long as the bottle stays closed, that gas has to stay hidden inside the liquid.',
+            },
+            {
+              id: 'trois',
+              text: 'The moment you open it, the pressure drops all at once and the gas can escape as bubbles that rise up.',
+            },
+            {
+              id: 'quatre',
+              text: 'Little by little, all the gas goes off into the air: the drink stops fizzing and goes flat.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'During bottling, carbon dioxide is dissolved into the drink under high pressure.',
+            },
+            {
+              id: 'deux',
+              text: 'As long as the bottle is closed, that pressure keeps the gas dissolved in the liquid.',
+            },
+            {
+              id: 'trois',
+              text: 'On opening, the pressure drops abruptly: the gas becomes far less soluble and forms bubbles that rise to the surface.',
+            },
+            {
+              id: 'quatre',
+              text: 'Each time you open it, a little more gas escapes, until none is left: the bubbles come from the gas shut inside, not from air sucked in from outside.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

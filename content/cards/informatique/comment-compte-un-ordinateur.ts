@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'On, off',
+        '6-8': 'How a computer counts',
+        '9-12': 'The language of binary',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'interrupteurs',
+              text: 'Inside a computer there are millions of tiny lamps. Each one can be on, or off.',
+            },
+            {
+              id: 'deux-chiffres',
+              text: 'The computer knows only those two things: on, or off. That is everything it can do.',
+            },
+            {
+              id: 'combinaisons',
+              text: 'But with lots of lamps, it can make loads of different patterns, like a light show.',
+            },
+            {
+              id: 'tout-est-nombre',
+              text: 'Your pictures, your songs, your games: all of it is kept with these lamps on and off.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'interrupteurs',
+              text: 'A computer is packed with tiny electrical switches. There are billions of them, so small you need a microscope to see them.',
+            },
+            {
+              id: 'deux-chiffres',
+              text: 'Each switch is either open or closed. We write that as zero or one. So a computer counts with only two digits, while we use ten.',
+            },
+            {
+              id: 'combinaisons',
+              text: 'With a single switch you can say only two things. With two, you can say four. With eight, two hundred and fifty-six. Every extra switch doubles the number of possibilities.',
+            },
+            {
+              id: 'tout-est-nombre',
+              text: 'A letter, a colour, a musical note: each one is given its own number, written with zeros and ones. The computer understands nothing of what it handles — it moves numbers about, but billions of times a second.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'interrupteurs',
+              text: 'Processors contain transistors: switches with no moving parts, controlled by electricity. A modern chip holds several tens of billions of them, etched at a scale of a few nanometres.',
+            },
+            {
+              id: 'deux-chiffres',
+              text: 'Two states are enough, and that is no accident: telling “current” from “no current” apart is far more reliable than telling ten voltage levels apart. Binary is an engineering choice, not a limit of computing.',
+            },
+            {
+              id: 'combinaisons',
+              text: 'With n bits you can represent two to the power of n values. Eight bits — one byte — give two hundred and fifty-six. The system is positional, like ours: in decimal each column is worth ten times the one before, in binary it is worth twice as much. So 1011 is eight, plus zero, plus two, plus one: eleven.',
+            },
+            {
+              id: 'tout-est-nombre',
+              text: 'Everything becomes a number: text through a lookup table, an image through the value of each pixel, a sound through repeated measurements of a wave. The computer applies logical rules to those numbers. It understands the meaning of a photograph no more than a calculator understands mathematics.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

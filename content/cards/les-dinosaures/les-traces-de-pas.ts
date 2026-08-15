@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Footsteps in the stone',
+        '6-8': 'Fossilised footprints',
+        '9-12': 'What fossilised footprints reveal',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A dinosaur walks through soft, squishy mud and leaves its footprints.',
+            },
+            {
+              id: 'deux',
+              text: 'Over time, the mud goes very hard, just like stone.',
+            },
+            {
+              id: 'trois',
+              text: 'Scientists measure the distance between each footprint.',
+            },
+            {
+              id: 'quatre',
+              text: 'That tells them if it walked fast, and if several of them walked together.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A dinosaur walks through the soft mud at the edge of a river or a lake, and its feet leave a clean print behind.',
+            },
+            {
+              id: 'deux',
+              text: 'If the prints dry out and are then covered by sediment before they wear away, they can turn to stone over millions of years.',
+            },
+            {
+              id: 'trois',
+              text: 'Scientists measure the length of the steps and the gap between the prints in every trackway they find.',
+            },
+            {
+              id: 'quatre',
+              text: 'With those measurements they work out how fast the animal was going, and by comparing several trackways side by side, they can even tell whether the dinosaurs travelled in a group.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A dinosaur crossing soft ground, river mud or lake sediment, presses the shape of its feet into it in sharp relief.',
+            },
+            {
+              id: 'deux',
+              text: 'If the trackway dries quickly and is then buried by fresh sediment without being eroded, it can survive and mineralise into a trace fossil, or ichnofossil.',
+            },
+            {
+              id: 'trois',
+              text: 'Stride length, trackway width and print size make it possible to estimate the hip height of the animal, and therefore its approximate size.',
+            },
+            {
+              id: 'quatre',
+              text: 'By combining estimated speed, the orientation of the trackways and the presence of individuals of several sizes at one site, we can reconstruct herd behaviour, a group hunt or a simple migration.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

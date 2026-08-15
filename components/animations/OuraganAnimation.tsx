@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['mer-chaude', 'spirale', 'oeil', 'structure'] as const;
+
+const LEGENDES = {
+  fr: {
+    merChaude: 'une mer chaude',
+    spirale: 'une spirale géante',
+    oeil: 'un œil calme au centre',
+    range: 'tout est bien rangé',
+  },
+  en: {
+    merChaude: 'a warm sea',
+    spirale: 'a giant spiral',
+    oeil: 'a calm central eye',
+    range: 'all neatly arranged',
+  },
+};
 
 const CX = 196;
 const CY = 100;
@@ -17,10 +33,12 @@ export function OuraganAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
   const montreSpirale = phase >= 1;
 
   return (
@@ -61,19 +79,19 @@ export function OuraganAnimation({
             </path>
           </g>
         ))}
-        <text x="20" y="200" fill="#fca5a5" fontSize="15" fontFamily={police}>une mer chaude</text>
+        <text x="20" y="200" fill="#fca5a5" fontSize="15" fontFamily={police}>{legende.merChaude}</text>
       </g>
 
       {/* Phase 2 : une spirale géante */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
-        <text x="20" y="224" fill="#cbd5e1" fontSize="15" fontFamily={police}>une spirale géante</text>
+        <text x="20" y="224" fill="#cbd5e1" fontSize="15" fontFamily={police}>{legende.spirale}</text>
       </g>
 
       {/* Phase 3 : un œil calme au centre */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
         <circle cx={CX} cy={CY} r="14" fill="#0b1c2e" stroke="#7dd3fc" strokeWidth="2" />
         <circle cx={CX} cy={CY} r="4" fill="#7dd3fc" />
-        <text x="230" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>un œil calme au centre</text>
+        <text x="230" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>{legende.oeil}</text>
       </g>
 
       {/* Phase 4 : tout est bien rangé (ordre, pas chaos) */}
@@ -88,7 +106,7 @@ export function OuraganAnimation({
             <path key={deg} d={`M${x - Math.cos(ta) * 8} ${y - Math.sin(ta) * 8} L${x + Math.cos(ta) * 8} ${y + Math.sin(ta) * 8} L${x + Math.cos(ta) * 8 + Math.cos(a) * 6} ${y + Math.sin(ta) * 8 + Math.sin(a) * 6}`} fill="none" stroke="#a3e635" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
           );
         })}
-        <text x="240" y="224" fill="#a3e635" fontSize="15" fontFamily={police}>tout est bien rangé</text>
+        <text x="240" y="224" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.range}</text>
       </g>
     </svg>
   );

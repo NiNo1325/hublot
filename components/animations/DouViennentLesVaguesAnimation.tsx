@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    vent: 'le vent souffle fort',
+    rides: 'de petites rides',
+    vagues: 'les vagues grandissent',
+    surPlace: 'l’eau reste sur place',
+  },
+  en: {
+    vent: 'the wind blows hard',
+    rides: 'small ripples',
+    vagues: 'the waves grow bigger',
+    surPlace: 'the water stays put',
+  },
+};
 
 /**
  * Le vent souffle sur l'eau, de petites rides naissent et grandissent en
@@ -14,11 +30,13 @@ export function DouViennentLesVaguesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
-  const legende = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const apparition = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -50,8 +68,8 @@ export function DouViennentLesVaguesAnimation({
             )}
           </path>
         ))}
-        <text x="16" y="90" fill="#e0f2fe" fontSize="15" fontFamily={police} style={legende(0)}>
-          le vent souffle fort
+        <text x="16" y="90" fill="#e0f2fe" fontSize="15" fontFamily={police} style={apparition(0)}>
+          {legende.vent}
         </text>
       </g>
 
@@ -63,8 +81,8 @@ export function DouViennentLesVaguesAnimation({
           strokeWidth="2.5"
           fill="none"
         />
-        <text x="16" y="140" fill="#7dd3fc" fontSize="15" fontFamily={police} style={legende(1)}>
-          de petites rides
+        <text x="16" y="140" fill="#7dd3fc" fontSize="15" fontFamily={police} style={apparition(1)}>
+          {legende.rides}
         </text>
       </g>
 
@@ -86,8 +104,8 @@ export function DouViennentLesVaguesAnimation({
             />
           )}
         </path>
-        <text x="16" y="196" fill="#38bdf8" fontSize="15" fontFamily={police} style={legende(2)}>
-          les vagues grandissent
+        <text x="16" y="196" fill="#38bdf8" fontSize="15" fontFamily={police} style={apparition(2)}>
+          {legende.vagues}
         </text>
       </g>
 
@@ -116,8 +134,8 @@ export function DouViennentLesVaguesAnimation({
           </circle>
         ))}
         <line x1="16" y1="150" x2="340" y2="150" stroke="#facc15" strokeWidth="1.5" strokeDasharray="4 4" />
-        <text x="16" y="210" fill="#facc15" fontSize="14" fontFamily={police} style={legende(3)}>
-          l’eau reste sur place
+        <text x="16" y="210" fill="#facc15" fontSize="14" fontFamily={police} style={apparition(3)}>
+          {legende.surPlace}
         </text>
       </g>
     </svg>

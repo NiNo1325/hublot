@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The birds’ big journey',
+        '6-8': 'Bird migration',
+        '9-12': 'Bird migration',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'nourriture',
+              text: 'In winter, there is not much left to eat: the little bugs and the seeds are gone.',
+            },
+            {
+              id: 'depart',
+              text: 'So the birds fly far away, to warm countries where there is food.',
+            },
+            {
+              id: 'boussole',
+              text: 'To find their way, they look at the sun and the stars, like a map in the sky.',
+            },
+            {
+              id: 'retour',
+              text: 'In spring, when the food comes back, they come back too!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'nourriture',
+              text: 'When winter comes, insects, seeds and fruit grow scarce. It is hunger, more than the cold, that is the problem.',
+            },
+            {
+              id: 'depart',
+              text: 'So many birds fly off to warmer places, sometimes thousands of kilometres away, to find something to eat.',
+            },
+            {
+              id: 'boussole',
+              text: 'How do they not get lost? They use the sun by day, the stars by night, and even the Earth’s magnetic field, like a compass inside them.',
+            },
+            {
+              id: 'retour',
+              text: 'In spring, food comes back where they started from, and they make the journey the other way round to nest there.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'nourriture',
+              text: 'Migration answers to food, not to the thermometer. In winter, insects vanish and seeds grow rare; a well-feathered bird can stand the cold, but not the famine.',
+            },
+            {
+              id: 'depart',
+              text: 'Whole species then set off south. The Arctic tern holds the record: from one pole to the other, it covers nearly 70,000 kilometres every year.',
+            },
+            {
+              id: 'boussole',
+              text: 'To steer, birds combine several clues: the position of the sun, the map of the stars, landmarks on the ground, and a sense of the Earth’s magnetic field that tells them where north is. It is this inner compass, still being studied, that astonishes most.',
+            },
+            {
+              id: 'retour',
+              text: 'In spring, food returns in the north and the days grow longer: the signal to go back. Many find exactly the same nest as the year before. Migration is not an escape from the cold, then, but a pursuit of food.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['calcul', 'trompe', 'mediane', 'dispersion'] as const;
+
+const LEGENDES = {
+  fr: {
+    moyenne: 'moyenne',
+    mediane: 'médiane',
+    dixSurOnze: 'dix personnes sur onze',
+    unSeul: 'un seul nombre ne suffit pas',
+  },
+  en: {
+    moyenne: 'average',
+    mediane: 'median',
+    dixSurOnze: 'ten people out of eleven',
+    unSeul: 'one number is not enough',
+  },
+};
 
 /** Dix barres identiques, puis une onzième hors norme. */
 const PETITES = Array.from({ length: 10 }, (_, i) => 30 + i * 20);
@@ -19,10 +35,12 @@ export function MoyenneAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const extreme = phase >= 1;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -47,7 +65,7 @@ export function MoyenneAnimation({
         style={{ transition: 'y1 1200ms ease, y2 1200ms ease' }}
       />
       <text x="270" y={extreme ? 66 : SOL - 26} fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif" style={{ transition: 'y 1200ms ease' }}>
-        moyenne
+        {legende.moyenne}
       </text>
 
       {/* La médiane, qui ne bouge pas */}
@@ -55,7 +73,7 @@ export function MoyenneAnimation({
         <line x1="20" y1={SOL - 20} x2="380" y2={SOL - 20} stroke="#4ade80" strokeWidth="3" strokeDasharray="6 5" />
         {/* Décalée en abscisse : au repos, la moyenne est à la même hauteur. */}
         <text x="140" y="152" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          médiane
+          {legende.mediane}
         </text>
       </g>
 
@@ -64,7 +82,7 @@ export function MoyenneAnimation({
 
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <text x="14" y="210" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          dix personnes sur onze
+          {legende.dixSurOnze}
         </text>
       </g>
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
@@ -76,7 +94,7 @@ export function MoyenneAnimation({
           </circle>
         ))}
         <text x="14" y="234" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          un seul nombre ne suffit pas
+          {legende.unSeul}
         </text>
       </g>
     </svg>

@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The shape of raindrops',
+        '6-8': 'The real shape of a raindrop',
+        '9-12': 'The real shape of a raindrop',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'image-larme',
+              text: 'We always draw raindrops with a point on top, like a tear.',
+            },
+            {
+              id: 'petite-ronde',
+              text: 'But really, a little drop is completely round, like a marble.',
+            },
+            {
+              id: 'air-dessous',
+              text: 'When it falls, the air pushes hard on it from underneath.',
+            },
+            {
+              id: 'coussin',
+              text: 'So it goes flat and looks like a little cushion. Never like a tear!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'image-larme',
+              text: 'In drawings, a raindrop always has a point at the top, shaped like a tear. And yet that is wrong.',
+            },
+            {
+              id: 'petite-ronde',
+              text: 'A small drop is in fact perfectly round: the water holds itself together in a ball, like a tiny marble.',
+            },
+            {
+              id: 'air-dessous',
+              text: 'When the drop falls, the air it travels through presses on it from below, where it is rushing forward.',
+            },
+            {
+              id: 'coussin',
+              text: 'That air flattens the bottom of the drop: it takes the shape of a bread roll or a cushion, flat underneath and rounded on top. Never the pointed tear of the drawings.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'image-larme',
+              text: 'The tear-shaped drop is a stubborn myth, repeated in every drawing. Real raindrops never have that pointed shape.',
+            },
+            {
+              id: 'petite-ronde',
+              text: 'A small drop is spherical: surface tension, which pulls its surface inwards, gives it the most compact shape possible, the sphere.',
+            },
+            {
+              id: 'air-dessous',
+              text: 'As it falls, the drop meets the resistance of the air. That pressure acts mainly on its leading face, the underside, which meets the oncoming air.',
+            },
+            {
+              id: 'coussin',
+              text: 'The drop then flattens underneath and rounds off on top: it looks like a hamburger bun, not a tear. If it grows too large, that flattening increases until it bursts into smaller drops. A drop’s shape therefore tells the story of its fall — a balance between water trying to stay a ball and air squashing it flat.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

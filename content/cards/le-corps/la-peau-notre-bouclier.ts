@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Our skin protects us',
+        '6-8': 'Skin, our shield',
+        '9-12': 'Skin: shield and heat regulator',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Your skin makes a shield all around you: it stops germs getting in.',
+            },
+            {
+              id: 'deux',
+              text: 'When you are hot, your skin gets covered in little drops of sweat.',
+            },
+            {
+              id: 'trois',
+              text: 'These drops slowly fly away into the air.',
+            },
+            {
+              id: 'quatre',
+              text: 'As they fly away, they carry off a bit of heat, and that cools you down.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Your skin works like a shield: its surface stops most germs getting into your body.',
+            },
+            {
+              id: 'deux',
+              text: 'When it is hot, or when you play sport, tiny glands make sweat that beads on your skin.',
+            },
+            {
+              id: 'trois',
+              text: 'This sweat evaporates — it turns into invisible vapour and flies off into the air.',
+            },
+            {
+              id: 'quatre',
+              text: 'Going from liquid to vapour soaks up heat: your skin cools down. So sweating is not dirty at all, it is your best natural air conditioning.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The skin forms a physical and chemical barrier that stops most microbes and outside substances entering the body.',
+            },
+            {
+              id: 'deux',
+              text: 'When body temperature rises, millions of sweat glands release sweat, a liquid made up mainly of water and mineral salts.',
+            },
+            {
+              id: 'trois',
+              text: 'In contact with the air, the water in sweat evaporates: it passes from the liquid state to the gaseous state.',
+            },
+            {
+              id: 'quatre',
+              text: 'This change of state uses up energy, drawn from the heat of the skin, which cools down as a result. Far from being a sign of dirtiness, sweating is an essential mechanism for regulating body temperature.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

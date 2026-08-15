@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    petite: 'd’abord, une petite dent',
+    grande: 'une grande pousse dessous',
+    racine: 'la racine est rongée',
+    tombe: 'elle tombe, la place est prise',
+  },
+  en: {
+    petite: 'first, a little tooth',
+    grande: 'a big one pushes up below',
+    racine: 'the root is gnawed away',
+    tombe: 'it falls, the place is taken',
+  },
+};
 
 /**
  * Une gencive en coupe : la petite dent de lait est en surface, la grande
@@ -14,10 +30,12 @@ export function LesDentsDeLaitAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   const racineRongee = phase >= 2;
   const tombee = phase === 3;
@@ -50,13 +68,13 @@ export function LesDentsDeLaitAnimation({
 
       {/* Phase 1 : la petite dent de lait */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
-        <text x="20" y="34" fill="#f5f5f4" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>d’abord, une petite dent</text>
+        <text x="20" y="34" fill="#f5f5f4" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.petite}</text>
       </g>
 
       {/* Phase 2 : la dent définitive pousse dessous */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <path d="M240 190 h20 M256 190 l-6 -5 M256 190 l-6 5" stroke="#fbbf24" strokeWidth="2.5" fill="none" />
-        <text x="240" y="220" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>une grande pousse dessous</text>
+        <text x="180" y="220" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.grande}</text>
       </g>
 
       {/* Phase 3 : elle ronge la racine */}
@@ -68,12 +86,12 @@ export function LesDentsDeLaitAnimation({
             )}
           </circle>
         ))}
-        <text x="20" y="200" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>la racine est rongée</text>
+        <text x="20" y="200" fill="#f87171" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.racine}</text>
       </g>
 
       {/* Phase 4 : elle tombe, la grande dent prend sa place */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <text x="230" y="34" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>elle tombe, la place est prise</text>
+        <text x="180" y="34" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.tombe}</text>
       </g>
     </svg>
   );

@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The beating heart',
+        '6-8': 'The journey of your blood',
+        '9-12': 'Blood circulation',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'pompe',
+              text: 'Your heart is a muscle as big as your fist, and it squeezes without ever stopping, all day and all night.',
+            },
+            {
+              id: 'aller',
+              text: 'Every time it squeezes, it sends the blood into tiny little tubes, right to the tips of your fingers and your toes.',
+            },
+            {
+              id: 'livraison',
+              text: 'The blood brings your body what it needs to live, a bit like a delivery van.',
+            },
+            {
+              id: 'retour',
+              text: 'Then it comes back to the heart to set off again. Put your hand on your chest: you can feel it working.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'pompe',
+              text: 'The heart is a hollow muscle that squeezes about a hundred thousand times a day, without ever resting completely.',
+            },
+            {
+              id: 'aller',
+              text: 'With every squeeze, it pushes the blood into the arteries. These split into finer and finer vessels, down to tubes narrower than a hair.',
+            },
+            {
+              id: 'livraison',
+              text: 'There, the blood delivers oxygen and nutrients to every single cell, and picks up the waste. That is what breathing and eating are actually for.',
+            },
+            {
+              id: 'retour',
+              text: 'The blood then comes back through the veins. Veins are often drawn in blue, but blood is never blue: it is dark red when it is short of oxygen, bright red when it is loaded with it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'pompe',
+              text: 'The heart has four chambers and works like two pumps side by side. The right one sends blood to the lungs, the left one to all the rest of the body — which is why its wall is far thicker.',
+            },
+            {
+              id: 'aller',
+              text: 'Oxygenated blood leaves through the aorta, then follows arteries of decreasing size down to the capillaries, whose wall is a single cell thick. Laid end to end, your vessels would stretch beyond a hundred thousand kilometres.',
+            },
+            {
+              id: 'livraison',
+              text: 'In the capillaries, the oxygen carried on haemoglobin diffuses into the cells, while carbon dioxide makes the journey the other way. The whole point of the system lies in that exchange: the rest is only transport.',
+            },
+            {
+              id: 'retour',
+              text: 'The venous return brings the blood back to the right heart, which sends it to the lungs to reload with oxygen. Deoxygenated blood is dark red, never blue: veins look bluish because the skin scatters light, not because of what is inside them.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

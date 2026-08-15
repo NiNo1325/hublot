@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Breathing',
+        '6-8': 'How we breathe',
+        '9-12': 'Breathing and gas exchange',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'muscle',
+              text: 'Under your lungs there is a muscle. When it goes down, air comes into your chest all by itself.',
+            },
+            {
+              id: 'poumons',
+              text: 'The air fills your two lungs, and they puff up like light little sponges.',
+            },
+            {
+              id: 'oxygene',
+              text: 'Your body takes what it needs to live out of the air, and gives it to your blood.',
+            },
+            {
+              id: 'expirer',
+              text: 'Then the muscle goes back up, the air comes out, and you start again without even thinking about it.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'muscle',
+              text: 'People often think the lungs puff themselves up. In fact a dome-shaped muscle underneath them, the diaphragm, is in charge. When it drops, it makes the chest bigger, and air rushes in to fill the space.',
+            },
+            {
+              id: 'poumons',
+              text: 'The air travels through your nose and your throat, then down tubes that split into finer and finer branches, all the way to tiny sacs full of air.',
+            },
+            {
+              id: 'oxygene',
+              text: 'In those little sacs, the oxygen from the air passes into your blood, which carries it off to your whole body. In exchange, the blood drops off a waste gas there: carbon dioxide.',
+            },
+            {
+              id: 'expirer',
+              text: 'The diaphragm rises, the chest squeezes back down, and the air loaded with that waste comes out again. You do this about twenty thousand times a day, without thinking about it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'muscle',
+              text: 'Breathing is mechanical: the diaphragm and the muscles between the ribs enlarge the rib cage. As the volume grows, the pressure inside drops below that of the outside air, which then flows in passively. You do not suck air in — you create a low pressure and the atmosphere pushes the air into you.',
+            },
+            {
+              id: 'poumons',
+              text: 'The air reaches the alveoli, minute sacs lined with capillaries. There are hundreds of millions of them: unfolded, their exchange surface would cover about half a tennis court.',
+            },
+            {
+              id: 'oxygene',
+              text: 'At the alveoli, oxygen diffuses into the blood and binds to haemoglobin, while carbon dioxide makes the journey the other way. We do not breathe pure oxygen: inhaled air contains twenty-one per cent of it, exhaled air still sixteen. We only take out a fraction.',
+            },
+            {
+              id: 'expirer',
+              text: 'Breathing out is mostly passive: the muscles relax and the elastic lungs shrink back. The rhythm is set automatically by the brainstem, which monitors not a shortage of oxygen but an excess of carbon dioxide in the blood.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

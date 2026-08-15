@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Dinosaurs in colour',
+        '6-8': 'Feathered dinosaurs… and in colour',
+        '9-12': 'Finding the colour of feathered dinosaurs',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Some very well kept fossils still show the mark of feathers.',
+            },
+            {
+              id: 'deux',
+              text: 'Under a microscope, we see tiny grains that gave the feathers their colour.',
+            },
+            {
+              id: 'trois',
+              text: 'We compare these grains with the ones inside the feathers of birds today.',
+            },
+            {
+              id: 'quatre',
+              text: 'And we can guess the real colours of some dinosaurs!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: "At a few remarkable sites, the rock has kept the fine imprint of some dinosaurs' feathers, and not only their bones.",
+            },
+            {
+              id: 'deux',
+              text: 'Looking at these fossilised feathers under a microscope, scientists find tiny grains called melanosomes, which gave the feathers their colour.',
+            },
+            {
+              id: 'trois',
+              text: 'By comparing the shape of these grains with those in the feathers of birds alive today, whose colours we know, we can link a shape to a colour.',
+            },
+            {
+              id: 'quatre',
+              text: 'Thanks to this method, scientists have given real colours back to some species, such as stripes or a reddish-brown plumage.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A few exceptionally preserved deposits, such as those of Liaoning in China, have kept not only the bones but also the detailed imprint of the feathers of several theropod dinosaur species.',
+            },
+            {
+              id: 'deux',
+              text: 'Observation under an electron microscope reveals melanosomes in these fossil feathers, cell organelles whose shape and arrangement vary according to the pigment they contained.',
+            },
+            {
+              id: 'trois',
+              text: 'By building a database of melanosomes from present-day birds of known colour, palaeontologists can match the shape of a fossil melanosome to a probable colour.',
+            },
+            {
+              id: 'quatre',
+              text: 'This method reconstructed the ginger-and-white striped coat of Sinosauropteryx, bringing unprecedented rigour to a question long left to the imagination of artists.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

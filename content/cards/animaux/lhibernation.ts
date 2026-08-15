@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The big winter sleep',
+        '6-8': 'Hibernation',
+        '9-12': 'Hibernation',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'reserves',
+              text: 'Before winter, the hedgehog eats a lot to make a store in its tummy.',
+            },
+            {
+              id: 'ralenti',
+              text: 'Then it curls up in a hole. Its heart beats very softly and its body goes cold.',
+            },
+            {
+              id: 'economie',
+              text: 'That way, it hardly needs to eat all winter long.',
+            },
+            {
+              id: 'reveil',
+              text: 'In spring, it warms up, wakes up and goes off to eat.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'reserves',
+              text: 'In autumn, some animals eat enormous amounts to build up fat: that will be their store of energy.',
+            },
+            {
+              id: 'ralenti',
+              text: 'When the cold sets in, they take shelter and their body slows right down: the heart beats very slowly and their temperature drops almost to the temperature of the air.',
+            },
+            {
+              id: 'economie',
+              text: 'Running this slowly, they use hardly any energy. So they can last for months without eating, living off their reserves.',
+            },
+            {
+              id: 'reveil',
+              text: 'Hibernation is not simply a long sleep: it is another state altogether. In fact, the animal sometimes wakes for a few hours before dropping back into it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'reserves',
+              text: 'Hibernation is prepared from autumn onwards: the animal stuffs itself to build up reserves of fat, its only fuel for the winter.',
+            },
+            {
+              id: 'ralenti',
+              text: 'Then its metabolism deliberately collapses. In a marmot, the heart goes from 200 beats a minute to fewer than 10, and body temperature falls from 37 °C to a few degrees above zero.',
+            },
+            {
+              id: 'economie',
+              text: 'Ticking over that slowly, the body uses almost no energy at all: that is the whole point. The animal survives for months without feeding, where the cold alone would have exhausted it had it stayed active.',
+            },
+            {
+              id: 'reveil',
+              text: 'Hibernation is therefore not sleeping for a long time, but suspending the body. Curiously, hibernators come out of that state now and then in order to... really sleep for a few hours, before dropping back in. Waking fully, in spring, means warming the whole organism back up.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

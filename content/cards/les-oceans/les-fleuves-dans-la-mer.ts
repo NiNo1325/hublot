@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Hidden rivers in the sea',
+        '6-8': 'The hidden rivers in the sea',
+        '9-12': 'Ocean currents, invisible rivers',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Near the middle of the Earth the water is nice and warm, and it travels off to the cold poles.',
+            },
+            {
+              id: 'deux',
+              text: 'Up there it is freezing: the water gets cold and sinks right down to the bottom.',
+            },
+            {
+              id: 'trois',
+              text: 'Down at the bottom of the sea, it travels gently back again.',
+            },
+            {
+              id: 'quatre',
+              text: 'It is like a big ring of water that never stops going round.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Near the equator, the Sun heats the surface of the ocean strongly. This warm water then sets off towards the poles.',
+            },
+            {
+              id: 'deux',
+              text: 'When it reaches the cold regions, the water loses its heat, becomes heavier and sinks towards the bottom.',
+            },
+            {
+              id: 'trois',
+              text: 'From the bottom it travels slowly back to the equator, where it rises again to begin the journey once more.',
+            },
+            {
+              id: 'quatre',
+              text: 'This huge loop is called an ocean current: a real invisible river inside the sea, carrying heat right around the planet.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'At the equator, the Sun warms the surface of the ocean; this warm, less dense water is driven towards the high latitudes by the winds and by the rotation of the Earth.',
+            },
+            {
+              id: 'deux',
+              text: 'As it cools near the poles it becomes denser — sometimes denser still because of the salt left behind by the sea ice as it forms — and it sinks into the depths.',
+            },
+            {
+              id: 'trois',
+              text: 'This cold, deep water then flows slowly back towards the equator, driven by the differences in density.',
+            },
+            {
+              id: 'quatre',
+              text: 'Together these movements form a permanent circulation on a global scale, which redistributes heat between the equator and the poles and shapes the climate of entire continents.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

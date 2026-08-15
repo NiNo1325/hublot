@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The waves in the house',
+        '6-8': 'Wi-Fi is not the internet',
+        '9-12': 'Wi-Fi: a shared radio medium',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'pas-internet',
+              text: 'Wi-Fi is not the internet. It is just the last little bit of the road.',
+            },
+            {
+              id: 'ondes-radio',
+              text: 'The box sends waves through the air, like the radio in the car.',
+            },
+            {
+              id: 'portee',
+              text: 'The further away you go, the worse it works. And walls get in the way a lot.',
+            },
+            {
+              id: 'partage',
+              text: 'And everybody in the house shares the very same road.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'pas-internet',
+              text: 'When the Wi-Fi stops working, people say “the internet is down”. Yet these are two different things: Wi-Fi only links your device to the box, across a few metres. The internet is everything that comes after.',
+            },
+            {
+              id: 'ondes-radio',
+              text: 'That link is made of radio waves, from the same family as FM radio or a mobile phone — only the frequency differs. Nothing magic about it: it is light our eyes cannot see.',
+            },
+            {
+              id: 'portee',
+              text: 'Which explains the behaviour you know so well. The signal weakens with distance, and walls, especially concrete ones, soak it up. The bars on your screen measure the quality of that local link — not the speed of the internet.',
+            },
+            {
+              id: 'partage',
+              text: 'Lastly, all the devices share the same channel and speak one at a time, very fast. With ten of them downloading, each one waits longer. A good deal of slowness blamed on the internet actually comes from here.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'pas-internet',
+              text: 'Wi-Fi is a local network technology, standardised under the reference 802.11. It provides the link between a device and an access point — the last stretch, often a few metres. Confusing it with the internet is like confusing the corridor with the city.',
+            },
+            {
+              id: 'ondes-radio',
+              text: 'Transmission uses electromagnetic waves, mainly in the 2.4 and 5 gigahertz bands. These are the same waves as radio or television, give or take the frequency: the radiation is non-ionising, nowhere near the energies able to break a chemical bond.',
+            },
+            {
+              id: 'portee',
+              text: 'The power received falls off roughly as the square of the distance, and absorption depends on the materials: reinforced concrete and water weaken it strongly, hence the dead zones. The 5 gigahertz band offers more throughput but passes through walls less well than the 2.4 one — a physical trade-off, not faulty equipment.',
+            },
+            {
+              id: 'partage',
+              text: 'Wi-Fi is a shared medium with contended access: stations compete for the channel under a collision-avoidance protocol. The advertised speed is therefore a theoretical maximum, split between every transmitter within range — including the neighbours’, if they use the same channel. That is why the bottleneck in a home connection is far more often the Wi-Fi than the subscription itself.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

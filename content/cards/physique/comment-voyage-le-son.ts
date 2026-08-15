@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The noise that travels',
+        '6-8': 'How sound travels',
+        '9-12': 'Sound waves and materials',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'vibration',
+              text: 'When something makes a noise, it shakes very fast. Put your hand on your throat and sing: you can feel it.',
+            },
+            {
+              id: 'air',
+              text: 'That shaking pushes the air all around, like tiny invisible waves.',
+            },
+            {
+              id: 'oreille',
+              text: 'The waves reach your ear, make it shake too, and you hear.',
+            },
+            {
+              id: 'vide',
+              text: 'In space there is no air. So there is no noise at all: it is completely silent.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'vibration',
+              text: 'A sound always starts with a vibration: a guitar string, a drum skin, or your vocal cords.',
+            },
+            {
+              id: 'air',
+              text: 'This vibration squeezes the air, then lets it go, again and again. These squeezed and loosened patches spread from one bit of air to the next, at about three hundred and forty metres per second.',
+            },
+            {
+              id: 'oreille',
+              text: 'When they reach your eardrum, they make it vibrate. Your ear turns that movement into a signal your brain reads as a sound.',
+            },
+            {
+              id: 'vide',
+              text: 'So sound needs matter to travel through. In the vacuum of space there is nothing to set vibrating: the explosions in science-fiction films would really be perfectly silent.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'vibration',
+              text: 'Sound is a mechanical compression wave. Its frequency, in hertz, sets the pitch you hear; its amplitude sets the loudness. The human ear picks up roughly twenty to twenty thousand hertz.',
+            },
+            {
+              id: 'air',
+              text: 'Unlike light, sound is a longitudinal wave: the particles oscillate along the direction of travel, without being carried along themselves. They only pass the energy on to their neighbours.',
+            },
+            {
+              id: 'oreille',
+              text: 'The speed depends on the material, and rises with its stiffness: three hundred and forty metres per second in air, about one thousand five hundred in water, more than five thousand in steel. So sound travels faster through a solid than through air.',
+            },
+            {
+              id: 'vide',
+              text: 'With no material to carry it, no propagation is possible. The bell-in-a-vacuum experiment shows this: as the air is pumped out, the ringing fades away while the hammer keeps striking. It is also why you see the lightning before you hear the thunder — light needs no medium at all.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['anomalie', 'liaisons', 'quatre-degres', 'lacs'] as const;
+
+/* Les légendes nomment l'anomalie, sa cause et sa conséquence : du contenu.
+   Le typage impose à `en` de reprendre exactement les clés de `fr`. */
+const LEGENDES = {
+  fr: {
+    devraitCouler: 'ça devrait couler',
+    trous: 'des trous',
+    densite: 'densité maximale à 4 °C',
+    lac: 'le lac gèle par le haut',
+  },
+  en: {
+    devraitCouler: 'it ought to sink',
+    trous: 'gaps',
+    densite: 'densest at 4 °C',
+    lac: 'the lake freezes on top',
+  },
+};
 
 /**
  * Le réseau hexagonal ouvert est dessiné à côté du liquide désordonné et
@@ -14,9 +32,11 @@ export function GlaceFlotteAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   const hexagone = Array.from({ length: 6 }, (_, i) => {
     const a = (i * 60 * Math.PI) / 180;
@@ -37,7 +57,7 @@ export function GlaceFlotteAnimation({
       </rect>
 
       <text x="14" y="32" fill="#bae6fd" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-        ça devrait couler
+        {legende.devraitCouler}
       </text>
 
       {/* Le réseau ouvert de la glace, face au liquide compact */}
@@ -56,7 +76,7 @@ export function GlaceFlotteAnimation({
           );
         })}
         <text x="132" y="70" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des trous
+          {legende.trous}
         </text>
       </g>
 
@@ -65,7 +85,7 @@ export function GlaceFlotteAnimation({
         <line x1="130" y1="168" x2="212" y2="168" stroke="#475569" strokeWidth="2" />
         <circle cx="158" cy="168" r="6" fill="#38bdf8" />
         <text x="14" y="210" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          densité maximale à 4 °C
+          {legende.densite}
         </text>
       </g>
 
@@ -84,7 +104,7 @@ export function GlaceFlotteAnimation({
           </path>
         ))}
         <text x="14" y="234" fill="#bae6fd" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le lac gèle par le haut
+          {legende.lac}
         </text>
       </g>
     </svg>

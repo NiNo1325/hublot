@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'How fire is made',
+        '6-8': 'What is fire?',
+        '9-12': 'Combustion and the fire triangle',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'trois',
+              text: 'To make a fire, you need three things at the same time: something that burns, air, and heat.',
+            },
+            {
+              id: 'reaction',
+              text: 'The wood then mixes with the air, and that makes light and lots of heat.',
+            },
+            {
+              id: 'etouffer',
+              text: 'If you put a lid on top, the air cannot get in any more and the flame stops straight away.',
+            },
+            {
+              id: 'pas-chose',
+              text: 'Fire is not a thing you can catch. It is something that is happening, like a dance.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'trois',
+              text: 'A flame needs three things at once: a fuel, oxygen, and enough heat to get going. That is the fire triangle.',
+            },
+            {
+              id: 'reaction',
+              text: 'As it burns, the fuel joins up with the oxygen in the air. This reaction releases energy as heat and light, and makes new substances: gases, smoke, ashes.',
+            },
+            {
+              id: 'etouffer',
+              text: 'Taking away a single side of the triangle is enough to put the fire out. Water removes the heat, a lid cuts off the oxygen, turning off the gas removes the fuel. Firefighters choose their method according to what is burning.',
+            },
+            {
+              id: 'pas-chose',
+              text: 'So fire is not a material: it is a reaction taking place. A flame is gas that has become so hot that it gives off light. You cannot keep any in a jar, only keep it going.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'trois',
+              text: 'Combustion is a rapid, exothermic oxidation. It needs a fuel, an oxidiser — usually oxygen — and enough activation energy to set the reaction going.',
+            },
+            {
+              id: 'reaction',
+              text: 'A solid such as wood does not burn directly: the heat first breaks it down into volatile gases, and it is those that catch light. That is why the flame sits above the log rather than on its surface.',
+            },
+            {
+              id: 'etouffer',
+              text: 'The reaction keeps itself going: the heat it gives off supplies the activation energy for what follows. Break that loop and the fire goes out. Water works mainly by absorbing energy — turning it to steam uses up an enormous amount of heat — and not by ‘drowning’ the flames.',
+            },
+            {
+              id: 'pas-chose',
+              text: 'A flame is a partial plasma: gases raised to a high temperature that emit radiation. Its colour tells you about the temperature and about which elements are present — that is the principle of the flame test, where sodium gives yellow and copper gives green.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

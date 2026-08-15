@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Where does the wave come from?',
+        '6-8': 'Where waves come from',
+        '9-12': 'Where waves really come from',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The wind blows hard on the sea.',
+            },
+            {
+              id: 'deux',
+              text: 'It makes tiny little ripples on the water.',
+            },
+            {
+              id: 'trois',
+              text: 'The ripples grow bigger and turn into waves.',
+            },
+            {
+              id: 'quatre',
+              text: 'The water stays almost in place: it is the movement that travels to you.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The wind blows over the surface of the sea, day after day.',
+            },
+            {
+              id: 'deux',
+              text: 'It pushes the water and makes small ripples on the surface.',
+            },
+            {
+              id: 'trois',
+              text: 'The longer and harder the wind blows, the more those ripples grow into real waves.',
+            },
+            {
+              id: 'quatre',
+              text: 'Each drop of water turns round on the spot without really moving along: what travels to the beach is the energy of the movement, not the water itself.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The wind transfers energy to the surface of the water through friction.',
+            },
+            {
+              id: 'deux',
+              text: 'That friction creates tiny ripples, which give the wind more to push against, so they grow bigger.',
+            },
+            {
+              id: 'trois',
+              text: 'With enough wind, enough distance and enough time, these ripples turn into higher and higher waves.',
+            },
+            {
+              id: 'quatre',
+              text: 'Inside a wave, each particle of water traces a circle almost on the spot: it is not matter that moves, but a wave of energy crossing the water to the shore, where it finally breaks.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

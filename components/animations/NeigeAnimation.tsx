@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['pas-pluie-gelee', 'vapeur-au-froid', 'cristal-six', 'flocon'] as const;
+
+const LEGENDES = {
+  fr: {
+    pasPluie: 'pas de la pluie gelée',
+    vapeur: 'la vapeur devient glace',
+    six: 'six branches',
+    flocons: 'les flocons tombent',
+  },
+  en: {
+    pasPluie: 'not frozen rain',
+    vapeur: 'vapour turns into ice',
+    six: 'six arms',
+    flocons: 'the flakes fall',
+  },
+};
 
 /** Flocon à six branches centré sur (cx, cy). */
 function Flocon({ cx, cy, r, w = 2.5 }: { cx: number; cy: number; r: number; w?: number }) {
@@ -37,10 +53,12 @@ export function NeigeAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -53,7 +71,7 @@ export function NeigeAnimation({
         <path d="M146 71 L156 76 L146 81 Z" fill="#93a4c4" />
         <circle cx="176" cy="76" r="12" fill="#bae6fd" />
         <line x1="62" y1="48" x2="192" y2="96" stroke="#f43f5e" strokeWidth="4" />
-        <text x="20" y="200" fill="#fca5a5" fontSize="15" fontFamily={police}>pas de la pluie gelée</text>
+        <text x="20" y="200" fill="#fca5a5" fontSize="15" fontFamily={police}>{legende.pasPluie}</text>
       </g>
 
       {/* Phase 2 : la vapeur devient glace directement */}
@@ -67,13 +85,13 @@ export function NeigeAnimation({
           </g>
         ))}
         <circle cx="250" cy="90" r="6" fill="#e0f2fe" />
-        <text x="20" y="224" fill="#7dd3fc" fontSize="15" fontFamily={police}>la vapeur devient glace</text>
+        <text x="20" y="224" fill="#7dd3fc" fontSize="15" fontFamily={police}>{legende.vapeur}</text>
       </g>
 
       {/* Phase 3 : le cristal à six branches */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
         <Flocon cx={250} cy={90} r={44} />
-        <text x="250" y="200" fill="#e0f2fe" fontSize="15" fontFamily={police}>six branches</text>
+        <text x="250" y="200" fill="#e0f2fe" fontSize="15" fontFamily={police}>{legende.six}</text>
       </g>
 
       {/* Phase 4 : les flocons tombent */}
@@ -82,7 +100,7 @@ export function NeigeAnimation({
         <Flocon cx={180} cy={110} r={13} w={2} />
         <Flocon cx={150} cy={150} r={18} w={2} />
         <Flocon cx={240} cy={140} r={12} w={2} />
-        <text x="230" y="224" fill="#e0f2fe" fontSize="15" fontFamily={police}>les flocons tombent</text>
+        <text x="230" y="224" fill="#e0f2fe" fontSize="15" fontFamily={police}>{legende.flocons}</text>
       </g>
     </svg>
   );

@@ -1,12 +1,28 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['humeur', 'signal', 'temperature', 'mecanisme'] as const;
 
 /** Couleur du corps selon la phase — la couleur EST le message. */
 const COULEURS = ['#4a9d3f', '#f97316', '#2b2f3a', '#22d3ee'];
+
+const LEGENDES = {
+  fr: {
+    humeur: 'au calme, il est terne',
+    signal: 'un signal envoyé à un autre',
+    temperature: 'sombre pour se réchauffer',
+    mecanisme: 'pas pour se cacher',
+  },
+  en: {
+    humeur: 'when calm, it is dull',
+    signal: 'a signal sent to another',
+    temperature: 'dark to warm up',
+    mecanisme: 'not to hide',
+  },
+};
 
 /**
  * Le caméléon change de couleur pour communiquer et régler sa température, pas
@@ -18,11 +34,13 @@ export function CameleonAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, auRepos } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
   const couleur = auRepos ? '#4a9d3f' : (COULEURS[phase] ?? '#4a9d3f');
+  const legende = localise(LEGENDES, locale);
 
   const corps = (x: number, mirror = false) => (
     <g transform={`translate(${x} 120) ${mirror ? 'scale(-1 1)' : ''}`}>
@@ -49,7 +67,7 @@ export function CameleonAnimation({
 
       {/* Phase 1 : humeur calme */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
-        <text x="20" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>au calme, il est terne</text>
+        <text x="20" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>{legende.humeur}</text>
       </g>
 
       {/* Phase 2 : signal — un second caméléon reçoit le message */}
@@ -61,7 +79,7 @@ export function CameleonAnimation({
             <path d={`M262 ${y - 5} L274 ${y} L262 ${y + 5} Z`} fill="#fde047" />
           </g>
         ))}
-        <text x="20" y="224" fill="#fde047" fontSize="15" fontFamily={police}>un signal envoyé à un autre</text>
+        <text x="20" y="224" fill="#fde047" fontSize="15" fontFamily={police}>{legende.signal}</text>
       </g>
 
       {/* Phase 3 : température — soleil + flèche de chaleur vers la peau sombre */}
@@ -75,7 +93,7 @@ export function CameleonAnimation({
         })}
         <line x1="78" y1="64" x2="128" y2="104" stroke="#fb923c" strokeWidth="3" />
         <path d="M122 96 L132 108 L118 108 Z" fill="#fb923c" />
-        <text x="206" y="200" fill="#fb923c" fontSize="15" fontFamily={police}>sombre pour se réchauffer</text>
+        <text x="206" y="200" fill="#fb923c" fontSize="15" fontFamily={police}>{legende.temperature}</text>
       </g>
 
       {/* Phase 4 : mécanisme — cristaux + camouflage barré */}
@@ -99,7 +117,7 @@ export function CameleonAnimation({
           <line x1="-4" y1="-4" x2="38" y2="38" stroke="#f43f5e" strokeWidth="4" />
           <line x1="38" y1="-4" x2="-4" y2="38" stroke="#f43f5e" strokeWidth="4" />
         </g>
-        <text x="230" y="224" fill="#67e8f9" fontSize="15" fontFamily={police}>pas pour se cacher</text>
+        <text x="230" y="224" fill="#67e8f9" fontSize="15" fontFamily={police}>{legende.mecanisme}</text>
       </g>
     </svg>
   );

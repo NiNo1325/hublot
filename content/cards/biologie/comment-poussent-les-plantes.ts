@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The plant that drinks the sunshine',
+        '6-8': 'How plants feed themselves',
+        '9-12': 'Photosynthesis',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'lumiere',
+              text: 'The leaves of a plant catch the light of the sun, like tiny green hands held open.',
+            },
+            {
+              id: 'eau',
+              text: 'The roots, right down at the bottom, drink the water hiding in the soil and send it all the way up to the leaves.',
+            },
+            {
+              id: 'fabrication',
+              text: 'With light, water and air, the plant makes its own food. It needs nobody to help.',
+            },
+            {
+              id: 'oxygene',
+              text: 'And while it works, it puffs something very precious into the air: the thing we breathe.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'lumiere',
+              text: 'Leaves hold a green substance, chlorophyll, which catches the energy in sunlight. It is also what gives plants their colour.',
+            },
+            {
+              id: 'eau',
+              text: 'The roots draw water out of the soil, and tiny holes under the leaves take in a gas from the air: carbon dioxide.',
+            },
+            {
+              id: 'fabrication',
+              text: 'Using the energy of the light, the plant puts the water and that gas together to make sugar. That sugar is its food, and it is also what makes it grow.',
+            },
+            {
+              id: 'oxygene',
+              text: 'As it makes that sugar, it gives off oxygen — the gas we need in order to breathe. So plants feed their world at the same time as they feed themselves.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'lumiere',
+              text: 'Chlorophyll, held in the chloroplasts of plant cells, absorbs light energy — mostly red and blue. Green is sent back, which is why leaves look green to us.',
+            },
+            {
+              id: 'eau',
+              text: 'The roots take up water and minerals from the soil. The stomata, minute openings on the underside of the leaves, let carbon dioxide in from the atmosphere.',
+            },
+            {
+              id: 'fabrication',
+              text: 'Light energy allows water and carbon dioxide to be combined into glucose. Here is the most surprising part: most of the mass of a tree does not come from the soil, but from carbon taken out of the air. A tree is largely made of solidified air.',
+            },
+            {
+              id: 'oxygene',
+              text: 'The oxygen given off is a waste product of that reaction. About two and a half billion years ago, photosynthetic micro-organisms produced enough of it to change the Earth’s atmosphere for good, and to make life as we know it possible.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

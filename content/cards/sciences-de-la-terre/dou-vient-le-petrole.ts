@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The black liquid under the ground',
+        '6-8': 'Where oil comes from',
+        '9-12': 'Oil and coal: two different origins',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'dinosaures',
+              text: 'People often say that oil comes from dinosaurs. That is not true at all.',
+            },
+            {
+              id: 'plancton',
+              text: 'It comes from tiny little creatures that floated in the sea, a very very long time ago.',
+            },
+            {
+              id: 'enfoui',
+              text: 'When they died, they sank to the bottom. Mud covered them up, deeper and deeper.',
+            },
+            {
+              id: 'epuisable',
+              text: 'It took millions of years to make. And we burn it in one second.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'dinosaures',
+              text: 'The picture of a dinosaur turned into fuel is very common, and wrong. Dinosaurs have almost nothing to do with it: oil comes from the sea, not from dry land.',
+            },
+            {
+              id: 'plancton',
+              text: 'It comes from plankton — algae and microscopic living things that floated in the oceans in their billions.',
+            },
+            {
+              id: 'enfoui',
+              text: 'When they died, they settled on the bottom, in water so poor in oxygen that they did not rot. Covered by sediment, buried several kilometres down, heated and squeezed for millions of years, they became oil.',
+            },
+            {
+              id: 'epuisable',
+              text: 'Coal, on the other hand, really does come from forests. In both cases, what is stored away is sunlight captured by living things hundreds of millions of years ago. We release it in a few seconds by burning it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'dinosaures',
+              text: 'The link between oil and dinosaurs owes a great deal to an oil company’s advertising in the nineteen-thirties. It has no basis: hydrocarbons do not come from large land animals.',
+            },
+            {
+              id: 'plancton',
+              text: 'The organic matter behind oil is essentially marine phytoplankton and zooplankton, piled up in anoxic basins where it escaped bacterial decay.',
+            },
+            {
+              id: 'enfoui',
+              text: 'Once buried, this matter turns first into kerogen, then into hydrocarbons under the effect of temperature. The process only works within a narrow range, the oil window, between about sixty and a hundred and twenty degrees: too shallow and nothing forms; too deep and you get only gas.',
+            },
+            {
+              id: 'epuisable',
+              text: 'Coal has a different origin: the forests of the Carboniferous, buried before fungi could break down lignin. Both store solar energy fixed by photosynthesis hundreds of millions of years ago. That mismatch is what defines a non-renewable resource: millions of years to form, a few seconds to burn away.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

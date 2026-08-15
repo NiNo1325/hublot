@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['pas-rosee-gelee', 'surface-glacee', 'depot-direct', 'cristaux'] as const;
+
+const LEGENDES = {
+  fr: {
+    pasRosee: 'pas de la rosée gelée',
+    sousZero: 'surface sous zéro',
+    depot: 'vapeur → glace directe',
+    cristaux: 'des cristaux en plumes',
+  },
+  en: {
+    pasRosee: 'not frozen dew',
+    sousZero: 'surface below zero',
+    depot: 'vapour → ice directly',
+    cristaux: 'feathery ice crystals',
+  },
+};
 
 /** Une fronde de givre : une tige avec des branches obliques. */
 function Plume({ x, y, dx, dy }: { x: number; y: number; dx: number; dy: number }) {
@@ -35,10 +51,12 @@ export function GivreAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -51,7 +69,7 @@ export function GivreAnimation({
         <path d="M150 108 q-6 8 0 13 a6 6 0 0 0 0 -13 Z" fill="#7dd3fc" />
         <circle cx="150" cy="118" r="6.5" fill="none" stroke="#bae6fd" strokeWidth="1.5" />
         <line x1="134" y1="100" x2="168" y2="132" stroke="#f43f5e" strokeWidth="4" />
-        <text x="20" y="200" fill="#fca5a5" fontSize="15" fontFamily={police}>pas de la rosée gelée</text>
+        <text x="20" y="200" fill="#fca5a5" fontSize="15" fontFamily={police}>{legende.pasRosee}</text>
       </g>
 
       {/* Phase 2 : la surface est sous zéro */}
@@ -62,7 +80,7 @@ export function GivreAnimation({
           <circle cx="0" cy="14" r="7" fill="#38bdf8" />
         </g>
         <text x="322" y="70" fill="#38bdf8" fontSize="14" fontFamily={police} textAnchor="middle">0°</text>
-        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>surface sous zéro</text>
+        <text x="20" y="224" fill="#38bdf8" fontSize="15" fontFamily={police}>{legende.sousZero}</text>
       </g>
 
       {/* Phase 3 : la vapeur se dépose en glace, sans goutte */}
@@ -82,7 +100,7 @@ export function GivreAnimation({
             </g>
           </g>
         ))}
-        <text x="222" y="200" fill="#bae6fd" fontSize="15" fontFamily={police}>vapeur → glace directe</text>
+        <text x="222" y="200" fill="#bae6fd" fontSize="15" fontFamily={police}>{legende.depot}</text>
       </g>
 
       {/* Phase 4 : des cristaux en plumes */}
@@ -91,7 +109,7 @@ export function GivreAnimation({
         <Plume x={175} y={160} dx={-18} dy={-44} />
         <Plume x={210} y={158} dx={30} dy={-38} />
         <Plume x={270} y={160} dx={-24} dy={-42} />
-        <text x="228" y="224" fill="#e0f2fe" fontSize="15" fontFamily={police}>des cristaux en plumes</text>
+        <text x="228" y="224" fill="#e0f2fe" fontSize="15" fontFamily={police}>{legende.cristaux}</text>
       </g>
     </svg>
   );

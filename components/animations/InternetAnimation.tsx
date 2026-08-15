@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['decoupage', 'voyage', 'cables', 'reassemblage'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor : elles nomment
+  ce que la scène montre. Les passer par `localise` fait plus que traduire — le
+  typage impose à chaque langue de reprendre exactement les clés du français,
+  donc une légende oubliée en cours de traduction ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    cables: 'câbles sous l’océan',
+    ordre: 'remis dans l’ordre',
+  },
+  en: {
+    cables: 'cables under the ocean',
+    ordre: 'put back in order',
+  },
+};
 
 /**
  * Les paquets empruntent deux routes distinctes vers le même destinataire :
@@ -14,9 +32,11 @@ export function InternetAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -27,7 +47,7 @@ export function InternetAnimation({
         <path d="M0 150 h400 v90 H0 Z" fill="#0c2a4d" />
         <path d="M0 150 q25 -8 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 v8 H0 Z" fill="#123a66" />
         <text x="150" y="230" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          câbles sous l&apos;océan
+          {legende.cables}
         </text>
       </g>
 
@@ -81,7 +101,7 @@ export function InternetAnimation({
           </rect>
         ))}
         <text x="239" y="124" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          remis dans l&apos;ordre
+          {legende.ordre}
         </text>
       </g>
     </svg>

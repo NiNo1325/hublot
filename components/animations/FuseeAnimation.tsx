@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['ballon', 'pousser', 'sans-air', 'etages'] as const;
+
+const LEGENDES = {
+  fr: {
+    ballon: 'le ballon part à l’envers',
+    bas: 'vers le bas',
+    haut: 'vers le haut',
+    sansAir: 'au-dessus : plus d’air du tout',
+    etages: 'elle largue ses étages vides',
+  },
+  en: {
+    ballon: 'the balloon flies backwards',
+    bas: 'downwards',
+    haut: 'upwards',
+    sansAir: 'up there: no air at all',
+    etages: 'it drops its empty stages',
+  },
+};
 
 /**
  * Les deux flèches opposées sont le cœur de la carte : le gaz descend, la
@@ -14,9 +32,11 @@ export function FuseeAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -42,7 +62,7 @@ export function FuseeAnimation({
           </circle>
         ))}
         <text x="14" y="32" fill="#f9a8d4" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le ballon part à l’envers
+          {legende.ballon}
         </text>
       </g>
 
@@ -64,13 +84,13 @@ export function FuseeAnimation({
         <line x1="240" y1="140" x2="240" y2="184" stroke="#fb923c" strokeWidth="4" />
         <path d="M233 178 L240 194 L247 178 Z" fill="#fb923c" />
         <text x="252" y="176" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          vers le bas
+          {legende.bas}
         </text>
 
         <line x1="160" y1="120" x2="160" y2="76" stroke="#4ade80" strokeWidth="4" />
         <path d="M153 82 L160 66 L167 82 Z" fill="#4ade80" />
         <text x="24" y="112" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          vers le haut
+          {legende.haut}
         </text>
       </g>
 
@@ -81,7 +101,7 @@ export function FuseeAnimation({
           <circle key={x} cx={x} cy={24 + (i % 2) * 12} r="2" fill="#e2e8f0" />
         ))}
         <text x="14" y="210" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          au-dessus : plus d’air du tout
+          {legende.sansAir}
         </text>
       </g>
 
@@ -93,7 +113,7 @@ export function FuseeAnimation({
           )}
         </rect>
         <text x="14" y="234" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          elle largue ses étages vides
+          {legende.etages}
         </text>
       </g>
     </svg>

@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Your bones are alive',
+        '6-8': 'Bones are not stones',
+        '9-12': 'Bone, an organ forever rebuilding itself',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'pas-morts',
+              text: 'Your bones are not dry little stones. They are alive, just like the rest of you.',
+            },
+            {
+              id: 'vivant',
+              text: 'There is blood inside them. That is exactly why it hurts when you break one.',
+            },
+            {
+              id: 'moelle',
+              text: 'In the middle there is a soft stuff that makes your blood, every single day.',
+            },
+            {
+              id: 'reparation',
+              text: 'And a broken bone mends itself. The plaster cast just holds it straight while it sticks back together.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'pas-morts',
+              text: 'We picture the skeleton as dry, motionless pieces, because of the bleached bones we see in museums. In fact a bone is a living organ, threaded with blood vessels and nerves.',
+            },
+            {
+              id: 'vivant',
+              text: 'Better still: it rebuilds itself without a break. Some cells pull down the old bone while others build new bone. In about ten years, almost your entire skeleton has been replaced without you noticing a thing.',
+            },
+            {
+              id: 'moelle',
+              text: 'Inside sits the bone marrow, a factory that makes your red blood cells and part of your defences — billions of cells every day.',
+            },
+            {
+              id: 'reparation',
+              text: 'It is because it is alive that a broken bone knits back together. The plaster cast repairs nothing: it holds everything still while the bone does the work. And a bone that is used grows stronger — which is why astronauts lose bone, their skeletons no longer carrying anything.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'pas-morts',
+              text: 'Bone is a living connective tissue, supplied with blood vessels and nerves, made of a collagen matrix mineralised by calcium phosphate crystals. The dry skeleton in a museum case is an artefact: matrix stripped of its cells.',
+            },
+            {
+              id: 'vivant',
+              text: 'Remodelling is continuous: osteoclasts resorb the old matrix, osteoblasts lay down new. This coupling renews about ten per cent of the skeleton a year, and doubles as a regulating reserve for the calcium level in the blood.',
+            },
+            {
+              id: 'moelle',
+              text: 'Red bone marrow is the seat of haematopoiesis: starting from stem cells, it produces hundreds of billions of blood cells every day. That is what makes a marrow transplant possible, and effective.',
+            },
+            {
+              id: 'reparation',
+              text: 'A fracture heals through a haematoma, then a cartilage callus, then a bony callus remodelled over months. Wolff’s law sums up the general principle: bone adapts to the mechanical loads placed on it. Hence the demineralisation in microgravity, of the order of one per cent a month in astronauts.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

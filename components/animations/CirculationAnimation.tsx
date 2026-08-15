@@ -1,9 +1,24 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['pompe', 'aller', 'livraison', 'retour'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor. Le typage
+  impose à `en` de reprendre exactement les clés du français : une légende
+  oubliée ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    livre: 'O₂ livré',
+  },
+  en: {
+    livre: 'O₂ delivered',
+  },
+};
 
 /**
  * Le sang de retour est dessiné rouge sombre, jamais bleu : la carte affirme
@@ -14,9 +29,11 @@ export function CirculationAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -77,7 +94,7 @@ export function CirculationAnimation({
           </g>
         ))}
         <text x="292" y="176" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          O₂ livré
+          {legende.livre}
         </text>
       </g>
 

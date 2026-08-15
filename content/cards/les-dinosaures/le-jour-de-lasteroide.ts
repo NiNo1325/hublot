@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The day of the big rock',
+        '6-8': 'The day of the asteroid',
+        '9-12': 'The asteroid and the end of the non-avian dinosaurs',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A very long time ago, a huge rock fell from the sky and hit the Earth very hard.',
+            },
+            {
+              id: 'deux',
+              text: 'A giant cloud of dust hid the Sun for a very long time.',
+            },
+            {
+              id: 'trois',
+              text: 'With no sun, the plants stopped growing, and the big dinosaurs had nothing left to eat.',
+            },
+            {
+              id: 'quatre',
+              text: 'The tiny animals, hidden away in their burrows, managed to survive.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Sixty-six million years ago, an asteroid several kilometres wide smashed into the Earth at a tremendous speed.',
+            },
+            {
+              id: 'deux',
+              text: 'The crash threw an enormous amount of dust into the sky, and that dust hid the Sun for months.',
+            },
+            {
+              id: 'trois',
+              text: 'Deprived of light, the plants withered and the food chain collapsed: the big animals ran short of food and died out little by little.',
+            },
+            {
+              id: 'quatre',
+              text: 'Small animals, able to hide away and to get by on very little, stood a better chance of surviving the disaster.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'About sixty-six million years ago, an asteroid some ten kilometres across struck the Yucatán peninsula, in Mexico.',
+            },
+            {
+              id: 'deux',
+              text: 'The impact threw immense quantities of dust and sulphur into the atmosphere, causing an abrupt cooling and a darkening of the sky for months, even years.',
+            },
+            {
+              id: 'trois',
+              text: 'With photosynthesis slowed to a crawl, the food chains collapsed: the large herbivores, then the predators, disappeared for want of resources.',
+            },
+            {
+              id: 'quatre',
+              text: 'Small species, with modest food needs and able to take shelter, stood a better chance of coming through this mass extinction — among them, the ancestors of the birds we know today.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    capsaicine: 'la capsaïcine est dedans',
+    colle: 'elle se colle à la langue',
+    cerveau: 'le cerveau croit : « ça brûle »',
+    chaleur: 'aucune vraie chaleur',
+  },
+  en: {
+    capsaicine: 'the capsaicin is inside',
+    colle: 'it sticks to the tongue',
+    cerveau: 'the brain thinks: “it burns”',
+    chaleur: 'no real heat at all',
+  },
+};
 
 /**
  * La capsaïcine du piment active les mêmes capteurs nerveux que la vraie
@@ -14,10 +30,12 @@ export function PourquoiLePimentBruleAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -38,7 +56,7 @@ export function PourquoiLePimentBruleAnimation({
         <circle cx="86" cy="128" r="8" fill="#fde047">
           {anime && <animate attributeName="r" values="6;9;6" dur="1.8s" repeatCount="indefinite" />}
         </circle>
-        <text x="20" y="210" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>la capsaïcine est dedans</text>
+        <text x="20" y="210" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.capsaicine}</text>
       </g>
 
       {/* Phase 2 : elle se colle sur un capteur de la langue */}
@@ -48,7 +66,7 @@ export function PourquoiLePimentBruleAnimation({
           {anime && <animate attributeName="cy" values="128;148;148" dur="1.8s" repeatCount="indefinite" />}
         </circle>
         <circle cx="300" cy="148" r="5" fill="none" stroke="#fde047" strokeWidth="2" />
-        <text x="20" y="210" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>elle se colle à la langue</text>
+        <text x="20" y="210" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.colle}</text>
       </g>
 
       {/* Phase 3 : le cerveau reçoit un signal d'alerte */}
@@ -59,7 +77,7 @@ export function PourquoiLePimentBruleAnimation({
           )}
         </path>
         <circle cx="340" cy="52" r="14" fill="#fb923c" />
-        <text x="10" y="210" fill="#f97316" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>le cerveau croit : « ça brûle »</text>
+        <text x="10" y="210" fill="#f97316" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.cerveau}</text>
       </g>
 
       {/* Phase 4 : mais rien n'a vraiment chauffé */}
@@ -67,7 +85,7 @@ export function PourquoiLePimentBruleAnimation({
         <rect x="290" y="30" width="14" height="40" rx="7" fill="#e5e7eb" />
         <circle cx="297" cy="72" r="10" fill="#93c5fd" />
         <rect x="293" y="38" width="8" height="24" rx="4" fill="#93c5fd" />
-        <text x="14" y="210" fill="#93c5fd" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>aucune vraie chaleur</text>
+        <text x="14" y="210" fill="#93c5fd" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.chaleur}</text>
       </g>
     </svg>
   );

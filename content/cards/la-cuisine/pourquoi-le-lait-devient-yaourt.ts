@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why milk turns into yoghurt',
+        '6-8': 'Why milk turns into yoghurt',
+        '9-12': 'Why milk turns into yoghurt',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'We add friendly little creatures to warm milk.',
+            },
+            {
+              id: 'deux',
+              text: 'They eat the sugar hidden in the milk.',
+            },
+            {
+              id: 'trois',
+              text: 'As they eat, they make something new.',
+            },
+            {
+              id: 'quatre',
+              text: 'The milk goes all thick: it’s a yoghurt!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'To make yoghurt, we add good bacteria to warm milk, chosen on purpose.',
+            },
+            {
+              id: 'deux',
+              text: 'These bacteria eat the natural sugar in the milk, just like you eat a piece of fruit.',
+            },
+            {
+              id: 'trois',
+              text: 'As they digest it, they make a substance called an acid.',
+            },
+            {
+              id: 'quatre',
+              text: 'This acid thickens the milk little by little, until it becomes a yoghurt.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Warm milk is seeded with lactic acid bacteria, selected for their properties.',
+            },
+            {
+              id: 'deux',
+              text: 'These bacteria feed on lactose, the sugar naturally present in milk.',
+            },
+            {
+              id: 'trois',
+              text: 'This fermentation produces lactic acid, which lowers the pH of the milk.',
+            },
+            {
+              id: 'quatre',
+              text: 'The milk proteins then draw together and form a gel: that is the texture of yoghurt. Not all bacteria are enemies — some are genuinely precious to us.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

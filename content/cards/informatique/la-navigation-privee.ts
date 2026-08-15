@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Hiding on a computer',
+        '6-8': 'What private browsing really hides',
+        '9-12': 'Private mode: a strictly local reach',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'promesse',
+              text: 'On a computer there is a button that promises to hide you.',
+            },
+            {
+              id: 'local',
+              text: 'Really, it only rubs out the traces on that one computer. Nothing else.',
+            },
+            {
+              id: 'qui-voit',
+              text: 'The people who look after the website still see you arrive.',
+            },
+            {
+              id: 'vraiment',
+              text: 'On the internet, you are never truly invisible. That is good to know.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'promesse',
+              text: 'The name “private browsing” promises an enormous amount. What it does is far more modest.',
+            },
+            {
+              id: 'local',
+              text: 'What it really does: keep nothing on the device you are using — no history, no searches, no cookies. In other words, it hides your browsing from the other people who use the same computer. That is useful, and that is all.',
+            },
+            {
+              id: 'qui-voit',
+              text: 'What it does not do: make you invisible. The site you visit sees you exactly as usual. So does whoever supplies your internet. And if you are on a school network, so does the person who runs it.',
+            },
+            {
+              id: 'vraiment',
+              text: 'The name misleads so many people that plenty use it believing they are anonymous. The right way to think of it: it protects you from whoever sits down in front of the screen after you, not from the rest of the internet.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'promesse',
+              text: 'Private mode — “incognito”, depending on the browser — is probably the most misunderstood feature a browser has. Studies have shown that a majority of users credit it with protections it does not offer.',
+            },
+            {
+              id: 'local',
+              text: 'Its reach is strictly local: the session writes no history, no persistent cookies and no form data onto the machine, and everything is thrown away when it closes. Nothing more.',
+            },
+            {
+              id: 'qui-voit',
+              text: 'Still perfectly visible: the site you visit, which receives your IP address and can recognise you from your browser fingerprint; your internet provider, which sees at least the domains you contact; the network administrator; and any service you log into during the session, which then identifies you by name.',
+            },
+            {
+              id: 'vraiment',
+              text: 'Real anonymity calls for other means — a relay that masks your address, a VPN or the Tor network — and stays imperfect: a browser fingerprint and browsing habits are often enough to re-identify someone. Remember the exact reach: private mode protects you from the person who uses the device after you, not from the network.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

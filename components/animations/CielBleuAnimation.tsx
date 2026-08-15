@@ -1,9 +1,23 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['regarder', 'lumiere-blanche', 'diffusion', 'couchant'] as const;
+
+const LEGENDES = {
+  fr: {
+    couleurs: 'toutes les couleurs à la fois',
+    diffusion: 'le bleu part dans tous les sens',
+    couchant: 'il ne reste que le rouge',
+  },
+  en: {
+    couleurs: 'every colour at once',
+    diffusion: 'blue scatters everywhere',
+    couchant: 'only the red is left',
+  },
+};
 
 /** Molécules d'air dispersées dans le ciel, qui renvoient le bleu. */
 const MOLECULES = [
@@ -23,10 +37,12 @@ export function CielBleuAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const couchant = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -64,7 +80,7 @@ export function CielBleuAnimation({
           ),
         )}
         <text x="14" y="30" fill="#f8fafc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          toutes les couleurs à la fois
+          {legende.couleurs}
         </text>
       </g>
 
@@ -95,7 +111,7 @@ export function CielBleuAnimation({
           </g>
         ))}
         <text x="14" y="210" fill="#bfdbfe" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le bleu part dans tous les sens
+          {legende.diffusion}
         </text>
       </g>
 
@@ -103,7 +119,7 @@ export function CielBleuAnimation({
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <line x1="322" y1="174" x2="40" y2="150" stroke="#fdba74" strokeWidth="4" strokeLinecap="round" />
         <text x="14" y="234" fill="#fdba74" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          il ne reste que le rouge
+          {legende.couchant}
         </text>
       </g>
     </svg>

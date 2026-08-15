@@ -1,9 +1,23 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['avant', 'melange', 'toujours-la', 'retour'] as const;
+
+/* Les deux légendes portent l'argument de la carte — la masse inchangée, le
+   sucre qui revient. Le typage impose à `en` de reprendre les clés de `fr`. */
+const LEGENDES = {
+  fr: {
+    pareil: 'avant et après : pareil',
+    evaporation: 'l’eau part, le sucre reste',
+  },
+  en: {
+    pareil: 'before and after: same',
+    evaporation: 'water goes, sugar stays',
+  },
+};
 
 /**
  * La balance affiche la même valeur avant et après : c'est la preuve visuelle
@@ -13,10 +27,12 @@ export function DissolutionAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const disperse = phase >= 1;
+  const legende = localise(LEGENDES, locale);
 
   /* Grains groupés au fond, puis répartis dans tout le volume. */
   const grains = Array.from({ length: 18 }, (_, i) => ({
@@ -75,7 +91,7 @@ export function DissolutionAnimation({
           110 g
         </text>
         <text x="196" y="140" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          avant et après : pareil
+          {legende.pareil}
         </text>
       </g>
 
@@ -92,7 +108,7 @@ export function DissolutionAnimation({
           </circle>
         ))}
         <text x="171" y="222" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l&apos;eau part, le sucre reste
+          {legende.evaporation}
         </text>
       </g>
     </svg>

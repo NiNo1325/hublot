@@ -1,9 +1,21 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['etoile-morte', 'lumiere', 'pas-aspirateur', 'invisible'] as const;
+
+const LEGENDES = {
+  fr: {
+    orbiteStable: 'on tourne autour sans tomber',
+    lueur: 'repéré par sa lueur',
+  },
+  en: {
+    orbiteStable: 'you orbit without falling in',
+    lueur: 'spotted by its glow',
+  },
+};
 
 /**
  * Une orbite stable est dessinée à la phase « pas-aspirateur » : une étoile
@@ -14,10 +26,12 @@ export function TrouNoirAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const effondre = phase >= 1;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -67,7 +81,7 @@ export function TrouNoirAnimation({
           )}
         </circle>
         <text x="70" y="216" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          on tourne autour sans tomber
+          {legende.orbiteStable}
         </text>
       </g>
 
@@ -79,7 +93,7 @@ export function TrouNoirAnimation({
           )}
         </ellipse>
         <text x="230" y="40" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          repéré par sa lueur
+          {legende.lueur}
         </text>
       </g>
     </svg>

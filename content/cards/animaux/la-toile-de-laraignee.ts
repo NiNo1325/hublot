@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The spider’s web',
+        '6-8': 'The spider’s web',
+        '9-12': 'The spider’s web',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'rayons',
+              text: 'First the spider makes threads that go out from the middle, like the spokes of a wheel. Those threads are not sticky.',
+            },
+            {
+              id: 'spirale',
+              text: 'Then it goes round and round to make a big circle. That thread is very sticky.',
+            },
+            {
+              id: 'marche',
+              text: 'To get about, the spider only walks on the threads that are not sticky.',
+            },
+            {
+              id: 'proie',
+              text: 'The little fly touches the sticky thread and gets stuck. Then the spider just has to come along!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'rayons',
+              text: 'People think a spider sticks to its own web. Wrong! First it stretches out dry threads from the centre, like the spokes of a wheel.',
+            },
+            {
+              id: 'spirale',
+              text: 'On top of those, it adds a spiral of threads covered in tiny drops of glue. It is this spiral that traps.',
+            },
+            {
+              id: 'marche',
+              text: 'When it moves about, the spider puts its feet only on the dry spokes. It knows its web and keeps clear of the sticky threads.',
+            },
+            {
+              id: 'proie',
+              text: 'A flying insect does not know the plan: it hits the sticky spiral and is glued fast. The vibrations warn the spider, which comes running.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'rayons',
+              text: 'The idea that a spider sticks to its own web is a myth. It first builds a framework: an outer frame and spokes of dry, non-sticky silk, stretched out from the hub at the centre.',
+            },
+            {
+              id: 'spirale',
+              text: 'It then lays down, in a spiral, a second kind of silk covered in droplets of glue. A single spider makes several different silks, each one from a specialised gland.',
+            },
+            {
+              id: 'marche',
+              text: 'To get around, it uses the dry spokes and knows exactly where the sticky threads are. Its legs help too: they are slender, covered in hairs and coated with a substance that limits sticking, and it touches the silk only with the tips of its claws.',
+            },
+            {
+              id: 'proie',
+              text: 'The prey, for its part, knows nothing of the web’s geometry: it hits the sticky spiral and struggles in vain. The tugs travel along the threads to the spider, which locates its catch by the vibration and comes to pin it down. The trap works because sticky and non-sticky exist side by side in the same web.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Morning dew',
+        '6-8': 'Where dew comes from',
+        '9-12': 'Where dew comes from',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'air-humide',
+              text: 'In the air there is always a little hidden water that we cannot see.',
+            },
+            {
+              id: 'nuit-froide',
+              text: 'At night, the grass and the leaves go all cold.',
+            },
+            {
+              id: 'condense',
+              text: 'Touching the cold, the water in the air sticks onto them in little drops.',
+            },
+            {
+              id: 'matin',
+              text: 'In the morning everything is covered in drops. They did not fall: they formed right there!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'air-humide',
+              text: 'People think dew falls from the sky during the night. Wrong: the water is already there, in the air, as invisible vapour.',
+            },
+            {
+              id: 'nuit-froide',
+              text: 'At night, the ground, the grass and the leaves lose their heat and become colder than the air.',
+            },
+            {
+              id: 'condense',
+              text: 'Touching those cold surfaces, the water vapour in the air turns into tiny droplets: it condenses, exactly like the mist on an ice-cold glass.',
+            },
+            {
+              id: 'matin',
+              text: 'In the morning the grass is covered in drops of dew. They did not fall from above: they formed directly on the spot.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'air-humide',
+              text: 'Dew does not fall: it settles. The air permanently contains water vapour, invisible, in amounts that vary with the humidity.',
+            },
+            {
+              id: 'nuit-froide',
+              text: 'At night, in clear weather, exposed surfaces radiate their heat towards the sky and cool faster than the air. They can end up markedly colder than it.',
+            },
+            {
+              id: 'condense',
+              text: 'When the air touching a surface drops below its dew point, its vapour can no longer stay gaseous: it condenses into droplets directly on that surface. It is the same phenomenon as the mist on a bottle taken out of the fridge.',
+            },
+            {
+              id: 'matin',
+              text: 'Dew is therefore not a fine rain from above, but water from the air condensed on the spot. If the surface drops below zero, the vapour settles not as drops but as ice: that is frost, not dew.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

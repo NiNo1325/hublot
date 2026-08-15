@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why it hurts',
+        '6-8': 'Why we feel pain',
+        '9-12': 'What pain is for',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you bump into something, or touch something too hot, your skin feels it straight away.',
+            },
+            {
+              id: 'deux',
+              text: 'Little sensors, hidden in your skin, spot the danger.',
+            },
+            {
+              id: 'trois',
+              text: 'They send a very fast message to your brain.',
+            },
+            {
+              id: 'quatre',
+              text: 'It hurts, and your hand pulls back all by itself: pain looks after you.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When you bump yourself, cut yourself or touch something burning hot, your skin detects the danger at once.',
+            },
+            {
+              id: 'deux',
+              text: 'Special sensors, spread all over your skin, pick up knocks, burns and cuts.',
+            },
+            {
+              id: 'trois',
+              text: 'They send an electrical signal that races along your nerves all the way to your brain.',
+            },
+            {
+              id: 'quatre',
+              text: 'Your brain then sets off the feeling of pain, and often a reflex movement such as pulling your hand back: pain is not being nasty, it protects you from something worse.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A knock, a cut or a burn stimulates specialised nerve endings in the skin, called nociceptors.',
+            },
+            {
+              id: 'deux',
+              text: 'These receptors detect specifically the stimulations that could damage the tissues.',
+            },
+            {
+              id: 'trois',
+              text: 'The information travels as an electrical signal along the nerves to the spinal cord and then to the brain.',
+            },
+            {
+              id: 'quatre',
+              text: 'The brain interprets this signal as pain, and sometimes triggers an immediate reflex, such as pulling the hand away, even before the pain is fully felt. Far from being useless, pain is an alarm system that protects the body from more serious injury.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

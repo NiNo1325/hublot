@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    minuscules: 'des êtres minuscules',
+    lumiere: 'ils captent la lumière',
+    air: 'ils fabriquent de l’air',
+    ocean: 'ils nourrissent l’océan',
+  },
+  en: {
+    minuscules: 'tiny living things',
+    lumiere: 'they catch the light',
+    air: 'they make the air',
+    ocean: 'they feed the ocean',
+  },
+};
 
 /**
  * Des points minuscules flottent en surface, captent le Soleil, relâchent
@@ -14,12 +30,14 @@ export function LePlanctonMinusculeAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
   const points = [60, 100, 140, 180, 220, 260, 300, 340];
-  const legende = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const apparition = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -36,8 +54,8 @@ export function LePlanctonMinusculeAnimation({
             )}
           </circle>
         ))}
-        <text x="16" y="130" fill="#a3e635" fontSize="14" fontFamily={police} style={legende(0)}>
-          des êtres minuscules
+        <text x="16" y="130" fill="#a3e635" fontSize="14" fontFamily={police} style={apparition(0)}>
+          {legende.minuscules}
         </text>
       </g>
 
@@ -50,8 +68,8 @@ export function LePlanctonMinusculeAnimation({
             )}
           </line>
         ))}
-        <text x="16" y="130" fill="#fde68a" fontSize="14" fontFamily={police} style={legende(1)}>
-          ils captent la lumière
+        <text x="16" y="130" fill="#fde68a" fontSize="14" fontFamily={police} style={apparition(1)}>
+          {legende.lumiere}
         </text>
       </g>
 
@@ -67,8 +85,8 @@ export function LePlanctonMinusculeAnimation({
             )}
           </circle>
         ))}
-        <text x="16" y="130" fill="#7dd3fc" fontSize="14" fontFamily={police} style={legende(2)}>
-          ils fabriquent de l’air
+        <text x="16" y="130" fill="#7dd3fc" fontSize="14" fontFamily={police} style={apparition(2)}>
+          {legende.air}
         </text>
       </g>
 
@@ -77,8 +95,8 @@ export function LePlanctonMinusculeAnimation({
         <ellipse cx="130" cy="150" rx="8" ry="5" fill="#fbbf24" />
         <path d="M170 150 Q210 130 250 150 Q210 170 170 150 Z" fill="#fb923c" />
         <path d="M280 150 Q330 120 370 150 Q330 180 280 150 Z" fill="#f97316" />
-        <text x="16" y="200" fill="#f97316" fontSize="14" fontFamily={police} style={legende(3)}>
-          ils nourrissent l’océan
+        <text x="16" y="200" fill="#f97316" fontSize="14" fontFamily={police} style={apparition(3)}>
+          {legende.ocean}
         </text>
       </g>
     </svg>

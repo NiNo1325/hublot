@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['rien', 'place', 'invention', 'division'] as const;
+
+const LEGENDES = {
+  fr: {
+    rien: 'rien du tout',
+    confond: 'sans lui, on confond',
+    compte: 'on compte',
+    arrive: 'le zéro arrive',
+    division: '12 ÷ 0 = pas de réponse',
+  },
+  en: {
+    rien: 'nothing at all',
+    confond: 'without it, we mix them up',
+    compte: 'counting',
+    arrive: 'zero arrives',
+    division: '12 ÷ 0 = no answer',
+  },
+};
 
 /**
  * La comparaison 15 / 105 montre le rôle positionnel : sans un symbole pour
@@ -13,9 +31,11 @@ export function ZeroAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -25,7 +45,7 @@ export function ZeroAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <path d="M36 60 h68 l-10 46 h-48 z" fill="none" stroke="#b9c4da" strokeWidth="3" />
         <text x="52" y="140" fill="#b9c4da" fontSize="18" fontFamily="var(--font-atkinson), sans-serif">
-          rien du tout
+          {legende.rien}
         </text>
         <text x="58" y="94" fill="#ffb627" fontSize="26" fontFamily="var(--font-atkinson), monospace">0</text>
       </g>
@@ -38,7 +58,7 @@ export function ZeroAnimation({
         <text x="232" y="140" fill="#f5f0e6" fontSize="34" fontFamily="var(--font-atkinson), monospace">5</text>
         {/* Sous les chiffres, jamais à côté : la place manque à leur droite. */}
         <text x="160" y="166" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          sans lui, on confond
+          {legende.confond}
         </text>
         {anime && phase === 1 && (
           <rect x="192" y="112" width="30" height="34" fill="#ffb627" opacity="0">
@@ -51,15 +71,15 @@ export function ZeroAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <line x1="30" y1="180" x2="370" y2="180" stroke="#2c3f66" strokeWidth="2" />
         <circle cx="120" cy="180" r="5" fill="#b9c4da" />
-        <text x="76" y="202" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">on compte</text>
+        <text x="76" y="202" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.compte}</text>
         <circle cx="286" cy="180" r="6" fill="#ffb627" />
-        <text x="242" y="202" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">le zéro arrive</text>
+        <text x="242" y="202" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.arrive}</text>
       </g>
 
       {/* La division impossible */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="98" y="228" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), monospace">
-          12 ÷ 0 = pas de réponse
+          {legende.division}
         </text>
       </g>
     </svg>

@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The wheel that helps you pull',
+        '6-8': 'How pulleys work',
+        '9-12': 'Pulleys and mechanical advantage',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'roue-corde',
+              text: 'A pulley is a little wheel with a rope running over it.',
+            },
+            {
+              id: 'direction',
+              text: 'It is very handy: to lift a bucket, you pull the rope down, and the bucket goes up.',
+            },
+            {
+              id: 'plusieurs',
+              text: 'With several pulleys together, pulling becomes much easier.',
+            },
+            {
+              id: 'echange',
+              text: 'But you have to pull a lot more rope to make the bucket rise a little.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'roue-corde',
+              text: 'A pulley is a grooved wheel with a rope sliding over it. It is a simple machine, like the lever.',
+            },
+            {
+              id: 'direction',
+              text: 'A single fixed pulley does not make the load any lighter: it only changes the direction. Pulling downwards is handier than lifting, because you can put your own weight to work.',
+            },
+            {
+              id: 'plusieurs',
+              text: 'The real gain comes from several pulleys linked together. With two, you lift a load using only half the force. With four, a quarter. The rope shares the work between several strands.',
+            },
+            {
+              id: 'echange',
+              text: 'Nothing comes free here either. To lift the load by one metre with two strands, you have to pull two metres of rope. Like the lever, a pulley trades force for distance.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'roue-corde',
+              text: 'A pulley guides a rope around a wheel. There is the fixed pulley, whose axle stays put, and the movable pulley, which travels with the load.',
+            },
+            {
+              id: 'direction',
+              text: 'A single fixed pulley has a mechanical advantage of one: it merely reverses the direction of the effort, without reducing it. That is already useful for pulling in a convenient direction.',
+            },
+            {
+              id: 'plusieurs',
+              text: 'In a block and tackle, the load is held up by several strands of rope in parallel. The tension is shared equally between them: with n strands, the effort needed is divided by n. That is the mechanical advantage.',
+            },
+            {
+              id: 'echange',
+              text: 'Conservation of energy sets the price: work is conserved. Dividing the force by n multiplies by n the length of rope to be pulled. A crane with several strands lifts tonnes this way, at the cost of winding in far more cable — friction aside, which costs a little efficiency.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

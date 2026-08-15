@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['gout', 'roches', 'rivieres', 'equilibre'] as const;
+
+const LEGENDES = {
+  fr: {
+    riviere: 'rivière : eau douce',
+    mer: 'mer : salée',
+    pluie: 'la pluie use les roches',
+    selReste: 'le sel reste, l’eau part',
+    redepose: 'il s’en redépose autant',
+  },
+  en: {
+    riviere: 'river: fresh water',
+    mer: 'sea: salty',
+    pluie: 'rain wears the rocks',
+    selReste: 'the salt stays, the water goes',
+    redepose: 'as much settles back out',
+  },
+};
 
 /**
  * Le sel est dessiné comme des grains qui partent de la montagne, descendent
@@ -15,9 +33,11 @@ export function SelMerAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -31,10 +51,10 @@ export function SelMerAnimation({
       {/* Le contraste des goûts */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <text x="14" y="110" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          rivière : eau douce
+          {legende.riviere}
         </text>
         <text x="280" y="140" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          mer : salée
+          {legende.mer}
         </text>
       </g>
 
@@ -51,7 +71,7 @@ export function SelMerAnimation({
           <rect key={x} x={x} y={90 + i * 8} width="4" height="4" fill="#fbbf24" />
         ))}
         <text x="14" y="32" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          la pluie use les roches
+          {legende.pluie}
         </text>
       </g>
 
@@ -85,10 +105,10 @@ export function SelMerAnimation({
           <rect key={x} x={x} y="230" width="5" height="5" fill="#fbbf24" />
         ))}
         <text x="14" y="210" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le sel reste, l’eau part
+          {legende.selReste}
         </text>
         <text x="14" y="234" fill="#a8a29e" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          il s’en redépose autant
+          {legende.redepose}
         </text>
       </g>
     </svg>

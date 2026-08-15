@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The pitch-black hole in the sky',
+        '6-8': 'What a black hole is',
+        '9-12': 'Black holes and the event horizon',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'etoile-morte',
+              text: 'When a very big star comes to the end of its life, it shrinks in on itself.',
+            },
+            {
+              id: 'lumiere',
+              text: 'It gets so squashed that even light cannot come out any more. So we see nothing: it is all black.',
+            },
+            {
+              id: 'pas-aspirateur',
+              text: 'It is not a giant vacuum cleaner! You have to go very, very close to get caught.',
+            },
+            {
+              id: 'invisible',
+              text: 'Since we cannot see it, we spot it thanks to the stars that go round it.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'etoile-morte',
+              text: 'A black hole is born from the death of a star much bigger than the Sun. As it goes out, it collapses and all its matter is packed into a tiny space.',
+            },
+            {
+              id: 'lumiere',
+              text: 'Gravity there becomes so strong that nothing can escape, not even light — the fastest thing in the universe. That is why it is perfectly black.',
+            },
+            {
+              id: 'pas-aspirateur',
+              text: 'Watch out for a false idea: a black hole does not suck everything in like a vacuum cleaner. If the Sun became a black hole of the same mass, the Earth would carry on orbiting exactly as before. You have to pass very close to be trapped.',
+            },
+            {
+              id: 'invisible',
+              text: 'A black hole is invisible by definition. We work out that it is there from what it does around it: stars whirling very fast, or matter that heats up and glows as it falls towards it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'etoile-morte',
+              text: 'A very massive star, at the end of its life, can no longer fight its own gravity: its core collapses. If enough mass remains, nothing stops the collapse, and the matter concentrates into a point of extreme density.',
+            },
+            {
+              id: 'lumiere',
+              text: 'Around it lies a boundary called the event horizon. Inside it, the speed needed to escape exceeds the speed of light: and nothing travels faster. Everything that crosses that horizon is lost to the outside world.',
+            },
+            {
+              id: 'pas-aspirateur',
+              text: 'A black hole’s gravity is nothing special at a distance: it follows the same law as that of any body of the same mass. Replacing the Sun with a solar-mass black hole would leave the orbits untouched. What makes it dangerous is that you can get enormously close to it, since it has no surface.',
+            },
+            {
+              id: 'invisible',
+              text: 'They are detected indirectly: by the rapid motion of stars around an invisible point, by the radiation from the disc of matter feeding them, or by the gravitational waves given off when two black holes merge. In 2019 a first image was even obtained, that of the shadow of the black hole at the centre of a galaxy.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

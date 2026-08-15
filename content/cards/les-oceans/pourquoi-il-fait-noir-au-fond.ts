@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why it is dark right at the bottom',
+        '6-8': 'Why it is dark at the bottom of the sea',
+        '9-12': 'Why light vanishes underwater',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The light of the Sun dives down into the sea.',
+            },
+            {
+              id: 'deux',
+              text: 'But the water drinks up the light, bit by bit.',
+            },
+            {
+              id: 'trois',
+              text: 'The colour red disappears first.',
+            },
+            {
+              id: 'quatre',
+              text: 'Right down at the bottom, it is as dark as night.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'When sunlight enters the water, it begins to sink down.',
+            },
+            {
+              id: 'deux',
+              text: 'But the water soaks that light up little by little, metre after metre.',
+            },
+            {
+              id: 'trois',
+              text: 'Red is the first colour to vanish, in the very first metres, then come orange and yellow.',
+            },
+            {
+              id: 'quatre',
+              text: 'Past a few hundred metres, no light arrives at all: it is complete darkness, even at midday up at the surface.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The sunlight that enters the water combines every colour of the visible spectrum.',
+            },
+            {
+              id: 'deux',
+              text: 'The water absorbs that light gradually, and each colour is filtered out at a different depth according to its wavelength.',
+            },
+            {
+              id: 'trois',
+              text: 'Red, with its long wavelength, is absorbed within the first ten metres; then orange, yellow and green disappear; blue travels the furthest, which gives the depths their bluish colour.',
+            },
+            {
+              id: 'quatre',
+              text: 'Beyond about a thousand metres, in what is called the aphotic zone, no sunlight remains at all: a total and permanent darkness, whatever the time of day or the weather at the surface.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

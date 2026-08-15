@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['pas-de-froid', 'deplacer', 'grille-chaude', 'porte-ouverte'] as const;
+
+const LEGENDES = {
+  fr: {
+    enleve: 'il enlève la chaleur',
+    froidChaud: 'du froid vers le chaud',
+    dehors: 'dehors',
+    grille: 'la grille est tiède',
+    porteOuverte: 'porte ouverte : ça réchauffe',
+  },
+  en: {
+    enleve: 'it takes the heat away',
+    froidChaud: 'from cold to hot',
+    dehors: 'outside',
+    grille: 'the grille is warm',
+    porteOuverte: 'door open: it warms the room',
+  },
+};
 
 /**
  * Les points de chaleur sortent de l'intérieur et ressortent par la grille,
@@ -14,10 +32,12 @@ export function FrigoAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const ouverte = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -46,7 +66,7 @@ export function FrigoAnimation({
           </circle>
         ))}
         <text x="14" y="32" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          il enlève la chaleur
+          {legende.enleve}
         </text>
       </g>
 
@@ -63,7 +83,7 @@ export function FrigoAnimation({
           </circle>
         ))}
         <text x="14" y="132" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          du froid vers le chaud
+          {legende.froidChaud}
         </text>
       </g>
 
@@ -83,17 +103,17 @@ export function FrigoAnimation({
           </path>
         ))}
         <text x="300" y="60" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          dehors
+          {legende.dehors}
         </text>
         <text x="14" y="210" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          la grille est tiède
+          {legende.grille}
         </text>
       </g>
 
       {/* Le paradoxe */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="14" y="234" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          porte ouverte : ça réchauffe
+          {legende.porteOuverte}
         </text>
       </g>
     </svg>

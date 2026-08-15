@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Clouds',
+        '6-8': 'What a cloud is made of',
+        '9-12': 'What a cloud is made of',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'vapeur-invisible',
+              text: 'When water gets hot, it turns into a gas you cannot see at all: vapour.',
+            },
+            {
+              id: 'refroidit',
+              text: 'This gas floats up very high in the sky, where it is cold.',
+            },
+            {
+              id: 'gouttelettes',
+              text: 'The cold turns it into tiny little drops. Those we can see: that’s the cloud!',
+            },
+            {
+              id: 'flotte',
+              text: 'The drops are so light that they float in the air, like dust.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'vapeur-invisible',
+              text: 'People say a cloud is made of vapour. That’s wrong: real water vapour is a completely invisible gas.',
+            },
+            {
+              id: 'refroidit',
+              text: 'That invisible vapour rises, and the higher it goes, the colder the air around it becomes.',
+            },
+            {
+              id: 'gouttelettes',
+              text: 'In the cold, the vapour turns into a swarm of tiny water droplets. That mist of droplets is what we see: the cloud.',
+            },
+            {
+              id: 'flotte',
+              text: 'Each droplet is so small and so light that the faintest air currents hold it up. That’s why a cloud floats.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'vapeur-invisible',
+              text: 'A cloud is not vapour. Water vapour is water in its gaseous state, perfectly invisible — the white plume you see above a saucepan is no longer vapour, but condensed droplets.',
+            },
+            {
+              id: 'refroidit',
+              text: 'Warm, humid air rises and cools as it gains altitude. As it cools, it can no longer hold as much water in gaseous form.',
+            },
+            {
+              id: 'gouttelettes',
+              text: 'The excess vapour then condenses around microscopic specks of dust floating in the air, forming water droplets (or, higher and colder, ice crystals). Billions of them make up the visible cloud.',
+            },
+            {
+              id: 'flotte',
+              text: 'These droplets measure a few thousandths of a millimetre: they fall so slowly, and updraughts are so constant, that they stay suspended. A cloud is therefore neither vapour nor cotton wool, but an immense population of floating droplets. It only rains when they merge enough to become too heavy.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Sea water that stings',
+        '6-8': 'Why the sea is salty',
+        '9-12': 'Where the salt of the oceans comes from',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'gout',
+              text: 'If you swallow a mouthful at the sea, it is very salty. In a river it is not: the water is fresh.',
+            },
+            {
+              id: 'roches',
+              text: 'The salt comes from stones. Rain wears the rocks away and carries off tiny grains of salt.',
+            },
+            {
+              id: 'rivieres',
+              text: 'Rivers carry them all the way to the sea. There are so few that you cannot even taste them.',
+            },
+            {
+              id: 'equilibre',
+              text: 'And when the sea water goes off into the clouds, the salt stays behind. So it builds up.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'gout',
+              text: 'Sea water is salty, river water is not. That is surprising, since it is the rivers that fill the sea in the first place.',
+            },
+            {
+              id: 'roches',
+              text: 'The salt does not come from the bottom of the ocean: it comes from the rocks of the continents. Rain, which is slightly acidic, attacks them and dissolves their minerals.',
+            },
+            {
+              id: 'rivieres',
+              text: 'So every river carries a little salt — far too little to taste. But rivers have been flowing for billions of years.',
+            },
+            {
+              id: 'equilibre',
+              text: 'And evaporation takes only the water: the salt stays where it is. That is why it has become concentrated. Even so, the sea is not getting saltier and saltier: as much salt settles on the bottom as arrives.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'gout',
+              text: 'Sea water contains about thirty-five grams of dissolved salts per litre. The apparent paradox fits into one sentence: it is freshwater rivers that feed it.',
+            },
+            {
+              id: 'roches',
+              text: 'The origin is continental. Dissolved carbon dioxide makes rain slightly acidic; it weathers the rocks and releases ions — mainly sodium and chlorine, but also magnesium, calcium and sulphates. Hydrothermal vents along the mid-ocean ridges add their share.',
+            },
+            {
+              id: 'rivieres',
+              text: 'Each river carries only a minute concentration, of the order of a tenth of a gram per litre. The build-up comes from the length of time, then, not from the flow.',
+            },
+            {
+              id: 'equilibre',
+              text: 'Evaporation removes only the water, never the salts. Yet salinity has been stable for a very long time, because they are taken out at the same rate as they arrive: evaporites precipitating out, trapping in sediments, exchanges with the oceanic crust. It is a steady state, not an endless build-up.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

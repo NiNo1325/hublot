@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The fish breathes',
+        '6-8': 'How fish breathe',
+        '9-12': 'How fish breathe',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'oxygene-dans-leau',
+              text: 'In water, there is a little hidden air, mixed in everywhere. We cannot see it.',
+            },
+            {
+              id: 'avale',
+              text: 'The fish opens its mouth and lets water in.',
+            },
+            {
+              id: 'branchies',
+              text: 'The water flows over its gills, on the sides of its head. They catch the air hidden in the water.',
+            },
+            {
+              id: 'rejet',
+              text: 'Then the water comes back out through the little slits. The fish has taken what it needed to breathe.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'oxygene-dans-leau',
+              text: 'People think there is no air in water. Wrong: oxygen, the gas we breathe, is mixed into it, in very small amounts.',
+            },
+            {
+              id: 'avale',
+              text: 'The fish swallows water through its mouth, without ever stopping.',
+            },
+            {
+              id: 'branchies',
+              text: 'That water crosses its gills, organs made of fine filaments full of blood. There, the oxygen passes from the water into the fish’s blood.',
+            },
+            {
+              id: 'rejet',
+              text: 'The water, now stripped of its oxygen, leaves through the slits called gill openings. So a fish does not breathe water: it takes the oxygen out of it.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'oxygene-dans-leau',
+              text: 'Water contains dissolved oxygen: the same molecules as in the air, but slipped in between the water molecules. There is about thirty times less of it than in air, hence a very efficient system for capturing it.',
+            },
+            {
+              id: 'avale',
+              text: 'The fish keeps water flowing continuously: it swallows it through its mouth and drives it over its gills.',
+            },
+            {
+              id: 'branchies',
+              text: 'The gills are made of fine filaments packed with tiny blood vessels. Water and blood flow through them in opposite directions, which maximises the transfer of oxygen from the water into the blood.',
+            },
+            {
+              id: 'rejet',
+              text: 'The depleted water leaves through the gill openings. A fish does not “inhale” water the way we inhale air: it extracts the dissolved oxygen from it. That is also why it suffocates out of water: its gills collapse and capture nothing at all, even though the air is full of oxygen.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

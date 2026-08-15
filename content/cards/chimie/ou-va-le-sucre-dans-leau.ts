@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The sugar that hides',
+        '6-8': 'Where the sugar goes in water',
+        '9-12': 'Dissolving and the conservation of mass',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'avant',
+              text: 'You put a spoonful of sugar in a glass of water. At first you can see it very well at the bottom.',
+            },
+            {
+              id: 'melange',
+              text: 'You stir, and little by little the grains get smaller and smaller, until you cannot see them at all.',
+            },
+            {
+              id: 'toujours-la',
+              text: 'But the sugar has not gone! Taste the water: it is sweet. It has just hidden itself all over the glass.',
+            },
+            {
+              id: 'retour',
+              text: 'If you let the water dry away in the sun, the sugar comes back at the bottom. It was there all along.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'avant',
+              text: 'A grain of sugar is made of billions of tiny particles, packed tightly against one another.',
+            },
+            {
+              id: 'melange',
+              text: 'In water, these particles come away one by one and slip in between the water particles. They become far too small to see: the mixture turns clear again.',
+            },
+            {
+              id: 'toujours-la',
+              text: 'Nothing has disappeared. Weigh the glass before and after: the mass is exactly the same. The sweet taste proves the sugar is still there, simply spread out everywhere.',
+            },
+            {
+              id: 'retour',
+              text: 'People sometimes say that sugar ‘melts’. That is not right: melting means going from solid to liquid because of heat, like chocolate. Here, the sugar dissolves. And since nothing has been changed, evaporation brings it back untouched.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'avant',
+              text: 'Crystallised sucrose is an ordered solid, held together by hydrogen bonds between its molecules.',
+            },
+            {
+              id: 'melange',
+              text: 'Water molecules, which are polar, slip in between them and surround them — this is solvation. Each sugar molecule ends up on its own, spread through the liquid, on a scale far smaller than the wavelength of light: the solution stays perfectly clear.',
+            },
+            {
+              id: 'toujours-la',
+              text: 'Mass is conserved exactly: one hundred grams of water plus ten of sugar give one hundred and ten grams of solution. The volume, though, increases less than you would expect, since the sugar molecules partly tuck into the gaps between the water molecules.',
+            },
+            {
+              id: 'retour',
+              text: 'This is a physical change, not a chemical one: no covalent bond inside the sucrose molecules is broken. Evaporation returns them identical — unlike bicarbonate and vinegar, whose products cannot be brought back to their starting state.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

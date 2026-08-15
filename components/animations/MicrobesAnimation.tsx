@@ -1,9 +1,28 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['invisible', 'partout', 'utiles', 'certains'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor. Le typage
+  impose à `en` de reprendre exactement les clés du français : une légende
+  oubliée ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    enToi: 'des milliers de milliards en toi',
+    utiles: 'utiles : la grande majorité',
+    quelques: 'quelques-uns seulement',
+  },
+  en: {
+    enToi: 'thousands of billions in you',
+    utiles: 'useful: the vast majority',
+    quelques: 'only a few of them',
+  },
+};
 
 /**
  * Les microbes utiles sont verts et nombreux, les pathogènes rouges et rares :
@@ -13,9 +32,11 @@ export function MicrobesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   const utiles = [
     [96, 96], [134, 78], [168, 104], [116, 130], [196, 84], [152, 146],
@@ -39,7 +60,7 @@ export function MicrobesAnimation({
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <ellipse cx="150" cy="128" rx="86" ry="66" fill="#1b2a4a" stroke="#2c3f66" strokeWidth="2" />
         <text x="102" y="232" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des milliers de milliards en toi
+          {legende.enToi}
         </text>
       </g>
 
@@ -58,7 +79,7 @@ export function MicrobesAnimation({
           </g>
         ))}
         <text x="163" y="164" fill="#a3e635" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          utiles : la grande majorité
+          {legende.utiles}
         </text>
       </g>
 
@@ -74,7 +95,7 @@ export function MicrobesAnimation({
           />
         ))}
         <text x="205" y="200" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          quelques-uns seulement
+          {legende.quelques}
         </text>
       </g>
     </svg>

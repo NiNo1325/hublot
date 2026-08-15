@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The bees’ honey',
+        '6-8': 'How bees make honey',
+        '9-12': 'How bees make honey',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'nectar',
+              text: 'The bee lands on a flower and sucks up its sweet juice, all runny.',
+            },
+            {
+              id: 'transport',
+              text: 'She carries this juice back to her home, the hive.',
+            },
+            {
+              id: 'transformation',
+              text: 'The bees beat their wings very hard to dry the juice. It turns thick: that is honey!',
+            },
+            {
+              id: 'reserve',
+              text: 'They tidy the honey away into little boxes, to have food all winter long.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'nectar',
+              text: 'Honey does not come from pollen, but from nectar: the sweet liquid that flowers hide at the bottom of their petals. The bee sucks it up with her tongue.',
+            },
+            {
+              id: 'transport',
+              text: 'She stores this nectar in a pouch in her belly, the crop, and carries it back to the hive.',
+            },
+            {
+              id: 'transformation',
+              text: 'There, the bees pass it from mouth to mouth, adding their own juices, then fan with their wings to evaporate the water. The runny nectar slowly thickens into honey.',
+            },
+            {
+              id: 'reserve',
+              text: 'They seal the honey into cells of wax. It is not for us: it is their larder for getting through the winter, when there are no flowers left.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'nectar',
+              text: 'It all starts with nectar, a very sugary water that flowers make to attract foragers. The bee sucks it up; on the way, pollen sticks to her legs, but that pollen will never become honey.',
+            },
+            {
+              id: 'transport',
+              text: 'The nectar is stored in the crop, a dedicated stomach where enzymes already begin to break its sugars apart. Back at the hive, the forager hands it over to a house bee.',
+            },
+            {
+              id: 'transformation',
+              text: 'Then comes a long job: the nectar passes from mouth to mouth, enriched with enzymes, then is laid down in a thin layer in the cells. The bees fan in great numbers to evaporate the water — nectar is about 80% water, honey barely 18%. It is this drying out that makes it thick and keeps it from spoiling.',
+            },
+            {
+              id: 'reserve',
+              text: 'Once it is concentrated enough, the honey is capped under a lid of wax. It is the colony’s energy store for the winter, when not a single flower is in bloom. We harvest only part of the surplus: honey is made first by bees, for bees.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

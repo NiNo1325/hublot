@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Day and night',
+        '6-8': 'Why night falls',
+        '9-12': 'The rotation of the Earth',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'terre-tourne',
+              text: 'The Earth is a big ball, and it turns round and round very slowly, without ever stopping.',
+            },
+            {
+              id: 'cote-eclaire',
+              text: 'The sun lights up only the side of the ball that is looking at it. On that side, it is daytime.',
+            },
+            {
+              id: 'cote-sombre',
+              text: 'On the other side, it is all dark. That is night, and it is time to sleep.',
+            },
+            {
+              id: 'cycle',
+              text: 'As the Earth turns, your country goes to the bright side, then to the dark side, then back again. The sun does not move at all.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'terre-tourne',
+              text: 'The Earth spins on itself like a very slow spinning top. It takes twenty-four hours to make one full turn.',
+            },
+            {
+              id: 'cote-eclaire',
+              text: 'The Sun is so far away that it lights up only one half of the Earth at a time. On that half, it is day.',
+            },
+            {
+              id: 'cote-sombre',
+              text: 'The other half sits in the Earth’s own shadow. There it is night, and you can see the stars.',
+            },
+            {
+              id: 'cycle',
+              text: 'In the morning, when you see the Sun “rise”, it is really you turning towards it. The Sun stays exactly where it is.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'terre-tourne',
+              text: 'The Earth makes one complete turn on its axis in about twenty-four hours. At the equator that is a speed of more than one thousand six hundred kilometres per hour — which you never feel, because you and the atmosphere are turning at exactly the same speed.',
+            },
+            {
+              id: 'cote-eclaire',
+              text: 'Because the Sun is so distant, its rays arrive almost parallel and light only one hemisphere at a time. The boundary between the lit zone and the dark zone is called the terminator.',
+            },
+            {
+              id: 'cote-sombre',
+              text: 'The opposite hemisphere is not lit: that is night. The stars are visible there because sunlight no longer floods the sky — they are there in the daytime too, simply drowned in that light.',
+            },
+            {
+              id: 'cycle',
+              text: 'Sunrise and sunset are therefore effects of our own rotation, not of any movement of the Sun. It was that reasoning which made it possible to understand that the Earth turns, even though our eyes suggest the opposite.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

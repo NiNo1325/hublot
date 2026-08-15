@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'When the ground moves',
+        '6-8': 'Why the Earth shakes',
+        '9-12': 'Tectonics and earthquakes',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'plaques',
+              text: 'The ground is not made of one single piece. It is made of big pieces laid side by side, like a giant jigsaw.',
+            },
+            {
+              id: 'frottement',
+              text: 'These pieces slide along very gently, but sometimes they get stuck against each other and stop moving.',
+            },
+            {
+              id: 'rupture',
+              text: 'They push and they push, and all of a sudden they come unstuck. Then everything shakes very hard.',
+            },
+            {
+              id: 'ondes',
+              text: 'The shaking travels through the ground, like ripples in water when you throw in a pebble.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'plaques',
+              text: 'The surface of the Earth is cut into big rigid plates that float on hotter, softer rock.',
+            },
+            {
+              id: 'frottement',
+              text: 'These plates move a few centimetres a year, about as fast as your fingernails grow. Where they rub against each other, they jam, and the rock is deformed like a spring being squeezed.',
+            },
+            {
+              id: 'rupture',
+              text: 'When the rock can bend no further, it snaps all at once and the plates jolt forward. All the energy stored up over years is released in a few seconds.',
+            },
+            {
+              id: 'ondes',
+              text: 'That energy travels outwards as waves that shake the ground. Unlike in films, the earth does not open up to swallow people: it is buildings that collapse, and that is why we learn to build them differently.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'plaques',
+              text: 'The lithosphere is broken into about a dozen major plates, driven by the convection movements of the mantle underneath.',
+            },
+            {
+              id: 'frottement',
+              text: 'At plate boundaries, friction prevents steady sliding. The rocks then build up elastic strain, exactly like a spring being loaded little by little.',
+            },
+            {
+              id: 'rupture',
+              text: 'When the stress exceeds the strength of the rock, the rupture spreads along the fault. The starting point at depth is the focus, its projection at the surface the epicentre. The magnitude scale is logarithmic: one degree more corresponds to about thirty times more energy released.',
+            },
+            {
+              id: 'ondes',
+              text: 'Two families of waves travel out. P waves, compression waves, are the fastest and arrive first; S waves, shear waves, follow and are more destructive. This gap in speed makes it possible both to locate the focus and to give a few seconds of warning before the strongest shaking arrives.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

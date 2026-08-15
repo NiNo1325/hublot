@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why so big?',
+        '6-8': 'Why were they so big?',
+        '9-12': 'Why were some dinosaurs gigantic?',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Some dinosaurs ate plants nearly all day long, without ever stopping.',
+            },
+            {
+              id: 'deux',
+              text: 'Their very long neck let them grab the leaves right at the top of the trees.',
+            },
+            {
+              id: 'trois',
+              text: 'Their bones were hollow inside, like straws, so they were lighter.',
+            },
+            {
+              id: 'quatre',
+              text: 'Some were as long as several buses end to end!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'The biggest dinosaurs, the sauropods, spent nearly the whole day eating plants in order to swallow enough energy.',
+            },
+            {
+              id: 'deux',
+              text: 'Their immense neck let them reach the leaves right at the top of the trees, without having to move their whole body.',
+            },
+            {
+              id: 'trois',
+              text: 'Despite their size, their bones were not solid: they were hollowed out with cavities, rather like those of birds, which made them lighter.',
+            },
+            {
+              id: 'quatre',
+              text: 'Some sauropods were more than thirty-five metres long, the length of several buses parked end to end.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Sauropods, herbivores through and through, had to take in a considerable mass of plants each day to make up for their poor nutritional value, without even chewing them for long.',
+            },
+            {
+              id: 'deux',
+              text: 'Their long neck worked like a jointed arm, letting them graze a wide area of vegetation without spending energy shifting the whole body.',
+            },
+            {
+              id: 'trois',
+              text: 'Their skeleton included pneumatic vertebrae, hollowed out with cavities connected to air sacs, an adaptation that lightened the bony frame considerably while keeping it strong.',
+            },
+            {
+              id: 'quatre',
+              text: 'Argentinosaurus, one of the largest known, reached about thirty-five metres long and close to seventy tonnes, the size of several articulated buses end to end.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

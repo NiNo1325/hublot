@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Hot water right at the bottom',
+        '6-8': 'The hot springs of the deep sea',
+        '9-12': 'Hydrothermal vents, life without the Sun',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Right at the bottom of the sea, chimneys puff out very hot water.',
+            },
+            {
+              id: 'deux',
+              text: 'This water is full of tiny bits of rock.',
+            },
+            {
+              id: 'trois',
+              text: 'Tiny bacteria eat these bits, with no need for light.',
+            },
+            {
+              id: 'quatre',
+              text: 'Crabs and worms come and live right next door.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'On the floor of some oceans, where two of the Earth’s plates pull apart, natural chimneys spit out scalding water.',
+            },
+            {
+              id: 'deux',
+              text: 'This water, heated by the magma beneath the Earth’s crust, is loaded with dissolved minerals.',
+            },
+            {
+              id: 'trois',
+              text: 'Special bacteria feed on those minerals through a chemical reaction, with no need for sunlight.',
+            },
+            {
+              id: 'quatre',
+              text: 'A whole world settles around these chimneys: crabs, shrimps and enormous tube worms, all of which depend on those bacteria for their food.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Along certain mid-ocean ridges, where magma rises close to the seabed, seawater seeps into the crust and comes back out through hydrothermal vents, sometimes at more than three hundred degrees.',
+            },
+            {
+              id: 'deux',
+              text: 'Under this pressure and this temperature, it takes on dissolved minerals, in particular sulphur compounds.',
+            },
+            {
+              id: 'trois',
+              text: 'Chemosynthetic bacteria draw their energy from these chemical compounds by oxidising them, without depending on photosynthesis and therefore without depending on the Sun.',
+            },
+            {
+              id: 'quatre',
+              text: 'These bacteria form the base of an entire ecosystem — giant tube worms, crabs, blind shrimps — completely independent of solar energy, a discovery that overturned the idea that all life depends on it.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

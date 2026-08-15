@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why you look like them',
+        '6-8': 'Why we look like our parents',
+        '9-12': 'DNA, genes and heredity',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'notice',
+              text: 'Inside your body there is a sort of instruction booklet that says how you are made.',
+            },
+            {
+              id: 'moitie',
+              text: 'Half of it comes from your mum, the other half from your dad. That is why you look a bit like both of them.',
+            },
+            {
+              id: 'combinaison',
+              text: 'But the mix is never quite the same. That is why brothers and sisters are not identical.',
+            },
+            {
+              id: 'unique',
+              text: 'Your own booklet exists nowhere else. There is nobody exactly like you.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'notice',
+              text: 'Every cell in your body contains DNA, a long molecule that carries the instructions for building a living thing.',
+            },
+            {
+              id: 'moitie',
+              text: 'That DNA is stored in forty-six chromosomes, arranged in pairs. In each pair, one comes from your mother and the other from your father: you receive exactly half from each.',
+            },
+            {
+              id: 'combinaison',
+              text: 'Watch out for a false idea: this is not a mixture, like two paints. You receive whole versions of each gene. That is why a feature can skip a generation and turn up in you when neither of your parents shows it.',
+            },
+            {
+              id: 'unique',
+              text: 'The draw is different every time, which makes billions of possible combinations. Two brothers have the same parents but not the same DNA — except identical twins, who come from a single egg split in two.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'notice',
+              text: 'DNA is a double helix of four bases — A, T, G, C — whose order codes for the building of proteins. The human genome runs to about three billion base pairs, for roughly twenty thousand genes.',
+            },
+            {
+              id: 'moitie',
+              text: 'Reproductive cells contain only twenty-three chromosomes. Their fusion restores forty-six, half of them from each parent — a mechanism discovered long before anyone knew what a gene was.',
+            },
+            {
+              id: 'combinaison',
+              text: 'Heredity is particulate, not blended: that was Mendel’s discovery. A recessive allele can be passed on without being expressed, then reappear if the child receives two copies. Continuous blending, by contrast, would have diluted all variation within a few generations — a major objection Darwin had no answer to.',
+            },
+            {
+              id: 'unique',
+              text: 'The shuffling that happens as gametes form, with segments swapped between chromosomes, makes every reproductive cell unique. The number of combinations far exceeds the number of humans who have ever lived. And the genotype is not the whole story: the environment shapes how genes are expressed.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

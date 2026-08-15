@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    brulant: 'c’est brûlant !',
+    capteur: 'un capteur le repère',
+    signal: 'un signal file très vite',
+    aie: 'aïe !',
+    protege: 'la douleur te protège',
+  },
+  en: {
+    brulant: 'that’s burning hot!',
+    capteur: 'a sensor spots it',
+    signal: 'a signal races off',
+    aie: 'ouch!',
+    protege: 'pain looks after you',
+  },
+};
 
 /**
  * Une main s'approche d'une plaque brûlante, à l'autre bout un cerveau
@@ -15,10 +33,12 @@ export function PourquoiOnAMalAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
   const retiree = phase === 3;
 
   return (
@@ -49,13 +69,13 @@ export function PourquoiOnAMalAnimation({
             <animate attributeName="r" values="14;20;14" dur="1.4s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="150" y="200" fill="#f97316" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>c’est brûlant !</text>
+        <text x="150" y="200" fill="#f97316" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.brulant}</text>
       </g>
 
       {/* Phase 2 : un capteur repère le danger */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <path d="M260 122 l6 -8 M266 132 l8 -4 M270 140 l4 8" stroke="#fbbf24" strokeWidth="2.5" />
-        <text x="20" y="34" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>un capteur le repère</text>
+        <text x="20" y="34" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.capteur}</text>
       </g>
 
       {/* Phase 3 : le signal file vers le cerveau */}
@@ -65,13 +85,13 @@ export function PourquoiOnAMalAnimation({
             <animateMotion path="M264 128 Q160 130 60 82" dur="1s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="20" y="200" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>un signal file très vite</text>
+        <text x="20" y="200" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.signal}</text>
       </g>
 
       {/* Phase 4 : la main se retire, la douleur protège */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <text x="118" y="34" fill="#f9a8d4" fontSize="18" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>aïe !</text>
-        <text x="150" y="60" fill="#a3a3a3" fontSize="14" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>la douleur te protège</text>
+        <text x="118" y="34" fill="#f9a8d4" fontSize="18" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.aie}</text>
+        <text x="150" y="60" fill="#a3a3a3" fontSize="14" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.protege}</text>
       </g>
     </svg>
   );

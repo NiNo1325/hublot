@@ -1,9 +1,30 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['pas-du-singe', 'variation', 'selection', 'pas-de-but'] as const;
+
+/*
+  Les légendes de l'illustration sont du contenu, pas du décor. Le typage
+  impose à `en` de reprendre exactement les clés du français : une légende
+  oubliée ne compile pas.
+*/
+const LEGENDES = {
+  fr: {
+    ancetre: 'ancêtre commun',
+    differents: 'tous différents',
+    descendants: 'plus de descendants',
+    sansBut: 'aucun but, aucun progrès',
+  },
+  en: {
+    ancetre: 'common ancestor',
+    differents: 'all different',
+    descendants: 'more offspring',
+    sansBut: 'no goal, no progress',
+  },
+};
 
 /** Individus d'une même génération : la variation est le point de départ. */
 const INDIVIDUS = [
@@ -23,9 +44,11 @@ export function EvolutionAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -39,7 +62,7 @@ export function EvolutionAnimation({
         <circle cx="266" cy="112" r="9" fill="#4ade80" />
         <circle cx="334" cy="112" r="9" fill="#fbbf24" />
         <text x="256" y="212" fill="#a3a3a3" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          ancêtre commun
+          {legende.ancetre}
         </text>
       </g>
 
@@ -53,7 +76,7 @@ export function EvolutionAnimation({
           </circle>
         ))}
         <text x="14" y="60" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          tous différents
+          {legende.differents}
         </text>
       </g>
 
@@ -68,7 +91,7 @@ export function EvolutionAnimation({
           </g>
         ))}
         <text x="14" y="32" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          plus de descendants
+          {legende.descendants}
         </text>
       </g>
 
@@ -85,7 +108,7 @@ export function EvolutionAnimation({
           </g>
         ))}
         <text x="14" y="234" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          aucun but, aucun progrès
+          {legende.sansBut}
         </text>
       </g>
     </svg>

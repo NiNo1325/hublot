@@ -1,9 +1,21 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['circuit', 'boucle', 'electrons', 'chaleur'] as const;
+
+const LEGENDES = {
+  fr: {
+    electrons: 'les électrons avancent lentement',
+    chaleur: 'ça chauffe, donc ça brille',
+  },
+  en: {
+    electrons: 'the electrons creep along',
+    chaleur: 'it heats up, so it glows',
+  },
+};
 
 /**
  * Le circuit s'ouvre à la phase « boucle » et l'ampoule s'éteint : c'est la
@@ -13,10 +25,12 @@ export function ElectriciteAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const ouvert = phase === 1;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -58,7 +72,7 @@ export function ElectriciteAnimation({
           </circle>
         ))}
         <text x="120" y="212" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          les électrons avancent lentement
+          {legende.electrons}
         </text>
       </g>
 
@@ -76,7 +90,7 @@ export function ElectriciteAnimation({
         <path d="M202 98 h16 v8 h-16 z" fill="#b9c4da" />
         {!ouvert && phase === 3 && (
           <text x="171" y="44" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-            ça chauffe, donc ça brille
+            {legende.chaleur}
           </text>
         )}
       </g>

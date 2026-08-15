@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The little dots on the screen',
+        '6-8': 'How a screen works',
+        '9-12': 'Pixels and additive colour',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'points',
+              text: 'A picture on a screen is made of thousands of tiny dots, far too small to see.',
+            },
+            {
+              id: 'trois-couleurs',
+              text: 'Each dot knows only three lights: red, green and blue.',
+            },
+            {
+              id: 'melange',
+              text: 'By turning them up or down, the dot can make every colour you see.',
+            },
+            {
+              id: 'loupe',
+              text: 'If you look at the screen with a big magnifying glass, you find these little coloured dots.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'points',
+              text: 'A picture on a screen is a grid of tiny glowing squares, the pixels. A phone has several million of them, packed so tightly that we take them for one continuous image.',
+            },
+            {
+              id: 'trois-couleurs',
+              text: 'Each pixel is made of three little lamps: a red one, a green one and a blue one. Those are the only colours a screen knows how to produce.',
+            },
+            {
+              id: 'melange',
+              text: 'Every other colour is made by mixing those three lights. Red and green lit together give yellow. All three at full give white, all three off give black. So the yellow on your screen is not yellow at all: it is red and green side by side, which your eye mixes.',
+            },
+            {
+              id: 'loupe',
+              text: 'Hold a strong magnifying glass against the screen and the illusion breaks: you see the three coloured lamps of each pixel, quite separate.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'points',
+              text: 'A screen displays a raster image: a grid of pixels. Its resolution is counted in millions of pixels, each one identified by its position and its colour.',
+            },
+            {
+              id: 'trois-couleurs',
+              text: 'Each pixel is made up of three subpixels: red, green and blue. This is additive colour mixing, quite unlike paint: you add lights starting from black, instead of taking light away starting from white.',
+            },
+            {
+              id: 'melange',
+              text: 'The intensity of each subpixel is coded as a number, often from zero to two hundred and fifty-five. Three numbers are therefore enough to define a colour, giving about sixteen million combinations. Your eye, unable to separate the subpixels, blends the lot into a single shade.',
+            },
+            {
+              id: 'loupe',
+              text: 'The method exploits a limit of vision: beyond a certain fineness, the eye no longer separates details. It is also what allows a printed photograph, made of dots of ink, to look continuous. A screen never shows the colour itself — it simulates it from three primaries.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

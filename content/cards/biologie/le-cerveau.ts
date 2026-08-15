@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'What is inside your head',
+        '6-8': 'The brain and the tales told about it',
+        '9-12': 'The brain: two neuromyths and one fact',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'dix-pour-cent',
+              text: 'Your brain is inside your head. It works all the time, even while you are asleep.',
+            },
+            {
+              id: 'partout',
+              text: 'You do not use just a little bit of it: you use all of it, all day long.',
+            },
+            {
+              id: 'gauche-droite',
+              text: 'It has two halves, but they work together, like your two hands.',
+            },
+            {
+              id: 'plasticite',
+              text: 'And when you learn, it changes a little inside. That is why, when you keep trying, it ends up working.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'dix-pour-cent',
+              text: 'People often repeat that we only use ten per cent of our brain. That is false, and it never was true.',
+            },
+            {
+              id: 'partout',
+              text: 'The machines that watch the brain show the opposite: every region lights up, depending on the moment and the task. And here is the argument that settles it: your brain uses a fifth of your energy. A body would never keep up an organ that expensive if it wasted nine tenths of it.',
+            },
+            {
+              id: 'gauche-droite',
+              text: 'Another legend: “left-brained” people, who are logical, and “right-brained” people, who are creative. The two halves really do have their specialities, but they swap information the whole time. Nobody uses one half more than the other.',
+            },
+            {
+              id: 'plasticite',
+              text: 'What is true is far more interesting: the brain reshapes itself when you learn. The connections you use grow stronger, the others fade away. Learning is not filling a tank, it is changing a network.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'dix-pour-cent',
+              text: 'The ten per cent myth is probably the most widespread neuromyth of all. No study has ever supported it; it comes from a distortion of old remarks about so-called silent neurons.',
+            },
+            {
+              id: 'partout',
+              text: 'Functional imaging shows activity right across the brain over the course of a day. One figure closes the debate: the brain accounts for two per cent of body mass and uses about twenty per cent of its energy at rest. Such an outlay for an organ that was nine tenths useless would be an evolutionary absurdity — and any injury, however small, causes a deficit.',
+            },
+            {
+              id: 'gauche-droite',
+              text: 'Lateralisation is entirely real: language is handled mainly on the left in most right-handed people. But it is no basis for sorting people into types. A study of more than a thousand brains found not one individual with an overall left or right dominance.',
+            },
+            {
+              id: 'plasticite',
+              text: 'The solid fact is plasticity: synapses strengthen or vanish according to use, throughout life. In London taxi drivers, who memorise thousands of streets, the posterior hippocampus — involved in spatial memory — is measurably larger, and the longer they have driven, the larger it is.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

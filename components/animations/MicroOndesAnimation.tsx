@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['de-linterieur', 'agiter-leau', 'deux-centimetres', 'metal'] as const;
+
+const LEGENDES = {
+  fr: {
+    coeur: 'froid au cœur',
+    eauAgitee: 'l’eau s’agite, ça chauffe',
+    profondeur: '1 à 2 cm seulement',
+    metal: 'jamais de métal',
+  },
+  en: {
+    coeur: 'cold in the middle',
+    eauAgitee: 'the water shakes, it heats',
+    profondeur: '1 to 2 cm only',
+    metal: 'never any metal',
+  },
+};
 
 /**
  * Le dégradé du plat est l'argument : bords chauds, cœur froid. C'est
@@ -13,9 +29,11 @@ export function MicroOndesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -35,7 +53,7 @@ export function MicroOndesAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <ellipse cx="180" cy="128" rx="24" ry="13" fill="#38bdf8" />
         <text x="236" y="196" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          froid au cœur
+          {legende.coeur}
         </text>
       </g>
 
@@ -55,7 +73,7 @@ export function MicroOndesAnimation({
           </path>
         ))}
         <text x="14" y="32" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l’eau s’agite, ça chauffe
+          {legende.eauAgitee}
         </text>
       </g>
 
@@ -65,7 +83,7 @@ export function MicroOndesAnimation({
         <line x1="104" y1="122" x2="104" y2="134" stroke="#e2e8f0" strokeWidth="2" />
         <line x1="134" y1="122" x2="134" y2="134" stroke="#e2e8f0" strokeWidth="2" />
         <text x="14" y="210" fill="#e2e8f0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          1 à 2 cm seulement
+          {legende.profondeur}
         </text>
       </g>
 
@@ -80,7 +98,7 @@ export function MicroOndesAnimation({
           </path>
         ))}
         <text x="14" y="234" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          jamais de métal
+          {legende.metal}
         </text>
       </g>
     </svg>

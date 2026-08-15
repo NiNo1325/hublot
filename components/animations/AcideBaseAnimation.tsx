@@ -1,9 +1,27 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['piquant', 'echelle', 'bases', 'neutraliser'] as const;
+
+/* Les deux extrémités de l'échelle sont nommées à égalité : c'est l'argument
+   de la carte. Le typage impose à `en` de reprendre les clés de `fr`. */
+const LEGENDES = {
+  fr: {
+    citron: 'citron',
+    soude: 'soude',
+    brulent: 'les deux bouts brûlent',
+    neutraliser: 'ensemble : de l’eau et un sel',
+  },
+  en: {
+    citron: 'lemon',
+    soude: 'lye',
+    brulent: 'both ends burn',
+    neutraliser: 'together: water and a salt',
+  },
+};
 
 /** Quinze graduations, du rouge acide au bleu basique en passant par le vert. */
 const GRADUATIONS = Array.from({ length: 15 }, (_, i) => i);
@@ -23,9 +41,11 @@ export function AcideBaseAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -52,7 +72,7 @@ export function AcideBaseAnimation({
         <ellipse cx="68" cy="66" rx="17" ry="12" fill="#facc15" />
         <path d="M68 92 l-6 -10 l12 0 z" fill="#facc15" />
         <text x="30" y="46" fill="#facc15" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          citron
+          {legende.citron}
         </text>
       </g>
 
@@ -61,10 +81,10 @@ export function AcideBaseAnimation({
         <rect x="336" y="54" width="26" height="26" rx="3" fill="#38bdf8" />
         <path d="M349 92 l-6 -10 l12 0 z" fill="#38bdf8" />
         <text x="316" y="46" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          soude
+          {legende.soude}
         </text>
         <text x="14" y="210" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          les deux bouts brûlent
+          {legende.brulent}
         </text>
       </g>
 
@@ -85,7 +105,7 @@ export function AcideBaseAnimation({
           )}
         </g>
         <text x="14" y="234" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          ensemble : de l’eau et un sel
+          {legende.neutraliser}
         </text>
       </g>
     </svg>

@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['soir', 'condense', 'nuage-au-sol', 'leve'] as const;
+
+const LEGENDES = {
+  fr: {
+    solRefroidit: 'le sol refroidit l’air',
+    gouttes: 'des gouttes se forment ici',
+    nuageAuSol: 'un nuage au sol',
+    soleil: 'le soleil le dissipe',
+  },
+  en: {
+    solRefroidit: 'the ground cools the air',
+    gouttes: 'drops form right here',
+    nuageAuSol: 'a ground-level cloud',
+    soleil: 'the sun burns it off',
+  },
+};
 
 /**
  * Le brouillard ne descend pas du ciel : c'est un nuage au sol. L'air près du
@@ -14,10 +30,12 @@ export function BrouillardAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -35,7 +53,7 @@ export function BrouillardAnimation({
           <rect x="-4" y="-16" width="8" height="26" rx="4" fill="#334155" />
           <circle cx="0" cy="14" r="7" fill="#38bdf8" />
         </g>
-        <text x="20" y="200" fill="#93c5fd" fontSize="15" fontFamily={police}>le sol refroidit l’air</text>
+        <text x="20" y="200" fill="#93c5fd" fontSize="15" fontFamily={police}>{legende.solRefroidit}</text>
       </g>
 
       {/* Phase 2 : des gouttes se forment ici (pas venues du ciel) */}
@@ -50,7 +68,7 @@ export function BrouillardAnimation({
             {anime && <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" begin={`${i * 0.25}s`} repeatCount="indefinite" />}
           </circle>
         ))}
-        <text x="20" y="224" fill="#dbeafe" fontSize="15" fontFamily={police}>des gouttes se forment ici</text>
+        <text x="20" y="224" fill="#dbeafe" fontSize="15" fontFamily={police}>{legende.gouttes}</text>
       </g>
 
       {/* Phase 3 : un nuage au sol (même chose qu'un nuage en haut) */}
@@ -61,7 +79,7 @@ export function BrouillardAnimation({
         <rect x="110" y="132" width="240" height="26" rx="12" fill="#e2e8f0" opacity="0.75" />
         {/* lien « = » */}
         <text x="300" y="100" fill="#cbd5e1" fontSize="20" fontFamily={police} textAnchor="middle">=</text>
-        <text x="250" y="200" fill="#e2e8f0" fontSize="15" fontFamily={police}>un nuage au sol</text>
+        <text x="250" y="200" fill="#e2e8f0" fontSize="15" fontFamily={police}>{legende.nuageAuSol}</text>
       </g>
 
       {/* Phase 4 : le soleil le dissipe */}
@@ -75,7 +93,7 @@ export function BrouillardAnimation({
             </path>
           </g>
         ))}
-        <text x="240" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>le soleil le dissipe</text>
+        <text x="240" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>{legende.soleil}</text>
       </g>
     </svg>
   );

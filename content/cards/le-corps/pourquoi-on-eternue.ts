@@ -75,5 +75,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Atishoo!',
+        '6-8': 'Why we sneeze',
+        '9-12': 'How a sneeze works',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A tiny speck of dust gets into your nose and tickles it.',
+            },
+            {
+              id: 'deux',
+              text: 'Your nose quickly sends a message to your brain: “There’s an intruder!”',
+            },
+            {
+              id: 'trois',
+              text: 'All at once, air rushes out very hard through your nose and your mouth.',
+            },
+            {
+              id: 'quatre',
+              text: 'Atishoo! The speck of dust is blown far away from your nose.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A speck of dust, a grain of pepper or a cat hair tickles the inside of your nose.',
+            },
+            {
+              id: 'deux',
+              text: 'Very sensitive sensors warn your brain at once that an intruder has slipped in there.',
+            },
+            {
+              id: 'trois',
+              text: 'Your brain then orders it out: air is blasted from your nose and your mouth at top speed.',
+            },
+            {
+              id: 'quatre',
+              text: 'That is a sneeze: a proper sweep of the broom that chases the intruder far from your airways.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'An irritating particle (dust, a hair, pepper) stimulates the nerve endings lining the inside of the nose.',
+            },
+            {
+              id: 'deux',
+              text: 'This signal travels up to a centre of the brain dedicated to sneezing, which triggers the reaction in a fraction of a second.',
+            },
+            {
+              id: 'trois',
+              text: 'A large volume of air is abruptly expelled through the nose and the mouth, at a speed that can exceed a hundred and fifty kilometres per hour.',
+            },
+            {
+              id: 'quatre',
+              text: 'This violent expulsion drives the intruder far from the airways. Contrary to a stubborn myth, the heart does not stop at all during a sneeze: it carries on beating normally.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'Why chilli stings so much',
+        '6-8': 'Why chilli burns',
+        '9-12': 'Why chilli burns',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A chilli has a little magic something inside it.',
+            },
+            {
+              id: 'deux',
+              text: 'It sticks to your tongue, on the spot that feels hot.',
+            },
+            {
+              id: 'trois',
+              text: 'Your tongue shouts “it’s burning!” very loudly.',
+            },
+            {
+              id: 'quatre',
+              text: 'But really, nothing is hot at all: it’s a trick.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Chilli contains a substance called capsaicin.',
+            },
+            {
+              id: 'deux',
+              text: 'It sticks to the very same sensors on your tongue that normally pick up real heat.',
+            },
+            {
+              id: 'trois',
+              text: 'Those sensors then send your brain the message “watch out, that’s burning!”.',
+            },
+            {
+              id: 'quatre',
+              text: 'Yet nothing has really got hot: it is a trick that capsaicin plays on your tongue.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Chilli contains capsaicin, a molecule the plant produces to defend itself.',
+            },
+            {
+              id: 'deux',
+              text: 'This molecule activates the same nerve receptors on the tongue as a high temperature would.',
+            },
+            {
+              id: 'trois',
+              text: 'Those receptors send the brain a pain signal identical to the one from a real burn.',
+            },
+            {
+              id: 'quatre',
+              text: 'No real heat is involved: it is a sensory illusion. Because capsaicin is oily, it is milk that carries it away, not water, which only moves it around.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

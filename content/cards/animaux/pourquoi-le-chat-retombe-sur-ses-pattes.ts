@@ -82,5 +82,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The cat that turns over',
+        '6-8': 'Why cats land on their feet',
+        '9-12': 'Why cats land on their feet',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'depart',
+              text: 'Sometimes a cat falls back first, upside down.',
+            },
+            {
+              id: 'plie',
+              text: 'So it folds its body in two and spins very fast while it falls.',
+            },
+            {
+              id: 'sans-appui',
+              text: 'It turns all on its own in mid-air, with nothing to push on. What an acrobat!',
+            },
+            {
+              id: 'pattes',
+              text: 'And there it is, paws down. But careful: falling can still hurt it a lot.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'depart',
+              text: 'When a cat falls upside down, back first, it has only a moment to turn itself over.',
+            },
+            {
+              id: 'plie',
+              text: 'It folds its bendy body in the middle, as if it were breaking in two at the waist.',
+            },
+            {
+              id: 'sans-appui',
+              text: 'Then it turns the front of its body one way, and the back the other way. Pedalling like this, it turns over with nothing to push against, just by moving its own body.',
+            },
+            {
+              id: 'pattes',
+              text: 'It ends up with its paws towards the ground, ready to cushion the landing on its pads. But it still falls: from too high up, it can be badly hurt. It is not invincible.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'depart',
+              text: 'A cat dropped back-down rights itself in a fraction of a second. The puzzle intrigued physicists for a long time: how do you turn with nothing to push against?',
+            },
+            {
+              id: 'plie',
+              text: 'The key is its very flexible spine. The cat folds its body in two at the waist, separating front and back into two almost independent blocks.',
+            },
+            {
+              id: 'sans-appui',
+              text: 'It then turns the front one way, tucking in its front legs, and the back the other way, stretching out its hind legs. By playing on how far the legs are held out, each half turns faster or slower: overall, it turns over while its total rotation stays zero. Nothing pushes it from outside.',
+            },
+            {
+              id: 'pattes',
+              text: 'It lands with legs spread, back arched and limbs bent to absorb the shock. Be careful, though: gravity is pulling it towards the ground the whole way, it is only orienting itself during the fall. Turning over does not stop it getting hurt — a fall of a few storeys is still dangerous.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

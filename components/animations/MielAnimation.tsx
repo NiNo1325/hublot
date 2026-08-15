@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['nectar', 'transport', 'transformation', 'reserve'] as const;
+
+const LEGENDES = {
+  fr: {
+    nectar: 'le jus sucré des fleurs',
+    transport: 'vers la ruche',
+    transformation: 'on évapore l’eau',
+    reserve: 'la réserve d’hiver',
+  },
+  en: {
+    nectar: 'the sweet juice of flowers',
+    transport: 'to the hive',
+    transformation: 'the water evaporates',
+    reserve: 'the winter store',
+  },
+};
 
 /** Petite abeille rayée avec deux ailes. */
 function Abeille({ x, y }: { x: number; y: number }) {
@@ -28,10 +44,12 @@ export function MielAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -69,7 +87,7 @@ export function MielAnimation({
         {/* pollen sur les pattes */}
         <circle cx="86" cy="106" r="2.5" fill="#f59e0b" />
         <circle cx="98" cy="106" r="2.5" fill="#f59e0b" />
-        <text x="20" y="200" fill="#fde68a" fontSize="15" fontFamily={police}>le jus sucré des fleurs</text>
+        <text x="20" y="200" fill="#fde68a" fontSize="15" fontFamily={police}>{legende.nectar}</text>
       </g>
 
       {/* Phase 2 : le transport vers la ruche */}
@@ -77,7 +95,7 @@ export function MielAnimation({
         <Abeille x={190} y={70} />
         <line x1="110" y1="86" x2="270" y2="80" stroke="#fbbf24" strokeWidth="2.5" strokeDasharray="6 5" />
         <path d="M264 74 L276 80 L264 86 Z" fill="#fbbf24" />
-        <text x="20" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>vers la ruche</text>
+        <text x="20" y="224" fill="#fbbf24" fontSize="15" fontFamily={police}>{legende.transport}</text>
       </g>
 
       {/* Phase 3 : la transformation — ventilation + évaporation de l'eau */}
@@ -90,7 +108,7 @@ export function MielAnimation({
             </circle>
           </g>
         ))}
-        <text x="230" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>on évapore l’eau</text>
+        <text x="230" y="200" fill="#7dd3fc" fontSize="15" fontFamily={police}>{legende.transformation}</text>
       </g>
 
       {/* Phase 4 : la réserve d'hiver */}
@@ -100,7 +118,7 @@ export function MielAnimation({
             <path key={`${row}-${col}`} d={hexagone(300 + col * 22 + (row % 2) * 11, 84 + row * 20, 11)} fill="#f6a821" />
           )),
         )}
-        <text x="230" y="224" fill="#f6a821" fontSize="15" fontFamily={police}>la réserve d’hiver</text>
+        <text x="230" y="224" fill="#f6a821" fontSize="15" fontFamily={police}>{legende.reserve}</text>
       </g>
     </svg>
   );

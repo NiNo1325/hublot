@@ -81,5 +81,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The sea that rises and falls',
+        '6-8': 'Why there are tides',
+        '9-12': 'Tides and the pull of the Moon',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'observer',
+              text: 'At the beach, the sea creeps up the sand, then it goes back down. It starts again every day.',
+            },
+            {
+              id: 'lune',
+              text: 'It is the Moon that does this, from very far away, by pulling on the water of the oceans.',
+            },
+            {
+              id: 'deux-cotes',
+              text: 'The sea rises on the side facing the Moon, but also on the other side of the Earth, at the same time.',
+            },
+            {
+              id: 'rythme',
+              text: 'As the Earth turns, your patch of beach passes under the high sea twice a day.',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'observer',
+              text: 'A tide is the sea rising and falling twice a day, always to the same rhythm.',
+            },
+            {
+              id: 'lune',
+              text: 'The Moon pulls on the whole Earth. But it pulls a little harder on the water facing it, because that water is closer to it.',
+            },
+            {
+              id: 'deux-cotes',
+              text: 'So that water bulges up towards the Moon. On the other side of the Earth, the water is pulled the least: it bulges up too, the other way. There are two bulges of water, then, one at each end.',
+            },
+            {
+              id: 'rythme',
+              text: 'The Earth turns underneath these two bulges. In one day, every coast passes under a bulge twice: hence two high tides and two low tides. The Sun helps a little, but the Moon is in charge.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'observer',
+              text: 'Tides follow a regular cycle of about twelve hours and twenty-five minutes between two high tides, set by the Moon and not by the Sun.',
+            },
+            {
+              id: 'lune',
+              text: 'Gravity weakens with distance. The Moon therefore pulls harder on the face of the Earth turned towards it than on its centre, and harder on the centre than on the far side. It is this difference, called the tidal force, that counts — not the pull itself.',
+            },
+            {
+              id: 'deux-cotes',
+              text: 'The result: the ocean stretches into two bulges lined up with the Moon, one towards it, the other opposite. Contrary to the common idea, the Moon does not “suck” the water up: it stretches it out on both sides.',
+            },
+            {
+              id: 'rythme',
+              text: 'Since the Earth spins on its axis, a coastline crosses both bulges each day: two high waters, two low waters. When the Sun and the Moon line up, their effects add together — these are the great spring tides.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

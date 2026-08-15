@@ -1,12 +1,32 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['gras', 'deux-bouts', 'entourer', 'emporter'] as const;
 
 /** Douze molécules réparties autour de la goutte : la micelle. */
 const ANGLES = Array.from({ length: 12 }, (_, i) => (i * 360) / 12);
+
+/* Les deux bouts de la molécule sont nommés dans le SVG : c'est du contenu.
+   Le typage impose à `en` de reprendre exactement les clés de `fr`. */
+const LEGENDES = {
+  fr: {
+    glisse: 'l’eau glisse sur le gras',
+    eau: 'eau',
+    gras: 'gras',
+    bulle: 'enfermé dans une bulle',
+    rincage: 'le rinçage l’emporte',
+  },
+  en: {
+    glisse: 'water slides over grease',
+    eau: 'water',
+    gras: 'grease',
+    bulle: 'shut inside a bubble',
+    rincage: 'rinsing carries it off',
+  },
+};
 
 /**
  * La molécule de savon est dessinée deux fois : agrandie sur le côté pour
@@ -18,10 +38,12 @@ export function SavonAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const emporte = phase === 3;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -69,7 +91,7 @@ export function SavonAnimation({
           </path>
         ))}
         <text x="14" y="30" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l’eau glisse sur le gras
+          {legende.glisse}
         </text>
       </g>
 
@@ -78,24 +100,24 @@ export function SavonAnimation({
         <circle cx="286" cy="60" r="12" fill="#38bdf8" />
         <path d="M286 74 q10 12 0 22 q-10 12 0 22" fill="none" stroke="#fb923c" strokeWidth="4" strokeLinecap="round" />
         <text x="306" y="52" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          eau
+          {legende.eau}
         </text>
         <text x="306" y="118" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          gras
+          {legende.gras}
         </text>
       </g>
 
       {/* La saleté enfermée, puis emportée par le rinçage */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <text x="14" y="210" fill="#facc15" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          enfermé dans une bulle
+          {legende.bulle}
         </text>
       </g>
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <line x1="240" y1="196" x2="330" y2="196" stroke="#7dd3fc" strokeWidth="3" />
         <path d="M324 189 L340 196 L324 203 Z" fill="#7dd3fc" />
         <text x="14" y="234" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          le rinçage l’emporte
+          {legende.rincage}
         </text>
       </g>
     </svg>

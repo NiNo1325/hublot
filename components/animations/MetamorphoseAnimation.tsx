@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['oeuf', 'chenille', 'chrysalide', 'papillon'] as const;
+
+const LEGENDES = {
+  fr: {
+    oeuf: 'un œuf',
+    chenille: 'elle mange et grandit',
+    chrysalide: 'le corps se défait',
+    papillon: 'un corps tout neuf',
+  },
+  en: {
+    oeuf: 'an egg',
+    chenille: 'it eats and grows',
+    chrysalide: 'the body comes apart',
+    papillon: 'a brand-new body',
+  },
+};
 
 /**
  * L'argument central : dans la chrysalide, la chenille ne grandit pas, elle se
@@ -15,10 +31,12 @@ export function MetamorphoseAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -30,7 +48,7 @@ export function MetamorphoseAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <circle cx="92" cy="160" r="10" fill="#e7e2c8" />
         <text x="30" y="200" fill="#a3e635" fontSize="15" fontFamily={police}>
-          un œuf
+          {legende.oeuf}
         </text>
       </g>
 
@@ -41,7 +59,7 @@ export function MetamorphoseAnimation({
         ))}
         <circle cx="145" cy="154" r="2.5" fill="#1f3a1f" />
         <text x="30" y="224" fill="#a3e635" fontSize="15" fontFamily={police}>
-          elle mange et grandit
+          {legende.chenille}
         </text>
       </g>
 
@@ -76,7 +94,7 @@ export function MetamorphoseAnimation({
           </circle>
         ))}
         <text x="150" y="200" fill="#f6c453" fontSize="15" fontFamily={police}>
-          le corps se défait
+          {legende.chrysalide}
         </text>
       </g>
 
@@ -101,7 +119,7 @@ export function MetamorphoseAnimation({
           )}
         </g>
         <text x="250" y="224" fill="#f6c453" fontSize="15" fontFamily={police}>
-          un corps tout neuf
+          {legende.papillon}
         </text>
       </g>
     </svg>

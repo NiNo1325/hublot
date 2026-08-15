@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    duvet: 'un duvet, pour se tenir chaud',
+    plumes: 'de vraies plumes pour planer',
+    survie: 'petit et léger, il survit',
+    oiseaux: 'du moineau à l’autruche',
+  },
+  en: {
+    duvet: 'down feathers, to keep warm',
+    plumes: 'real feathers, to glide',
+    survie: 'small and light, it survives',
+    oiseaux: 'from sparrow to ostrich',
+  },
+};
 
 /**
  * Une seule petite silhouette traverse les quatre phases, du duvet à l'aile :
@@ -14,10 +30,12 @@ export function LesOiseauxSontDesDinosauresAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -29,7 +47,7 @@ export function LesOiseauxSontDesDinosauresAnimation({
         <ellipse cx="140" cy="176" rx="26" ry="18" fill="#8a7256" />
         <path d="M140 196 L134 196 M140 196 L146 196" stroke="#8a7256" strokeWidth="6" strokeLinecap="round" />
         <path d="M100 176 q-4 -12 8 -16 q-2 10 4 16 M108 168 q-2 -12 10 -14 q0 10 4 14" stroke="#c8a97e" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        <text x="14" y="30" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>un duvet, pour se tenir chaud</text>
+        <text x="14" y="30" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.duvet}</text>
       </g>
 
       {/* Phase 2 : les plumes grandissent, il plane entre les branches */}
@@ -43,7 +61,7 @@ export function LesOiseauxSontDesDinosauresAnimation({
             <animateTransform attributeName="transform" type="translate" values="0 0; 90 -18; 0 0" dur="3.2s" repeatCount="indefinite" />
           )}
         </g>
-        <text x="14" y="30" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>de vraies plumes pour planer</text>
+        <text x="14" y="30" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.plumes}</text>
       </g>
 
       {/* Phase 3 : petit et volant, il survivra au jour de l'astéroïde */}
@@ -57,7 +75,7 @@ export function LesOiseauxSontDesDinosauresAnimation({
             )}
           </path>
         </g>
-        <text x="14" y="30" fill="#e5e7eb" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>petit et léger, il survit</text>
+        <text x="14" y="30" fill="#e5e7eb" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.survie}</text>
       </g>
 
       {/* Phase 4 : des millions d'années plus tard, tous les oiseaux */}
@@ -74,7 +92,7 @@ export function LesOiseauxSontDesDinosauresAnimation({
             <path d="M12 -4 L22 -10 L14 -2 Z" fill={b.c} />
           </g>
         ))}
-        <text x="14" y="212" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>du moineau à l&apos;autruche</text>
+        <text x="14" y="212" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.oiseaux}</text>
       </g>
     </svg>
   );

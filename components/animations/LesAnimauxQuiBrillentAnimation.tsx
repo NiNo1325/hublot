@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['un', 'deux', 'trois', 'quatre'] as const;
+
+const LEGENDES = {
+  fr: {
+    brille: 'il brille dans le noir',
+    chimie: 'réaction chimique',
+    froide: 'froide, sans chaleur',
+    proie: 'ça attire une proie',
+  },
+  en: {
+    brille: 'it glows in the dark',
+    chimie: 'chemical reaction',
+    froide: 'cold, giving no heat',
+    proie: 'it lures in prey',
+  },
+};
 
 /**
  * Un poisson-abysse à la lanterne, dans le noir complet : sa lumière naît
@@ -14,11 +30,13 @@ export function LesAnimauxQuiBrillentAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
-  const legende = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const apparition = (i: number) => ({ opacity: phase === i ? 1 : 0, transition: 'opacity 300ms ease' });
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -38,8 +56,8 @@ export function LesAnimauxQuiBrillentAnimation({
             <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="16" y="46" fill="#bef264" fontSize="14" fontFamily={police} style={legende(0)}>
-          il brille dans le noir
+        <text x="16" y="46" fill="#bef264" fontSize="14" fontFamily={police} style={apparition(0)}>
+          {legende.brille}
         </text>
       </g>
 
@@ -60,8 +78,8 @@ export function LesAnimauxQuiBrillentAnimation({
             <animate attributeName="r" values="6;10;6" dur="1.6s" repeatCount="indefinite" />
           )}
         </circle>
-        <text x="16" y="70" fill="#a3e635" fontSize="14" fontFamily={police} style={legende(1)}>
-          réaction chimique
+        <text x="16" y="70" fill="#a3e635" fontSize="14" fontFamily={police} style={apparition(1)}>
+          {legende.chimie}
         </text>
       </g>
 
@@ -70,8 +88,8 @@ export function LesAnimauxQuiBrillentAnimation({
         <rect x="30" y="90" width="10" height="40" rx="5" fill="#0c4a6e" stroke="#93c5fd" strokeWidth="1.5" />
         <circle cx="35" cy="132" r="7" fill="#38bdf8" />
         <rect x="32" y="100" width="6" height="24" fill="#38bdf8" />
-        <text x="16" y="150" fill="#93c5fd" fontSize="13" fontFamily={police} style={legende(2)}>
-          froide, sans chaleur
+        <text x="16" y="150" fill="#93c5fd" fontSize="13" fontFamily={police} style={apparition(2)}>
+          {legende.froide}
         </text>
       </g>
 
@@ -82,8 +100,8 @@ export function LesAnimauxQuiBrillentAnimation({
             <animate attributeName="cx" values="330;186;330" dur="3.2s" repeatCount="indefinite" />
           )}
         </ellipse>
-        <text x="16" y="200" fill="#7dd3fc" fontSize="14" fontFamily={police} style={legende(3)}>
-          ça attire une proie
+        <text x="16" y="200" fill="#7dd3fc" fontSize="14" fontFamily={police} style={apparition(3)}>
+          {legende.proie}
         </text>
       </g>
     </svg>

@@ -80,5 +80,74 @@ export const card: ScienceCard = {
         },
       },
     },
+    en: {
+      title: {
+        '3-5': 'The bird, a dinosaur',
+        '6-8': 'Birds are dinosaurs',
+        '9-12': 'Birds, the last living dinosaurs',
+      },
+      explanation: {
+        '3-5': {
+          beats: [
+            {
+              id: 'un',
+              text: 'A long time ago, little dinosaurs already had soft feathers.',
+            },
+            {
+              id: 'deux',
+              text: 'Some jumped from tree to tree, then learnt to glide and to fly.',
+            },
+            {
+              id: 'trois',
+              text: 'When the big rock fell from the sky, these little feathered dinosaurs survived.',
+            },
+            {
+              id: 'quatre',
+              text: 'Today, here are their children: the birds you see flying about!',
+            },
+          ],
+        },
+        '6-8': {
+          beats: [
+            {
+              id: 'un',
+              text: 'Long before the extinction, some small meat-eating dinosaurs already wore feathers, at first simply to keep warm.',
+            },
+            {
+              id: 'deux',
+              text: 'In certain species, these feathers grew big enough to glide from branch to branch, and then to fly for real.',
+            },
+            {
+              id: 'trois',
+              text: 'These small feathered dinosaurs were among the few survivors of the day of the asteroid, thanks to their small size and their ability to fly a long way.',
+            },
+            {
+              id: 'quatre',
+              text: 'They kept on evolving for millions of years to give us every bird we know today: the sparrow just as much as the ostrich.',
+            },
+          ],
+        },
+        '9-12': {
+          beats: [
+            {
+              id: 'un',
+              text: 'As early as the Jurassic, small theropods, cousins of the fearsome Velociraptor, sported plumage, useful at first for keeping warm and for display.',
+            },
+            {
+              id: 'deux',
+              text: 'In certain lineages, the asymmetrical feathers of the forelimbs gradually made gliding flight possible, and then active flapping flight.',
+            },
+            {
+              id: 'trois',
+              text: 'These small avian dinosaurs were among the few survivors of the Cretaceous-Palaeogene extinction, unlike their large non-avian cousins.',
+            },
+            {
+              id: 'quatre',
+              text: 'All the diversity of birds today, about ten thousand species, descends from those survivors: birds are not merely related to dinosaurs, they ARE dinosaurs, in the strict cladistic sense.',
+            },
+          ],
+        },
+      },
+    },
   },
 };

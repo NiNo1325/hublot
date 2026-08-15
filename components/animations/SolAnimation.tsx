@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['pas-inerte', 'habitants', 'fabrication', 'fragile'] as const;
+
+const LEGENDES = {
+  fr: {
+    pasInerte: 'ce n’est pas de la poussière',
+    habitants: 'des milliards par cuillerée',
+    fabrication: 'les vers fabriquent la terre',
+    lenteur: 'un siècle par centimètre',
+  },
+  en: {
+    pasInerte: 'this is not just dust',
+    habitants: 'billions in one spoonful',
+    fabrication: 'worms make the soil',
+    lenteur: 'a century per centimetre',
+  },
+};
 
 /** Habitants du sol, répartis dans l'épaisseur plutôt qu'en surface. */
 const HABITANTS = [
@@ -23,9 +39,11 @@ export function SolAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -50,7 +68,7 @@ export function SolAnimation({
           />
         ))}
         <text x="14" y="32" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          ce n’est pas de la poussière
+          {legende.pasInerte}
         </text>
       </g>
 
@@ -72,7 +90,7 @@ export function SolAnimation({
           </g>
         ))}
         <text x="14" y="70" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          des milliards par cuillerée
+          {legende.habitants}
         </text>
       </g>
 
@@ -86,7 +104,7 @@ export function SolAnimation({
           </circle>
         ))}
         <text x="14" y="210" fill="#a16207" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          les vers fabriquent la terre
+          {legende.fabrication}
         </text>
       </g>
 
@@ -96,7 +114,7 @@ export function SolAnimation({
         <line x1="360" y1="96" x2="372" y2="96" stroke="#e2e8f0" strokeWidth="2" />
         <line x1="360" y1="120" x2="372" y2="120" stroke="#e2e8f0" strokeWidth="2" />
         <text x="14" y="234" fill="#e2e8f0" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          un siècle par centimètre
+          {legende.lenteur}
         </text>
       </g>
     </svg>

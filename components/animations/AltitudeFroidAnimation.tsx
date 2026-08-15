@@ -1,9 +1,25 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['sommet-neige', 'pas-le-soleil', 'air-rare', 'retient-moins'] as const;
+
+const LEGENDES = {
+  fr: {
+    neige: 'neige même en été',
+    soleil: 'pas plus près du Soleil',
+    airRare: 'l’air se raréfie',
+    chaleur: 'la chaleur s’échappe',
+  },
+  en: {
+    neige: 'snow even in summer',
+    soleil: 'no closer to the Sun',
+    airRare: 'the air thins out',
+    chaleur: 'the heat escapes',
+  },
+};
 
 /**
  * Il fait plus froid en altitude non pas à cause du Soleil (« plus près » est
@@ -14,10 +30,12 @@ export function AltitudeFroidAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
+  const legende = localise(LEGENDES, locale);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -40,7 +58,7 @@ export function AltitudeFroidAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <circle cx="196" cy="60" r="3" fill="#e0f2fe" />
         <circle cx="184" cy="70" r="3" fill="#e0f2fe" />
-        <text x="20" y="200" fill="#e0f2fe" fontSize="15" fontFamily={police}>neige même en été</text>
+        <text x="20" y="200" fill="#e0f2fe" fontSize="15" fontFamily={police}>{legende.neige}</text>
       </g>
 
       {/* Phase 2 : pas plus près du Soleil (idée reçue barrée) */}
@@ -49,7 +67,7 @@ export function AltitudeFroidAnimation({
         <line x1="196" y1="52" x2="344" y2="34" stroke="#fbbf24" strokeWidth="2" strokeDasharray="5 4" />
         <line x1="240" y1="30" x2="290" y2="56" stroke="#f43f5e" strokeWidth="4" />
         <line x1="290" y1="30" x2="240" y2="56" stroke="#f43f5e" strokeWidth="4" />
-        <text x="20" y="224" fill="#fca5a5" fontSize="15" fontFamily={police}>pas plus près du Soleil</text>
+        <text x="20" y="224" fill="#fca5a5" fontSize="15" fontFamily={police}>{legende.soleil}</text>
       </g>
 
       {/* Phase 3 : l'air se raréfie (dense en bas, clairsemé en haut) */}
@@ -64,7 +82,7 @@ export function AltitudeFroidAnimation({
             {anime && <animate attributeName="opacity" values="0.4;1;0.4" dur="2.4s" begin={`${i * 0.12}s`} repeatCount="indefinite" />}
           </circle>
         ))}
-        <text x="250" y="200" fill="#93c5fd" fontSize="15" fontFamily={police}>l’air se raréfie</text>
+        <text x="250" y="200" fill="#93c5fd" fontSize="15" fontFamily={police}>{legende.airRare}</text>
       </g>
 
       {/* Phase 4 : en haut, la chaleur s'échappe */}
@@ -81,7 +99,7 @@ export function AltitudeFroidAnimation({
             </path>
           </g>
         ))}
-        <text x="230" y="224" fill="#fb923c" fontSize="15" fontFamily={police}>la chaleur s’échappe</text>
+        <text x="230" y="224" fill="#fb923c" fontSize="15" fontFamily={police}>{legende.chaleur}</text>
       </g>
     </svg>
   );

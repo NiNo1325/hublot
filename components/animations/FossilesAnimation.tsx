@@ -1,9 +1,23 @@
 'use client';
 
 import type { CardAnimationProps } from './registry';
+import { localise } from '@/lib/i18n/localise';
 import { miseEnScene } from './shared/phases';
 
 const PHASES = ['mort', 'enfouissement', 'pierre', 'rare'] as const;
+
+const LEGENDES = {
+  fr: {
+    pierre: 'l’os devient pierre',
+    disparait: 'presque tout disparaît',
+    hasard: 'un fossile est un hasard',
+  },
+  en: {
+    pierre: 'bone becomes stone',
+    disparait: 'almost all is lost',
+    hasard: 'a fossil is pure luck',
+  },
+};
 
 /**
  * Les couches sédimentaires s'empilent au fil des phases : le temps est
@@ -13,9 +27,11 @@ export function FossilesAnimation({
   activeBeatId,
   isPlaying,
   prefersReducedMotion,
+  locale,
 }: CardAnimationProps) {
   const { phase, opacite, dejaVu } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const legende = localise(LEGENDES, locale);
 
   const squelette = (
     <g>
@@ -70,17 +86,17 @@ export function FossilesAnimation({
           </circle>
         ))}
         <text x="206" y="166" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          l&apos;os devient pierre
+          {legende.pierre}
         </text>
       </g>
 
       {/* La rareté : presque tout disparaît sans trace */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <text x="188" y="34" fill="#b9c4da" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          presque tout disparaît
+          {legende.disparait}
         </text>
         <text x="188" y="58" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
-          un fossile est un hasard
+          {legende.hasard}
         </text>
       </g>
     </svg>

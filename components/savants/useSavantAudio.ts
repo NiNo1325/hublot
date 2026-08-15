@@ -71,5 +71,22 @@ export function useSavantAudio(age: AgeRange) {
     [locale, age],
   );
 
-  return { jouer, arreter, enLecture };
+  /**
+   * Le seul nom, prononcé quand une paire tombe au Mémo. Il ne dépend pas de
+   * l'âge : un nom propre se dit pareil à tous les âges.
+   */
+  const jouerNom = useCallback(
+    (savantId: string) => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      audio.pause();
+      audio.onended = null;
+      audio.onerror = null;
+      audio.src = cheminAudio(locale, `savants/${savantId}/nom.mp3`);
+      void audio.play().catch(() => {});
+    },
+    [locale],
+  );
+
+  return { jouer, jouerNom, arreter, enLecture };
 }

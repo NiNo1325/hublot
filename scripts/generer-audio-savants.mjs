@@ -4,7 +4,8 @@
  * Usage : npm run audio:savants [langue]   (fr par défaut)
  *
  * Deux fichiers par savant et par âge — l'apport, puis l'anecdote — que la
- * fiche enchaîne d'un seul bouton. Le découpage en deux permet de rejouer la
+ * fiche enchaîne d'un seul bouton, plus un clip du seul nom, hors âge, que le
+ * Mémo des savants prononce quand une paire tombe. Le découpage en deux permet de rejouer la
  * seule anecdote plus tard sans regénérer le reste, et surtout d'entendre une
  * pause franche entre les deux : ce sont deux idées, pas une phrase longue.
  */
@@ -66,6 +67,18 @@ const TOUTES_CONSIGNES = {
 };
 const CONSIGNES = TOUTES_CONSIGNES[LOCALE];
 
+/*
+  Le nom seul. Une consigne de récit ferait broder le modèle autour du nom ;
+  celle-ci demande exactement ce qu'on veut entendre, et rien de plus.
+*/
+const CONSIGNES_NOM = {
+  fr: 'Prononce ce nom de personne, clairement et gaiement, sans rien ajouter :\n\n',
+  en:
+    'Say this person’s name in English, in a British accent, clearly and ' +
+    'cheerfully, adding nothing else:\n\n',
+};
+const CONSIGNE_NOM = CONSIGNES_NOM[LOCALE];
+
 function empreinte(texte, consigne) {
   return createHash('sha256').update(`${VOIX}|${consigne}|${texte}`).digest('hex').slice(0, 16);
 }
@@ -100,6 +113,21 @@ function aFaire(manifeste) {
           attendu,
         });
       }
+    }
+
+    // Le nom ne dépend pas de l'âge : un seul clip, à la racine du savant.
+    const cleNom = `${savant.id}/nom`;
+    const cheminNom = `${RACINE}/${savant.id}/nom.mp3`;
+    const attenduNom = empreinte(savant.nom, CONSIGNE_NOM);
+    if (manifeste[cleNom]?.empreinte !== attenduNom || !existsSync(cheminNom)) {
+      liste.push({
+        cle: cleNom,
+        dossier: `${RACINE}/${savant.id}`,
+        chemin: cheminNom,
+        texte: savant.nom,
+        consigne: CONSIGNE_NOM,
+        attendu: attenduNom,
+      });
     }
   }
   return liste;

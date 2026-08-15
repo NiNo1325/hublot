@@ -185,8 +185,8 @@ const fr = {
   'jeu.quizz.titre': 'Quizz',
   'jeu.quizz.texte':
     'Des questions sur tes cartes. Chaque bonne réponse te fait gagner une étoile.',
-  'jeu.memo.titre': 'Mémo des images',
-  'jeu.memo.texte': 'Retrouve les paires identiques, de mémoire. Dès 3 ans.',
+  'jeu.memo.titre': 'Mémo des savants',
+  'jeu.memo.texte': 'Retrouve les paires de portraits, et apprends leur nom. Dès 3 ans.',
   'jeu.chrono.titre': 'Défi chrono',
   'jeu.chrono.texte': 'Le quizz, mais contre la montre.',
 
@@ -218,10 +218,14 @@ const fr = {
 
   'jeu.memo-cartes.titre': 'Mémo des cartes',
   'jeu.memo-cartes.texte': 'Retrouve chaque dessin et le nom de sa carte.',
-  'memo.images.titre': 'Mémo des images',
-  'memo.images.regle': 'Retourne les tuiles deux par deux et retrouve les paires identiques.',
+  'memo.savants.titre': 'Mémo des savants',
+  'memo.savants.regle':
+    'Retourne les tuiles deux par deux et retrouve les paires de portraits. À chaque paire, tu apprends un nom.',
   'memo.cartes.titre': 'Mémo des cartes',
-  'memo.cartes.regle': 'Retourne les tuiles deux par deux et associe chaque dessin au nom de sa carte.',
+  'memo.cartes.regle':
+    'Retourne les tuiles deux par deux et associe chaque dessin au nom de sa carte. Seules les cartes que tu as écoutées sont dans le jeu.',
+  'memo.pas-assez':
+    'Écoute d’abord deux ou trois cartes : ce jeu ne pioche que dans celles que tu connais.',
   'memo.demarrer': 'Commencer',
   'memo.coups': (n: number) => `${n} coup${n > 1 ? 's' : ''}`,
   'memo.bravo': 'Toutes les paires trouvées ! 🎉',
@@ -229,8 +233,8 @@ const fr = {
   'memo.tuile-cachee': 'Tuile cachée',
   'memo.trop-jeune.titre': 'Ce mémo demande de lire',
   'memo.trop-jeune.texte':
-    'Celui-ci associe un dessin au nom écrit de sa carte. Le mémo des images, lui, est fait pour toi.',
-  'memo.vers-images': 'Aller au mémo des images',
+    'Celui-ci associe un dessin au nom écrit de sa carte. Le mémo des savants, lui, est fait pour toi.',
+  'memo.vers-images': 'Aller au mémo des savants',
 };
 
 /** Toutes les clés traduisibles, dérivées de la source française. */
@@ -409,8 +413,8 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'jeu.quizz.titre': 'Quiz',
     'jeu.quizz.texte':
       'Questions about your cards. Every right answer earns you a star.',
-    'jeu.memo.titre': 'Picture memory',
-    'jeu.memo.texte': 'Find the matching pairs, from memory. From age 3.',
+    'jeu.memo.titre': 'Scientist memory',
+    'jeu.memo.texte': 'Find the matching portraits, and learn their names. From age 3.',
     'jeu.chrono.titre': 'Time challenge',
     'jeu.chrono.texte': 'The quiz, but against the clock.',
 
@@ -442,11 +446,14 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
 
     'jeu.memo-cartes.titre': 'Card memory',
     'jeu.memo-cartes.texte': 'Match each picture with the name of its card.',
-    'memo.images.titre': 'Picture memory',
-    'memo.images.regle': 'Turn the tiles over two at a time and find the matching pairs.',
+    'memo.savants.titre': 'Scientist memory',
+    'memo.savants.regle':
+      'Turn the tiles over two at a time and find the matching portraits. Each pair teaches you a name.',
     'memo.cartes.titre': 'Card memory',
     'memo.cartes.regle':
-      'Turn the tiles over two at a time and match each picture with the name of its card.',
+      'Turn the tiles over two at a time and match each picture with the name of its card. Only the cards you have listened to are in the game.',
+    'memo.pas-assez':
+      'Listen to two or three cards first: this game only uses the ones you know.',
     'memo.demarrer': 'Start',
     'memo.coups': (n: number) => `${n} move${n === 1 ? '' : 's'}`,
     'memo.bravo': 'All the pairs found! 🎉',
@@ -454,8 +461,8 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'memo.tuile-cachee': 'Hidden tile',
     'memo.trop-jeune.titre': 'This memory game needs reading',
     'memo.trop-jeune.texte':
-      'This one matches a picture with the written name of its card. Picture memory is the one made for you.',
-    'memo.vers-images': 'Go to picture memory',
+      'This one matches a picture with the written name of its card. Scientist memory is the one made for you.',
+    'memo.vers-images': 'Go to scientist memory',
   },
 };
 

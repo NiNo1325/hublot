@@ -8,6 +8,8 @@ import { domainStyles } from '@/lib/domain-styles';
 import { badgesDomaine } from '@/lib/badges';
 import { progressionDomaine } from '@/lib/progression';
 import { bilanGlobal, prochaineEtapeDomaine } from '@/lib/prochaine-etape';
+import { objetsCabinet } from '@/content/cabinet';
+import { useCabinet } from '@/components/cabinet/useCabinet';
 import { rangDepuisEtoiles, RANGS } from '@/lib/etoiles';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useAgeRange } from '@/components/age/useAgeRange';
@@ -37,6 +39,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
   const { cartesMaitrisees } = useCartesMaitrisees();
   const { locale } = useLocale();
   const t = useT();
+  const { possedes } = useCabinet();
   const [rangSel, setRangSel] = useState<number | null>(null);
 
   useEffect(() => {
@@ -206,6 +209,25 @@ export function LumiView({ cards, domains }: LumiViewProps) {
           )}
         </p>
       </section>
+
+      {/* Le cabinet : là où les étoiles se dépensent, à côté de là où elles se comptent. */}
+      <Link
+        href="/lumi/cabinet"
+        className="flex min-h-16 items-center gap-4 rounded-3xl border-2 border-soleil/50 bg-soleil/5 px-5 transition-transform hover:scale-[1.01] active:scale-[0.99]"
+      >
+        <span aria-hidden="true" className="text-3xl">
+          🗄️
+        </span>
+        <span className="flex flex-1 flex-col">
+          <span className="font-display text-lg text-craie">{t('lumi.vers-cabinet')}</span>
+          <span className="text-sm text-craie-douce">
+            {t('lumi.vers-cabinet-detail')(possedes.length, objetsCabinet.length)}
+          </span>
+        </span>
+        <span aria-hidden="true" className="text-2xl text-craie-douce">
+          ›
+        </span>
+      </Link>
 
       {/*
         Progression par monde : écoute (→ 🧭) et réussite au quizz (→ 🏅). Les

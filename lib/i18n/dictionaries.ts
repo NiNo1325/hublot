@@ -111,6 +111,15 @@ const fr = {
   'lumi.reste-reussir': (n: number) =>
     `encore ${n} question${n > 1 ? 's' : ''} à réussir pour 🏅`,
   'lumi.monde-complet': 'les deux badges sont à toi ✓',
+  'cabinet.titre': 'Le cabinet de curiosités',
+  'cabinet.texte': 'Dépense tes étoiles en objets de savant. Chacun t’apprend quelque chose.',
+  'cabinet.solde': (n: number) => `il te reste ${n}`,
+  'cabinet.etagere': (n: number, total: number) => `Ton étagère · ${n} sur ${total}`,
+  'cabinet.a-decouvrir': 'À rapporter',
+  'cabinet.gagner': 'Les étoiles se gagnent en répondant juste, dans les jeux et le parcours.',
+  'cabinet.retour': 'Retour à Lumi',
+  'lumi.vers-cabinet': 'Le cabinet de curiosités',
+  'lumi.vers-cabinet-detail': (n: number, total: number) => `${n} objets sur ${total}`,
   'lumi.rangs': 'Les rangs de Lumi',
   'lumi.origine-etoiles':
     'Lumi grandit avec tes étoiles. Tu en gagnes une à chaque bonne réponse, dans les jeux et dans le parcours. Écouter une carte n’en donne pas : c’est ce qui t’apprend à répondre.',
@@ -349,6 +358,15 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'lumi.reste-reussir': (n: number) =>
       `${n} more question${n === 1 ? '' : 's'} to answer for 🏅`,
     'lumi.monde-complet': 'both badges are yours ✓',
+    'cabinet.titre': 'The cabinet of curiosities',
+    'cabinet.texte': 'Spend your stars on a scientist’s objects. Each one teaches you something.',
+    'cabinet.solde': (n: number) => `you have ${n} left`,
+    'cabinet.etagere': (n: number, total: number) => `Your shelf · ${n} of ${total}`,
+    'cabinet.a-decouvrir': 'To bring home',
+    'cabinet.gagner': 'Stars are earned by answering correctly, in the games and the journey.',
+    'cabinet.retour': 'Back to Lumi',
+    'lumi.vers-cabinet': 'The cabinet of curiosities',
+    'lumi.vers-cabinet-detail': (n: number, total: number) => `${n} objects of ${total}`,
     'lumi.rangs': 'Lumi’s ranks',
     'lumi.origine-etoiles':
       'Lumi grows with your stars. You earn one for every right answer, in the games and in the journey. Listening to a card earns none: it is what teaches you the answer.',

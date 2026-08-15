@@ -46,14 +46,24 @@ export function OsAnimation({
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
       <rect width="400" height="240" fill="#0f1b33" />
 
-      {/* L'os en coupe : paroi dure, moelle au centre */}
-      <rect x="60" y="100" width="280" height="44" rx="22" fill="#e2e8f0" />
-      <rect x="86" y="112" width="228" height="20" rx="10" fill="#be5b7a" />
+      {/*
+        L'os en coupe. La silhouette compte : un rectangle à bouts ronds se
+        lisait comme une gélule, pas comme un os. Un os long a des extrémités
+        renflées — les épiphyses — et un corps plus étroit ; ce sont ces quatre
+        bosses qui le rendent reconnaissable au premier coup d'œil.
+      */}
+      <circle cx="82" cy="106" r="21" fill="#e2e8f0" />
+      <circle cx="82" cy="138" r="21" fill="#e2e8f0" />
+      <circle cx="318" cy="106" r="21" fill="#e2e8f0" />
+      <circle cx="318" cy="138" r="21" fill="#e2e8f0" />
+      <rect x="76" y="110" width="248" height="24" fill="#e2e8f0" />
+      {/* La moelle, dans le corps de l'os seulement. */}
+      <rect x="96" y="117" width="208" height="10" rx="5" fill="#be5b7a" />
 
       {/* Les vaisseaux : il est irrigué, donc vivant */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         {[110, 170, 230, 290].map((x, i) => (
-          <line key={x} x1={x} y1="100" x2={x + 8} y2="144" stroke="#dc2626" strokeWidth="2">
+          <line key={x} x1={x} y1="111" x2={x + 6} y2="133" stroke="#dc2626" strokeWidth="2">
             {anime && (
               <animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
             )}
@@ -68,14 +78,14 @@ export function OsAnimation({
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         {[130, 200, 270].map((x, i) => (
           <g key={x}>
-            <circle cx={x} cy="94" r="5" fill="#f87171">
+            <circle cx={x} cy="104" r="5" fill="#f87171">
               {anime && phase === 1 && (
-                <animate attributeName="cy" values="94;88;94" dur="1.8s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                <animate attributeName="cy" values="104;98;104" dur="1.8s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
               )}
             </circle>
-            <circle cx={x + 22} cy="150" r="5" fill="#4ade80">
+            <circle cx={x + 22} cy="140" r="5" fill="#4ade80">
               {anime && phase === 1 && (
-                <animate attributeName="cy" values="150;156;150" dur="1.8s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                <animate attributeName="cy" values="140;146;140" dur="1.8s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
               )}
             </circle>
           </g>
@@ -105,12 +115,12 @@ export function OsAnimation({
       {/* La fracture, et le cal qui la ressoude */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <line
-          x1="210" y1="96" x2="196" y2="148"
+          x1="210" y1="104" x2="198" y2="140"
           stroke="#0f1b33"
           strokeWidth={casse ? 5 : 0}
           style={{ transition: 'stroke-width 800ms ease' }}
         />
-        <ellipse cx="203" cy="122" rx="20" ry="30" fill="none" stroke="#fbbf24" strokeWidth="3">
+        <ellipse cx="204" cy="122" rx="20" ry="24" fill="none" stroke="#fbbf24" strokeWidth="3">
           {anime && phase === 3 && (
             <animate attributeName="rx" values="8;20;8" dur="3s" repeatCount="indefinite" />
           )}

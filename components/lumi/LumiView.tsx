@@ -75,7 +75,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-3xl border-2 border-encre-bord bg-encre-clair px-6 py-5">
           <Lumi rang={rang.index} taille={104} etat="repos" interactif />
           <p className="font-display text-lg text-craie">
-            <span aria-hidden="true">{rang.icone}</span> {localise(rang.nom, locale)} —{' '}
+            <span aria-hidden="true">{rang.icone}</span> {localise(rang.nom, locale)}{' '}
             <span aria-hidden="true">⭐</span> {etoiles}
           </p>
           <div className="w-full">
@@ -185,7 +185,7 @@ export function LumiView({ cards, domains }: LumiViewProps) {
         <p aria-live="polite" className="text-center text-sm text-craie">
           <span aria-hidden="true">{selection.icone}</span>{' '}
           <span className="font-display">{localise(selection.nom, locale)}</span>
-          {' — '}
+          {' '}
           {selectionAtteinte ? (
             t('lumi.rang-atteint')
           ) : (

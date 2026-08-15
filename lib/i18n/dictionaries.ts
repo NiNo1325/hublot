@@ -105,7 +105,7 @@ const fr = {
     `${explores}/${total} explorés · ${maitrises}/${total} maîtrisés`,
   'lumi.rangs': 'Les rangs de Lumi',
   'lumi.origine-etoiles':
-    'Une étoile par bonne réponse, dans les jeux et le parcours. Écouter une carte ne donne pas d’étoile — mais c’est ce qui te permet de répondre.',
+    'Lumi grandit avec tes étoiles. Tu en gagnes une à chaque bonne réponse, dans les jeux et dans le parcours. Écouter une carte n’en donne pas : c’est ce qui t’apprend à répondre.',
   'lumi.rang-atteint': 'atteint ✓',
   'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
     `${nom}, ${seuil} étoiles${atteint ? ', atteint' : ''}`,
@@ -335,7 +335,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       `${explores}/${total} explored · ${maitrises}/${total} mastered`,
     'lumi.rangs': 'Lumi’s ranks',
     'lumi.origine-etoiles':
-      'One star for every right answer, in the games and the journey. Listening to a card earns no star — but it is what lets you answer.',
+      'Lumi grows with your stars. You earn one for every right answer, in the games and in the journey. Listening to a card earns none: it is what teaches you the answer.',
     'lumi.rang-atteint': 'reached ✓',
     'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
       `${nom}, ${seuil} stars${atteint ? ', reached' : ''}`,

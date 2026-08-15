@@ -74,15 +74,36 @@ export function ApresLesDinosauresAnimation({
 
       {/* Phase 3 : mammouth laineux et tigre à dents de sabre */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
-        <g transform="translate(150 176)">
-          <ellipse cx="0" cy="0" rx="46" ry="30" fill="#8a7256" />
-          <circle cx="-40" cy="-14" r="20" fill="#8a7256" />
-          <path d="M-56 -6 Q-70 6 -60 24 M-52 -8 Q-64 4 -56 20" stroke="#e8ddc8" strokeWidth="4" fill="none" strokeLinecap="round" />
+        {/*
+          Le mammouth. Un corps ovale surmonté d'une tête, sans pattes ni
+          trompe, se lisait comme un phoque : ce sont les quatre pattes posées
+          au sol, la bosse d'épaule et la trompe qui font l'animal. Les défenses
+          seules n'y suffisaient pas.
+        */}
+        <g transform="translate(150 152)">
+          {/* Les pattes d'abord, pour passer sous le corps. */}
+          {[-28, -8, 12, 30].map((x) => (
+            <rect key={x} x={x} y="18" width="12" height="26" rx="5" fill="#6f5a44" />
+          ))}
+          <ellipse cx="0" cy="0" rx="44" ry="26" fill="#8a7256" />
+          {/* La bosse d'épaule, silhouette propre au mammouth laineux. */}
+          <path d="M-34 -14 Q-26 -34 -6 -22 Z" fill="#8a7256" />
+          <circle cx="-42" cy="-10" r="19" fill="#8a7256" />
+          {/* La trompe descend, les défenses remontent. */}
+          <path d="M-56 0 Q-68 14 -62 30" stroke="#8a7256" strokeWidth="7" fill="none" strokeLinecap="round" />
+          <path d="M-54 2 Q-72 10 -70 -8 M-50 4 Q-66 12 -64 -4" stroke="#e8ddc8" strokeWidth="4" fill="none" strokeLinecap="round" />
+          {/* La toison, à gros poils, sur le dos et le flanc. */}
+          <path d="M-20 -22 l-4 8 M0 -25 l-4 8 M20 -22 l-4 8 M36 -12 l-6 6" stroke="#6f5a44" strokeWidth="3" strokeLinecap="round" />
         </g>
-        <g transform="translate(300 186)">
-          <ellipse cx="0" cy="0" rx="30" ry="16" fill="#a8a29e" />
-          <circle cx="-24" cy="-8" r="12" fill="#a8a29e" />
-          <path d="M-30 -2 L-40 20" stroke="#f5f0e6" strokeWidth="3" strokeLinecap="round" />
+        <g transform="translate(302 168)">
+          {[-18, -4, 10, 22].map((x) => (
+            <rect key={x} x={x} y="12" width="9" height="18" rx="4" fill="#8a857f" />
+          ))}
+          <ellipse cx="0" cy="0" rx="30" ry="15" fill="#a8a29e" />
+          <circle cx="-26" cy="-6" r="13" fill="#a8a29e" />
+          {/* Les deux crocs, ce qui nomme l'animal. */}
+          <path d="M-32 2 L-34 20 M-24 3 L-26 20" stroke="#f5f0e6" strokeWidth="3" fill="none" strokeLinecap="round" />
+          <path d="M28 -6 q14 -6 16 -18" stroke="#a8a29e" strokeWidth="4" fill="none" strokeLinecap="round" />
         </g>
         <text x="14" y="30" fill="#e8ddc8" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.megafaune}</text>
       </g>

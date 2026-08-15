@@ -54,7 +54,7 @@ export async function ecrireCatalogue() {
   const manifestes = {};
   for (const langue of ['', ...LOCALES.filter((l) => l !== 'fr')]) {
     const prefixeLangue = langue ? `${langue}/` : '';
-    for (const famille of ['', 'quiz', 'accroches', 'tutoriel']) {
+    for (const famille of ['', 'quiz', 'accroches', 'tutoriel', 'savants']) {
       const prefixe = `${prefixeLangue}${famille ? `${famille}/` : ''}`;
       const entrees = await lireManifeste(`${RACINE}/${prefixe}manifeste.json`);
       for (const [cle, valeur] of Object.entries(entrees)) {

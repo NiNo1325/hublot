@@ -11,6 +11,7 @@ import { useLocale } from '@/components/i18n/useLocale';
 import { useT } from '@/components/i18n/useT';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { Lumi } from '@/components/mascotte/Lumi';
+import { jouerSonPaire, jouerSonRate, jouerSonRecompense } from '@/lib/sonRecompense';
 
 interface MemoViewProps {
   cards: ScienceCard[];
@@ -97,11 +98,22 @@ export function MemoView({ cards, variante }: MemoViewProps) {
 
     setCoups((n) => n + 1);
     const [a, b] = ouvertes.map((id) => plateau.find((tu) => tu.id === id)!);
+    /*
+      Le son porte le verdict. Sans lui, l'enfant devait déduire sa réussite du
+      fait que les tuiles ne se retournaient pas — un signal en creux, qu'on ne
+      comprend qu'en connaissant déjà la règle.
+    */
     if (sApparient(a, b)) {
+      const complet = trouvees.length + 1 === plateau.length / 2;
+      // La dernière paire n'a pas droit à deux sons qui se chevauchent : c'est
+      // la fanfare de fin qui l'emporte.
+      if (complet) jouerSonRecompense();
+      else jouerSonPaire();
       setTrouvees((liste) => [...liste, a.paire]);
       setRetournees([]);
       return;
     }
+    jouerSonRate();
     minuterieRef.current = setTimeout(() => setRetournees([]), RETOURNEMENT_MS);
   };
 

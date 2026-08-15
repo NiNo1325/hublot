@@ -2,7 +2,7 @@ import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { savants } from '@/content/savants';
 import { cards } from '@/content/cards';
-import { LOCALES } from '@/lib/types';
+import { AGE_RANGES, LOCALES } from '@/lib/types';
 
 /**
  * Les fiches sont écrites à la main et pointent vers deux choses extérieures :
@@ -41,8 +41,37 @@ describe('intégrité du mur des savants', () => {
   */
   it.each(savants.map((s) => [s.id, s] as const))('%s est traduit partout', (_id, savant) => {
     for (const locale of LOCALES) {
-      expect(savant.apport[locale]?.trim().length, `apport ${locale}`).toBeGreaterThan(0);
-      expect(savant.anecdote[locale]?.trim().length, `anecdote ${locale}`).toBeGreaterThan(0);
+      for (const age of AGE_RANGES) {
+        expect(savant.apport[locale]?.[age]?.trim().length, `apport ${locale} ${age}`).toBeGreaterThan(0);
+        expect(
+          savant.anecdote[locale]?.[age]?.trim().length,
+          `anecdote ${locale} ${age}`,
+        ).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  /*
+    Le registre doit vraiment changer d'un âge à l'autre. Recopier le même texte
+    aux trois âges compilerait et passerait les tests de présence, tout en
+    ratant l'objet de la déclinaison — c'est l'erreur facile.
+  */
+  it.each(savants.map((s) => [s.id, s] as const))('%s distingue ses registres', (_id, savant) => {
+    for (const locale of LOCALES) {
+      for (const champ of ['apport', 'anecdote'] as const) {
+        const textes = AGE_RANGES.map((age) => savant[champ][locale]![age]);
+        expect(new Set(textes).size, `${champ} ${locale} : textes identiques`).toBe(
+          AGE_RANGES.length,
+        );
+      }
+    }
+  });
+
+  /* Chez les 3-5, un texte trop long ne passe ni à l'écran ni à l'oral. */
+  it.each(savants.map((s) => [s.id, s] as const))('%s reste court en 3-5', (_id, savant) => {
+    for (const locale of LOCALES) {
+      expect(savant.apport[locale]!['3-5'].length, `apport ${locale}`).toBeLessThan(160);
+      expect(savant.anecdote[locale]!['3-5'].length, `anecdote ${locale}`).toBeLessThan(160);
     }
   });
 

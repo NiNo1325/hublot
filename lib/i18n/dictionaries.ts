@@ -198,6 +198,8 @@ const fr = {
     'Vingt personnes, mille ans de curiosité. Touche un portrait pour savoir ce qu’on lui doit.',
   'savants.fermer': 'Fermer la fiche',
   'savants.cartes': 'À écouter ensuite',
+  'savants.ecouter': 'Écouter la fiche',
+  'savants.arreter': 'Arrêter la lecture',
 
   'chrono.titre': 'Défi chrono',
   'chrono.texte': (secondes: number) =>
@@ -420,6 +422,8 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       'Twenty people, a thousand years of curiosity. Touch a portrait to find out what we owe them.',
     'savants.fermer': 'Close the profile',
     'savants.cartes': 'Listen to next',
+    'savants.ecouter': 'Listen to the profile',
+    'savants.arreter': 'Stop playing',
 
     'chrono.titre': 'Time challenge',
     'chrono.texte': (secondes: number) =>

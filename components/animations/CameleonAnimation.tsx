@@ -51,6 +51,28 @@ export function CameleonAnimation({
       />
       <circle cx="30" cy="-10" r="6" fill="#0f1b12" />
       <circle cx="31" cy="-11" r="2" fill="#f5f5f5" />
+      {/*
+        Les pattes, qui manquaient : un corps fuselé posé sur une branche, sans
+        membres, se lisait comme un poisson. Le caméléon agrippe de pieds en
+        pince — c'est ce qui le distingue d'un lézard quelconque.
+      */}
+      <path
+        d="M22 10 l2 12 m-2 -12 l-7 11 M-14 12 l1 12 m-1 -12 l-8 10"
+        stroke={couleur}
+        strokeWidth="4"
+        fill="none"
+        strokeLinecap="round"
+        style={{ transition: 'stroke 600ms ease' }}
+      />
+      {/* La crête dorsale, l'autre signe distinctif. */}
+      <path
+        d="M-16 -22 l4 -6 l4 6 l4 -7 l4 7 l4 -6 l4 6"
+        stroke={couleur}
+        strokeWidth="2.5"
+        fill="none"
+        strokeLinejoin="round"
+        style={{ transition: 'stroke 600ms ease' }}
+      />
       {/* queue enroulée */}
       <path d="M-40 0 Q-58 -6 -52 -20 Q-48 -30 -40 -26" stroke={couleur} strokeWidth="6" fill="none" style={{ transition: 'stroke 600ms ease' }} />
     </g>

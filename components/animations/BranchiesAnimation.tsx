@@ -65,6 +65,14 @@ export function BranchiesAnimation({
       <g>
         <ellipse cx="180" cy="110" rx="60" ry="28" fill="#e8934a" />
         <path d="M240 110 L272 90 L272 130 Z" fill="#e8934a" />
+        {/*
+          Les nageoires. Sans elles, un ovale prolongé d'un triangle ressemble
+          plus à une saucisse qu'à un poisson — et la carte parle justement de
+          la façon dont il vit dans l'eau.
+        */}
+        <path d="M168 84 q14 -18 34 -4 Z" fill="#d07c32" />
+        <path d="M170 136 q12 16 30 4 Z" fill="#d07c32" />
+        <path d="M156 118 q-6 16 12 14 Z" fill="#d07c32" />
         <circle cx="132" cy="104" r="4" fill="#0f1b12" />
         {/* bouche */}
         <path d="M120 112 q-6 2 0 6" stroke="#7a3d12" strokeWidth="3" fill="none" />

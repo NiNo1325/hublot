@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v11';
+const VERSION = 'v12';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -26,6 +26,12 @@ const SHELL = [
   '/quizz',
   '/parcours',
   '/lumi',
+  // Les pages du menu de Lumi. Depuis qu'il est un menu, son écran ne contient
+  // plus rien par lui-même : sans ces trois routes, un démarrage à froid en
+  // voiture n'offrirait que trois rangées qui ne mènent nulle part.
+  '/lumi/mondes',
+  '/lumi/rangs',
+  '/lumi/cabinet',
   '/reglages',
   '/hors-ligne',
   '/manifest.webmanifest',

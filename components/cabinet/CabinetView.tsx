@@ -171,7 +171,7 @@ export function CabinetView() {
         onClick={() => router.push('/lumi')}
         className="min-h-12 cursor-pointer self-center rounded-full border-2 border-encre-bord px-6 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
       >
-        {t('cabinet.retour')}
+        {t('lumi.retour')}
       </button>
     </main>
   );

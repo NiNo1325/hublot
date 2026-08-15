@@ -10,6 +10,7 @@ import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
+import { Intitule } from '@/components/ui/Intitule';
 import { NotificationsToggle } from './NotificationsToggle';
 import { InfoVersion } from './InfoVersion';
 import { ouvrirTutoriel } from '@/components/tutoriel/useTutoriel';
@@ -21,15 +22,6 @@ const LANGUES: { code: Locale; nom: string; drapeau: string }[] = [
   { code: 'fr', nom: 'Français', drapeau: '🇫🇷' },
   { code: 'en', nom: 'English', drapeau: '🇬🇧' },
 ];
-
-/** Petit intitulé de section, en capitales, au-dessus de chaque carte. */
-function Intitule({ children }: { children: string }) {
-  return (
-    <h2 className="px-2 font-display text-xs font-semibold uppercase tracking-[0.15em] text-craie-douce">
-      {children}
-    </h2>
-  );
-}
 
 /**
  * Réglages, rangés par intention plutôt qu'en vrac : le profil (l'âge), l'écoute

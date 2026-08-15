@@ -8,7 +8,7 @@ import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useT } from '@/components/i18n/useT';
 
 /**
- * Barre d'onglets du bas : les cinq destinations de l'app, toujours au même
+ * Barre d'onglets du bas : les quatre destinations de l'app, toujours au même
  * endroit. Elle remplace les boutons « Menu / Retour » qui étaient éparpillés.
  *
  * L'onglet Lumi n'a pas d'emoji : c'est la mascotte elle-même, au rang courant,
@@ -20,11 +20,16 @@ import { useT } from '@/components/i18n/useT';
  * raccourcis installés sur l'écran d'accueil.
  */
 const ONGLETS = [
-  { href: '/decouvrir', icone: '🔭', cle: 'nav.decouvrir' },
-  { href: '/quizz', icone: '🎯', cle: 'nav.quizz' },
-  { href: '/parcours', icone: '🗺️', cle: 'nav.parcours' },
-  { href: '/lumi', icone: null, cle: 'nav.lumi' },
-  { href: '/reglages', icone: '⚙️', cle: 'nav.reglages' },
+  /*
+    `aussi` : les chemins qui appartiennent à l'onglet sans être sous son
+    préfixe. Le parcours guidé vit sous /parcours mais se choisit depuis
+    Découvrir ; sans cela, aucun onglet ne s'allumerait une fois dedans, et
+    l'enfant ne saurait plus où il se trouve.
+  */
+  { href: '/decouvrir', icone: '🔭', cle: 'nav.decouvrir', aussi: ['/parcours'] },
+  { href: '/joue', icone: '🎮', cle: 'nav.joue', aussi: [] },
+  { href: '/lumi', icone: null, cle: 'nav.lumi', aussi: [] },
+  { href: '/reglages', icone: '⚙️', cle: 'nav.reglages', aussi: [] },
 ] as const;
 
 export function BarreOnglets() {
@@ -37,9 +42,12 @@ export function BarreOnglets() {
     <nav className="fixed inset-x-0 bottom-0 z-30 border-t-2 border-encre-bord bg-encre/95 backdrop-blur">
       <ul className="mx-auto flex max-w-2xl">
         {ONGLETS.map((onglet) => {
-          // Découvrir reste actif sur le détail d'un domaine (/decouvrir/xxx).
+          // Un onglet reste actif dans toute sa descendance (/decouvrir/xxx),
+          // et sur les chemins qu'il héberge sans les préfixer.
+          const dansOnglet = (base: string) =>
+            pathname === base || pathname.startsWith(`${base}/`);
           const actif =
-            pathname === onglet.href || pathname.startsWith(`${onglet.href}/`);
+            dansOnglet(onglet.href) || onglet.aussi.some((chemin) => dansOnglet(chemin));
           return (
             <li key={onglet.href} className="flex-1">
               <Link

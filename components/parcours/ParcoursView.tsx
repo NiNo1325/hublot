@@ -116,14 +116,14 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
             <div className="flex flex-wrap items-center justify-center gap-3">
               <button
                 type="button"
-                onClick={() => router.push('/quizz')}
+                onClick={() => router.push('/joue/quizz')}
                 className="min-h-14 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-8 font-display text-base text-soleil transition-transform hover:scale-105 active:scale-95"
               >
                 {t('parcours.fini.quizz')}
               </button>
               <button
                 type="button"
-                onClick={() => router.push('/decouvrir')}
+                onClick={() => router.push('/decouvrir/mondes')}
                 className="min-h-14 cursor-pointer rounded-full border-2 border-encre-bord px-8 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
               >
                 {t('parcours.fini.explorer')}

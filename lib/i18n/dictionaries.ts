@@ -166,6 +166,29 @@ const fr = {
 
   'carte.deja-ecoutee': ', déjà écoutée',
   'carte.verrouillee': ', premium — à débloquer',
+
+  'commun.bientot': 'bientôt',
+
+  'nav.joue': 'Joue',
+
+  'hub.decouvrir.titre': 'Comment veux-tu découvrir ?',
+  'hub.decouvrir.texte': 'Deux façons d’avancer. Tu peux changer quand tu veux.',
+  'mode.explorer.titre': 'Exploration libre',
+  'mode.explorer.texte':
+    'Choisis ton monde et la carte qui t’attire. Aucun ordre, aucune obligation.',
+  'mode.parcours.titre': 'Parcours guidé',
+  'mode.parcours.texte':
+    'Lumi t’emmène de carte en carte, avec une petite question après chacune.',
+
+  'hub.joue.titre': 'À quoi joue-t-on ?',
+  'hub.joue.texte': 'Des jeux sur ce que tu as déjà écouté.',
+  'jeu.quizz.titre': 'Quizz',
+  'jeu.quizz.texte':
+    'Des questions sur tes cartes. Chaque bonne réponse te fait gagner une étoile.',
+  'jeu.memo.titre': 'Mémo',
+  'jeu.memo.texte': 'Retrouve les paires d’illustrations, de mémoire.',
+  'jeu.chrono.titre': 'Défi chrono',
+  'jeu.chrono.texte': 'Le quizz, mais contre la montre.',
 };
 
 /** Toutes les clés traduisibles, dérivées de la source française. */
@@ -325,6 +348,29 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
 
     'carte.deja-ecoutee': ', already listened to',
     'carte.verrouillee': ', premium — to unlock',
+
+    'commun.bientot': 'soon',
+
+    'nav.joue': 'Play',
+
+    'hub.decouvrir.titre': 'How would you like to explore?',
+    'hub.decouvrir.texte': 'Two ways to go. You can switch whenever you like.',
+    'mode.explorer.titre': 'Free exploration',
+    'mode.explorer.texte':
+      'Pick your world and whichever card draws you in. No order, no obligation.',
+    'mode.parcours.titre': 'Guided journey',
+    'mode.parcours.texte':
+      'Lumi takes you from card to card, with a little question after each one.',
+
+    'hub.joue.titre': 'What shall we play?',
+    'hub.joue.texte': 'Games about what you have already listened to.',
+    'jeu.quizz.titre': 'Quiz',
+    'jeu.quizz.texte':
+      'Questions about your cards. Every right answer earns you a star.',
+    'jeu.memo.titre': 'Memory',
+    'jeu.memo.texte': 'Find the matching pairs of illustrations, from memory.',
+    'jeu.chrono.titre': 'Time challenge',
+    'jeu.chrono.texte': 'The quiz, but against the clock.',
   },
 };
 

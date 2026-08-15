@@ -24,6 +24,15 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_BUILD: versionBuild(),
   },
+  /*
+    Les anciennes adresses continuent de mener quelque part. L'application
+    s'installe sur l'écran d'accueil, et un raccourci posé sur /quizz y reste
+    pointé bien après le regroupement des onglets : le laisser tomber sur une
+    404 casserait l'app pour qui l'avait rangée là.
+  */
+  async redirects() {
+    return [{ source: '/quizz', destination: '/joue/quizz', permanent: true }];
+  },
 };
 
 export default nextConfig;

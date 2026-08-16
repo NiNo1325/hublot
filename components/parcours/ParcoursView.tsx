@@ -8,10 +8,13 @@ import { progressionDomaine } from '@/lib/progression';
 import { ordreParcours, prochaineEtape } from '@/lib/parcours';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { questionsDe } from '@/content/quiz';
+import { expeditionDuJour, indexDuJour } from '@/lib/expedition';
+import { useExpeditionFaite } from '@/components/ciel/useExpeditionFaite';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { Lumi } from '@/components/mascotte/Lumi';
+import { Intitule } from '@/components/ui/Intitule';
 import { CardModal } from '@/components/cards/CardModal';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
@@ -33,10 +36,18 @@ function tirerQuestion(qs: QuizQuestion[]): QuizQuestion {
 }
 
 /**
- * Le mode guidé : un chemin linéaire à travers toutes les cartes. « Continuer »
- * mène à la prochaine carte non découverte, la raconte, puis pose une question
- * dessus, puis enchaîne. Épuré de toute statistique — le suivi (rang, badges)
- * vit dans l'onglet Lumi ; Découvrir et Quizz restent les modes libres.
+ * Le mode guidé, à deux rythmes.
+ *
+ * En tête, l'expédition du jour : trois cartes reliées par un thème, et une
+ * fin. C'est elle qui fait revenir demain, parce qu'elle se termine — dans une
+ * application pour enfants, celui qui décide du retour est le parent, et un
+ * parent ne relance que ce qui s'arrête tout seul.
+ *
+ * En dessous, le grand voyage : le chemin linéaire à travers les 150 cartes,
+ * pour qui veut avancer sans attendre le lendemain. Les deux partagent la même
+ * mécanique — raconter une carte, poser une question dessus, enchaîner.
+ *
+ * Épuré de toute statistique : le suivi (rang, badges) vit dans l'onglet Lumi.
  */
 export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   const router = useRouter();
@@ -45,7 +56,13 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   const { etoiles } = useEtoiles();
   const { locale } = useLocale();
   const t = useT();
+  const { faite, marquerFaite } = useExpeditionFaite();
   const [session, setSession] = useState<Session | null>(null);
+  /* Expédition en cours : la série est figée, on la parcourt dans l'ordre. */
+  const [expedition, setExpedition] = useState<{ cartes: ScienceCard[]; index: number } | null>(
+    null,
+  );
+  const [expeditionFinie, setExpeditionFinie] = useState(false);
 
   const ordre = useMemo(() => ordreParcours(cards, domains), [cards, domains]);
   const prochaine = prochaineEtape(ordre, cartesVues);
@@ -73,7 +90,39 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
   // La carte qu'on vient de faire est désormais « vue » : `prochaine` pointe donc
   // sur la suivante. `null` quand le parcours est terminé.
   const avancer = () => {
+    if (expedition) {
+      const suivant = expedition.index + 1;
+      if (suivant < expedition.cartes.length) {
+        setExpedition({ ...expedition, index: suivant });
+        setSession({ carte: expedition.cartes[suivant], phase: 'decouverte' });
+      } else {
+        // La date du jour n'est écrite qu'ici : une expédition abandonnée en
+        // route reste à faire, sinon quitter au milieu la ferait disparaître.
+        marquerFaite();
+        setExpedition(null);
+        setSession(null);
+        setExpeditionFinie(true);
+      }
+      return;
+    }
     setSession(prochaine ? { carte: prochaine, phase: 'decouverte' } : null);
+  };
+
+  const expeditionDuMoment = expeditionDuJour(indexDuJour(new Date()), cartesVues);
+  const trio = expeditionDuMoment.cartes
+    .map((id) => cards.find((c) => c.id === id))
+    .filter((c): c is ScienceCard => c !== undefined);
+
+  const lancerExpedition = () => {
+    if (trio.length === 0) return;
+    setExpeditionFinie(false);
+    setExpedition({ cartes: trio, index: 0 });
+    setSession({ carte: trio[0], phase: 'decouverte' });
+  };
+
+  const quitterSession = () => {
+    setSession(null);
+    setExpedition(null);
   };
 
   return (
@@ -89,6 +138,59 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
             {t('parcours.avancement')(decouvertes, ordre.length)}
           </p>
         </header>
+
+        {/*
+          L'expédition du jour, en tête. Trois cartes, un thème, une fin : c'est
+          le seul endroit de l'application qui change tout seul d'un jour sur
+          l'autre, et donc la seule raison de revenir qui ne dépende pas de la
+          culpabilité.
+        */}
+        <section className="flex flex-col gap-3">
+          <Intitule>{t('expedition.section')}</Intitule>
+          {expeditionFinie ? (
+            <div className="flex flex-col items-center gap-3 rounded-3xl border-2 border-soleil bg-soleil/10 p-6 text-center">
+              <Lumi rang={rang.index} taille={96} etat="fete" />
+              <p className="font-display text-xl text-soleil">{t('expedition.bravo')}</p>
+              <p className="text-craie-douce">{t('expedition.demain')}</p>
+            </div>
+          ) : faite ? (
+            <div className="flex items-center gap-4 rounded-3xl border-2 border-encre-bord bg-encre-clair px-5 py-4">
+              <span aria-hidden="true" className="text-3xl opacity-60">
+                {expeditionDuMoment.emoji}
+              </span>
+              <span className="flex flex-1 flex-col">
+                <span className="font-display text-base text-craie">{t('expedition.faite')}</span>
+                <span className="text-sm text-craie-douce">{t('expedition.demain')}</span>
+              </span>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={lancerExpedition}
+              className="flex cursor-pointer items-center gap-4 rounded-3xl border-2 border-soleil bg-soleil/10 px-5 py-4 text-left transition-transform hover:scale-[1.01] active:scale-95"
+            >
+              <span aria-hidden="true" className="text-4xl">
+                {expeditionDuMoment.emoji}
+              </span>
+              <span className="flex flex-1 flex-col">
+                <span className="font-display text-xl text-soleil">
+                  {localise(expeditionDuMoment.titre, locale)}
+                </span>
+                <span className="text-sm text-craie-douce">
+                  {t('expedition.combien')(
+                    trio.filter((c) => !cartesVues.has(c.id)).length,
+                    trio.length,
+                  )}
+                </span>
+                <span className="mt-1 font-display text-base text-craie">
+                  {t('expedition.partir')}
+                </span>
+              </span>
+            </button>
+          )}
+        </section>
+
+        <Intitule>{t('parcours.section-voyage')}</Intitule>
 
         {/* Le cœur du mode guidé : une seule action, la prochaine étape. */}
         {prochaine ? (
@@ -191,7 +293,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
           question={session.question}
           age={ageRange}
           onTermine={avancer}
-          onQuitter={() => setSession(null)}
+          onQuitter={quitterSession}
         />
       )}
     </>

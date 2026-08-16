@@ -7,6 +7,7 @@ import {
   totalDepense,
 } from '@/lib/portefeuille';
 import { OBJETS_PAR_PLANCHE, objetsCabinet } from '@/content/cabinet';
+import { cards } from '@/content/cards';
 
 /**
  * La règle d'or du porte-monnaie : les étoiles gagnées ne baissent jamais, donc
@@ -91,12 +92,21 @@ describe('catalogue du cabinet', () => {
 
   /*
     Le cabinet doit rester un horizon : s'il se vidait avant la fin du contenu,
-    il n'y aurait plus rien à convoiter. Son total dépasse donc ce qu'une
-    traversée complète rapporte (300 étoiles, cf. lib/etoiles.ts).
+    il n'y aurait plus rien à convoiter. Son total dépasse donc tout ce qui est
+    gagnable — une étoile par carte, cf. lib/etoiles.ts.
   */
-  it('coûte plus qu’une traversée complète du contenu', () => {
+  it('coûte plus que tout ce qui est gagnable', () => {
     const total = objetsCabinet.reduce((n, o) => n + o.prix, 0);
-    expect(total).toBeGreaterThan(300);
+    expect(total).toBeGreaterThan(cards.length);
+  });
+
+  /*
+    À l'autre bout : le premier objet doit tomber dès les premières cartes. Un
+    cabinet dont rien n'est accessible avant dix séances ne donne pas envie d'y
+    entrer, et l'enfant n'y revient plus.
+  */
+  it('met le premier objet à portée d’une première séance', () => {
+    expect(objetsCabinet[0].prix).toBeLessThanOrEqual(5);
   });
 
   /*

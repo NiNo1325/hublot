@@ -12,8 +12,11 @@ import type { Localise } from '@/lib/types';
  * qu'il prolonge le sujet au lieu de s'y substituer.
  *
  * Les prix montent avec la rareté supposée de l'objet, pas avec sa difficulté :
- * rien ici n'est un obstacle. Le total dépasse ce qu'une traversée complète du
- * contenu rapporte, pour qu'il reste toujours quelque chose à convoiter.
+ * rien ici n'est un obstacle. Ils sont calés sur les 150 étoiles du catalogue —
+ * une carte, une étoile — et non plus sur les 300 de l'ancienne économie : le
+ * premier objet s'obtient dès trois cartes, pour que la première séance donne
+ * déjà quelque chose à rapporter. Le total du catalogue dépasse largement ce
+ * qu'on peut gagner, pour qu'il reste toujours quelque chose à convoiter.
  */
 export interface ObjetCabinet {
   id: string;
@@ -36,7 +39,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'aimant',
     emoji: '🧲',
-    prix: 25,
+    prix: 3,
     nom: { fr: 'Un aimant', en: 'A magnet' },
     fait: {
       fr: 'La Terre entière est un aimant géant. C’est pour ça qu’une boussole sait où est le nord.',
@@ -46,7 +49,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'boussole',
     emoji: '🧭',
-    prix: 35,
+    prix: 5,
     nom: { fr: 'Une boussole', en: 'A compass' },
     fait: {
       fr: 'Son aiguille ne pointe pas tout à fait le vrai nord, mais le nord magnétique — et celui-ci se déplace un peu chaque année.',
@@ -56,7 +59,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'thermometre',
     emoji: '🌡️',
-    prix: 40,
+    prix: 8,
     nom: { fr: 'Un thermomètre', en: 'A thermometer' },
     fait: {
       fr: 'Le liquide monte parce qu’il gonfle en chauffant. Presque tout gonfle en chauffant, même les rails de train.',
@@ -66,7 +69,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'loupe',
     emoji: '🔍',
-    prix: 50,
+    prix: 12,
     nom: { fr: 'Une loupe', en: 'A magnifying glass' },
     fait: {
       fr: 'Elle courbe la lumière pour tromper ton œil : l’objet n’a pas grandi, ce sont ses rayons qui arrivent autrement.',
@@ -76,7 +79,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'ampoule',
     emoji: '💡',
-    prix: 60,
+    prix: 16,
     nom: { fr: 'Une ampoule', en: 'A light bulb' },
     fait: {
       fr: 'Dans une ampoule ancienne, un fil chauffe si fort qu’il devient blanc. Chauffe n’importe quoi assez fort, et ça brille.',
@@ -86,7 +89,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'sablier',
     emoji: '⏳',
-    prix: 70,
+    prix: 20,
     nom: { fr: 'Un sablier', en: 'An hourglass' },
     fait: {
       fr: 'Le sable coule toujours à la même vitesse, plein ou presque vide. Ce n’est pas le cas de l’eau.',
@@ -96,7 +99,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'fiole',
     emoji: '⚗️',
-    prix: 85,
+    prix: 25,
     nom: { fr: 'Une fiole', en: 'A flask' },
     fait: {
       fr: 'Son col étroit sert à faire tourner le liquide sans qu’il gicle. La forme d’un objet dit toujours à quoi il sert.',
@@ -106,7 +109,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'ammonite',
     emoji: '🐚',
-    prix: 100,
+    prix: 30,
     nom: { fr: 'Une ammonite', en: 'An ammonite' },
     fait: {
       fr: 'Cet animal en spirale nageait il y a plus de cent millions d’années. Sa coquille est devenue pierre, chambre par chambre.',
@@ -116,7 +119,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'microscope',
     emoji: '🔬',
-    prix: 120,
+    prix: 36,
     nom: { fr: 'Un microscope', en: 'A microscope' },
     fait: {
       fr: 'Le premier a révélé que l’eau d’une flaque grouille de bêtes vivantes. Personne ne voulait le croire.',
@@ -126,7 +129,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'telescope',
     emoji: '🔭',
-    prix: 140,
+    prix: 42,
     nom: { fr: 'Un télescope', en: 'A telescope' },
     fait: {
       fr: 'Celui de Galilée grossissait vingt fois à peine. Ça a suffi pour découvrir les lunes de Jupiter.',
@@ -136,7 +139,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'globe',
     emoji: '🌍',
-    prix: 160,
+    prix: 50,
     nom: { fr: 'Un globe', en: 'A globe' },
     fait: {
       fr: 'On savait la Terre ronde bien avant d’en faire le tour : son ombre sur la Lune est toujours un disque.',
@@ -146,7 +149,7 @@ export const objetsCabinet: ObjetCabinet[] = [
   {
     id: 'meteorite',
     emoji: '☄️',
-    prix: 200,
+    prix: 60,
     nom: { fr: 'Une météorite', en: 'A meteorite' },
     fait: {
       fr: 'La plupart sont plus vieilles que la Terre. Tenir une météorite, c’est tenir un morceau d’avant les planètes.',

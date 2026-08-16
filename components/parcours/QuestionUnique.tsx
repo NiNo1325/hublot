@@ -3,11 +3,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AgeRange, QuizQuestion, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
-import { rangDepuisEtoiles } from '@/lib/etoiles';
+import { etoilesAGagner, rangDepuisEtoiles } from '@/lib/etoiles';
 import { ordreLecture } from '@/content/quiz/ordre';
 import { useQuizAudio } from '@/components/quiz/useQuizAudio';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
-import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { maitriseesStockees, useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useCelebration } from '@/components/celebration/CelebrationProvider';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
@@ -113,10 +113,13 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
                   onClick={() => {
                     setChoisie(i);
                     if (reponse.correcte) {
+                      // Le gain se calcule AVANT de marquer la carte : après,
+                      // elle serait déjà maîtrisée et ne rapporterait rien.
+                      const gain = etoilesAGagner(card.id, maitriseesStockees());
                       marquerMaitrisee(card.id);
                       const avant = rangDepuisEtoiles(etoiles).rang;
-                      const apres = rangDepuisEtoiles(etoiles + 1).rang;
-                      gagnerEtoiles(1);
+                      const apres = rangDepuisEtoiles(etoiles + gain).rang;
+                      gagnerEtoiles(gain);
                       if (apres.index > avant.index) {
                         celebrer({
                           rang: apres.index,

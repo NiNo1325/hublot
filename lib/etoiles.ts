@@ -13,29 +13,42 @@ export interface Rang {
 }
 
 /*
-  Trois sources d'étoiles, une par bonne réponse : le parcours guidé pose une
-  question après chaque carte (150 pour une traversée complète), le quizz en
-  compte autant à chaque âge (150 de plus pour les avoir toutes vues), et le
-  Défi chrono en donne sans plafond, une dizaine par minute de jeu.
+  Une carte, une étoile — la première fois qu'on répond juste à sa question, et
+  une seule fois. Il y a donc exactement autant d'étoiles à gagner que de cartes
+  au catalogue (150), et chacune correspond à une étoile du ciel : le compteur
+  de Lumi et le ciel de l'accueil mesurent la même chose.
 
-  « Chercheur », au milieu de l'échelle, marque donc les 300 étoiles d'un
-  contenu entièrement parcouru — parcours et quizz une fois chacun. Les deux
-  derniers rangs récompensent la reprise : ils ne s'atteignent qu'en rejouant,
-  ce qui est le but.
+  C'est un renversement de l'économie précédente, où chaque bonne réponse
+  comptait sans plafond. Le rang mesurait alors autant la répétition que la
+  découverte : une traversée complète du contenu rapportait 300 étoiles et
+  plafonnait au troisième rang sur six, les deux derniers ne s'obtenant qu'en
+  rejouant des questions déjà réussies. Un fil rouge qui s'arrête à mi-chemin
+  pour l'enfant qui a tout appris n'en est pas un.
 
-  Le calibrage précédent supposait 150 étoiles pour tout le contenu et ne
-  comptait que le quizz, en oubliant le parcours. Il ignorait aussi le chrono,
-  qui n'existait pas encore et qui a supprimé tout plafond réel.
-  (À réviser si le nombre de cartes ou de modes change nettement.)
+  Les six seuils se répartissent donc sur les 150 cartes, et le dernier tombe à
+  130 plutôt qu'à 150 : deux buts qui s'achèvent sur le même geste s'annulent,
+  alors Lumi atteint sa forme finale un peu avant que le ciel ne soit complet.
+  (À réviser si le nombre de cartes change nettement.)
 */
 export const RANGS: Rang[] = [
   { index: 0, nom: { fr: 'Apprenti', en: 'Apprentice' }, icone: '🔭', seuil: 0 },
-  { index: 1, nom: { fr: 'Explorateur', en: 'Explorer' }, icone: '🧭', seuil: 60 },
-  { index: 2, nom: { fr: 'Aventurier', en: 'Adventurer' }, icone: '🚀', seuil: 150 },
-  { index: 3, nom: { fr: 'Chercheur', en: 'Researcher' }, icone: '🔬', seuil: 300 },
-  { index: 4, nom: { fr: 'Savant', en: 'Scholar' }, icone: '🎓', seuil: 550 },
-  { index: 5, nom: { fr: 'Génie', en: 'Genius' }, icone: '🧠', seuil: 850 },
+  { index: 1, nom: { fr: 'Explorateur', en: 'Explorer' }, icone: '🧭', seuil: 12 },
+  { index: 2, nom: { fr: 'Aventurier', en: 'Adventurer' }, icone: '🚀', seuil: 30 },
+  { index: 3, nom: { fr: 'Chercheur', en: 'Researcher' }, icone: '🔬', seuil: 55 },
+  { index: 4, nom: { fr: 'Savant', en: 'Scholar' }, icone: '🎓', seuil: 90 },
+  { index: 5, nom: { fr: 'Génie', en: 'Genius' }, icone: '🧠', seuil: 130 },
 ];
+
+/**
+ * Ce que rapporte une bonne réponse : une étoile la première fois seulement.
+ *
+ * Sans cette règle, refaire un quizz déjà réussi rapporterait autant que
+ * découvrir une carte neuve, et le rang cesserait de vouloir dire quelque
+ * chose. Le Défi chrono garde son intérêt par ses records, pas par ses étoiles.
+ */
+export function etoilesAGagner(cardId: string, dejaMaitrisees: Set<string>): number {
+  return dejaMaitrisees.has(cardId) ? 0 : 1;
+}
 
 /** Rang courant et rang suivant (ou `null` au dernier) pour un total d'étoiles. */
 export function rangDepuisEtoiles(total: number): { rang: Rang; rangProchain: Rang | null } {

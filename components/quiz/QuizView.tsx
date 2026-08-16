@@ -8,10 +8,10 @@ import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useQuizAudio } from './useQuizAudio';
 import { useEtoiles } from './useEtoiles';
-import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { maitriseesStockees, useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useCelebration } from '@/components/celebration/CelebrationProvider';
-import { rangDepuisEtoiles } from '@/lib/etoiles';
+import { etoilesAGagner, rangDepuisEtoiles } from '@/lib/etoiles';
 import { ordreLecture } from '@/content/quiz/ordre';
 import {
   construireSerie,
@@ -41,6 +41,13 @@ export function QuizView({ cards, domains }: QuizViewProps) {
   const [index, setIndex] = useState(0);
   const [choisie, setChoisie] = useState<number | null>(null);
   const [reussies, setReussies] = useState(0);
+  /*
+    Cartes réussies pour la première fois : ce sont elles qui rapportent une
+    étoile. `reussies` compte les bonnes réponses de la série, et sert au score
+    affiché ; refaire une question déjà réussie reste gratifiant à l'écran, mais
+    ne fait plus grandir Lumi — sinon le rang mesurerait la répétition.
+  */
+  const [nouvelles, setNouvelles] = useState(0);
   const { etoiles, gagnerEtoiles } = useEtoiles();
   const { marquerMaitrisee } = useCartesMaitrisees();
   // Bonnes réponses consécutives, pour un encouragement positif (jamais négatif).
@@ -102,6 +109,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     setIndex(0);
     setChoisie(null);
     setReussies(0);
+    setNouvelles(0);
     setDAffilee(0);
     // Lumi encourage au lancement depuis le menu — pas sur « rejouer » ni
     // « sujet suivant », où l'enfant est déjà lancé.
@@ -237,9 +245,18 @@ export function QuizView({ cards, domains }: QuizViewProps) {
 
         {/* Étoiles gagnées et total, jamais de sanction. */}
         <div className="flex flex-col items-center gap-2">
+          {/*
+            Le gain affiché est celui des cartes découvertes, pas des bonnes
+            réponses : annoncer « +5 ⭐ » puis n'en créditer qu'une passerait
+            pour une promesse non tenue. Une série entièrement rejouée affiche
+            donc « +0 », et la phrase ci-dessous dit pourquoi.
+          */}
           <p className="font-display text-2xl text-soleil">
-            +{reussies} <span aria-hidden="true">⭐</span>
+            +{nouvelles} <span aria-hidden="true">⭐</span>
           </p>
+          {nouvelles < reussies && (
+            <p className="text-sm text-craie-douce">{t('quizz.fin.deja')}</p>
+          )}
           <p className="text-craie-douce">
             <span aria-hidden="true">⭐</span> {t('quizz.fin.total')(etoiles)}{' '}
             <span aria-hidden="true">{rangApres.rang.icone}</span>{' '}
@@ -360,6 +377,10 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                     setReussies((n) => n + 1);
                     const enchainees = dAffilee + 1;
                     setDAffilee(enchainees);
+                    // Avant de marquer : après, la carte serait déjà maîtrisée.
+                    if (etoilesAGagner(tirage.carte.id, maitriseesStockees()) > 0) {
+                      setNouvelles((n) => n + 1);
+                    }
                     marquerMaitrisee(tirage.carte.id);
                     // Lumi surgit féliciter les séries : à 3, 6, 9… d'affilée,
                     // avec une intensité qui monte par paliers (1 → 3).
@@ -469,8 +490,8 @@ export function QuizView({ cards, domains }: QuizViewProps) {
               // si le total fait passer un rang, Lumi surgit féliciter l'enfant.
               if (index + 1 >= serie.length) {
                 const avant = rangDepuisEtoiles(etoiles).rang;
-                const apres = rangDepuisEtoiles(etoiles + reussies).rang;
-                gagnerEtoiles(reussies);
+                const apres = rangDepuisEtoiles(etoiles + nouvelles).rang;
+                gagnerEtoiles(nouvelles);
                 if (apres.index > avant.index) {
                   celebrer({
                     rang: apres.index,

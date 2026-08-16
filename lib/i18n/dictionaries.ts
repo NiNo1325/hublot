@@ -120,6 +120,27 @@ const fr = {
     `${nom}, place vide, ${prix} étoiles`,
   'cabinet.manque': (n: number) => `Il te manque ${n} ⭐ pour le rapporter sur ton étagère.`,
   'cabinet.gagner': 'Les étoiles se gagnent en répondant juste, dans les jeux et le parcours.',
+  'quizz.fin.deja': 'Ces cartes étaient déjà réussies : leurs étoiles sont déjà à toi.',
+  'ciel.titre': 'Ton ciel',
+  'ciel.compte': (n: number, total: number) =>
+    `${n} étoile${n > 1 ? 's' : ''} allumée${n > 1 ? 's' : ''} sur ${total}`,
+  'ciel.legende':
+    'Chaque carte est une étoile. Écoute-la, elle s’allume ; réponds à sa question, elle brille.',
+  'ciel.en-liste': 'Voir les mondes en liste',
+  'ciel.devenir': (n: number) => `encore ${n} ⭐ pour devenir`,
+  'ciel.monde-aria': (nom: string, allumees: number, total: number) =>
+    `${nom}, ${allumees} étoile${allumees > 1 ? 's' : ''} allumée${allumees > 1 ? 's' : ''} sur ${total}`,
+  'expedition.section': 'L’expédition du jour',
+  'expedition.titre': 'L’expédition du jour',
+  'expedition.combien': (neuves: number, total: number) =>
+    neuves > 0
+      ? `${total} cartes, dont ${neuves} nouvelle${neuves > 1 ? 's' : ''}`
+      : `${total} cartes à revoir`,
+  'expedition.partir': 'C’est parti !',
+  'expedition.bravo': 'Expédition terminée !',
+  'expedition.faite': 'Expédition du jour terminée ✓',
+  'expedition.demain': 'Une nouvelle t’attend demain.',
+  'parcours.section-voyage': 'Le grand voyage',
   'lumi.retour': 'Retour à Lumi',
   'lumi.section-progression': 'Ta progression',
   'lumi.section-collection': 'Tes trouvailles',
@@ -129,7 +150,7 @@ const fr = {
   'lumi.rangs': 'Les rangs de Lumi',
   'lumi.vers-rangs-detail': (n: number) => `${n} rangs à gravir`,
   'lumi.origine-etoiles':
-    'Lumi grandit avec tes étoiles. Tu en gagnes une à chaque bonne réponse, dans les jeux et dans le parcours. Écouter une carte n’en donne pas : c’est ce qui t’apprend à répondre.',
+    'Lumi grandit avec tes étoiles. Chaque carte en vaut une : tu la gagnes la première fois que tu réponds juste à sa question. Il y en a donc autant que d’étoiles dans ton ciel — cent cinquante.',
   'lumi.rang-atteint': 'atteint ✓',
   'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
     `${nom}, ${seuil} étoiles${atteint ? ', atteint' : ''}`,
@@ -197,8 +218,6 @@ const fr = {
 
   'nav.joue': 'Joue',
 
-  'hub.decouvrir.titre': 'Comment veux-tu découvrir ?',
-  'hub.decouvrir.texte': 'Deux façons d’avancer. Tu peux changer quand tu veux.',
   'mode.explorer.titre': 'Exploration libre',
   'mode.explorer.texte':
     'Choisis ton monde et la carte qui t’attire. Aucun ordre, aucune obligation.',
@@ -374,6 +393,27 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       `${nom}, empty spot, ${prix} stars`,
     'cabinet.manque': (n: number) => `You need ${n} more ⭐ to bring it to your shelf.`,
     'cabinet.gagner': 'Stars are earned by answering correctly, in the games and the journey.',
+    'quizz.fin.deja': 'You had already answered these cards: their stars are already yours.',
+    'ciel.titre': 'Your sky',
+    'ciel.compte': (n: number, total: number) =>
+      `${n} star${n === 1 ? '' : 's'} lit of ${total}`,
+    'ciel.legende':
+      'Every card is a star. Listen to it and it lights up; answer its question and it shines.',
+    'ciel.en-liste': 'See the worlds as a list',
+    'ciel.devenir': (n: number) => `${n} more ⭐ to become`,
+    'ciel.monde-aria': (nom: string, allumees: number, total: number) =>
+      `${nom}, ${allumees} star${allumees === 1 ? '' : 's'} lit of ${total}`,
+    'expedition.section': 'Today’s expedition',
+    'expedition.titre': 'Today’s expedition',
+    'expedition.combien': (neuves: number, total: number) =>
+      neuves > 0
+        ? `${total} cards, ${neuves} of them new`
+        : `${total} cards to revisit`,
+    'expedition.partir': 'Let’s go!',
+    'expedition.bravo': 'Expedition complete!',
+    'expedition.faite': 'Today’s expedition is done ✓',
+    'expedition.demain': 'A new one is waiting tomorrow.',
+    'parcours.section-voyage': 'The long journey',
     'lumi.retour': 'Back to Lumi',
     'lumi.section-progression': 'Your progress',
     'lumi.section-collection': 'Your finds',
@@ -383,7 +423,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'lumi.rangs': 'Lumi’s ranks',
     'lumi.vers-rangs-detail': (n: number) => `${n} ranks to climb`,
     'lumi.origine-etoiles':
-      'Lumi grows with your stars. You earn one for every right answer, in the games and in the journey. Listening to a card earns none: it is what teaches you the answer.',
+      'Lumi grows with your stars. Every card is worth one: you earn it the first time you answer its question correctly. So there are exactly as many as there are stars in your sky — one hundred and fifty.',
     'lumi.rang-atteint': 'reached ✓',
     'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
       `${nom}, ${seuil} stars${atteint ? ', reached' : ''}`,
@@ -451,8 +491,6 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
 
     'nav.joue': 'Play',
 
-    'hub.decouvrir.titre': 'How would you like to explore?',
-    'hub.decouvrir.texte': 'Two ways to go. You can switch whenever you like.',
     'mode.explorer.titre': 'Free exploration',
     'mode.explorer.texte':
       'Pick your world and whichever card draws you in. No order, no obligation.',

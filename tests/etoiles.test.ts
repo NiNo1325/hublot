@@ -1,8 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { RANGS, rangDepuisEtoiles, lireEtoiles } from '@/lib/etoiles';
-import { quizCartes } from '@/content/quiz';
+import { RANGS, etoilesAGagner, rangDepuisEtoiles, lireEtoiles } from '@/lib/etoiles';
+import { localise } from '@/lib/i18n/localise';
 import { cards } from '@/content/cards';
-import { AGE_RANGES } from '@/lib/types';
 
 describe('rangDepuisEtoiles', () => {
   it('donne le premier rang à 0 et sous le premier palier', () => {
@@ -39,31 +38,45 @@ describe('échelle des rangs', () => {
   });
 
   /*
-    Le garde-fou du calibrage. Les seuils ont été posés pour un catalogue
-    donné : si le contenu grandit sans qu'on y revienne, les derniers rangs
-    deviennent triviaux et l'échelle ne récompense plus rien. Ce test échoue
-    alors, et rappelle qu'il faut trancher plutôt que laisser filer.
+    Le garde-fou du calibrage. Les seuils sont posés sur le catalogue : une
+    carte vaut une étoile, la première fois qu'on répond juste à sa question,
+    donc il y a exactement autant d'étoiles à gagner que de cartes. Si le
+    contenu grandit sans qu'on y revienne, les derniers rangs deviennent
+    triviaux et l'échelle ne récompense plus rien : ce test échoue alors, et
+    rappelle qu'il faut trancher plutôt que laisser filer.
   */
-  const parTraversee =
-    cards.length +
-    AGE_RANGES.reduce(
-      (total, age) =>
-        Math.max(
-          total,
-          quizCartes.reduce((n, q) => n + q.questions.fr[age].length, 0),
-        ),
-      0,
-    );
-
-  it('place le rang médian sur une traversée complète du contenu', () => {
-    const median = RANGS[Math.floor(RANGS.length / 2)];
-    expect(median.seuil).toBe(parTraversee);
+  it('tient entièrement dans ce qui est gagnable', () => {
+    for (const rang of RANGS) {
+      expect(rang.seuil, localise(rang.nom, 'fr')).toBeLessThanOrEqual(cards.length);
+    }
   });
 
-  it('réserve les deux derniers rangs à la reprise', () => {
-    for (const rang of RANGS.slice(4)) {
-      expect(rang.seuil).toBeGreaterThan(parTraversee);
-    }
+  /*
+    Le dernier rang tombe avant la dernière carte, exprès : deux buts qui
+    s'achèvent sur le même geste s'annulent l'un l'autre. Lumi atteint sa forme
+    finale un peu avant que le ciel ne soit complet, ce qui laisse une raison
+    de finir les dernières cartes.
+  */
+  it('couronne Lumi avant que le ciel ne soit plein', () => {
+    const dernier = RANGS[RANGS.length - 1];
+    expect(dernier.seuil).toBeLessThan(cards.length);
+    expect(dernier.seuil).toBeGreaterThan(cards.length * 0.75);
+  });
+});
+
+describe('gain d’une bonne réponse', () => {
+  it('donne une étoile pour une carte neuve', () => {
+    expect(etoilesAGagner('les-volcans', new Set())).toBe(1);
+  });
+
+  /*
+    La règle qui empêche le rang de mesurer la répétition : refaire une
+    question déjà réussie ne rapporte plus rien. Sans elle, le Défi chrono —
+    qui se rejoue sans fin — permettrait d'atteindre le dernier rang sans
+    découvrir une seule carte de plus.
+  */
+  it('ne donne rien pour une carte déjà réussie', () => {
+    expect(etoilesAGagner('les-volcans', new Set(['les-volcans']))).toBe(0);
   });
 });
 

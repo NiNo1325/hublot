@@ -4,10 +4,10 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
-import { rangDepuisEtoiles } from '@/lib/etoiles';
+import { etoilesAGagner, rangDepuisEtoiles } from '@/lib/etoiles';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
-import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { maitriseesStockees, useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useLocale } from '@/components/i18n/useLocale';
 import { useT } from '@/components/i18n/useT';
 import { Lumi } from '@/components/mascotte/Lumi';
@@ -64,6 +64,12 @@ export function DefiChrono({ cards }: DefiChronoProps) {
   const [serie, setSerie] = useState<Tirage[] | null>(null);
   const [index, setIndex] = useState(0);
   const [reussies, setReussies] = useState(0);
+  /*
+    Cartes découvertes pendant la partie : seules celles-là rapportent une
+    étoile. Le chrono se rejoue sans fin, et créditer chaque bonne réponse
+    ferait du rang une mesure d'endurance. Ici, on revient pour son record.
+  */
+  const [nouvelles, setNouvelles] = useState(0);
   const [choisie, setChoisie] = useState<number | null>(null);
   /*
     Le crédit n'est pas un état : il ne s'affiche pas, et le passer par
@@ -96,10 +102,10 @@ export function DefiChrono({ cards }: DefiChronoProps) {
     if (!termine || crediteesRef.current) return;
     crediteesRef.current = true;
     arreterChrono();
-    if (reussies > 0) {
+    if (nouvelles > 0) {
       const avant = rangDepuisEtoiles(etoiles).rang;
-      const apres = rangDepuisEtoiles(etoiles + reussies).rang;
-      gagnerEtoiles(reussies);
+      const apres = rangDepuisEtoiles(etoiles + nouvelles).rang;
+      gagnerEtoiles(nouvelles);
       if (apres.index > avant.index) {
         celebrer({
           rang: apres.index,
@@ -112,6 +118,7 @@ export function DefiChrono({ cards }: DefiChronoProps) {
   }, [
     termine,
     reussies,
+    nouvelles,
     etoiles,
     gagnerEtoiles,
     celebrer,
@@ -128,6 +135,7 @@ export function DefiChrono({ cards }: DefiChronoProps) {
     setSerie(construireSerie(cards, cartesVues, ageRange, null, locale, Number.MAX_SAFE_INTEGER));
     setIndex(0);
     setReussies(0);
+    setNouvelles(0);
     setChoisie(null);
     crediteesRef.current = false;
     chrono.reinitialiser();
@@ -140,6 +148,9 @@ export function DefiChrono({ cards }: DefiChronoProps) {
     const juste = propositions[rang]?.correcte === true;
     if (juste) {
       setReussies((n) => n + 1);
+      if (etoilesAGagner(tirage.carte.id, maitriseesStockees()) > 0) {
+        setNouvelles((n) => n + 1);
+      }
       marquerMaitrisee(tirage.carte.id);
     }
     setTimeout(() => {
@@ -234,9 +245,17 @@ export function DefiChrono({ cards }: DefiChronoProps) {
           <h1 className="font-display text-3xl font-semibold sm:text-4xl">
             {t('chrono.fin')(reussies)}
           </h1>
-          <p className="font-display text-2xl text-soleil">
-            +{reussies} <span aria-hidden="true">⭐</span>
-          </p>
+          {/*
+            Le chrono se joue pour son record : le score domine, les étoiles ne
+            s'affichent que s'il y en a eu. Annoncer « +0 ⭐ » à chaque partie
+            ferait passer le mode pour une perte de temps, alors qu'il vaut par
+            le podium juste en dessous.
+          */}
+          {nouvelles > 0 && (
+            <p className="font-display text-2xl text-soleil">
+              +{nouvelles} <span aria-hidden="true">⭐</span>
+            </p>
+          )}
         </div>
 
         <div className="flex w-full max-w-xs flex-col items-center gap-3">

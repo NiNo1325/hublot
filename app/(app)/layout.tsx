@@ -4,6 +4,7 @@ import { BarreOnglets } from '@/components/nav/BarreOnglets';
 import { CelebrationProvider } from '@/components/celebration/CelebrationProvider';
 import { DetecteurProgres } from '@/components/celebration/DetecteurProgres';
 import { TutorielGate } from '@/components/tutoriel/TutorielGate';
+import { RepriseEtoiles } from '@/components/quiz/RepriseEtoiles';
 
 /**
  * Coquille des écrans principaux : le contenu, puis la barre d'onglets fixée en
@@ -18,6 +19,7 @@ import { TutorielGate } from '@/components/tutoriel/TutorielGate';
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <CelebrationProvider>
+      <RepriseEtoiles />
       <DetecteurProgres cards={cards} domains={domains} />
       <TutorielGate />
       <div className="flex flex-1 flex-col pb-24">{children}</div>

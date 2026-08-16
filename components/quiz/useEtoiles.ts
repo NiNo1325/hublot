@@ -47,5 +47,14 @@ export function useEtoiles() {
     publier('0');
   }, []);
 
-  return { etoiles: lireEtoiles(brut), gagnerEtoiles, oublierEtoiles };
+  /*
+    Pose un total, au lieu d'en ajouter. Réservé à la reprise des comptes
+    d'avant le changement d'économie (`RepriseEtoiles`) : partout ailleurs, une
+    étoile se gagne, elle ne se décrète pas.
+  */
+  const poserEtoiles = useCallback((n: number) => {
+    publier(String(Math.max(0, Math.floor(n))));
+  }, []);
+
+  return { etoiles: lireEtoiles(brut), gagnerEtoiles, oublierEtoiles, poserEtoiles };
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import type { ScienceCard } from '@/lib/types';
@@ -11,6 +11,7 @@ import { useAgeRange } from '@/components/age/useAgeRange';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useMusee } from '@/components/musee/useLiberes';
+import { useLienAudio } from '@/components/musee/useLienAudio';
 import { useLocale } from '@/components/i18n/useLocale';
 import { useT } from '@/components/i18n/useT';
 import { jouerSonPaire, jouerSonRate, jouerSonRecompense } from '@/lib/sonRecompense';
@@ -41,6 +42,7 @@ export function LiensView({ cards }: LiensViewProps) {
   const { liberes } = useMusee();
   const { locale } = useLocale();
   const t = useT();
+  const { presenter, direNom } = useLienAudio();
 
   const [manche, setManche] = useState<Manche | null>(null);
   const [choisi, setChoisi] = useState<string | null>(null);
@@ -120,6 +122,9 @@ export function LiensView({ cards }: LiensViewProps) {
       else jouerSonPaire();
       setRelies((liste) => [...liste, lien.savantId]);
       setChoisi(null);
+      // Le lien juste se raconte : c'est le seul moment où l'enfant a la réponse
+      // sous les yeux et l'attention disponible pour l'entendre.
+      presenter(lien.savantId, lien.carteId);
       return;
     }
     // Mauvais lien : un trait rouge fugace, et rien de plus.
@@ -213,7 +218,17 @@ export function LiensView({ cards }: LiensViewProps) {
         </p>
       </header>
 
-      <div ref={cadre} className="relative flex gap-3">
+      {/*
+        Une grille à deux colonnes, et non deux listes côte à côte : les
+        étiquettes de droite tiennent sur une ou deux lignes selon leur longueur,
+        si bien que les deux empilements se décalaient dès la première
+        découverte un peu longue — et les traits partaient de travers. Les
+        lignes de la grille imposent la même hauteur des deux côtés.
+      */}
+      <div
+        ref={cadre}
+        className="relative grid grid-cols-2 items-stretch gap-x-3 gap-y-3"
+      >
         {/* Les traits, tracés par-dessus les deux colonnes. */}
         <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full">
           {traits.map((trait) => (
@@ -230,71 +245,75 @@ export function LiensView({ cards }: LiensViewProps) {
           ))}
         </svg>
 
-        <ul className="flex flex-1 flex-col gap-3">
-          {manche.savants.map((lien) => {
-            const fait = relies.includes(lien.savantId);
-            const actif = choisi === lien.savantId;
-            return (
-              <li key={lien.savantId}>
-                <button
-                  type="button"
-                  onClick={() => !fait && setChoisi(lien.savantId)}
-                  disabled={fait}
-                  aria-pressed={actif}
-                  ref={(el) => {
-                    if (el) ancresGauche.current.set(lien.savantId, el);
-                    else ancresGauche.current.delete(lien.savantId);
-                  }}
-                  className={`${etiquette} gap-2 ${
-                    fait
-                      ? 'border-soleil/60 bg-soleil/10 opacity-70'
-                      : actif
-                        ? 'border-soleil bg-soleil/15'
-                        : 'border-encre-bord bg-encre-clair hover:border-soleil'
-                  }`}
-                >
-                  <Image
-                    src={lien.portrait}
-                    alt=""
-                    width={96}
-                    height={96}
-                    className="h-12 w-12 shrink-0 rounded-full object-cover"
-                  />
-                  <span className="text-xs leading-tight text-craie">{lien.nom}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+        {/*
+          Les deux colonnes s'entrelacent : portrait, découverte, portrait,
+          découverte. La grille impose alors la même hauteur aux deux cases d'une
+          même ligne, alors que deux listes indépendantes se décalaient dès
+          qu'une étiquette passait sur deux lignes — et les traits partaient de
+          travers.
+        */}
+        {manche.savants.map((gauche, rang) => {
+          const droite = manche.decouvertes[rang];
+          const faitG = relies.includes(gauche.savantId);
+          const actif = choisi === gauche.savantId;
+          const faitD = relies.includes(droite.savantId);
+          const rouge = rate === droite.savantId;
+          return (
+            <Fragment key={gauche.savantId}>
+              <button
+                type="button"
+                onClick={() => {
+                  if (faitG) return;
+                  setChoisi(gauche.savantId);
+                  // Le nom se prononce : un non-lecteur ne peut pas jouer sans
+                  // entendre qui il vient de choisir.
+                  direNom(gauche.savantId);
+                }}
+                disabled={faitG}
+                aria-pressed={actif}
+                ref={(el) => {
+                  if (el) ancresGauche.current.set(gauche.savantId, el);
+                  else ancresGauche.current.delete(gauche.savantId);
+                }}
+                className={`${etiquette} gap-2 ${
+                  faitG
+                    ? 'border-soleil/60 bg-soleil/10 opacity-70'
+                    : actif
+                      ? 'border-soleil bg-soleil/15'
+                      : 'border-encre-bord bg-encre-clair hover:border-soleil'
+                }`}
+              >
+                <Image
+                  src={gauche.portrait}
+                  alt=""
+                  width={96}
+                  height={96}
+                  className="h-12 w-12 shrink-0 rounded-full object-cover"
+                />
+                <span className="text-xs leading-tight text-craie">{gauche.nom}</span>
+              </button>
 
-        <ul className="flex flex-1 flex-col gap-3">
-          {manche.decouvertes.map((lien) => {
-            const fait = relies.includes(lien.savantId);
-            const rouge = rate === lien.savantId;
-            return (
-              <li key={lien.savantId}>
-                <button
-                  type="button"
-                  onClick={() => toucherDecouverte(lien)}
-                  disabled={fait}
-                  ref={(el) => {
-                    if (el) ancresDroite.current.set(lien.savantId, el);
-                    else ancresDroite.current.delete(lien.savantId);
-                  }}
-                  className={`${etiquette} ${
-                    fait
-                      ? 'border-soleil/60 bg-soleil/10 opacity-70'
-                      : rouge
-                        ? 'border-[#fb7185] bg-[#fb7185]/10'
-                        : 'border-encre-bord bg-encre-clair hover:border-soleil'
-                  }`}
-                >
-                  <span className="px-1 text-xs leading-snug text-craie">{lien.decouverte}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+              <button
+                type="button"
+                onClick={() => toucherDecouverte(droite)}
+                disabled={faitD}
+                ref={(el) => {
+                  if (el) ancresDroite.current.set(droite.savantId, el);
+                  else ancresDroite.current.delete(droite.savantId);
+                }}
+                className={`${etiquette} ${
+                  faitD
+                    ? 'border-soleil/60 bg-soleil/10 opacity-70'
+                    : rouge
+                      ? 'border-[#fb7185] bg-[#fb7185]/10'
+                      : 'border-encre-bord bg-encre-clair hover:border-soleil'
+                }`}
+              >
+                <span className="px-1 text-xs leading-snug text-craie">{droite.decouverte}</span>
+              </button>
+            </Fragment>
+          );
+        })}
       </div>
 
       <p aria-live="polite" className="text-center text-sm text-craie-douce">

@@ -105,9 +105,17 @@ export function Bandeau({
     <div className="flex w-full max-w-md flex-col items-center gap-3 rounded-3xl border-2 border-encre-bord bg-encre-clair p-4">
       {/* Les deux monnaies et le compte : tout l'état en une ligne. */}
       <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 font-display text-lg">
-        <span className="text-soleil">
+        {/*
+          L'étoile mène au cabinet : on suit la monnaie jusqu'à l'endroit où elle
+          se dépense, ce qu'aucune rangée de menu n'expliquait aussi bien.
+        */}
+        <Link
+          href="/lumi/cabinet"
+          aria-label={t('musee.vers-cabinet-aria')(etoiles)}
+          className="text-soleil underline-offset-4 transition-colors hover:underline"
+        >
           {etoiles} <span aria-hidden="true">⭐</span>
-        </span>
+        </Link>
         <span className="text-soleil">
           {cles} <span aria-hidden="true">🔑</span>
         </span>

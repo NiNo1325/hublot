@@ -108,8 +108,6 @@ export function MuseeView({ cards }: MuseeViewProps) {
 
   const { rang } = rangDepuisEtoiles(etoiles);
   const abordable = (s: SavantPrisonnier) => peutLiberer(gagnees, depensees, liberes, s);
-  const rangee =
-    'flex min-h-14 items-center gap-3 px-5 py-3 transition-colors hover:bg-encre-bord/30';
 
   const compte = Object.fromEntries(
     EPOQUES.map((e) => {
@@ -136,7 +134,19 @@ export function MuseeView({ cards }: MuseeViewProps) {
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-5 px-3 py-8 sm:px-4">
       <header className="flex flex-col items-center gap-3 text-center">
-        <Lumi rang={rang.index} taille={80} etat={enLecture ? 'content' : 'repos'} interactif />
+        {/*
+          Lumi mène à ses rangs, et l'étoile du bandeau à son cabinet : on va chez
+          elle en la touchant, et l'on suit sa monnaie jusqu'à là où elle se
+          dépense. La liste qui traînait tout en bas de l'écran était enterrée
+          sous cent treize cellules, où personne ne descend.
+        */}
+        <Link
+          href="/lumi/rangs"
+          aria-label={t('musee.vers-rangs')}
+          className="rounded-full transition-transform hover:scale-105 active:scale-95"
+        >
+          <Lumi rang={rang.index} taille={80} etat={enLecture ? 'content' : 'repos'} />
+        </Link>
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">{t('musee.titre')}</h1>
 
         <Bandeau
@@ -242,37 +252,6 @@ export function MuseeView({ cards }: MuseeViewProps) {
         {t('musee.legende')}
       </p>
 
-      {/*
-        Lumi habite le musée : son cabinet et ses rangs sont ici, à un geste, au
-        lieu d'occuper un onglet à eux. C'est le même lieu — elle vous accueille
-        à l'entrée, son cabinet est une salle, le mur est la galerie.
-      */}
-      <section className="flex flex-col gap-3">
-        <Intitule>{t('musee.chez-lumi')}</Intitule>
-        <div className="divide-y divide-encre-bord overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
-          <Link href="/lumi/cabinet" className={rangee}>
-            <span aria-hidden="true" className="text-2xl">
-              🗄️
-            </span>
-            <span className="flex-1 text-craie">{t('lumi.vers-cabinet')}</span>
-            <span className="font-display text-sm text-soleil">
-              {etoiles} <span aria-hidden="true">⭐</span>
-            </span>
-            <span aria-hidden="true" className="text-xl text-craie-douce">
-              ›
-            </span>
-          </Link>
-          <Link href="/lumi/rangs" className={rangee}>
-            <span aria-hidden="true" className="flex w-8 justify-center">
-              <Lumi rang={rang.index} taille={26} etat="statique" />
-            </span>
-            <span className="flex-1 text-craie">{t('lumi.rangs')}</span>
-            <span aria-hidden="true" className="text-xl text-craie-douce">
-              ›
-            </span>
-          </Link>
-        </div>
-      </section>
     </main>
   );
 }

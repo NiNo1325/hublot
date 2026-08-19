@@ -124,7 +124,7 @@ export function RangsView() {
 
       <button
         type="button"
-        onClick={() => router.push('/lumi')}
+        onClick={() => router.push('/musee')}
         className="min-h-12 cursor-pointer self-center rounded-full border-2 border-encre-bord px-6 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
       >
         {t('lumi.retour')}

@@ -4,6 +4,8 @@ import Image from 'next/image';
 import type { SavantPrisonnier } from '@/content/savants-cartes';
 import type { ScienceCard } from '@/lib/types';
 import { prixSavant } from '@/lib/cles';
+import { domainStyles } from '@/lib/domain-styles';
+import { useLienAudio } from './useLienAudio';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
 import { useT } from '@/components/i18n/useT';
@@ -47,6 +49,7 @@ export function FicheSavant({
   const { locale } = useLocale();
   const { ageRange } = useAgeRange();
   const t = useT();
+  const { presenter, arreter, enLecture } = useLienAudio();
   const prix = prixSavant(savant);
 
   const dates =
@@ -101,28 +104,61 @@ export function FicheSavant({
             <ul className="flex flex-col gap-3">
               {savant.cartes.map((c) => {
                 const carte = cards.find((k) => k.id === c.id);
+                const style = carte ? domainStyles[carte.domainId] : null;
+                const dit = enLecture === c.id;
                 return (
-                  <li key={c.id}>
+                  <li
+                    key={c.id}
+                    className="flex items-center gap-3 rounded-2xl border-2 border-encre-bord p-3"
+                  >
+                    {/*
+                      Le hublot de la carte, en petit : c'est le même disque
+                      coloré que dans Découvrir, et c'est lui qui fait le pont.
+                      L'enfant reconnaît l'objet qu'il a déjà vu ailleurs, et
+                      comprend sans qu'on lui dise que ce savant et cette carte
+                      parlent de la même chose.
+                    */}
                     <button
                       type="button"
                       onClick={() => carte && onEcouterCarte(carte)}
                       disabled={!carte}
-                      className="flex w-full cursor-pointer items-center gap-3 rounded-2xl border-2 border-encre-bord p-3 text-left transition-colors hover:border-soleil disabled:cursor-default"
+                      aria-label={
+                        carte && ageRange
+                          ? t('musee.ouvrir-carte')(localise(carte.content, locale).title[ageRange])
+                          : ''
+                      }
+                      className="flex h-14 w-14 shrink-0 cursor-pointer items-center justify-center rounded-full border-[3px] text-2xl transition-transform hover:scale-110 active:scale-95 disabled:cursor-default"
+                      style={{
+                        borderColor: style?.teinte ?? 'var(--color-encre-bord)',
+                        backgroundColor: 'var(--color-encre)',
+                        boxShadow: style ? `0 0 16px ${style.halo}` : 'none',
+                      }}
                     >
-                      <span className="flex flex-1 flex-col gap-1">
-                        {carte && ageRange && (
-                          <span className="font-display text-base text-soleil">
-                            {localise(carte.content, locale).title[ageRange]}
-                          </span>
-                        )}
-                        <span className="text-sm leading-relaxed text-craie-douce">{c.lien}</span>
-                      </span>
-                      <span
-                        aria-hidden="true"
-                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-encre-bord text-lg"
-                      >
-                        🔊
-                      </span>
+                      <span aria-hidden="true">{carte?.thumbnail}</span>
+                    </button>
+
+                    <span className="flex flex-1 flex-col gap-1">
+                      {carte && ageRange && (
+                        <span className="font-display text-base text-soleil">
+                          {localise(carte.content, locale).title[ageRange]}
+                        </span>
+                      )}
+                      <span className="text-sm leading-relaxed text-craie-douce">{c.lien}</span>
+                    </span>
+
+                    {/*
+                      Le son, sur son propre bouton. Il vivait à l'intérieur de
+                      celui qui ouvre la carte — un bouton dans un bouton, ce qui
+                      n'est pas du HTML valide — si bien qu'appuyer sur le
+                      haut-parleur ouvrait la carte au lieu de lire le texte.
+                    */}
+                    <button
+                      type="button"
+                      onClick={() => (dit ? arreter() : presenter(savant.id, c.id))}
+                      aria-label={dit ? t('quizz.arreter') : t('musee.ecouter-lien')}
+                      className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-lg transition-colors hover:border-soleil"
+                    >
+                      <span aria-hidden="true">{dit ? '⏸' : '🔊'}</span>
                     </button>
                   </li>
                 );

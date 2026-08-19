@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import type { SavantPrisonnier } from '@/content/savants-cartes';
 import type { ScienceCard } from '@/lib/types';
 import { prixSavant } from '@/lib/cles';
@@ -18,6 +17,8 @@ interface FicheSavantProps {
   solde: number;
   cards: ScienceCard[];
   onLiberer: () => void;
+  /** Ouvre la carte pour l'écouter, sans quitter le musée. */
+  onEcouterCarte: (carte: ScienceCard) => void;
   onFermer: () => void;
 }
 
@@ -40,9 +41,9 @@ export function FicheSavant({
   solde,
   cards,
   onLiberer,
+  onEcouterCarte,
   onFermer,
 }: FicheSavantProps) {
-  const router = useRouter();
   const { locale } = useLocale();
   const { ageRange } = useAgeRange();
   const t = useT();
@@ -91,9 +92,11 @@ export function FicheSavant({
         {libere ? (
           <>
             {/*
-              Ce qu'il a fait, carte par carte. C'est le contenu qui existe déjà
-              et il est vrai : chaque ligne dit ce que ce savant a réellement
-              apporté sur ce sujet précis.
+              Ce qu'il a fait, carte par carte, et surtout : écoutable sur place.
+              Ces lignes renvoyaient vers la liste de son monde, ce qui laissait
+              l'enfant chercher lui-même la carte dont on venait de lui parler —
+              et l'écoute, qui est le cœur de l'application, devenait le geste le
+              plus difficile à atteindre. La carte s'ouvre désormais ici même.
             */}
             <ul className="flex flex-col gap-3">
               {savant.cartes.map((c) => {
@@ -102,16 +105,24 @@ export function FicheSavant({
                   <li key={c.id}>
                     <button
                       type="button"
-                      onClick={() => router.push(`/decouvrir/${carte?.domainId ?? ''}`)}
+                      onClick={() => carte && onEcouterCarte(carte)}
                       disabled={!carte}
-                      className="flex w-full cursor-pointer flex-col gap-1 rounded-2xl border-2 border-encre-bord p-3 text-left transition-colors hover:border-soleil disabled:cursor-default"
+                      className="flex w-full cursor-pointer items-center gap-3 rounded-2xl border-2 border-encre-bord p-3 text-left transition-colors hover:border-soleil disabled:cursor-default"
                     >
-                      {carte && ageRange && (
-                        <span className="font-display text-base text-soleil">
-                          {localise(carte.content, locale).title[ageRange]}
-                        </span>
-                      )}
-                      <span className="text-sm leading-relaxed text-craie-douce">{c.lien}</span>
+                      <span className="flex flex-1 flex-col gap-1">
+                        {carte && ageRange && (
+                          <span className="font-display text-base text-soleil">
+                            {localise(carte.content, locale).title[ageRange]}
+                          </span>
+                        )}
+                        <span className="text-sm leading-relaxed text-craie-douce">{c.lien}</span>
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-encre-bord text-lg"
+                      >
+                        🔊
+                      </span>
                     </button>
                   </li>
                 );

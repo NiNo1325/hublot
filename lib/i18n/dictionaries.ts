@@ -91,6 +91,13 @@ const fr = {
       : 'Réponds juste et tu gagnes une clé pour le musée.',
   'invitation.oui': 'J’essaie !',
   'invitation.non': 'Plus tard',
+  'action.delivrer': (nom: string, prix: number) =>
+    `Tu peux délivrer quelqu’un ! ${nom}, pour ${prix} 🔑`,
+  'action.repondre': (n: number) =>
+    `Réponds à une question pour gagner une clé — il t’en reste ${n} à essayer`,
+  'action.ecouter': (n: number) =>
+    `Écoute une carte pour gagner une étoile — il t’en reste ${n} à découvrir`,
+  'action.complet': 'Tous les savants sont délivrés. Bravo !',
   'musee.chez-lumi': 'Chez Lumi',
   'musee.ligne-du-temps': 'La ligne du temps',
   'musee.dates.avant': (an: number) => `jusqu’en ${an}`,
@@ -389,6 +396,13 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
         : 'Answer correctly and you win a key for the museum.',
     'invitation.oui': 'I’ll try!',
     'invitation.non': 'Later',
+    'action.delivrer': (nom: string, prix: number) =>
+      `You can free someone! ${nom}, for ${prix} 🔑`,
+    'action.repondre': (n: number) =>
+      `Answer a question to win a key — ${n} still to try`,
+    'action.ecouter': (n: number) =>
+      `Listen to a card to win a star — ${n} still to discover`,
+    'action.complet': 'Every scientist is free. Well done!',
     'musee.chez-lumi': 'Lumi’s rooms',
     'musee.ligne-du-temps': 'Timeline',
     'musee.dates.avant': (an: number) => `up to ${an}`,

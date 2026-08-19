@@ -6,18 +6,23 @@ import { useRouter } from 'next/navigation';
 import type { ScienceCard } from '@/lib/types';
 import type { SavantPrisonnier } from '@/content/savants-cartes';
 import { EPOQUES, peutLiberer, savantsDeLEpoque, type IdEpoque } from '@/lib/cles';
+import { prochaineAction } from '@/lib/prochaine-action';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { histoire } from '@/content/histoire';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { Intitule } from '@/components/ui/Intitule';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
+import { useCartesVues } from '@/components/cards/useCartesVues';
+import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { CardModal } from '@/components/cards/CardModal';
 import { useCelebration } from '@/components/celebration/CelebrationProvider';
 import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
 import { useT } from '@/components/i18n/useT';
 import { useMusee } from './useLiberes';
 import { useHistoireAudio } from './useHistoireAudio';
+import { Bandeau } from './Bandeau';
 import { Cellule } from './Cellule';
 import { FicheSavant } from './FicheSavant';
 import { LigneDuTemps } from './LigneDuTemps';
@@ -63,7 +68,12 @@ export function MuseeView({ cards }: MuseeViewProps) {
   const celebrer = useCelebration();
   const { locale } = useLocale();
   const t = useT();
+  const { cartesVues } = useCartesVues();
+  const { cartesMaitrisees } = useCartesMaitrisees();
   const [ouvert, setOuvert] = useState<SavantPrisonnier | null>(null);
+  /* La carte qu'on écoute depuis la fiche d'un savant, sans quitter le musée. */
+  const [carteEcoutee, setCarteEcoutee] = useState<ScienceCard | null>(null);
+  const cellules = useRef(new Map<string, HTMLElement>());
   const [active, setActive] = useState<IdEpoque | null>(null);
   const galeries = useRef(new Map<IdEpoque, HTMLElement>());
 
@@ -129,42 +139,21 @@ export function MuseeView({ cards }: MuseeViewProps) {
         <Lumi rang={rang.index} taille={80} etat={enLecture ? 'content' : 'repos'} interactif />
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">{t('musee.titre')}</h1>
 
-        {/*
-          L'histoire, racontée d'emblée : c'est le seul endroit où la règle du jeu
-          se dit en mots. Un enfant de quatre ans ne la lira pas, donc la voix de
-          Lumi enchaîne les cinq temps d'une traite ; le texte suit à l'écran pour
-          celui qui lit, et pour l'adulte qui veut savoir ce qu'on raconte.
-        */}
-        <div className="flex w-full max-w-md flex-col items-center gap-3 rounded-3xl border-2 border-soleil/40 bg-soleil/5 p-4">
-          <p aria-live="polite" className="text-base leading-relaxed text-craie-douce">
-            {localise(histoire[indexDit].texte, locale)}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <button
-              type="button"
-              onClick={() => (enLecture ? arreter() : jouer(histoire[0].id))}
-              className="flex min-h-12 cursor-pointer items-center gap-2 rounded-full border-2 border-soleil bg-soleil/10 px-6 font-display text-base text-soleil transition-transform hover:scale-105 active:scale-95"
-            >
-              <span aria-hidden="true">{enLecture ? '⏸' : '🔊'}</span>
-              {enLecture ? t('histoire.arreter') : t('histoire.ecouter')}
-            </button>
-            <Link
-              href="/musee/histoire"
-              className="min-h-12 rounded-full border-2 border-encre-bord px-5 py-3 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
-            >
-              {t('musee.vers-histoire')}
-            </Link>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-          <p className="font-display text-lg text-craie">
-            {t('musee.compte')(liberes.length, total)}
-          </p>
-          <p className="font-display text-lg text-soleil">
-            {solde} <span aria-hidden="true">🔑</span>
-          </p>
-        </div>
+        <Bandeau
+          raconter={liberes.length === 0}
+          texteRecit={localise(histoire[indexDit].texte, locale)}
+          enLecture={enLecture !== null}
+          onEcouter={() => jouer(histoire[0].id)}
+          onArreter={arreter}
+          etoiles={etoiles}
+          cles={solde}
+          delivres={liberes.length}
+          total={total}
+          action={prochaineAction(cards, cartesVues, cartesMaitrisees, liberes, gagnees, depensees)}
+          onAllerAuSavant={(id) =>
+            cellules.current.get(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+          }
+        />
       </header>
 
       {/* Le mur, longé par sa ligne du temps. */}
@@ -199,13 +188,21 @@ export function MuseeView({ cards }: MuseeViewProps) {
                 </div>
                 <ul className="grid grid-cols-3 gap-2 rounded-3xl border-2 border-encre-bord bg-[#0d1424] p-2.5 sm:grid-cols-4 sm:gap-3 sm:p-4">
                   {dedans.map((s) => (
-                    <Cellule
+                    <span
                       key={s.id}
+                      ref={(el) => {
+                        if (el) cellules.current.set(s.id, el);
+                        else cellules.current.delete(s.id);
+                      }}
+                      className="contents"
+                    >
+                    <Cellule
                       savant={s}
                       libere={liberes.includes(s.id)}
                       abordable={abordable(s)}
                       onOuvrir={setOuvert}
                     />
+                    </span>
                   ))}
                 </ul>
               </section>
@@ -222,7 +219,22 @@ export function MuseeView({ cards }: MuseeViewProps) {
           solde={solde}
           cards={cards}
           onLiberer={() => delivrer(ouvert)}
+          onEcouterCarte={(carte) => {
+            // La fiche se ferme : deux surcouches empilées rendraient la
+            // fermeture ambiguë, et l'enfant veut revenir au mur, pas à la fiche.
+            setOuvert(null);
+            setCarteEcoutee(carte);
+          }}
           onFermer={() => setOuvert(null)}
+        />
+      )}
+
+      {carteEcoutee && (
+        <CardModal
+          key={carteEcoutee.id}
+          card={carteEcoutee}
+          ageRange={ageRange}
+          onClose={() => setCarteEcoutee(null)}
         />
       )}
 

@@ -13,18 +13,25 @@ interface CelluleProps {
   onOuvrir: (savant: SavantPrisonnier) => void;
 }
 
+/** Positions des barreaux verticaux, en pourcentage de la largeur. */
+const BARREAUX = [18, 39, 61, 82];
+
 /**
  * Une cellule du mur.
  *
- * Enfermé, le savant n'est qu'une ombre derrière ses barreaux : on ne voit pas
- * qui c'est, et c'est tout l'intérêt — la découverte du visage est la
- * récompense. Pour les portraits déjà dessinés, l'ombre est celle du vrai
- * portrait, noirci ; pour les autres, une silhouette générique en attendant
- * l'illustration.
+ * C'est une niche voûtée fermée par une grille : des barreaux verticaux tenus
+ * par deux traverses, avec un reflet métallique sur leur arête gauche et leur
+ * ombre portée sur le mur du fond. Le portrait est enfoncé dans le noir et pris
+ * dans un vignettage, si bien qu'on devine une présence sans reconnaître
+ * personne — la découverte du visage est la récompense, la révéler d'avance
+ * viderait le geste de son sel.
  *
- * Une cellule qu'on peut ouvrir se signale d'elle-même, par un halo doré et son
- * prix en clair. Sans ce signal, l'enfant devrait toucher les cent treize
- * cellules pour savoir laquelle est à sa portée.
+ * Une cellule à portée de clés porte son cadenas en or ; les autres l'ont terne.
+ * Sans ce signal, l'enfant devrait toucher cent treize cellules pour savoir
+ * laquelle il peut ouvrir.
+ *
+ * Délivré, tout change d'un coup : la grille disparaît, la lumière entre, et le
+ * portrait se retrouve encadré d'or avec son nom sur une plaque, comme au musée.
  */
 export function Cellule({ savant, libere, abordable, onOuvrir }: CelluleProps) {
   const t = useT();
@@ -36,50 +43,118 @@ export function Cellule({ savant, libere, abordable, onOuvrir }: CelluleProps) {
         type="button"
         onClick={() => onOuvrir(savant)}
         aria-label={
-          libere
-            ? t('musee.cellule-libre')(savant.nom)
-            : t('musee.cellule-fermee')(prix)
+          libere ? t('musee.cellule-libre')(savant.nom) : t('musee.cellule-fermee')(prix)
         }
-        className={`flex w-full cursor-pointer flex-col items-center gap-1 rounded-2xl p-1.5 transition-[transform,opacity] hover:scale-105 active:scale-95 ${
-          libere || abordable ? '' : 'opacity-45'
+        className={`flex w-full cursor-pointer flex-col items-center gap-1 transition-transform hover:scale-105 active:scale-95 ${
+          libere || abordable ? '' : 'opacity-60'
         }`}
       >
-        <span className="relative block aspect-square w-full overflow-hidden rounded-xl bg-[#1b2540]">
+        <span
+          className={`relative block aspect-[3/4] w-full overflow-hidden rounded-b-lg rounded-t-[46%] border-2 transition-colors ${
+            libere
+              ? 'border-soleil/70 bg-[#2a2214] shadow-[0_0_16px_rgba(255,182,39,0.25)]'
+              : 'border-[#39435c] bg-[#0a0f1c]'
+          }`}
+        >
           <Image
-              src={`/images/wall-of-fame/${savant.id}.webp`}
-              alt=""
-              fill
-              sizes="120px"
-              className={`object-cover transition-[filter] duration-500 ${
-                libere ? '' : 'grayscale brightness-[0.22] contrast-125'
-              }`}
-            />
+            src={`/images/wall-of-fame/${savant.id}.webp`}
+            alt=""
+            fill
+            sizes="120px"
+            className={`object-cover object-top transition-[filter] duration-700 ${
+              libere ? '' : 'grayscale brightness-[0.3] contrast-125'
+            }`}
+          />
 
-          {/* Les barreaux : dessinés par-dessus, pas dans l'image, pour qu'ils
-              disparaissent d'un coup à la libération. */}
+          {/* Le fond de niche : la lumière tombe du haut, le bas reste dans l'ombre. */}
+          <span
+            aria-hidden="true"
+            className={`absolute inset-0 ${
+              libere
+                ? 'bg-[radial-gradient(ellipse_at_50%_15%,transparent_35%,rgba(10,15,28,0.55)_100%)]'
+                : 'bg-[radial-gradient(ellipse_at_50%_20%,transparent_20%,rgba(4,7,14,0.85)_95%)]'
+            }`}
+          />
+
           {!libere && (
             <span aria-hidden="true" className="absolute inset-0">
-              <svg viewBox="0 0 100 100" className="h-full w-full">
-                {[18, 34, 50, 66, 82].map((x) => (
-                  <line
+              <svg viewBox="0 0 75 100" preserveAspectRatio="none" className="h-full w-full">
+                <defs>
+                  {/*
+                    Le métal : sombre sur les flancs, clair sur l'arête qui prend
+                    la lumière. C'est ce dégradé qui donne du volume aux barreaux
+                    — quatre traits plats se lisaient comme une hachure.
+                  */}
+                  <linearGradient id={`fer-${savant.id}`} x1="0" x2="1" y1="0" y2="0">
+                    <stop offset="0" stopColor="#41506e" />
+                    <stop offset="0.3" stopColor="#8b9ab8" />
+                    <stop offset="0.6" stopColor="#55617c" />
+                    <stop offset="1" stopColor="#2b3348" />
+                  </linearGradient>
+                </defs>
+
+                {/* L'ombre portée de la grille sur le mur du fond. */}
+                {BARREAUX.map((x) => (
+                  <rect
+                    key={`ombre-${x}`}
+                    x={x - 1}
+                    y="0"
+                    width="4.4"
+                    height="100"
+                    fill="#04070e"
+                    opacity="0.55"
+                  />
+                ))}
+
+                {/* Les traverses, qui tiennent la grille et lui donnent son air de porte. */}
+                {[30, 70].map((y) => (
+                  <rect
+                    key={`traverse-${y}`}
+                    x="0"
+                    y={y}
+                    width="75"
+                    height="4"
+                    fill={`url(#fer-${savant.id})`}
+                  />
+                ))}
+
+                {BARREAUX.map((x) => (
+                  <rect
                     key={x}
-                    x1={x}
-                    y1="0"
-                    x2={x}
-                    y2="100"
-                    stroke="#64748b"
-                    strokeWidth="4"
-                    strokeOpacity="0.85"
+                    x={x - 2.2}
+                    y="0"
+                    width="4.4"
+                    height="100"
+                    fill={`url(#fer-${savant.id})`}
                   />
                 ))}
               </svg>
             </span>
           )}
+
+          {/* Le cadenas : doré quand la cellule est à portée de clés, terne sinon. */}
+          {!libere && (
+            <span
+              aria-hidden="true"
+              className={`absolute bottom-[6%] left-1/2 -translate-x-1/2 text-[13px] leading-none ${
+                abordable
+                  ? 'opacity-100 drop-shadow-[0_0_5px_rgba(255,182,39,0.9)]'
+                  : 'opacity-45 grayscale'
+              }`}
+            >
+              🔒
+            </span>
+          )}
         </span>
 
+        {/* La plaque : le nom une fois délivré, le prix tant qu'il est enfermé. */}
         <span
-          className={`text-center text-[10px] leading-tight ${
-            libere ? 'text-craie' : abordable ? 'text-soleil' : 'text-craie-douce/60'
+          className={`w-full rounded-md px-1 py-0.5 text-center text-[10px] leading-tight ${
+            libere
+              ? 'bg-soleil/15 text-craie'
+              : abordable
+                ? 'text-soleil'
+                : 'text-craie-douce/60'
           }`}
         >
           {libere ? (

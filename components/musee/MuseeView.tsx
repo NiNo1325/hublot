@@ -197,7 +197,7 @@ export function MuseeView({ cards }: MuseeViewProps) {
                     {compte[epoque.id].libres}/{dedans.length}
                   </span>
                 </div>
-                <ul className="grid grid-cols-4 gap-2 rounded-3xl border-2 border-encre-bord bg-[#0d1424] p-3 sm:grid-cols-5">
+                <ul className="grid grid-cols-3 gap-2 rounded-3xl border-2 border-encre-bord bg-[#0d1424] p-2.5 sm:grid-cols-4 sm:gap-3 sm:p-4">
                   {dedans.map((s) => (
                     <Cellule
                       key={s.id}

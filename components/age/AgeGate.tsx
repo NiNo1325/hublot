@@ -16,9 +16,14 @@ export function AgeGate() {
   const router = useRouter();
   const { age, ageRange, status, choisirAge } = useAgeRange();
 
-  // Visiteur connu : on entre directement dans l'app.
+  /*
+    Visiteur connu : on entre directement dans l'app, et l'on entre par le
+    musée. C'est lui qui porte le récit — les savants enfermés, ce que Lumi
+    demande — et arriver sur la bibliothèque ferait manquer la raison de tout
+    le reste.
+  */
   useEffect(() => {
-    if (status === 'pret' && ageRange) router.replace('/decouvrir');
+    if (status === 'pret' && ageRange) router.replace('/musee');
   }, [status, ageRange, router]);
 
   // Pendant la lecture du stockage — ou si l'âge est déjà connu (redirection en
@@ -41,7 +46,7 @@ export function AgeGate() {
         labelValider="C'est parti"
         onValider={(choisi) => {
           choisirAge(choisi);
-          router.replace('/decouvrir');
+          router.replace('/musee');
         }}
       />
     </main>

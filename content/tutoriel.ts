@@ -30,33 +30,33 @@ export interface EcranTuto {
 
 export const ecransTuto: EcranTuto[] = [
   {
-    id: 'decouvrir',
+    id: 'musee',
     rang: 0,
+    emoji: null,
+    titre: { fr: 'Le musée', en: 'The museum' },
+    texte: {
+      fr: "Coucou, moi c'est Lumi ! Regarde tous ces savants derrière les barreaux : on les a oubliés, et l'oubli les a enfermés. Ensemble, on va les délivrer.",
+      en: 'Hello, I’m Lumi! Look at all these scientists behind bars: they were forgotten, and forgetting locked them up. Together, we are going to set them free.',
+    },
+  },
+  {
+    id: 'decouvrir',
+    rang: 2,
     emoji: '🔭',
     titre: { fr: 'Découvrir', en: 'Explore' },
     texte: {
-      fr: "Coucou, moi c'est Lumi ! Ici, tu trouves toutes les cartes à écouter. Tu choisis librement, ou tu me laisses te guider d'une carte à l'autre.",
-      en: 'Hello, I’m Lumi! This is where all the cards to listen to live. You choose freely, or you let me guide you from one card to the next.',
+      fr: 'À côté, tu trouves toutes les cartes à écouter. Chaque carte que tu écoutes te donne une étoile, et les étoiles me font grandir.',
+      en: 'Next door, you’ll find all the cards to listen to. Every card you listen to gives you a star, and the stars make me grow.',
     },
   },
   {
     id: 'joue',
-    rang: 2,
+    rang: 3,
     emoji: '🎮',
     titre: { fr: 'Joue', en: 'Play' },
     texte: {
-      fr: 'Ici, on joue avec ce que tu as appris : des questions, des paires à retrouver, et un défi contre la montre.',
-      en: 'Here we play with what you have learnt: questions, pairs to match, and a challenge against the clock.',
-    },
-  },
-  {
-    id: 'lumi',
-    rang: 4,
-    emoji: null,
-    titre: { fr: 'Et moi, Lumi', en: 'And me, Lumi' },
-    texte: {
-      fr: 'Chaque bonne réponse te donne une étoile, et les étoiles me font grandir. Tu me trouves ici, avec tout ce que tu as déjà exploré.',
-      en: 'Every right answer gives you a star, and the stars make me grow. You’ll find me here, with everything you have explored so far.',
+      fr: 'Ici, on joue avec ce que tu as appris. Chaque bonne réponse te donne une clé — et chaque clé ouvre la cellule d’un savant.',
+      en: 'Here we play with what you have learnt. Every right answer gives you a key — and every key opens a scientist’s cell.',
     },
   },
   {

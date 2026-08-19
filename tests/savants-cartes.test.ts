@@ -1,76 +1,82 @@
 import { describe, expect, it } from 'vitest';
-import { appariements } from '@/content/savants-cartes';
-import { savants } from '@/content/savants';
+import { savantsPrisonniers } from '@/content/savants-cartes';
 import { cards } from '@/content/cards';
 
+const toutesLesCartes = savantsPrisonniers.flatMap((s) => s.cartes);
+
 /**
- * Le fil rouge repose sur une bijection : chaque carte tient un savant
- * prisonnier, chaque savant est tenu par une seule carte. Si elle se rompait,
- * un savant resterait enfermé pour toujours — ou deux se libéreraient d'un
- * coup, ce qui viderait la libération de son sens.
+ * La règle du fil rouge est asymétrique : une carte n'a qu'un savant, un savant
+ * peut tenir plusieurs cartes. Si une carte tombait entre deux savants, elle en
+ * libérerait deux d'un coup ; si une carte n'en avait aucun, elle ne
+ * libérerait personne et l'enfant ne comprendrait pas pourquoi.
  */
-describe('appariement carte ↔ savant', () => {
+describe('les savants et leurs cartes', () => {
   it('couvre toutes les cartes du catalogue', () => {
-    expect(appariements).toHaveLength(cards.length);
-    const apparies = new Set(appariements.map((a) => a.carte));
+    const couvertes = new Set(toutesLesCartes.map((c) => c.id));
     for (const carte of cards) {
-      expect(apparies.has(carte.id), carte.id).toBe(true);
+      expect(couvertes.has(carte.id), carte.id).toBe(true);
     }
+    expect(couvertes.size).toBe(cards.length);
   });
 
   it('ne cite que des cartes existantes', () => {
     const ids = new Set(cards.map((c) => c.id));
-    for (const a of appariements) {
-      expect(ids.has(a.carte), a.carte).toBe(true);
+    for (const c of toutesLesCartes) {
+      expect(ids.has(c.id), c.id).toBe(true);
     }
   });
 
-  it('n’attribue jamais deux savants à la même carte', () => {
-    const vues = appariements.map((a) => a.carte);
-    expect(new Set(vues).size).toBe(vues.length);
+  /* Le point dur : une carte ne peut appartenir qu'à un seul savant. */
+  it('n’attribue jamais une carte à deux savants', () => {
+    const vues = toutesLesCartes.map((c) => c.id);
+    const doublons = vues.filter((id, i) => vues.indexOf(id) !== i);
+    expect(doublons, `cartes réclamées deux fois : ${doublons.join(', ')}`).toEqual([]);
   });
 
-  it('n’enferme jamais un savant derrière deux cartes', () => {
-    const slugs = appariements.map((a) => a.savant);
-    expect(new Set(slugs).size).toBe(slugs.length);
+  it('donne au moins une carte à chaque savant', () => {
+    for (const s of savantsPrisonniers) {
+      expect(s.cartes.length, s.nom).toBeGreaterThan(0);
+    }
+  });
+
+  it('n’a pas deux savants sous le même identifiant', () => {
+    const ids = savantsPrisonniers.map((s) => s.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 
   /*
-    Le slug nomme le fichier d'illustration : un caractère accentué ou une
-    majuscule casserait le chemin sur un serveur sensible à la casse.
+    Le slug nomme le fichier d'illustration : un accent ou une majuscule
+    casserait le chemin sur un serveur sensible à la casse.
   */
   it('donne à chaque savant un slug de fichier valide', () => {
-    for (const a of appariements) {
-      expect(a.savant, a.nom).toMatch(/^[a-z0-9-]+$/);
+    for (const s of savantsPrisonniers) {
+      expect(s.id, s.nom).toMatch(/^[a-z0-9-]+$/);
     }
   });
 
   it('donne des dates cohérentes', () => {
-    for (const a of appariements) {
-      expect(a.naissance, a.nom).toBeLessThan(new Date().getFullYear());
-      if (a.mort !== null) {
-        expect(a.mort, a.nom).toBeGreaterThan(a.naissance);
+    for (const s of savantsPrisonniers) {
+      expect(s.naissance, s.nom).toBeLessThan(new Date().getFullYear());
+      if (s.mort !== null) expect(s.mort, s.nom).toBeGreaterThan(s.naissance);
+    }
+  });
+
+  it('écrit un lien pour chaque carte tenue', () => {
+    for (const s of savantsPrisonniers) {
+      for (const c of s.cartes) {
+        expect(c.lien.length, `${s.nom} / ${c.id}`).toBeGreaterThan(30);
+        expect(c.lien.endsWith('.'), `${s.nom} / ${c.id}`).toBe(true);
       }
     }
   });
 
-  it('écrit un lien pour chaque savant', () => {
-    for (const a of appariements) {
-      expect(a.lien.length, a.nom).toBeGreaterThan(30);
-      expect(a.lien.endsWith('.'), a.nom).toBe(true);
-    }
-  });
-
   /*
-    Les vingt savants déjà illustrés doivent tous être repris : leurs images
-    existent, en perdre un reviendrait à jeter une illustration et à en
-    commander une autre pour rien.
+    Le prix d'une cellule est le nombre de cartes tenues. La somme vaut donc
+    exactement le nombre de cartes : libérer tout le monde, c'est avoir répondu
+    juste à toutes les questions au moins une fois — ni plus, ni moins.
   */
-  it('reprend les vingt savants déjà illustrés', () => {
-    const repris = new Set(appariements.filter((a) => a.illustre).map((a) => a.savant));
-    expect(repris.size).toBe(savants.length);
-    for (const s of savants) {
-      expect(repris.has(s.id), s.id).toBe(true);
-    }
+  it('coûte en clés exactement ce que le catalogue peut en donner', () => {
+    const total = savantsPrisonniers.reduce((n, s) => n + s.cartes.length, 0);
+    expect(total).toBe(cards.length);
   });
 });

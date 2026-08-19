@@ -17,7 +17,7 @@
   "maskableIconUrl": "https://hublot-ruby.vercel.app/icones/icone-512.png",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
-    "path": "C:\\Users\\Nicolas Notte\\Dropbox\\Projets Divers\\science\\android\\android.keystore",
+    "path": "C:\\Applications\\science\\android\\android.keystore",
     "alias": "android"
   },
   "appVersionName": "5",

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useRouter } from 'next/navigation';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { construirePlateau, sApparient, type TuileMemo } from '@/lib/memo';
@@ -160,7 +160,7 @@ export function MemoView() {
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-5 py-8">
+    <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-4 px-4 py-6">
       <header className="flex items-center justify-between gap-3">
         <h1 className="font-display text-lg text-craie">{titre}</h1>
         <span className="text-sm tabular-nums text-craie-douce">{t('memo.coups')(coups)}</span>
@@ -173,47 +173,59 @@ export function MemoView() {
         </p>
       )}
 
-      <ul className="grid grid-cols-4 gap-2.5 sm:gap-3">
-        {plateau.map((tuile) => {
-          const ouverte = retournees.includes(tuile.id) || trouvees.includes(tuile.paire);
-          // Un savant n'appartient à aucun monde : il porte la teinte du soleil.
-          const teinte = 'var(--color-soleil)';
-          const halo = 'rgba(255,182,39,0.35)';
-          return (
-            <li key={tuile.id}>
-              <button
-                type="button"
-                onClick={() => retourner(tuile)}
-                disabled={ouverte}
-                aria-label={ouverte ? tuile.nom : t('memo.tuile-cachee')}
-                className="flex aspect-square w-full cursor-pointer items-center justify-center rounded-2xl border-2 p-1 transition-transform duration-150 hover:scale-105 active:scale-95 disabled:cursor-default disabled:hover:scale-100"
-                style={{
-                  borderColor: ouverte ? teinte : 'var(--color-encre-bord)',
-                  backgroundColor: 'var(--color-encre-clair)',
-                  boxShadow: ouverte ? `0 0 18px ${halo}` : 'none',
-                  /* Une paire trouvée s'efface sans disparaître : la place reste
-                     lisible, et l'enfant voit ce qu'il a déjà gagné. */
-                  opacity: trouvees.includes(tuile.paire) ? 0.45 : 1,
-                }}
-              >
-                {ouverte ? (
-                  <Image
-                    src={tuile.face}
-                    alt=""
-                    width={640}
-                    height={640}
-                    className="h-full w-full rounded-xl object-cover"
-                  />
-                ) : (
-                  <span className="text-2xl opacity-30" aria-hidden="true">
-                    ✦
-                  </span>
-                )}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      {/*
+        Ce conteneur occupe ce qui reste de l'écran et y centre le plateau. Le
+        `min-h-0` est indispensable : sans lui, un enfant de flex refuse de
+        descendre sous sa hauteur de contenu, et le plateau déborderait au lieu de
+        se réduire.
+      */}
+      <div className="flex min-h-0 flex-1 items-center justify-center">
+        <ul
+          className="plateau-memo grid gap-2.5 sm:gap-3"
+          data-tuiles={plateau.length}
+          style={{ '--tuiles': plateau.length } as CSSProperties}
+        >
+          {plateau.map((tuile) => {
+            const ouverte = retournees.includes(tuile.id) || trouvees.includes(tuile.paire);
+            // Un savant n'appartient à aucun monde : il porte la teinte du soleil.
+            const teinte = 'var(--color-soleil)';
+            const halo = 'rgba(255,182,39,0.35)';
+            return (
+              <li key={tuile.id} className="h-full">
+                <button
+                  type="button"
+                  onClick={() => retourner(tuile)}
+                  disabled={ouverte}
+                  aria-label={ouverte ? tuile.nom : t('memo.tuile-cachee')}
+                  className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl border-2 p-1 transition-transform duration-150 hover:scale-105 active:scale-95 disabled:cursor-default disabled:hover:scale-100"
+                  style={{
+                    borderColor: ouverte ? teinte : 'var(--color-encre-bord)',
+                    backgroundColor: 'var(--color-encre-clair)',
+                    boxShadow: ouverte ? `0 0 18px ${halo}` : 'none',
+                    /* Une paire trouvée s'efface sans disparaître : la place reste
+                       lisible, et l'enfant voit ce qu'il a déjà gagné. */
+                    opacity: trouvees.includes(tuile.paire) ? 0.45 : 1,
+                  }}
+                >
+                  {ouverte ? (
+                    <Image
+                      src={tuile.face}
+                      alt=""
+                      width={640}
+                      height={640}
+                      className="h-full w-full rounded-xl object-cover"
+                    />
+                  ) : (
+                    <span className="text-2xl opacity-30" aria-hidden="true">
+                      ✦
+                    </span>
+                  )}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </main>
   );
 }

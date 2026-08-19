@@ -367,3 +367,45 @@ body {
     opacity: 0;
   }
 }
+
+/*
+  Le plateau du Mémo.
+
+  Un plateau de jeu ne se dimensionne pas comme un paragraphe. Il était borné par
+  une largeur de lecture (`max-w-2xl`, 672 px) : sur un grand écran il flottait au
+  milieu, minuscule, et le compte de colonnes figé à quatre couchait les huit
+  tuiles des 3-5 ans en une bande plate qui laissait la moitié de la hauteur vide.
+
+  Il se mesure donc désormais à l'écran, borné par la plus contraignante des deux
+  dimensions — comme un échiquier posé sur une table : jamais plus large que la
+  place offerte, jamais plus haut que ce qui reste sous l'en-tête.
+
+  `dvh`, et non les unités de conteneur : `100cqh` a été mesuré à **zéro** ici. Le
+  conteneur tire sa hauteur du flux flex, si bien que le navigateur tient sa
+  hauteur de requête pour indéterminée et la résout à zéro — le plateau tombait
+  alors à sa largeur minimale, sans erreur ni avertissement.
+
+  `--reserve` est ce que `dvh` ne doit pas compter : la barre d'onglets, les marges
+  verticales, l'en-tête, et la ligne du nom quand une paire vient de tomber.
+*/
+.plateau-memo {
+  --colonnes: 4;
+  --lignes: calc(var(--tuiles) / var(--colonnes));
+  --reserve: 15rem;
+  grid-template-columns: repeat(var(--colonnes), minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  aspect-ratio: var(--colonnes) / var(--lignes);
+  width: min(100%, calc((100dvh - var(--reserve)) * var(--colonnes) / var(--lignes)));
+}
+
+/*
+  En portrait, quatre colonnes gâchent la hauteur : le plateau épouse le format de
+  l'écran. Huit tuiles se posent en 2×4 au lieu de 4×2, ce qui double la taille des
+  portraits — et les 3-5 ans, seuls à jouer sur huit tuiles, sont précisément ceux
+  qui visent le moins bien.
+*/
+@media (orientation: portrait) {
+  .plateau-memo { --colonnes: 2; }
+  .plateau-memo[data-tuiles="12"] { --colonnes: 3; }
+  .plateau-memo[data-tuiles="16"] { --colonnes: 4; }
+}

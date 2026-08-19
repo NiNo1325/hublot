@@ -123,7 +123,7 @@ export function ParcoursView({ cards, domains }: ParcoursViewProps) {
               </button>
               <button
                 type="button"
-                onClick={() => router.push('/decouvrir/mondes')}
+                onClick={() => router.push('/decouvrir')}
                 className="min-h-14 cursor-pointer rounded-full border-2 border-encre-bord px-8 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
               >
                 {t('parcours.fini.explorer')}

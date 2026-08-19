@@ -6,12 +6,10 @@ import { useRouter } from 'next/navigation';
 import type { DomainDefinition, ScienceCard } from '@/lib/types';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { progressionDomaine } from '@/lib/progression';
-import { badgesDomaine } from '@/lib/badges';
 import { useT } from '@/components/i18n/useT';
 import { MondeTile } from './MondeTile';
 import { useAccrocheAudio } from './useAccrocheAudio';
 import { useCartesVues } from './useCartesVues';
-import { useCartesMaitrisees } from './useCartesMaitrisees';
 
 interface MondesViewProps {
   cards: ScienceCard[];
@@ -22,7 +20,6 @@ export function MondesView({ cards, domains }: MondesViewProps) {
   const router = useRouter();
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
-  const { cartesMaitrisees } = useCartesMaitrisees();
   const { jouer, enLecture } = useAccrocheAudio();
   const t = useT();
 
@@ -51,7 +48,6 @@ export function MondesView({ cards, domains }: MondesViewProps) {
       <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
         {domains.map((domain, index) => {
           const { vues, total } = progressionDomaine(cards, cartesVues, domain.id);
-          const { maitrise } = badgesDomaine(cards, cartesVues, cartesMaitrisees, domain.id);
           return (
             <MondeTile
               key={domain.id}
@@ -61,7 +57,6 @@ export function MondesView({ cards, domains }: MondesViewProps) {
               index={index}
               onEcouter={() => jouer(domain.id)}
               enLecture={enLecture === domain.id}
-              maitrise={maitrise}
             />
           );
         })}

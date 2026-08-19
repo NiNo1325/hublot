@@ -21,20 +21,19 @@ import { useT } from '@/components/i18n/useT';
  */
 const ONGLETS = [
   /*
+    Le musée ouvre la marche : c'est lui qui porte le récit, et c'est par lui
+    qu'on doit entrer. Un enfant qui lance l'application tombe d'abord sur les
+    savants enfermés et sur ce que Lumi lui demande ; le reste — explorer,
+    jouer — devient le moyen de les délivrer, au lieu d'être une fin en soi.
+
     `aussi` : les chemins qui appartiennent à l'onglet sans être sous son
-    préfixe. Le parcours guidé vit sous /parcours mais se choisit depuis
-    Découvrir ; sans cela, aucun onglet ne s'allumerait une fois dedans, et
-    l'enfant ne saurait plus où il se trouve.
-  */
-  { href: '/decouvrir', icone: '🔭', cle: 'nav.decouvrir', aussi: ['/parcours'] },
-  { href: '/joue', icone: '🎮', cle: 'nav.joue', aussi: [] },
-  /*
-    Le musée remplace l'onglet Lumi : c'est le fil conducteur, et Lumi y habite.
-    Ses rangs et son cabinet restent à un geste, depuis la page du musée — un
-    onglet pour la mascotte et un autre pour le mur auraient séparé deux choses
-    qui n'en font qu'une.
+    préfixe. Lumi habite le musée (son cabinet, ses rangs), et le parcours guidé
+    se choisit depuis Découvrir ; sans cela, aucun onglet ne s'allumerait une
+    fois dedans, et l'enfant ne saurait plus où il se trouve.
   */
   { href: '/musee', icone: null, cle: 'nav.musee', aussi: ['/lumi'] },
+  { href: '/decouvrir', icone: '🔭', cle: 'nav.decouvrir', aussi: ['/parcours'] },
+  { href: '/joue', icone: '🎮', cle: 'nav.joue', aussi: [] },
   { href: '/reglages', icone: '⚙️', cle: 'nav.reglages', aussi: [] },
 ] as const;
 

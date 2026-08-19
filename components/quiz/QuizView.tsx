@@ -159,7 +159,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
         </p>
         <button
           type="button"
-          onClick={() => router.push('/decouvrir/mondes')}
+          onClick={() => router.push('/decouvrir')}
           className="min-h-16 cursor-pointer rounded-full border-2 border-soleil px-8 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
         >
           {t('quizz.vide.action')}

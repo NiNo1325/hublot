@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import type { DomainDefinition, ScienceCard } from '@/lib/types';
-import { badgesDomaine } from '@/lib/badges';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { useCartesVues, vuesStockees } from '@/components/cards/useCartesVues';
 import { useCartesMaitrisees, maitriseesStockees } from '@/components/cards/useCartesMaitrisees';
@@ -71,32 +70,12 @@ export function DetecteurProgres({ cards, domains }: DetecteurProgresProps) {
       });
     }
 
-    for (const d of domains) {
-      const exploreAvant = badgesDomaine(cards, vuesAvant, maitAvant, d.id).explore;
-      const exploreApres = badgesDomaine(cards, cartesVues, cartesMaitrisees, d.id).explore;
-      if (!exploreAvant && exploreApres) {
-        // Partie « cartes » : toutes les cartes du monde ont été écoutées.
-        celebrer({
-          rang: rangIndex,
-          titre: 'Toutes les cartes écoutées !',
-          sousTitre: `${d.icon} ${localise(d.labels, locale)}`,
-          embleme: '🧭',
-        });
-      }
-
-      const maitriseAvant = badgesDomaine(cards, vuesAvant, maitAvant, d.id).maitrise;
-      const maitriseApres = badgesDomaine(cards, cartesVues, cartesMaitrisees, d.id).maitrise;
-      if (!maitriseAvant && maitriseApres) {
-        // Partie « questions » : tout le quiz du monde a été réussi.
-        celebrer({
-          rang: rangIndex,
-          titre: 'Tout le quiz réussi !',
-          sousTitre: `${d.icon} ${localise(d.labels, locale)}`,
-          embleme: '🏅',
-        });
-      }
-    }
-
+    /*
+      Les deux badges par monde (🧭 tout écouté, 🏅 tout réussi) ont disparu
+      avec la refonte : ils doublaient ce que le mur des savants dit déjà, en
+      mieux — un savant délivré vaut mieux qu'une médaille abstraite, et il
+      apprend quelque chose au passage.
+    */
     // Parcours entièrement découvert.
     const toutAvant = cards.every((c) => vuesAvant.has(c.id));
     const toutApres = cards.every((c) => cartesVues.has(c.id));

@@ -87,3 +87,7 @@ planches/
 # Vignettes générées par Dropbox dans les dossiers d'images : 44 Mo qui n'ont
 # rien à faire dans le dépôt, ni dans le déploiement.
 .@__thumb/
+
+# Intermédiaires de conversion audio : le PCM brut ne doit jamais partir en
+# déploiement, où il serait servi et téléchargé pour rien.
+*.mp3.pcm

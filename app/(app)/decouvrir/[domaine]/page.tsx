@@ -16,7 +16,7 @@ export default async function DomainePage({
   const { domaine } = await params;
   const domain = domains.find((d) => d.id === domaine);
   // Slug inconnu : retour doux à la grille des mondes, plutôt qu'un 404.
-  if (!domain) redirect('/decouvrir/mondes');
+  if (!domain) redirect('/decouvrir');
 
   const cartesDuDomaine = cards.filter((c) => c.domainId === domain.id);
   return <DomaineView domain={domain} cards={cartesDuDomaine} />;

@@ -15,7 +15,6 @@ interface MondeTileProps {
   index: number;
   onEcouter: () => void;
   enLecture: boolean;
-  maitrise: boolean;
 }
 
 // Rayon et circonférence de l'anneau de progression (viewBox 100×100).
@@ -37,7 +36,6 @@ export function MondeTile({
   index,
   onEcouter,
   enLecture,
-  maitrise,
 }: MondeTileProps) {
   const { locale } = useLocale();
   const t = useT();
@@ -103,14 +101,6 @@ export function MondeTile({
                   strokeLinejoin="round"
                 />
               </svg>
-            </span>
-          )}
-          {maitrise && (
-            <span
-              className="absolute bottom-1 left-1 flex h-7 w-7 items-center justify-center rounded-full border-[3px] border-encre bg-soleil text-sm"
-            >
-              <span aria-hidden="true">🏅</span>
-              <span className="sr-only">{t('monde.maitrise')}</span>
             </span>
           )}
         </span>

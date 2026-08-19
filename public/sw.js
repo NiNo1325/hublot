@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v13';
+const VERSION = 'v14';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -25,15 +25,11 @@ const SHELL = [
   '/decouvrir',
   '/quizz',
   '/parcours',
-  '/lumi',
   // Le musée : le fil conducteur. Sans ces routes, un démarrage à froid en
   // voiture n'offrirait qu'un onglet qui ne mène nulle part.
   '/musee',
   '/musee/histoire',
-  // Les pages du menu de Lumi. Depuis qu'il est un menu, son écran ne contient
-  // plus rien par lui-même : sans ces trois routes, un démarrage à froid en
-  // voiture n'offrirait que trois rangées qui ne mènent nulle part.
-  '/lumi/mondes',
+  // Les salles de Lumi, ouvertes depuis le musée.
   '/lumi/rangs',
   '/lumi/cabinet',
   '/reglages',

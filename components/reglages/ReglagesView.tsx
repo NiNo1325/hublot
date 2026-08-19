@@ -33,7 +33,7 @@ export function ReglagesView() {
   const router = useRouter();
   const { age, ageRange, status, choisirAge } = useAgeRange();
   const { cartesVues, oublierToutesLesVues } = useCartesVues();
-  const { etoiles, oublierEtoiles } = useEtoiles();
+  const { etoiles } = useEtoiles();
   const { oublierMaitrisees } = useCartesMaitrisees();
   const { resume: horsLigne } = useHorsLigne();
   const { locale, choisirLocale } = useLocale();
@@ -171,7 +171,6 @@ export function ReglagesView() {
                 return;
               }
               oublierToutesLesVues();
-              oublierEtoiles();
               oublierMaitrisees();
               setConfirmation(false);
             }}

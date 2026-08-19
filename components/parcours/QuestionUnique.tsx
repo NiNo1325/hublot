@@ -3,14 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { AgeRange, QuizQuestion, ScienceCard } from '@/lib/types';
 import { domainStyles } from '@/lib/domain-styles';
-import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { ordreLecture } from '@/content/quiz/ordre';
 import { useQuizAudio } from '@/components/quiz/useQuizAudio';
-import { useEtoiles } from '@/components/quiz/useEtoiles';
+import { savantDeLaCarte } from '@/lib/cles';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
-import { useCelebration } from '@/components/celebration/CelebrationProvider';
-import { useLocale } from '@/components/i18n/useLocale';
-import { localise } from '@/lib/i18n/localise';
 import { useT } from '@/components/i18n/useT';
 
 /** Mélange sans modifier la source. */
@@ -39,11 +35,9 @@ interface QuestionUniqueProps {
  * aussi en mode guidé. Non-punitif : on avance après l'explication, juste ou non.
  */
 export function QuestionUnique({ card, question, age, onTermine, onQuitter }: QuestionUniqueProps) {
+  const savantDeCetteCarte = savantDeLaCarte(card.id);
   const { jouer, jouerProposition, jouerVerdict, arreter, enLecture } = useQuizAudio(age);
-  const { etoiles, gagnerEtoiles } = useEtoiles();
   const { marquerMaitrisee } = useCartesMaitrisees();
-  const celebrer = useCelebration();
-  const { locale } = useLocale();
   const t = useT();
   const [choisie, setChoisie] = useState<number | null>(null);
   const style = domainStyles[card.domainId];
@@ -113,18 +107,14 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
                   onClick={() => {
                     setChoisie(i);
                     if (reponse.correcte) {
+                      /*
+                        Une carte comprise vaut une clé, et le trousseau se
+                        déduit des cartes maîtrisées : marquer la carte suffit,
+                        il n'y a rien à créditer séparément. Deux compteurs
+                        finiraient par diverger, et l'enfant se retrouverait
+                        avec des clés qui ne correspondent à rien.
+                      */
                       marquerMaitrisee(card.id);
-                      const avant = rangDepuisEtoiles(etoiles).rang;
-                      const apres = rangDepuisEtoiles(etoiles + 1).rang;
-                      gagnerEtoiles(1);
-                      if (apres.index > avant.index) {
-                        celebrer({
-                          rang: apres.index,
-                          rangAvant: avant.index,
-                          titre: t('fete.nouveau-rang'),
-                          sousTitre: `${apres.icone} ${localise(apres.nom, locale)}`,
-                        });
-                      }
                     }
                     jouerVerdict(
                       card.id,
@@ -183,6 +173,16 @@ export function QuestionUnique({ card, question, age, onTermine, onQuitter }: Qu
             >
               {justeChoisie ? t('quizz.juste') : t('quizz.presque')}
             </p>
+            {/*
+              La clé gagnée, nommée : « une clé » ne veut rien dire tant qu'on
+              ne sait pas quelle porte elle ouvre. Dire qui attend derrière
+              transforme une récompense abstraite en rendez-vous.
+            */}
+            {justeChoisie && savantDeCetteCarte && (
+              <p className="font-display text-base text-soleil">
+                {t('cles.gagnee')(savantDeCetteCarte.nom)}
+              </p>
+            )}
             <p className="text-base leading-relaxed text-craie-douce">
               {question.explication}
             </p>

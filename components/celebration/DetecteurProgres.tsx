@@ -53,6 +53,24 @@ export function DetecteurProgres({ cards, domains }: DetecteurProgresProps) {
     vuesPrec.current = cartesVues;
     maitPrec.current = cartesMaitrisees;
 
+    /*
+      La montée de rang se détecte ici, et nulle part ailleurs. Elle vivait dans
+      chaque écran de quizz, du temps où les étoiles venaient des bonnes réponses ;
+      depuis qu'elles se gagnent à l'écoute, le rang peut monter au milieu d'une
+      carte, dans le parcours comme dans l'exploration libre. Un seul guetteur
+      vaut mieux que trois, et il ne peut pas en oublier un.
+    */
+    const rangAvant = rangDepuisEtoiles(vuesAvant.size).rang;
+    const rangApres = rangDepuisEtoiles(cartesVues.size).rang;
+    if (rangApres.index > rangAvant.index) {
+      celebrer({
+        rang: rangApres.index,
+        rangAvant: rangAvant.index,
+        titre: 'Nouveau rang !',
+        sousTitre: `${rangApres.icone} ${localise(rangApres.nom, locale)}`,
+      });
+    }
+
     for (const d of domains) {
       const exploreAvant = badgesDomaine(cards, vuesAvant, maitAvant, d.id).explore;
       const exploreApres = badgesDomaine(cards, cartesVues, cartesMaitrisees, d.id).explore;

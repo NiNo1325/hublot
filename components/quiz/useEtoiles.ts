@@ -1,51 +1,25 @@
 'use client';
 
-import { useCallback, useSyncExternalStore } from 'react';
-import { readStored, writeStored } from '@/lib/storage';
-import { lireEtoiles } from '@/lib/etoiles';
-
-const CLE = 'science.etoiles.v1';
-
-const abonnes = new Set<() => void>();
-
-function souscrire(surChangement: () => void) {
-  abonnes.add(surChangement);
-  return () => {
-    abonnes.delete(surChangement);
-  };
-}
-
-function lire(): string {
-  return readStored(CLE) ?? '0';
-}
-
-function lireServeur(): string {
-  return '0';
-}
-
-function publier(valeur: string) {
-  writeStored(CLE, valeur);
-  for (const notifier of abonnes) notifier();
-}
+import { useCartesVues } from '@/components/cards/useCartesVues';
 
 /**
- * Total d'étoiles gagnées au quizz, source de la progression.
+ * Les étoiles : une par carte écoutée pour la première fois.
  *
- * Publié comme les cartes vues : tout composant abonné (l'écran de quizz, le
- * menu) se met à jour dès qu'on gagne une étoile.
+ * Elles ne sont plus stockées : elles **se déduisent** du nombre de cartes
+ * découvertes. Un compteur séparé ne pouvait que diverger de la réalité — et
+ * c'est exactement ce qui est arrivé sous l'économie précédente, où chaque
+ * bonne réponse en ajoutait sans plafond, si bien que le rang finissait par
+ * mesurer l'endurance au quizz plutôt que la découverte.
+ *
+ * C'est la monnaie du plaisir : explorer librement rapporte, sans jamais avoir
+ * à répondre à une question. Elle fait grandir Lumi et garnit son cabinet.
+ * Comprendre, c'est l'autre monnaie — la clé, dans `lib/cles.ts`.
+ *
+ * Le hook garde son nom et sa forme pour tous ses appelants ; seul son moteur a
+ * changé. Il n'a plus de mutateur : on ne décrète pas une étoile, on écoute une
+ * carte.
  */
 export function useEtoiles() {
-  const brut = useSyncExternalStore(souscrire, lire, lireServeur);
-
-  const gagnerEtoiles = useCallback((n: number) => {
-    if (n <= 0) return;
-    const total = lireEtoiles(readStored(CLE)) + Math.floor(n);
-    publier(String(total));
-  }, []);
-
-  const oublierEtoiles = useCallback(() => {
-    publier('0');
-  }, []);
-
-  return { etoiles: lireEtoiles(brut), gagnerEtoiles, oublierEtoiles };
+  const { cartesVues } = useCartesVues();
+  return { etoiles: cartesVues.size };
 }

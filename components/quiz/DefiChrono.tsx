@@ -7,11 +7,11 @@ import { domainStyles } from '@/lib/domain-styles';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
-import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { maitriseesStockees, useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { clesAGagner } from '@/lib/cles';
 import { useLocale } from '@/components/i18n/useLocale';
 import { useT } from '@/components/i18n/useT';
 import { Lumi } from '@/components/mascotte/Lumi';
-import { useCelebration } from '@/components/celebration/CelebrationProvider';
 import { construireSerie, melanger, type Tirage } from '@/content/quiz/tirage';
 import { useEtoiles } from './useEtoiles';
 import { useQuizAudio } from './useQuizAudio';
@@ -51,10 +51,9 @@ export function DefiChrono({ cards }: DefiChronoProps) {
   const { cartesVues } = useCartesVues();
   const { locale } = useLocale();
   const t = useT();
-  const { etoiles, gagnerEtoiles } = useEtoiles();
+  const { etoiles } = useEtoiles();
   const { marquerMaitrisee } = useCartesMaitrisees();
   const { scores, enregistrerScore, estUnRecord } = useMeilleursScores();
-  const celebrer = useCelebration();
   const chrono = useCompteARebours(DUREE_S);
   const { jouer, jouerProposition, arreter: arreterVoix, enLecture } = useQuizAudio(
     ageRange ?? '6-8',
@@ -64,6 +63,12 @@ export function DefiChrono({ cards }: DefiChronoProps) {
   const [serie, setSerie] = useState<Tirage[] | null>(null);
   const [index, setIndex] = useState(0);
   const [reussies, setReussies] = useState(0);
+  /*
+    Cartes comprises pendant la partie : seules celles-là donnent une clé. Le
+    chrono se rejoue sans fin ; on y revient pour son record, pas pour vider la
+    prison.
+  */
+  const [nouvelles, setNouvelles] = useState(0);
   const [choisie, setChoisie] = useState<number | null>(null);
   /*
     Le crédit n'est pas un état : il ne s'affiche pas, et le passer par
@@ -88,37 +93,17 @@ export function DefiChrono({ cards }: DefiChronoProps) {
   const termine = serie !== null && (chrono.fini || index >= serie.length);
 
   /*
-    Le crédit se fait dans un effet, et une seule fois : créditer pendant le
-    rendu déclencherait la célébration à chaque re-rendu — et le chrono en
-    provoque quatre par seconde.
+    L'enregistrement du score se fait dans un effet, et une seule fois : le faire
+    pendant le rendu le rejouerait à chaque re-rendu — et le chrono en provoque
+    quatre par seconde. Les clés, elles, n'ont rien à créditer : elles se
+    déduisent des cartes comprises, marquées au fil des réponses.
   */
   useEffect(() => {
     if (!termine || crediteesRef.current) return;
     crediteesRef.current = true;
     arreterChrono();
-    if (reussies > 0) {
-      const avant = rangDepuisEtoiles(etoiles).rang;
-      const apres = rangDepuisEtoiles(etoiles + reussies).rang;
-      gagnerEtoiles(reussies);
-      if (apres.index > avant.index) {
-        celebrer({
-          rang: apres.index,
-          rangAvant: avant.index,
-          titre: t('fete.nouveau-rang'),
-        });
-      }
-    }
     enregistrerScore(reussies);
-  }, [
-    termine,
-    reussies,
-    etoiles,
-    gagnerEtoiles,
-    celebrer,
-    enregistrerScore,
-    arreterChrono,
-    t,
-  ]);
+  }, [termine, reussies, enregistrerScore, arreterChrono]);
 
   if (status === 'chargement' || !ageRange) return null;
 
@@ -128,6 +113,7 @@ export function DefiChrono({ cards }: DefiChronoProps) {
     setSerie(construireSerie(cards, cartesVues, ageRange, null, locale, Number.MAX_SAFE_INTEGER));
     setIndex(0);
     setReussies(0);
+    setNouvelles(0);
     setChoisie(null);
     crediteesRef.current = false;
     chrono.reinitialiser();
@@ -140,6 +126,9 @@ export function DefiChrono({ cards }: DefiChronoProps) {
     const juste = propositions[rang]?.correcte === true;
     if (juste) {
       setReussies((n) => n + 1);
+      if (clesAGagner(tirage.carte.id, maitriseesStockees()) > 0) {
+        setNouvelles((n) => n + 1);
+      }
       marquerMaitrisee(tirage.carte.id);
     }
     setTimeout(() => {
@@ -234,9 +223,17 @@ export function DefiChrono({ cards }: DefiChronoProps) {
           <h1 className="font-display text-3xl font-semibold sm:text-4xl">
             {t('chrono.fin')(reussies)}
           </h1>
-          <p className="font-display text-2xl text-soleil">
-            +{reussies} <span aria-hidden="true">⭐</span>
-          </p>
+          {/*
+            Le chrono se joue pour son record : le score domine, les clés ne
+            s'affichent que s'il y en a eu. Annoncer « +0 » à chaque partie
+            ferait passer le mode pour une perte de temps, alors qu'il vaut par
+            le podium juste en dessous.
+          */}
+          {nouvelles > 0 && (
+            <p className="font-display text-2xl text-soleil">
+              +{nouvelles} <span aria-hidden="true">🔑</span>
+            </p>
+          )}
         </div>
 
         <div className="flex w-full max-w-xs flex-col items-center gap-3">

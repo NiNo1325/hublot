@@ -8,7 +8,9 @@ import { useAgeRange } from '@/components/age/useAgeRange';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useQuizAudio } from './useQuizAudio';
 import { useEtoiles } from './useEtoiles';
-import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { useMusee } from '@/components/musee/useLiberes';
+import { maitriseesStockees, useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
+import { clesAGagner } from '@/lib/cles';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useCelebration } from '@/components/celebration/CelebrationProvider';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
@@ -41,7 +43,16 @@ export function QuizView({ cards, domains }: QuizViewProps) {
   const [index, setIndex] = useState(0);
   const [choisie, setChoisie] = useState<number | null>(null);
   const [reussies, setReussies] = useState(0);
-  const { etoiles, gagnerEtoiles } = useEtoiles();
+  /*
+    Cartes comprises pour la première fois : ce sont elles qui donnent une clé.
+    `reussies` compte les bonnes réponses de la série et sert au score affiché ;
+    refaire une question déjà réussie reste gratifiant à l'écran, mais ne
+    libère plus personne — sinon le Défi chrono, qui se rejoue sans fin,
+    ouvrirait toutes les cellules sans qu'on apprenne rien de plus.
+  */
+  const [nouvelles, setNouvelles] = useState(0);
+  const { etoiles } = useEtoiles();
+  const { solde: clesRestantes } = useMusee();
   const { marquerMaitrisee } = useCartesMaitrisees();
   // Bonnes réponses consécutives, pour un encouragement positif (jamais négatif).
   const [dAffilee, setDAffilee] = useState(0);
@@ -102,6 +113,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
     setIndex(0);
     setChoisie(null);
     setReussies(0);
+    setNouvelles(0);
     setDAffilee(0);
     // Lumi encourage au lancement depuis le menu — pas sur « rejouer » ni
     // « sujet suivant », où l'enfant est déjà lancé.
@@ -235,16 +247,19 @@ export function QuizView({ cards, domains }: QuizViewProps) {
           </h1>
         </div>
 
-        {/* Étoiles gagnées et total, jamais de sanction. */}
+        {/*
+          Clés gagnées, jamais de sanction. On annonce les cartes comprises pour
+          la première fois, pas les bonnes réponses : promettre « +5 » puis n'en
+          donner qu'une passerait pour un mensonge.
+        */}
         <div className="flex flex-col items-center gap-2">
           <p className="font-display text-2xl text-soleil">
-            +{reussies} <span aria-hidden="true">⭐</span>
+            +{nouvelles} <span aria-hidden="true">🔑</span>
           </p>
-          <p className="text-craie-douce">
-            <span aria-hidden="true">⭐</span> {t('quizz.fin.total')(etoiles)}{' '}
-            <span aria-hidden="true">{rangApres.rang.icone}</span>{' '}
-            {localise(rangApres.rang.nom, locale)}
-          </p>
+          {nouvelles < reussies && (
+            <p className="text-sm text-craie-douce">{t('cles.deja')}</p>
+          )}
+          <p className="text-craie-douce">{t('cles.trousseau')(clesRestantes)}</p>
         </div>
 
         {/* Aucun échec possible : on encourage, on ne sanctionne pas. */}
@@ -360,6 +375,10 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                     setReussies((n) => n + 1);
                     const enchainees = dAffilee + 1;
                     setDAffilee(enchainees);
+                    // Avant de marquer : après, la carte serait déjà comprise.
+                    if (clesAGagner(tirage.carte.id, maitriseesStockees()) > 0) {
+                      setNouvelles((n) => n + 1);
+                    }
                     marquerMaitrisee(tirage.carte.id);
                     // Lumi surgit féliciter les séries : à 3, 6, 9… d'affilée,
                     // avec une intensité qui monte par paliers (1 → 3).
@@ -467,19 +486,6 @@ export function QuizView({ cards, domains }: QuizViewProps) {
               arreter();
               // Dernière question : on crédite les étoiles une seule fois, et
               // si le total fait passer un rang, Lumi surgit féliciter l'enfant.
-              if (index + 1 >= serie.length) {
-                const avant = rangDepuisEtoiles(etoiles).rang;
-                const apres = rangDepuisEtoiles(etoiles + reussies).rang;
-                gagnerEtoiles(reussies);
-                if (apres.index > avant.index) {
-                  celebrer({
-                    rang: apres.index,
-                    rangAvant: avant.index,
-                    titre: t('fete.nouveau-rang'),
-                    sousTitre: `${apres.icone} ${localise(apres.nom, locale)}`,
-                  });
-                }
-              }
               setIndex((n) => n + 1);
               setChoisie(null);
             }}

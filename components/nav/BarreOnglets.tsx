@@ -28,7 +28,13 @@ const ONGLETS = [
   */
   { href: '/decouvrir', icone: '🔭', cle: 'nav.decouvrir', aussi: ['/parcours'] },
   { href: '/joue', icone: '🎮', cle: 'nav.joue', aussi: [] },
-  { href: '/lumi', icone: null, cle: 'nav.lumi', aussi: [] },
+  /*
+    Le musée remplace l'onglet Lumi : c'est le fil conducteur, et Lumi y habite.
+    Ses rangs et son cabinet restent à un geste, depuis la page du musée — un
+    onglet pour la mascotte et un autre pour le mur auraient séparé deux choses
+    qui n'en font qu'une.
+  */
+  { href: '/musee', icone: null, cle: 'nav.musee', aussi: ['/lumi'] },
   { href: '/reglages', icone: '⚙️', cle: 'nav.reglages', aussi: [] },
 ] as const;
 

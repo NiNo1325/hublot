@@ -13,28 +13,29 @@ export interface Rang {
 }
 
 /*
-  Trois sources d'étoiles, une par bonne réponse : le parcours guidé pose une
-  question après chaque carte (150 pour une traversée complète), le quizz en
-  compte autant à chaque âge (150 de plus pour les avoir toutes vues), et le
-  Défi chrono en donne sans plafond, une dizaine par minute de jeu.
+  Une carte écoutée, une étoile — la première fois, et une seule. Les étoiles ne
+  sont d'ailleurs plus stockées : elles se déduisent des cartes vues
+  (`useEtoiles`). Il y a donc exactement autant d'étoiles à gagner que de cartes
+  au catalogue, soit cent cinquante.
 
-  « Chercheur », au milieu de l'échelle, marque donc les 300 étoiles d'un
-  contenu entièrement parcouru — parcours et quizz une fois chacun. Les deux
-  derniers rangs récompensent la reprise : ils ne s'atteignent qu'en rejouant,
-  ce qui est le but.
+  C'est un renversement de l'économie précédente, où chaque bonne réponse au
+  quizz comptait sans plafond : le rang mesurait alors la répétition autant que
+  la découverte, et l'exploration libre — l'acte central de l'application — ne
+  rapportait rien du tout. Désormais Lumi grandit à mesure qu'on écoute, et les
+  bonnes réponses donnent l'autre monnaie : les clés, qui délivrent les savants.
 
-  Le calibrage précédent supposait 150 étoiles pour tout le contenu et ne
-  comptait que le quizz, en oubliant le parcours. Il ignorait aussi le chrono,
-  qui n'existait pas encore et qui a supprimé tout plafond réel.
-  (À réviser si le nombre de cartes ou de modes change nettement.)
+  Les six seuils se répartissent donc sur les 150 cartes, et le dernier tombe à
+  130 plutôt qu'à 150 : deux buts qui s'achèvent sur le même geste s'annulent,
+  alors Lumi atteint sa forme finale un peu avant la dernière carte.
+  (À réviser si le nombre de cartes change nettement.)
 */
 export const RANGS: Rang[] = [
   { index: 0, nom: { fr: 'Apprenti', en: 'Apprentice' }, icone: '🔭', seuil: 0 },
-  { index: 1, nom: { fr: 'Explorateur', en: 'Explorer' }, icone: '🧭', seuil: 60 },
-  { index: 2, nom: { fr: 'Aventurier', en: 'Adventurer' }, icone: '🚀', seuil: 150 },
-  { index: 3, nom: { fr: 'Chercheur', en: 'Researcher' }, icone: '🔬', seuil: 300 },
-  { index: 4, nom: { fr: 'Savant', en: 'Scholar' }, icone: '🎓', seuil: 550 },
-  { index: 5, nom: { fr: 'Génie', en: 'Genius' }, icone: '🧠', seuil: 850 },
+  { index: 1, nom: { fr: 'Explorateur', en: 'Explorer' }, icone: '🧭', seuil: 12 },
+  { index: 2, nom: { fr: 'Aventurier', en: 'Adventurer' }, icone: '🚀', seuil: 30 },
+  { index: 3, nom: { fr: 'Chercheur', en: 'Researcher' }, icone: '🔬', seuil: 55 },
+  { index: 4, nom: { fr: 'Savant', en: 'Scholar' }, icone: '🎓', seuil: 90 },
+  { index: 5, nom: { fr: 'Génie', en: 'Genius' }, icone: '🧠', seuil: 130 },
 ];
 
 /** Rang courant et rang suivant (ou `null` au dernier) pour un total d'étoiles. */

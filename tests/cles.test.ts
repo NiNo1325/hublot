@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   EPOQUES,
@@ -133,6 +135,21 @@ describe('savant d’une carte', () => {
   it('trouve un savant pour chaque carte du catalogue', () => {
     for (const carte of cards) {
       expect(savantDeLaCarte(carte.id), carte.id).not.toBeNull();
+    }
+  });
+});
+
+describe('portraits', () => {
+  /*
+    Une cellule sans visage ne récompenserait plus rien à l'ouverture : la
+    découverte du portrait EST la récompense. Ce test échoue dès qu'un savant
+    est ajouté sans son illustration, ou qu'un slug est renommé d'un côté sans
+    l'autre.
+  */
+  it('donne un portrait à chaque savant', () => {
+    for (const s of savantsPrisonniers) {
+      const chemin = join('public', 'images', 'wall-of-fame', `${s.id}.webp`);
+      expect(existsSync(chemin), s.nom).toBe(true);
     }
   });
 });

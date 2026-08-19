@@ -66,25 +66,13 @@ export function FicheSavant({
       >
         <div className="flex items-start gap-4">
           <span className="relative block h-24 w-24 shrink-0 overflow-hidden rounded-2xl bg-encre">
-            {savant.illustre ? (
-              <Image
+            <Image
                 src={`/images/wall-of-fame/${savant.id}.webp`}
                 alt=""
                 fill
                 sizes="96px"
-                className={`object-cover ${libere ? '' : 'brightness-0 opacity-70'}`}
+                className={`object-cover ${libere ? '' : 'grayscale brightness-[0.22] contrast-125'}`}
               />
-            ) : (
-              <svg
-                viewBox="0 0 100 100"
-                aria-hidden="true"
-                className="h-full w-full"
-                fill={libere ? '#8ea3c4' : '#0b1120'}
-              >
-                <circle cx="50" cy="36" r="20" />
-                <path d="M14 100c0-22 16-34 36-34s36 12 36 34z" />
-              </svg>
-            )}
           </span>
 
           <div className="flex flex-1 flex-col gap-1">

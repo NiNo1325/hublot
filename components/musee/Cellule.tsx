@@ -45,30 +45,15 @@ export function Cellule({ savant, libere, abordable, onOuvrir }: CelluleProps) {
         }`}
       >
         <span className="relative block aspect-square w-full overflow-hidden rounded-xl bg-[#1b2540]">
-          {savant.illustre ? (
-            <Image
+          <Image
               src={`/images/wall-of-fame/${savant.id}.webp`}
               alt=""
               fill
               sizes="120px"
               className={`object-cover transition-[filter] duration-500 ${
-                libere ? '' : 'brightness-0 opacity-70'
+                libere ? '' : 'grayscale brightness-[0.22] contrast-125'
               }`}
             />
-          ) : (
-            /* En attendant l'illustration : une silhouette de buste. Elle noircit
-               comme un portrait quand la cellule est fermée, et s'éclaire à la
-               libération, pour que le geste produise le même effet partout. */
-            <svg
-              viewBox="0 0 100 100"
-              aria-hidden="true"
-              className="h-full w-full"
-              fill={libere ? '#9fb4d8' : '#0e1526'}
-            >
-              <circle cx="50" cy="36" r="20" />
-              <path d="M14 100c0-22 16-34 36-34s36 12 36 34z" />
-            </svg>
-          )}
 
           {/* Les barreaux : dessinés par-dessus, pas dans l'image, pour qu'ils
               disparaissent d'un coup à la libération. */}

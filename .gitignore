@@ -83,3 +83,7 @@ planches/
 
 # Journal d'avancement des sous-agents (scratch, non lié au produit)
 .superpowers/
+
+# Vignettes générées par Dropbox dans les dossiers d'images : 44 Mo qui n'ont
+# rien à faire dans le dépôt, ni dans le déploiement.
+.@__thumb/

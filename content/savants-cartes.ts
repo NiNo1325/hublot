@@ -39,8 +39,6 @@ export interface SavantPrisonnier {
   cartes: CarteTenue[];
   /** Le rattachement mérite une relecture. */
   aRevoir?: boolean;
-  /** Illustration déjà présente dans `public/images/wall-of-fame`. */
-  illustre?: boolean;
 }
 
 export const savantsPrisonniers: SavantPrisonnier[] = [
@@ -56,7 +54,7 @@ export const savantsPrisonniers: SavantPrisonnier[] = [
     ],
   },
   {
-    id: 'isaac-newton', nom: 'Isaac Newton', naissance: 1643, mort: 1727, illustre: true,
+    id: 'isaac-newton', nom: 'Isaac Newton', naissance: 1643, mort: 1727,
     cartes: [
       { id: 'pourquoi-tout-tombe', lien: 'Il a compris que la pomme et la Lune tombent pour la même raison.' },
       { id: 'les-marees', lien: 'Sa gravitation explique que la Lune tire sur les océans.' },
@@ -65,55 +63,55 @@ export const savantsPrisonniers: SavantPrisonnier[] = [
     ],
   },
   {
-    id: 'galilee', nom: 'Galilée', naissance: 1564, mort: 1642, illustre: true,
+    id: 'galilee', nom: 'Galilée', naissance: 1564, mort: 1642,
     cartes: [
       { id: 'les-phases-de-la-lune', lien: 'Il a dessiné la Lune à la lunette, ses cratères et ses phases, nuit après nuit.' },
       { id: 'les-planetes', lien: 'Il a vu que Jupiter a des lunes : tout ne tourne donc pas autour de la Terre.' },
     ],
   },
   {
-    id: 'louis-pasteur', nom: 'Louis Pasteur', naissance: 1822, mort: 1895, illustre: true,
+    id: 'louis-pasteur', nom: 'Louis Pasteur', naissance: 1822, mort: 1895,
     cartes: [
       { id: 'pourquoi-le-lait-devient-yaourt', lien: 'Il a montré que ce sont des micro-organismes qui font tourner le lait, et comment les maîtriser.' },
     ],
   },
   {
-    id: 'charles-darwin', nom: 'Charles Darwin', naissance: 1809, mort: 1882, illustre: true,
+    id: 'charles-darwin', nom: 'Charles Darwin', naissance: 1809, mort: 1882,
     cartes: [
       { id: 'levolution', lien: 'Il a expliqué comment les espèces se transforment lentement, génération après génération.' },
       { id: 'le-corail-batisseur', lien: 'Sa première grande théorie explique comment un atoll se bâtit sur un volcan qui s’enfonce.' },
     ],
   },
   {
-    id: 'nikola-tesla', nom: 'Nikola Tesla', naissance: 1856, mort: 1943, illustre: true,
+    id: 'nikola-tesla', nom: 'Nikola Tesla', naissance: 1856, mort: 1943,
     cartes: [
       { id: 'lelectricite', lien: 'Il a imposé le courant alternatif, celui qui arrive aujourd’hui dans les prises.' },
       { id: 'les-aimants', lien: 'Ses moteurs tournent grâce à un champ magnétique qui tourne aussi.' },
     ],
   },
   {
-    id: 'ibn-al-haytham', nom: 'Ibn al-Haytham', naissance: 965, mort: 1040, illustre: true,
+    id: 'ibn-al-haytham', nom: 'Ibn al-Haytham', naissance: 965, mort: 1040,
     cartes: [
       { id: 'pourquoi-on-voit-les-couleurs', lien: 'Il a établi que la lumière entre dans l’œil, et non l’inverse comme on le croyait.' },
       { id: 'pourquoi-on-a-deux-yeux', lien: 'Il a étudié le premier ce que voient nos deux yeux à la fois.' },
     ],
   },
   {
-    id: 'albert-einstein', nom: 'Albert Einstein', naissance: 1879, mort: 1955, illustre: true,
+    id: 'albert-einstein', nom: 'Albert Einstein', naissance: 1879, mort: 1955,
     cartes: [
       { id: 'les-eclipses', lien: 'C’est pendant une éclipse qu’on a vérifié sa théorie : la lumière des étoiles se courbe près du Soleil.' },
       { id: 'lenergie', lien: 'Il a écrit l’équation qui relie l’énergie et la masse.' },
     ],
   },
   {
-    id: 'katherine-johnson', nom: 'Katherine Johnson', naissance: 1918, mort: 2020, illustre: true,
+    id: 'katherine-johnson', nom: 'Katherine Johnson', naissance: 1918, mort: 2020,
     cartes: [
       { id: 'pourquoi-les-astronautes-flottent', lien: 'Elle a calculé à la main les trajectoires qui mettent une capsule en orbite, donc en chute libre.' },
       { id: 'comment-avance-une-fusee', lien: 'Ses calculs disaient quand allumer et couper les moteurs, à la seconde près.' },
     ],
   },
   {
-    id: 'mary-anning', nom: 'Mary Anning', naissance: 1799, mort: 1847, illustre: true,
+    id: 'mary-anning', nom: 'Mary Anning', naissance: 1799, mort: 1847,
     cartes: [
       { id: 'les-fossiles', lien: 'Elle a passé sa vie à extraire des fossiles de la falaise, et à les reconnaître mieux que les savants.' },
       { id: 'pas-tous-des-dinosaures', lien: 'Elle a découvert des reptiles marins et volants — qui ne sont justement pas des dinosaures.' },
@@ -180,7 +178,7 @@ export const savantsPrisonniers: SavantPrisonnier[] = [
     cartes: [{ id: 'les-etoiles', lien: 'Elle a découvert que les étoiles sont faites d’hydrogène — personne ne voulait la croire.' }],
   },
   {
-    id: 'stephen-hawking', nom: 'Stephen Hawking', naissance: 1942, mort: 2018, illustre: true,
+    id: 'stephen-hawking', nom: 'Stephen Hawking', naissance: 1942, mort: 2018,
     cartes: [{ id: 'les-trous-noirs', lien: 'Il a montré qu’un trou noir n’est pas tout à fait noir : il s’évapore lentement.' }],
   },
   {
@@ -198,7 +196,7 @@ export const savantsPrisonniers: SavantPrisonnier[] = [
     cartes: [{ id: 'le-coeur-et-le-sang', lien: 'Il a montré que le sang tourne en boucle, poussé par le cœur.' }],
   },
   {
-    id: 'alexander-fleming', nom: 'Alexander Fleming', naissance: 1881, mort: 1955, illustre: true,
+    id: 'alexander-fleming', nom: 'Alexander Fleming', naissance: 1881, mort: 1955,
     cartes: [{ id: 'les-microbes', lien: 'Une moisissure tombée par hasard dans sa boîte tuait les microbes : la pénicilline.' }],
   },
   {
@@ -206,7 +204,7 @@ export const savantsPrisonniers: SavantPrisonnier[] = [
     cartes: [{ id: 'pourquoi-on-dort', lien: 'Il a découvert le sommeil où les yeux bougent sous les paupières, celui des rêves.' }],
   },
   {
-    id: 'rosalind-franklin', nom: 'Rosalind Franklin', naissance: 1920, mort: 1958, illustre: true,
+    id: 'rosalind-franklin', nom: 'Rosalind Franklin', naissance: 1920, mort: 1958,
     cartes: [{ id: 'pourquoi-on-ressemble-a-ses-parents', lien: 'Sa photographie de l’ADN a révélé sa forme en double hélice.' }],
   },
   {
@@ -225,11 +223,11 @@ export const savantsPrisonniers: SavantPrisonnier[] = [
     cartes: [{ id: 'le-cerveau', lien: 'Il a dessiné les neurones un par un et montré qu’ils ne se touchent pas tout à fait.' }],
   },
   {
-    id: 'marie-curie', nom: 'Marie Curie', naissance: 1867, mort: 1934, illustre: true,
+    id: 'marie-curie', nom: 'Marie Curie', naissance: 1867, mort: 1934,
     cartes: [{ id: 'les-os', lien: 'Elle a fait rouler des voitures de radiographie jusqu’au front, pour voir les os à travers la peau.' }],
   },
   {
-    id: 'dmitri-mendeleiev', nom: 'Dmitri Mendeleïev', naissance: 1834, mort: 1907, illustre: true,
+    id: 'dmitri-mendeleiev', nom: 'Dmitri Mendeleïev', naissance: 1834, mort: 1907,
     cartes: [{ id: 'les-atomes', lien: 'Il a rangé les atomes dans un tableau, en laissant des cases vides pour ceux qu’on n’avait pas encore trouvés.' }],
   },
   {
@@ -330,7 +328,7 @@ export const savantsPrisonniers: SavantPrisonnier[] = [
     cartes: [{ id: 'pourquoi-les-ponts-tiennent', lien: 'Il a bâti des ponts en treillis, où chaque barre tire ou pousse juste ce qu’il faut.' }],
   },
   {
-    id: 'leonard-de-vinci', nom: 'Léonard de Vinci', naissance: 1452, mort: 1519, illustre: true,
+    id: 'leonard-de-vinci', nom: 'Léonard de Vinci', naissance: 1452, mort: 1519,
     cartes: [{ id: 'comment-vole-un-avion', lien: 'Il a étudié le vol des oiseaux et dessiné des machines volantes quatre siècles trop tôt.' }],
   },
   {
@@ -364,15 +362,15 @@ export const savantsPrisonniers: SavantPrisonnier[] = [
     cartes: [{ id: 'comment-marche-internet', lien: 'Il a écrit les règles qui permettent à deux réseaux différents de se parler.' }],
   },
   {
-    id: 'ada-lovelace', nom: 'Ada Lovelace', naissance: 1815, mort: 1852, illustre: true,
+    id: 'ada-lovelace', nom: 'Ada Lovelace', naissance: 1815, mort: 1852,
     cartes: [{ id: 'quest-ce-quun-programme', lien: 'Elle a écrit le tout premier programme, pour une machine qui n’a jamais été construite.' }],
   },
   {
-    id: 'grace-hopper', nom: 'Grace Hopper', naissance: 1906, mort: 1992, illustre: true, aRevoir: true,
+    id: 'grace-hopper', nom: 'Grace Hopper', naissance: 1906, mort: 1992, aRevoir: true,
     cartes: [{ id: 'comment-un-ordinateur-se-souvient', lien: 'Elle a trouvé le premier « bug » de l’histoire : un vrai papillon coincé dans la machine.' }],
   },
   {
-    id: 'alan-turing', nom: 'Alan Turing', naissance: 1912, mort: 1954, illustre: true,
+    id: 'alan-turing', nom: 'Alan Turing', naissance: 1912, mort: 1954,
     cartes: [{ id: 'comment-une-machine-apprend', lien: 'Il a demandé le premier si une machine peut penser, et proposé un test pour le savoir.' }],
   },
   {
@@ -417,7 +415,7 @@ export const savantsPrisonniers: SavantPrisonnier[] = [
     cartes: [{ id: 'linfini', lien: 'Il a démontré qu’il existe plusieurs infinis, et que certains sont plus grands que d’autres.' }],
   },
   {
-    id: 'al-khwarizmi', nom: 'Al-Khwârizmî', naissance: 780, mort: 850, illustre: true,
+    id: 'al-khwarizmi', nom: 'Al-Khwârizmî', naissance: 780, mort: 850,
     cartes: [{ id: 'le-zero', lien: 'Il a fait connaître le zéro et les chiffres qu’on écrit encore aujourd’hui.' }],
   },
   {

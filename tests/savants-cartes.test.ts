@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { savantsPrisonniers } from '@/content/savants-cartes';
 import { cards } from '@/content/cards';
+import { LOCALES } from '@/lib/types';
 
 const toutesLesCartes = savantsPrisonniers.flatMap((s) => s.cartes);
 
@@ -61,11 +62,20 @@ describe('les savants et leurs cartes', () => {
     }
   });
 
-  it('écrit un lien pour chaque carte tenue', () => {
+  /*
+    Le lien s'écrit dans les deux langues. Il n'existait qu'en français, si bien
+    que la fiche restait française en anglais — et que la voix anglaise, produite
+    à partir du français, disait autre chose que l'écran.
+  */
+  it('écrit un lien dans les deux langues pour chaque carte tenue', () => {
     for (const s of savantsPrisonniers) {
       for (const c of s.cartes) {
-        expect(c.lien.length, `${s.nom} / ${c.id}`).toBeGreaterThan(30);
-        expect(c.lien.endsWith('.'), `${s.nom} / ${c.id}`).toBe(true);
+        for (const langue of LOCALES) {
+          const texte = c.lien[langue];
+          expect(texte, `${s.nom} / ${c.id} / ${langue}`).toBeDefined();
+          expect(texte!.length, `${s.nom} / ${c.id} / ${langue}`).toBeGreaterThan(30);
+          expect(texte!.endsWith('.'), `${s.nom} / ${c.id} / ${langue}`).toBe(true);
+        }
       }
     }
   });

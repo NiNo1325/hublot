@@ -57,7 +57,7 @@ export function Bandeau({
     <button
       type="button"
       onClick={() => (enLecture ? onArreter() : onEcouter())}
-      className="flex min-h-12 cursor-pointer items-center gap-2 rounded-full border-2 border-soleil bg-soleil/10 px-6 font-display text-base text-soleil transition-transform hover:scale-105 active:scale-95"
+      className="flex min-h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-soleil bg-soleil/10 px-6 font-display text-lg text-soleil transition-transform hover:scale-[1.02] active:scale-95"
     >
       <span aria-hidden="true">{enLecture ? '⏸' : '🔊'}</span>
       {enLecture ? t('histoire.arreter') : t('histoire.ecouter')}
@@ -70,11 +70,11 @@ export function Bandeau({
         <p aria-live="polite" className="text-base leading-relaxed text-craie-douce">
           {texteRecit}
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-2">
+        <div className="flex w-full flex-col items-stretch gap-2">
           {boutonEcoute}
           <Link
             href="/musee/histoire"
-            className="min-h-12 rounded-full border-2 border-encre-bord px-5 py-3 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+            className="flex min-h-12 items-center justify-center rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
           >
             {t('musee.vers-histoire')}
           </Link>
@@ -121,15 +121,21 @@ export function Bandeau({
         </button>
       )}
 
-      <div className="flex items-center gap-3">
-        <button
-          type="button"
-          onClick={() => (enLecture ? onArreter() : onEcouter())}
-          className="cursor-pointer text-sm text-craie-douce underline-offset-4 transition-colors hover:text-soleil hover:underline"
-        >
-          {enLecture ? t('histoire.arreter') : t('musee.vers-histoire')}
-        </button>
-      </div>
+      {/*
+        L'histoire de Lumi, en grand et non plus en petits caractères. Il n'y a
+        pas d'écran d'accueil où la raconter : ce bouton est le seul endroit d'où
+        l'on peut réentendre pourquoi les savants sont enfermés, et un lien
+        souligné en bas de bandeau ne se voit pas.
+      */}
+      <Link
+        href="/musee/histoire"
+        className="flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl border-2 border-soleil/50 bg-soleil/5 px-5 font-display text-base text-soleil transition-transform hover:scale-[1.02] active:scale-95"
+      >
+        <span aria-hidden="true" className="text-xl">
+          📖
+        </span>
+        {t('musee.vers-histoire')}
+      </Link>
     </div>
   );
 }

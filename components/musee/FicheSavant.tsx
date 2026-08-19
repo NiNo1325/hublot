@@ -143,7 +143,7 @@ export function FicheSavant({
                           {localise(carte.content, locale).title[ageRange]}
                         </span>
                       )}
-                      <span className="text-sm leading-relaxed text-craie-douce">{c.lien}</span>
+                      <span className="text-sm leading-relaxed text-craie-douce">{localise(c.lien, locale)}</span>
                     </span>
 
                     {/*

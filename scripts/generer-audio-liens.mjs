@@ -8,6 +8,11 @@
  * le bouton d'écoute de sa fiche et par le jeu des liens. Cent cinquante textes,
  * autant que de cartes, puisque chaque carte n'a qu'un savant.
  *
+ * Le texte est pris dans la langue demandée. Il ne l'était pas : la version
+ * anglaise partait du français, que le modèle traduisait au vol — la voix disait
+ * donc autre chose que l'écran, et personne ne pouvait relire ce qu'elle avait
+ * improvisé.
+ *
  * Un manifeste évite de régénérer un texte inchangé : l'empreinte couvre la
  * voix, la consigne et le texte, si bien qu'un mot changé dans la consigne
  * referait les cent cinquante — c'est voulu, et c'est pourquoi on ne la retouche
@@ -66,9 +71,10 @@ function aFaire(manifeste) {
       const cleLien = `${savant.id}/liens/${carte.id}`;
       const dossier = `${RACINE}/${savant.id}/liens`;
       const chemin = `${dossier}/${carte.id}.mp3`;
-      const attendu = empreinte(carte.lien);
+      const texte = carte.lien[LOCALE] ?? carte.lien.fr;
+      const attendu = empreinte(texte);
       if (manifeste[cleLien]?.empreinte === attendu && existsSync(chemin)) continue;
-      liste.push({ cle: cleLien, chemin, dossier, texte: carte.lien, attendu });
+      liste.push({ cle: cleLien, chemin, dossier, texte, attendu });
     }
   }
   return liste;

@@ -114,3 +114,20 @@ export interface ScienceCard {
   thumbnail: string;
   content: Localise<CardContent>;
 }
+
+/**
+ * Une phrase que Lumi affirme, et que l'enfant doit croire ou contredire.
+ *
+ * Une affirmation fausse reprend l'idée reçue que la carte corrige, jamais un
+ * piège inventé — même règle que les mauvaises réponses du quizz. Contredire
+ * quelqu'un qui affirme demande plus que cocher la bonne case dans une liste :
+ * c'est ce que ce format apporte, et rien d'autre ne le fait.
+ */
+export interface Affirmation {
+  /** La carte dont l'affirmation parle : elle n'est tirée qu'une fois écoutée. */
+  cardId: string;
+  vrai: boolean;
+  texte: Localise<string>;
+  /** Ce que Lumi répond ensuite, quelle qu'ait été la réponse de l'enfant. */
+  reponse: Localise<string>;
+}

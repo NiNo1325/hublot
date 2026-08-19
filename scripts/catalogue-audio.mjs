@@ -22,7 +22,6 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync, statSync } from 'node:fs';
 import { glob } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
-import { LOCALES } from '../lib/types.ts';
 
 const RACINE = 'public/audio';
 const DESTINATION = `${RACINE}/catalogue.json`;
@@ -45,21 +44,19 @@ function empreinteDe(entree) {
 /** (Re)génère le catalogue depuis les fichiers réellement présents. */
 export async function ecrireCatalogue() {
   /*
-    Les manifestes sont autant que de (langue × famille de sons). Les parcourir
-    plutôt que les nommer un à un évite ce qui s'était produit : le tutoriel,
-    ajouté après, n'avait jamais été branché ici, et ses fichiers étaient donc
-    retéléchargés à chaque mise à jour faute d'empreinte. Une langue nouvelle
-    tomberait dans le même piège.
+    Les manifestes se **cherchent sur le disque** plutôt que de se nommer un à
+    un. La liste écrite à la main a déjà lâché deux fois : le tutoriel, ajouté
+    après, n'y figurait pas, puis les titres et l'histoire — trois cent dix
+    fichiers sans empreinte, donc retéléchargés à chaque mise à jour hors ligne.
+    Une famille ajoutée demain, ou une langue nouvelle, se branche désormais
+    toute seule.
   */
   const manifestes = {};
-  for (const langue of ['', ...LOCALES.filter((l) => l !== 'fr')]) {
-    const prefixeLangue = langue ? `${langue}/` : '';
-    for (const famille of ['', 'quiz', 'accroches', 'tutoriel', 'savants']) {
-      const prefixe = `${prefixeLangue}${famille ? `${famille}/` : ''}`;
-      const entrees = await lireManifeste(`${RACINE}/${prefixe}manifeste.json`);
-      for (const [cle, valeur] of Object.entries(entrees)) {
-        manifestes[`${prefixe}${cle}.mp3`] = empreinteDe(valeur);
-      }
+  for await (const chemin of glob(`${RACINE}/**/manifeste.json`)) {
+    const relatif = chemin.replaceAll('\\', '/').slice(`${RACINE}/`.length);
+    const prefixe = relatif.slice(0, -'manifeste.json'.length);
+    for (const [cle, valeur] of Object.entries(await lireManifeste(chemin))) {
+      manifestes[`${prefixe}${cle}.mp3`] = empreinteDe(valeur);
     }
   }
 

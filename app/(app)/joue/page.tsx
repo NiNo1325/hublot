@@ -6,9 +6,12 @@ import { useT } from '@/components/i18n/useT';
 /**
  * L'entrée de l'onglet Joue : les jeux bâtis sur le contenu déjà écouté.
  *
- * Le quizz occupait un onglet à lui seul, ce qui ne laissait aucune place aux
- * modes suivants. Les annoncer ici, grisés, coûte peu et dit à l'enfant que
- * l'endroit va se remplir.
+ * L'ordre n'est pas alphabétique, il est pédagogique. Le quizz vient en tête
+ * parce que c'est le seul qui donne des clés — le fil rouge passe par lui, et
+ * l'enfant doit le trouver sans chercher. Viennent ensuite les trois jeux qui
+ * font travailler ce qu'il a écouté : trancher une affirmation, situer une
+ * époque, reconnaître un savant. Le mémo et le chrono ferment la marche : ce
+ * sont des jeux d'adresse, ils amusent sans rien enseigner de neuf.
  */
 export default function JouePage() {
   const t = useT();
@@ -26,11 +29,11 @@ export default function JouePage() {
           teinte: '#fb7185',
         },
         {
-          href: '/joue/memo',
-          emoji: '🃏',
-          titre: t('jeu.memo.titre'),
-          texte: t('jeu.memo.texte'),
-          teinte: '#a3e635',
+          href: '/joue/vrai-faux',
+          emoji: '🤔',
+          titre: t('jeu.vrai-faux.titre'),
+          texte: t('jeu.vrai-faux.texte'),
+          teinte: '#facc15',
         },
         {
           href: '/joue/liens',
@@ -38,6 +41,27 @@ export default function JouePage() {
           titre: t('jeu.liens.titre'),
           texte: t('jeu.liens.texte'),
           teinte: '#38bdf8',
+        },
+        {
+          href: '/joue/frise',
+          emoji: '⏳',
+          titre: t('jeu.frise.titre'),
+          texte: t('jeu.frise.texte'),
+          teinte: '#fb923c',
+        },
+        {
+          href: '/joue/mystere',
+          emoji: '🕵️',
+          titre: t('jeu.mystere.titre'),
+          texte: t('jeu.mystere.texte'),
+          teinte: '#c4b5fd',
+        },
+        {
+          href: '/joue/memo',
+          emoji: '🃏',
+          titre: t('jeu.memo.titre'),
+          texte: t('jeu.memo.texte'),
+          teinte: '#a3e635',
         },
         {
           href: '/joue/chrono',

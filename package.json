@@ -19,6 +19,7 @@
     "audio:noms": "tsx --env-file=.env.local scripts/generer-audio-noms.mjs",
     "audio:liens": "tsx --env-file=.env.local scripts/generer-audio-liens.mjs",
     "audio:titres": "tsx --env-file=.env.local scripts/generer-audio-titres.mjs",
+    "audio:affirmations": "tsx --env-file=.env.local scripts/generer-audio-affirmations.mjs",
     "audio:attente": "tsx scripts/maj-attente-audio.mjs",
     "audio:catalogue": "tsx scripts/catalogue-audio.mjs",
     "push": "node --env-file=.env.local scripts/push.mjs",

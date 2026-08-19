@@ -2,24 +2,15 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { ScienceCard } from '@/lib/types';
-import { domainStyles } from '@/lib/domain-styles';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
-import { construirePlateau, sApparient, type TuileMemo, type VarianteMemo } from '@/lib/memo';
+import { construirePlateau, sApparient, type TuileMemo } from '@/lib/memo';
 import { useAgeRange } from '@/components/age/useAgeRange';
-import { useLocale } from '@/components/i18n/useLocale';
 import { useT } from '@/components/i18n/useT';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
-import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useSavantAudio } from '@/components/savants/useSavantAudio';
 import Image from 'next/image';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { jouerSonPaire, jouerSonRate, jouerSonRecompense } from '@/lib/sonRecompense';
-
-interface MemoViewProps {
-  cards: ScienceCard[];
-  variante: VarianteMemo;
-}
 
 /** Temps pendant lequel une paire ratée reste visible avant de se retourner. */
 const RETOURNEMENT_MS = 900;
@@ -40,12 +31,10 @@ const RETOURNEMENT_MS = 900;
  * qui transforme un jeu de mémoire en rencontre : on croise vingt visages et
  * vingt noms sans avoir à aller les chercher.
  */
-export function MemoView({ cards, variante }: MemoViewProps) {
+export function MemoView() {
   const router = useRouter();
   const { ageRange, status } = useAgeRange();
-  const { locale } = useLocale();
   const { etoiles } = useEtoiles();
-  const { cartesVues } = useCartesVues();
   const t = useT();
   const { jouerNom } = useSavantAudio(ageRange ?? '6-8');
 
@@ -68,39 +57,10 @@ export function MemoView({ cards, variante }: MemoViewProps) {
 
   if (status === 'chargement' || !ageRange) return null;
 
-  if (variante === 'cartes' && ageRange === '3-5') {
-    return (
-      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-8 px-6 py-12 text-center">
-        <span className="text-7xl" aria-hidden="true">
-          🃏
-        </span>
-        <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-          {t('memo.trop-jeune.titre')}
-        </h1>
-        <p className="max-w-md text-craie-douce">{t('memo.trop-jeune.texte')}</p>
-        <button
-          type="button"
-          onClick={() => router.push('/joue/memo')}
-          className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-8 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
-        >
-          {t('memo.vers-images')}
-        </button>
-      </main>
-    );
-  }
-
-  /*
-    La variante « cartes » ne pioche que dans les cartes déjà écoutées : sans
-    cela, le lien entre un dessin et un titre n'est pas déductible et le jeu
-    se finit par épuisement plutôt que par mémoire.
-  */
-  const disponibles =
-    variante === 'cartes' ? cards.filter((c) => cartesVues.has(c.id)) : cards;
-
   const lancer = () => {
     if (minuterieRef.current) clearTimeout(minuterieRef.current);
     setDernierNom(null);
-    setPlateau(construirePlateau(disponibles, ageRange, variante, locale));
+    setPlateau(construirePlateau(ageRange));
     setRetournees([]);
     setTrouvees([]);
     setCoups(0);
@@ -129,10 +89,8 @@ export function MemoView({ cards, variante }: MemoViewProps) {
       // la fanfare de fin qui l'emporte.
       if (complet) jouerSonRecompense();
       else jouerSonPaire();
-      if (a.nom) {
-        setDernierNom(a.nom);
-        jouerNom(a.paire);
-      }
+      setDernierNom(a.nom);
+      jouerNom(a.paire);
       setTrouvees((liste) => [...liste, a.paire]);
       setRetournees([]);
       return;
@@ -141,7 +99,7 @@ export function MemoView({ cards, variante }: MemoViewProps) {
     minuterieRef.current = setTimeout(() => setRetournees([]), RETOURNEMENT_MS);
   };
 
-  const titre = variante === 'savants' ? t('memo.savants.titre') : t('memo.cartes.titre');
+  const titre = t('memo.savants.titre');
 
   if (plateau === null) {
     return (
@@ -151,20 +109,20 @@ export function MemoView({ cards, variante }: MemoViewProps) {
         </span>
         <h1 className="font-display text-3xl font-semibold sm:text-4xl">{titre}</h1>
         <p className="max-w-md text-craie-douce">
-          {variante === 'savants' ? t('memo.savants.regle') : t('memo.cartes.regle')}
+          {t('memo.savants.regle')}
         </p>
-        {disponibles.length >= 2 ? (
-          <button
-            type="button"
-            onClick={lancer}
-            className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
-          >
-            {t('memo.demarrer')}
-          </button>
-        ) : (
-          /* Deux cartes écoutées au minimum : en dessous, il n'y a pas de partie. */
-          <p className="max-w-md text-craie-douce">{t('memo.pas-assez')}</p>
-        )}
+        {/*
+          Plus de condition d'entrée : le plateau se tire dans les cent treize
+          portraits, il y en a toujours assez. C'est la variante « cartes » qui
+          exigeait des cartes déjà écoutées, et elle a été retirée.
+        */}
+        <button
+          type="button"
+          onClick={lancer}
+          className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
+        >
+          {t('memo.demarrer')}
+        </button>
       </main>
     );
   }
@@ -215,27 +173,20 @@ export function MemoView({ cards, variante }: MemoViewProps) {
         </p>
       )}
 
-      <ul
-        className={
-          variante === 'cartes' ? 'grid grid-cols-2 gap-3' : 'grid grid-cols-4 gap-2.5 sm:gap-3'
-        }
-      >
+      <ul className="grid grid-cols-4 gap-2.5 sm:gap-3">
         {plateau.map((tuile) => {
           const ouverte = retournees.includes(tuile.id) || trouvees.includes(tuile.paire);
-          // Un savant n'appartient à aucun domaine : il porte la teinte du soleil.
-          const style = tuile.domainId ? domainStyles[tuile.domainId] : null;
-          const teinte = style?.teinte ?? 'var(--color-soleil)';
-          const halo = style?.halo ?? 'rgba(255,182,39,0.35)';
+          // Un savant n'appartient à aucun monde : il porte la teinte du soleil.
+          const teinte = 'var(--color-soleil)';
+          const halo = 'rgba(255,182,39,0.35)';
           return (
             <li key={tuile.id}>
               <button
                 type="button"
                 onClick={() => retourner(tuile)}
                 disabled={ouverte}
-                aria-label={ouverte ? (tuile.nom ?? tuile.face) : t('memo.tuile-cachee')}
-                className={`flex w-full cursor-pointer items-center justify-center rounded-2xl border-2 p-1 transition-transform duration-150 hover:scale-105 active:scale-95 disabled:cursor-default disabled:hover:scale-100 ${
-                  variante === 'cartes' ? 'min-h-20' : 'aspect-square'
-                }`}
+                aria-label={ouverte ? tuile.nom : t('memo.tuile-cachee')}
+                className="flex aspect-square w-full cursor-pointer items-center justify-center rounded-2xl border-2 p-1 transition-transform duration-150 hover:scale-105 active:scale-95 disabled:cursor-default disabled:hover:scale-100"
                 style={{
                   borderColor: ouverte ? teinte : 'var(--color-encre-bord)',
                   backgroundColor: 'var(--color-encre-clair)',
@@ -246,23 +197,13 @@ export function MemoView({ cards, variante }: MemoViewProps) {
                 }}
               >
                 {ouverte ? (
-                  tuile.genre === 'portrait' ? (
-                    <Image
-                      src={tuile.face}
-                      alt=""
-                      width={640}
-                      height={640}
-                      className="h-full w-full rounded-xl object-cover"
-                    />
-                  ) : tuile.genre === 'emoji' ? (
-                    <span className="text-3xl sm:text-4xl" aria-hidden="true">
-                      {tuile.face}
-                    </span>
-                  ) : (
-                    <span className="px-1 text-center text-xs font-medium leading-snug text-craie sm:text-sm">
-                      {tuile.face}
-                    </span>
-                  )
+                  <Image
+                    src={tuile.face}
+                    alt=""
+                    width={640}
+                    height={640}
+                    className="h-full w-full rounded-xl object-cover"
+                  />
                 ) : (
                   <span className="text-2xl opacity-30" aria-hidden="true">
                     ✦

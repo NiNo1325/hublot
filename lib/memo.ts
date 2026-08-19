@@ -1,34 +1,23 @@
-import type { AgeRange, DomainId, Locale, ScienceCard } from '@/lib/types';
+import type { AgeRange } from '@/lib/types';
 import { melanger } from '@/lib/melanger';
-import { localise } from '@/lib/i18n/localise';
-import { savants } from '@/content/savants';
+import { savantsPrisonniers } from '@/content/savants-cartes';
 
 /**
- * Le plateau du Mémo.
+ * Le plateau du Mémo : deux fois le même portrait, à retrouver.
  *
- * Deux variantes, et c'est l'âge qui décide laquelle est ouverte :
+ * Aucune lecture n'est nécessaire, donc le jeu est ouvert dès trois ans — et
+ * quand une paire tombe, le nom s'affiche et se prononce. On croise ainsi des
+ * visages de savants sans avoir à les chercher, et c'est en cela que le Mémo
+ * sert le fil rouge : ces visages, on les retrouvera derrière des barreaux.
  *
- * - `savants` apparie deux fois le même portrait du Wall of Fame. Aucune
- *   lecture n'est nécessaire, donc le jeu est ouvert dès trois ans — et quand
- *   une paire tombe, le nom s'affiche et se prononce. On croise ainsi vingt
- *   visages sans avoir à les chercher.
- * - `cartes` apparie l'emoji d'une carte avec son titre. C'est un exercice de
- *   lecture autant que de mémoire, réservé aux lecteurs.
+ * Il pioche dans les cent treize prisonniers, et non plus dans la vingtaine de
+ * fiches rédigées : depuis que tous ont leur portrait, s'en tenir à vingt
+ * revenait à revoir les mêmes têtes à chaque partie.
  *
- * Le Mémo des savants se joue dès la première ouverture : un portrait s'apparie
- * à un portrait, rien à savoir d'avance. Celui des cartes, lui, ne pioche que
- * dans les cartes déjà écoutées — c'est ce qui rend le lien entre un dessin et
- * un titre déductible plutôt qu'arbitraire.
+ * La variante « cartes » — appariez un emoji à un titre — a été retirée : elle
+ * demandait de lire, ce que le Mémo n'a pas à demander, et le musée raconte
+ * désormais mieux le lien entre une carte et son savant.
  */
-export type VarianteMemo = 'savants' | 'cartes';
-
-/**
- * La variante « cartes » plafonne plus bas que l'âge ne le voudrait : ses
- * tuiles portent du texte, donc s'affichent larges et sur deux colonnes. Douze
- * tuiles tiennent à l'écran, seize non.
- */
-export const PAIRES_CARTES_MAX = 6;
-
 /** Le plateau grandit avec l'enfant. */
 export const PAIRES_PAR_AGE: Record<AgeRange, number> = {
   '3-5': 4,
@@ -41,69 +30,30 @@ export interface TuileMemo {
   id: string;
   /** Ce qui rend deux tuiles appariables. */
   paire: string;
-  /** Ce qui s'affiche une fois retournée : emoji, titre, ou chemin d'image. */
+  /** Chemin du portrait, affiché une fois la tuile retournée. */
   face: string;
-  /** Décide du rendu : gros emoji, petit texte, ou portrait. */
-  genre: 'emoji' | 'titre' | 'portrait';
-  /** Annoncé et prononcé quand la paire tombe. Réservé aux savants. */
-  nom?: string;
-  /** Pour la couleur de la tuile retournée. Un savant n'a pas de domaine. */
-  domainId?: DomainId;
+  /** Annoncé et prononcé quand la paire tombe. */
+  nom: string;
 }
 
 /**
  * Construit un plateau mélangé.
  *
- * Moins de cartes que de paires demandées rend simplement un plateau plus
- * petit, plutôt que d'échouer : un enfant qui n'a écouté que trois cartes doit
- * pouvoir jouer quand même.
+ * Le tirage est fait sur les portraits, sans condition : un enfant qui n'a
+ * encore rien écouté doit pouvoir jouer. C'est même l'ordre naturel — on
+ * rencontre les visages ici, on les délivre au musée ensuite.
  */
-export function construirePlateau(
-  cards: ScienceCard[],
-  age: AgeRange,
-  variante: VarianteMemo,
-  locale: Locale,
-): TuileMemo[] {
-  if (variante === 'savants') {
-    const tuiles = melanger(savants)
-      .slice(0, PAIRES_PAR_AGE[age])
-      .flatMap((savant): TuileMemo[] =>
-        ['a', 'b'].map((suffixe) => ({
-          id: `${savant.id}-${suffixe}`,
-          paire: savant.id,
-          face: `/images/wall-of-fame/${savant.id}.webp`,
-          genre: 'portrait' as const,
-          nom: savant.nom,
-        })),
-      );
-    return melanger(tuiles);
-  }
-
-  /*
-    Variante « cartes ». Le titre affiché est celui du registre 3-5, quel que
-    soit l'âge du joueur : c'est le plus court et le plus imagé, et une tuile
-    n'a pas la place d'une phrase d'article.
-
-    `cards` arrive déjà restreint aux cartes que l'enfant a écoutées : le lien
-    entre un emoji et un titre n'est déductible que s'il connaît la carte.
-    Sans cela, ce n'est plus un jeu de mémoire mais un appariement au hasard
-    qu'on finit par épuisement.
-  */
-  const choisies = melanger(cards).slice(0, Math.min(PAIRES_PAR_AGE[age], PAIRES_CARTES_MAX));
-
-  const tuiles = choisies.flatMap((carte): TuileMemo[] => {
-    const commun = { paire: carte.id, domainId: carte.domainId };
-    return [
-      { ...commun, id: `${carte.id}-a`, face: carte.thumbnail, genre: 'emoji' as const },
-      {
-        ...commun,
-        id: `${carte.id}-b`,
-        face: localise(carte.content, locale).title['3-5'],
-        genre: 'titre' as const,
-      },
-    ];
-  });
-
+export function construirePlateau(age: AgeRange): TuileMemo[] {
+  const tuiles = melanger(savantsPrisonniers)
+    .slice(0, PAIRES_PAR_AGE[age])
+    .flatMap((savant): TuileMemo[] =>
+      ['a', 'b'].map((suffixe) => ({
+        id: `${savant.id}-${suffixe}`,
+        paire: savant.id,
+        face: `/images/wall-of-fame/${savant.id}.webp`,
+        nom: savant.nom,
+      })),
+    );
   return melanger(tuiles);
 }
 

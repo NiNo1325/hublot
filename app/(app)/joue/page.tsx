@@ -33,10 +33,10 @@ export default function JouePage() {
           teinte: '#a3e635',
         },
         {
-          href: '/joue/memo-cartes',
-          emoji: '🗂️',
-          titre: t('jeu.memo-cartes.titre'),
-          texte: t('jeu.memo-cartes.texte'),
+          href: '/joue/liens',
+          emoji: '🔗',
+          titre: t('jeu.liens.titre'),
+          texte: t('jeu.liens.texte'),
           teinte: '#38bdf8',
         },
         {

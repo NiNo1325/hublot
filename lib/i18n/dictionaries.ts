@@ -128,6 +128,17 @@ const fr = {
   'histoire.ecouter': 'Raconte-moi',
   'histoire.arreter': 'Arrêter',
   'histoire.action': 'Au musée !',
+  'jeu.liens.titre': 'Les liens',
+  'jeu.liens.texte': 'Relie chaque savant à sa découverte.',
+  'liens.titre': 'Les liens',
+  'liens.regle': 'Touche un savant, puis sa découverte. Quand tous les traits sont tirés, c’est gagné !',
+  'liens.demarrer': 'Commencer',
+  'liens.commence': 'Touche un savant à gauche',
+  'liens.maintenant': 'Maintenant, sa découverte à droite',
+  'liens.avancement': (faits: number, total: number) => `${faits} lien${faits > 1 ? 's' : ''} sur ${total}`,
+  'liens.gagne': 'Tous les liens sont faits !',
+  'liens.rejouer': 'Rejouer',
+  'liens.retour': 'Retour aux jeux',
   'fete.on-y-va': 'On y va !',
   'fete.bien-joue': 'Bien joué !',
   'fete.en-forme': 'En pleine forme !',
@@ -293,12 +304,9 @@ const fr = {
   'chrono.trop-jeune.texte':
     'Le chrono va trop vite pour qu’on ait le temps de tout écouter. Va plutôt faire le quizz : là, on prend le temps.',
 
-  'jeu.memo-cartes.titre': 'Mémo des cartes',
-  'jeu.memo-cartes.texte': 'Retrouve chaque dessin et le nom de sa carte.',
   'memo.savants.titre': 'Mémo des savants',
   'memo.savants.regle':
     'Retourne les tuiles deux par deux et retrouve les paires de portraits. À chaque paire, tu apprends un nom.',
-  'memo.cartes.titre': 'Mémo des cartes',
   'memo.cartes.regle':
     'Retourne les tuiles deux par deux et associe chaque dessin au nom de sa carte. Seules les cartes que tu as écoutées sont dans le jeu.',
   'memo.pas-assez':
@@ -308,10 +316,8 @@ const fr = {
   'memo.bravo': 'Toutes les paires trouvées ! 🎉',
   'memo.rejouer': 'Nouvelle partie',
   'memo.tuile-cachee': 'Tuile cachée',
-  'memo.trop-jeune.titre': 'Ce mémo demande de lire',
   'memo.trop-jeune.texte':
     'Celui-ci associe un dessin au nom écrit de sa carte. Le mémo des savants, lui, est fait pour toi.',
-  'memo.vers-images': 'Aller au mémo des savants',
 };
 
 /** Toutes les clés traduisibles, dérivées de la source française. */
@@ -433,6 +439,17 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'histoire.ecouter': 'Tell me',
     'histoire.arreter': 'Stop',
     'histoire.action': 'To the museum!',
+    'jeu.liens.titre': 'Matching',
+    'jeu.liens.texte': 'Match each scientist to their discovery.',
+    'liens.titre': 'Matching',
+    'liens.regle': 'Tap a scientist, then their discovery. When every line is drawn, you win!',
+    'liens.demarrer': 'Start',
+    'liens.commence': 'Tap a scientist on the left',
+    'liens.maintenant': 'Now their discovery on the right',
+    'liens.avancement': (faits: number, total: number) => `${faits} of ${total} matched`,
+    'liens.gagne': 'Every link is made!',
+    'liens.rejouer': 'Play again',
+    'liens.retour': 'Back to the games',
     'fete.on-y-va': 'Here we go!',
     'fete.bien-joue': 'Nicely done!',
     'fete.en-forme': 'On a roll!',
@@ -598,12 +615,9 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'chrono.trop-jeune.texte':
       'The clock runs too fast to listen to everything. Try the quiz instead: there, you can take your time.',
 
-    'jeu.memo-cartes.titre': 'Card memory',
-    'jeu.memo-cartes.texte': 'Match each picture with the name of its card.',
     'memo.savants.titre': 'Scientist memory',
     'memo.savants.regle':
       'Turn the tiles over two at a time and find the matching portraits. Each pair teaches you a name.',
-    'memo.cartes.titre': 'Card memory',
     'memo.cartes.regle':
       'Turn the tiles over two at a time and match each picture with the name of its card. Only the cards you have listened to are in the game.',
     'memo.pas-assez':
@@ -613,10 +627,8 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'memo.bravo': 'All the pairs found! 🎉',
     'memo.rejouer': 'New game',
     'memo.tuile-cachee': 'Hidden tile',
-    'memo.trop-jeune.titre': 'This memory game needs reading',
     'memo.trop-jeune.texte':
       'This one matches a picture with the written name of its card. Scientist memory is the one made for you.',
-    'memo.vers-images': 'Go to scientist memory',
   },
 };
 

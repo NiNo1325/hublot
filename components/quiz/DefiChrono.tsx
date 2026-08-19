@@ -272,7 +272,7 @@ export function DefiChrono({ cards }: DefiChronoProps) {
           <span aria-hidden="true">⏱️</span> {chrono.restant}
         </span>
         <span className="font-display text-xl text-soleil">
-          {reussies} <span aria-hidden="true">⭐</span>
+          {reussies} <span aria-hidden="true">🎯</span>
         </span>
       </header>
 

@@ -116,7 +116,7 @@ export function RangsView() {
             t('lumi.rang-atteint')
           ) : (
             <>
-              {t('lumi.reste')(selection.seuil - etoiles)} <span aria-hidden="true">⭐</span>
+              {t('lumi.reste-cartes')(selection.seuil - etoiles)}
             </>
           )}
         </p>

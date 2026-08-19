@@ -332,7 +332,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
       <div className="flex justify-center gap-1" aria-hidden="true">
         {serie.map((_, i) => (
           <span key={i} className={i < reussies ? 'text-xl' : 'text-xl opacity-25'}>
-            ⭐
+            🔑
           </span>
         ))}
       </div>

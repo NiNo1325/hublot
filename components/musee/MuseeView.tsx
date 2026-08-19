@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { ScienceCard } from '@/lib/types';
@@ -25,7 +25,7 @@ import { useHistoireAudio } from './useHistoireAudio';
 import { Bandeau } from './Bandeau';
 import { Cellule } from './Cellule';
 import { FicheSavant } from './FicheSavant';
-import { LigneDuTemps } from './LigneDuTemps';
+import { JalonEpoque } from './JalonEpoque';
 
 interface MuseeViewProps {
   cards: ScienceCard[];
@@ -155,7 +155,6 @@ export function MuseeView({ cards }: MuseeViewProps) {
           enLecture={enLecture !== null}
           onEcouter={() => jouer(histoire[0].id)}
           onArreter={arreter}
-          etoiles={etoiles}
           cles={solde}
           delivres={liberes.length}
           total={total}
@@ -166,29 +165,36 @@ export function MuseeView({ cards }: MuseeViewProps) {
         />
       </header>
 
-      {/* Le mur, longé par sa ligne du temps. */}
-      <div className="flex gap-2 sm:gap-4">
-        <LigneDuTemps
-          compte={compte}
-          active={active}
-          onAller={(id) =>
-            galeries.current.get(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          }
-        />
+      {/*
+        Le mur et sa ligne du temps, dans une seule grille à deux colonnes : une
+        époque et sa galerie partagent la même ligne, donc la même hauteur. La
+        frise était auparavant un rail fixe, collé en haut, dont les jalons
+        étaient répartis à intervalles égaux sans aucun rapport avec la hauteur
+        réelle des galeries — le XIXᵉ siècle et ses trente-six cellules occupaient
+        autant de frise que le Moyen Âge et ses trois.
+      */}
+      <div className="grid grid-cols-[auto_1fr] gap-x-2 sm:gap-x-4">
+        {EPOQUES.map((epoque, rang) => {
+          const dedans = savantsDeLEpoque(epoque);
+          if (dedans.length === 0) return null;
+          return (
+            <Fragment key={epoque.id}>
+              <JalonEpoque
+                epoque={epoque}
+                rang={rang}
+                dernier={rang === EPOQUES.length - 1}
+                libres={compte[epoque.id].libres}
+                total={compte[epoque.id].total}
+                active={active === epoque.id}
+              />
 
-        <div className="flex min-w-0 flex-1 flex-col gap-5">
-          {EPOQUES.map((epoque) => {
-            const dedans = savantsDeLEpoque(epoque);
-            if (dedans.length === 0) return null;
-            return (
               <section
-                key={epoque.id}
                 data-epoque={epoque.id}
                 ref={(el) => {
                   if (el) galeries.current.set(epoque.id, el);
                   else galeries.current.delete(epoque.id);
                 }}
-                className="flex scroll-mt-4 flex-col gap-2"
+                className="flex min-w-0 scroll-mt-4 flex-col gap-2 pb-5"
               >
                 <div className="flex items-baseline justify-between px-1">
                   <Intitule>{t(CLE_EPOQUE[epoque.id])}</Intitule>
@@ -216,9 +222,9 @@ export function MuseeView({ cards }: MuseeViewProps) {
                   ))}
                 </ul>
               </section>
-            );
-          })}
-        </div>
+            </Fragment>
+          );
+        })}
       </div>
 
       {ouvert && (

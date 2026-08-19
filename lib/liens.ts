@@ -1,4 +1,4 @@
-import type { AgeRange, Locale, ScienceCard } from './types';
+import type { AgeRange, DomainId, Locale, ScienceCard } from './types';
 import { melanger } from './melanger';
 import { localise } from './i18n/localise';
 import { savantsPrisonniers, type SavantPrisonnier } from '@/content/savants-cartes';
@@ -37,6 +37,10 @@ export interface Lien {
   decouverte: string;
   /** La carte d'où vient la découverte, pour pouvoir l'écouter ensuite. */
   carteId: string;
+  /** L'emoji du hublot, celui-là même qu'affiche Découvrir. */
+  emoji: string;
+  /** Le monde, pour la couleur du hublot. */
+  domainId: DomainId;
 }
 
 export interface Manche {
@@ -86,6 +90,8 @@ export function construireManche(
         portrait: `/images/wall-of-fame/${savant.id}.webp`,
         decouverte: localise(carte.content, locale).title['3-5'],
         carteId: carte.id,
+        emoji: carte.thumbnail,
+        domainId: carte.domainId,
       },
     ];
   });

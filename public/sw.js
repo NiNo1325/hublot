@@ -11,7 +11,7 @@
  * inacceptable, et c'est pourquoi son cache n'est jamais versionné.
  */
 
-const VERSION = 'v16';
+const VERSION = 'v17';
 const CACHE_SHELL = `hublot-shell-${VERSION}`;
 const CACHE_AUDIO = 'hublot-audio';
 
@@ -31,7 +31,6 @@ const SHELL = [
   '/musee/histoire',
   // Les salles de Lumi, ouvertes depuis le musée.
   '/lumi/rangs',
-  '/lumi/cabinet',
   '/reglages',
   '/hors-ligne',
   '/manifest.webmanifest',

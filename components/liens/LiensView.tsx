@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import type { ScienceCard } from '@/lib/types';
 import { construireManche, estBrouille, type Lien, type Manche } from '@/lib/liens';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
+import { domainStyles } from '@/lib/domain-styles';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
@@ -42,7 +43,7 @@ export function LiensView({ cards }: LiensViewProps) {
   const { liberes } = useMusee();
   const { locale } = useLocale();
   const t = useT();
-  const { presenter, direNom } = useLienAudio();
+  const { presenter, direNom, direTitre } = useLienAudio();
 
   const [manche, setManche] = useState<Manche | null>(null);
   const [choisi, setChoisi] = useState<string | null>(null);
@@ -293,24 +294,57 @@ export function LiensView({ cards }: LiensViewProps) {
                 <span className="text-xs leading-tight text-craie">{gauche.nom}</span>
               </button>
 
-              <button
-                type="button"
-                onClick={() => toucherDecouverte(droite)}
-                disabled={faitD}
+              <div
                 ref={(el) => {
                   if (el) ancresDroite.current.set(droite.savantId, el);
                   else ancresDroite.current.delete(droite.savantId);
                 }}
-                className={`${etiquette} ${
+                className={`${etiquette} gap-1.5 ${
                   faitD
                     ? 'border-soleil/60 bg-soleil/10 opacity-70'
                     : rouge
                       ? 'border-[#fb7185] bg-[#fb7185]/10'
-                      : 'border-encre-bord bg-encre-clair hover:border-soleil'
+                      : 'border-encre-bord bg-encre-clair'
                 }`}
               >
-                <span className="px-1 text-xs leading-snug text-craie">{droite.decouverte}</span>
-              </button>
+                {/*
+                  Le hublot de la carte, en petit : le même disque coloré que dans
+                  Découvrir. C'est lui qui rend la découverte reconnaissable à un
+                  enfant qui ne lit pas encore — il a vu cet objet ailleurs.
+                */}
+                <button
+                  type="button"
+                  onClick={() => toucherDecouverte(droite)}
+                  disabled={faitD}
+                  className="flex flex-1 cursor-pointer items-center gap-1.5 text-left disabled:cursor-default"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-base"
+                    style={{
+                      borderColor: domainStyles[droite.domainId].teinte,
+                      backgroundColor: 'var(--color-encre)',
+                      boxShadow: `0 0 10px ${domainStyles[droite.domainId].halo}`,
+                    }}
+                  >
+                    {droite.emoji}
+                  </span>
+                  <span className="text-xs leading-snug text-craie">{droite.decouverte}</span>
+                </button>
+
+                {/*
+                  Le haut-parleur, sur son propre bouton : la colonne était muette,
+                  donc injouable seul pour qui ne lit pas encore.
+                */}
+                <button
+                  type="button"
+                  onClick={() => direTitre(droite.carteId)}
+                  aria-label={t('liens.ecouter')}
+                  className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 border-encre-bord text-sm transition-colors hover:border-soleil"
+                >
+                  <span aria-hidden="true">🔊</span>
+                </button>
+              </div>
             </Fragment>
           );
         })}

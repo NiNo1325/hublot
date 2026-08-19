@@ -101,7 +101,6 @@ const fr = {
   'musee.ouvrir-carte': (titre: string) => `Ouvrir la carte : ${titre}`,
   'musee.ecouter-lien': 'Écouter',
   'musee.vers-rangs': 'Voir les rangs de Lumi',
-  'musee.vers-cabinet-aria': (n: number) => `${n} étoiles — aller au cabinet de curiosités`,
   'musee.ligne-du-temps': 'La ligne du temps',
   'musee.dates.avant': (an: number) => `jusqu’en ${an}`,
   'musee.dates.depuis': (an: number) => `depuis ${an}`,
@@ -136,6 +135,7 @@ const fr = {
   'liens.titre': 'Les liens',
   'liens.regle': 'Touche un savant, puis sa découverte. Quand tous les traits sont tirés, c’est gagné !',
   'liens.demarrer': 'Commencer',
+  'liens.ecouter': 'Écouter la découverte',
   'liens.commence': 'Touche un savant à gauche',
   'liens.maintenant': 'Maintenant, sa découverte à droite',
   'liens.avancement': (faits: number, total: number) => `${faits} lien${faits > 1 ? 's' : ''} sur ${total}`,
@@ -164,6 +164,7 @@ const fr = {
   'lumi.titre': 'Ton évolution',
   'lumi.progression-rang': 'Progression vers le rang suivant',
   'lumi.reste': (reste: number) => `plus que ${reste}`,
+  'lumi.reste-cartes': (n: number) => `encore ${n} carte${n > 1 ? 's' : ''} à écouter`,
   'lumi.pour': 'pour',
   'lumi.rang-max': 'Rang maximum atteint ! 🎉',
   'lumi.bilan': (explores: number, maitrises: number, total: number) =>
@@ -176,25 +177,14 @@ const fr = {
   'lumi.reste-reussir': (n: number) =>
     `encore ${n} question${n > 1 ? 's' : ''} à réussir pour 🏅`,
   'lumi.monde-complet': 'les deux badges sont à toi ✓',
-  'cabinet.titre': 'Le cabinet de curiosités',
-  'cabinet.texte':
-    'Remplis ton étagère avec tes étoiles. Touche un objet : il t’apprend quelque chose.',
-  'cabinet.solde': (n: number) => `il te reste ${n}`,
-  'cabinet.etagere': (n: number, total: number) => `Ton étagère · ${n} sur ${total}`,
-  'cabinet.emplacement': (nom: string, prix: number) =>
-    `${nom}, place vide, ${prix} étoiles`,
-  'cabinet.manque': (n: number) => `Il te manque ${n} ⭐ pour le rapporter sur ton étagère.`,
-  'cabinet.gagner': 'Les étoiles se gagnent en répondant juste, dans les jeux et le parcours.',
   'lumi.retour': 'Retour au musée',
   'lumi.section-progression': 'Ta progression',
   'lumi.section-collection': 'Tes trouvailles',
   'lumi.vers-mondes': 'Tes mondes',
-  'lumi.vers-cabinet': 'Le cabinet de curiosités',
-  'lumi.vers-cabinet-detail': (n: number, total: number) => `${n} objets sur ${total}`,
   'lumi.rangs': 'Les rangs de Lumi',
   'lumi.vers-rangs-detail': (n: number) => `${n} rangs à gravir`,
   'lumi.origine-etoiles':
-    'Lumi grandit avec tes étoiles. Tu en gagnes une à chaque bonne réponse, dans les jeux et dans le parcours. Écouter une carte n’en donne pas : c’est ce qui t’apprend à répondre.',
+    'Lumi grandit à mesure que tu écoutes. Chaque carte découverte la fait avancer d’un pas — il y en a cent cinquante, et six formes à lui faire prendre.',
   'lumi.rang-atteint': 'atteint ✓',
   'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
     `${nom}, ${seuil} étoiles${atteint ? ', atteint' : ''}`,
@@ -415,7 +405,6 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'musee.ouvrir-carte': (titre: string) => `Open the card: ${titre}`,
     'musee.ecouter-lien': 'Listen',
     'musee.vers-rangs': 'See Lumi’s ranks',
-    'musee.vers-cabinet-aria': (n: number) => `${n} stars — go to the cabinet of curiosities`,
     'musee.ligne-du-temps': 'Timeline',
     'musee.dates.avant': (an: number) => `up to ${an}`,
     'musee.dates.depuis': (an: number) => `since ${an}`,
@@ -450,6 +439,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'liens.titre': 'Matching',
     'liens.regle': 'Tap a scientist, then their discovery. When every line is drawn, you win!',
     'liens.demarrer': 'Start',
+    'liens.ecouter': 'Listen to the discovery',
     'liens.commence': 'Tap a scientist on the left',
     'liens.maintenant': 'Now their discovery on the right',
     'liens.avancement': (faits: number, total: number) => `${faits} of ${total} matched`,
@@ -478,6 +468,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'lumi.titre': 'How you are growing',
     'lumi.progression-rang': 'Progress towards the next rank',
     'lumi.reste': (reste: number) => `only ${reste} more`,
+    'lumi.reste-cartes': (n: number) => `${n} more card${n === 1 ? '' : 's'} to listen to`,
     'lumi.pour': 'to reach',
     'lumi.rang-max': 'Highest rank reached! 🎉',
     'lumi.bilan': (explores: number, maitrises: number, total: number) =>
@@ -490,25 +481,14 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'lumi.reste-reussir': (n: number) =>
       `${n} more question${n === 1 ? '' : 's'} to answer for 🏅`,
     'lumi.monde-complet': 'both badges are yours ✓',
-    'cabinet.titre': 'The cabinet of curiosities',
-    'cabinet.texte':
-      'Fill your shelf with your stars. Touch an object: it teaches you something.',
-    'cabinet.solde': (n: number) => `you have ${n} left`,
-    'cabinet.etagere': (n: number, total: number) => `Your shelf · ${n} of ${total}`,
-    'cabinet.emplacement': (nom: string, prix: number) =>
-      `${nom}, empty spot, ${prix} stars`,
-    'cabinet.manque': (n: number) => `You need ${n} more ⭐ to bring it to your shelf.`,
-    'cabinet.gagner': 'Stars are earned by answering correctly, in the games and the journey.',
     'lumi.retour': 'Back to the museum',
     'lumi.section-progression': 'Your progress',
     'lumi.section-collection': 'Your finds',
     'lumi.vers-mondes': 'Your worlds',
-    'lumi.vers-cabinet': 'The cabinet of curiosities',
-    'lumi.vers-cabinet-detail': (n: number, total: number) => `${n} objects of ${total}`,
     'lumi.rangs': 'Lumi’s ranks',
     'lumi.vers-rangs-detail': (n: number) => `${n} ranks to climb`,
     'lumi.origine-etoiles':
-      'Lumi grows with your stars. You earn one for every right answer, in the games and in the journey. Listening to a card earns none: it is what teaches you the answer.',
+      'Lumi grows as you listen. Every card you discover moves her one step — there are one hundred and fifty of them, and six shapes for her to take.',
     'lumi.rang-atteint': 'reached ✓',
     'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
       `${nom}, ${seuil} stars${atteint ? ', reached' : ''}`,

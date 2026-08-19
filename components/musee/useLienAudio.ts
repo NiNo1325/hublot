@@ -83,7 +83,20 @@ export function useLienAudio() {
     [lancer],
   );
 
+  /**
+   * Le titre d'une carte, seul.
+   *
+   * Il sert la colonne de droite du jeu des liens, qui était muette : un
+   * non-lecteur ne pouvait pas y jouer sans qu'on lui lise les étiquettes. On
+   * n'y met surtout pas l'explication du savant — elle le nomme, et l'entendre
+   * donnerait la réponse avant qu'on ait cherché.
+   */
+  const direTitre = useCallback(
+    (carteId: string) => lancer(`titres/${carteId}.mp3`, null, carteId),
+    [lancer],
+  );
+
   usePauseEnArrierePlan(arreter);
 
-  return { presenter, direNom, arreter, enLecture };
+  return { presenter, direNom, direTitre, arreter, enLecture };
 }

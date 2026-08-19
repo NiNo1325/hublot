@@ -108,6 +108,14 @@ const fr = {
   'musee.texte': 'Ils ont été oubliés, et l’oubli les a enfermés. Apprends ce qu’ils ont trouvé, et tu les délivres.',
   'musee.compte': (n: number, total: number) => `${n} délivrés sur ${total}`,
   'musee.vers-histoire': 'Lumi t’explique tout',
+  /*
+    Le même lien, dit autrement selon le moment. Tant que le bandeau raconte, il
+    propose déjà d'écouter : promettre une explication de plus serait un doublon,
+    alors qu'on n'y gagne en vérité que de lire le récit en entier au lieu d'un
+    temps sur six. Une fois dans la partie, le bandeau ne raconte plus, et
+    « Lumi t'explique tout » redevient exact.
+  */
+  'musee.lire-histoire': 'Lire toute l’histoire',
   'musee.legende': 'Au quizz, chaque bonne réponse te donne une clé. Une cellule coûte autant de clés que le savant a de cartes.',
   'musee.cellule-libre': (nom: string) => `${nom}, délivré`,
   'musee.cellule-fermee': (prix: number) => `Cellule fermée, ${prix} clés`,
@@ -412,6 +420,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'musee.texte': 'They were forgotten, and forgetting locked them away. Learn what they found, and you set them free.',
     'musee.compte': (n: number, total: number) => `${n} freed of ${total}`,
     'musee.vers-histoire': 'Lumi explains it all',
+    'musee.lire-histoire': 'Read the whole story',
     'musee.legende': 'In the quiz, every right answer gives you a key. A cell costs as many keys as the scientist has cards.',
     'musee.cellule-libre': (nom: string) => `${nom}, freed`,
     'musee.cellule-fermee': (prix: number) => `Locked cell, ${prix} keys`,

@@ -72,11 +72,17 @@ export function Bandeau({
         </p>
         <div className="flex w-full flex-col items-stretch gap-2">
           {boutonEcoute}
+          {/*
+            Ici, le lien ne promet pas une explication de plus : le bandeau vient
+            d'en proposer une, et la page d'histoire ouvre le même récit, lu par
+            la même voix. Ce qu'elle apporte, c'est le texte entier plutôt qu'un
+            temps sur six — c'est donc cela qu'il faut annoncer.
+          */}
           <Link
             href="/musee/histoire"
             className="flex min-h-12 items-center justify-center rounded-full border-2 border-encre-bord px-5 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
           >
-            {t('musee.vers-histoire')}
+            {t('musee.lire-histoire')}
           </Link>
         </div>
       </div>

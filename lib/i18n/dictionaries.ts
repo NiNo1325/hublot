@@ -325,7 +325,7 @@ const fr = {
     'Lumi t’emmène de carte en carte, avec une petite question après chacune.',
 
   'hub.joue.titre': 'À quoi joue-t-on ?',
-  'hub.joue.texte': 'Quatre façons de jouer avec les cartes.',
+  'hub.joue.texte': 'Des jeux bâtis sur les cartes que tu as écoutées.',
   'jeu.quizz.titre': 'Quizz',
   'jeu.quizz.texte':
     'Des questions sur tes cartes. Chaque bonne réponse te fait gagner une clé.',
@@ -685,7 +685,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       'Lumi takes you from card to card, with a little question after each one.',
 
     'hub.joue.titre': 'What shall we play?',
-    'hub.joue.texte': 'Four ways to play with the cards.',
+    'hub.joue.texte': 'Games built on the cards you have listened to.',
     'jeu.quizz.titre': 'Quiz',
     'jeu.quizz.texte':
       'Questions about your cards. Every right answer earns you a key.',

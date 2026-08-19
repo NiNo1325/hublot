@@ -163,6 +163,15 @@ export function MuseeView({ cards }: MuseeViewProps) {
             cellules.current.get(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
           }
         />
+
+        {/*
+          La règle du jeu, juste sous le bouton de Lumi. Elle traînait tout en bas,
+          après cent treize cellules : personne n'y descendait, et c'est pourtant la
+          seule phrase qui dise ce que coûte une cellule.
+        */}
+        <p className="max-w-md px-2 text-center text-xs leading-relaxed text-craie-douce/80">
+          {t('musee.legende')}
+        </p>
       </header>
 
       {/*
@@ -253,10 +262,6 @@ export function MuseeView({ cards }: MuseeViewProps) {
           onClose={() => setCarteEcoutee(null)}
         />
       )}
-
-      <p className="px-2 text-center text-xs leading-relaxed text-craie-douce/80">
-        {t('musee.legende')}
-      </p>
 
     </main>
   );

@@ -96,7 +96,7 @@ const fr = {
   'action.repondre': (n: number) =>
     `Réponds à une question pour gagner une clé — il t’en reste ${n} à essayer`,
   'action.ecouter': (n: number) =>
-    `Écoute une carte pour gagner une étoile — il t’en reste ${n} à découvrir`,
+    `Écoute une carte — il t’en reste ${n} à découvrir`,
   'action.complet': 'Tous les savants sont délivrés. Bravo !',
   'musee.ouvrir-carte': (titre: string) => `Ouvrir la carte : ${titre}`,
   'musee.ecouter-lien': 'Écouter',
@@ -108,7 +108,7 @@ const fr = {
   'musee.texte': 'Ils ont été oubliés, et l’oubli les a enfermés. Apprends ce qu’ils ont trouvé, et tu les délivres.',
   'musee.compte': (n: number, total: number) => `${n} délivrés sur ${total}`,
   'musee.vers-histoire': 'Lumi t’explique tout',
-  'musee.legende': 'Chaque bonne réponse te donne une clé. Une cellule coûte autant de clés que le savant a de cartes.',
+  'musee.legende': 'Au quizz, chaque bonne réponse te donne une clé. Une cellule coûte autant de clés que le savant a de cartes.',
   'musee.cellule-libre': (nom: string) => `${nom}, délivré`,
   'musee.cellule-fermee': (prix: number) => `Cellule fermée, ${prix} clés`,
   'musee.inconnu': 'Qui est-ce ?',
@@ -187,7 +187,7 @@ const fr = {
     'Lumi grandit à mesure que tu écoutes. Chaque carte découverte la fait avancer d’un pas — il y en a cent cinquante, et six formes à lui faire prendre.',
   'lumi.rang-atteint': 'atteint ✓',
   'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
-    `${nom}, ${seuil} étoiles${atteint ? ', atteint' : ''}`,
+    `${nom}, ${seuil} cartes${atteint ? ', atteint' : ''}`,
   'lumi.monde': (vues: number, reussies: number, total: number) =>
     `${vues}/${total} écoutée${total > 1 ? 's' : ''} · ${reussies}/${total} réussie${total > 1 ? 's' : ''}`,
 
@@ -265,7 +265,7 @@ const fr = {
   'hub.joue.texte': 'Quatre façons de jouer avec les cartes.',
   'jeu.quizz.titre': 'Quizz',
   'jeu.quizz.texte':
-    'Des questions sur tes cartes. Chaque bonne réponse te fait gagner une étoile.',
+    'Des questions sur tes cartes. Chaque bonne réponse te fait gagner une clé.',
   'jeu.memo.titre': 'Mémo des savants',
   'jeu.memo.texte': 'Retrouve les paires de portraits, et apprends leur nom. Dès 3 ans.',
   'jeu.chrono.titre': 'Défi chrono',
@@ -400,7 +400,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'action.repondre': (n: number) =>
       `Answer a question to win a key — ${n} still to try`,
     'action.ecouter': (n: number) =>
-      `Listen to a card to win a star — ${n} still to discover`,
+      `Listen to a card — ${n} still to discover`,
     'action.complet': 'Every scientist is free. Well done!',
     'musee.ouvrir-carte': (titre: string) => `Open the card: ${titre}`,
     'musee.ecouter-lien': 'Listen',
@@ -412,7 +412,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'musee.texte': 'They were forgotten, and forgetting locked them away. Learn what they found, and you set them free.',
     'musee.compte': (n: number, total: number) => `${n} freed of ${total}`,
     'musee.vers-histoire': 'Lumi explains it all',
-    'musee.legende': 'Every right answer gives you a key. A cell costs as many keys as the scientist has cards.',
+    'musee.legende': 'In the quiz, every right answer gives you a key. A cell costs as many keys as the scientist has cards.',
     'musee.cellule-libre': (nom: string) => `${nom}, freed`,
     'musee.cellule-fermee': (prix: number) => `Locked cell, ${prix} keys`,
     'musee.inconnu': 'Who is this?',
@@ -491,7 +491,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       'Lumi grows as you listen. Every card you discover moves her one step — there are one hundred and fifty of them, and six shapes for her to take.',
     'lumi.rang-atteint': 'reached ✓',
     'lumi.rang-aria': (nom: string, seuil: number, atteint: boolean) =>
-      `${nom}, ${seuil} stars${atteint ? ', reached' : ''}`,
+      `${nom}, ${seuil} cards${atteint ? ', reached' : ''}`,
     'lumi.monde': (vues: number, reussies: number, total: number) =>
       `${vues}/${total} listened to · ${reussies}/${total} answered`,
 
@@ -569,7 +569,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'hub.joue.texte': 'Four ways to play with the cards.',
     'jeu.quizz.titre': 'Quiz',
     'jeu.quizz.texte':
-      'Questions about your cards. Every right answer earns you a star.',
+      'Questions about your cards. Every right answer earns you a key.',
     'jeu.memo.titre': 'Scientist memory',
     'jeu.memo.texte': 'Find the matching portraits, and learn their names. From age 3.',
     'jeu.chrono.titre': 'Time challenge',

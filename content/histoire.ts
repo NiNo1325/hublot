@@ -47,10 +47,10 @@ export const histoire: TempsHistoire[] = [
     },
   },
   {
-    id: 'etoiles',
+    id: 'ecouter',
     texte: {
-      fr: 'Écoute une carte, et tu gagnes une étoile : c’est elle qui me fait grandir. Réponds à sa question, et tu gagnes une clé.',
-      en: 'Listen to a card and you earn a star: that is what makes me grow. Answer its question and you earn a key.',
+      fr: 'Écoute une carte : c’est ça qui me fait grandir. Et si tu réponds juste à sa question, au quizz, tu gagnes une clé.',
+      en: 'Listen to a card: that is what makes me grow. And if you answer its question correctly, in the quiz, you win a key.',
     },
   },
   {

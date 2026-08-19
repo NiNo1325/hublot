@@ -45,8 +45,8 @@ export const ecransTuto: EcranTuto[] = [
     emoji: '🔭',
     titre: { fr: 'Découvrir', en: 'Explore' },
     texte: {
-      fr: 'À côté, tu trouves toutes les cartes à écouter. Chaque carte que tu écoutes te donne une étoile, et les étoiles me font grandir.',
-      en: 'Next door, you’ll find all the cards to listen to. Every card you listen to gives you a star, and the stars make me grow.',
+      fr: 'À côté, tu trouves toutes les cartes à écouter. Chaque carte que tu écoutes me fait grandir un peu.',
+      en: 'Next door, you’ll find all the cards to listen to. Every card you listen to makes me grow a little.',
     },
   },
   {
@@ -55,8 +55,8 @@ export const ecransTuto: EcranTuto[] = [
     emoji: '🎮',
     titre: { fr: 'Joue', en: 'Play' },
     texte: {
-      fr: 'Ici, on joue avec ce que tu as appris. Chaque bonne réponse te donne une clé — et chaque clé ouvre la cellule d’un savant.',
-      en: 'Here we play with what you have learnt. Every right answer gives you a key — and every key opens a scientist’s cell.',
+      fr: 'Ici, on joue avec ce que tu as appris. Au quizz, chaque bonne réponse te donne une clé. Les autres jeux, c’est juste pour s’amuser.',
+      en: 'Here we play with what you have learnt. In the quiz, every right answer wins you a key. The other games are just for fun.',
     },
   },
   {

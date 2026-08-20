@@ -81,7 +81,12 @@ export default function ConfidentialitePage() {
         </p>
         <p>
           Vous pouvez aussi demander cette suppression par e-mail, à l&apos;adresse ci-dessous, en
-          indiquant que vous utilisez Hublot.
+          indiquant que vous utilisez Hublot. La marche à suivre complète, y compris si vous avez
+          désinstallé l&apos;application, est décrite sur la page{' '}
+          <Link className="underline transition-colors hover:text-soleil" href="/suppression">
+            Supprimer son compte et ses données
+          </Link>
+          .
         </p>
 
         <h2 className="font-display text-xl font-semibold">Fonctionnement hors ligne</h2>

@@ -269,6 +269,34 @@ const fr = {
   'reglages.reinitialiser': (n: number) => `Réinitialiser la progression (${n} cartes)`,
   'reglages.confirmer': 'Confirmer ? Les cartes redeviendront neuves',
 
+  'reglages.famille': 'Qui utilise Hublot',
+  'reglages.sauvegarde': 'Sauvegarde',
+
+  'profils.qui-joue': 'Qui joue ?',
+  'profils.sans-nom': 'Sans nom',
+
+  'famille.jouer': 'Jouer avec ce profil',
+  'famille.prenom': 'Prénom',
+  'famille.ajouter': 'Ajouter',
+  'famille.ajouter.champ': 'Prénom du nouvel enfant',
+  'famille.supprimer': 'Retirer',
+  'famille.supprimer.avertir': 'Ses cartes et ses savants seront perdus.',
+  'famille.supprimer.confirmer': 'Retirer quand même',
+
+  'compte.espace-parent': 'Espace parent',
+  'compte.porte.consigne': (a: number, b: number) =>
+    `Réservé aux parents. Combien font ${a} × ${b} ?`,
+  'compte.porte.valider': 'Entrer',
+  'compte.porte.rate': 'Ce n’est pas le bon résultat.',
+  'compte.explication':
+    'Reliez un compte Google pour que la progression survive à un changement d’appareil. Les prénoms des enfants ne quittent jamais cet appareil.',
+  'compte.connecte': 'La progression est sauvegardée ✓',
+  'compte.deconnexion': 'Se déconnecter',
+  'compte.effacer': 'Effacer la sauvegarde',
+  'compte.effacer.confirmer': 'Confirmer ? C’est définitif',
+  'compte.efface': 'Sauvegarde effacée.',
+  'compte.patiente': 'Un instant…',
+
   'tuto.aria': 'Présentation de Hublot',
   'tuto.passer': 'Passer',
   'tuto.arreter': 'Arrêter la lecture',
@@ -628,6 +656,34 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'reglages.tutoriel': 'See the introduction again',
     'reglages.reinitialiser': (n: number) => `Reset progress (${n} cards)`,
     'reglages.confirmer': 'Are you sure? The cards will all become new again',
+
+    'reglages.famille': 'Who uses Hublot',
+    'reglages.sauvegarde': 'Backup',
+
+    'profils.qui-joue': 'Who is playing?',
+    'profils.sans-nom': 'No name',
+
+    'famille.jouer': 'Play with this profile',
+    'famille.prenom': 'First name',
+    'famille.ajouter': 'Add',
+    'famille.ajouter.champ': 'New child’s first name',
+    'famille.supprimer': 'Remove',
+    'famille.supprimer.avertir': 'Their cards and scientists will be lost.',
+    'famille.supprimer.confirmer': 'Remove anyway',
+
+    'compte.espace-parent': 'Parents’ area',
+    'compte.porte.consigne': (a: number, b: number) =>
+      `Parents only. What is ${a} × ${b}?`,
+    'compte.porte.valider': 'Enter',
+    'compte.porte.rate': 'That is not the right answer.',
+    'compte.explication':
+      'Link a Google account so progress survives a change of device. Children’s first names never leave this device.',
+    'compte.connecte': 'Progress is backed up ✓',
+    'compte.deconnexion': 'Sign out',
+    'compte.effacer': 'Erase the backup',
+    'compte.effacer.confirmer': 'Are you sure? This cannot be undone',
+    'compte.efface': 'Backup erased.',
+    'compte.patiente': 'One moment…',
 
     'tuto.aria': 'Introduction to Hublot',
     'tuto.passer': 'Skip',

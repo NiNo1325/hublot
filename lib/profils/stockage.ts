@@ -32,6 +32,16 @@ export const CLES_PROFIL = [
 
 export type CleProfil = (typeof CLES_PROFIL)[number];
 
+/**
+ * Horodatage du dernier changement des valeurs qui ne croissent pas (avatar,
+ * âge, tranche). Technique et local : il n'existait pas avant les profils, il
+ * n'y a donc rien à migrer, et il est recalculé tout seul s'il disparaît.
+ */
+export const CLE_MAJ = 'maj.v1';
+
+/** Tout ce qu'il faut effacer quand un profil est supprimé. */
+export const CLES_A_EFFACER = [...CLES_PROFIL, CLE_MAJ];
+
 /** La clé de stockage d'un état donné, pour un profil donné. */
 export function cle(nom: string, idProfil: string): string {
   return `${PREFIXE}.${idProfil}.${nom}`;

@@ -3,7 +3,7 @@
 import { readStored, removeStored, writeStored } from '@/lib/storage';
 import { actifApres, ajouter, renommer, supprimer } from './operations';
 import { ecrireProfils, lireProfils, type Profil } from './serialisation';
-import { CLE_PROFILS, CLE_PROFIL_ACTIF, CLES_PROFIL, cle } from './stockage';
+import { CLE_PROFILS, CLE_PROFIL_ACTIF, CLES_A_EFFACER, cle } from './stockage';
 import { migrer } from './migration';
 
 /**
@@ -24,6 +24,18 @@ export function souscrireProfils(surChangement: () => void) {
 
 function notifier() {
   for (const f of abonnes) f();
+}
+
+/**
+ * Réveille tous les écrans abonnés.
+ *
+ * Exporté pour la synchronisation : quand un bloc venu du compte est appliqué,
+ * le stockage change sous les pieds de React sans qu'aucune action de l'enfant
+ * ne l'ait provoqué. Sans ce réveil, la progression restaurée n'apparaîtrait
+ * qu'au prochain rechargement.
+ */
+export function notifierProfils(): void {
+  notifier();
 }
 
 /**
@@ -113,6 +125,6 @@ export function supprimerProfil(id: string): void {
   const liste = assurer();
   const restants = supprimer(liste, id);
   if (restants.length === liste.length) return;
-  for (const nom of CLES_PROFIL) removeStored(cle(nom, id));
+  for (const nom of CLES_A_EFFACER) removeStored(cle(nom, id));
   publierListe(restants);
 }

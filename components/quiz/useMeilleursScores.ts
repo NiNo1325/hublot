@@ -2,9 +2,10 @@
 
 import { useCallback, useSyncExternalStore } from 'react';
 import { readStored, writeStored } from '@/lib/storage';
+import { cleActive, souscrireProfils } from '@/lib/profils/store';
 import { ajouterScore, ecrireScores, estUnRecord, lireScores } from '@/lib/scores';
 
-const CLE = 'science.chrono.v1';
+const NOM = 'chrono.v1';
 
 /*
   Même plomberie que `useEtoiles` : un abonnement partagé, pour que deux écrans
@@ -14,8 +15,10 @@ const abonnes = new Set<() => void>();
 
 function souscrire(surChangement: () => void) {
   abonnes.add(surChangement);
+  const quitterProfils = souscrireProfils(surChangement);
   return () => {
     abonnes.delete(surChangement);
+    quitterProfils();
   };
 }
 
@@ -25,7 +28,7 @@ function souscrire(surChangement: () => void) {
   la chaîne brute comme instantané, et on l'analyse au moment du rendu.
 */
 function lireBrut(): string {
-  return readStored(CLE) ?? '';
+  return readStored(cleActive(NOM)) ?? '';
 }
 
 function lireServeur(): string {
@@ -38,8 +41,8 @@ export function useMeilleursScores() {
   const scores = lireScores(brut);
 
   const enregistrerScore = useCallback((score: number) => {
-    const podium = ajouterScore(lireScores(readStored(CLE)), score);
-    writeStored(CLE, ecrireScores(podium));
+    const podium = ajouterScore(lireScores(readStored(cleActive(NOM))), score);
+    writeStored(cleActive(NOM), ecrireScores(podium));
     for (const notifier of abonnes) notifier();
   }, []);
 

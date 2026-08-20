@@ -27,3 +27,20 @@ export function writeStored(key: string, value: string): void {
     // La valeur reste disponible pour la session via memoryFallback.
   }
 }
+
+/**
+ * Efface une clé des deux côtés.
+ *
+ * Nécessaire depuis les profils : supprimer un enfant doit vraiment retirer sa
+ * progression, et non y écrire une chaîne vide — sans quoi le stockage
+ * garderait indéfiniment les traces des profils supprimés, et la sauvegarde en
+ * ligne les ferait revenir à la prochaine fusion.
+ */
+export function removeStored(key: string): void {
+  memoryFallback.delete(key);
+  try {
+    window.localStorage.removeItem(key);
+  } catch {
+    // Rien à faire : la valeur a déjà disparu du repli mémoire.
+  }
+}

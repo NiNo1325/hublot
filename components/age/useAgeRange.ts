@@ -3,12 +3,13 @@
 import { useCallback, useSyncExternalStore } from 'react';
 import { AGE_RANGES, type AgeRange } from '@/lib/types';
 import { readStored, writeStored } from '@/lib/storage';
+import { cleActive, souscrireProfils } from '@/lib/profils/store';
 import { ageDepuisTranche, trancheDepuisAge } from '@/lib/age';
 
-const KEY_AGE = 'science.age.v1';
+const NOM_AGE = 'age.v1';
 // Ancienne clé (tranche). Encore lue pour migrer les utilisateurs existants,
 // jamais écrite : la source de vérité est désormais l'âge exact.
-const KEY_TRANCHE = 'science.ageRange.v1';
+const NOM_TRANCHE = 'ageRange.v1';
 
 function parseAgeRange(value: string | null): AgeRange | null {
   return AGE_RANGES.includes(value as AgeRange) ? (value as AgeRange) : null;
@@ -26,9 +27,9 @@ function ageValide(value: string | null): number | null {
   `getSnapshot` valide.
 */
 function lireAge(): number | null {
-  const direct = ageValide(readStored(KEY_AGE));
+  const direct = ageValide(readStored(cleActive(NOM_AGE)));
   if (direct != null) return direct;
-  const tranche = parseAgeRange(readStored(KEY_TRANCHE));
+  const tranche = parseAgeRange(readStored(cleActive(NOM_TRANCHE)));
   return tranche ? ageDepuisTranche(tranche) : null;
 }
 
@@ -41,8 +42,10 @@ const abonnes = new Set<() => void>();
 
 function souscrire(surChangement: () => void) {
   abonnes.add(surChangement);
+  const quitterProfils = souscrireProfils(surChangement);
   return () => {
     abonnes.delete(surChangement);
+    quitterProfils();
   };
 }
 
@@ -71,7 +74,7 @@ export function useAgeRange() {
   );
 
   const choisirAge = useCallback((valeur: number) => {
-    writeStored(KEY_AGE, String(valeur));
+    writeStored(cleActive(NOM_AGE), String(valeur));
     for (const notifier of abonnes) notifier();
   }, []);
 

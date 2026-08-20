@@ -2,6 +2,7 @@
 
 import { useCallback, useSyncExternalStore } from 'react';
 import { readStored, writeStored } from '@/lib/storage';
+import { cleActive, souscrireProfils } from '@/lib/profils/store';
 
 /**
  * État du tutoriel de présentation.
@@ -10,7 +11,7 @@ import { readStored, writeStored } from '@/lib/storage';
  * `ouvert` est un état de session, publié comme une source externe pour que
  * Réglages (« Revoir la présentation ») puisse le rouvrir depuis un autre écran.
  */
-const CLE_VU = 'science.tutoVu.v1';
+const NOM_VU = 'tutoVu.v1';
 
 const abonnes = new Set<() => void>();
 let ouvert = false;
@@ -20,8 +21,10 @@ function notifier() {
 }
 function souscrire(surChangement: () => void) {
   abonnes.add(surChangement);
+  const quitterProfils = souscrireProfils(surChangement);
   return () => {
     abonnes.delete(surChangement);
+    quitterProfils();
   };
 }
 function lireOuvert() {
@@ -40,13 +43,13 @@ export function ouvrirTutoriel() {
 
 /** Déjà vu ? (lecture directe du stockage, côté client uniquement) */
 export function tutoDejaVu(): boolean {
-  return readStored(CLE_VU) === '1';
+  return readStored(cleActive(NOM_VU)) === '1';
 }
 
 export function useTutoriel() {
   const estOuvert = useSyncExternalStore(souscrire, lireOuvert, lireServeur);
   const fermer = useCallback(() => {
-    writeStored(CLE_VU, '1');
+    writeStored(cleActive(NOM_VU), '1');
     ouvert = false;
     notifier();
   }, []);

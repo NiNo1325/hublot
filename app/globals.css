@@ -66,6 +66,16 @@ body {
   box-shadow: 0 0 42px rgba(255, 182, 39, 0.45);
 }
 
+/* Le bandeau d'invitation monte doucement depuis le bas de l'écran. */
+@keyframes bandeau-monte {
+  from { opacity: 0; transform: translateY(1.25rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bandeau-invitation {
+  animation: bandeau-monte 260ms ease-out both;
+}
+
 /*
   Battement du cœur. En CSS plutôt qu'en `animateTransform` SVG, dont le
   `scale` opère depuis l'origine du repère et déplacerait la forme.

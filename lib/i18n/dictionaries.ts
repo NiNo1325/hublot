@@ -91,6 +91,7 @@ const fr = {
       : 'Réponds juste et tu gagnes une clé pour le musée.',
   'invitation.oui': 'J’essaie !',
   'invitation.non': 'Plus tard',
+  'invitation.fermer': 'Masquer la proposition',
   'action.delivrer': (nom: string, prix: number) =>
     `Tu peux délivrer quelqu’un ! ${nom}, pour ${prix} 🔑`,
   'action.repondre': (n: number) =>
@@ -283,7 +284,8 @@ const fr = {
   'famille.jouer': 'Jouer avec ce profil',
   'famille.prenom': 'Prénom',
   'famille.ajouter': 'Ajouter',
-  'famille.ajouter.champ': 'Prénom du nouvel enfant',
+  'famille.ajouter.champ': 'Prénom',
+  'famille.ajouter.aria': 'Prénom du nouvel enfant',
   'famille.supprimer': 'Retirer',
   'famille.supprimer.avertir': 'Ses cartes et ses savants seront perdus.',
   'famille.supprimer.confirmer': 'Retirer quand même',
@@ -489,6 +491,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
         : 'Answer correctly and you win a key for the museum.',
     'invitation.oui': 'I’ll try!',
     'invitation.non': 'Later',
+    'invitation.fermer': 'Hide this suggestion',
     'action.delivrer': (nom: string, prix: number) =>
       `You can free someone! ${nom}, for ${prix} 🔑`,
     'action.repondre': (n: number) =>
@@ -674,7 +677,8 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'famille.jouer': 'Play with this profile',
     'famille.prenom': 'First name',
     'famille.ajouter': 'Add',
-    'famille.ajouter.champ': 'New child’s first name',
+    'famille.ajouter.champ': 'First name',
+    'famille.ajouter.aria': 'New child’s first name',
     'famille.supprimer': 'Remove',
     'famille.supprimer.avertir': 'Their cards and scientists will be lost.',
     'famille.supprimer.confirmer': 'Remove anyway',

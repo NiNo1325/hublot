@@ -101,7 +101,7 @@ export function SectionFamille() {
           maxLength={20}
           placeholder={t('famille.ajouter.champ')}
           onChange={(e) => setNouveau(e.target.value)}
-          aria-label={t('famille.ajouter.champ')}
+          aria-label={t('famille.ajouter.aria')}
           className="min-h-11 w-0 min-w-0 flex-1 rounded-2xl border-2 border-encre-bord bg-transparent px-3 text-craie"
         />
         <button

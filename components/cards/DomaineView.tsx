@@ -5,9 +5,8 @@ import { useRouter } from 'next/navigation';
 import type { DomainDefinition, QuizQuestion, ScienceCard } from '@/lib/types';
 import { questionsDe } from '@/content/quiz';
 import { QuestionUnique } from '@/components/parcours/QuestionUnique';
-import { savantDeLaCarte } from '@/lib/cles';
+import { InvitationQuestion } from './InvitationQuestion';
 import { useCartesMaitrisees } from './useCartesMaitrisees';
-import { useT } from '@/components/i18n/useT';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { estPremium } from '@/content/acces';
 import { premiumActif } from '@/lib/premium/flag';
@@ -32,7 +31,6 @@ export function DomaineView({ domain, cards }: DomaineViewProps) {
   const { ageRange, status } = useAgeRange();
   const { cartesVues } = useCartesVues();
   const { cartesMaitrisees } = useCartesMaitrisees();
-  const t = useT();
   const { premium } = useEntitlement();
   const { locale } = useLocale();
   const [paywallOuvert, setPaywallOuvert] = useState(false);
@@ -52,6 +50,9 @@ export function DomaineView({ domain, cards }: DomaineViewProps) {
     premiumActif() && estPremium(card) && !premium;
 
   function ouvrirCarte(card: ScienceCard) {
+    // Le bandeau se range : il se retrouverait derrière la carte, et
+    // reviendrait à la fermeture en parlant d'une carte qu'on a quittée.
+    setInvitation(null);
     if (estVerrouillee(card)) setPaywallOuvert(true);
     else setCarteOuverte(card);
   }
@@ -141,35 +142,15 @@ export function DomaineView({ domain, cards }: DomaineViewProps) {
 
       {/* L'invitation : deux boutons, dont un qui refuse sans rien coûter. */}
       {invitation && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex items-end justify-center bg-encre/90 p-4 sm:items-center"
-        >
-          <div className="flex w-full max-w-sm flex-col gap-4 rounded-3xl border-2 border-soleil bg-encre-clair p-6 text-center">
-            <p className="font-display text-xl text-soleil">{t('invitation.titre')}</p>
-            <p className="text-craie-douce">
-              {t('invitation.texte')(savantDeLaCarte(invitation.carte.id)?.nom ?? '')}
-            </p>
-            <button
-              type="button"
-              onClick={() => {
-                setQuestion(invitation);
-                setInvitation(null);
-              }}
-              className="min-h-14 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-6 font-display text-lg text-soleil transition-transform hover:scale-105 active:scale-95"
-            >
-              {t('invitation.oui')}
-            </button>
-            <button
-              type="button"
-              onClick={() => setInvitation(null)}
-              className="min-h-12 cursor-pointer rounded-full px-6 text-sm text-craie-douce transition-colors hover:text-craie"
-            >
-              {t('invitation.non')}
-            </button>
-          </div>
-        </div>
+        <InvitationQuestion
+          key={invitation.carte.id}
+          carte={invitation.carte}
+          onAccepter={() => {
+            setQuestion(invitation);
+            setInvitation(null);
+          }}
+          onFermer={() => setInvitation(null)}
+        />
       )}
 
       {paywallOuvert && <Paywall onClose={() => setPaywallOuvert(false)} />}

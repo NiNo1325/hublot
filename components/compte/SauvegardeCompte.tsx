@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useLocale } from '@/components/i18n/useLocale';
 import { useT } from '@/components/i18n/useT';
 import { oublierEtatConnexion, synchroniser, verifierConnexion } from '@/lib/sync/client';
 import { PorteParentale } from './PorteParentale';
@@ -79,6 +80,7 @@ export function SauvegardeCompte() {
  */
 function ContenuCompte() {
   const t = useT();
+  const { locale } = useLocale();
   const [etat, setEtat] = useState<Etat>('chargement');
   const [efface, setEfface] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
@@ -126,11 +128,17 @@ function ContenuCompte() {
           client_id: CLIENT_ID,
           callback: (r) => void connecter(r.credential),
         });
+        /*
+          La langue est passée explicitement : sans elle, Google devine d'après
+          des signaux du navigateur et rend volontiers un bouton en néerlandais
+          au milieu d'une interface française.
+        */
         google.accounts.id.renderButton(cible, {
           theme: 'filled_black',
           size: 'large',
           shape: 'pill',
           text: 'signin_with',
+          locale,
         });
       })
       .catch(() => {
@@ -139,7 +147,7 @@ function ContenuCompte() {
     return () => {
       vivant = false;
     };
-  }, [etat, connecter]);
+  }, [etat, connecter, locale]);
 
   const deconnecter = useCallback(async () => {
     setEtat('occupe');

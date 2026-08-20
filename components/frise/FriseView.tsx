@@ -3,7 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { construireFrise, type SavantDate } from '@/lib/frise';
+import { construireFrise, type ElementFrise } from '@/lib/frise';
+import { construireFriseDecouvertes } from '@/lib/inventions';
+import { cards } from '@/content/cards';
+import { useLocale } from '@/components/i18n/useLocale';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { Lumi } from '@/components/mascotte/Lumi';
 import { useAgeRange } from '@/components/age/useAgeRange';
@@ -28,9 +31,17 @@ import { jouerSonPaire, jouerSonRate, jouerSonRecompense } from '@/lib/sonRecomp
  *
  * Rien n'est puni : un portrait posé trop tôt clignote en rouge et reste dans
  * la réserve. On ne peut pas perdre, seulement finir.
+ *
+ * Deux jeux partagent cet écran. En mode `decouvertes`, ce sont les cartes
+ * elles-mêmes qu'on range — quand a-t-on compris la gravitation, inventé le
+ * wifi — et l'illustration devient l'emoji de la carte. Le plateau, la réserve
+ * et la règle du placement ne changent pas d'un iota : dupliquer deux cent
+ * vingt-cinq lignes pour un jeu de vignettes n'aurait servi personne.
  */
-export function FriseView() {
+export function FriseView({ mode = 'savants' }: { mode?: 'savants' | 'decouvertes' } = {}) {
   const router = useRouter();
+  const decouvertes = mode === 'decouvertes';
+  const { locale } = useLocale();
   const { ageRange, status } = useAgeRange();
   const { etoiles } = useEtoiles();
   const { cartesVues } = useCartesVues();
@@ -38,7 +49,7 @@ export function FriseView() {
   const t = useT();
   const { direNom } = useLienAudio();
 
-  const [manche, setManche] = useState<{ tirage: SavantDate[]; ordre: string[] } | null>(null);
+  const [manche, setManche] = useState<{ tirage: ElementFrise[]; ordre: string[] } | null>(null);
   const [places, setPlaces] = useState<string[]>([]);
   const [rate, setRate] = useState<string | null>(null);
   const minuterieRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -57,14 +68,18 @@ export function FriseView() {
   if (status === 'chargement' || !ageRange) return null;
 
   const lancer = () => {
-    setManche(construireFrise(cartesVues, liberes, ageRange));
+    setManche(
+      decouvertes
+        ? construireFriseDecouvertes(cards, cartesVues, ageRange, locale)
+        : construireFrise(cartesVues, liberes, ageRange),
+    );
     setPlaces([]);
     setRate(null);
   };
 
-  const poser = (savant: SavantDate) => {
+  const poser = (savant: ElementFrise) => {
     if (!manche || places.includes(savant.id)) return;
-    direNom(savant.id);
+    if (!decouvertes) direNom(savant.id);
 
     if (manche.ordre[places.length] !== savant.id) {
       // Trop tôt : un clignotement rouge, et le portrait reste en réserve.
@@ -83,8 +98,8 @@ export function FriseView() {
 
   const rang = rangDepuisEtoiles(etoiles).rang.index;
   /** L'année, dite comme on la dit à un enfant : « il y a longtemps », pas « -287 ». */
-  const annee = (naissance: number) =>
-    naissance < 0 ? t('frise.avant-jc')(Math.abs(naissance)) : String(naissance);
+  const annee = (valeur: number) =>
+    valeur < 0 ? t('frise.avant-jc')(Math.abs(valeur)) : String(valeur);
 
   if (manche === null) {
     return (
@@ -92,8 +107,8 @@ export function FriseView() {
         <span className="text-7xl" aria-hidden="true">
           ⏳
         </span>
-        <h1 className="font-display text-3xl font-semibold sm:text-4xl">{t('frise.titre')}</h1>
-        <p className="max-w-md text-craie-douce">{t('frise.regle')}</p>
+        <h1 className="font-display text-3xl font-semibold sm:text-4xl">{t(decouvertes ? 'decouvertes.titre' : 'frise.titre')}</h1>
+        <p className="max-w-md text-craie-douce">{t(decouvertes ? 'decouvertes.regle' : 'frise.regle')}</p>
         <button
           type="button"
           onClick={lancer}
@@ -112,9 +127,9 @@ export function FriseView() {
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-4 py-8">
       <header className="flex flex-col items-center gap-2 text-center">
-        <h1 className="font-display text-2xl font-semibold sm:text-3xl">{t('frise.titre')}</h1>
+        <h1 className="font-display text-2xl font-semibold sm:text-3xl">{t(decouvertes ? 'decouvertes.titre' : 'frise.titre')}</h1>
         <p aria-live="polite" className="text-sm text-craie-douce">
-          {gagne ? t('frise.gagne') : t('frise.consigne')}
+          {gagne ? t('frise.gagne') : t(decouvertes ? 'decouvertes.consigne' : 'frise.consigne')}
         </p>
       </header>
 
@@ -135,13 +150,7 @@ export function FriseView() {
                   }`}
                 >
                   {pose ? (
-                    <Image
-                      src={pose.portrait}
-                      alt={pose.nom}
-                      width={160}
-                      height={160}
-                      className="h-full w-full object-cover"
-                    />
+                    <Illustration element={pose} plein />
                   ) : (
                     <span className="font-display text-lg text-craie-douce/40" aria-hidden="true">
                       {i + 1}
@@ -150,8 +159,19 @@ export function FriseView() {
                 </div>
                 {/* La date ne se révèle qu'après coup : c'est la vérification, pas l'énoncé. */}
                 <span className="min-h-4 text-[10px] tabular-nums text-soleil">
-                  {pose ? annee(pose.naissance) : ''}
+                  {pose ? annee(pose.annee) : ''}
                 </span>
+                {/*
+                  Le titre sous la carte, pour les découvertes seulement. Un
+                  portrait se reconnaît, un emoji non : sans ces quelques mots,
+                  la frise finie n'était qu'une rangée de pictogrammes datés, et
+                  l'enfant repartait sans savoir ce qui s'était passé en 1703.
+                */}
+                {decouvertes && (
+                  <span className="min-h-6 text-center text-[9px] leading-tight text-craie-douce">
+                    {pose ? pose.nom : ''}
+                  </span>
+                )}
               </div>
             );
           })}
@@ -205,13 +225,7 @@ export function FriseView() {
                     : 'border-encre-bord bg-encre-clair hover:border-soleil'
                 }`}
               >
-                <Image
-                  src={savant.portrait}
-                  alt=""
-                  width={160}
-                  height={160}
-                  className="h-16 w-16 rounded-full object-cover"
-                />
+                <Illustration element={savant} />
                 <span className="text-center text-[11px] leading-tight text-craie">
                   {savant.nom}
                 </span>
@@ -221,5 +235,35 @@ export function FriseView() {
         </ul>
       )}
     </main>
+  );
+}
+
+/**
+ * L'image d'un élément de frise : le portrait d'un savant, ou l'emoji de la
+ * carte quand la frise range des découvertes.
+ *
+ * Les deux jeux partagent tout le reste — le plateau, la réserve, la règle du
+ * placement — et il aurait été absurde de dupliquer deux cent vingt-cinq lignes
+ * pour une vignette.
+ */
+function Illustration({ element, plein = false }: { element: ElementFrise; plein?: boolean }) {
+  if (element.portrait) {
+    return (
+      <Image
+        src={element.portrait}
+        alt={plein ? element.nom : ''}
+        width={160}
+        height={160}
+        className={plein ? 'h-full w-full object-cover' : 'h-16 w-16 rounded-full object-cover'}
+      />
+    );
+  }
+  return (
+    <span
+      aria-hidden="true"
+      className={plein ? 'text-4xl leading-none' : 'flex h-16 w-16 items-center justify-center text-3xl leading-none'}
+    >
+      {element.emoji ?? '❓'}
+    </span>
   );
 }

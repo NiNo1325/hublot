@@ -10,7 +10,8 @@ import { useT } from '@/components/i18n/useT';
  * parce que c'est le seul qui donne des clés — le fil rouge passe par lui, et
  * l'enfant doit le trouver sans chercher. Viennent ensuite les trois jeux qui
  * font travailler ce qu'il a écouté : trancher une affirmation, situer une
- * époque, reconnaître un savant. Le mémo et le chrono ferment la marche : ce
+ * époque — pour les savants comme pour les découvertes — et reconnaître un
+ * savant. Les deux frises se suivent : même geste, deux angles sur le temps. Le mémo et le chrono ferment la marche : ce
  * sont des jeux d'adresse, ils amusent sans rien enseigner de neuf.
  */
 export default function JouePage() {
@@ -48,6 +49,13 @@ export default function JouePage() {
           titre: t('jeu.frise.titre'),
           texte: t('jeu.frise.texte'),
           teinte: '#fb923c',
+        },
+        {
+          href: '/joue/decouvertes',
+          emoji: '💡',
+          titre: t('jeu.decouvertes.titre'),
+          texte: t('jeu.decouvertes.texte'),
+          teinte: '#fbbf24',
         },
         {
           href: '/joue/mystere',

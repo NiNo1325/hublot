@@ -166,6 +166,13 @@ const fr = {
   'frise.rejouer': 'Rejouer',
   'frise.retour': 'Retour aux jeux',
 
+  'jeu.decouvertes.titre': 'La frise des découvertes',
+  'jeu.decouvertes.texte': 'Range les découvertes de la plus ancienne à la plus récente.',
+  'decouvertes.titre': 'La frise des découvertes',
+  'decouvertes.regle':
+    'Voici des choses que les savants ont comprises ou inventées. À toi de deviner ce qu’on a su en premier. La date n’apparaît qu’une fois la carte posée.',
+  'decouvertes.consigne': 'Touche la plus ancienne qu’il reste',
+
   'jeu.vrai-faux.titre': 'Vrai ou faux',
   'jeu.vrai-faux.texte': 'Lumi affirme quelque chose. À toi de dire si c’est vrai.',
   'vrai-faux.titre': 'Vrai ou faux',
@@ -547,6 +554,12 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
 
     'jeu.frise.titre': 'The timeline',
     'jeu.frise.texte': 'Put the scientists in order, oldest first.',
+    'jeu.decouvertes.titre': 'The discovery timeline',
+    'jeu.decouvertes.texte': 'Put the discoveries in order, oldest first.',
+    'decouvertes.titre': 'The discovery timeline',
+    'decouvertes.regle':
+      'Here are things scientists understood or invented. Guess which came first. The date only appears once the card is placed.',
+    'decouvertes.consigne': 'Tap the oldest one left',
     'frise.titre': 'The timeline',
     'frise.regle':
       'Who lived first? Tap the scientists from the oldest to the most recent. The date shows up once you get it right.',

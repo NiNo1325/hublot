@@ -32,12 +32,24 @@ export const SAVANTS_PAR_AGE: Record<AgeRange, number> = {
  */
 export const ECART_MINIMAL = 70;
 
-export interface SavantDate {
+/**
+ * Un élément à placer sur une frise.
+ *
+ * Deux jeux s'en servent : la frise des savants, illustrée par des portraits,
+ * et la frise des découvertes, illustrée par l'emoji de la carte. D'où les deux
+ * illustrations possibles — l'une ou l'autre, jamais les deux.
+ */
+export interface ElementFrise {
   id: string;
   nom: string;
-  portrait: string;
-  naissance: number;
+  /** Naissance du savant, ou année de la découverte. Négative avant notre ère. */
+  annee: number;
+  portrait?: string;
+  emoji?: string;
 }
+
+/** @deprecated Nom historique, conservé le temps que les appels migrent. */
+export type SavantDate = ElementFrise;
 
 /** Les savants jouables, du plus « connu de l'enfant » au moins connu. */
 function candidats(cartesVues: Set<string>, liberes: string[]): SavantPrisonnier[] {
@@ -51,49 +63,60 @@ function candidats(cartesVues: Set<string>, liberes: string[]): SavantPrisonnier
   return [...melanger(delivres), ...melanger(entendus), ...melanger(inconnus)];
 }
 
-function versDate(savant: SavantPrisonnier): SavantDate {
+function versDate(savant: SavantPrisonnier): ElementFrise {
   return {
     id: savant.id,
     nom: savant.nom,
     portrait: `/images/wall-of-fame/${savant.id}.webp`,
-    naissance: savant.naissance,
+    annee: savant.naissance,
   };
+}
+
+/**
+ * Retient `combien` éléments en évitant les dates trop voisines.
+ *
+ * Partagé par les deux frises. Si les écarts francs ne suffisent pas, on
+ * complète en serrant les dates plutôt que de refuser de jouer : un jeu qui ne
+ * se lance pas est pire qu'un jeu un peu difficile.
+ */
+export function retenirEspaces<T>(
+  disponibles: T[],
+  combien: number,
+  annee: (element: T) => number,
+): T[] {
+  const retenus: T[] = [];
+  for (const candidat of disponibles) {
+    if (retenus.length === combien) break;
+    const tropProche = retenus.some(
+      (r) => Math.abs(annee(r) - annee(candidat)) < ECART_MINIMAL,
+    );
+    if (!tropProche) retenus.push(candidat);
+  }
+  for (const candidat of disponibles) {
+    if (retenus.length === combien) break;
+    if (!retenus.includes(candidat)) retenus.push(candidat);
+  }
+  return retenus;
 }
 
 /**
  * Tire une manche : des portraits mélangés, et l'ordre attendu.
  *
  * On sert d'abord les savants que l'enfant connaît — délivrés, puis entendus —
- * comme au jeu des liens : reconnaître le visage aide à situer l'époque. On
- * écarte ensuite tout candidat trop proche d'un savant déjà retenu ; s'il n'en
- * reste pas assez, on relâche la contrainte plutôt que de refuser de jouer, un
- * jeu qui ne se lance pas étant pire qu'un jeu un peu difficile.
+ * comme au jeu des liens : reconnaître le visage aide à situer l'époque.
  */
 export function construireFrise(
   cartesVues: Set<string>,
   liberes: string[],
   age: AgeRange,
-): { tirage: SavantDate[]; ordre: string[] } {
-  const combien = SAVANTS_PAR_AGE[age];
-  const disponibles = candidats(cartesVues, liberes);
+): { tirage: ElementFrise[]; ordre: string[] } {
+  const retenus = retenirEspaces(
+    candidats(cartesVues, liberes),
+    SAVANTS_PAR_AGE[age],
+    (s) => s.naissance,
+  );
 
-  const retenus: SavantPrisonnier[] = [];
-  for (const candidat of disponibles) {
-    if (retenus.length === combien) break;
-    const tropProche = retenus.some(
-      (r) => Math.abs(r.naissance - candidat.naissance) < ECART_MINIMAL,
-    );
-    if (!tropProche) retenus.push(candidat);
-  }
-  // Trop peu d'écarts francs : on complète, quitte à serrer les dates.
-  for (const candidat of disponibles) {
-    if (retenus.length === combien) break;
-    if (!retenus.includes(candidat)) retenus.push(candidat);
-  }
-
-  const ordre = [...retenus]
-    .sort((a, b) => a.naissance - b.naissance)
-    .map((s) => s.id);
+  const ordre = [...retenus].sort((a, b) => a.naissance - b.naissance).map((s) => s.id);
 
   return { tirage: melanger(retenus).map(versDate), ordre };
 }

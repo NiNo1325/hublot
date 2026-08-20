@@ -65,7 +65,7 @@ describe('la frise du temps', () => {
   it('donne à chaque savant son portrait et sa date', () => {
     for (const savant of construireFrise(AUCUN, [], '9-12').tirage) {
       expect(savant.portrait).toBe(`/images/wall-of-fame/${savant.id}.webp`);
-      expect(savant.naissance).toBe(naissanceDe(savant.id));
+      expect(savant.annee).toBe(naissanceDe(savant.id));
       expect(savant.nom.length).toBeGreaterThan(2);
     }
   });

@@ -7,8 +7,6 @@ export interface ProgressionProfil {
   maitrisees: string[];
   liberes: string[];
   chrono: number[];
-  age: number | null;
-  tranche: string | null;
   tutoVu: boolean;
   /** Horodatage du dernier changement local, seul arbitre des valeurs qui ne croissent pas. */
   maj: number;
@@ -17,9 +15,10 @@ export interface ProgressionProfil {
 /**
  * Tout ce qu'un compte sauvegarde.
  *
- * Le prénom des enfants n'y figure pas, et c'est délibéré : il ne quitte
- * jamais l'appareil. Le serveur ne voit que des identifiants opaques, des
- * avatars et des listes de cartes.
+ * Ni le prénom ni l'âge des enfants n'y figurent, et c'est délibéré : ce sont
+ * les deux seules informations qui les décriraient, et elles ne quittent pas
+ * l'appareil. Le serveur ne voit que des identifiants opaques, des avatars et
+ * des listes de cartes.
  */
 export interface BlocProgression {
   v: 1;
@@ -64,8 +63,6 @@ function fusionnerProfil(a: ProgressionProfil, b: ProgressionProfil): Progressio
     // Un tutoriel vu quelque part est vu : le remontrer passerait pour un bug.
     tutoVu: a.tutoVu || b.tutoVu,
     avatar: recent.avatar,
-    age: recent.age,
-    tranche: recent.tranche,
     maj: Math.max(a.maj, b.maj),
   };
 }
@@ -82,10 +79,10 @@ function normaliser(p: ProgressionProfil): ProgressionProfil {
 }
 
 /**
- * L'arbitre des valeurs qui ne croissent pas : l'âge, la tranche, l'avatar.
+ * L'arbitre de la seule valeur qui ne croît pas : l'avatar.
  *
  * À horodatage égal — deux appareils réglés à la même seconde, ou un `maj`
- * absent — on départage sur le contenu lui-même. Le résultat est arbitraire
+ * absent — on départage sur l'avatar lui-même. Le résultat est arbitraire
  * mais **déterministe**, ce qui suffit : sans cela, fusionner A puis B ne
  * donnerait pas le même résultat que B puis A, et les deux appareils
  * divergeraient sans jamais se rattraper.
@@ -96,7 +93,7 @@ function plusRecent(a: ProgressionProfil, b: ProgressionProfil): ProgressionProf
 }
 
 function signature(p: ProgressionProfil): string {
-  return JSON.stringify([p.avatar, p.age, p.tranche]);
+  return p.avatar;
 }
 
 function ensemble(...listes: readonly (readonly string[] | undefined)[]): string[] {

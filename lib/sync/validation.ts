@@ -42,8 +42,6 @@ function lireProfil(p: Record<string, unknown>): ProgressionProfil {
     maitrisees: listeDeChaines(p.maitrisees),
     liberes: listeDeChaines(p.liberes),
     chrono: listeDeNombres(p.chrono),
-    age: entierEntre(p.age, 3, 12),
-    tranche: chaine(p.tranche),
     tutoVu: p.tutoVu === true,
     maj: entierPositif(p.maj) ?? 0,
   };
@@ -69,10 +67,6 @@ function listeDeNombres(v: unknown): number[] {
   return v
     .filter((x): x is number => typeof x === 'number' && Number.isFinite(x) && x > 0)
     .slice(0, MAX_ENTREES);
-}
-
-function entierEntre(v: unknown, min: number, max: number): number | null {
-  return typeof v === 'number' && Number.isInteger(v) && v >= min && v <= max ? v : null;
 }
 
 function entierPositif(v: unknown): number | null {

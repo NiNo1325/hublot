@@ -62,7 +62,7 @@ export default function SuppressionPage() {
           <li>L&apos;identifiant technique du compte Google associé à Hublot.</li>
           <li>
             Toute la progression sauvegardée : cartes écoutées, cartes réussies, savants libérés,
-            meilleurs scores, âge et avatar de chaque profil.
+            meilleurs scores et avatar de chaque profil.
           </li>
         </ul>
         <p>
@@ -78,8 +78,9 @@ export default function SuppressionPage() {
           désinstallez l&apos;application.
         </p>
         <p>
-          Rappel : le <strong>prénom des enfants n&apos;a jamais quitté l&apos;appareil</strong>. Il
-          n&apos;a donc jamais fait partie de ce qui est conservé en ligne.
+          Rappel : ni le <strong>prénom</strong> ni l&apos;<strong>âge</strong> des enfants
+          n&apos;ont jamais quitté l&apos;appareil. Ils n&apos;ont donc jamais fait partie de ce qui
+          est conservé en ligne.
         </p>
 
         <p className="pt-4">

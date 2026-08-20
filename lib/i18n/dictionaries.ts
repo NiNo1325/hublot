@@ -289,7 +289,7 @@ const fr = {
   'compte.porte.valider': 'Entrer',
   'compte.porte.rate': 'Ce n’est pas le bon résultat.',
   'compte.explication':
-    'Reliez un compte Google pour que la progression survive à un changement d’appareil. Les prénoms des enfants ne quittent jamais cet appareil.',
+    'Reliez un compte Google pour que la progression survive à un changement d’appareil. Ni le prénom ni l’âge des enfants ne quittent cet appareil.',
   'compte.connecte': 'La progression est sauvegardée ✓',
   'compte.deconnexion': 'Se déconnecter',
   'compte.effacer': 'Effacer la sauvegarde',
@@ -677,7 +677,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'compte.porte.valider': 'Enter',
     'compte.porte.rate': 'That is not the right answer.',
     'compte.explication':
-      'Link a Google account so progress survives a change of device. Children’s first names never leave this device.',
+      'Link a Google account so progress survives a change of device. Children’s first names and ages never leave this device.',
     'compte.connecte': 'Progress is backed up ✓',
     'compte.deconnexion': 'Sign out',
     'compte.effacer': 'Erase the backup',

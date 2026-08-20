@@ -57,14 +57,19 @@ export default function ConfidentialitePage() {
           </li>
           <li>
             la progression de chaque profil : cartes écoutées, cartes réussies, savants libérés,
-            meilleurs scores, âge choisi et figure d&apos;avatar.
+            meilleurs scores et figure d&apos;avatar.
           </li>
         </ul>
 
         <h2 className="font-display text-xl font-semibold">Ce que nous ne conservons jamais</h2>
         <p>
-          <strong>Le prénom des enfants ne quitte jamais l&apos;appareil.</strong> Il est saisi
-          localement, sert à distinguer les profils sur cet appareil, et n&apos;est jamais transmis.
+          <strong>
+            Ni le prénom ni l&apos;âge des enfants ne quittent l&apos;appareil.
+          </strong>{' '}
+          Ce sont les deux seules informations qui les décriraient : elles sont saisies localement,
+          servent à distinguer les profils et à ajuster les explications, et ne sont jamais
+          transmises. Ce qui est sauvegardé ne dit rien d&apos;un enfant, seulement quelles cartes
+          ont été écoutées.
         </p>
         <p>
           Lorsque vous reliez votre compte, Google nous propose également votre nom, votre adresse

@@ -25,13 +25,13 @@ function listeDepuisChaine(brut: string | null): string[] {
 }
 
 /**
- * L'horodatage des valeurs qui ne croissent pas, entretenu tout seul.
+ * L'horodatage de l'avatar, entretenu tout seul.
  *
- * Les sept hooks ignorent la synchronisation : aucun ne pense à noter « l'âge
- * a changé ». Plutôt que de faire remonter cette notion jusqu'à eux, on garde
- * une signature des scalaires et on ne déplace l'horodatage que lorsqu'elle
- * bouge. Un enfant qui n'a pas changé d'avatar depuis un mois garde donc un
- * `maj` d'un mois, et c'est bien l'autre appareil, plus récent, qui gagnera.
+ * Les hooks ignorent la synchronisation : aucun ne pense à noter « l'avatar a
+ * changé ». Plutôt que de faire remonter cette notion jusqu'à eux, on garde
+ * une signature et on ne déplace l'horodatage que lorsqu'elle bouge. Un enfant
+ * qui n'a pas changé de figure depuis un mois garde donc un `maj` d'un mois, et
+ * c'est bien l'autre appareil, plus récent, qui gagnera.
  */
 function majDesScalaires(id: string, signature: string): number {
   const stocke = readStored(cle(CLE_MAJ, id));
@@ -47,25 +47,30 @@ function majDesScalaires(id: string, signature: string): number {
   return maintenant;
 }
 
-function progressionDe(profil: Profil): ProgressionProfil {
-  const age = Number(lireBrut('age.v1', profil.id));
-  const tranche = lireBrut('ageRange.v1', profil.id);
-  const signature = [profil.avatar, Number.isFinite(age) ? age : '', tranche ?? ''].join('|');
+/*
+  L'âge et la tranche d'âge ne partent pas.
 
+  Ce sont les deux seules informations du bloc qui décriraient l'enfant
+  lui-même ; le reste n'est qu'une liste de cartes écoutées. Les garder sur
+  l'appareil permet d'affirmer sans réserve qu'aucune donnée décrivant un
+  enfant ne quitte le sien — ce que disent la politique de confidentialité et
+  la déclaration Play Store. Le prix est dérisoire : sur un appareil neuf,
+  l'enfant rechoisit son âge en deux appuis, sur un écran qu'il verrait de
+  toute façon.
+*/
+function progressionDe(profil: Profil): ProgressionProfil {
   return {
     avatar: profil.avatar,
     vues: listeDepuisChaine(lireBrut('cartesVues.v1', profil.id)),
     maitrisees: listeDepuisChaine(lireBrut('cartesMaitrisees.v1', profil.id)),
     liberes: lireLiberes(lireBrut('liberes.v1', profil.id)),
     chrono: lireScores(lireBrut('chrono.v1', profil.id)),
-    age: Number.isInteger(age) && age >= 3 && age <= 12 ? age : null,
-    tranche,
     tutoVu: lireBrut('tutoVu.v1', profil.id) === '1',
-    maj: majDesScalaires(profil.id, signature),
+    maj: majDesScalaires(profil.id, profil.avatar),
   };
 }
 
-/** Tout ce que cet appareil sait, prêt à partir. Le prénom des enfants n'y est pas. */
+/** Tout ce que cet appareil sait, prêt à partir. Ni prénom ni âge n'y figurent. */
 export function blocLocal(): BlocProgression {
   const profils = lireProfils(readStored(CLE_PROFILS));
   if (profils.length === 0) return blocVide();
@@ -95,12 +100,9 @@ export function appliquerBloc(bloc: BlocProgression): void {
     ecrire(id, 'cartesMaitrisees.v1', p.maitrisees.join(','));
     ecrire(id, 'liberes.v1', ecrireLiberes(p.liberes));
     ecrire(id, 'chrono.v1', ecrireScores(p.chrono));
-    if (p.age !== null) ecrire(id, 'age.v1', String(p.age));
-    if (p.tranche !== null) ecrire(id, 'ageRange.v1', p.tranche);
     if (p.tutoVu) ecrire(id, 'tutoVu.v1', '1');
 
-    const signature = [p.avatar, p.age ?? '', p.tranche ?? ''].join('|');
-    writeStored(cle(CLE_MAJ, id), `${p.maj}|${signature}`);
+    writeStored(cle(CLE_MAJ, id), `${p.maj}|${p.avatar}`);
   }
 
   /*

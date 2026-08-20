@@ -18,10 +18,10 @@ describe('lecture d’un bloc venu du réseau', () => {
   it('garde une progression bien formée', () => {
     const bloc = lireBloc({
       v: 1,
-      profils: { a: { avatar: 'hibou', vues: ['x', 'y'], age: 7, tutoVu: true, maj: 5 } },
+      profils: { a: { avatar: 'hibou', vues: ['x', 'y'], tutoVu: true, maj: 5 } },
     });
     expect(bloc.profils.a.vues).toEqual(['x', 'y']);
-    expect(bloc.profils.a.age).toBe(7);
+    expect(bloc.profils.a.avatar).toBe('hibou');
     expect(bloc.profils.a.tutoVu).toBe(true);
     expect(bloc.profils.a.maj).toBe(5);
   });
@@ -31,9 +31,16 @@ describe('lecture d’un bloc venu du réseau', () => {
     expect(bloc.profils.a.vues).toEqual(['bon', 'aussi']);
   });
 
-  it('refuse un âge hors des bornes de l’app', () => {
-    expect(lireBloc({ profils: { a: { age: 99 } } }).profils.a.age).toBeNull();
-    expect(lireBloc({ profils: { a: { age: 7.5 } } }).profils.a.age).toBeNull();
+  /*
+    Une version antérieure de l'app envoyait l'âge. Ces blocs existent peut-être
+    encore dans des comptes : ils doivent être lus sans erreur, et l'âge écarté
+    plutôt que réintroduit dans le stockage.
+  */
+  it('écarte un âge envoyé par une version antérieure', () => {
+    const bloc = lireBloc({ profils: { a: { vues: ['x'], age: 7, tranche: '7-9' } } });
+    expect(bloc.profils.a).not.toHaveProperty('age');
+    expect(bloc.profils.a).not.toHaveProperty('tranche');
+    expect(bloc.profils.a.vues).toEqual(['x']);
   });
 
   it('ne prend `tutoVu` que pour un vrai booléen', () => {

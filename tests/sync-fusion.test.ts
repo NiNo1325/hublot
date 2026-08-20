@@ -20,8 +20,6 @@ function profil(p: Partial<ProgressionProfil> = {}): ProgressionProfil {
     maitrisees: [],
     liberes: [],
     chrono: [],
-    age: null,
-    tranche: null,
     tutoVu: false,
     maj: 0,
     ...p,
@@ -70,16 +68,21 @@ describe('fusion de deux appareils', () => {
 });
 
 describe('arbitrage des valeurs qui ne croissent pas', () => {
-  it('retient l’âge le plus récemment enregistré', () => {
-    const vieux = bloc({ a: profil({ age: 6, tranche: '3-6', maj: 100 }) });
-    const neuf = bloc({ a: profil({ age: 8, tranche: '7-9', maj: 200 }) });
-    const f = fusionner(vieux, neuf).profils.a;
-    expect(f.age).toBe(8);
-    expect(f.tranche).toBe('7-9');
-    expect(f.maj).toBe(200);
+  /*
+    L'âge est la seule information du bloc qui décrirait l'enfant lui-même. Le
+    garder sur l'appareil est ce qui permet d'affirmer sans réserve, dans la
+    politique de confidentialité comme dans la déclaration Play Store, qu'aucune
+    donnée décrivant un enfant ne part. Ce test existe pour que personne ne le
+    remette dans le bloc par commodité.
+  */
+  it('ne transporte ni âge ni tranche d’âge', () => {
+    const f = fusionner(bloc({ a: profil({ maj: 100 }) }), bloc({ a: profil({ maj: 200 }) }));
+    expect(Object.keys(f.profils.a).sort()).toEqual(
+      ['avatar', 'chrono', 'liberes', 'maitrisees', 'maj', 'tutoVu', 'vues'].sort(),
+    );
   });
 
-  it('retient l’avatar le plus récent', () => {
+  it('retient l’avatar le plus récent, horodatage faisant foi', () => {
     const a = bloc({ a: profil({ avatar: 'renard', maj: 100 }) });
     const b = bloc({ a: profil({ avatar: 'hibou', maj: 200 }) });
     expect(fusionner(a, b).profils.a.avatar).toBe('hibou');
@@ -104,11 +107,11 @@ describe('arbitrage des valeurs qui ne croissent pas', () => {
 */
 describe('propriétés algébriques', () => {
   const a = bloc({
-    x: profil({ vues: ['1', '2'], chrono: [10], age: 6, maj: 100, avatar: 'renard' }),
+    x: profil({ vues: ['1', '2'], chrono: [10], maj: 100, avatar: 'renard' }),
     y: profil({ vues: ['9'], maj: 50 }),
   });
   const b = bloc({
-    x: profil({ vues: ['2', '3'], chrono: [20], age: 9, maj: 300, avatar: 'hibou' }),
+    x: profil({ vues: ['2', '3'], chrono: [20], maj: 300, avatar: 'hibou' }),
     z: profil({ liberes: ['newton'], maj: 70 }),
   });
 
@@ -128,8 +131,8 @@ describe('propriétés algébriques', () => {
   });
 
   it('tranche les égalités d’horodatage de façon déterministe', () => {
-    const g = bloc({ x: profil({ age: 5, maj: 100 }) });
-    const d = bloc({ x: profil({ age: 11, maj: 100 }) });
+    const g = bloc({ x: profil({ avatar: 'loutre', maj: 100 }) });
+    const d = bloc({ x: profil({ avatar: 'baleine', maj: 100 }) });
     expect(fusionner(g, d)).toEqual(fusionner(d, g));
   });
 

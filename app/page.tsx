@@ -1,6 +1,6 @@
-import { AgeGate } from '@/components/age/AgeGate';
+import { PremiereEntree } from '@/components/niveau/PremiereEntree';
 
-/** Accueil : première entrée (choix de l'âge), hors de la barre d'onglets. */
+/** Accueil : première entrée (choix du niveau), hors de la barre d'onglets. */
 export default function AccueilPage() {
-  return <AgeGate />;
+  return <PremiereEntree />;
 }

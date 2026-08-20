@@ -14,6 +14,7 @@
     "audio:quiz": "tsx --env-file=.env.local scripts/generer-audio-quiz.mjs",
     "audio:accroches": "tsx --env-file=.env.local scripts/generer-audio-accroches.mjs",
     "audio:tutoriel": "tsx --env-file=.env.local scripts/generer-audio-tutoriel.mjs",
+    "audio:niveaux": "tsx --env-file=.env.local scripts/generer-audio-niveaux.mjs",
     "audio:savants": "tsx --env-file=.env.local scripts/generer-audio-savants.mjs",
     "audio:histoire": "tsx --env-file=.env.local scripts/generer-audio-histoire.mjs",
     "audio:noms": "tsx --env-file=.env.local scripts/generer-audio-noms.mjs",

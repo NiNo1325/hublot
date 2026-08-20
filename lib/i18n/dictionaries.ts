@@ -255,12 +255,12 @@ const fr = {
     `${vues}/${total} écoutée${total > 1 ? 's' : ''} · ${reussies}/${total} réussie${total > 1 ? 's' : ''}`,
 
   'reglages.titre': 'Réglages',
-  'reglages.profil': 'Profil',
+  'reglages.niveau': 'Niveau des explications',
+  'reglages.enregistrer-niveau': 'Enregistrer le niveau',
+  'reglages.niveau-enregistre': 'Enregistré ✓',
   'reglages.langue': 'Langue',
   'reglages.ecoute': 'Écoute & alertes',
   'reglages.aide': 'Aide',
-  'reglages.age-enregistre': 'Enregistré ✓',
-  'reglages.enregistrer-age': 'Enregistrer l’âge',
   'reglages.hors-ligne': 'Écouter sans internet',
   'reglages.hors-ligne.maj': 'Mise à jour',
   'reglages.hors-ligne.pret': 'Prêt ✓',
@@ -270,6 +270,11 @@ const fr = {
   'reglages.confirmer': 'Confirmer ? Les cartes redeviendront neuves',
 
   'reglages.famille': 'Qui utilise Hublot',
+
+  'accueil.bienvenue': 'Bienvenue sur Hublot',
+  'accueil.commencer': 'C’est parti',
+  'niveau.ecouter': 'Écouter l’explication',
+  'niveau.arreter': 'Arrêter la lecture',
   'reglages.sauvegarde': 'Sauvegarde',
 
   'profils.qui-joue': 'Qui joue ?',
@@ -304,8 +309,6 @@ const fr = {
   'tuto.suivant': 'Suivant',
   'tuto.commencer': 'C’est parti !',
 
-  'age.moins': 'Un an de moins',
-  'age.plus': 'Un an de plus',
   'narration.etapes': 'Étapes de l’explication',
   'parcours.une-question': 'Une question sur cette carte',
   'notifications.aria': 'Recevoir les notifications',
@@ -643,12 +646,12 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
       `${vues}/${total} listened to · ${reussies}/${total} answered`,
 
     'reglages.titre': 'Settings',
-    'reglages.profil': 'Profile',
+    'reglages.niveau': 'Explanation level',
+    'reglages.enregistrer-niveau': 'Save level',
+    'reglages.niveau-enregistre': 'Saved ✓',
     'reglages.langue': 'Language',
     'reglages.ecoute': 'Listening & alerts',
     'reglages.aide': 'Help',
-    'reglages.age-enregistre': 'Saved ✓',
-    'reglages.enregistrer-age': 'Save age',
     'reglages.hors-ligne': 'Listen without internet',
     'reglages.hors-ligne.maj': 'Updating',
     'reglages.hors-ligne.pret': 'Ready ✓',
@@ -658,6 +661,11 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'reglages.confirmer': 'Are you sure? The cards will all become new again',
 
     'reglages.famille': 'Who uses Hublot',
+
+    'accueil.bienvenue': 'Welcome to Hublot',
+    'accueil.commencer': 'Let’s go',
+    'niveau.ecouter': 'Listen to the explanation',
+    'niveau.arreter': 'Stop playback',
     'reglages.sauvegarde': 'Backup',
 
     'profils.qui-joue': 'Who is playing?',
@@ -692,8 +700,6 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'tuto.suivant': 'Next',
     'tuto.commencer': 'Let’s go!',
 
-    'age.moins': 'One year younger',
-    'age.plus': 'One year older',
     'narration.etapes': 'Steps of the explanation',
     'parcours.une-question': 'A question about this card',
     'notifications.aria': 'Receive notifications',

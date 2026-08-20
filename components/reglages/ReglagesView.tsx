@@ -2,12 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { SelecteurAge } from '@/components/age/SelecteurAge';
-import { rangDepuisEtoiles } from '@/lib/etoiles';
-import { useAgeRange } from '@/components/age/useAgeRange';
+import { SelecteurNiveau } from '@/components/niveau/SelecteurNiveau';
+import { useNiveau } from '@/components/niveau/useNiveau';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
-import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { Intitule } from '@/components/ui/Intitule';
@@ -26,28 +24,27 @@ const LANGUES: { code: Locale; nom: string; drapeau: string }[] = [
 ];
 
 /**
- * Réglages, rangés par intention plutôt qu'en vrac : le profil (l'âge), l'écoute
+ * Réglages, rangés par intention plutôt qu'en vrac : le niveau, la famille, l'écoute
  * et les alertes (hors-ligne, notifications), l'aide (revoir la présentation),
  * puis en pied de page, à l'écart, le geste rare de réinitialisation et la
  * version. Chaque groupe est une carte de rangées cohérentes.
  */
 export function ReglagesView() {
   const router = useRouter();
-  const { age, ageRange, status, choisirAge } = useAgeRange();
+  const { niveau, status, choisirNiveau } = useNiveau();
   const { cartesVues, oublierToutesLesVues } = useCartesVues();
-  const { etoiles } = useEtoiles();
   const { oublierMaitrisees } = useCartesMaitrisees();
   const { resume: horsLigne } = useHorsLigne();
   const { locale, choisirLocale } = useLocale();
   const t = useT();
 
   const [confirmation, setConfirmation] = useState(false);
-  const [ageEnregistre, setAgeEnregistre] = useState(false);
+  const [niveauEnregistre, setNiveauEnregistre] = useState(false);
 
-  // Accès direct sans âge choisi : retour à la première entrée.
+  // Accès direct sans niveau choisi : retour à la première entrée.
   useEffect(() => {
-    if (status === 'pret' && !ageRange) router.replace('/');
-  }, [status, ageRange, router]);
+    if (status === 'pret' && !niveau) router.replace('/');
+  }, [status, niveau, router]);
 
   // Retour automatique de la confirmation : un « Confirmer ? » resté affiché
   // deviendrait un piège au prochain passage.
@@ -58,14 +55,13 @@ export function ReglagesView() {
   }, [confirmation]);
 
   useEffect(() => {
-    if (!ageEnregistre) return;
-    const minuterie = setTimeout(() => setAgeEnregistre(false), 2000);
+    if (!niveauEnregistre) return;
+    const minuterie = setTimeout(() => setNiveauEnregistre(false), 2000);
     return () => clearTimeout(minuterie);
-  }, [ageEnregistre]);
+  }, [niveauEnregistre]);
 
-  if (status === 'chargement' || !ageRange || age == null) return null;
+  if (status === 'chargement' || !niveau) return null;
 
-  const { rang } = rangDepuisEtoiles(etoiles);
   const etatHorsLigne =
     horsLigne.etat === 'maj'
       ? t('reglages.hors-ligne.maj')
@@ -86,18 +82,19 @@ export function ReglagesView() {
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-6 py-10">
       <h1 className="text-center font-display text-3xl font-semibold sm:text-4xl">{t('reglages.titre')}</h1>
 
-      {/* Profil */}
+      {/* Niveau de difficulté */}
       <section className="flex flex-col gap-3">
-        <Intitule>{t('reglages.profil')}</Intitule>
-        <div className="flex flex-col items-center gap-5 rounded-3xl border-2 border-encre-bord bg-encre-clair p-6">
-          <SelecteurAge
-            key={age}
-            ageInitial={age}
-            rangLumi={rang.index}
-            labelValider={ageEnregistre ? t('reglages.age-enregistre') : t('reglages.enregistrer-age')}
+        <Intitule>{t('reglages.niveau')}</Intitule>
+        <div className="flex flex-col items-center gap-5 rounded-3xl border-2 border-encre-bord bg-encre-clair p-4">
+          <SelecteurNiveau
+            key={niveau.id}
+            niveauInitial={niveau}
+            labelValider={
+              niveauEnregistre ? t('reglages.niveau-enregistre') : t('reglages.enregistrer-niveau')
+            }
             onValider={(choisi) => {
-              choisirAge(choisi);
-              setAgeEnregistre(true);
+              choisirNiveau(choisi);
+              setNiveauEnregistre(true);
             }}
           />
         </div>

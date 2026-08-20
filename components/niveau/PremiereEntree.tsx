@@ -5,24 +5,30 @@ import { useRouter } from 'next/navigation';
 import { SelecteurProfil } from '@/components/profils/SelecteurProfil';
 import { useProfils } from '@/components/profils/useProfils';
 import { marquerProfilChoisi, profilChoisiCetteSession } from '@/components/profils/sessionChoix';
-import { SelecteurAge } from './SelecteurAge';
-import { useAgeRange } from './useAgeRange';
+import { useT } from '@/components/i18n/useT';
+import { SelecteurNiveau } from './SelecteurNiveau';
+import { useNiveau } from './useNiveau';
 
 /**
- * Première entrée dans l'app. On ne demande l'âge qu'une fois : ensuite il se
- * change dans Réglages, et l'accueil file droit dans l'app (barre d'onglets).
+ * Première entrée dans l'app.
  *
- * L'état vient du cache : après un nettoyage du stockage par le système, on
- * redemande l'âge plutôt que d'ouvrir une app muette sur un drapeau optimiste.
+ * On ne demande le niveau qu'une fois : ensuite il se change dans Réglages, et
+ * l'accueil file droit dans l'app. L'état vient du stockage : après un
+ * nettoyage par le système, on redemande plutôt que d'ouvrir une app muette sur
+ * un drapeau optimiste.
  *
  * Quand la famille compte plusieurs enfants, une question passe devant : qui
  * joue ? Elle n'apparaît pas autrement — ni pour un enfant unique, ni pour les
- * familles déjà installées, qui n'ont qu'un profil et ne verront donc aucune
- * différence.
+ * familles déjà installées, qui n'ont qu'un profil.
+ *
+ * Cet écran demandait autrefois l'âge de l'enfant. Il demande maintenant ce
+ * qu'il veut entendre, ce qui revient au même pour le catalogue et n'est pas du
+ * tout la même question pour lui.
  */
-export function AgeGate() {
+export function PremiereEntree() {
   const router = useRouter();
-  const { age, ageRange, status, choisirAge } = useAgeRange();
+  const t = useT();
+  const { niveau, status, choisirNiveau } = useNiveau();
   const { plusieurs } = useProfils();
   const [choixFait, setChoixFait] = useState(profilChoisiCetteSession);
 
@@ -36,11 +42,9 @@ export function AgeGate() {
   */
   useEffect(() => {
     if (doitChoisir) return;
-    if (status === 'pret' && ageRange) router.replace('/musee');
-  }, [doitChoisir, status, ageRange, router]);
+    if (status === 'pret' && niveau) router.replace('/musee');
+  }, [doitChoisir, status, niveau, router]);
 
-  // Pendant la lecture du stockage, on ne rend rien pour ne pas faire
-  // clignoter l'écran.
   if (status === 'chargement') return null;
 
   if (doitChoisir) {
@@ -56,25 +60,22 @@ export function AgeGate() {
     );
   }
 
-  // Âge déjà connu : redirection en cours, rien à afficher.
-  if (ageRange) return null;
+  // Niveau déjà connu : redirection en cours, rien à afficher.
+  if (niveau) return null;
 
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-12 px-6 py-12">
+    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-8 px-6 py-12">
       <div className="text-center">
         <h1 className="font-display text-4xl font-semibold text-craie sm:text-5xl">
-          Bienvenue sur Hublot
+          {t('accueil.bienvenue')}
         </h1>
-        <p className="mt-3 text-craie-douce">
-          Tu as quel âge&nbsp;? On met les explications à ta mesure.
-        </p>
       </div>
 
-      <SelecteurAge
-        ageInitial={age ?? 7}
-        labelValider="C'est parti"
+      <SelecteurNiveau
+        niveauInitial={null}
+        labelValider={t('accueil.commencer')}
         onValider={(choisi) => {
-          choisirAge(choisi);
+          choisirNiveau(choisi);
           router.replace('/musee');
         }}
       />

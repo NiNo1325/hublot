@@ -44,14 +44,14 @@ export function SectionFamille() {
                 placeholder={t('profils.sans-nom')}
                 onChange={(e) => renommer(p.id, e.target.value)}
                 aria-label={t('famille.prenom')}
-                className="min-h-11 flex-1 rounded-2xl border-2 border-transparent bg-transparent px-3 text-craie transition-colors focus:border-encre-bord"
+                className="min-h-11 w-0 min-w-0 flex-1 rounded-2xl border-2 border-transparent bg-transparent px-3 text-craie transition-colors focus:border-encre-bord"
               />
 
               {profils.length > 1 && (
                 <button
                   type="button"
                   onClick={() => setASupprimer(aSupprimer === p.id ? null : p.id)}
-                  className="min-h-11 cursor-pointer px-2 text-sm text-craie-douce/70 transition-colors hover:text-craie"
+                  className="min-h-11 shrink-0 cursor-pointer px-2 text-sm text-craie-douce/70 transition-colors hover:text-craie"
                 >
                   {t('famille.supprimer')}
                 </button>
@@ -77,6 +77,12 @@ export function SectionFamille() {
         );
       })}
 
+      {/*
+        `min-w-0` sur le champ et `shrink-0` sur le bouton : sans quoi le champ
+        réclame la largeur de son texte indicatif et pousse le bouton hors de
+        l'écran sur un téléphone étroit — il devenait invisible en dessous de
+        360 px, alors qu'il est la seule façon d'ajouter un enfant.
+      */}
       <form
         className="flex items-center gap-2 px-5 py-4"
         onSubmit={(e) => {
@@ -96,12 +102,12 @@ export function SectionFamille() {
           placeholder={t('famille.ajouter.champ')}
           onChange={(e) => setNouveau(e.target.value)}
           aria-label={t('famille.ajouter.champ')}
-          className="min-h-11 flex-1 rounded-2xl border-2 border-encre-bord bg-transparent px-3 text-craie"
+          className="min-h-11 w-0 min-w-0 flex-1 rounded-2xl border-2 border-encre-bord bg-transparent px-3 text-craie"
         />
         <button
           type="submit"
           disabled={!nouveau.trim()}
-          className="min-h-11 cursor-pointer rounded-2xl border-2 border-encre-bord px-4 text-craie transition-colors hover:border-soleil disabled:cursor-default disabled:opacity-40"
+          className="min-h-11 shrink-0 cursor-pointer rounded-2xl border-2 border-encre-bord px-4 text-craie transition-colors hover:border-soleil disabled:cursor-default disabled:opacity-40"
         >
           {t('famille.ajouter')}
         </button>

@@ -12,6 +12,8 @@ import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { Intitule } from '@/components/ui/Intitule';
 import { NotificationsToggle } from './NotificationsToggle';
+import { SectionFamille } from './SectionFamille';
+import { SauvegardeCompte } from '@/components/compte/SauvegardeCompte';
 import { InfoVersion } from './InfoVersion';
 import { ouvrirTutoriel } from '@/components/tutoriel/useTutoriel';
 import { useLocale } from '@/components/i18n/useLocale';
@@ -126,6 +128,12 @@ export function ReglagesView() {
         </div>
       </section>
 
+      {/* Famille : la fratrie qui partage l'appareil. */}
+      <section className="flex flex-col gap-3">
+        <Intitule>{t('reglages.famille')}</Intitule>
+        <SectionFamille />
+      </section>
+
       {/* Écoute & alertes */}
       <section className="flex flex-col gap-3">
         <Intitule>{t('reglages.ecoute')}</Intitule>
@@ -157,6 +165,18 @@ export function ReglagesView() {
           </button>
         </div>
       </section>
+
+      {/* Sauvegarde. Toute la section disparaît si le compte Google n'est pas
+          configuré : un intitulé surmontant une carte vide vaudrait moins que
+          rien du tout. */}
+      {process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID && (
+        <section className="flex flex-col gap-3">
+          <Intitule>{t('reglages.sauvegarde')}</Intitule>
+          <div className="overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
+            <SauvegardeCompte />
+          </div>
+        </section>
+      )}
 
       {/* Pied de page : le geste rare de réinitialisation, à l'écart, et les
           versions (app Google Play + build web) en tout petit, pour lever tout

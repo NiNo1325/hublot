@@ -2,8 +2,9 @@
 
 import { useCallback, useSyncExternalStore } from 'react';
 import { readStored, writeStored } from '@/lib/storage';
+import { cleActive, souscrireProfils } from '@/lib/profils/store';
 
-const CLE = 'science.cartesMaitrisees.v1';
+const NOM = 'cartesMaitrisees.v1';
 
 /** Sérialisation : identifiants séparés par des virgules (comme les cartes vues). */
 export function lireMaitrisees(brut: string): Set<string> {
@@ -18,13 +19,15 @@ const abonnes = new Set<() => void>();
 
 function souscrire(surChangement: () => void) {
   abonnes.add(surChangement);
+  const quitterProfils = souscrireProfils(surChangement);
   return () => {
     abonnes.delete(surChangement);
+    quitterProfils();
   };
 }
 
 function lire(): string {
-  return readStored(CLE) ?? '';
+  return readStored(cleActive(NOM)) ?? '';
 }
 
 /**
@@ -33,7 +36,7 @@ function lire(): string {
  * l'hydratation passe pour un progrès). Appelé uniquement côté client.
  */
 export function maitriseesStockees(): Set<string> {
-  return lireMaitrisees(readStored(CLE) ?? '');
+  return lireMaitrisees(readStored(cleActive(NOM)) ?? '');
 }
 
 function lireServeur(): string {
@@ -41,7 +44,7 @@ function lireServeur(): string {
 }
 
 function publier(valeur: string) {
-  writeStored(CLE, valeur);
+  writeStored(cleActive(NOM), valeur);
   for (const notifier of abonnes) notifier();
 }
 
@@ -56,7 +59,7 @@ export function useCartesMaitrisees() {
   const brut = useSyncExternalStore(souscrire, lire, lireServeur);
 
   const marquerMaitrisee = useCallback((cardId: string) => {
-    const actuelles = lireMaitrisees(readStored(CLE) ?? '');
+    const actuelles = lireMaitrisees(readStored(cleActive(NOM)) ?? '');
     if (actuelles.has(cardId)) return;
     actuelles.add(cardId);
     publier(ecrireMaitrisees(actuelles));

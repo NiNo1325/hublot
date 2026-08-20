@@ -2,8 +2,9 @@
 
 import { useCallback, useSyncExternalStore } from 'react';
 import { readStored, writeStored } from '@/lib/storage';
+import { cleActive, souscrireProfils } from '@/lib/profils/store';
 
-const CLE = 'science.cartesVues.v1';
+const NOM = 'cartesVues.v1';
 
 /*
   Sérialisation : les identifiants séparés par des virgules. Du JSON serait
@@ -29,13 +30,15 @@ const abonnes = new Set<() => void>();
 
 function souscrire(surChangement: () => void) {
   abonnes.add(surChangement);
+  const quitterProfils = souscrireProfils(surChangement);
   return () => {
     abonnes.delete(surChangement);
+    quitterProfils();
   };
 }
 
 function lire(): string {
-  return readStored(CLE) ?? '';
+  return readStored(cleActive(NOM)) ?? '';
 }
 
 /**
@@ -47,7 +50,7 @@ function lire(): string {
  * vide→chargé passerait pour un progrès. Appelé uniquement côté client.
  */
 export function vuesStockees(): Set<string> {
-  return lireVues(readStored(CLE) ?? '');
+  return lireVues(readStored(cleActive(NOM)) ?? '');
 }
 
 function lireServeur(): string {
@@ -55,7 +58,7 @@ function lireServeur(): string {
 }
 
 function publier(valeur: string) {
-  writeStored(CLE, valeur);
+  writeStored(cleActive(NOM), valeur);
   for (const notifier of abonnes) notifier();
 }
 
@@ -71,7 +74,7 @@ export function useCartesVues() {
   const brut = useSyncExternalStore(souscrire, lire, lireServeur);
 
   const marquerVue = useCallback((cardId: string) => {
-    const actuelles = lireVues(readStored(CLE) ?? '');
+    const actuelles = lireVues(readStored(cleActive(NOM)) ?? '');
     if (actuelles.has(cardId)) return;
     actuelles.add(cardId);
     publier(ecrireVues(actuelles));

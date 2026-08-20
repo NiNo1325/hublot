@@ -1,7 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { SelecteurProfil } from '@/components/profils/SelecteurProfil';
+import { useProfils } from '@/components/profils/useProfils';
+import { marquerProfilChoisi, profilChoisiCetteSession } from '@/components/profils/sessionChoix';
 import { SelecteurAge } from './SelecteurAge';
 import { useAgeRange } from './useAgeRange';
 
@@ -11,10 +14,19 @@ import { useAgeRange } from './useAgeRange';
  *
  * L'état vient du cache : après un nettoyage du stockage par le système, on
  * redemande l'âge plutôt que d'ouvrir une app muette sur un drapeau optimiste.
+ *
+ * Quand la famille compte plusieurs enfants, une question passe devant : qui
+ * joue ? Elle n'apparaît pas autrement — ni pour un enfant unique, ni pour les
+ * familles déjà installées, qui n'ont qu'un profil et ne verront donc aucune
+ * différence.
  */
 export function AgeGate() {
   const router = useRouter();
   const { age, ageRange, status, choisirAge } = useAgeRange();
+  const { plusieurs } = useProfils();
+  const [choixFait, setChoixFait] = useState(profilChoisiCetteSession);
+
+  const doitChoisir = plusieurs && !choixFait;
 
   /*
     Visiteur connu : on entre directement dans l'app, et l'on entre par le
@@ -23,12 +35,29 @@ export function AgeGate() {
     le reste.
   */
   useEffect(() => {
+    if (doitChoisir) return;
     if (status === 'pret' && ageRange) router.replace('/musee');
-  }, [status, ageRange, router]);
+  }, [doitChoisir, status, ageRange, router]);
 
-  // Pendant la lecture du stockage — ou si l'âge est déjà connu (redirection en
-  // cours) — on ne rend rien, pour ne pas faire clignoter l'écran.
-  if (status === 'chargement' || ageRange) return null;
+  // Pendant la lecture du stockage, on ne rend rien pour ne pas faire
+  // clignoter l'écran.
+  if (status === 'chargement') return null;
+
+  if (doitChoisir) {
+    return (
+      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-12 px-6 py-12">
+        <SelecteurProfil
+          onChoisi={() => {
+            marquerProfilChoisi();
+            setChoixFait(true);
+          }}
+        />
+      </main>
+    );
+  }
+
+  // Âge déjà connu : redirection en cours, rien à afficher.
+  if (ageRange) return null;
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-12 px-6 py-12">

@@ -2,11 +2,12 @@
 
 import { useCallback, useSyncExternalStore } from 'react';
 import { readStored, writeStored } from '@/lib/storage';
+import { cleActive, souscrireProfils } from '@/lib/profils/store';
 import { savantsPrisonniers } from '@/content/savants-cartes';
 import { clesDepensees, ecrireLiberes, lireLiberes, soldeCles } from '@/lib/cles';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 
-const CLE = 'science.liberes.v1';
+const NOM = 'liberes.v1';
 
 /*
   Même plomberie que les autres stockages : un abonnement partagé, pour que le
@@ -17,8 +18,10 @@ const abonnes = new Set<() => void>();
 
 function souscrire(surChangement: () => void) {
   abonnes.add(surChangement);
+  const quitterProfils = souscrireProfils(surChangement);
   return () => {
     abonnes.delete(surChangement);
+    quitterProfils();
   };
 }
 
@@ -27,7 +30,7 @@ function souscrire(surChangement: () => void) {
   identité, et rendre un tableau neuf à chaque lecture ferait boucler React.
 */
 function lire(): string {
-  return readStored(CLE) ?? '';
+  return readStored(cleActive(NOM)) ?? '';
 }
 
 function lireServeur(): string {
@@ -52,9 +55,9 @@ export function useMusee() {
   const depensees = clesDepensees(liberes);
 
   const liberer = useCallback((id: string) => {
-    const actuels = lireLiberes(readStored(CLE));
+    const actuels = lireLiberes(readStored(cleActive(NOM)));
     if (actuels.includes(id)) return;
-    writeStored(CLE, ecrireLiberes([...actuels, id]));
+    writeStored(cleActive(NOM), ecrireLiberes([...actuels, id]));
     for (const notifier of abonnes) notifier();
   }, []);
 

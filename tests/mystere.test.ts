@@ -36,6 +36,31 @@ describe('le savant mystère', () => {
     expect(enigme?.portraits).toHaveLength(PORTRAITS_PAR_AGE[age]);
   });
 
+  /*
+    Le mystère se tirait « délivrés d'abord, puis entendus », et l'on prenait le
+    premier. Avec un seul savant délivré, le mélange d'une liste d'un élément
+    rend toujours le même : la partie proposait Euclide, encore Euclide, et
+    toujours Euclide. Et même avec trois délivrés, les savants seulement
+    entendus n'étaient jamais tirés.
+  */
+  it('ne propose pas toujours le même savant quand un seul est délivré', () => {
+    const vues = new Set(['les-volcans', 'les-marees', 'le-cerveau', 'les-etoiles']);
+    const tires = new Set<string>();
+    for (let essai = 0; essai < 60; essai += 1) {
+      tires.add(construireEnigme(cards, vues, ['euclide'], '9-12', 'fr')!.savantId);
+    }
+    expect(tires.size).toBeGreaterThan(1);
+  });
+
+  it('peut tirer un savant seulement entendu, pas seulement les délivrés', () => {
+    const vues = new Set(['les-volcans', 'les-marees', 'le-cerveau', 'les-etoiles']);
+    const tires = new Set<string>();
+    for (let essai = 0; essai < 60; essai += 1) {
+      tires.add(construireEnigme(cards, vues, ['euclide'], '9-12', 'fr')!.savantId);
+    }
+    expect([...tires].some((id) => id !== 'euclide')).toBe(true);
+  });
+
   it('cache le mystère parmi les portraits', () => {
     for (let essai = 0; essai < 30; essai += 1) {
       const enigme = construireEnigme(cards, AUCUN, DELIVRES, '9-12', 'fr')!;

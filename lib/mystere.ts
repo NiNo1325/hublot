@@ -75,13 +75,23 @@ export function epoqueDe(savant: SavantPrisonnier): IdEpoque {
   return trouvee?.id ?? 'aujourdhui';
 }
 
-/** Les savants que l'enfant a des chances de reconnaître, délivrés d'abord. */
+/**
+ * Les savants que l'enfant a des chances de reconnaître.
+ *
+ * Un seul mélange sur l'ensemble, et non « délivrés d'abord, puis entendus ».
+ * L'ordre par priorité a du sens dans la frise, qui prend plusieurs savants
+ * d'affilée ; ici on n'en prend qu'un, et le classement devenait alors une
+ * assignation : avec un seul savant délivré, le mélange d'une liste d'un
+ * élément rendait toujours le même, et la partie proposait Euclide à
+ * l'infini. Les savants seulement entendus n'étaient jamais tirés non plus.
+ *
+ * Délivré ou entendu, l'enfant l'a croisé : c'est tout ce que ce jeu demande.
+ */
 function candidats(cartesVues: Set<string>, liberes: string[]): SavantPrisonnier[] {
-  const delivres = savantsPrisonniers.filter((s) => liberes.includes(s.id));
-  const entendus = savantsPrisonniers.filter(
-    (s) => !liberes.includes(s.id) && s.cartes.some((c) => cartesVues.has(c.id)),
+  const connus = savantsPrisonniers.filter(
+    (s) => liberes.includes(s.id) || s.cartes.some((c) => cartesVues.has(c.id)),
   );
-  return [...melanger(delivres), ...melanger(entendus)];
+  return melanger(connus);
 }
 
 /** Y a-t-il un savant que l'enfant puisse reconnaître ? */

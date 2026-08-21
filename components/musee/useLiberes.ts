@@ -61,8 +61,23 @@ export function useMusee() {
     for (const notifier of abonnes) notifier();
   }, []);
 
+  /*
+    Remettre les savants en cellule.
+
+    Indispensable à la réinitialisation : le trousseau se déduit des cartes
+    comprises moins les cellules ouvertes. Effacer les cartes sans refermer les
+    cellules laissait une dette — l'enfant devait re-comprendre autant de cartes
+    qu'il avait dépensé de clés avant d'en revoir une seule, et son compteur
+    restait collé à zéro sans que rien ne l'explique.
+  */
+  const oublierLiberes = useCallback(() => {
+    writeStored(cleActive(NOM), '');
+    for (const notifier of abonnes) notifier();
+  }, []);
+
   return {
     liberes,
+    oublierLiberes,
     /** Clés gagnées à vie : une par carte comprise. */
     gagnees,
     depensees,

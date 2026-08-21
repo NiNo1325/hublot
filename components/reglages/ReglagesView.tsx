@@ -7,6 +7,7 @@ import { useNiveau } from '@/components/niveau/useNiveau';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
+import { useMusee } from '@/components/musee/useLiberes';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { Intitule } from '@/components/ui/Intitule';
 import { NotificationsToggle } from './NotificationsToggle';
@@ -34,6 +35,7 @@ export function ReglagesView() {
   const { niveau, status, choisirNiveau } = useNiveau();
   const { cartesVues, oublierToutesLesVues } = useCartesVues();
   const { oublierMaitrisees } = useCartesMaitrisees();
+  const { oublierLiberes } = useMusee();
   const { resume: horsLigne } = useHorsLigne();
   const { locale, choisirLocale } = useLocale();
   const t = useT();
@@ -187,8 +189,14 @@ export function ReglagesView() {
                 setConfirmation(true);
                 return;
               }
+              /*
+                Les trois ensemble, jamais deux sur trois : le trousseau se
+                déduit des cartes comprises moins les cellules ouvertes, et en
+                effacer une partie laisserait une dette impossible à rembourser.
+              */
               oublierToutesLesVues();
               oublierMaitrisees();
+              oublierLiberes();
               setConfirmation(false);
             }}
             className={`min-h-11 cursor-pointer rounded-full px-5 text-xs transition-colors ${

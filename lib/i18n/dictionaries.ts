@@ -275,7 +275,7 @@ const fr = {
   'reglages.hors-ligne.incomplet': 'Incomplet',
   'reglages.tutoriel': 'Revoir la présentation',
   'reglages.reinitialiser': (n: number) => `Réinitialiser la progression (${n} cartes)`,
-  'reglages.confirmer': 'Confirmer ? Les cartes redeviendront neuves',
+  'reglages.confirmer': 'Confirmer ? Les cartes redeviendront neuves et les savants retourneront en cellule',
 
   'reglages.famille': 'Qui utilise Hublot',
 
@@ -674,7 +674,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'reglages.hors-ligne.incomplet': 'Incomplete',
     'reglages.tutoriel': 'See the introduction again',
     'reglages.reinitialiser': (n: number) => `Reset progress (${n} cards)`,
-    'reglages.confirmer': 'Are you sure? The cards will all become new again',
+    'reglages.confirmer': 'Are you sure? The cards become new again and the scientists go back to their cells',
 
     'reglages.famille': 'Who uses Hublot',
 

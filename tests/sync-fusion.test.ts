@@ -22,6 +22,7 @@ function profil(p: Partial<ProgressionProfil> = {}): ProgressionProfil {
     chrono: [],
     tutoVu: false,
     maj: 0,
+    raz: 0,
     ...p,
   };
 }
@@ -78,7 +79,7 @@ describe('arbitrage des valeurs qui ne croissent pas', () => {
   it('ne transporte ni âge ni tranche d’âge', () => {
     const f = fusionner(bloc({ a: profil({ maj: 100 }) }), bloc({ a: profil({ maj: 200 }) }));
     expect(Object.keys(f.profils.a).sort()).toEqual(
-      ['avatar', 'chrono', 'liberes', 'maitrisees', 'maj', 'tutoVu', 'vues'].sort(),
+      ['avatar', 'chrono', 'liberes', 'maitrisees', 'maj', 'raz', 'tutoVu', 'vues'].sort(),
     );
   });
 
@@ -149,5 +150,61 @@ describe('robustesse des données reçues du réseau', () => {
   it('ne laisse jamais de doublon dans les ensembles', () => {
     const a = bloc({ x: profil({ vues: ['un', 'un', 'deux'] }) });
     expect(fusionner(a, a).profils.x.vues).toEqual(['deux', 'un']);
+  });
+});
+
+/*
+  L'union sait ajouter, jamais retirer. Sans époque de remise à zéro, effacer sa
+  progression puis se synchroniser la faisait revenir intacte du serveur —
+  exactement ce qu'un parent constate quand il réinitialise et voit ses clés
+  intactes après un rafraîchissement.
+*/
+describe('remise à zéro', () => {
+  const plein = () =>
+    bloc({ x: profil({ vues: ['a', 'b'], liberes: ['newton'], chrono: [30], tutoVu: true, maj: 100 }) });
+  const efface = (raz: number) => bloc({ x: profil({ raz, maj: 200 }) });
+
+  it('efface ce que l’autre appareil avait encore', () => {
+    const f = fusionner(plein(), efface(500)).profils.x;
+    expect(f.vues).toEqual([]);
+    expect(f.liberes).toEqual([]);
+    expect(f.chrono).toEqual([]);
+    expect(f.tutoVu).toBe(false);
+    expect(f.raz).toBe(500);
+  });
+
+  it('ne dépend pas de l’ordre des appareils', () => {
+    expect(fusionner(plein(), efface(500))).toEqual(fusionner(efface(500), plein()));
+  });
+
+  it('laisse revivre ce qui a été appris après la remise à zéro', () => {
+    const apres = bloc({ x: profil({ vues: ['neuve'], raz: 500, maj: 300 }) });
+    const f = fusionner(efface(500), apres).profils.x;
+    expect(f.vues).toEqual(['neuve']);
+  });
+
+  it('une remise à zéro plus récente l’emporte sur une plus ancienne', () => {
+    const vieille = bloc({ x: profil({ vues: ['a'], raz: 500 }) });
+    const neuve = bloc({ x: profil({ raz: 900 }) });
+    expect(fusionner(vieille, neuve).profils.x.vues).toEqual([]);
+    expect(fusionner(neuve, vieille).profils.x.raz).toBe(900);
+  });
+
+  it('reste associative quand les époques se mêlent', () => {
+    const a = bloc({ x: profil({ vues: ['1'], raz: 0, maj: 10 }) });
+    const b = bloc({ x: profil({ vues: ['2'], raz: 500, maj: 20 }) });
+    const c = bloc({ x: profil({ vues: ['3'], raz: 500, maj: 30 }) });
+    expect(fusionner(fusionner(a, b), c)).toEqual(fusionner(a, fusionner(b, c)));
+  });
+
+  it('reste idempotente', () => {
+    const f = fusionner(plein(), efface(500));
+    expect(fusionner(f, f)).toEqual(f);
+  });
+
+  it('n’efface rien tant qu’aucune remise à zéro n’a eu lieu', () => {
+    const a = bloc({ x: profil({ vues: ['a'] }) });
+    const b = bloc({ x: profil({ vues: ['b'] }) });
+    expect(fusionner(a, b).profils.x.vues).toEqual(['a', 'b']);
   });
 });

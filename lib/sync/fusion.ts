@@ -10,6 +10,14 @@ export interface ProgressionProfil {
   tutoVu: boolean;
   /** Horodatage du dernier changement local, seul arbitre des valeurs qui ne croissent pas. */
   maj: number;
+  /**
+   * Horodatage de la dernière remise à zéro de ce profil.
+   *
+   * L'union sait ajouter, jamais retirer : sans cette époque, effacer sa
+   * progression puis se synchroniser la faisait revenir intacte du serveur.
+   * `0` pour un profil qui n'a jamais été réinitialisé.
+   */
+  raz: number;
 }
 
 /**
@@ -54,6 +62,17 @@ export function fusionner(a: BlocProgression, b: BlocProgression): BlocProgressi
 }
 
 function fusionnerProfil(a: ProgressionProfil, b: ProgressionProfil): ProgressionProfil {
+  /*
+    Époques différentes : la plus récente efface l'autre, en bloc.
+
+    C'est la seule opération décroissante de tout l'édifice, et elle reste
+    algébriquement sage : « retenir le maximum de `raz`, puis unir ce qui le
+    partage » est un repli commutatif, associatif et idempotent, comme l'union
+    seule l'était. Sans elle, une remise à zéro ne survivait pas à la première
+    synchronisation.
+  */
+  if (a.raz !== b.raz) return normaliser(a.raz > b.raz ? a : b);
+
   const recent = plusRecent(a, b);
   return {
     vues: ensemble(a.vues, b.vues),
@@ -64,6 +83,7 @@ function fusionnerProfil(a: ProgressionProfil, b: ProgressionProfil): Progressio
     tutoVu: a.tutoVu || b.tutoVu,
     avatar: recent.avatar,
     maj: Math.max(a.maj, b.maj),
+    raz: a.raz,
   };
 }
 

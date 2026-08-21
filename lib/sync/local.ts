@@ -4,7 +4,8 @@ import { lireLiberes, ecrireLiberes } from '@/lib/cles';
 import { ecrireScores, lireScores } from '@/lib/scores';
 import { readStored, writeStored } from '@/lib/storage';
 import { ecrireProfils, lireProfils, type Profil } from '@/lib/profils/serialisation';
-import { CLE_MAJ, CLE_PROFILS, cle } from '@/lib/profils/stockage';
+import { CLE_MAJ, CLE_PROFILS, CLE_RAZ, cle } from '@/lib/profils/stockage';
+import { profilActif } from '@/lib/profils/store';
 import { blocVide, type BlocProgression, type ProgressionProfil } from './fusion';
 
 /**
@@ -67,6 +68,7 @@ function progressionDe(profil: Profil): ProgressionProfil {
     chrono: lireScores(lireBrut('chrono.v1', profil.id)),
     tutoVu: lireBrut('tutoVu.v1', profil.id) === '1',
     maj: majDesScalaires(profil.id, profil.avatar),
+    raz: Number(readStored(cle(CLE_RAZ, profil.id))) || 0,
   };
 }
 
@@ -103,6 +105,7 @@ export function appliquerBloc(bloc: BlocProgression): void {
     if (p.tutoVu) ecrire(id, 'tutoVu.v1', '1');
 
     writeStored(cle(CLE_MAJ, id), `${p.maj}|${p.avatar}`);
+    if (p.raz > 0) writeStored(cle(CLE_RAZ, id), String(p.raz));
   }
 
   /*
@@ -124,4 +127,16 @@ export function appliquerBloc(bloc: BlocProgression): void {
 
 function ecrire(id: string, nom: string, valeur: string): void {
   writeStored(cle(nom, id), valeur);
+}
+
+/**
+ * Note qu'un profil vient d'être remis à zéro.
+ *
+ * Sans cette marque, la synchronisation suivante ramènerait du serveur tout ce
+ * qu'on vient d'effacer : la fusion unit, elle ne retranche pas. L'horodatage
+ * dit « ce qui précède ne compte plus », et c'est lui qui l'emporte sur les
+ * autres appareils.
+ */
+export function marquerRemiseAZero(): void {
+  writeStored(cle(CLE_RAZ, profilActif()), String(Date.now()));
 }

@@ -8,6 +8,8 @@ import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
 import { useMusee } from '@/components/musee/useLiberes';
+import { marquerRemiseAZero } from '@/lib/sync/local';
+import { synchroniserMaintenant } from '@/lib/sync/client';
 import { enMo } from '@/components/hors-ligne/HorsLigneView';
 import { Intitule } from '@/components/ui/Intitule';
 import { NotificationsToggle } from './NotificationsToggle';
@@ -197,6 +199,14 @@ export function ReglagesView() {
               oublierToutesLesVues();
               oublierMaitrisees();
               oublierLiberes();
+              /*
+                Et l'on date l'effacement avant de le pousser : la fusion unit
+                sans jamais retrancher, si bien qu'une remise à zéro purement
+                locale revenait du serveur à la synchronisation suivante — le
+                parent réinitialisait, rafraîchissait, et retrouvait ses clés.
+              */
+              marquerRemiseAZero();
+              synchroniserMaintenant();
               setConfirmation(false);
             }}
             className={`min-h-11 cursor-pointer rounded-full px-5 text-xs transition-colors ${

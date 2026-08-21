@@ -44,6 +44,7 @@ function lireProfil(p: Record<string, unknown>): ProgressionProfil {
     chrono: listeDeNombres(p.chrono),
     tutoVu: p.tutoVu === true,
     maj: entierPositif(p.maj) ?? 0,
+    raz: entierPositif(p.raz) ?? 0,
   };
 }
 

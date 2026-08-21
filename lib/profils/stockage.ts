@@ -39,8 +39,14 @@ export type CleProfil = (typeof CLES_PROFIL)[number];
  */
 export const CLE_MAJ = 'maj.v1';
 
+/**
+ * Horodatage de la dernière remise à zéro. Technique et local, comme `CLE_MAJ`.
+ * C'est lui qui permet à un effacement de survivre à une synchronisation.
+ */
+export const CLE_RAZ = 'raz.v1';
+
 /** Tout ce qu'il faut effacer quand un profil est supprimé. */
-export const CLES_A_EFFACER = [...CLES_PROFIL, CLE_MAJ];
+export const CLES_A_EFFACER = [...CLES_PROFIL, CLE_MAJ, CLE_RAZ];
 
 /** La clé de stockage d'un état donné, pour un profil donné. */
 export function cle(nom: string, idProfil: string): string {

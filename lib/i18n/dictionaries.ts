@@ -207,6 +207,9 @@ const fr = {
   'mystere.indices': (montres: number, total: number) => `Indice ${montres} sur ${total}`,
   'mystere.trouve': (nom: string, points: number) =>
     `C’était ${nom} ! ${points} étoile${points > 1 ? 's' : ''} filante${points > 1 ? 's' : ''} ⭐`,
+  'mystere.trouvaille': 'Ce qu’on lui doit',
+  'mystere.trouvaille.datee': (quoi: string, annee: string) => `${quoi}, en ${annee}.`,
+  'mystere.trouvaille.sans-date': (quoi: string) => `${quoi}.`,
   'mystere.rejouer': 'Rejouer',
   'mystere.retour': 'Retour aux jeux',
   'mystere.vide.titre': 'Écoute d’abord quelques cartes',
@@ -606,6 +609,9 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'mystere.indices': (montres: number, total: number) => `Clue ${montres} of ${total}`,
     'mystere.trouve': (nom: string, points: number) =>
       `It was ${nom}! ${points} shooting star${points === 1 ? '' : 's'} ⭐`,
+    'mystere.trouvaille': 'What we owe them',
+    'mystere.trouvaille.datee': (quoi: string, annee: string) => `${quoi}, in ${annee}.`,
+    'mystere.trouvaille.sans-date': (quoi: string) => `${quoi}.`,
     'mystere.rejouer': 'Play again',
     'mystere.retour': 'Back to the games',
     'mystere.vide.titre': 'Listen to a few cards first',

@@ -236,6 +236,32 @@ export function MystereView({ cards }: MystereViewProps) {
         })}
       </ul>
 
+      {/*
+        Ce que le savant a trouvé, dit une fois la partie gagnée.
+
+        Deviner juste sans comprendre pourquoi ne laisse rien. L'enfant vient de
+        relier une époque, un monde et une carte : ce bloc nomme ce que ces trois
+        indices désignaient, et le date quand on le sait. C'est là que la partie
+        devient une leçon plutôt qu'un tirage heureux.
+      */}
+      {gagne && (
+        <div className="flex flex-col gap-1 rounded-2xl border-2 border-soleil bg-soleil/5 p-4">
+          <span className="text-[10px] uppercase tracking-wide text-soleil">
+            {t('mystere.trouvaille')}
+          </span>
+          <p className="text-craie">
+            {enigme.annee !== null
+              ? t('mystere.trouvaille.datee')(
+                  enigme.decouverte,
+                  enigme.annee < 0
+                    ? t('frise.avant-jc')(Math.abs(enigme.annee))
+                    : String(enigme.annee),
+                )
+              : t('mystere.trouvaille.sans-date')(enigme.decouverte)}
+          </p>
+        </div>
+      )}
+
       {gagne && (
         <div className="flex flex-col items-center gap-5">
           <Lumi rang={rang} taille={100} etat="fete" />

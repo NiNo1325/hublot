@@ -4,6 +4,7 @@ import { localise } from './i18n/localise';
 import { EPOQUES, type IdEpoque } from './cles';
 import { domains } from '@/content/domains';
 import { savantsPrisonniers, type SavantPrisonnier } from '@/content/savants-cartes';
+import { anneeDecouverte, nomDecouverte } from './inventions';
 
 /**
  * Le savant mystère : trois indices, quelques portraits, une seule réponse.
@@ -52,6 +53,17 @@ export interface Indice {
 export interface Enigme {
   savantId: string;
   nom: string;
+  /**
+   * Ce que le savant a trouvé, dit une fois la partie gagnée.
+   *
+   * Deviner juste sans comprendre pourquoi ne laisse rien : l'enfant a relié
+   * une époque, un monde et une carte, et il mérite qu'on lui dise ce que ces
+   * trois indices désignaient. Le nom de la découverte quand il existe, le
+   * titre de la carte sinon.
+   */
+  decouverte: string;
+  /** L'année de la découverte, si elle est connue. Négative avant notre ère. */
+  annee: number | null;
   /** Les portraits proposés, mélangés : le mystère est dedans. */
   portraits: { id: string; nom: string; portrait: string }[];
   /** Les indices, du plus large au plus précis. */
@@ -147,6 +159,8 @@ export function construireEnigme(
   return {
     savantId: mystere.id,
     nom: mystere.nom,
+    decouverte: nomDecouverte(carte.id, locale) ?? contenu.title['3-5'],
+    annee: anneeDecouverte(carte.id),
     portraits: melanger([mystere, ...leurres.slice(0, PORTRAITS_PAR_AGE[age] - 1)]).map((s) => ({
       id: s.id,
       nom: s.nom,

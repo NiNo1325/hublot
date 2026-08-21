@@ -120,4 +120,30 @@ describe('le savant mystère', () => {
     expect(pointsPourIndices(3)).toBe(1);
     expect(pointsPourIndices(9)).toBe(1);
   });
+
+  /*
+    Deviner juste sans comprendre pourquoi ne laisse rien. Une fois trouvé, le
+    jeu doit dire ce que les trois indices désignaient : l'époque, le monde et
+    la carte pointaient tous vers une trouvaille précise.
+  */
+  it('dit toujours ce que le savant a trouvé', () => {
+    for (let essai = 0; essai < 40; essai += 1) {
+      const enigme = construireEnigme(cards, AUCUN, DELIVRES, '9-12', 'fr')!;
+      expect(enigme.decouverte.trim().length, enigme.savantId).toBeGreaterThan(0);
+    }
+  });
+
+  it('date la trouvaille quand le catalogue la connaît', () => {
+    const enigme = construireEnigme(cards, new Set(['le-wifi']), [], '6-8', 'fr')!;
+    expect(enigme.annee).not.toBeNull();
+    expect(enigme.decouverte).toBe('Le wifi');
+  });
+
+  it('accepte une trouvaille sans date, sans rien casser', () => {
+    // « Pourquoi l'oignon fait pleurer » n'a ni découvreur daté ni nom propre.
+    const enigme = construireEnigme(cards, new Set(['pourquoi-loignon-fait-pleurer']), [], '3-5', 'fr');
+    expect(enigme).not.toBeNull();
+    expect(enigme!.decouverte.trim().length).toBeGreaterThan(0);
+  });
+
 });

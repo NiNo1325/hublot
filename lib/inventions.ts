@@ -102,3 +102,8 @@ export function nomDecouverte(carteId: string, locale: Locale): string | null {
   if (!invention) return null;
   return invention.nom[locale] ?? invention.nom.fr;
 }
+
+/** L'année d'une découverte, si le catalogue la connaît. */
+export function anneeDecouverte(carteId: string): number | null {
+  return inventions.find((i) => i.carteId === carteId)?.annee ?? null;
+}

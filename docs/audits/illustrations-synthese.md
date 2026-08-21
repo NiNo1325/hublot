@@ -16,7 +16,8 @@ Rapports détaillés : `docs/audits/illustrations-<monde>.md`.
 | le-corps | 40 | 9 | 1 contradiction |
 | les-dinosaures | 40 | 5 | 1 contradiction |
 | meteo | 40 | 1 | — |
-| **reste à faire** | | | sciences-de-la-terre, astronomie, physique, chimie, ingenierie, informatique, mathematiques, le-son, les-oceans, la-cuisine |
+| les-oceans | 40 | 6 | 2 contradictions |
+| **reste à faire** | | | sciences-de-la-terre, astronomie, physique, chimie, ingenierie, informatique, mathematiques, le-son, la-cuisine |
 
 ## À corriger en priorité
 
@@ -45,6 +46,20 @@ sur une comparaison, et il n'y a rien à comparer. **Translation positive**,
 lui, alors que les trois textes disent « les toutes dernières minutes du
 31 décembre ». C'est exactement l'intuition que la carte veut corriger.
 **Allonger l'arc jusqu'au sommet.**
+
+### 4. Le tsunami reste sous la surface de la mer
+
+`components/animations/LaVagueGeanteAnimation.tsx` ligne 87 — la crête de la
+vague plafonne à y≈125 alors que la surface est tracée à y≈96 : le « mur d'eau
+qui déferle sur la terre » est un monticule sous-marin plus petit que la mer.
+
+### 5. On ne flotte jamais à la surface
+
+`components/animations/PourquoiOnFlotteMieuxDansLaMerAnimation.tsx` — le corps
+reste immergé à toutes les phases (y=150 puis 108 puis 96, surface à y=40) :
+la mer Morte y illustre un corps qui coule un peu moins. Et les flèches de la
+poussée d'Archimède **pointent sur le côté**, `orient="auto"` faisant pivoter de
+90° un marqueur dessiné pointe en haut.
 
 ## Défauts de gravité moyenne
 

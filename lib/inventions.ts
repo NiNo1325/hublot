@@ -85,3 +85,20 @@ export function construireFriseDecouvertes(
 
   return { tirage: melanger(elements), ordre };
 }
+
+/**
+ * Le nom de la découverte que porte une carte, s'il en existe un.
+ *
+ * Partagé avec le jeu des liens, où l'étiquette de droite souffrait du même
+ * mal que les vignettes de la frise : « La neige » ne se relie à personne,
+ * « le flocon à six branches » se relie à Kepler.
+ *
+ * Rend `null` là où rien n'est écrit — les deux tiers du catalogue, des
+ * phénomènes du quotidien sans découvreur ni date. L'appelant retombe alors
+ * sur le titre de la carte, ce qui reste jouable.
+ */
+export function nomDecouverte(carteId: string, locale: Locale): string | null {
+  const invention = inventions.find((i) => i.carteId === carteId);
+  if (!invention) return null;
+  return invention.nom[locale] ?? invention.nom.fr;
+}

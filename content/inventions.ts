@@ -23,6 +23,13 @@ import type { Localise } from '@/lib/types';
  * Les dates retenues nomment le moment charnière, pas le tâtonnement qui l'a
  * précédé : 1687 pour la gravitation, l'année des *Principia*, et non les
  * vingt ans de calculs de Newton.
+ *
+ * **Chaque date est celle du savant que le musée donne à la carte**, et non
+ * celle de la découverte canonique. La nuance a coûté vingt-cinq corrections :
+ * la carte « la neige » appartient à Wilson Bentley, qui photographia un flocon
+ * en 1885, et la dater de Kepler (1611) faisait raconter deux histoires
+ * différentes à deux jeux voisins. Un test vérifie désormais que l'année tombe
+ * dans la vie active du savant.
  */
 export interface Invention {
   /** L'identifiant d'une carte du catalogue. */
@@ -59,9 +66,9 @@ export const inventions: Invention[] = [
   }, // Archimède, Des corps flottants
   {
     carteId: 'le-zero',
-    annee: 628,
-    nom: { fr: 'Le zéro', en: 'Zero' },
-  }, // Brahmagupta lui donne ses règles de calcul
+    annee: 825,
+    nom: { fr: 'Le zéro venu d’Inde', en: 'Zero, brought from India' },
+  }, // Al-Khwârizmî fait connaître les chiffres indiens
 
   // ── Renaissance et grand siècle ──────────────────────────────────────────
   {
@@ -76,14 +83,14 @@ export const inventions: Invention[] = [
   }, // Kepler, Astronomia nova
   {
     carteId: 'les-aimants',
-    annee: 1600,
-    nom: { fr: 'Le magnétisme terrestre', en: 'Earth’s magnetism' },
-  }, // Gilbert, De Magnete
+    annee: 1882,
+    nom: { fr: 'Le champ magnétique tournant', en: 'The rotating magnetic field' },
+  }, // Tesla, l'idée qui donnera le moteur
   {
     carteId: 'la-neige',
-    annee: 1611,
-    nom: { fr: 'Le flocon à six branches', en: 'The six-sided snowflake' },
-  }, // Kepler, L'Étrenne ou la neige sexangulaire
+    annee: 1885,
+    nom: { fr: 'La première photo d’un flocon', en: 'The first photo of a snowflake' },
+  }, // Bentley photographie un flocon au microscope
   {
     carteId: 'le-coeur-et-le-sang',
     annee: 1628,
@@ -91,14 +98,14 @@ export const inventions: Invention[] = [
   }, // Harvey décrit la circulation
   {
     carteId: 'pourquoi-ca-sarrete',
-    annee: 1638,
+    annee: 1687,
     nom: { fr: 'L’inertie', en: 'Inertia' },
-  }, // Galilée, Discours sur deux sciences nouvelles
+  }, // Newton, première loi du mouvement
   {
     carteId: 'la-pression-qui-ecrase',
-    annee: 1648,
-    nom: { fr: 'La pression de l’air', en: 'Air pressure' },
-  }, // Pascal, expérience du Puy de Dôme
+    annee: 1934,
+    nom: { fr: 'La plongée en bathysphère', en: 'The bathysphere dive' },
+  }, // Beebe descend à 923 mètres
   {
     carteId: 'le-hasard',
     annee: 1654,
@@ -106,24 +113,24 @@ export const inventions: Invention[] = [
   }, // Pascal et Fermat fondent le calcul des probabilités
   {
     carteId: 'comment-voyage-le-son',
-    annee: 1660,
-    nom: { fr: 'Le son a besoin d’air', en: 'Sound needs air' },
-  }, // Boyle : pas de son dans le vide
+    annee: 1636,
+    nom: { fr: 'La vitesse du son mesurée', en: 'The speed of sound measured' },
+  }, // Mersenne, Harmonie universelle
   {
     carteId: 'pourquoi-on-voit-les-couleurs',
-    annee: 1666,
-    nom: { fr: 'La lumière se décompose', en: 'Light splits into colours' },
-  }, // Newton décompose la lumière au prisme
+    annee: 1021,
+    nom: { fr: 'Le traité d’optique', en: 'The Book of Optics' },
+  }, // Ibn al-Haytham fonde l'optique
   {
     carteId: 'les-fossiles',
-    annee: 1669,
-    nom: { fr: 'Les couches du sol', en: 'The layers of the ground' },
-  }, // Sténon, principes de la stratigraphie
+    annee: 1811,
+    nom: { fr: 'Le premier ichtyosaure', en: 'The first ichthyosaur' },
+  }, // Mary Anning, à Lyme Regis
   {
     carteId: 'les-microbes',
-    annee: 1676,
-    nom: { fr: 'Les microbes', en: 'Microbes' },
-  }, // Leeuwenhoek observe les « animalcules »
+    annee: 1928,
+    nom: { fr: 'La pénicilline', en: 'Penicillin' },
+  }, // Fleming et sa boîte oubliée
   {
     carteId: 'pourquoi-tout-tombe',
     annee: 1687,
@@ -148,9 +155,9 @@ export const inventions: Invention[] = [
   }, // Franklin et le cerf-volant
   {
     carteId: 'les-fleuves-dans-la-mer',
-    annee: 1770,
-    nom: { fr: 'Le Gulf Stream', en: 'The Gulf Stream' },
-  }, // Franklin cartographie le Gulf Stream
+    annee: 1855,
+    nom: { fr: 'La carte des courants', en: 'The map of the currents' },
+  }, // Maury, Physical Geography of the Sea
   {
     carteId: 'de-quoi-est-fait-lair',
     annee: 1774,
@@ -163,24 +170,24 @@ export const inventions: Invention[] = [
   }, // Lavoisier explique la combustion
   {
     carteId: 'comment-on-respire',
-    annee: 1777,
-    nom: { fr: 'La respiration', en: 'Breathing' },
-  }, // Lavoisier, la respiration est une combustion
+    annee: 1905,
+    nom: { fr: 'Le gaz qui fait respirer', en: 'The gas that drives breathing' },
+  }, // Haldane : c'est le CO2 qui commande
   {
     carteId: 'comment-poussent-les-plantes',
-    annee: 1779,
-    nom: { fr: 'La photosynthèse', en: 'Photosynthesis' },
-  }, // Ingenhousz découvre la photosynthèse
+    annee: 1648,
+    nom: { fr: 'L’expérience du saule', en: 'The willow experiment' },
+  }, // Van Helmont pèse son arbre pendant cinq ans
   {
     carteId: 'ou-va-le-sucre-dans-leau',
-    annee: 1789,
-    nom: { fr: 'Rien ne se perd', en: 'Nothing is lost' },
-  }, // Lavoisier, conservation de la masse
+    annee: 1887,
+    nom: { fr: 'La dissolution expliquée', en: 'Dissolving explained' },
+  }, // Arrhenius et la dissociation
   {
     carteId: 'lelectricite',
-    annee: 1800,
-    nom: { fr: 'La pile électrique', en: 'The electric battery' },
-  }, // Volta, la pile
+    annee: 1888,
+    nom: { fr: 'Le courant alternatif', en: 'Alternating current' },
+  }, // Tesla et son moteur
   {
     carteId: 'les-nuages',
     annee: 1803,
@@ -190,9 +197,9 @@ export const inventions: Invention[] = [
   // ── Dix-neuvième siècle ──────────────────────────────────────────────────
   {
     carteId: 'la-migration-des-oiseaux',
-    annee: 1822,
-    nom: { fr: 'Les oiseaux migrent', en: 'Birds migrate' },
-  }, // La cigogne à la flèche de Rossten
+    annee: 1903,
+    nom: { fr: 'Le baguage des oiseaux', en: 'Bird ringing' },
+  }, // Thienemann bague à Rossitten
   {
     carteId: 'le-puzzle-des-os',
     annee: 1824,
@@ -200,14 +207,9 @@ export const inventions: Invention[] = [
   }, // Buckland décrit le Megalosaurus
   {
     carteId: 'les-etoiles',
-    annee: 1838,
-    nom: { fr: 'La distance des étoiles', en: 'The distance to the stars' },
-  }, // Bessel mesure la première parallaxe stellaire
-  {
-    carteId: 'pourquoi-on-a-deux-yeux',
-    annee: 1838,
-    nom: { fr: 'La vision en relief', en: 'Three-dimensional sight' },
-  }, // Wheatstone et le stéréoscope
+    annee: 1925,
+    nom: { fr: 'De quoi sont faites les étoiles', en: 'What stars are made of' },
+  }, // Cecilia Payne : surtout de l'hydrogène
   {
     carteId: 'la-sirene-qui-change',
     annee: 1842,
@@ -215,9 +217,9 @@ export const inventions: Invention[] = [
   }, // Doppler, sur la lumière colorée des astres
   {
     carteId: 'lenergie',
-    annee: 1847,
-    nom: { fr: 'L’énergie se conserve', en: 'Energy is conserved' },
-  }, // Helmholtz énonce la conservation de l'énergie
+    annee: 1905,
+    nom: { fr: 'L’énergie et la masse', en: 'Energy and mass' },
+  }, // Einstein, E=mc²
   {
     carteId: 'pourquoi-le-lait-devient-yaourt',
     annee: 1857,
@@ -230,14 +232,14 @@ export const inventions: Invention[] = [
   }, // Darwin, L'Origine des espèces
   {
     carteId: 'les-oiseaux-sont-des-dinosaures',
-    annee: 1861,
-    nom: { fr: 'L’oiseau fossile', en: 'The fossil bird' },
-  }, // Archaeopteryx
+    annee: 1969,
+    nom: { fr: 'L’oiseau vient du dinosaure', en: 'Birds come from dinosaurs' },
+  }, // Ostrom décrit Deinonychus
   {
     carteId: 'pourquoi-on-ressemble-a-ses-parents',
-    annee: 1866,
-    nom: { fr: 'Les lois de l’hérédité', en: 'The laws of heredity' },
-  }, // Mendel et ses petits pois
+    annee: 1952,
+    nom: { fr: 'La photo 51 de l’ADN', en: 'Photo 51 of DNA' },
+  }, // Rosalind Franklin
   {
     carteId: 'pourquoi-le-ciel-est-bleu',
     annee: 1871,
@@ -248,11 +250,6 @@ export const inventions: Invention[] = [
     annee: 1874,
     nom: { fr: 'Plusieurs infinis', en: 'More than one infinity' },
   }, // Cantor démontre qu'il y a plusieurs infinis
-  {
-    carteId: 'les-sons-quon-nentend-pas',
-    annee: 1876,
-    nom: { fr: 'Les ultrasons', en: 'Ultrasound' },
-  }, // Le sifflet de Galton révèle les ultrasons
   {
     carteId: 'comment-marche-un-frigo',
     annee: 1876,
@@ -265,9 +262,9 @@ export const inventions: Invention[] = [
   }, // Hensen nomme le plancton
   {
     carteId: 'les-empreintes-digitales',
-    annee: 1892,
-    nom: { fr: 'Les empreintes digitales', en: 'Fingerprints' },
-  }, // Vucetich, première identification
+    annee: 1823,
+    nom: { fr: 'Le dessin des doigts classé', en: 'Fingerprint patterns classified' },
+  }, // Purkyně décrit neuf motifs
   {
     carteId: 'pourquoi-le-chat-retombe-sur-ses-pattes',
     annee: 1894,
@@ -275,16 +272,16 @@ export const inventions: Invention[] = [
   }, // Marey, la chronophotographie
   {
     carteId: 'comment-marche-un-ecran',
-    annee: 1897,
-    nom: { fr: 'Le tube cathodique', en: 'The cathode-ray tube' },
-  }, // Braun, le tube cathodique
+    annee: 1968,
+    nom: { fr: 'L’écran à cristaux liquides', en: 'The liquid-crystal screen' },
+  }, // Heilmeier fait le premier LCD
 
   // ── Vingtième siècle ─────────────────────────────────────────────────────
   {
     carteId: 'comment-vole-un-avion',
-    annee: 1903,
-    nom: { fr: 'Le premier avion', en: 'The first aeroplane' },
-  }, // Le premier vol des frères Wright
+    annee: 1505,
+    nom: { fr: 'Le codex du vol', en: 'The codex on flight' },
+  }, // Léonard, Codex sur le vol des oiseaux
   {
     carteId: 'les-acides-et-les-bases',
     annee: 1909,
@@ -307,14 +304,14 @@ export const inventions: Invention[] = [
   }, // Wegener, la dérive des continents
   {
     carteId: 'les-trous-noirs',
-    annee: 1916,
-    nom: { fr: 'Les trous noirs', en: 'Black holes' },
-  }, // Schwarzschild résout les équations d'Einstein
+    annee: 1974,
+    nom: { fr: 'Le rayonnement de Hawking', en: 'Hawking radiation' },
+  }, // Hawking : les trous noirs s'évaporent
   {
     carteId: 'comment-avance-une-fusee',
-    annee: 1926,
-    nom: { fr: 'La première fusée', en: 'The first rocket' },
-  }, // Goddard, première fusée à carburant liquide
+    annee: 1962,
+    nom: { fr: 'Les calculs de l’orbite', en: 'The orbit calculations' },
+  }, // Katherine Johnson vérifie le vol de Glenn
   {
     carteId: 'lecholocation-de-la-chauve-souris',
     annee: 1938,
@@ -327,9 +324,9 @@ export const inventions: Invention[] = [
   }, // Spencer découvre le chauffage par micro-ondes
   {
     carteId: 'comment-les-muscles-bougent',
-    annee: 1954,
-    nom: { fr: 'La contraction du muscle', en: 'How muscles contract' },
-  }, // Huxley, les filaments glissants
+    annee: 1791,
+    nom: { fr: 'L’électricité du muscle', en: 'Electricity in muscle' },
+  }, // Galvani et la grenouille
   {
     carteId: 'comment-une-machine-apprend',
     annee: 1957,

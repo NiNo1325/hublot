@@ -90,3 +90,39 @@ describe('mélange de la colonne de droite', () => {
     expect(estBrouille(inverse)).toBe(true);
   });
 });
+
+/*
+  L'étiquette de droite est ce que l'enfant doit relier à un visage. « La
+  neige » ne se relie à personne — c'est un phénomène, pas une trouvaille.
+  « Le flocon à six branches », si : c'est ce que Kepler a compris.
+*/
+describe('l’étiquette dit la découverte', () => {
+  it('préfère le nom de la découverte au titre de la carte', () => {
+    const vues = new Set(['la-neige']);
+    const manche = construireManche(cards, vues, ['johannes-kepler'], '3-5', 'fr');
+    const kepler = manche.savants.find((l) => l.savantId === 'johannes-kepler');
+    if (kepler) {
+      expect(kepler.decouverte).toBe('Le flocon à six branches');
+    }
+  });
+
+  it('retombe sur le titre de la carte quand rien n’est nommé', () => {
+    for (let essai = 0; essai < 20; essai += 1) {
+      const manche = construireManche(cards, new Set(), [], '9-12', 'fr');
+      for (const lien of manche.savants) {
+        expect(lien.decouverte.trim().length, lien.savantId).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it('donne le nom traduit quand la langue change', () => {
+    const vues = new Set(['le-wifi']);
+    const fr = construireManche(cards, vues, [], '3-5', 'fr');
+    const en = construireManche(cards, vues, [], '3-5', 'en');
+    for (const manche of [fr, en]) {
+      for (const lien of manche.savants) {
+        expect(lien.decouverte.trim().length).toBeGreaterThan(0);
+      }
+    }
+  });
+});

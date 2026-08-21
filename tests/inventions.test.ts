@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { cards } from '@/content/cards';
 import { inventions } from '@/content/inventions';
+import { savantDeLaCarte } from '@/lib/cles';
 import { ECART_MINIMAL } from '@/lib/frise';
 import {
   DECOUVERTES_PAR_AGE,
@@ -66,6 +67,33 @@ describe('cohérence du contenu', () => {
       expect(i.annee, i.carteId).toBeGreaterThan(-3000);
       expect(i.annee, i.carteId).toBeLessThanOrEqual(new Date().getFullYear());
       expect(Number.isInteger(i.annee), i.carteId).toBe(true);
+    }
+  });
+
+  /*
+    Le garde-fou le plus utile de tout ce fichier.
+
+    Chaque carte a son savant dans le musée, et le jeu des liens s'en sert. Si
+    la frise date la découverte canonique plutôt que le travail de ce
+    savant-là, deux jeux voisins racontent deux histoires : « la neige »
+    appartient à Wilson Bentley, qui photographia un flocon en 1885, et la
+    dater de Kepler (1611) faisait mentir l'un des deux. Vingt-cinq entrées
+    étaient dans ce cas à la première écriture.
+
+    La marge basse est de dix ans après la naissance, et non quinze : Mary
+    Anning a trouvé son ichtyosaure à douze ans.
+  */
+  it('date le travail du savant que le musée donne à la carte', () => {
+    const anneeCourante = new Date().getFullYear();
+    for (const i of inventions) {
+      const savant = savantDeLaCarte(i.carteId);
+      expect(savant, `${i.carteId} : aucun savant au musée`).not.toBeNull();
+      if (!savant) continue;
+      const fin = (savant.mort ?? anneeCourante) + 5;
+      expect(
+        i.annee >= savant.naissance + 10 && i.annee <= fin,
+        `${i.carteId} : ${i.annee} hors de la vie de ${savant.nom} (${savant.naissance}–${savant.mort ?? 'vivant'})`,
+      ).toBe(true);
     }
   });
 

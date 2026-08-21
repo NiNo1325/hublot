@@ -5,8 +5,13 @@
  *   npx tsx scripts/capturer-illustrations.mjs animaux
  *   npx tsx scripts/capturer-illustrations.mjs tout http://localhost:3000
  *
- * Produit `audit-illustrations/<carte>-<phase>.png` et un manifeste JSON qui
- * accole à chaque image les trois textes qu'elle doit illustrer.
+ * Produit `audit-illustrations/<carte>--<phase>.png` et un manifeste par monde,
+ * `manifeste-<monde>.json`, qui accole à chaque image les trois textes qu'elle
+ * doit illustrer.
+ *
+ * Un manifeste par monde et non un seul : cela permet de lancer plusieurs
+ * captures en parallèle sans qu'elles s'écrasent, et de confier chaque monde à
+ * un agent d'audit distinct.
  *
  * Pourquoi une image par phase, et non une par carte : une explication est une
  * suite de *beats*, et l'animation change de phase à chaque phrase. Une seule
@@ -33,6 +38,8 @@ const DOSSIER = 'audit-illustrations';
 const NIVEAU = '9-12';
 /** Le temps que la transition d'une phase se pose avant la capture. */
 const REPOS_MS = 450;
+/** Le temps laissé à l'animation réinjectée pour se jouer (elle repart de zéro). */
+const ANIMATION_MS = 1400;
 
 const choisies = cards.filter((c) => DOMAINE === 'tout' || c.domainId === DOMAINE);
 if (choisies.length === 0) {
@@ -111,19 +118,29 @@ for (const [n, carte] of choisies.entries()) {
     })),
   });
 
-  // Chaque phase devient une image nette, sans le décor de l'application.
+  /*
+    Chaque phase devient une image nette, sans le décor de l'application.
+
+    Le délai avant capture n'est pas une précaution de confort : réinjecter le
+    SVG dans une page vierge remet ses animations SMIL à zéro, si bien que tout
+    ce dont l'opacité est animée — larmes, poussière expulsée, air chaud —
+    apparaissait éteint sur l'image. Un auditeur y voyait un élément manquant
+    là où il n'y avait qu'une capture prise trop tôt. On laisse donc
+    l'animation courir, comme elle court sous les yeux de l'enfant.
+  */
   for (const p of phases) {
     await page.setContent(
       `<!doctype html><meta charset="utf-8">
        <style>body{margin:0;background:#0f1b33}svg{width:800px;height:480px;display:block}</style>
        <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">${p.svg}</svg>`,
     );
+    await page.waitForTimeout(ANIMATION_MS);
     await page.locator('svg').screenshot({ path: `${DOSSIER}/${carte.id}--${p.id}.png` });
   }
   console.log(`${phases.length} image(s)`);
 }
 
-await writeFile(`${DOSSIER}/manifeste.json`, `${JSON.stringify(manifeste, null, 2)}\n`);
+await writeFile(`${DOSSIER}/manifeste-${DOMAINE}.json`, `${JSON.stringify(manifeste, null, 2)}\n`);
 await navigateur.close();
 
 const images = manifeste.reduce((t, c) => t + c.phases.length, 0);

@@ -1,7 +1,7 @@
 ---
 name: audit-illustrations
 description: Confronte les illustrations des cartes au texte qu'elles accompagnent, et signale les contradictions scientifiques, les figures méconnaissables et les éléments manquants. À lancer sur un monde à la fois, après `npx tsx scripts/capturer-illustrations.mjs <monde>`.
-tools: Read, Glob, Grep
+tools: Read, Glob, Grep, Write
 model: opus
 ---
 
@@ -54,6 +54,11 @@ repartirait avec une image erronée de la chose ?** Si la réponse est non, ne
 signale rien.
 
 ## Ce que tu rends
+
+**Écris ton rapport dans `docs/audits/illustrations-<monde>.md`** avant de
+répondre, puis rends-en le contenu dans ta réponse. Un audit qui ne vit que
+dans une conversation est perdu à la première coupure, et ces rapports servent
+de liste de travail sur plusieurs séances.
 
 Un rapport en français, **classé du plus grave au moins grave**, puis la liste
 des cartes examinées sans reproche. Pour chaque défaut :

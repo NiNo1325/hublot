@@ -134,18 +134,36 @@ export function FriseView({ mode = 'savants' }: { mode?: 'savants' | 'decouverte
       </header>
 
       {/*
-        La frise elle-même : une flèche horizontale, dans le même sens de
-        lecture que celle du musée. Les cases vides disent combien il en reste,
-        ce qu'une simple liste qui s'allonge ne dirait pas.
+        La frise, de haut en bas.
+
+        Un téléphone est haut et étroit : cinq vignettes côte à côte tenaient
+        dans soixante pixels chacune, et le nom d'une découverte y partait sur
+        trois lignes illisibles. À la verticale, chaque rang prend toute la
+        largeur — la figure, le nom, la date — et la colonne suit le sens de
+        lecture naturel. La flèche descend, comme le temps sur une chronologie.
       */}
       <section className="flex flex-col gap-2">
-        <div className="flex items-end gap-1">
+        <span className="pl-1 text-[10px] uppercase tracking-wide text-craie-douce/70">
+          {t('frise.ancien')}
+        </span>
+
+        <ol className="relative flex flex-col gap-2 pl-7">
+          {/* L'axe du temps : un trait continu derrière la colonne. */}
+          <span
+            aria-hidden="true"
+            className="absolute top-3 bottom-3 left-[10px] w-[3px] rounded-full bg-encre-bord"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 left-[4px] border-x-[6px] border-t-[9px] border-x-transparent border-t-encre-bord"
+          />
+
           {manche.ordre.map((attendu, i) => {
             const pose = places[i] ? parId.get(places[i]) : null;
             return (
-              <div key={attendu} className="flex flex-1 flex-col items-center gap-1">
+              <li key={attendu} className="flex items-center gap-3">
                 <div
-                  className={`flex aspect-square w-full items-center justify-center overflow-hidden rounded-2xl border-2 ${
+                  className={`flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border-2 ${
                     pose ? 'border-soleil bg-soleil/10' : 'border-dashed border-encre-bord'
                   }`}
                 >
@@ -157,38 +175,26 @@ export function FriseView({ mode = 'savants' }: { mode?: 'savants' | 'decouverte
                     </span>
                   )}
                 </div>
-                {/* La date ne se révèle qu'après coup : c'est la vérification, pas l'énoncé. */}
-                <span className="min-h-4 text-[10px] tabular-nums text-soleil">
-                  {pose ? annee(pose.annee) : ''}
-                </span>
+
                 {/*
-                  Le titre sous la carte, pour les découvertes seulement. Un
-                  portrait se reconnaît, un emoji non : sans ces quelques mots,
-                  la frise finie n'était qu'une rangée de pictogrammes datés, et
-                  l'enfant repartait sans savoir ce qui s'était passé en 1703.
+                  Le nom et la date ne se révèlent qu'une fois la case remplie :
+                  les montrer d'emblée ferait de la partie un exercice de lecture
+                  de chiffres, alors qu'on veut qu'il raisonne d'abord.
                 */}
-                {decouvertes && (
-                  <span className="min-h-6 text-center text-[9px] leading-tight text-craie-douce">
-                    {pose ? pose.nom : ''}
+                <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                  <span className="truncate text-sm text-craie">{pose ? pose.nom : ''}</span>
+                  <span className="text-xs tabular-nums text-soleil">
+                    {pose ? annee(pose.annee) : ''}
                   </span>
-                )}
-              </div>
+                </div>
+              </li>
             );
           })}
-        </div>
+        </ol>
 
-        {/* La flèche du temps, sous la frise : elle dit dans quel sens on range. */}
-        <div className="flex items-center gap-2 px-1">
-          <span className="text-[10px] uppercase tracking-wide text-craie-douce/70">
-            {t('frise.ancien')}
-          </span>
-          <span aria-hidden="true" className="relative h-[3px] flex-1 rounded-full bg-encre-bord">
-            <span className="absolute -top-[5px] right-0 border-y-[6px] border-l-[9px] border-y-transparent border-l-encre-bord" />
-          </span>
-          <span className="text-[10px] uppercase tracking-wide text-craie-douce/70">
-            {t('frise.recent')}
-          </span>
-        </div>
+        <span className="pl-1 text-[10px] uppercase tracking-wide text-craie-douce/70">
+          {t('frise.recent')}
+        </span>
       </section>
 
       {gagne ? (

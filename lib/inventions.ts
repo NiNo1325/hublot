@@ -1,6 +1,5 @@
 import type { AgeRange, Locale, ScienceCard } from './types';
 import { melanger } from './melanger';
-import { localise } from './i18n/localise';
 import { inventions } from '@/content/inventions';
 import { retenirEspaces, type ElementFrise } from './frise';
 
@@ -71,8 +70,12 @@ export function construireFriseDecouvertes(
     if (!carte) return null;
     elements.push({
       id: carte.id,
-      // Le titre le plus court : sous une vignette, il n'y a pas la place du long.
-      nom: localise(carte.content, locale).title['3-5'],
+      /*
+        Le nom de la découverte, pas le titre de la carte. « La neige » ne se
+        situe pas sur une frise ; « le flocon à six branches », si — c'est un
+        événement, pas une question.
+      */
+      nom: invention.nom[locale] ?? invention.nom.fr,
       emoji: carte.thumbnail,
       annee: invention.annee,
     });

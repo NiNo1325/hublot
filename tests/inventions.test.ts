@@ -29,6 +29,38 @@ describe('cohérence du contenu', () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
+  /*
+    Le nom de la découverte est la seule chose que ce jeu écrit lui-même, et
+    c'est celle qui le rend jouable : « La neige » ne se situe pas sur une
+    frise, « le flocon à six branches » si. Un libellé manquant, et l'enfant se
+    retrouve devant une vignette qu'il ne peut pas ordonner.
+  */
+  it('nomme chaque découverte dans les deux langues', () => {
+    for (const i of inventions) {
+      for (const langue of ['fr', 'en'] as const) {
+        expect(i.nom[langue]?.trim().length ?? 0, `${i.carteId} (${langue})`).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  /*
+    Le libellé s'affiche sous une vignette de quatre-vingts pixels, en très
+    petit. Au-delà d'une trentaine de signes il déborde sur trois lignes et
+    chasse la date hors de l'écran — et c'est la date qui fait la leçon.
+
+    On ne teste pas, en revanche, que le nom diffère du titre de la carte :
+    « Le zéro » et « Les microbes » sont légitimement les deux à la fois, et la
+    liste d'exceptions n'aurait rien appris à personne.
+  */
+  it('tient sous une vignette', () => {
+    for (const i of inventions) {
+      for (const langue of ['fr', 'en'] as const) {
+        expect(i.nom[langue]?.length ?? 0, `${i.carteId} (${langue}) : ${i.nom[langue]}`)
+          .toBeLessThanOrEqual(32);
+      }
+    }
+  });
+
   it('reste dans des bornes plausibles', () => {
     for (const i of inventions) {
       expect(i.annee, i.carteId).toBeGreaterThan(-3000);

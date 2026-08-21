@@ -27,6 +27,7 @@
     "voix:echantillons": "tsx --env-file=.env.local scripts/echantillons-voix.mjs",
     "voix:modeles": "tsx --env-file=.env.local scripts/comparer-modeles.mjs",
     "audit:illustrations": "tsx scripts/auditer-illustrations.mjs",
+    "audit:captures": "tsx scripts/capturer-illustrations.mjs",
     "audit:planches": "tsx scripts/planche-illustrations.mjs",
     "quiz:couverture": "tsx scripts/couverture-quiz.mjs",
     "stats:duree": "tsx scripts/stats-duree.mjs"

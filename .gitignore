@@ -91,3 +91,6 @@ planches/
 # Intermédiaires de conversion audio : le PCM brut ne doit jamais partir en
 # déploiement, où il serait servi et téléchargé pour rien.
 *.mp3.pcm
+
+# Captures d’audit des illustrations (régénérables)
+audit-illustrations/

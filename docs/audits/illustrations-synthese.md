@@ -1,99 +1,114 @@
 # Audit des illustrations — synthèse
 
-Confrontation de chaque illustration au texte qu'elle accompagne, monde par
-monde. Méthode : `npx tsx scripts/capturer-illustrations.mjs <monde>` capture une
-image par **phase** d'animation, puis l'agent `audit-illustrations` les regarde
-une à une face aux trois registres de texte.
+**Catalogue complet passé** : 15 mondes, 150 cartes, 600 phases d'animation
+confrontées une à une aux trois registres de texte qu'elles illustrent.
 
+Méthode : `npx tsx scripts/capturer-illustrations.mjs <monde>` capture une image
+par **phase**, puis l'agent `audit-illustrations` les regarde face aux textes.
 Rapports détaillés : `docs/audits/illustrations-<monde>.md`.
 
-## Avancement
+## Résultat
 
-| Monde | Phases | Défauts | Dont graves |
-|---|---:|---:|---|
-| animaux | 40 | 4 | — |
-| biologie | 40 | 4 | — |
-| le-corps | 40 | 9 | 1 contradiction |
-| les-dinosaures | 40 | 5 | 1 contradiction |
-| meteo | 40 | 1 | — |
-| les-oceans | 40 | 6 | 2 contradictions |
-| **reste à faire** | | | sciences-de-la-terre, astronomie, physique, chimie, ingenierie, informatique, mathematiques, le-son, la-cuisine |
+**83 défauts sur 600 phases**, dont **9 graves**. Aucun monde n'est indemne, mais
+la moitié des cartes est irréprochable, et les corrections d'idées reçues — le
+cœur pédagogique de Hublot — sont massivement bien tenues.
 
-## À corriger en priorité
+| Monde | Défauts | Graves |
+|---|---:|---:|
+| le-corps | 9 | 1 |
+| ingenierie | 9 | — |
+| le-son | 8 | — |
+| physique | 7 | 1 |
+| la-cuisine | 7 | 1 |
+| les-oceans | 6 | 2 |
+| sciences-de-la-terre | 6 | — |
+| mathematiques | 6 | — |
+| les-dinosaures | 5 | 1 |
+| chimie | 5 | 1 |
+| animaux | 4 | — |
+| biologie | 4 | — |
+| astronomie | 4 | 2 |
+| informatique | 2 | — |
+| meteo | 1 | — |
 
-Trois défauts sont **objectivement vérifiables dans le code**, sans jugement
-esthétique. Ce sont ceux à traiter d'abord.
+## Les neuf défauts graves
 
-### 1. Le muscle de la chair de poule s'allonge quand le texte dit « se contracte »
+Tous ont la même forme : **une carte qui existe pour corriger une idée reçue
+montre exactement cette idée reçue, ou son inverse.** Ce sont ceux à traiter en
+premier — chacun est une retouche de quelques lignes de SVG.
 
-`components/animations/LaChairDePouleAnimation.tsx` — le trait du muscle passe
-d'une longueur 30 au repos à 67 « contracté ». L'enfant entend « se contracte »
-et voit un muscle s'allonger, à rebours de ce que la carte voisine
-`comment-les-muscles-bougent` lui enseigne. **Intervertir les deux états.**
+1. **Les saisons sont à l'envers.** `SaisonsAnimation.tsx` ligne 32 : les deux
+   Terres portent `rotate(-23)`, si bien que la Terre étiquetée « été » penche à
+   l'opposé du Soleil. La carte enseigne le contraire de ce qu'elle montre.
+2. **La Lune serait toujours pleine.** `PhasesLuneAnimation.tsx` lignes 61-72 :
+   le demi-disque clair est *dans* le groupe animé, donc solidaire de la
+   direction de la Terre pendant toute l'orbite. Le mécanisme même des phases est
+   annulé.
+3. **Le muscle de la chair de poule s'allonge** (30 → 67) quand le texte dit
+   « se contracte ». `LaChairDePouleAnimation.tsx`.
+4. **La matière disparaît en changeant d'état** : 16 particules dans le solide,
+   12 dans le liquide, 6 dans le gaz — sous la légende « rien ne se perd, tout
+   revient ». `EtatsMatiereAnimation.tsx`.
+5. **On pèse 60 kg sur la Lune comme sur Terre**, mis en avant au moment où le
+   texte dit « six fois moins ». `PoidsMasseAnimation.tsx` : rien ne dépend des
+   phases 0 et 1.
+6. **Le tsunami reste sous la surface de la mer** : la crête plafonne à y≈125,
+   la surface est à y≈96. `LaVagueGeanteAnimation.tsx` ligne 87.
+7. **On ne flotte jamais à la surface** dans la mer Morte — le corps reste
+   immergé aux quatre phases. `PourquoiOnFlotteMieuxDansLaMerAnimation.tsx`.
+8. **Les humains au premier quart de l'année de la Terre**, alors que la carte
+   enseigne « les toutes dernières minutes du 31 décembre ».
+   `IlYaTresTresLongtempsAnimation.tsx`.
+9. **Le blanc d'œuf devient jaune** quand le texte dit « le blanc devient dur et
+   blanc ».
 
-### 2. L'empreinte du jumeau est dessinée hors de l'écran
+## Deux défauts qui dépassent l'illustration
 
-`components/animations/LesEmpreintesDigitalesAnimation.tsx` — `BOUCLES_JUMEAU`
-porte `transform="translate(-108 90) scale(0.42)"`, ce qui la place entre
-x = −45 et x = −3, hors du `viewBox 0 0 400 240`. La phase repose entièrement
-sur une comparaison, et il n'y a rien à comparer. **Translation positive**,
-`translate(20 90)` par exemple.
+- **`ElectriciteAnimation.tsx` : les cercles d'électrons n'ont ni `cx` ni `cy`.**
+  Sans animation — réglage système « mouvement réduit », donc un enfant qui en a
+  besoin — ils s'empilent tous en 0,0. L'illustration est cassée, pas seulement
+  imprécise.
+- **`LesEmpreintesDigitalesAnimation.tsx` : l'empreinte du jumeau est hors du
+  cadre.** `translate(-108 90)` la place à x = −45 dans un `viewBox` qui commence
+  à 0. La phase repose entièrement sur une comparaison, et il n'y a rien à
+  comparer.
 
-### 3. Les humains placés au premier quart de l'année de la Terre
+## Le motif dominant des défauts mineurs
 
-`components/animations/IlYaTresTresLongtempsAnimation.tsx` — l'arc
-`M200 42 A70 70 0 0 1 268 106` s'arrête à 3 heures, et le repère humain avec
-lui, alors que les trois textes disent « les toutes dernières minutes du
-31 décembre ». C'est exactement l'intuition que la carte veut corriger.
-**Allonger l'arc jusqu'au sommet.**
+Les trois quarts des défauts restants tiennent en une phrase : **l'élément
+nommé par la phrase n'est pas dessiné**. La Lune tourne autour d'un centre vide,
+le crabe n'a pas de pince, la cochlée n'a pas de spirale, les cordes vocales sont
+une seule ellipse, le câble sous-marin est une étendue d'eau vide, le sucre ne
+réapparaît pas au fond du verre.
 
-### 4. Le tsunami reste sous la surface de la mer
-
-`components/animations/LaVagueGeanteAnimation.tsx` ligne 87 — la crête de la
-vague plafonne à y≈125 alors que la surface est tracée à y≈96 : le « mur d'eau
-qui déferle sur la terre » est un monticule sous-marin plus petit que la mer.
-
-### 5. On ne flotte jamais à la surface
-
-`components/animations/PourquoiOnFlotteMieuxDansLaMerAnimation.tsx` — le corps
-reste immergé à toutes les phases (y=150 puis 108 puis 96, surface à y=40) :
-la mer Morte y illustre un corps qui coule un peu moins. Et les flèches de la
-poussée d'Archimède **pointent sur le côté**, `orient="auto"` faisant pivoter de
-90° un marqueur dessiné pointe en haut.
-
-## Défauts de gravité moyenne
-
-- **le-coeur-et-le-sang / pompe** — cœur dessiné en cœur de Saint-Valentin, sans
-  les quatre cavités ni la paroi gauche épaissie que décrit le texte 9-12 ;
-  aucun poumon nulle part alors que deux phases les nomment.
-- **comment-on-respire / poumons** — deux masses pleines, une trachée droite :
-  ni bronches qui se divisent, ni alvéoles, alors que c'est le sujet de la
-  phrase.
-- **la-chair-de-poule / quatre** — l'animal « bien poilu » est une tache grise
-  sans tête, sans patte et sans un seul poil.
-- **la-chair-de-poule / deux** — le poil n'a pas de racine sous la peau, et le
-  muscle ne le touche pas : il tire sur rien.
-- **les-empreintes-digitales / quatre** — voir ci-dessus.
-- **pas-tous-des-dinosaures / un** — le ptérosaure n'a ni bras ni doigt allongé,
-  or c'est le trait qui le distingue et le sujet de deux textes sur trois.
-- **pourquoi-les-zebres-ont-des-rayures** — pattes entièrement blanches, sans
-  rayure, alors que le texte dit « tout rayé ».
+Ce n'est jamais faux, mais l'illustration cesse alors de servir sa phrase.
 
 ## Ce que l'audit a confirmé de bon
 
-Les corrections d'idées reçues, qui sont le cœur pédagogique de l'application,
-sont bien tenues par les images : les veines sont dessinées rouge sombre et non
-bleues ; l'évolution est un V à ancêtre commun, jamais une file indienne du
-singe vers l'homme ; la goutte de pluie en larme est barrée ; le brouillard
-s'évapore sur place au lieu de se déplacer ; le tonnerre arrive après l'éclair.
+Les corrections d'idées reçues, qui font la valeur de l'application, tiennent
+presque partout :
+
+- les veines sont rouge sombre et non bleues ;
+- l'évolution est un V à ancêtre commun, jamais une file indienne du singe vers
+  l'homme ;
+- la goutte de pluie en larme est barrée, et la vraie goutte est aplatie dessous ;
+- l'eau des vagues tourne **sur place** sans avancer vers la plage ;
+- les astronautes ont une flèche de gravité « à 90 % » et tombent en ratant la
+  Terre ;
+- la face cachée de la Lune est dessinée **éclairée** ;
+- le frigo déplace la chaleur de l'intérieur vers la grille, jamais l'inverse ;
+- « 12 ÷ 0 = pas de réponse », et non « = ∞ » ;
+- à périmètre constant, les trois aires du carré, du rectangle et du disque sont
+  dans les rapports exacts 9 / 25 / 32.
 
 ## Limites de la méthode
 
 - Le jugement visuel sur du SVG stylisé **produit des faux positifs**. Ces
   rapports sont une liste de suspicions classées, jamais un verdict.
-- La capture réinjecte le SVG dans une page vierge, ce qui **relance les
-  animations à zéro**. On laisse désormais 1,4 s de jeu avant la prise de vue,
-  mais une animation en boucle peut encore être saisie à un instant trompeur —
-  les agents le signalent quand c'est le cas.
-- Une illustration sert **les trois registres à la fois** : la question n'est
-  donc pas « colle-t-elle au texte » mais « en contredit-elle un des trois ».
+- La capture réinjecte le SVG dans une page vierge, ce qui relance ses animations
+  à zéro. On laisse 1,4 s de jeu avant la prise de vue, mais une animation en
+  boucle peut encore être saisie à un instant trompeur — les agents le signalent
+  quand c'est le cas.
+- Une illustration sert **les trois registres à la fois** : la question n'est donc
+  pas « colle-t-elle au texte » mais « en contredit-elle un des trois ». Plusieurs
+  défauts signalés ne concernent que le niveau 3-5.

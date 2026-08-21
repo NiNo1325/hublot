@@ -39,11 +39,18 @@ export function PremiereEntree() {
     musée. C'est lui qui porte le récit — les savants enfermés, ce que Lumi
     demande — et arriver sur la bibliothèque ferait manquer la raison de tout
     le reste.
+
+    Un visiteur qui *arrive* avec un niveau file au musée. Mais depuis que
+    toucher une carte l'enregistre, il ne suffit plus de dire « un niveau
+    existe ⇒ on redirige » : l'enfant serait expédié dès sa première touche,
+    sans avoir pu écouter les trois et changer d'avis. On note donc s'il a
+    choisi **ici**, et dans ce cas seul le bouton fait sortir.
   */
+  const [aChoisiIci, setAChoisiIci] = useState(false);
   useEffect(() => {
-    if (doitChoisir) return;
+    if (doitChoisir || aChoisiIci) return;
     if (status === 'pret' && niveau) router.replace('/musee');
-  }, [doitChoisir, status, niveau, router]);
+  }, [doitChoisir, aChoisiIci, status, niveau, router]);
 
   if (status === 'chargement') return null;
 
@@ -60,8 +67,8 @@ export function PremiereEntree() {
     );
   }
 
-  // Niveau déjà connu : redirection en cours, rien à afficher.
-  if (niveau) return null;
+  // Niveau connu sans être choisi ici : redirection en cours, rien à afficher.
+  if (niveau && !aChoisiIci) return null;
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center gap-8 px-6 py-12">
@@ -73,11 +80,12 @@ export function PremiereEntree() {
 
       <SelecteurNiveau
         niveauInitial={null}
-        labelValider={t('accueil.commencer')}
-        onValider={(choisi) => {
+        onChoisir={(choisi) => {
+          setAChoisiIci(true);
           choisirNiveau(choisi);
-          router.replace('/musee');
         }}
+        labelValider={t('accueil.commencer')}
+        onValider={() => router.replace('/musee')}
       />
     </main>
   );

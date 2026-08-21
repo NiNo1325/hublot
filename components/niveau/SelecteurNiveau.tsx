@@ -9,8 +9,11 @@ import { useT } from '@/components/i18n/useT';
 
 interface SelecteurNiveauProps {
   niveauInitial: NiveauDifficulte | null;
-  labelValider: string;
-  onValider: (niveau: NiveauDifficulte) => void;
+  /** Appelé à chaque choix : toucher une carte enregistre, sans autre geste. */
+  onChoisir: (niveau: NiveauDifficulte) => void;
+  /** Bouton de sortie, pour la première entrée seulement. Absent, aucun bouton. */
+  labelValider?: string;
+  onValider?: () => void;
 }
 
 /**
@@ -23,13 +26,17 @@ interface SelecteurNiveauProps {
  * tous les jours », « les vrais mots des scientifiques » — parce qu'un enfant
  * ne choisit pas « niveau 2 », il choisit ce qu'il va entendre.
  *
- * Toucher une carte la sélectionne **et** joue son commentaire : c'est la seule
- * façon pour un enfant qui ne lit pas encore de savoir ce qu'il vient de
- * choisir. Un bouton de validation sépare l'essai de la décision, pour qu'on
- * puisse écouter les trois avant de trancher.
+ * Toucher une carte la sélectionne, **l'enregistre** et joue son commentaire :
+ * c'est la seule façon pour un enfant qui ne lit pas encore de savoir ce qu'il
+ * vient de choisir. Il n'y a rien à valider — un réglage qui demande un second
+ * geste finit toujours par être à moitié fait.
+ *
+ * Le bouton de sortie n'existe que pour la première entrée, où il faut bien
+ * quitter l'écran : le choix, lui, est déjà pris.
  */
 export function SelecteurNiveau({
   niveauInitial,
+  onChoisir,
   labelValider,
   onValider,
 }: SelecteurNiveauProps) {
@@ -68,6 +75,7 @@ export function SelecteurNiveau({
                 type="button"
                 onClick={() => {
                   setChoisi(niveau);
+                  onChoisir(niveau);
                   jouer(niveau.id);
                 }}
                 aria-pressed={actif}
@@ -96,16 +104,19 @@ export function SelecteurNiveau({
         })}
       </ul>
 
-      <button
-        type="button"
-        onClick={() => {
-          arreter();
-          onValider(choisi);
-        }}
-        className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-xl text-soleil transition-transform hover:scale-105 active:scale-95"
-      >
-        {labelValider}
-      </button>
+      {labelValider && (
+        <button
+          type="button"
+          onClick={() => {
+            arreter();
+            onChoisir(choisi);
+            onValider?.();
+          }}
+          className="min-h-16 cursor-pointer rounded-full border-2 border-soleil bg-soleil/10 px-10 font-display text-xl text-soleil transition-transform hover:scale-105 active:scale-95"
+        >
+          {labelValider}
+        </button>
+      )}
     </div>
   );
 }

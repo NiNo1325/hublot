@@ -91,16 +91,16 @@ export function ReglagesView() {
         <Intitule>{t('reglages.niveau')}</Intitule>
         <div className="flex flex-col items-center gap-5 rounded-3xl border-2 border-encre-bord bg-encre-clair p-4">
           <SelecteurNiveau
-            key={niveau.id}
             niveauInitial={niveau}
-            labelValider={
-              niveauEnregistre ? t('reglages.niveau-enregistre') : t('reglages.enregistrer-niveau')
-            }
-            onValider={(choisi) => {
+            onChoisir={(choisi) => {
               choisirNiveau(choisi);
               setNiveauEnregistre(true);
             }}
           />
+          {/* Une confirmation qui s'efface, plutôt qu'un bouton à ne pas oublier. */}
+          <p aria-live="polite" className="min-h-5 text-sm text-soleil">
+            {niveauEnregistre ? t('reglages.niveau-enregistre') : ''}
+          </p>
         </div>
       </section>
 

@@ -25,7 +25,17 @@ export function PhotosyntheseAnimation({
       <path d="M0 190 h400 v50 H0 Z" fill="#3b2a1d" />
 
       {/* Soleil et lumière incidente */}
-      <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
+      {/*
+        Le Soleil ne s’éteint pas quand la phrase le nomme.
+
+        La convention d’atténuation des phases passées vaut partout dans
+        l’application, mais ici l’élément atténué est la source d’énergie que
+        les trois textes désignent au moment même de la fabrication : un Soleil
+        éteint pouvait renforcer l’idée que la plante fabrique son sucre sans
+        lumière, voire la nuit. Il garde donc les deux tiers de son éclat tant
+        que dure la fabrication, l’accent restant porté par le sucre et l’O₂.
+      */}
+      <g style={{ opacity: Math.max(opacite(0), 0.65), transition: 'opacity 600ms ease' }}>
         <circle cx="58" cy="46" r="24" fill="#ffb627" />
         {[0, 1, 2].map((i) => (
           <line

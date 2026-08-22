@@ -60,6 +60,33 @@ export function RespirationAnimation({
       >
         <path d="M196 58 q-52 6 -52 60 q0 30 30 32 q22 2 22 -30 z" fill="#f472b6" />
         <path d="M204 58 q52 6 52 60 q0 30 -30 32 q-22 2 -22 -30 z" fill="#f472b6" />
+
+        {/*
+          L’arbre bronchique et ses alvéoles.
+
+          Une trachée rectangulaire descendait tout droit dans deux masses
+          roses pleines et lisses : l’enfant entendait « des tuyaux qui se
+          divisent en branches de plus en plus fines, jusqu’à de minuscules
+          sacs remplis d’air » devant un tuyau unique dans un sac plein.
+        */}
+        <g stroke="#dbe2ee" fill="none" strokeLinecap="round">
+          <path d="M197 60 L176 78 M203 60 L224 78" strokeWidth="5" />
+          <path d="M176 78 L162 92 M176 78 L181 96 M224 78 L238 92 M224 78 L219 96" strokeWidth="3.4" />
+          <path
+            d="M162 92 l-9 11 M162 92 l6 12 M181 96 l-7 11 M181 96 l7 11 M238 92 l9 11 M238 92 l-6 12 M219 96 l7 11 M219 96 l-7 11"
+            strokeWidth="2.2"
+          />
+        </g>
+        {[[153, 108], [168, 109], [174, 111], [188, 111], [247, 108], [232, 109], [226, 111], [212, 111]].map(
+          ([cx, cy]) => (
+            <g key={`${cx}-${cy}`} fill="#fbcfe8">
+              <circle cx={cx} cy={cy} r="3.4" />
+              <circle cx={cx - 4} cy={cy + 5} r="3" />
+              <circle cx={cx + 4} cy={cy + 5} r="3" />
+              <circle cx={cx} cy={cy + 10} r="3" />
+            </g>
+          ),
+        )}
       </g>
 
       {/* Diaphragme : dôme qui s'abaisse */}

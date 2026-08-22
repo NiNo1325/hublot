@@ -47,10 +47,26 @@ export function MicrobesAnimation({
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
       <rect width="400" height="240" fill="#0f1b33" />
 
-      {/* Loupe : ils existent, mais hors de portée de l'œil nu */}
+      {/*
+        Un microscope, et non une loupe.
+
+        La phrase dit qu’un œil approché ne suffit pas — « il faut un
+        microscope » — et l’image montrait des microbes rendus visibles par une
+        loupe à main, le seul instrument d’optique de la scène. Le champ
+        d’observation prend la place de la lentille.
+      */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
-        <circle cx="316" cy="72" r="34" fill="none" stroke="#b9c4da" strokeWidth="5" />
-        <line x1="340" y1="96" x2="366" y2="124" stroke="#b9c4da" strokeWidth="7" strokeLinecap="round" />
+        <g stroke="#b9c4da" fill="none" strokeLinecap="round">
+          <path d="M300 196 h64" strokeWidth="6" />
+          <path d="M348 194 V150" strokeWidth="6" />
+          <path d="M312 172 h34" strokeWidth="5" />
+          <path d="M340 150 q-6 -14 -14 -20" strokeWidth="5" />
+          <path d="M326 130 l-14 -12" strokeWidth="8" />
+          <path d="M328 168 V152" strokeWidth="5" />
+        </g>
+        <circle cx="328" cy="176" r="4" fill="#a3e635" />
+        <circle cx="316" cy="72" r="34" fill="#132444" stroke="#b9c4da" strokeWidth="4" />
+        <path d="M300 100 L318 106" stroke="#b9c4da" strokeWidth="2" strokeDasharray="4 4" fill="none" />
         <circle cx="308" cy="66" r="6" fill="#a3e635" />
         <circle cx="326" cy="80" r="5" fill="#a3e635" />
         <circle cx="316" cy="56" r="4" fill="#a3e635" />

@@ -54,6 +54,13 @@ export function CirculationAnimation({
           depuis l'origine du repère et ferait dériver le cœur vers un coin.
           `transformOrigin` le fait pulser sur lui-même.
         */}
+        {/*
+          Deux poumons, pâles, pour que le circuit droit ait où aller : la
+          carte les nomme deux fois et n’en dessinait aucun.
+        */}
+        <path d="M150 112 q-32 8 -32 42 q0 22 20 24 q16 2 16 -24 z" fill="#f9a8d4" opacity="0.45" />
+        <path d="M250 112 q32 8 32 42 q0 22 -20 24 q-16 2 -16 -24 z" fill="#f9a8d4" opacity="0.45" />
+
         <path
           d="M200 118 q-16 -22 -32 -8 q-14 12 2 28 l30 28 l30 -28 q16 -16 2 -28 q-16 -14 -32 8 z"
           fill="#dc2626"
@@ -62,6 +69,26 @@ export function CirculationAnimation({
             animation: anime ? 'battement 1.1s ease-in-out infinite' : undefined,
           }}
         />
+        {/*
+          Une cloison, quatre cavités, et la paroi gauche plus épaisse.
+
+          Le cœur était un cœur de Saint-Valentin uni : rien de ce que dit la
+          phrase du niveau 9-12 — quatre cavités, deux pompes accolées, paroi
+          gauche bien plus épaisse — n’était dessiné, et le symbole risquait de
+          rester dans la tête de l’enfant comme la forme réelle de l’organe.
+          La gauche anatomique est à droite de l’image, celle qui pousse le
+          sang dans tout le corps.
+        */}
+        <g
+          style={{
+            transformOrigin: '200px 146px',
+            animation: anime ? 'battement 1.1s ease-in-out infinite' : undefined,
+          }}
+        >
+          <path d="M200 112 V172" stroke="#7f1d1d" strokeWidth="3" fill="none" />
+          <path d="M172 138 H198 M202 138 H228" stroke="#7f1d1d" strokeWidth="2.5" fill="none" />
+          <path d="M228 140 L204 162" stroke="#7f1d1d" strokeWidth="9" fill="none" strokeLinecap="round" />
+        </g>
       </g>
 
       {/* Artères : départ du sang oxygéné, rouge vif */}

@@ -100,6 +100,21 @@ export function MielAnimation({
 
       {/* Phase 3 : la transformation — ventilation + évaporation de l'eau */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
+        {/*
+          L’abeille qui ventile, cause nommée par les trois textes.
+
+          La phase montrait trois gouttelettes montant seules le long des
+          alvéoles, sans une abeille près de la ruche : l’eau semblait
+          s’évaporer d’elle-même, alors que c’est justement le battement des
+          ailes qui fait le miel. Les traits de mouvement disent le battement,
+          que l’image fixe ne peut pas rendre.
+        */}
+        <Abeille x={232} y={110} />
+        <g stroke="#e0f2fe" strokeWidth="1.6" fill="none" strokeLinecap="round" opacity="0.75">
+          <path d="M222 96 q-10 -5 -18 -3" />
+          <path d="M226 92 q-9 -8 -17 -9" />
+          <path d="M234 92 q-2 -11 4 -16" />
+        </g>
         {[250, 268, 286].map((x, i) => (
           <g key={x}>
             <path d={`M${x} 150 q-4 -12 0 -22`} stroke="#7dd3fc" strokeWidth="2" fill="none" />

@@ -46,9 +46,22 @@ export function ZebreAnimation({
       <g>
         <ellipse cx="170" cy="112" rx="62" ry="28" fill="#f5f5f5" />
         <ellipse cx="112" cy="86" rx="16" ry="20" fill="#f5f5f5" transform="rotate(-24 112 86)" />
-        {/* pattes */}
+        {/*
+          Les pattes sont rayées, elles aussi.
+
+          Elles étaient quatre rectangles entièrement blancs : l’enfant
+          entendait « tout rayé de noir et de blanc » devant un animal rayé
+          seulement au-dessus des genoux, alors que les rayures d’un vrai zèbre
+          descendent jusqu’aux sabots — et que c’est le sujet de la carte
+          entière.
+        */}
         {[140, 160, 190, 210].map((x) => (
-          <rect key={x} x={x} y="136" width="7" height="30" fill="#f5f5f5" />
+          <g key={x}>
+            <rect x={x} y="136" width="7" height="30" fill="#f5f5f5" />
+            {[141, 149, 157].map((y) => (
+              <rect key={y} x={x} y={y} width="7" height="3.4" fill="#1f2937" />
+            ))}
+          </g>
         ))}
         {/* rayures du corps */}
         {[-40, -28, -16, -4, 8, 20, 32, 44].map((dx) => (

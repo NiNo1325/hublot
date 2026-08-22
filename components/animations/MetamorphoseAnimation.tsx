@@ -107,6 +107,21 @@ export function MetamorphoseAnimation({
             <path d="M2 -8 Q42 -34 34 4 Q30 26 2 10 Z" fill="#f08a3c" />
             <circle cx="-18" cy="-6" r="4" fill="#7a3d12" />
             <circle cx="18" cy="-6" r="4" fill="#7a3d12" />
+            {/*
+              Antennes en massue, trompe enroulée et deux yeux : la phrase
+              énumère trois pièces du corps neuf — ailes, yeux, trompe — et
+              l’image n’en montrait qu’une. Un papillon sans antennes reste par
+              ailleurs une silhouette de nœud papillon.
+            */}
+            <g stroke="#3b2b1a" strokeWidth="2" fill="none" strokeLinecap="round">
+              <path d="M-3 -20 q-9 -12 -13 -18" />
+              <path d="M3 -20 q9 -12 13 -18" />
+              <path d="M0 -16 q-7 10 -2 13 q4 2 4 -3 q0 -4 -4 -3" />
+            </g>
+            <circle cx="-17" cy="-39" r="2.6" fill="#3b2b1a" />
+            <circle cx="17" cy="-39" r="2.6" fill="#3b2b1a" />
+            <circle cx="-3" cy="-21" r="1.8" fill="#e8ddc8" />
+            <circle cx="3" cy="-21" r="1.8" fill="#e8ddc8" />
           </g>
           {anime && (
             <animateTransform

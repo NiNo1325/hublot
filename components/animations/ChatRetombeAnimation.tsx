@@ -52,16 +52,30 @@ export function ChatRetombeAnimation({ activeBeatId, locale }: CardAnimationProp
     <path d={d} stroke="#8a6a3a" strokeWidth="5" fill="none" strokeLinecap="round" />
   );
 
-  /** L'oreille pointue : c'est elle qui dit « chat » plutôt que « rongeur ». */
-  const oreilles = (x: number, y: number) => (
-    <path
-      d={`M${x - 6} ${y - 6} l3 -9 l6 6 M${x + 4} ${y - 8} l4 -8 l4 8`}
-      fill="#8a6a3a"
-      stroke="#8a6a3a"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    />
-  );
+  /**
+   * L'oreille pointue : c'est elle qui dit « chat » plutôt que « rongeur ».
+   *
+   * Elle pointait toujours vers le haut, y compris dans les deux phases où le
+   * chat est sur le dos : oreilles et pattes du même côté font un chat
+   * impossible, et la seule chose qui disait « tête en bas » — les pattes —
+   * était démentie par la seule chose qui dit « tête ». `enBas` retourne le
+   * tracé.
+   */
+  const oreilles = (x: number, y: number, enBas = false) => {
+    const s = enBas ? -1 : 1;
+    return (
+      <path
+        d={`M${x - 6} ${y - 6 * s} l3 ${-9 * s} l6 ${6 * s} M${x + 4} ${y - 8 * s} l4 ${-8 * s} l4 ${8 * s}`}
+        fill="#8a6a3a"
+        stroke="#8a6a3a"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+    );
+  };
+
+  /** Un œil, pour lever le doute sur le sens de la tête. */
+  const oeil = (x: number, y: number) => <circle cx={x} cy={y} r="2" fill="#20243a" />;
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -80,7 +94,8 @@ export function ChatRetombeAnimation({ activeBeatId, locale }: CardAnimationProp
         <g transform="translate(190 44)">
           <ellipse cx="0" cy="0" rx="34" ry="15" fill="#8a6a3a" />
           <circle cx="-40" cy="0" r="10" fill="#8a6a3a" />
-          {oreilles(-40, -8)}
+          {oreilles(-40, 8, true)}
+          {oeil(-44, -3)}
           {queue('M32 -4 q18 -8 16 -22')}
           {[-22, -6, 10, 24].map((x) => patte(x, -12, -14))}
         </g>
@@ -93,7 +108,8 @@ export function ChatRetombeAnimation({ activeBeatId, locale }: CardAnimationProp
           <ellipse cx="-18" cy="0" rx="22" ry="12" fill="#8a6a3a" transform="rotate(-28 -18 0)" />
           <ellipse cx="18" cy="0" rx="22" ry="12" fill="#8a6a3a" transform="rotate(28 18 0)" />
           <circle cx="-40" cy="-14" r="9" fill="#8a6a3a" />
-          {oreilles(-40, -22)}
+          {oreilles(-40, -6, true)}
+          {oeil(-44, -17)}
           {queue('M36 6 q18 -4 18 -20')}
           {/* Pattes repliées vers le pli : c'est le geste qui fait tourner le chat. */}
           {[-26, -12].map((x) => patte(x, -8, -12))}
@@ -109,6 +125,7 @@ export function ChatRetombeAnimation({ activeBeatId, locale }: CardAnimationProp
           <ellipse cx="20" cy="0" rx="20" ry="11" fill="#8a6a3a" />
           <circle cx="-40" cy="-6" r="9" fill="#8a6a3a" />
           {oreilles(-40, -14)}
+          {oeil(-44, -4)}
           {queue('M38 2 q16 -6 14 -20')}
           {[-26, -14].map((x) => patte(x, 8, 10))}
           {[14, 26].map((x) => patte(x, 8, 10))}

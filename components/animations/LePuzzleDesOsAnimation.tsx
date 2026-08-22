@@ -117,6 +117,15 @@ export function LePuzzleDesOsAnimation({
           d="M96 118 Q120 84 154 88 Q190 82 200 96 Q234 92 262 106 Q286 112 292 128 Q292 150 262 156 Q220 168 170 158 Q120 156 100 138 Z"
           fill="#c8a97e" opacity="0.85"
         />
+        {/*
+          Deux pattes jusqu’à la roche : « comment il se tenait debout » est la
+          moitié de la phrase, et la masse beige flottait au-dessus du sol sans
+          membres ni appui.
+        */}
+        <g fill="#c8a97e" opacity="0.85">
+          <rect x="146" y="146" width="17" height="34" rx="5" />
+          <rect x="238" y="142" width="17" height="38" rx="5" />
+        </g>
         <circle cx="150" cy="98" r="3" fill="#0f1b33" />
         <text x="14" y="222" fill="#c8a97e" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.vie}</text>
       </g>

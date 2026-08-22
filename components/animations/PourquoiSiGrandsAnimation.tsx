@@ -28,6 +28,26 @@ const LEGENDES = {
  * se déploie en phase 2 pour atteindre la cime — deux usages d'un seul et
  * même atout, avant que la phase 4 ne révèle sa vraie longueur.
  */
+/**
+ * Le corps du sauropode : quatre pattes en piliers et une queue.
+ *
+ * C’était une ellipse beige posée au ras du sol, prolongée du seul cou —
+ * l’enfant voyait le plus grand animal terrestre comme une masse sans pattes,
+ * alors que les autres cartes du monde dessinent bien leurs membres.
+ */
+function Corps() {
+  return (
+    <g fill="#c8a97e">
+      <ellipse cx="220" cy="156" rx="60" ry="24" />
+      <path d="M278 150 q42 -8 62 -28" stroke="#c8a97e" strokeWidth="14" strokeLinecap="round" fill="none" />
+      <rect x="176" y="168" width="18" height="30" rx="5" />
+      <rect x="204" y="170" width="16" height="28" rx="5" />
+      <rect x="240" y="168" width="18" height="30" rx="5" />
+      <rect x="262" y="170" width="16" height="28" rx="5" />
+    </g>
+  );
+}
+
 export function PourquoiSiGrandsAnimation({
   activeBeatId,
   isPlaying,
@@ -46,21 +66,21 @@ export function PourquoiSiGrandsAnimation({
 
       {/* Phase 1 : il mange des plantes presque toute la journée */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
-        <ellipse cx="220" cy="176" rx="60" ry="24" fill="#c8a97e" />
-        <path d="M160 172 Q120 150 108 176" stroke="#c8a97e" strokeWidth="18" strokeLinecap="round" fill="none" />
-        <path d="M96 176 q-2 -14 10 -18 q2 10 -2 18 M110 176 q4 -16 16 -18 q0 12 -8 18" fill="#4ade80" />
+        <Corps />
+        <path d="M160 152 Q120 130 108 156" stroke="#c8a97e" strokeWidth="18" strokeLinecap="round" fill="none" />
+        <path d="M96 156 q-2 -14 10 -18 q2 10 -2 18 M110 156 q4 -16 16 -18 q0 12 -8 18" fill="#4ade80" />
         <text x="14" y="30" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.manger}</text>
       </g>
 
       {/* Phase 2 : son long cou atteint les feuilles sans bouger le corps */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
-        <ellipse cx="220" cy="176" rx="60" ry="24" fill="#c8a97e" />
+        <Corps />
         <path
-          d="M160 172 Q110 90 100 40"
+          d="M160 152 Q110 90 100 40"
           stroke="#c8a97e" strokeWidth="18" strokeLinecap="round" fill="none"
         >
           {anime && phase === 1 && (
-            <animate attributeName="d" values="M160 172 Q110 90 100 40;M160 172 Q140 90 130 42;M160 172 Q110 90 100 40" dur="2.6s" repeatCount="indefinite" />
+            <animate attributeName="d" values="M160 152 Q110 90 100 40;M160 152 Q140 90 130 42;M160 152 Q110 90 100 40" dur="2.6s" repeatCount="indefinite" />
           )}
         </path>
         <path d="M60 30 q40 -14 70 6 q-30 14 -70 -6 Z" fill="#4ade80" />

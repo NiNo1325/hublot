@@ -62,6 +62,43 @@ export function PasTousDesDinosauresAnimation({
             <animate attributeName="d" values="M200 66 Q260 40 310 60 Q260 66 210 74 Z;M200 66 Q260 56 310 50 Q260 68 210 74 Z;M200 66 Q260 40 310 60 Q260 66 210 74 Z" dur="1.6s" repeatCount="indefinite" />
           )}
         </path>
+        {/*
+          Le bord d’attaque : le bras, le poignet, puis le quatrième doigt.
+
+          Deux ailes grises lisses, sans bras ni doigt, donnaient la silhouette
+          d’un oiseau planeur vu de face — exactement l’animal dont la carte
+          veut distinguer le ptérosaure, alors que l’aile tendue par un doigt
+          unique est le sujet explicite de deux des trois textes. Le poignet
+          est calculé sur la courbe de l’aile, au tiers, pour battre avec elle.
+        */}
+        <g stroke="#57534e" fill="none" strokeLinecap="round">
+          <path d="M200 66 Q140 40 90 60" strokeWidth="3">
+            {anime && (
+              <animate attributeName="d" values="M200 66 Q140 40 90 60;M200 66 Q140 56 90 50;M200 66 Q140 40 90 60" dur="1.6s" repeatCount="indefinite" />
+            )}
+          </path>
+          <path d="M200 66 L161 54" strokeWidth="6">
+            {anime && (
+              <animate attributeName="d" values="M200 66 L161 54;M200 66 L161 61;M200 66 L161 54" dur="1.6s" repeatCount="indefinite" />
+            )}
+          </path>
+          <path d="M200 66 Q260 40 310 60" strokeWidth="3">
+            {anime && (
+              <animate attributeName="d" values="M200 66 Q260 40 310 60;M200 66 Q260 56 310 50;M200 66 Q260 40 310 60" dur="1.6s" repeatCount="indefinite" />
+            )}
+          </path>
+          <path d="M200 66 L239 54" strokeWidth="6">
+            {anime && (
+              <animate attributeName="d" values="M200 66 L239 54;M200 66 L239 61;M200 66 L239 54" dur="1.6s" repeatCount="indefinite" />
+            )}
+          </path>
+        </g>
+        <circle cx="161" cy="54" r="3.2" fill="#57534e">
+          {anime && <animate attributeName="cy" values="54;61;54" dur="1.6s" repeatCount="indefinite" />}
+        </circle>
+        <circle cx="239" cy="54" r="3.2" fill="#57534e">
+          {anime && <animate attributeName="cy" values="54;61;54" dur="1.6s" repeatCount="indefinite" />}
+        </circle>
         <text x="14" y="30" fill="#a8a29e" fontSize="15" fontFamily={police} style={{ opacity: phase === 0 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.ptero}</text>
       </g>
 
@@ -70,7 +107,21 @@ export function PasTousDesDinosauresAnimation({
         <rect x="0" y="60" width="400" height="140" fill="#0e3a5f" opacity="0.6" />
         <path d="M220 150 Q160 130 150 90" stroke="#7dd3fc" strokeWidth="14" strokeLinecap="round" fill="none" />
         <ellipse cx="220" cy="150" rx="30" ry="18" fill="#7dd3fc" />
-        <path d="M210 165 Q200 185 214 190 M232 165 Q244 184 230 190" stroke="#7dd3fc" strokeWidth="8" strokeLinecap="round" fill="none" />
+        {/*
+          Quatre nageoires, écartées à l’avant et à l’arrière.
+
+          Deux registres sur trois insistent sur le chiffre quatre, et l’image
+          en donnait deux, toutes deux groupées au milieu du ventre. La paire
+          opposée est plus pâle : c’est une vue de profil.
+        */}
+        <g fill="#38bdf8" opacity="0.5">
+          <path d="M198 156 q-24 14 -28 30 q15 5 28 -13 z" />
+          <path d="M242 156 q24 14 28 30 q-15 5 -28 -13 z" />
+        </g>
+        <g fill="#7dd3fc">
+          <path d="M204 162 q-21 16 -23 33 q15 4 25 -15 z" />
+          <path d="M238 162 q21 16 23 33 q-15 4 -25 -15 z" />
+        </g>
         <text x="14" y="30" fill="#7dd3fc" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.plesio}</text>
       </g>
 

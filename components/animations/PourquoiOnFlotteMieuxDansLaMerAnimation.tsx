@@ -72,7 +72,7 @@ export function PourquoiOnFlotteMieuxDansLaMerAnimation({
       {/* Phase 2 : ça pousse plus fort vers le haut */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <line x1="100" y1="180" x2="100" y2="150" stroke="#60a5fa" strokeWidth="4" markerEnd="url(#flecheDouce)" />
-        <line x1="300" y1="180" x2="300" y2="110" stroke="#facc15" strokeWidth="4" markerEnd="url(#flecheSalee)" />
+        <line x1="300" y1="180" x2="300" y2="78" stroke="#facc15" strokeWidth="4" markerEnd="url(#flecheSalee)" />
         <text x="20" y="228" fill="#facc15" fontSize="13" fontFamily={police} style={apparition(1)}>
           {legende.pousse}
         </text>
@@ -81,9 +81,9 @@ export function PourquoiOnFlotteMieuxDansLaMerAnimation({
       {/* Phase 3 : le corps flotte plus haut dans l'eau salée */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
         <ellipse cx="100" cy="150" rx="26" ry="9" fill="#e0f2fe" />
-        <ellipse cx="300" cy="108" rx="26" ry="9" fill="#e0f2fe">
+        <ellipse cx="300" cy="76" rx="26" ry="9" fill="#e0f2fe">
           {anime && (
-            <animate attributeName="cy" values="108;102;108" dur="2.4s" repeatCount="indefinite" />
+            <animate attributeName="cy" values="76;70;76" dur="2.4s" repeatCount="indefinite" />
           )}
         </ellipse>
         <text x="20" y="228" fill="#e0f2fe" fontSize="13" fontFamily={police} style={apparition(2)}>
@@ -91,20 +91,37 @@ export function PourquoiOnFlotteMieuxDansLaMerAnimation({
         </text>
       </g>
 
-      {/* Phase 4 : la mer Morte, on flotte presque sans effort */}
+      {/*
+        Phase 4 : la mer Morte, on flotte presque sans effort.
+
+        Le corps restait cinquante-six pixels sous la surface (tracée à y=40) :
+        l'image montrait quelqu'un qui coule un peu moins, quand le texte dit
+        « allongé à la surface ». Il chevauche maintenant la ligne d'eau,
+        moitié dedans, moitié dehors.
+      */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <ellipse cx="300" cy="96" rx="30" ry="8" fill="#fef9c3" />
+        <ellipse cx="300" cy="40" rx="30" ry="8" fill="#fef9c3" />
         <text x="20" y="228" fill="#fef9c3" fontSize="13" fontFamily={police} style={apparition(3)}>
           {legende.merMorte}
         </text>
       </g>
 
       <defs>
+        {/*
+          Pointes dessinées vers +x, et non vers le haut.
+
+          Avec `orient="auto"`, le marqueur s'aligne sur la direction du trait :
+          son axe x local devient le sens de la flèche. Une pointe dessinée
+          vers le haut (`M0 8 L4 0 L8 8 Z`) se retrouvait donc couchée à
+          l'horizontale sur un trait montant — et la poussée d'Archimède,
+          dont la direction est tout l'enseignement de la phase, semblait
+          latérale.
+        */}
         <marker id="flecheDouce" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-          <path d="M0 8 L4 0 L8 8 Z" fill="#60a5fa" />
+          <path d="M0 0 L8 4 L0 8 Z" fill="#60a5fa" />
         </marker>
         <marker id="flecheSalee" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-          <path d="M0 8 L4 0 L8 8 Z" fill="#facc15" />
+          <path d="M0 0 L8 4 L0 8 Z" fill="#facc15" />
         </marker>
       </defs>
     </svg>

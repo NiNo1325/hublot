@@ -54,9 +54,31 @@ export function LaChairDePouleAnimation({
         style={{ transition: 'rx 500ms ease, ry 500ms ease' }}
       />
 
-      {/* Le muscle arrecteur, qui se raccourcit et s'épaissit en tirant */}
+      {/*
+        Le follicule : la racine du poil, plantée dans le derme.
+
+        Sans elle, le poil semblait posé sur la peau et le muscle tirait sur le
+        vide — or « tirer sur la racine de chaque poil » est la phrase même de
+        la carte. La racine remonte un peu quand le poil se dresse : c'est ce
+        que le muscle produit.
+      */}
       <line
-        x1="172" y1="222" x2={tire ? 192 : 172} y2={tire ? 158 : 192}
+        x1="200" y1="152" x2="200" y2={dresse ? 194 : 200}
+        stroke="#e7d9c4" strokeWidth="5" strokeLinecap="round"
+        style={{ transition: 'all 600ms ease' }}
+      />
+
+      {/*
+        Le muscle arrecteur, qui se raccourcit et s'épaissit en tirant.
+
+        Il faisait exactement l'inverse : long de 30 au repos, de 67 « contracté ».
+        L'enfant entendait « se contracte » et voyait un muscle s'allonger — à
+        rebours de ce qu'enseigne la carte voisine sur les muscles. Il court
+        désormais de l'épiderme jusqu'au bas du follicule, et sa longueur tombe
+        de 58 à 46 en tirant la racine vers le haut.
+      */}
+      <line
+        x1="152" y1="166" x2="200" y2={tire ? 174 : 198}
         stroke="#fbbf24" strokeWidth={tire ? 7 : 4} strokeLinecap="round"
         style={{ transition: 'all 500ms ease' }}
       />

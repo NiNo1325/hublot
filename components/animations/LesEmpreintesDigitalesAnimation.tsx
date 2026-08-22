@@ -94,10 +94,24 @@ export function LesEmpreintesDigitalesAnimation({
 
       {/* Phase 4 : unique, même entre jumeaux */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <g transform="translate(-108 90) scale(0.42)">
-          <rect x="150" y="40" width="100" height="150" rx="50" fill="#fbcfe8" opacity="0.5" />
+        {/*
+          L'empreinte du jumeau, à gauche de celle du doigt principal.
+
+          Elle était dessinée hors de l'écran : `translate(-108 90) scale(0.42)`
+          la plaçait entre x = −45 et x = −3, dans un viewBox qui commence à 0.
+          La phase repose entièrement sur une comparaison — « même pas un
+          jumeau » — et il n'y avait rien à comparer.
+
+          `scale(0.55)` puis `translate(-36.5 34)` la posent entre x = 46 et
+          x = 101, y = 56 et y = 138 : à gauche du doigt principal (qui commence
+          à x = 150), au-dessus du fœtus de la phase 2 (qui descend à y = 150).
+          Un peu plus grande et moins pâle qu'avant, pour qu'on puisse
+          réellement comparer les deux dessins.
+        */}
+        <g transform="translate(-36.5 34) scale(0.55)">
+          <rect x="150" y="40" width="100" height="150" rx="50" fill="#fbcfe8" opacity="0.85" />
           {BOUCLES_JUMEAU.map((d) => (
-            <path key={d} d={d} fill="none" stroke="#be5b7a" strokeWidth="4" opacity="0.5" />
+            <path key={d} d={d} fill="none" stroke="#be5b7a" strokeWidth="4" opacity="0.85" />
           ))}
         </g>
         <text x="20" y="222" fill="#38bdf8" fontSize="14" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.unique}</text>

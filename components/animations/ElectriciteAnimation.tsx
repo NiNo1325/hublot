@@ -21,6 +21,21 @@ const LEGENDES = {
  * Le circuit s'ouvre à la phase « boucle » et l'ampoule s'éteint : c'est la
  * démonstration qu'un circuit interrompu ne laisse rien passer.
  */
+/**
+ * Où se tiennent les électrons quand rien ne bouge.
+ *
+ * Cinq points régulièrement espacés le long des 522 pixels du circuit
+ * (`M230 80 h80 v96 h-220 v-96 h30`), pour que l'image au repos montre une file
+ * qui suit le fil, et non un tas dans un coin.
+ */
+const POSITIONS_ELECTRONS: [number, number][] = [
+  [230, 80],
+  [310, 104],
+  [277, 176],
+  [173, 176],
+  [90, 154],
+];
+
 export function ElectriciteAnimation({
   activeBeatId,
   isPlaying,
@@ -59,18 +74,53 @@ export function ElectriciteAnimation({
         <circle cx="156" cy="80" r="4" fill="#b9c4da" />
       </g>
 
-      {/* Électrons : lents, et arrêtés si le circuit est ouvert */}
+      {/*
+        Électrons : lents, et arrêtés si le circuit est ouvert.
+
+        Ils n'avaient ni `cx` ni `cy` : dès que l'animation ne tournait pas —
+        circuit ouvert, lecture en pause, ou réglage système « mouvement
+        réduit » — les cinq s'empilaient en 0,0, dans le coin de l'image. Un
+        enfant qui a besoin de ce réglage voyait donc un circuit vide et une
+        tache hors du fil.
+
+        Attention au piège : `animateMotion` **s'ajoute** à la position propre
+        de l'élément au lieu de la remplacer. On ne pose donc les coordonnées
+        que lorsque le mouvement ne joue pas ; sinon les électrons partiraient
+        au double de leur abscisse.
+      */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
-        {[0, 1, 2, 3, 4].map((i) => (
-          <circle key={i} r="5" fill="#38bdf8">
-            {anime && !ouvert && (
-              <animateMotion
-                dur="6s" begin={`${i * 1.2}s`} repeatCount="indefinite"
-                path="M230 80 h80 v96 h-220 v-96 h30"
-              />
-            )}
-          </circle>
-        ))}
+        {POSITIONS_ELECTRONS.map(([x, y], i) => {
+          const enMouvement = anime && !ouvert;
+          return (
+            <circle
+              key={i}
+              r="5"
+              fill="#38bdf8"
+              cx={enMouvement ? 0 : x}
+              cy={enMouvement ? 0 : y}
+              opacity={enMouvement && i > 0 ? 0 : 1}
+            >
+              {enMouvement && (
+                <animateMotion
+                  dur="6s" begin={`${i * 1.2}s`} repeatCount="indefinite"
+                  path="M230 80 h80 v96 h-220 v-96 h30"
+                />
+              )}
+              {/*
+                Tant que son `begin` n'est pas atteint, un électron reste à sa
+                position propre — c'est-à-dire 0,0 pendant l'animation, dans le
+                coin de l'image. On le garde donc invisible jusqu'à son départ,
+                plutôt que de le laisser stationner hors du circuit.
+              */}
+              {enMouvement && i > 0 && (
+                <animate
+                  attributeName="opacity" from="0" to="1"
+                  begin={`${i * 1.2}s`} dur="0.01s" fill="freeze"
+                />
+              )}
+            </circle>
+          );
+        })}
         <text x="120" y="212" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.electrons}
         </text>

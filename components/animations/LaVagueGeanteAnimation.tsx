@@ -44,6 +44,12 @@ export function LaVagueGeanteAnimation({
 
       {/* Fond marin et côte, toujours visibles */}
       <path d="M0 190 h300 v50 H0 Z" fill="#1e293b" />
+      {/*
+        Le niveau de la mer, tracé une fois pour toutes à y=96 — la hauteur où
+        ondule l'onde de pleine mer. Sans ce repère, rien ne disait si le mur
+        d'eau final dépassait la surface, et il ne la dépassait pas.
+      */}
+      <line x1="0" y1="96" x2="300" y2="96" stroke="#1e3a5f" strokeWidth="2" />
       <path d="M300 190 Q330 150 340 100 L400 100 L400 240 L300 240 Z" fill="#4b5b3f" />
 
       {/* Phase 1 : la faille tremble au fond de l'océan */}
@@ -84,9 +90,22 @@ export function LaVagueGeanteAnimation({
 
       {/* Phase 4 : près de la côte, un mur d'eau se dresse */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <path d="M250 190 Q272 90 300 190 Z" fill="#93c5fd">
+        {/*
+          Le mur d'eau, qui doit dépasser la surface et déferler sur la terre.
+
+          Il culminait à y=140 pour une surface à y=96 : la « vague géante » était
+          un monticule sous-marin plus petit que la mer, alors que c'est la chute
+          de la carte. La crête monte maintenant à y≈44, cinquante pixels
+          au-dessus de la surface, et sa lèvre retombe sur la côte au-delà de
+          x=300.
+        */}
+        <path d="M236 190 C 244 112 258 46 298 44 C 330 42 342 74 338 100 L 330 190 Z" fill="#93c5fd">
           {anime && (
-            <animate attributeName="d" values="M250 190 Q272 90 300 190 Z;M250 190 Q272 60 300 190 Z;M250 190 Q272 90 300 190 Z" dur="2.2s" repeatCount="indefinite" />
+            <animate
+              attributeName="d"
+              values="M236 190 C 244 112 258 46 298 44 C 330 42 342 74 338 100 L 330 190 Z;M236 190 C 244 100 258 30 300 28 C 334 26 348 62 344 92 L 334 190 Z;M236 190 C 244 112 258 46 298 44 C 330 42 342 74 338 100 L 330 190 Z"
+              dur="2.2s" repeatCount="indefinite"
+            />
           )}
         </path>
         <text x="16" y="46" fill="#93c5fd" fontSize="14" fontFamily={police} style={apparition(3)}>

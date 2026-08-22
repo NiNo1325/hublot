@@ -46,7 +46,20 @@ export function PoidsMasseAnimation({
   prefersReducedMotion,
   locale,
 }: CardAnimationProps) {
-  const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
+  const { phase, opacite, auRepos } = miseEnScene(PHASES, activeBeatId);
+
+  /*
+    `opacite` n'éclaire qu'une seule phase, or la masse et le poids sont chacun
+    le sujet de plusieurs beats. Les masses étaient donc laissées en pleine
+    lumière en permanence, y compris à la phase « balance » où le texte dit
+    « elle afficherait six fois moins » : l'enfant entendait « six fois moins »
+    et voyait 60 kg des deux côtés, mis en avant.
+
+    Le poids est le sujet de `balance`, `sur-la-lune` et `apesanteur` ; la masse,
+    de `deux-choses`, `sur-la-lune` et `apesanteur`.
+  */
+  const enAvant = (...quelles: number[]) =>
+    auRepos ? 0.55 : quelles.includes(phase) ? 1 : 0.25;
   const anime = isPlaying && !prefersReducedMotion;
   const legende = localise(LEGENDES, locale);
 
@@ -58,7 +71,14 @@ export function PoidsMasseAnimation({
         <g key={lieu.cle}>
           {/* Le sol de chaque lieu, absent en orbite */}
           {i < 2 && (
-            <line x1={lieu.x - 8} y1="126" x2={lieu.x + 62} y2="126" stroke="#475569" strokeWidth="3" />
+            <line x1={lieu.x - 8} y1="134" x2={lieu.x + 62} y2="134" stroke="#475569" strokeWidth="3" />
+          )}
+          {/* La balance de salle de bain, que le texte nomme et qu'on ne voyait pas. */}
+          {i < 2 && (
+            <rect
+              x={lieu.x + 8} y="126" width="36" height="8" rx="3" fill="#94a3b8"
+              style={{ opacity: enAvant(0, 2, 3), transition: 'opacity 600ms ease' }}
+            />
           )}
           {/* La même personne partout */}
           <g
@@ -80,11 +100,15 @@ export function PoidsMasseAnimation({
             {legende[lieu.cle]}
           </text>
           {/* La masse : identique partout */}
-          <text x={lieu.x} y="154" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+          <text
+            x={lieu.x} y="154" fill="#4ade80" fontSize="16"
+            fontFamily="var(--font-atkinson), sans-serif"
+            style={{ opacity: enAvant(1, 2, 3), transition: 'opacity 600ms ease' }}
+          >
             60 kg
           </text>
           {/* Le poids : propre à chaque astre */}
-          <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
+          <g style={{ opacity: enAvant(0, 2, 3), transition: 'opacity 600ms ease' }}>
             <text x={lieu.x} y="182" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
               {lieu.poids}
             </text>
@@ -92,11 +116,15 @@ export function PoidsMasseAnimation({
         </g>
       ))}
 
-      <text x="14" y="32" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+      <text
+        x="14" y="32" fill="#4ade80" fontSize="16"
+        fontFamily="var(--font-atkinson), sans-serif"
+        style={{ opacity: enAvant(1, 2, 3), transition: 'opacity 600ms ease' }}
+      >
         {legende.masse}
       </text>
 
-      <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
+      <g style={{ opacity: enAvant(0, 2, 3), transition: 'opacity 600ms ease' }}>
         <text x="14" y="210" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.poids}
         </text>

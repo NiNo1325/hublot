@@ -9,6 +9,26 @@ const PHASES = ['solide', 'liquide', 'gaz', 'reversible'] as const;
 /** Trois grilles de particules : serrées, glissantes, dispersées. */
 const RANGEE = [0, 1, 2, 3, 4];
 
+/**
+ * Décalages du liquide : de quoi rompre l'alignement sans séparer les
+ * particules. Fixes et non tirés au hasard, pour que l'image ne bouge pas d'un
+ * rendu à l'autre.
+ */
+const DESORDRE: [number, number][] = [
+  [0, 0], [6, 3], [-4, 2], [3, -3],
+  [5, 1], [-3, 4], [2, -2], [-5, 0],
+  [4, 3], [0, -4], [-2, 2], [6, -1],
+  [-4, -2], [3, 4], [-6, 1], [1, -3],
+];
+
+/** Les seize mêmes particules, dispersées dans le volume du gaz. */
+const GAZ: [number, number][] = [
+  [290, 96], [318, 80], [346, 92], [364, 110],
+  [300, 124], [330, 106], [356, 134], [288, 146],
+  [312, 150], [340, 142], [362, 84], [296, 110],
+  [324, 130], [352, 112], [336, 152], [306, 88],
+];
+
 /* Les trois états sont nommés sous leur grille : c'est du contenu. Le typage
    impose à `en` de reprendre exactement les clés de `fr`. */
 const LEGENDES = {
@@ -59,21 +79,37 @@ export function EtatsMatiereAnimation({
         <text x="42" y="186" fill="#7dd3fc" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">{legende.solide}</text>
       </g>
 
-      {/* Liquide : même densité, mais les particules glissent */}
+      {/*
+        Liquide : seize particules, comme le solide et le gaz.
+
+        Elles étaient douze contre seize et six — la matière semblait
+        disparaître d'un état à l'autre, sous une légende qui dit « rien ne se
+        perd, tout revient ». C'est exactement l'idée reçue que la carte
+        corrige.
+
+        Le désordre vient de `DESORDRE` : rangées désalignées, particules
+        toujours au contact. Une grille parfaite ne distinguait le liquide du
+        solide que par son récipient.
+      */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <path d="M152 70 v94 h94 v-94" fill="none" stroke="#2c3f66" strokeWidth="2" />
-        {RANGEE.slice(0, 3).map((r) =>
-          RANGEE.slice(0, 4).map((c) => (
-            <circle key={`${r}-${c}`} cx={168 + c * 22} cy={110 + r * 20} r="7" fill="#38bdf8">
-              {anime && phase === 1 && (
-                <animate
-                  attributeName="cx"
-                  values={`${168 + c * 22};${176 + c * 22};${164 + c * 22};${168 + c * 22}`}
-                  dur="2.4s" begin={`${(r + c) * 0.15}s`} repeatCount="indefinite"
-                />
-              )}
-            </circle>
-          )),
+        {RANGEE.slice(0, 4).map((r) =>
+          RANGEE.slice(0, 4).map((c) => {
+            const [dx, dy] = DESORDRE[r * 4 + c];
+            const x = 168 + c * 22 + dx;
+            const y = 88 + r * 20 + dy;
+            return (
+              <circle key={`${r}-${c}`} cx={x} cy={y} r="7" fill="#38bdf8">
+                {anime && phase === 1 && (
+                  <animate
+                    attributeName="cx"
+                    values={`${x};${x + 8};${x - 4};${x}`}
+                    dur="2.4s" begin={`${(r + c) * 0.15}s`} repeatCount="indefinite"
+                  />
+                )}
+              </circle>
+            );
+          }),
         )}
         <text x="168" y="186" fill="#38bdf8" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">{legende.liquide}</text>
       </g>
@@ -81,7 +117,7 @@ export function EtatsMatiereAnimation({
       {/* Gaz : dispersé, invisible — le nuage blanc n'en est pas */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <rect x="276" y="70" width="100" height="94" rx="8" fill="none" stroke="#2c3f66" strokeWidth="2" />
-        {[[294, 92], [340, 84], [364, 118], [302, 138], [332, 152], [356, 96]].map(([cx, cy], i) => (
+        {GAZ.map(([cx, cy], i) => (
           <circle key={i} cx={cx} cy={cy} r="6" fill="#bae6fd" opacity="0.85">
             {anime && phase === 2 && (
               <animate

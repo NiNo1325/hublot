@@ -60,8 +60,27 @@ export function PhasesLuneAnimation({
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
         <g>
           <circle cx="258" cy="104" r="14" fill="#1b2a4a" />
-          {/* Demi-disque clair tourné vers le Soleil. */}
-          <path d="M258 90 A14 14 0 0 0 258 118 Z" fill="#f5f0e6" />
+          {/*
+            Demi-disque clair tourné vers le Soleil — et il doit le rester tout
+            au long de l'orbite.
+
+            Il vivait dans le groupe qui tourne autour de la Terre, donc sa
+            moitié claire restait tournée vers **la Terre** : la Lune se
+            présentait pleine en permanence, ce qui annulait le mécanisme même
+            que cette carte explique. On lui applique donc une contre-rotation
+            de même durée autour de son propre centre : l'orbite la déplace,
+            la contre-rotation lui garde son cap vers le Soleil, à gauche.
+          */}
+          <g>
+            <path d="M258 90 A14 14 0 0 0 258 118 Z" fill="#f5f0e6" />
+            {anime && phase >= 2 && (
+              <animateTransform
+                attributeName="transform" type="rotate"
+                from="0 258 104" to="-360 258 104"
+                dur="14s" repeatCount="indefinite"
+              />
+            )}
+          </g>
           {anime && phase >= 2 && (
             <animateTransform
               attributeName="transform" type="rotate"

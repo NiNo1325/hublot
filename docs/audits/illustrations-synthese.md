@@ -31,47 +31,66 @@ cœur pédagogique de Hublot — sont massivement bien tenues.
 | informatique | 2 | — |
 | meteo | 1 | — |
 
-## Les neuf défauts graves
+## Les neuf défauts graves — tous corrigés le 22/08/2026
 
-Tous ont la même forme : **une carte qui existe pour corriger une idée reçue
-montre exactement cette idée reçue, ou son inverse.** Ce sont ceux à traiter en
-premier — chacun est une retouche de quelques lignes de SVG.
+Ils avaient tous la même forme : **une carte qui existe pour corriger une idée
+reçue montrait exactement cette idée reçue, ou son inverse.** Chaque correction
+a été vérifiée à l'œil sur une capture refaite, et pas seulement au typage.
 
-1. **Les saisons sont à l'envers.** `SaisonsAnimation.tsx` ligne 32 : les deux
-   Terres portent `rotate(-23)`, si bien que la Terre étiquetée « été » penche à
-   l'opposé du Soleil. La carte enseigne le contraire de ce qu'elle montre.
-2. **La Lune serait toujours pleine.** `PhasesLuneAnimation.tsx` lignes 61-72 :
-   le demi-disque clair est *dans* le groupe animé, donc solidaire de la
-   direction de la Terre pendant toute l'orbite. Le mécanisme même des phases est
-   annulé.
-3. **Le muscle de la chair de poule s'allonge** (30 → 67) quand le texte dit
-   « se contracte ». `LaChairDePouleAnimation.tsx`.
-4. **La matière disparaît en changeant d'état** : 16 particules dans le solide,
-   12 dans le liquide, 6 dans le gaz — sous la légende « rien ne se perd, tout
-   revient ». `EtatsMatiereAnimation.tsx`.
-5. **On pèse 60 kg sur la Lune comme sur Terre**, mis en avant au moment où le
-   texte dit « six fois moins ». `PoidsMasseAnimation.tsx` : rien ne dépend des
-   phases 0 et 1.
-6. **Le tsunami reste sous la surface de la mer** : la crête plafonne à y≈125,
-   la surface est à y≈96. `LaVagueGeanteAnimation.tsx` ligne 87.
-7. **On ne flotte jamais à la surface** dans la mer Morte — le corps reste
-   immergé aux quatre phases. `PourquoiOnFlotteMieuxDansLaMerAnimation.tsx`.
-8. **Les humains au premier quart de l'année de la Terre**, alors que la carte
-   enseigne « les toutes dernières minutes du 31 décembre ».
+1. **Les saisons étaient à l'envers.** Les deux Terres portaient `rotate(-23)`,
+   si bien que celle étiquetée « été » penchait à l'opposé du Soleil. Le signe
+   est inversé — en SVG l'axe des y descend, donc `rotate(23)` envoie le pôle
+   nord vers la droite, vers le Soleil. Les deux axes restent parallèles, ce qui
+   est précisément ce qui produit les saisons.
+   `SaisonsAnimation.tsx`.
+2. **La Lune était toujours pleine.** Son demi-disque clair vivait dans le
+   groupe qui tourne autour de la Terre, donc il lui faisait face en permanence.
+   Il reçoit désormais une contre-rotation de même durée autour du centre de la
+   Lune : l'orbite la déplace, son cap vers le Soleil ne bouge plus.
+   `PhasesLuneAnimation.tsx`.
+3. **Le muscle de la chair de poule s'allongeait** en se contractant (30 → 67).
+   Il court maintenant de l'épiderme au bas du follicule et passe de 58 à 46 en
+   tirant. Au passage, le poil a reçu la racine qui lui manquait : le muscle
+   tirait littéralement sur le vide. `LaChairDePouleAnimation.tsx`.
+4. **La matière disparaissait en changeant d'état** — 16 particules, puis 12,
+   puis 6, sous la légende « rien ne se perd, tout revient ». Les trois états en
+   comptent seize, et le liquide a été désordonné : une grille parfaite ne le
+   distinguait du solide que par son récipient. `EtatsMatiereAnimation.tsx`.
+5. **On pesait 60 kg sur la Lune comme sur Terre**, mis en avant au moment même
+   où le texte dit « six fois moins ». La mise en avant suit désormais ce que dit
+   chaque beat : le poids à « balance », la masse à « deux choses ». La balance
+   que le texte nomme a été dessinée. `PoidsMasseAnimation.tsx`.
+6. **Le tsunami restait sous la surface de la mer** : crête à y≈140 pour une
+   surface à y≈96. La crête monte à y≈44 et la lèvre retombe sur la côte ; une
+   ligne de surface a été tracée pour que la hauteur se lise.
+   `LaVagueGeanteAnimation.tsx`.
+7. **On ne flottait jamais à la surface** en mer Morte : le corps restait 56 px
+   sous la ligne d'eau. Il la chevauche maintenant, moitié dedans, moitié
+   dehors. Et les flèches de la poussée d'Archimède, qui pointaient sur le côté,
+   pointent vers le haut — le marqueur était dessiné pointe en haut, donc couché
+   de 90° par `orient="auto"`.
+   `PourquoiOnFlotteMieuxDansLaMerAnimation.tsx`.
+8. **Les humains occupaient le premier quart de l'année de la Terre.** L'arc
+   court désormais sur 355°, la marque humaine tient les tout derniers degrés,
+   et les deux dates encadrent le sommet — l'année y boucle.
    `IlYaTresTresLongtempsAnimation.tsx`.
-9. **Le blanc d'œuf devient jaune** quand le texte dit « le blanc devient dur et
-   blanc ».
+9. **Le blanc d'œuf devenait jaune.** Il est blanc et opaque, seul le jaune
+   reste jaune. `PourquoiLoeufDurcitAnimation.tsx`.
 
-## Deux défauts qui dépassent l'illustration
+## Deux défauts qui dépassaient l'illustration — corrigés
 
-- **`ElectriciteAnimation.tsx` : les cercles d'électrons n'ont ni `cx` ni `cy`.**
-  Sans animation — réglage système « mouvement réduit », donc un enfant qui en a
-  besoin — ils s'empilent tous en 0,0. L'illustration est cassée, pas seulement
-  imprécise.
-- **`LesEmpreintesDigitalesAnimation.tsx` : l'empreinte du jumeau est hors du
-  cadre.** `translate(-108 90)` la place à x = −45 dans un `viewBox` qui commence
-  à 0. La phase repose entièrement sur une comparaison, et il n'y a rien à
-  comparer.
+- **Les électrons n'avaient ni `cx` ni `cy`** : dès que l'animation ne tournait
+  pas — circuit ouvert, lecture en pause, ou réglage « mouvement réduit » — les
+  cinq s'empilaient en 0,0. Ils ont désormais cinq positions réparties le long
+  du circuit, posées **seulement** quand le mouvement ne joue pas, car
+  `animateMotion` s'ajoute à la position propre au lieu de la remplacer. Et ceux
+  dont le départ est différé restent invisibles au lieu de stationner dans le
+  coin. `ElectriciteAnimation.tsx`.
+- **L'empreinte du jumeau était hors du cadre** : `translate(-108 90)` la plaçait
+  à x = −45 dans un `viewBox` qui commence à 0, alors que la phase repose
+  entièrement sur la comparaison des deux. Elle est ramenée à gauche du doigt
+  principal, un peu plus grande et moins pâle.
+  `LesEmpreintesDigitalesAnimation.tsx`.
 
 ## Le motif dominant des défauts mineurs
 
@@ -112,3 +131,11 @@ presque partout :
 - Une illustration sert **les trois registres à la fois** : la question n'est donc
   pas « colle-t-elle au texte » mais « en contredit-elle un des trois ». Plusieurs
   défauts signalés ne concernent que le niveau 3-5.
+
+## Ce qui reste
+
+Les **soixante-douze défauts de gravité moyenne et basse** listés dans les
+rapports par monde n'ont pas été traités. Ils tiennent presque tous en une
+phrase : *l'élément nommé par la phrase n'est pas dessiné*. Aucun n'enseigne
+quelque chose de faux ; ils affaiblissent seulement le lien entre l'image et son
+texte. Ils forment une liste de travail utilisable telle quelle, monde par monde.

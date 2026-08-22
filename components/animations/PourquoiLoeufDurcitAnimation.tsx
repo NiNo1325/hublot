@@ -93,11 +93,18 @@ export function PourquoiLoeufDurcitAnimation({
         <text x="66" y="216" fill="#6366f1" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.accrochent}</text>
       </g>
 
-      {/* Phase 4 : le blanc devient solide et opaque, pour toujours */}
+      {/*
+        Phase 4 : le blanc devient solide et opaque, pour toujours.
+
+        Il virait au jaune vif, jaune d'œuf compris : l'enfant entendait « le
+        blanc devient dur et blanc » en regardant un blanc d'œuf devenir jaune,
+        et c'est le jaune qu'il aurait appris à appeler « le blanc ». Le blanc
+        cuit est désormais blanc et opaque ; seul le jaune reste jaune.
+      */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <ellipse cx="200" cy="170" rx="66" ry="42" fill="#fde047" />
+        <ellipse cx="200" cy="170" rx="66" ry="42" fill="#f8fafc" />
         <ellipse cx="200" cy="170" rx="26" ry="18" fill="#fbbf24" />
-        <text x="88" y="216" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.dur}</text>
+        <text x="88" y="232" fill="#e7e5e4" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.dur}</text>
       </g>
       </g>
     </svg>

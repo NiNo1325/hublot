@@ -85,13 +85,25 @@ export function IlYaTresTresLongtempsAnimation({
       {/* Phase 4 : toute l'histoire de la Terre ramenée à une année */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <circle cx="200" cy="112" r="70" fill="none" stroke="#3f3a55" strokeWidth="20" />
+        {/*
+          L'histoire de la Terre couvre presque tout l'anneau, et les humains
+          n'en occupent que les tout derniers degrés.
+
+          L'arc s'arrêtait à trois heures — un quart du cercle — et la marque
+          humaine avec lui : la carte plaçait les humains au premier quart de
+          l'année, alors qu'elle enseigne « les toutes dernières minutes du
+          31 décembre ». C'était l'intuition même qu'elle veut corriger.
+
+          `1 1` : le grand arc, dans le sens des aiguilles, sur 355°.
+        */}
         <path
-          d="M200 42 A70 70 0 0 1 268 106"
+          d="M200 42 A70 70 0 1 1 193.9 42.3"
           fill="none" stroke="#c8a97e" strokeWidth="20"
         />
-        <path d="M266 100 A70 70 0 0 1 268 112" fill="none" stroke="#7dd3fc" strokeWidth="20" strokeLinecap="round" />
-        <text x="200" y="42" textAnchor="middle" fill="#a8a29e" fontSize="12" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.janvier}</text>
-        <text x="200" y="196" textAnchor="middle" fill="#a8a29e" fontSize="12" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.decembre}</text>
+        <path d="M184.3 43.8 A70 70 0 0 1 193.9 42.3" fill="none" stroke="#7dd3fc" strokeWidth="20" strokeLinecap="round" />
+        {/* L'année boucle au sommet : décembre juste avant, janvier juste après. */}
+        <text x="250" y="34" textAnchor="start" fill="#a8a29e" fontSize="12" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.janvier}</text>
+        <text x="150" y="34" textAnchor="end" fill="#a8a29e" fontSize="12" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.decembre}</text>
         <text x="80" y="226" fill="#7dd3fc" fontSize="14" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.minutes}</text>
       </g>
     </svg>

@@ -26,10 +26,23 @@ const LEGENDES = {
   },
 };
 
-/** Terre inclinée, avec son axe et son hémisphère nord marqué. */
+/**
+ * Terre inclinée, avec son axe et son hémisphère nord marqué.
+ *
+ * Le signe de la rotation n'est pas indifférent : en SVG, l'axe des y descend,
+ * si bien que `rotate(23)` envoie le pôle nord vers la droite. La Terre d'été
+ * étant à gauche du Soleil, c'est ce sens-là qui la fait pencher vers lui.
+ * Avec `rotate(-23)`, elle penchait à l'opposé — la carte montrait exactement
+ * l'inverse de ce qu'elle enseigne, et l'inclinaison est le seul repère visuel
+ * dont dispose l'enfant.
+ *
+ * Les deux Terres partagent la même valeur, et doivent la garder : des axes
+ * parallèles aux deux positions de l'orbite, c'est précisément ce qui produit
+ * les saisons.
+ */
 function Terre({ x, y }: { x: number; y: number }) {
   return (
-    <g transform={`translate(${x} ${y}) rotate(-23)`}>
+    <g transform={`translate(${x} ${y}) rotate(23)`}>
       <circle r="26" fill="#2563eb" />
       <path d="M-26 0 A26 26 0 0 1 26 0 Z" fill="#38bdf8" />
       <line x1="0" y1="-36" x2="0" y2="36" stroke="#f5f0e6" strokeWidth="2" strokeDasharray="4 4" />

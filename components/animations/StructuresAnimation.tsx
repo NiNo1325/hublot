@@ -38,6 +38,15 @@ export function StructuresAnimation({
       <rect width="400" height="240" fill="#0f1b33" />
       <path d="M0 216 h400 v24 H0 Z" fill="#1b2a4a" />
 
+      {/*
+        Le tablier sous les roues.
+
+        Le camion était en lévitation : la charge de la première phase ne
+        s'appliquait sur rien, alors que toute la carte parle de la faire
+        descendre dans une structure.
+      */}
+      <rect x="30" y="60" width="356" height="8" rx="2" fill="#2c3f66" />
+
       {/* Charge appliquée */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
         <rect x="168" y="24" width="64" height="26" rx="6" fill="#fb923c" />
@@ -85,6 +94,16 @@ export function StructuresAnimation({
 
       {/* Arc : la charge glisse vers les appuis. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
+        {/*
+          Une charpente triangulée, pour le « plein de triangles » du niveau 3-5.
+
+          La phase n'allumait qu'un arc, et le seul triangle de la scène restait
+          éteint : le petit entendait « plein de triangles » devant une courbe.
+        */}
+        <path
+          d="M44 108 h240 M44 70 h240 M44 108 L84 70 L124 108 L164 70 L204 108 L244 70 L284 108"
+          fill="none" stroke="#38bdf8" strokeWidth="3.5" strokeLinejoin="round" strokeLinecap="round"
+        />
         <path
           d="M296 190 Q340 106 384 190"
           fill="none" stroke="#38bdf8" strokeWidth="7" strokeLinecap="round"

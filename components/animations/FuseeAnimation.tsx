@@ -36,6 +36,7 @@ export function FuseeAnimation({
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
+  const largue = phase === 3;
   const legende = localise(LEGENDES, locale);
 
   return (
@@ -66,13 +67,37 @@ export function FuseeAnimation({
         </text>
       </g>
 
-      {/* La fusée : corps, coiffe, et gaz éjecté vers le bas */}
+      {/*
+        La fusée : coiffe, premier étage détachable, et gaz éjecté vers le bas.
+
+        « Elle largue ses étages » se lisait sur une fusée restée entière, à
+        côté d'un petit carré qui glissait sans lui avoir jamais appartenu. Le
+        premier étage fait maintenant partie de la fusée : c'est lui qui part,
+        avec ses ailerons, et la flamme passe sous l'étage qui reste.
+      */}
       <g>
-        <path d="M200 62 q14 18 14 40 l0 46 l-28 0 l0 -46 q0 -22 14 -40 z" fill="#e2e8f0" />
-        <path d="M186 132 l-12 22 l12 0 z" fill="#94a3b8" />
-        <path d="M214 132 l12 22 l-12 0 z" fill="#94a3b8" />
+        <path d="M200 62 q14 18 14 40 l0 18 l-28 0 l0 -18 q0 -22 14 -40 z" fill="#e2e8f0" />
         <circle cx="200" cy="98" r="6" fill="#38bdf8" />
-        <path d="M188 150 q12 30 12 44 q0 -14 12 -44 z" fill="#fb923c">
+
+        <g
+          style={{
+            transformOrigin: '200px 135px',
+            transform: largue ? 'translate(26px, 70px) rotate(20deg)' : 'translate(0px, 0px)',
+            opacity: largue ? 0.7 : 1,
+            transition: prefersReducedMotion
+              ? undefined
+              : 'transform 1600ms ease-in, opacity 1600ms ease-in',
+          }}
+        >
+          <rect x="186" y="120" width="28" height="30" fill="#cbd5e1" />
+          <path d="M186 132 l-12 22 l12 0 z" fill="#94a3b8" />
+          <path d="M214 132 l12 22 l-12 0 z" fill="#94a3b8" />
+        </g>
+
+        <path
+          d={largue ? 'M192 120 q8 22 8 32 q0 -10 8 -32 z' : 'M188 150 q12 30 12 44 q0 -14 12 -44 z'}
+          fill="#fb923c"
+        >
           {anime && (
             <animate attributeName="opacity" values="1;0.5;1" dur="0.6s" repeatCount="indefinite" />
           )}
@@ -107,11 +132,6 @@ export function FuseeAnimation({
 
       {/* L'étage vide, largué en route */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <rect x="290" y="120" width="24" height="30" rx="3" fill="none" stroke="#94a3b8" strokeWidth="3">
-          {anime && phase === 3 && (
-            <animate attributeName="y" values="120;190" dur="2.6s" repeatCount="indefinite" />
-          )}
-        </rect>
         <text x="14" y="234" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.etages}
         </text>

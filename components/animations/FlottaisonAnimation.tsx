@@ -59,11 +59,25 @@ export function FlottaisonAnimation({
 
       {/* La coque creuse : même matière, elle flotte */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
-        <path d="M204 100 h96 l-16 40 h-64 z" fill="#94a3b8">
+        {/*
+          Une coque, c'est-à-dire une paroi et de l'air dedans.
+
+          Le trapèze était uniformément plein, de la teinte exacte de la boule
+          qui vient de couler : ni paroi, ni creux. Or le creux est le seul
+          changement entre l'objet qui coule et celui qui flotte, et c'est tout
+          le propos de la phase.
+        */}
+        {/* L'air enfermé, peint de la couleur du ciel : sans lui, le creux
+            laissait voir la mer et la coque semblait pleine d'eau. */}
+        <path d="M211 100 L224 133 L280 133 L293 100 Z" fill="#0f1b33" />
+        <path d="M204 100 L220 140 L284 140 L300 100 L293 100 L280 133 L224 133 L211 100 Z" fill="#94a3b8">
           {anime && phase >= 2 && (
             <animate attributeName="opacity" values="0.9;1;0.9" dur="2.4s" repeatCount="indefinite" />
           )}
         </path>
+        {[[240, 118], [258, 112], [268, 124]].map(([cx, cy]) => (
+          <circle key={cx} cx={cx} cy={cy} r="3.5" fill="#e0f2fe" opacity="0.5" />
+        ))}
         <text x="196" y="84" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.coque}
         </text>

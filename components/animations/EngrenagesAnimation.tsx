@@ -28,16 +28,27 @@ function Roue({
   cx: number; cy: number; rayon: number; dents: number;
   couleur: string; duree: number; inverse: boolean; anime: boolean;
 }) {
-  const hauteurDent = rayon * 0.22;
+  /*
+    Denture au même module sur les deux roues.
+
+    La hauteur et l'épaisseur des dents étaient proportionnelles au rayon : la
+    grande roue avait donc des dents plus grosses que le petit pignon, et les
+    deux ne pouvaient pas engrener. Elles se déduisent maintenant du pas — la
+    circonférence divisée par le nombre de dents —, qui vaut le même sur les
+    deux roues dès lors que le rayon suit le nombre de dents.
+  */
+  const pas = (2 * Math.PI * rayon) / dents;
+  const largeurDent = pas * 0.48;
+  const hauteurDent = ((2 * rayon) / dents) * 2.2;
   return (
     <g>
       <g>
         {Array.from({ length: dents }).map((_, i) => (
           <rect
             key={i}
-            x={cx - rayon * 0.09}
+            x={cx - largeurDent / 2}
             y={cy - rayon - hauteurDent}
-            width={rayon * 0.18}
+            width={largeurDent}
             height={hauteurDent + 2}
             rx="1.5"
             fill={couleur}
@@ -74,16 +85,23 @@ export function EngrenagesAnimation({
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
       <rect width="400" height="240" fill="#0f1b33" />
 
-      {/* Petit pignon : 10 dents, rapide */}
-      <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
-        <Roue cx={126} cy={120} rayon={38} dents={10} couleur="#fb923c" duree={3} inverse={false} anime={anime} />
-        <text x="98" y="192" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.petit}</text>
-      </g>
-
       {/* Grande roue : 30 dents, trois fois plus lente, sens inverse */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
-        <Roue cx={248} cy={120} rayon={72} dents={30} couleur="#38bdf8" duree={9} inverse anime={anime} />
-        <text x="222" y="212" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.grand}</text>
+        {/*
+          Trois fois plus de dents, donc trois fois le rayon, et un entraxe
+          exactement égal à la somme des deux rayons : les dentures s'engrènent
+          au lieu de se recouvrir. La grande roue faisait le double du petit
+          pignon, pas le triple, sous une étiquette qui disait « 30 dents ».
+        */}
+        <Roue cx={158} cy={140} rayon={60} dents={30} couleur="#38bdf8" duree={9} inverse anime={anime} />
+        <text x="248" y="146" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.grand}</text>
+      </g>
+
+      {/* Petit pignon : 10 dents, rapide. Dessiné après la grande roue,
+          sinon le disque de celle-ci lui mange la moitié du corps. */}
+      <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
+        <Roue cx={78} cy={140} rayon={20} dents={10} couleur="#fb923c" duree={3} inverse={false} anime={anime} />
+        <text x="42" y="200" fill="#fb923c" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">{legende.petit}</text>
       </g>
 
       {/* Le rapport */}

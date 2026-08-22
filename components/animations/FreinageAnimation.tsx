@@ -10,14 +10,16 @@ const LEGENDES = {
   fr: {
     freins: 'les freins chauffent',
     accroche: 'tout dépend de l’accroche',
-    bloquee: 'roue bloquée : moins bien',
+    roulante: 'roue qui roule',
+    bloquee: 'roue bloquée : plus loin',
     cinquante: '50 km/h',
     cent: '100 km/h : ×4',
   },
   en: {
     freins: 'the brakes heat up',
     accroche: 'it all rests on the grip',
-    bloquee: 'locked wheel: worse',
+    roulante: 'rolling wheel',
+    bloquee: 'locked wheel: further',
     cinquante: '50 km/h',
     cent: '100 km/h: ×4',
   },
@@ -25,7 +27,9 @@ const LEGENDES = {
 
 /**
  * Les deux barres du bas sont à l'échelle : celle de cent kilomètres par heure
- * fait exactement quatre fois la longueur de celle de cinquante. C'est le
+ * fait exactement quatre fois la longueur de celle de cinquante. Elles partent
+ * de x = 160 pour laisser la place à leur étiquette, que la plus longue
+ * recouvrait. C'est le
  * rapport dessiné qui corrige l'intuition du « deux fois plus vite, deux fois
  * plus loin ».
  */
@@ -81,23 +85,35 @@ export function FreinageAnimation({
 
       {/* La roue bloquée glisse : traces au sol, et plus de direction */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
-        {[264, 290, 316, 342].map((x) => (
-          <rect key={x} x={x} y="126" width="18" height="5" fill="#f87171" />
-        ))}
-        <text x="14" y="140" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        {/*
+          Deux distances d'arrêt, et non des traces seules.
+
+          Les traces de glissement disaient qu'il y a glissement, pas que la
+          distance d'arrêt s'allonge : la surprise annoncée par le texte ne
+          tenait qu'à la légende. Les deux barres partent du même trait et
+          celle de la roue bloquée va plus loin ; en pointillé, parce qu'elle
+          glisse.
+        */}
+        <line x1="218" y1="108" x2="218" y2="158" stroke="#94a3b8" strokeWidth="2" strokeDasharray="3 3" />
+        <rect x="224" y="118" width="90" height="10" rx="3" fill="#4ade80" />
+        <line x1="224" y1="145" x2="368" y2="145" stroke="#f87171" strokeWidth="10" strokeDasharray="14 6" />
+        <text x="14" y="127" fill="#4ade80" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+          {legende.roulante}
+        </text>
+        <text x="14" y="150" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.bloquee}
         </text>
       </g>
 
       {/* Les distances d'arrêt, au carré de la vitesse */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <rect x="100" y="176" width="60" height="14" rx="3" fill="#7dd3fc" />
+        <rect x="160" y="176" width="45" height="14" rx="3" fill="#7dd3fc" />
         <text x="14" y="188" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.cinquante}
         </text>
-        <rect x="100" y="206" width="240" height="14" rx="3" fill="#f87171">
+        <rect x="160" y="206" width="180" height="14" rx="3" fill="#f87171">
           {anime && phase === 3 && (
-            <animate attributeName="width" values="60;240" dur="1.8s" fill="freeze" />
+            <animate attributeName="width" values="45;180" dur="1.8s" fill="freeze" />
           )}
         </rect>
         <text x="14" y="218" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">

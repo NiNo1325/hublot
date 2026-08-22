@@ -31,6 +31,15 @@ const SCHEMA = [60, 96, 132, 168, 214, 258, 302, 346];
  */
 const REEL = [24, 30, 38, 48, 106, 176, 300, 380];
 
+/*
+  Le texte dit que « les huit planètes ne se rangent quasiment jamais en
+  ligne, contrairement aux images », et la rangée corrigée les alignait au
+  pixel. Chacune reçoit donc un écart vertical propre : le diagramme reste
+  lisible en distance, sans donner à voir l’alignement que la phrase nie. Les
+  géantes bougent peu, sinon elles mordent sur la ligne du vide.
+*/
+const ECART = [0, -12, 9, -7, 6, -9, 8, -12];
+
 const TAILLES = [3, 4.5, 4.5, 3.5, 12, 10, 7, 7];
 const GAZEUSE = [false, false, false, false, true, true, true, true];
 
@@ -69,7 +78,7 @@ export function PlanetesAnimation({
           <circle
             key={x}
             cx={x}
-            cy="176"
+            cy={176 + ECART[i]}
             r={TAILLES[i]}
             fill={typees ? (GAZEUSE[i] ? '#f59e0b' : '#a8a29e') : '#94a3b8'}
             style={{ transition: 'fill 900ms ease' }}

@@ -46,6 +46,29 @@ export function InternetAnimation({
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
         <path d="M0 150 h400 v90 H0 Z" fill="#0c2a4d" />
         <path d="M0 150 q25 -8 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 v8 H0 Z" fill="#123a66" />
+        {/*
+          Le câble, tracé.
+
+          La phase censée montrer le câble sous-marin ne montrait qu’une
+          étendue d’eau vide et un mot, et le seul chemin visible passait
+          au-dessus de l’océan — juste après un texte qui affirme que rien ne
+          voyage par le ciel. Il plonge de l’appareil source, longe le fond et
+          remonte chez le destinataire ; les paquets l’empruntent.
+        */}
+        <path
+          d="M43 104 V146 q0 32 42 36 h230 q42 -4 42 -36 V104"
+          fill="none" stroke="#7dd3fc" strokeWidth="4" strokeLinecap="round"
+        />
+        {[0, 1].map((i) => (
+          <circle key={i} r="5" fill="#a5f3fc" cx={anime ? 0 : 200} cy={anime ? 0 : 182}>
+            {anime && (
+              <animateMotion
+                dur="3.4s" begin={`${i * 1.4}s`} repeatCount="indefinite"
+                path="M43 104 V146 q0 32 42 36 h230 q42 -4 42 -36 V104"
+              />
+            )}
+          </circle>
+        ))}
         <text x="150" y="230" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.cables}
         </text>

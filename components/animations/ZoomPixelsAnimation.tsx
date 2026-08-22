@@ -95,6 +95,22 @@ export function ZoomPixelsAnimation({
             )}
           </rect>
         ))}
+        {/*
+          L’appareil qui s’approche du sujet.
+
+          Le niveau 3-5 conclut « pour bien voir les petites choses, il faut
+          prendre la photo de tout près », et la phase ne montrait que les
+          artefacts de compression : elle ne servait que les niveaux 6-8 et
+          9-12.
+        */}
+        <g transform="translate(24 168)">
+          <rect x="0" y="-12" width="34" height="24" rx="4" fill="#1e293b" stroke="#fbbf24" strokeWidth="2" />
+          <circle cx="17" cy="0" r="7" fill="none" stroke="#fbbf24" strokeWidth="2" />
+          <rect x="6" y="-17" width="11" height="5" rx="2" fill="#fbbf24" />
+        </g>
+        <path d="M66 168 h42" stroke="#fbbf24" strokeWidth="2.5" strokeDasharray="5 4" fill="none" />
+        <path d="M104 162 L118 168 L104 174 Z" fill="#fbbf24" />
+        <circle cx="140" cy="168" r="14" fill="#64748b" />
         <text x="14" y="210" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.carres}
         </text>

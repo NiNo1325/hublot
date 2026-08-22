@@ -66,7 +66,16 @@ export function NeigeAnimation({
 
       {/* Phase 1 : pas de la pluie gelée (goutte → glace ronde, barré) */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
-        <path d="M90 60 q-10 14 0 22 a11 11 0 0 1 -22 0 q10 -8 11 -22 q1 14 11 22" fill="#38bdf8" transform="translate(-4 0)" />
+        {/*
+          La goutte barrée n’est plus une larme pointue.
+
+          Dans ce même monde, `la-forme-des-gouttes-de-pluie` enseigne que « les
+          vraies gouttes n’ont jamais cette forme pointue » et barre exactement
+          ce pictogramme : l’enfant voyait ici la larme que la carte voisine lui
+          apprend à rejeter. Le barré, lui, reste — il porte sur la
+          transformation, pas sur la forme.
+        */}
+        <path d="M66 74 q0 -18 14 -18 q14 0 14 18 q0 11 -14 11 q-14 0 -14 -11 z" fill="#38bdf8" />
         <line x1="120" y1="76" x2="150" y2="76" stroke="#93a4c4" strokeWidth="2" />
         <path d="M146 71 L156 76 L146 81 Z" fill="#93a4c4" />
         <circle cx="176" cy="76" r="12" fill="#bae6fd" />

@@ -96,14 +96,25 @@ export function PhasesLuneAnimation({
         est droite ou courbée vers l'intérieur — jamais l'arc d'une ombre.
       */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
+        {/*
+          Pleine, quartier, croissant, nouvelle — dans cet ordre.
+
+          Le texte 3-5 dit « toute ronde, puis en croissant, puis presque
+          cachée », et les quatre vignettes montraient pleine, nouvelle,
+          quartier et gibbeuse : aucun croissant, si bien que l’enfant
+          associait le mot au demi-disque du quartier. Le croissant se trace en
+          soustrayant du demi-disque une lentille de même sens, ce qui demande
+          `fillRule="evenodd"` — deux sous-tracés enroulés pareil s’additionnent
+          autrement.
+        */}
         {[
-          { cx: 316, label: 'nouvelle', clair: '' },
-          { cx: 348, label: 'quartier', clair: 'M348 176 A16 16 0 0 1 348 208 Z' },
-          { cx: 380, label: 'gibbeuse', clair: 'M380 176 A16 16 0 0 1 380 208 Z M380 176 A9 16 0 0 0 380 208 Z' },
+          { cx: 316, label: 'quartier', clair: 'M316 176 A16 16 0 0 1 316 208 Z' },
+          { cx: 348, label: 'croissant', clair: 'M348 176 A16 16 0 0 1 348 208 Z M348 176 A9 16 0 0 1 348 208 Z' },
+          { cx: 380, label: 'nouvelle', clair: '' },
         ].map(({ cx, clair }) => (
           <g key={cx}>
             <circle cx={cx} cy="192" r="16" fill="#1b2a4a" stroke="#2c3f66" strokeWidth="1.5" />
-            {clair && <path d={clair} fill="#f5f0e6" />}
+            {clair && <path d={clair} fill="#f5f0e6" fillRule="evenodd" />}
           </g>
         ))}
         <circle cx="284" cy="192" r="16" fill="#f5f0e6" />

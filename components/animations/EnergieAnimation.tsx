@@ -43,25 +43,33 @@ export function EnergieAnimation({
 
       {/* La chaîne de conversions : soleil, éolienne, ampoule */}
       <circle cx="60" cy="88" r="20" fill="#fde047" />
+      {/*
+        L’éolienne a des pales, et elles restent visibles à l’arrêt.
+
+        Trois traits partaient du sommet du mât, mais aucune capture ne les a
+        jamais montrés : ce qui tourne — précisément ce que la phrase demande
+        de voir — se lisait comme un simple bâton gris. Ce sont maintenant des
+        pales pleines, effilées, tournées autour d’un moyeu dessiné.
+      */}
       <g>
-        <line x1="190" y1="70" x2="190" y2="112" stroke="#94a3b8" strokeWidth="4" />
-        <g style={{ transformOrigin: '190px 70px' }}>
+        <path d="M184 134 L196 134 L192.5 76 L187.5 76 Z" fill="#94a3b8" />
+        <g>
           {[0, 120, 240].map((a) => (
-            <line
+            <path
               key={a}
-              x1="190" y1="70"
-              x2={190 + Math.cos((a * Math.PI) / 180) * 26}
-              y2={70 + Math.sin((a * Math.PI) / 180) * 26}
-              stroke="#e2e8f0" strokeWidth="4"
+              d="M188 74 L185.5 50 L190 42 L194 50 L192 74 Z"
+              fill="#e2e8f0"
+              transform={`rotate(${a} 190 76)`}
             />
           ))}
           {anime && (
             <animateTransform
               attributeName="transform" type="rotate"
-              from="0 190 70" to="360 190 70" dur="3s" repeatCount="indefinite"
+              from="0 190 76" to="360 190 76" dur="3s" repeatCount="indefinite"
             />
           )}
         </g>
+        <circle cx="190" cy="76" r="4.5" fill="#64748b" />
       </g>
       <g>
         <circle cx="320" cy="82" r="17" fill={degrade ? '#fde047' : '#64748b'} style={{ transition: 'fill 900ms ease' }} />

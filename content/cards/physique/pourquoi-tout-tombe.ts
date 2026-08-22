@@ -31,7 +31,7 @@ export const card: ScienceCard = {
             },
             {
               id: 'plume',
-              text: "Une plume tombe plus lentement qu'une bille. Ce n'est pas parce qu'elle est légère : c'est l'air qui la freine, comme un tout petit parachute.",
+              text: "Une plume tombe plus lentement qu'un marteau. Ce n'est pas parce qu'elle est légère : c'est l'air qui la freine, comme un tout petit parachute.",
             },
             {
               id: 'lune',

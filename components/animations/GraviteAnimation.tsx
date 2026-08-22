@@ -72,26 +72,44 @@ export function GraviteAnimation({
         </text>
       </g>
 
-      {/* Bille et plume : même chute quand l'air ne s'en mêle plus. */}
+      {/* Marteau et plume : même chute quand l'air ne s'en mêle plus. */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
-        <circle cx="300" cy="56" r="11" fill="#b9c4da">
+        {/*
+          Un marteau et une plume, et non une bille et une amande crème.
+
+          Deux registres sur trois nomment le marteau — c’est l’expérience
+          d’Apollo 15 — et l’image montrait une bille ; la plume, elle, se
+          lisait plutôt comme une feuille ou une goutte. Le marteau a sa tête
+          et son manche, la plume son rachis et ses barbes.
+        */}
+        <g>
+          <rect x="286" y="46" width="30" height="12" rx="2" fill="#b9c4da" />
+          <path d="M316 46 l7 6 l-7 6 z" fill="#b9c4da" />
+          <rect x="297" y="58" width="7" height="28" rx="2.5" fill="#a16207" />
           {anime && (
-            <animate
-              attributeName="cy" values="56;196" dur="1.4s" repeatCount="indefinite"
+            <animateTransform
+              attributeName="transform" type="translate"
+              values="0 0; 0 140" dur="1.4s" repeatCount="indefinite"
             />
           )}
-        </circle>
-        <path d="M348 56 q10 12 0 22 q-10 -10 0 -22 z" fill="#f5f0e6">
+        </g>
+        <g>
+          <path d="M348 48 q11 12 8 26 q-2 10 -8 14 q-6 -4 -8 -14 q-3 -14 8 -26 z" fill="#f5f0e6" />
+          <path d="M348 50 V88" stroke="#94a3b8" strokeWidth="1.6" fill="none" />
+          <path
+            d="M348 58 l-7 6 M348 58 l7 6 M348 68 l-6 6 M348 68 l6 6 M348 78 l-4 5 M348 78 l4 5"
+            stroke="#94a3b8" strokeWidth="1.2" fill="none"
+          />
           {anime && (
             <animateTransform
               attributeName="transform" type="translate"
               values="0 0; 0 140"
-              /* Sans air, la plume met le même temps que la bille. */
+              /* Sans air, la plume met le même temps que le marteau. */
               dur={sansAir ? '1.4s' : '3.4s'}
               repeatCount="indefinite"
             />
           )}
-        </path>
+        </g>
 
         {/* La résistance de l'air : une flèche vers le haut, sur la plume. */}
         {!sansAir && (

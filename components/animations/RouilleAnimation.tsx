@@ -36,7 +36,17 @@ export function RouilleAnimation({
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
   const anime = isPlaying && !prefersReducedMotion;
-  const rouille = phase >= 2;
+  /*
+    Le clou est rouillé dès la première phase, et redevient sain sous la
+    peinture.
+
+    « Regarde ce vieux clou : il est orange et tout rugueux » se disait sur un
+    clou gris acier et lisse — la seule phase où la rouille était invisible
+    était celle qui la définit. Elle s'y voit donc, avec ses aspérités ; le clou
+    est propre pendant qu'on explique l'eau et l'air, se transforme à la phase
+    qui le dit, et la dernière en protège un neuf.
+  */
+  const rouille = phase === 0 || phase === 2;
   const protege = phase === 3;
   const legende = localise(LEGENDES, locale);
 
@@ -56,9 +66,29 @@ export function RouilleAnimation({
           fill={rouille ? '#b45309' : '#94a3b8'}
           style={{ transition: 'fill 1400ms ease' }}
         />
-        {/* Peinture protectrice */}
+        {/* Les aspérités de la rouille : « orange et tout rugueux ». */}
+        {rouille && (
+          <g fill="#92400e">
+            <circle cx="176" cy="112" r="4" />
+            <circle cx="200" cy="128" r="4.5" />
+            <circle cx="228" cy="111" r="3.5" />
+            <circle cx="250" cy="129" r="4" />
+            <circle cx="192" cy="109" r="3" />
+            <circle cx="216" cy="130" r="3" />
+          </g>
+        )}
+
+        {/*
+          La peinture couvre tout le clou, pointe comprise : le liseré s'arrêtait
+          au ras du corps et laissait la pointe à nu, sur un clou déjà orange —
+          donc déjà rouillé — alors que la phase dit qu'elle sépare le fer de
+          l'eau et de l'air.
+        */}
         {protege && (
-          <rect x="150" y="108" width="120" height="24" rx="4" fill="none" stroke="#a855f7" strokeWidth="4" />
+          <path
+            d="M148 104 L128 120 L148 136 H274 V104 Z"
+            fill="#a855f7" fillOpacity="0.26" stroke="#a855f7" strokeWidth="3.5" strokeLinejoin="round"
+          />
         )}
       </g>
 

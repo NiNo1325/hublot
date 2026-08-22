@@ -27,11 +27,11 @@ export const card: ScienceCard = {
             },
             {
               id: 'deux',
-              text: 'Tu ouvres : le gaz peut enfin sortir.',
+              text: 'Le bouchon le garde prisonnier : il ne peut pas sortir.',
             },
             {
               id: 'trois',
-              text: 'Il fait plein de petites bulles qui montent.',
+              text: 'Tu ouvres, et il fait plein de petites bulles qui montent.',
             },
             {
               id: 'quatre',
@@ -96,11 +96,11 @@ export const card: ScienceCard = {
             },
             {
               id: 'deux',
-              text: 'You open it: at last the gas can get out.',
+              text: 'The cap keeps it prisoner: it cannot get out.',
             },
             {
               id: 'trois',
-              text: 'It makes lots of little bubbles that rise up.',
+              text: 'You open it, and it makes lots of little bubbles that rise up.',
             },
             {
               id: 'quatre',

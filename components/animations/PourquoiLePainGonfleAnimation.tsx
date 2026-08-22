@@ -57,10 +57,25 @@ export function PourquoiLePainGonfleAnimation({
       {/* Phase 2 : elle mange le sucre de la farine */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <ellipse cx="200" cy="140" rx="68" ry="24" fill="#fde68a" />
+        {/*
+          Du sucre visible dans la pâte, et deux grains qui disparaissent
+          dans la levure.
+
+          L’image était celle de la phase précédente à la légende près : les
+          deux carrés filaient sous la levure et s’y cachaient, et rien
+          n’identifiait le sucre. Cinq cristaux restent en place, deux partent
+          et s’effacent en arrivant — c’est ça, « la levure mange le sucre ».
+        */}
+        {[[150, 143], [172, 152], [234, 146], [248, 136], [188, 154]].map(([x, y]) => (
+          <rect key={x} x={x} y={y} width="8" height="8" rx="1.5" fill="#fffbeb" stroke="#f59e0b" strokeWidth="1.5" />
+        ))}
         {[176, 224].map((x, i) => (
-          <rect key={x} x={x} y="128" width="7" height="7" fill="#fbbf24">
+          <rect key={x} x={x} y="126" width="8" height="8" rx="1.5" fill="#fffbeb" stroke="#f59e0b" strokeWidth="1.5">
             {anime && (
-              <animate attributeName="x" values={`${x};197;197`} dur="1.8s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
+              <animate attributeName="x" values={`${x};196`} dur="1.8s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
+            )}
+            {anime && (
+              <animate attributeName="opacity" values="1;1;0" dur="1.8s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
             )}
           </rect>
         ))}

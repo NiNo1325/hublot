@@ -88,8 +88,23 @@ export function PourquoiLePopcornExploseAnimation({
 
       {/* Phase 4 : la coque cède, le grain explose */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <path d="M170 140 Q200 96 230 140 Q246 170 200 176 Q154 170 170 140 Z" fill="#fde047" />
-        <path d="M186 130 Q200 108 214 130 Q220 148 200 152 Q180 148 186 130 Z" fill="#fffbeb" />
+        {/*
+          Le grain faisait 58 unités de large ; la forme éclatée en fait 110 et
+          n’a plus de contour régulier. L’ancienne gardait la largeur du grain,
+          alors que l'expansion est tout le propos de la phase.
+        */}
+        <g fill="#fde047">
+          <circle cx="176" cy="140" r="25" />
+          <circle cx="216" cy="132" r="27" />
+          <circle cx="200" cy="164" r="25" />
+          <circle cx="236" cy="160" r="21" />
+          <circle cx="166" cy="166" r="20" />
+        </g>
+        <g fill="#fffbeb">
+          <circle cx="186" cy="138" r="15" />
+          <circle cx="212" cy="146" r="16" />
+          <circle cx="200" cy="126" r="12" />
+        </g>
         {[0, 1, 2].map((i) => (
           <circle key={i} cx={200} cy={150} r="2" fill="#fffbeb" opacity="0">
             {anime && (

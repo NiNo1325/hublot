@@ -75,8 +75,20 @@ export function PourquoiLaPommeBrunitAnimation({
 
       {/* Phase 4 : le citron ralentit le brunissement */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <path d="M200 76 Q150 78 150 140 Q150 194 200 194 Z" fill="#d6a35c" />
+        {/* La chair reste presque aussi claire qu’au départ : au brun tirant sur
+            l’ocre, l’effet du citron était invisible. */}
+        <path d="M200 76 Q150 78 150 140 Q150 194 200 194 Z" fill="#f6e7bd" />
         <circle cx="170" cy="100" r="10" fill="#fde047" />
+        {[[166, 120], [174, 134], [168, 150]].map(([cx, cy], i) => (
+          <circle key={cx} cx={cx} cy={cy} r="3.5" fill="#fde047" opacity="0.85">
+            {anime && (
+              <animate attributeName="cy" values={`${cy - 14};${cy + 8}`} dur="1.6s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
+            )}
+            {anime && (
+              <animate attributeName="opacity" values="0;0.9;0" dur="1.6s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
+            )}
+          </circle>
+        ))}
         <path d="M164 100 q6 -8 12 0" stroke="#a16207" strokeWidth="2" fill="none" />
         <text x="56" y="222" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.citron}</text>
       </g>

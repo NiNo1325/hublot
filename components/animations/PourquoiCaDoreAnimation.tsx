@@ -61,10 +61,12 @@ export function PourquoiCaDoreAnimation({
       {/* Phase 2 : sucres et protéines se rencontrent */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <rect x="140" y="140" width="120" height="36" rx="8" fill="#f5e9c8" />
-        <circle cx="170" cy="158" r="6" fill="#fbbf24">
+        {/* La rencontre se fait juste sous la croûte, et non au milieu de la
+            tranche : deux registres sur trois disent « à la surface ». */}
+        <circle cx="170" cy="147" r="6" fill="#fbbf24">
           {anime && <animate attributeName="cx" values="170;196;196" dur="1.8s" repeatCount="indefinite" />}
         </circle>
-        <circle cx="230" cy="158" r="6" fill="#f472b6">
+        <circle cx="230" cy="147" r="6" fill="#f472b6">
           {anime && <animate attributeName="cx" values="230;204;204" dur="1.8s" repeatCount="indefinite" />}
         </circle>
         <text x="82" y="210" fill="#fbbf24" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.sucres}</text>
@@ -73,7 +75,7 @@ export function PourquoiCaDoreAnimation({
       {/* Phase 3 : une réaction crée des molécules nouvelles */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
         <rect x="140" y="140" width="120" height="36" rx="8" fill="#e8c98a" />
-        <circle cx="200" cy="158" r="10" fill="#fb923c">
+        <circle cx="200" cy="147" r="10" fill="#fb923c">
           {anime && <animate attributeName="r" values="7;12;7" dur="1.4s" repeatCount="indefinite" />}
         </circle>
         {[0, 1, 2, 3].map((i) => {
@@ -82,9 +84,9 @@ export function PourquoiCaDoreAnimation({
             <line
               key={i}
               x1={200 + Math.cos(a) * 12}
-              y1={158 + Math.sin(a) * 12}
+              y1={147 + Math.sin(a) * 12}
               x2={200 + Math.cos(a) * 20}
-              y2={158 + Math.sin(a) * 20}
+              y2={147 + Math.sin(a) * 20}
               stroke="#fed7aa"
               strokeWidth="2"
             />
@@ -95,7 +97,11 @@ export function PourquoiCaDoreAnimation({
 
       {/* Phase 4 : c'est doré, et ça sent bon */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <rect x="140" y="140" width="120" height="36" rx="8" fill="#b45309" />
+        {/* Seule la croûte brunit : toute l’épaisseur virait à l’orange, alors
+            que la mie reste pâle et que c’est bien la surface qui dore. */}
+        <rect x="140" y="140" width="120" height="36" rx="8" fill="#f5e9c8" />
+        <path d="M148 140 h104 a8 8 0 0 1 8 8 v3 H140 v-3 a8 8 0 0 1 8 -8 z" fill="#b45309" />
+        <path d="M140 165 h120 v3 a8 8 0 0 1 -8 8 h-104 a8 8 0 0 1 -8 -8 z" fill="#b45309" />
         {[164, 200, 236].map((x, i) => (
           <path key={x} d={`M${x} 134 q8 -10 0 -20 q-8 -10 0 -20`} stroke="#fde047" strokeWidth="2" fill="none" opacity="0.8">
             {anime && (

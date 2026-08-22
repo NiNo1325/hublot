@@ -80,11 +80,14 @@ export function PourquoiLeLaitDevientYaourtAnimation({
 
       {/* Phase 4 : le lait épaissit en yaourt */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <path d="M150 96 h100 l-10 96 a40 20 0 0 1 -80 0 Z" fill="#fde047" />
+        {/* Un yaourt nature est blanc : peint en jaune vif, il brouillait l’idée
+            que c’est le lait, blanc crème, qui vient de s’épaissir. */}
+        <path d="M150 96 h100 l-10 96 a40 20 0 0 1 -80 0 Z" fill="#faf7f0" />
+        <ellipse cx="200" cy="96" rx="50" ry="9" fill="#ece7dd" />
         {[105, 122, 139, 156, 173].map((y) => (
           <line key={y} x1="162" y1={y} x2="238" y2={y} stroke="#fef9c3" strokeWidth="2" />
         ))}
-        <text x="80" y="212" fill="#fde047" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.yaourt}</text>
+        <text x="80" y="212" fill="#e7e5e4" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.yaourt}</text>
       </g>
     </svg>
   );

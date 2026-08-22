@@ -46,7 +46,19 @@ export function DissolutionAnimation({
 
       {/* Verre et eau */}
       <path d="M92 84 h108 l-10 112 h-88 Z" fill="#1b2a4a" stroke="#2c3f66" strokeWidth="3" />
-      <path d="M98 108 h96 l-8 86 h-80 Z" fill="#38bdf8" opacity="0.35" />
+      {/*
+        Le niveau d'eau baisse à la phase d'évaporation.
+
+        Le verre restait identique du début à la fin : seule l'évaporation était
+        dessinée, et le sucre ne réapparaissait jamais au fond — or son retour
+        est toute la démonstration de la phase (« il était bien là depuis le
+        début »).
+      */}
+      <path
+        d={phase === 3 ? 'M100 170 h92 l-8 24 h-76 Z' : 'M98 108 h96 l-8 86 h-80 Z'}
+        fill="#38bdf8"
+        opacity="0.35"
+      />
 
       {/* Sucre : groupé puis dispersé */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
@@ -97,15 +109,20 @@ export function DissolutionAnimation({
 
       {/* Évaporation : le sucre revient intact */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        {[262, 292, 322].map((x, i) => (
+        {/* Les gouttes qui s'échappent, au-dessus du verre et non de la balance. */}
+        {[122, 146, 170].map((x, i) => (
           <circle key={x} cx={x} cy="100" r="4" fill="#7dd3fc">
             {anime && phase === 3 && (
               <>
-                <animate attributeName="cy" values="104;56" dur="2.2s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
+                <animate attributeName="cy" values="104;48" dur="2.2s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0;0.9;0" dur="2.2s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
               </>
             )}
           </circle>
+        ))}
+        {/* Le sucre, redéposé au fond, intact. */}
+        {[[120, 186], [134, 189], [150, 186], [164, 189], [176, 186]].map(([x, y]) => (
+          <rect key={x} x={x} y={y} width="7" height="6" rx="1.5" fill="#f5f0e6" />
         ))}
         <text x="171" y="222" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.evaporation}

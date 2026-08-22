@@ -154,8 +154,24 @@ export function AimantsAnimation({
         <text x="284" y="212" fill="#34d399" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.fer}
         </text>
-        <path d="M276 144 h-28" stroke="#34d399" strokeWidth="3" strokeLinecap="round" />
-        <path d="M252 138 l-8 6 l8 6" fill="none" stroke="#34d399" strokeWidth="3" strokeLinecap="round" />
+        {/*
+          Un aimant entre les deux blocs, et deux liens qui les départagent.
+
+          La seule flèche de la phase partait du fer et pointait vers
+          l'aluminium — l'objet dont le texte dit justement qu'il ne réagit
+          pas — et aucun aimant n'était allumé pour dire ce qui tire. La
+          lecture immédiate était le contraire du propos.
+        */}
+        <rect x="248" y="118" width="12" height="26" rx="2" fill="#fb7185" />
+        <rect x="260" y="118" width="12" height="26" rx="2" fill="#e2e8f0" />
+
+        {/* Le fer est tiré vers l'aimant. */}
+        <path d="M288 131 h-10" stroke="#34d399" strokeWidth="3" strokeLinecap="round" />
+        <path d="M282 125 l-6 6 l6 6" fill="none" stroke="#34d399" strokeWidth="3" strokeLinecap="round" />
+
+        {/* Rien ne relie l'aluminium : le lien est barré. */}
+        <path d="M236 131 h10" stroke="#64748b" strokeWidth="2" strokeDasharray="3 3" />
+        <path d="M237 126 l8 10 M245 126 l-8 10" stroke="#f87171" strokeWidth="2.5" strokeLinecap="round" />
       </g>
 
       {/* Boussole : la Terre est un aimant */}

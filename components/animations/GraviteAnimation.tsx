@@ -112,7 +112,19 @@ export function GraviteAnimation({
       {/* La Lune en orbite : une chute permanente qui manque sa cible. */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <circle cx="200" cy="130" r="46" fill="none" stroke="#2c3f66" strokeWidth="2" strokeDasharray="5 7" />
-        <circle cx="246" cy="130" r="10" fill="#b9c4da">
+        {/*
+          La Terre, au centre de l'orbite.
+
+          Elle manquait : la Lune tournait autour de rien, alors que la phrase
+          dit « la Terre tire même sur la Lune ». Le corps qui attire, seul
+          sujet du texte, n'était pas dessiné.
+        */}
+        <circle cx="200" cy="130" r="18" fill="#2563eb" />
+        <g>
+          <circle cx="246" cy="130" r="10" fill="#b9c4da" />
+          {/* La flèche d'attraction tourne avec la Lune : elle vise toujours la Terre. */}
+          <path d="M232 130 h-8" stroke="#ffb627" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M228 126 l-5 4 l5 4" fill="none" stroke="#ffb627" strokeWidth="2.5" strokeLinecap="round" />
           {anime && (
             <animateTransform
               attributeName="transform" type="rotate"
@@ -120,7 +132,7 @@ export function GraviteAnimation({
               dur="6s" repeatCount="indefinite"
             />
           )}
-        </circle>
+        </g>
       </g>
     </svg>
   );

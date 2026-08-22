@@ -24,9 +24,18 @@ const LEGENDES = {
 };
 
 /**
- * Deux barres à l'échelle du temps : un million de secondes fait onze jours,
- * un milliard en fait trente-deux ans. La comparaison visuelle porte l'idée
- * qu'un milliard n'est pas « un peu plus » qu'un million, mais mille fois plus.
+ * Mille unités, dont une seule est le million.
+ *
+ * C'était deux barres, de 20 et 360 pixels : un rapport de dix-huit pour un,
+ * sous un texte qui dit « mille fois plus ». La carte existe pour corriger
+ * l'intuition « un milliard, c'est un peu plus qu'un million », et son seul
+ * élément graphique chiffrait l'écart à dix-huit. Aucune barre ne peut rendre
+ * mille pour un : à 360 pixels, le million ferait un tiers de pixel.
+ *
+ * D'où le pavé : dix lignes de cent tirets, soit mille unités, en face d'un
+ * unique tiret cerclé. Le rapport est exact, et il se voit. Dix `<line>`
+ * pointillées suffisent à dessiner les mille — un millier de rectangles aurait
+ * été inutilement lourd.
  */
 export function GrandsNombresAnimation({
   activeBeatId,
@@ -53,30 +62,49 @@ export function GrandsNombresAnimation({
         <text x="20" y="88" fill="#38bdf8" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           {legende.million}
         </text>
-        <rect x="20" y="96" width="20" height="20" rx="3" fill="#38bdf8" />
-        <text x="48" y="112" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        {/* Le million : une seule unité, cerclée pour qu'on la retrouve. */}
+        <line
+          x1="20" y1="106" x2="22.6" y2="106"
+          stroke="#38bdf8" strokeWidth="6" strokeLinecap="butt"
+        />
+        <circle cx="21.3" cy="106" r="9" fill="none" stroke="#38bdf8" strokeWidth="1.5" />
+        <text x="38" y="112" fill="#38bdf8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.jours}
         </text>
       </g>
 
       {/* Un milliard : barre mille fois plus longue (symbolisée) */}
       <g style={{ opacity: opacite(2), transition: 'opacity 600ms ease' }}>
-        <text x="20" y="152" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="20" y="148" fill="#fb7185" fontSize="17" fontFamily="var(--font-atkinson), sans-serif">
           {legende.milliard}
         </text>
-        <rect x="20" y="160" width="360" height="20" rx="3" fill="#fb7185">
-          {isPlaying && !prefersReducedMotion && (
-            <animate attributeName="width" values="20;360" dur="1.4s" fill="freeze" />
-          )}
-        </rect>
-        <text x="20" y="200" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        {/*
+          Mille unités : dix lignes de cent tirets, à la même échelle que
+          l'unique tiret du million. `2 1.6` sur 360 pixels donne exactement
+          cent tirets par ligne.
+        */}
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((r) => (
+          <line
+            key={r}
+            x1="20" y1={158 + r * 5} x2="380" y2={158 + r * 5}
+            stroke="#fb7185" strokeWidth="3.4" strokeDasharray="2 1.6"
+          >
+            {isPlaying && !prefersReducedMotion && (
+              <animate
+                attributeName="x2" values="22.6;380" dur="1.4s"
+                begin={`${r * 0.08}s`} fill="freeze"
+              />
+            )}
+          </line>
+        ))}
+        <text x="20" y="218" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.ans}
         </text>
       </g>
 
       {/* La conclusion */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="20" y="228" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="20" y="236" fill="#ffb627" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.ecart}
         </text>
       </g>

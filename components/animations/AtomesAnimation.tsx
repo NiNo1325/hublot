@@ -85,12 +85,29 @@ export function AtomesAnimation({
 
       {/* Ce qui rend la matière impénétrable : la répulsion */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        {[0, 1, 2].map((i) => (
-          <g key={i}>
-            <line x1={130 + i * 10} y1={62 + i * 14} x2={104 + i * 10} y2={62 + i * 14} stroke="#38bdf8" strokeWidth="3" />
-            <path d={`M110 ${56 + i * 14} L98 ${62 + i * 14} L110 ${68 + i * 14} Z`} fill="#38bdf8">
+        {/*
+          Deux atomes qui s'écartent, et non trois flèches parallèles.
+
+          Elles pointaient toutes dans le même sens, dans une zone vide : une
+          poussée à sens unique, alors qu'une répulsion est mutuelle — et rien
+          ne montrait ce qui repousse quoi. La phrase parle de deux surfaces
+          qui ne se traversent pas ; il fallait donc deux atomes.
+        */}
+        {[86, 176].map((cx) => (
+          <g key={cx}>
+            <circle cx={cx} cy="76" r="20" fill="none" stroke="#334155" strokeWidth="2" strokeDasharray="4 6" />
+            <circle cx={cx} cy="76" r="3.5" fill="#f87171" />
+          </g>
+        ))}
+        {[
+          { d: 'M126 76 h-16', tete: 'M114 70 L104 76 L114 82 Z' },
+          { d: 'M136 76 h16', tete: 'M148 70 L158 76 L148 82 Z' },
+        ].map(({ d, tete }, i) => (
+          <g key={d}>
+            <path d={d} stroke="#38bdf8" strokeWidth="3" strokeLinecap="round" />
+            <path d={tete} fill="#38bdf8">
               {anime && phase === 3 && (
-                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
               )}
             </path>
           </g>

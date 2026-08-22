@@ -48,8 +48,20 @@ export function PetroleAnimation({
 
       {/* Le dinosaure, barré */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
-        <path d="M262 40 q10 -22 30 -18 q16 4 14 18 l14 0 l-6 8 l-46 0 z" fill="#4ade80" />
-        <line x1="252" y1="46" x2="332" y2="6" stroke="#f87171" strokeWidth="4" />
+        {/*
+          Toute la phase consiste à barrer *le dinosaure* : la silhouette
+          n’avait ni tête, ni cou, ni pattes, et la démonstration ne portait
+          donc sur rien d’identifiable.
+        */}
+        <g fill="#4ade80">
+          <ellipse cx="292" cy="30" rx="24" ry="11" />
+          <path d="M276 26 q-13 -10 -17 -19 q-2 -5 3 -6 q5 -1 7 4 q4 9 13 15 z" />
+          <ellipse cx="259" cy="8" rx="7" ry="4.5" />
+          <path d="M312 28 q18 -3 27 -11 q4 -3 1 -6 q-4 -3 -8 1 q-8 7 -21 9 z" />
+          <rect x="280" y="38" width="7" height="8" rx="2" />
+          <rect x="298" y="38" width="7" height="8" rx="2" />
+        </g>
+        <line x1="248" y1="46" x2="336" y2="4" stroke="#f87171" strokeWidth="4" />
         <text x="14" y="32" fill="#f87171" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.dinosaures}
         </text>
@@ -83,6 +95,23 @@ export function PetroleAnimation({
 
       {/* La combustion, immédiate */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
+        {/*
+          « Le charbon, lui, vient bien de forêts » n’avait aucune trace
+          visuelle : ni forêt, ni couche végétale enfouie. Trois arbres et une
+          veine sombre, reliés par une flèche, la donnent.
+        */}
+        <g>
+          {[176, 204, 232].map((x) => (
+            <g key={x} fill="#22c55e">
+              <path d={`M${x} 12 l11 20 h-22 z`} />
+              <path d={`M${x} 26 l13 20 h-26 z`} />
+              <rect x={x - 2.5} y="44" width="5" height="6" fill="#78350f" />
+            </g>
+          ))}
+          <path d="M204 56 V170" stroke="#a3e635" strokeWidth="2" strokeDasharray="5 5" fill="none" />
+          <path d="M198 164 L204 178 L210 164 Z" fill="#a3e635" />
+          <rect x="166" y="180" width="76" height="12" rx="3" fill="#0c0a09" stroke="#a3e635" strokeWidth="2" />
+        </g>
         <path d="M300 226 q6 -18 14 -22 q-2 12 6 16 q6 -6 4 -14 q10 12 4 20 z" fill="#fb923c">
           {anime && phase === 3 && (
             <animate attributeName="opacity" values="1;0.4;1" dur="0.7s" repeatCount="indefinite" />

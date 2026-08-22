@@ -61,8 +61,13 @@ export function CielBleuAnimation({
         cx={couchant ? 344 : 330}
         cy={couchant ? 174 : 44}
         r="22"
-        fill="#fde047"
-        style={{ transition: 'cy 1600ms ease, cx 1600ms ease' }}
+        /*
+          Le seul élément dont la couleur est en cause était le seul à ne pas
+          changer : le ciel virait à l’orange et le disque restait jaune vif,
+          alors que la phase dit « il ne reste que le rouge ».
+        */
+        fill={couchant ? '#ea580c' : '#fde047'}
+        style={{ transition: 'cy 1600ms ease, cx 1600ms ease, fill 1600ms ease' }}
       />
 
       {/* La lumière blanche contient toutes les couleurs */}

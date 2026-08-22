@@ -89,6 +89,34 @@ export function SolAnimation({
             </path>
           </g>
         ))}
+        {/*
+          Les milliards de bactéries et les filaments de champignon, que le
+          texte nomme et que l’image taisait : l’enfant rapportait « des
+          milliards par cuillerée » aux cinq vers visibles, qui sont le sujet
+          de la phase suivante.
+        */}
+        {/*
+          Le semis est quadratique et non linéaire : `i * pas % largeur` alignait
+          les points en diagonales régulières, qui se lisaient comme des perles
+          enfilées plutôt que comme une poussière de microbes.
+        */}
+        {Array.from({ length: 48 }).map((_, i) => (
+          <circle
+            key={`microbe-${i}`}
+            cx={22 + ((i * i * 37 + i * 91) % 358)}
+            cy={104 + ((i * i * 53 + i * 29) % 118)}
+            r="1.7"
+            fill="#fecdd3"
+            opacity="0.7"
+          />
+        ))}
+        {[70, 196, 318].map((x) => (
+          <path
+            key={`mycelium-${x}`}
+            d={`M${x} 98 q7 16 -3 30 q-7 12 3 28 q6 10 2 20 M${x + 1} 116 q-16 5 -25 18 M${x} 132 q15 7 22 21 M${x + 3} 152 q-12 8 -16 24`}
+            fill="none" stroke="#fda4af" strokeWidth="1.3" opacity="0.75" strokeLinecap="round"
+          />
+        ))}
         <text x="14" y="70" fill="#fb7185" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.habitants}
         </text>

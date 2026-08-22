@@ -59,10 +59,19 @@ export function MareesAnimation({
 
       {/* Flèches d'attraction, plus fortes côté Lune */}
       <g style={{ opacity: opacite(1), transition: 'opacity 600ms ease' }}>
-        {[100, 120, 140].map((y) => (
-          <g key={y}>
-            <line x1="240" y1={y} x2="300" y2={y} stroke="#ffb627" strokeWidth="3" />
-            <path d={`M294 ${y - 6} L306 ${y} L294 ${y + 6} Z`} fill="#ffb627" />
+        {/*
+          Trois flèches de longueurs décroissantes, posées sur l’axe
+          Terre-Lune.
+
+          Elles étaient identiques et toutes du même côté : la différence
+          d’attraction entre la face tournée vers la Lune, le centre et la
+          face opposée — le seul objet du texte 9-12 — n’était pas figurée.
+        */}
+        {[[232, 66], [170, 42], [110, 20]].map(([x, longueur]) => (
+          <g key={x}>
+            <circle cx={x} cy="120" r="3" fill="#ffb627" />
+            <line x1={x} y1="120" x2={x + longueur - 8} y2="120" stroke="#ffb627" strokeWidth="3" />
+            <path d={`M${x + longueur - 12} 114 L${x + longueur} 120 L${x + longueur - 12} 126 Z`} fill="#ffb627" />
           </g>
         ))}
       </g>

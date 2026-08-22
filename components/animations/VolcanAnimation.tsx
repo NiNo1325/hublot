@@ -36,8 +36,22 @@ export function VolcanAnimation({
 
       {/* Manteau : la roche fond en profondeur */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
-        <path d="M0 214 h400 v26 H0 Z" fill="#7f1d1d" />
-        <text x="12" y="232" fill="#fca5a5" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
+        {/*
+          Le manteau reste sombre, et seule une poche fond sous le volcan.
+
+          Une bande rouge continue sur toute la largeur donnait à voir
+          exactement l’idée que le texte 9-12 vient de démentir : un océan de
+          roche fondue sous nos pieds. Le manteau est chaud mais
+          essentiellement solide ; la fusion est locale.
+        */}
+        <path d="M0 214 h400 v26 H0 Z" fill="#43201c" />
+        <ellipse cx="200" cy="224" rx="52" ry="13" fill="#b91c1c">
+          {anime && phase === 0 && (
+            <animate attributeName="rx" values="46;56;46" dur="2.6s" repeatCount="indefinite" />
+          )}
+        </ellipse>
+        <path d="M256 224 h-14" stroke="#fca5a5" strokeWidth="2" fill="none" />
+        <text x="262" y="230" fill="#fca5a5" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.rocheFondue}
         </text>
       </g>

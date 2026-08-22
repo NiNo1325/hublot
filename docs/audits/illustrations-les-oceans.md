@@ -1,5 +1,8 @@
 # Audit des illustrations — monde « les-oceans »
 
+> **Tous les défauts de ce rapport sont corrigés** (22/08/2026), chacun vérifié
+> sur une capture refaite. Voir `illustrations-synthese.md`.
+
 10 cartes, 40 phases, 6 défauts : 3 contradictions, 3 ressemblances, 0 manque.
 Cinq cartes sur dix sans reproche.
 

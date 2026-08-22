@@ -1,5 +1,8 @@
 # Audit des illustrations — monde « la-cuisine »
 
+> **Tous les défauts de ce rapport sont corrigés** (22/08/2026), chacun vérifié
+> sur une capture refaite. Voir `illustrations-synthese.md`.
+
 10 cartes, 40 phases, 7 défauts : 4 contradictions, 2 ressemblances, 1 manque.
 
 ## pourquoi-loeuf-durcit / phase quatre — contradiction (HAUTE)

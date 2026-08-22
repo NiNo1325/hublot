@@ -9,9 +9,12 @@ Rapports détaillés : `docs/audits/illustrations-<monde>.md`.
 
 ## Résultat
 
-**83 défauts sur 600 phases**, dont **9 graves**. Aucun monde n'est indemne, mais
+**83 défauts sur 600 phases**, dont 9 graves. Aucun monde n'était indemne, mais
 la moitié des cartes est irréprochable, et les corrections d'idées reçues — le
-cœur pédagogique de Hublot — sont massivement bien tenues.
+cœur pédagogique de Hublot — étaient massivement bien tenues.
+
+**Les 83 sont corrigés** (22/08/2026), chacun vérifié à l'œil sur une capture
+refaite, et pas seulement au typage.
 
 | Monde | Défauts | Graves |
 |---|---:|---:|
@@ -31,11 +34,10 @@ cœur pédagogique de Hublot — sont massivement bien tenues.
 | informatique | 2 | — |
 | meteo | 1 | — |
 
-## Les neuf défauts graves — tous corrigés le 22/08/2026
+## Les neuf défauts graves
 
 Ils avaient tous la même forme : **une carte qui existe pour corriger une idée
-reçue montrait exactement cette idée reçue, ou son inverse.** Chaque correction
-a été vérifiée à l'œil sur une capture refaite, et pas seulement au typage.
+reçue montrait exactement cette idée reçue, ou son inverse.**
 
 1. **Les saisons étaient à l'envers.** Les deux Terres portaient `rotate(-23)`,
    si bien que celle étiquetée « été » penchait à l'opposé du Soleil. Le signe
@@ -77,30 +79,55 @@ a été vérifiée à l'œil sur une capture refaite, et pas seulement au typage
 9. **Le blanc d'œuf devenait jaune.** Il est blanc et opaque, seul le jaune
    reste jaune. `PourquoiLoeufDurcitAnimation.tsx`.
 
-## Deux défauts qui dépassaient l'illustration — corrigés
+## Trois défauts qui dépassaient l'illustration
 
-- **Les électrons n'avaient ni `cx` ni `cy`** : dès que l'animation ne tournait
-  pas — circuit ouvert, lecture en pause, ou réglage « mouvement réduit » — les
-  cinq s'empilaient en 0,0. Ils ont désormais cinq positions réparties le long
-  du circuit, posées **seulement** quand le mouvement ne joue pas, car
-  `animateMotion` s'ajoute à la position propre au lieu de la remplacer. Et ceux
-  dont le départ est différé restent invisibles au lieu de stationner dans le
-  coin. `ElectriciteAnimation.tsx`.
+Ceux-là ne se voyaient pas seulement : ils cassaient la page.
+
+- **Des cercles animés sans position de repos.** Un cercle mû par
+  `animateMotion` retombe en 0,0 dès que l'animation ne joue pas — lecture en
+  pause, ou réglage système « mouvement réduit ». Cinq cartes étaient touchées
+  en plus des électrons : le sang, les paquets de données, la molécule de
+  l'oignon et le signal de la douleur s'empilaient dans le coin supérieur
+  gauche. Chacun reçoit une position calculée sur son propre parcours, posée
+  **seulement** quand le mouvement ne joue pas, car `animateMotion` s'ajoute à
+  la position propre au lieu de la remplacer.
 - **L'empreinte du jumeau était hors du cadre** : `translate(-108 90)` la plaçait
   à x = −45 dans un `viewBox` qui commence à 0, alors que la phase repose
   entièrement sur la comparaison des deux. Elle est ramenée à gauche du doigt
   principal, un peu plus grande et moins pâle.
   `LesEmpreintesDigitalesAnimation.tsx`.
+- **Les pales de l'éolienne n'apparaissaient sur aucune capture.** Ce qui tourne
+  — précisément ce que la phrase demande de voir — se lisait comme un bâton
+  gris. Ce sont maintenant des pales pleines autour d'un moyeu dessiné.
+  `EnergieAnimation.tsx`.
 
 ## Le motif dominant des défauts mineurs
 
-Les trois quarts des défauts restants tiennent en une phrase : **l'élément
-nommé par la phrase n'est pas dessiné**. La Lune tourne autour d'un centre vide,
-le crabe n'a pas de pince, la cochlée n'a pas de spirale, les cordes vocales sont
-une seule ellipse, le câble sous-marin est une étendue d'eau vide, le sucre ne
-réapparaît pas au fond du verre.
+Les trois quarts tenaient en une phrase : **l'élément nommé par la phrase n'était
+pas dessiné**. La cochlée n'avait pas de spirale, les cordes vocales étaient une
+seule ellipse, le câble sous-marin une étendue d'eau vide, le crabe n'avait pas
+de pince, le sucre ne réapparaissait pas au fond du verre, les poumons n'avaient
+ni bronches ni alvéoles, la Lune n'avait pas de croissant.
 
-Ce n'est jamais faux, mais l'illustration cesse alors de servir sa phrase.
+Ce n'était jamais faux, mais l'illustration cessait alors de servir sa phrase.
+
+Deuxième motif, plus rare mais plus vicieux : **la convention d'atténuation
+éteignait l'élément que la phrase nomme**. Le Soleil de la photosynthèse
+s'assombrissait à la phase où les trois textes en font la source d'énergie de la
+fabrication.
+
+## Trois textes corrigés, plutôt que leur image
+
+Trois fois, c'est le texte qui était en tort, et l'image avait raison.
+
+- **Le soda**, niveau 3-5 : la phase deux disait « tu ouvres : le gaz peut enfin
+  sortir » devant une bouteille fermée, bouchon mis en évidence. Les deux autres
+  registres disent « tant que la bouteille reste fermée ». Le texte était décalé
+  d'une phase ; il suit maintenant l'image.
+- **La chute libre**, niveau 3-5 : « une bille », quand les deux autres registres
+  nomment le marteau d'Apollo 15. C'est un marteau partout.
+- **Le freinage** : « roue bloquée : moins bien » est devenu « plus loin », parce
+  que c'est la distance d'arrêt que la nouvelle image compare.
 
 ## Ce que l'audit a confirmé de bon
 
@@ -126,16 +153,21 @@ presque partout :
   rapports sont une liste de suspicions classées, jamais un verdict.
 - La capture réinjecte le SVG dans une page vierge, ce qui relance ses animations
   à zéro. On laisse 1,4 s de jeu avant la prise de vue, mais une animation en
-  boucle peut encore être saisie à un instant trompeur — les agents le signalent
-  quand c'est le cas.
+  boucle peut encore être saisie à un instant trompeur — la grêle paraît
+  immobile, le pavé du milliard monte en escalier, l'aile du papillon est saisie
+  en plein pliage. Les agents le signalent quand c'est le cas.
 - Une illustration sert **les trois registres à la fois** : la question n'est donc
   pas « colle-t-elle au texte » mais « en contredit-elle un des trois ». Plusieurs
-  défauts signalés ne concernent que le niveau 3-5.
+  défauts ne concernaient que le niveau 3-5.
+- **L'agent d'audit n'a pas d'outil d'écriture.** Cinq rapports — animaux,
+  biologie, le-corps, les-dinosaures, meteo — n'avaient jamais atteint le disque
+  et n'existaient que dans la conversation. Ils ont été récupérés. Pour un
+  prochain passage, écrire soi-même ce que l'agent rend.
 
 ## Ce qui reste
 
-Les **soixante-douze défauts de gravité moyenne et basse** listés dans les
-rapports par monde n'ont pas été traités. Ils tiennent presque tous en une
-phrase : *l'élément nommé par la phrase n'est pas dessiné*. Aucun n'enseigne
-quelque chose de faux ; ils affaiblissent seulement le lien entre l'image et son
-texte. Ils forment une liste de travail utilisable telle quelle, monde par monde.
+Rien de la liste. Les 83 défauts sont traités et vérifiés à l'image.
+
+Un prochain passage devrait porter sur ce que cet audit n'a pas su regarder :
+les animations **en mouvement** plutôt que figées à 1,4 s, et la lisibilité des
+légendes à la taille réelle d'un écran de téléphone.

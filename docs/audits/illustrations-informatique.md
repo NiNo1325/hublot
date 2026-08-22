@@ -1,5 +1,8 @@
 # Audit des illustrations — monde « informatique »
 
+> **Tous les défauts de ce rapport sont corrigés** (22/08/2026), chacun vérifié
+> sur une capture refaite. Voir `illustrations-synthese.md`.
+
 10 cartes, 40 phases, 2 défauts : 0 contradiction, 0 ressemblance, 2 manques.
 Huit cartes sans reproche. **Le monde le plus sain de l'audit.**
 

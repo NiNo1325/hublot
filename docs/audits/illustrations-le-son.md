@@ -1,5 +1,8 @@
 # Audit des illustrations — monde « le-son »
 
+> **Tous les défauts de ce rapport sont corrigés** (22/08/2026), chacun vérifié
+> sur une capture refaite. Voir `illustrations-synthese.md`.
+
 10 cartes, 40 phases, 8 défauts : 0 contradiction, 7 ressemblances, 1 manque.
 
 **Aucune image ne contredit son texte** — les ondes sont justes partout, ce qui

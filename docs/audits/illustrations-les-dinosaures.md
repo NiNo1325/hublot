@@ -1,5 +1,8 @@
 # Audit des illustrations — monde « les-dinosaures »
 
+> **Tous les défauts de ce rapport sont corrigés** (22/08/2026), chacun vérifié
+> sur une capture refaite. Voir `illustrations-synthese.md`.
+
 10 cartes, 40 phases, 5 défauts : 1 contradiction, 2 manques, 2 ressemblances.
 
 ## il-y-a-tres-tres-longtemps / phase quatre — contradiction (HAUTE) — corrigé

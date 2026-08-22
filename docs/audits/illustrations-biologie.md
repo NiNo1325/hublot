@@ -1,5 +1,8 @@
 # Audit des illustrations — monde « biologie »
 
+> **Tous les défauts de ce rapport sont corrigés** (22/08/2026), chacun vérifié
+> sur une capture refaite. Voir `illustrations-synthese.md`.
+
 ## Défauts relevés
 
 ### le-coeur-et-le-sang / phase `pompe` — manque

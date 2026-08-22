@@ -1,5 +1,8 @@
 # Audit des illustrations — monde « astronomie »
 
+> **Tous les défauts de ce rapport sont corrigés** (22/08/2026), chacun vérifié
+> sur une capture refaite. Voir `illustrations-synthese.md`.
+
 10 cartes, 40 phases, 4 défauts : 3 contradictions (2 hautes), 1 manque.
 Sept cartes sans reproche.
 

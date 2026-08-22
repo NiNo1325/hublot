@@ -1,5 +1,8 @@
 # Audit des illustrations — monde « meteo »
 
+> **Tous les défauts de ce rapport sont corrigés** (22/08/2026), chacun vérifié
+> sur une capture refaite. Voir `illustrations-synthese.md`.
+
 10 cartes, 40 phases, 1 défaut : 0 contradiction, 1 ressemblance, 0 manque.
 C'est le monde le mieux tenu du catalogue.
 

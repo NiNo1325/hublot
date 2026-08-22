@@ -1,5 +1,8 @@
 # Audit des illustrations — monde « ingenierie »
 
+> **Tous les défauts de ce rapport sont corrigés** (22/08/2026), chacun vérifié
+> sur une capture refaite. Voir `illustrations-synthese.md`.
+
 10 cartes, 40 phases, 9 défauts : 0 contradiction, 1 ressemblance, 8 manques.
 Aucun de gravité haute — quatre moyens, cinq bas.
 

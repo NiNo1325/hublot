@@ -67,8 +67,21 @@ export function PourquoiLesVoixSontDifferentesAnimation({
 
       {/* Phase 2 : les cordes vocales vibrent, au fond de la gorge */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
-        <ellipse cx="140" cy="140" rx="16" ry="4" fill="#e879f9">
-          {anime && <animate attributeName="ry" values="2;6;2" dur="0.4s" repeatCount="indefinite" />}
+        {/*
+          Deux replis, et la fente entre eux.
+
+          Les trois registres insistent sur le nombre — « deux petits replis »,
+          « deux bandes de muscle » — et l'image n'en donnait qu'un, une seule
+          ellipse en travers de la gorge : l'enfant comptait et ne trouvait pas.
+          Ils se rejoignent et s'écartent, et la fente sombre qu'ils ouvrent est
+          le passage de l'air.
+        */}
+        <rect x="124" y="137" width="32" height="10" fill="#140b1f" />
+        <ellipse cx="140" cy="132" rx="16" ry="5" fill="#e879f9">
+          {anime && <animate attributeName="cy" values="132;138;132" dur="0.4s" repeatCount="indefinite" />}
+        </ellipse>
+        <ellipse cx="140" cy="152" rx="16" ry="5" fill="#c026d3">
+          {anime && <animate attributeName="cy" values="152;146;152" dur="0.4s" repeatCount="indefinite" />}
         </ellipse>
         <text x="190" y="140" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.cordes}</text>
       </g>

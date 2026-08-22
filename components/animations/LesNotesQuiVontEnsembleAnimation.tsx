@@ -43,13 +43,37 @@ export function LesNotesQuiVontEnsembleAnimation({
   const police = 'var(--font-atkinson), sans-serif';
   const legende = localise(LEGENDES, locale);
 
+  // La phase qui parle de l'octave allume ses deux bouts, celle de l'accord ses
+  // trois notes ; partout ailleurs le clavier reste ivoire.
+  const touche = (i: number) => {
+    if (phase === 2 && (i === 0 || i === 7)) return '#fde047';
+    if (phase === 3 && (i === 0 || i === 2 || i === 4)) return '#a3e635';
+    return '#f5f3ff';
+  };
+
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
       <rect width="400" height="240" fill="#140b1f" />
 
-      {/* Les touches de piano, toujours visibles, en bas */}
-      {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-        <rect key={i} x={80 + i * 34} y="200" width="30" height="30" rx="3" fill="#f5f3ff" stroke="#3f2e4d" strokeWidth="1.5" />
+      {/*
+        Un vrai clavier : huit touches blanches jointives et leurs cinq noires.
+
+        Sept carrés blancs espacés, sans touches noires et jamais allumés :
+        l'instrument était privé de son trait le plus identifiable, et sept
+        touches suggéraient une octave de sept notes. Les touches s'allument
+        maintenant à la phase qui les nomme — les deux bouts de l'octave, puis
+        les trois notes qui s'emboîtent.
+      */}
+      {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+        <rect
+          key={i}
+          x={80 + i * 30} y="196" width="30" height="40" rx="2"
+          fill={touche(i)} stroke="#3f2e4d" strokeWidth="1.5"
+          style={{ transition: 'fill 400ms ease' }}
+        />
+      ))}
+      {[0, 1, 3, 4, 5].map((i) => (
+        <rect key={i} x={80 + (i + 1) * 30 - 9} y="196" width="18" height="25" rx="2" fill="#1c1129" />
       ))}
 
       {/* Phase 1 : une corde vibre, une note naît */}

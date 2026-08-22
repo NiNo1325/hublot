@@ -31,6 +31,17 @@ const LEGENDES = {
  * Le pavillon n'est qu'une entrée : entendre est un travail qui se fait à
  * l'intérieur, du tympan jusqu'à la cochlée en passant par les osselets.
  */
+/*
+  La cochlée est une spirale, pas une masse.
+
+  Les trois registres la nomment « coquille d'escargot », « escargot rempli
+  d'eau », « organe en spirale » ; elle était dessinée en ovale plein. Sept
+  demi-arcs de rayon décroissant lui rendent ses tours, et le même tracé sert
+  au trait de contexte comme à la phase quatre.
+*/
+const COCHLEE =
+  'M260 120 A31 31 0 0 1 322 120 A27 27 0 0 1 268 120 A23 23 0 0 1 314 120 A19 19 0 0 1 276 120 A15 15 0 0 1 306 120 A11 11 0 0 1 284 120 A7 7 0 0 1 298 120';
+
 export function CommentLoreilleEntendAnimation({
   activeBeatId,
   isPlaying,
@@ -53,8 +64,8 @@ export function CommentLoreilleEntendAnimation({
       <circle cx="196" cy="100" r="8" fill="none" stroke="#6b5b7a" strokeWidth="3" />
       <circle cx="220" cy="118" r="7" fill="none" stroke="#6b5b7a" strokeWidth="3" />
       <circle cx="242" cy="132" r="6" fill="none" stroke="#6b5b7a" strokeWidth="3" />
-      <path d="M258 132 q10 -22 30 -14 q20 8 8 26 q-10 16 -28 6 q-14 -8 -10 -18 Z" fill="none" stroke="#6b5b7a" strokeWidth="3" />
-      <path d="M300 128 Q330 110 360 118" stroke="#6b5b7a" strokeWidth="2" strokeDasharray="3 4" fill="none" />
+      <path d={COCHLEE} fill="none" stroke="#6b5b7a" strokeWidth="3" strokeLinecap="round" />
+      <path d="M320 136 Q342 112 360 118" stroke="#6b5b7a" strokeWidth="2" strokeDasharray="3 4" fill="none" />
       <circle cx="368" cy="118" r="12" fill="#3f2e4d" />
 
       {/* Phase 1 : le son entre par le conduit */}
@@ -92,11 +103,11 @@ export function CommentLoreilleEntendAnimation({
 
       {/* Phase 4 : la cochlée transforme tout en message nerveux */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <path d="M258 132 q10 -22 30 -14 q20 8 8 26 q-10 16 -28 6 q-14 -8 -10 -18 Z" fill="#a3e635" opacity="0.3">
-          {anime && <animate attributeName="opacity" values="0.15;0.55;0.15" dur="1.2s" repeatCount="indefinite" />}
+        <path d={COCHLEE} fill="none" stroke="#a3e635" strokeWidth="3" strokeLinecap="round" opacity="0.9">
+          {anime && <animate attributeName="opacity" values="0.35;1;0.35" dur="1.2s" repeatCount="indefinite" />}
         </path>
-        <circle cx="330" cy="122" r="3" fill="#a3e635">
-          {anime && <animate attributeName="cx" values="300;362" dur="1s" repeatCount="indefinite" />}
+        <circle cx="340" cy="122" r="3" fill="#a3e635">
+          {anime && <animate attributeName="cx" values="322;362" dur="1s" repeatCount="indefinite" />}
           {anime && <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />}
         </circle>
         <text x="180" y="200" fill="#a3e635" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.cerveau}</text>

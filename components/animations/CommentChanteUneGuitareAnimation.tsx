@@ -47,16 +47,29 @@ export function CommentChanteUneGuitareAnimation({
       <rect width="400" height="240" fill="#140b1f" />
 
       {/* La guitare, toujours visible */}
-      <rect x="20" y="100" width="150" height="16" fill="#5b3a21" />
+      <rect x="20" y="94" width="150" height="28" fill="#5b3a21" />
       {[0, 1, 2, 3].map((i) => (
-        <line key={i} x1={40 + i * 30} y1="100" x2={40 + i * 30} y2="116" stroke="#3f2914" strokeWidth="1.5" />
+        <line key={i} x1={40 + i * 30} y1="94" x2={40 + i * 30} y2="122" stroke="#3f2914" strokeWidth="1.5" />
       ))}
       <path
         d="M170 60 Q230 40 270 78 Q300 108 270 150 Q240 190 190 178 Q150 168 150 130 Q150 90 170 60 Z"
         fill="#8b5a2b"
       />
       <circle cx="222" cy="112" r="26" fill="#140b1f" />
-      <line x1="176" y1="108" x2="300" y2="108" stroke="#e879f9" strokeWidth="2" id="corde-guitare" />
+
+      {/*
+        Les cordes courent du sillet au chevalet, manche compris.
+
+        L'unique corde s'arrêtait au bord de la caisse : elle ne passait pas
+        sur le manche, si bien que le doigt de la dernière phase se posait à
+        vide, à cent unités de ce qu'il était censé plaquer. Cinq cordes en
+        sourdine donnent l'instrument, la sixième est celle qu'on pince.
+      */}
+      <rect x="286" y="96" width="6" height="24" rx="2" fill="#3f2914" />
+      {[98, 103, 113, 118].map((y) => (
+        <line key={y} x1="26" y1={y} x2="290" y2={y} stroke="#7c5c8a" strokeWidth="1" />
+      ))}
+      <line x1="26" y1="108" x2="290" y2="108" stroke="#e879f9" strokeWidth="2" id="corde-guitare" />
 
       {/* Phase 1 : on pince la corde */}
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
@@ -66,17 +79,17 @@ export function CommentChanteUneGuitareAnimation({
 
       {/* Phase 2 : seule, elle produit un son très faible */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
-        <path d="M176 108 Q238 104 300 108" stroke="#38bdf8" strokeWidth="2" fill="none">
+        <path d="M26 108 Q158 104 290 108" stroke="#38bdf8" strokeWidth="2" fill="none">
           {anime && (
             <animate
               attributeName="d"
-              values="M176 108 L300 108;M176 108 Q238 104 300 108;M176 108 L300 108;M176 108 Q238 112 300 108;M176 108 L300 108"
+              values="M26 108 L290 108;M26 108 Q158 98 290 108;M26 108 L290 108;M26 108 Q158 118 290 108;M26 108 L290 108"
               dur="0.3s"
               repeatCount="indefinite"
             />
           )}
         </path>
-        <path d="M304 106 Q310 108 304 110" stroke="#38bdf8" strokeWidth="1.5" fill="none" opacity="0.7" />
+        <path d="M300 106 Q306 108 300 110" stroke="#38bdf8" strokeWidth="1.5" fill="none" opacity="0.7" />
         <text x="16" y="150" fill="#38bdf8" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.inaudible}</text>
       </g>
 
@@ -98,7 +111,9 @@ export function CommentChanteUneGuitareAnimation({
         <circle cx="90" cy="108" r="7" fill="#e879f9">
           {anime && <animateTransform attributeName="transform" type="translate" values="0 0; -30 0; 0 0" dur="2s" repeatCount="indefinite" />}
         </circle>
-        {dejaVu(3) && <line x1="176" y1="108" x2="300" y2="108" stroke="#e879f9" strokeWidth="2.5" />}
+        {/* Seul le segment doigt → chevalet vibre : c'est lui qui a raccourci. */}
+        {dejaVu(3) && <line x1="26" y1="108" x2="90" y2="108" stroke="#5b3a21" strokeWidth="3" />}
+        {dejaVu(3) && <line x1="90" y1="108" x2="290" y2="108" stroke="#e879f9" strokeWidth="3" />}
         <text x="16" y="150" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 3 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.courte}</text>
       </g>
     </svg>

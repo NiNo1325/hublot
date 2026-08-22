@@ -81,10 +81,20 @@ export function LesSonsQuonNentendPasAnimation({
 
       {/* Phase 3 : le chien, lui, l’entend très bien */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
+        {/*
+          Un chien, et non un chat.
+
+          Deux oreilles triangulaires dressées sur une tête ronde, sans museau
+          ni truffe : la silhouette se lisait au moins autant comme un chat.
+          Museau allongé, truffe sombre et oreilles tombantes tranchent.
+        */}
         <g transform="translate(330 100)">
-          <ellipse cx="0" cy="10" rx="16" ry="12" fill="#fbbf24" />
-          <path d="M-14 0 L-20 -14 L-6 -4 Z" fill="#fbbf24" />
-          <path d="M14 0 L20 -14 L6 -4 Z" fill="#fbbf24" />
+          <path d="M-8 -2 q-10 -6 -12 8 q-2 14 8 14 q4 -12 4 -22 z" fill="#d97706" />
+          <path d="M10 -2 q10 -6 12 8 q2 14 -8 14 q-4 -12 -4 -22 z" fill="#d97706" />
+          <ellipse cx="0" cy="10" rx="17" ry="13" fill="#fbbf24" />
+          <path d="M-13 8 q-16 0 -19 8 q-1 7 8 7 q13 0 16 -9 z" fill="#fbbf24" />
+          <circle cx="-30" cy="16" r="3.4" fill="#7c2d12" />
+          <circle cx="-6" cy="6" r="2.2" fill="#3f2914" />
         </g>
         <rect x="300" y="182" width="60" height="20" rx="10" fill="#fbbf24" opacity="0.5">
           {anime && <animate attributeName="opacity" values="0.3;0.7;0.3" dur="1s" repeatCount="indefinite" />}
@@ -94,9 +104,22 @@ export function LesSonsQuonNentendPasAnimation({
 
       {/* Phase 4 : infrasons, éléphants et baleines */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
-        <g transform="translate(64 110)">
-          <ellipse cx="0" cy="14" rx="22" ry="16" fill="#60a5fa" />
-          <path d="M-20 8 Q-32 8 -34 -4" stroke="#60a5fa" strokeWidth="4" fill="none" strokeLinecap="round" />
+        {/*
+          Un éléphant, reconnaissable comme tel.
+
+          La phase des infrasons montrait un ovale bleu surmonté d'un appendice
+          recourbé — ni éléphant, ni baleine. Grande oreille, trompe qui pend,
+          défense et pattes en piliers le nomment sans légende.
+        */}
+        <g transform="translate(66 112)">
+          <ellipse cx="6" cy="6" rx="30" ry="22" fill="#60a5fa" />
+          <circle cx="-18" cy="0" r="18" fill="#60a5fa" />
+          <path d="M-16 -12 q-18 -8 -22 8 q-3 16 12 18 q8 -10 10 -26 z" fill="#3b82f6" />
+          <path d="M-32 4 q-10 10 -6 24 q2 8 8 6 q5 -2 3 -8 q-3 -12 3 -18 z" fill="#60a5fa" />
+          <path d="M-26 12 q-6 8 -12 10" stroke="#e2e8f0" strokeWidth="3" fill="none" strokeLinecap="round" />
+          <rect x="-6" y="22" width="10" height="18" rx="3" fill="#60a5fa" />
+          <rect x="16" y="22" width="10" height="18" rx="3" fill="#60a5fa" />
+          <circle cx="-22" cy="-4" r="2.2" fill="#0f1b33" />
         </g>
         <rect x="34" y="182" width="60" height="20" rx="10" fill="#60a5fa" opacity="0.5">
           {anime && <animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.8s" repeatCount="indefinite" />}

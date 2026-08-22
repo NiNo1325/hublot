@@ -49,7 +49,20 @@ export function QuandLeBruitFaitMalAnimation({
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
       <rect width="400" height="240" fill="#1c0b0f" />
 
-      {/* La cochlée déroulée, toujours visible, avec ses cils au fond */}
+      {/*
+        La cochlée déroulée, et le petit escargot qui dit l'opération.
+
+        Le rectangle portait la légende « escargot » sans rien de spiralé, ce
+        qui contredisait la spirale enseignée par `comment-loreille-entend`.
+        Le déroulement reste — il faut voir les cils alignés — mais il est
+        maintenant montré comme un déroulement.
+      */}
+      <path
+        d="M34 146 A18 18 0 0 1 70 146 A15 15 0 0 1 40 146 A12 12 0 0 1 64 146 A9 9 0 0 1 46 146 A6 6 0 0 1 58 146"
+        fill="none" stroke="#fca5a5" strokeWidth="3" strokeLinecap="round" opacity="0.8"
+      />
+      <path d="M74 146 h10" stroke="#fca5a5" strokeWidth="2" strokeDasharray="3 2" fill="none" />
+      <path d="M80 141 l6 5 l-6 5" fill="none" stroke="#fca5a5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       <rect x="90" y="120" width="220" height="50" rx="12" fill="#3f1f26" />
       {[0, 1, 2, 3, 4, 5].map((i) => (
         <line

@@ -93,8 +93,25 @@ export function LePlanctonMinusculeAnimation({
       {/* Phase 4 : ils nourrissent presque tout l'océan */}
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         <ellipse cx="130" cy="150" rx="8" ry="5" fill="#fbbf24" />
-        <path d="M170 150 Q210 130 250 150 Q210 170 170 150 Z" fill="#fb923c" />
-        <path d="M280 150 Q330 120 370 150 Q330 180 280 150 Z" fill="#f97316" />
+        {/*
+          Une caudale, une dorsale et un œil suffisent à faire un poisson ; des
+          nageoires en éventail et un souffle, une baleine. La phase qui nomme
+          « poissons, baleines » ne montrait que deux amandes orange, sans
+          queue, sans nageoire et sans œil.
+        */}
+        <g fill="#fb923c">
+          <path d="M170 150 Q210 130 250 150 Q210 170 170 150 Z" />
+          <path d="M174 150 l-20 -13 v26 z" />
+          <path d="M202 140 q10 -12 20 -3 z" />
+        </g>
+        <circle cx="240" cy="148" r="2.6" fill="#0c2340" />
+        <g fill="#f97316">
+          <path d="M280 150 Q330 120 370 150 Q330 180 280 150 Z" />
+          <path d="M284 150 q-18 -16 -30 -10 q12 10 12 10 q0 0 -12 10 q12 6 30 -10 z" />
+          <path d="M326 164 q12 12 24 6 q-10 -8 -24 -6 z" />
+        </g>
+        <circle cx="357" cy="146" r="3" fill="#0c2340" />
+        <path d="M340 130 q-3 -14 3 -20 M344 130 q5 -14 12 -18" stroke="#7dd3fc" strokeWidth="2.5" fill="none" strokeLinecap="round" />
         <text x="16" y="200" fill="#f97316" fontSize="14" fontFamily={police} style={apparition(3)}>
           {legende.ocean}
         </text>

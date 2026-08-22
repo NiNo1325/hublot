@@ -67,7 +67,7 @@ export function LesFleuvesDansLaMerAnimation({
             <animateMotion path="M0 0 Q22 44 10 144" dur="2.2s" repeatCount="indefinite" />
           </circle>
         )}
-        <text x="230" y="120" fill="#38bdf8" fontSize="14" fontFamily={police} style={apparition(1)}>
+        <text x="196" y="120" fill="#38bdf8" fontSize="14" fontFamily={police} style={apparition(1)}>
           {legende.plonge}
         </text>
       </g>

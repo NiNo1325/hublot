@@ -91,10 +91,23 @@ export function LesSourcesChaudesDuFondAnimation({
       <g style={{ opacity: opacite(3), transition: 'opacity 500ms ease' }}>
         {dejaVu(3) && (
           <>
-            <g transform="translate(140 208)">
-              <ellipse cx="0" cy="0" rx="10" ry="6" fill="#fb7185" />
-              <line x1="-8" y1="4" x2="-16" y2="12" stroke="#fb7185" strokeWidth="2" />
-              <line x1="8" y1="4" x2="16" y2="12" stroke="#fb7185" strokeWidth="2" />
+            {/*
+              Un crabe a des pinces. L’ellipse à deux pattes ne se distinguait
+              pas des vers tubicoles voisins, qui eux étaient parfaitement
+              lisibles.
+            */}
+            <g transform="translate(180 206)">
+              <ellipse cx="0" cy="0" rx="12" ry="7" fill="#fb7185" />
+              <path
+                d="M-9 4 l-8 9 M-4 7 l-4 10 M4 7 l4 10 M9 4 l8 9"
+                stroke="#fb7185" strokeWidth="2" fill="none" strokeLinecap="round"
+              />
+              <path
+                d="M-11 -3 l-9 -7 M-20 -10 l-9 -3 M-20 -10 l-7 5 M11 -3 l9 -7 M20 -10 l9 -3 M20 -10 l7 5"
+                stroke="#fb7185" strokeWidth="2.5" fill="none" strokeLinecap="round"
+              />
+              <circle cx="-4" cy="-8" r="1.8" fill="#0c2340" />
+              <circle cx="4" cy="-8" r="1.8" fill="#0c2340" />
             </g>
             {[250, 268, 286].map((x, i) => (
               <path

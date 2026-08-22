@@ -125,11 +125,26 @@ export function LeCorailBatisseurAnimation({
         {dejaVu(3) &&
           [90, 210, 300].map((x, i) => (
             <g key={x} transform={`translate(${x} ${70 + i * 10})`}>
-              <ellipse cx="0" cy="0" rx="9" ry="5" fill="#7dd3fc">
+              {/*
+                Les « animaux marins » du récif étaient trois ellipses bleues,
+                indistinguables de bulles d’air. Queue, dorsale et œil les
+                nomment. Le va-et-vient est passé de `cx` à une translation de
+                groupe, pour emporter le poisson entier.
+              */}
+              <g>
+                <g fill="#7dd3fc">
+                  <ellipse cx="0" cy="0" rx="9" ry="5" />
+                  <path d="M-7 0 l-10 -7 v14 z" />
+                  <path d="M-2 -4 q5 -7 10 -1 z" />
+                </g>
+                <circle cx="5" cy="-1" r="1.7" fill="#0c2340" />
                 {anime && (
-                  <animate attributeName="cx" values="0;18;0;-18;0" dur="3s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
+                  <animateTransform
+                    attributeName="transform" type="translate"
+                    values="0 0;18 0;0 0;-18 0;0 0" dur="3s" begin={`${i * 0.4}s`} repeatCount="indefinite"
+                  />
                 )}
-              </ellipse>
+              </g>
             </g>
           ))}
         <text x="130" y="216" fill="#fb923c" fontSize="15" fontFamily={police} style={apparition(3)}>

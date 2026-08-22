@@ -38,8 +38,16 @@ export function CommentLesMusclesBougentAnimation({
   const police = 'var(--font-atkinson), sans-serif';
   const legende = localise(LEGENDES, locale);
 
-  // Angle de l'avant-bras autour du coude : plié pendant la phase 3.
-  const angle = phase === 2 ? -78 : -18;
+  /*
+    Angle de l'avant-bras autour du coude : plié pendant la phase 3.
+
+    Le pli se faisait du mauvais côté. L'avant-bras pivotait vers l'arrière du
+    bras, si bien que la main s'éloignait à peine de l'épaule (188 px tendu,
+    185 px « plié ») et se repliait du côté du triceps. Il pivote maintenant
+    vers le biceps, et la main revient vers l'épaule — ce que « le muscle tire
+    l'os comme une corde » décrit.
+  */
+  const angle = phase === 2 ? 62 : -18;
   const bicepsContracte = phase === 1 || phase === 2;
   const tricepsContracte = phase === 3;
 
@@ -51,19 +59,27 @@ export function CommentLesMusclesBougentAnimation({
       <line x1="120" y1="70" x2="200" y2="150" stroke="#e2e8f0" strokeWidth="14" strokeLinecap="round" />
       <circle cx="120" cy="70" r="12" fill="#e2e8f0" />
 
-      {/* Biceps, à l'avant du bras */}
+      {/*
+        Un muscle de chaque côté de l'os, franchement écartés.
+
+        Les deux polygones se recouvraient sur la même portion du bras : la
+        paire antagoniste, qui est tout le propos de la dernière phase, ne se
+        lisait pas. Le biceps tient désormais le flanc vers lequel l'avant-bras
+        se replie, le triceps le flanc opposé, et chacun a son propre tendon.
+      */}
+      {/* Biceps, du côté vers lequel l'avant-bras se replie */}
       <path
         d={bicepsContracte
-          ? 'M126 84 Q150 96 176 118 Q150 122 118 108 Z'
-          : 'M124 80 Q148 100 178 128 Q146 128 116 104 Z'}
+          ? 'M122 88 Q118 138 172 140 Q148 114 122 88 Z'
+          : 'M122 88 Q129 142 184 148 Q152 118 122 88 Z'}
         fill="#f9a8d4"
         style={{ transition: 'all 500ms ease' }}
       />
-      {/* Triceps, à l'arrière du bras */}
+      {/* Triceps, du côté opposé */}
       <path
         d={tricepsContracte
-          ? 'M126 92 Q156 92 182 112 Q152 108 116 100 Z'
-          : 'M126 92 Q160 100 190 122 Q154 116 116 100 Z'}
+          ? 'M132 68 Q192 70 188 124 Q166 100 132 68 Z'
+          : 'M132 68 Q188 76 196 132 Q168 104 132 68 Z'}
         fill="#be5b7a"
         style={{ transition: 'all 500ms ease' }}
       />
@@ -75,9 +91,14 @@ export function CommentLesMusclesBougentAnimation({
       </g>
       <circle cx="200" cy="150" r="9" fill="#a3a3a3" />
 
-      {/* Le tendon, qui relie le muscle à l'os, tendu quand ça tire */}
-      <line x1="176" y1="118" x2="198" y2="146" stroke="#fbbf24" strokeWidth="3">
-        {anime && (bicepsContracte || tricepsContracte) && (
+      {/* Les tendons : chaque muscle a le sien, et seul celui qui tire se tend. */}
+      <line x1="178" y1="144" x2="202" y2="158" stroke="#fbbf24" strokeWidth="3">
+        {anime && bicepsContracte && (
+          <animate attributeName="stroke-width" values="3;6;3" dur="1s" repeatCount="indefinite" />
+        )}
+      </line>
+      <line x1="190" y1="126" x2="210" y2="144" stroke="#fbbf24" strokeWidth="3">
+        {anime && tricepsContracte && (
           <animate attributeName="stroke-width" values="3;6;3" dur="1s" repeatCount="indefinite" />
         )}
       </line>

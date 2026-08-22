@@ -50,6 +50,26 @@ export function CommentOnTientDeboutAnimation({
         <circle cx="332" cy="94" r="16" fill="none" stroke="#38bdf8" strokeWidth="3" />
         <circle cx="316" cy="98" r="16" fill="none" stroke="#38bdf8" strokeWidth="3" />
         <circle cx={penche ? 330 : 322} cy={penche ? 82 : 68} r="4" fill="#f9a8d4" style={{ transition: 'all 700ms ease' }} />
+
+        {/*
+          Le cerveau est dessiné, et le signal s'arrête sur lui.
+
+          La phase trois ne dit qu'une chose — « ça prévient ton cerveau » — et
+          son destinataire n'existait nulle part dans l'image : le pointillé
+          quittait la tête et descendait vers le buste du bonhomme. Les deux
+          vivent maintenant dans le groupe de la tête, donc ils penchent avec
+          elle au lieu de s'en détacher.
+        */}
+        <ellipse cx="278" cy="82" rx="24" ry="20" fill="#f472b6" opacity="0.9" />
+        <path d="M264 74 q14 -7 28 0 M262 88 q16 9 32 -3" stroke="#be185d" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
+          <path d="M336 118 Q310 132 292 100" stroke="#4ade80" strokeWidth="3" strokeDasharray="5 4" fill="none">
+            {anime && (
+              <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite" />
+            )}
+          </path>
+          <path d="M290 114 L292 100 L304 106" stroke="#4ade80" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
       </g>
 
       {/* Le bonhomme, en bas, qui garde l'équilibre */}
@@ -76,11 +96,6 @@ export function CommentOnTientDeboutAnimation({
 
       {/* Phase 3 : ça prévient le cerveau */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
-        <path d="M260 100 Q220 150 130 190" stroke="#4ade80" strokeWidth="2.5" strokeDasharray="4 4" fill="none">
-          {anime && (
-            <animate attributeName="opacity" values="0.3;1;0.3" dur="1.2s" repeatCount="indefinite" />
-          )}
-        </path>
         <text x="20" y="34" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.alerte}</text>
       </g>
 

@@ -36,7 +36,15 @@ export function PourquoiOnEternueAnimation({
   const anime = isPlaying && !prefersReducedMotion;
   const police = 'var(--font-atkinson), sans-serif';
   const legende = localise(LEGENDES, locale);
-  const eclate = dejaVu(3);
+  /*
+    La bouche s'ouvre et le souffle démarre dès l'ordre du cerveau.
+
+    Le texte 3-5 de cette phase ne parle que de l'air qui jaillit ; l'image
+    n'en montrait rien avant la phase suivante, et le petit voyait un ordre
+    abstrait pendant qu'on lui décrivait une explosion. Le souffle y est
+    maintenant, court et pâle, avant d'éclater à la phase quatre.
+  */
+  const eclate = dejaVu(2);
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -90,6 +98,17 @@ export function PourquoiOnEternueAnimation({
             <animate attributeName="opacity" values="0.2;1;0.2" dur="1.2s" repeatCount="indefinite" />
           )}
         </path>
+        {[0, 1].map((i) => (
+          <line
+            key={i}
+            x1="150" y1={112 + i * 26} x2="104" y2={106 + i * 30}
+            stroke="#fbbf24" strokeWidth="2.5" strokeLinecap="round" opacity="0.6"
+          >
+            {anime && (
+              <animate attributeName="opacity" values="0;0.7;0" dur="1.2s" begin={`${i * 0.15}s`} repeatCount="indefinite" />
+            )}
+          </line>
+        ))}
         <text x="200" y="34" fill="#4ade80" fontSize="15" fontFamily={police} style={{ opacity: phase === 2 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.ordre}</text>
       </g>
 

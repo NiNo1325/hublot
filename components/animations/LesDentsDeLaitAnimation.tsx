@@ -37,10 +37,17 @@ export function LesDentsDeLaitAnimation({
   const police = 'var(--font-atkinson), sans-serif';
   const legende = localise(LEGENDES, locale);
 
+  /*
+    La couronne de la dent de lait tient tout entière au-dessus de la ligne de
+    gencive (y = 114), et seule la racine plonge dessous : dessinée plus bas,
+    elle ressemblait à une dent en train de sortir. La dent définitive monte
+    assez haut, à la dernière phase, pour percer la gencive à son tour — sans
+    quoi « la grande dent prend sa place » se lisait sur une gencive nue.
+  */
   const racineRongee = phase >= 2;
   const tombee = phase === 3;
   // La dent définitive migre vers la surface au fil des phases.
-  const yDefinitive = phase >= 3 ? 150 : phase >= 1 ? 172 : 200;
+  const yDefinitive = phase >= 3 ? 100 : phase >= 1 ? 172 : 200;
 
   return (
     <svg viewBox="0 0 400 240" className="h-full w-full" aria-hidden="true">
@@ -57,10 +64,10 @@ export function LesDentsDeLaitAnimation({
 
       {/* La dent de lait, en surface, qui tombe à la phase 4 */}
       <g style={{ transform: tombee ? 'translateY(60px)' : 'translateY(0px)', opacity: tombee ? 0 : 1, transition: 'transform 700ms ease, opacity 700ms ease' }}>
-        <path d="M180 118 Q200 104 220 118 L216 140 Q200 148 184 140 Z" fill="#ffffff" />
+        <path d="M180 92 Q200 78 220 92 L216 114 Q200 122 184 114 Z" fill="#ffffff" />
         {/* La racine, rongée peu à peu */}
         <path
-          d={racineRongee ? 'M188 140 L192 150 L208 150 L212 140 Z' : 'M186 140 L190 176 L210 176 L214 140 Z'}
+          d={racineRongee ? 'M188 114 L192 124 L208 124 L212 114 Z' : 'M186 114 L190 150 L210 150 L214 114 Z'}
           fill="#f5d0c5"
           style={{ transition: 'all 600ms ease' }}
         />
@@ -80,7 +87,7 @@ export function LesDentsDeLaitAnimation({
       {/* Phase 3 : elle ronge la racine */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
         {[0, 1, 2].map((i) => (
-          <circle key={i} cx={196 + i * 7} cy="146" r="2.5" fill="#f87171">
+          <circle key={i} cx={196 + i * 7} cy="120" r="2.5" fill="#f87171">
             {anime && (
               <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" begin={`${i * 0.2}s`} repeatCount="indefinite" />
             )}

@@ -38,7 +38,24 @@ export function PourcentagesAnimation({
 
       {/* Le prix de départ */}
       <g style={{ opacity: opacite(0), transition: 'opacity 600ms ease' }}>
-        <rect x="100" y="62" width="290" height="18" rx="3" fill="#7dd3fc" />
+        {/*
+          Cent parts, dont vingt allumées.
+
+          La phase définit « vingt sur cent » et la barre était pleine et sans
+          graduation : elle montrait le tout, jamais le morceau. Les traits
+          font les cent parts, le bloc clair en prend vingt.
+        */}
+        <rect x="100" y="62" width="290" height="18" rx="3" fill="#0c4a6e" />
+        <rect x="100" y="62" width="58" height="18" rx="3" fill="#7dd3fc" />
+        {Array.from({ length: 99 }).map((_, i) => (
+          <line
+            key={`part-${i}`}
+            x1={100 + ((i + 1) * 290) / 100} y1="62"
+            x2={100 + ((i + 1) * 290) / 100} y2="80"
+            stroke="#0f1b33" strokeWidth="0.6" opacity="0.8"
+          />
+        ))}
+        <rect x="100" y="62" width="290" height="18" rx="3" fill="none" stroke="#7dd3fc" strokeWidth="1.5" />
         <text x="14" y="76" fill="#7dd3fc" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           100 €
         </text>
@@ -53,6 +70,22 @@ export function PourcentagesAnimation({
         </rect>
         <text x="14" y="126" fill="#fbbf24" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           − 50 %
+        </text>
+
+        {/*
+          Une seconde base, petite, et sa moitié.
+
+          « La moitié d’un grand gâteau, ce n’est pas la moitié d’un petit » se
+          disait devant une seule base : la comparaison, qui est toute la
+          phase, n’était jamais dessinée.
+        */}
+        <rect x="100" y="136" width="29" height="12" rx="2" fill="none" stroke="#7dd3fc" strokeWidth="1.5" />
+        <rect x="100" y="136" width="14.5" height="12" rx="2" fill="#fbbf24" />
+        <text x="14" y="147" fill="#7dd3fc" fontSize="14" fontFamily="var(--font-atkinson), sans-serif">
+          10 €
+        </text>
+        <text x="138" y="147" fill="#fbbf24" fontSize="14" fontFamily="var(--font-atkinson), sans-serif">
+          − 50 % → 5 €
         </text>
       </g>
 

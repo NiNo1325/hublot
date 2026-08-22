@@ -33,12 +33,9 @@ const SOL = 180;
  */
 export function MoyenneAnimation({
   activeBeatId,
-  isPlaying,
-  prefersReducedMotion,
   locale,
 }: CardAnimationProps) {
   const { phase, opacite } = miseEnScene(PHASES, activeBeatId);
-  const anime = isPlaying && !prefersReducedMotion;
   const extreme = phase >= 1;
   const legende = localise(LEGENDES, locale);
 
@@ -86,12 +83,19 @@ export function MoyenneAnimation({
         </text>
       </g>
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        {[0, 1, 2].map((i) => (
-          <circle key={i} cx={300 + i * 22} cy="196" r="4" fill="#94a3b8">
-            {anime && phase === 3 && (
-              <animate attributeName="cy" values="196;188;196" dur="2s" begin={`${i * 0.4}s`} repeatCount="indefinite" />
-            )}
-          </circle>
+        {/*
+          Deux séries de même moyenne, l’une serrée, l’autre étalée.
+
+          Trois points presque alignés ne portaient pas l’idée : c’est la
+          comparaison de deux dispersions autour du *même* trait qui dit
+          pourquoi un seul nombre ne suffit pas.
+        */}
+        <line x1="312" y1="186" x2="312" y2="228" stroke="#fbbf24" strokeWidth="2" strokeDasharray="4 4" />
+        {[300, 306, 312, 318, 324].map((x) => (
+          <circle key={`serre-${x}`} cx={x} cy="196" r="4" fill="#7dd3fc" />
+        ))}
+        {[264, 288, 312, 336, 360].map((x) => (
+          <circle key={`etale-${x}`} cx={x} cy="220" r="4" fill="#c4b5fd" />
         ))}
         <text x="14" y="234" fill="#94a3b8" fontSize="16" fontFamily="var(--font-atkinson), sans-serif">
           {legende.unSeul}

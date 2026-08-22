@@ -61,11 +61,22 @@ export function SymetrieAnimation({
           style={{ transition: 'transform 900ms ease' }}
         >
           <Aile couleur="#f472b6" />
+          {/*
+            Le pliage va jusqu’au bout et s’arrête sur la superposition.
+
+            L’aile s’écrasait sur l’axe puis revenait : la phase affirme que
+            les deux moitiés « se superposent parfaitement » et ne montrait
+            jamais de superposition — seulement une aile droite plus étroite
+            que la gauche, saisie en cours de route. Le facteur va désormais
+            jusqu’à −1, ce qui rabat l’aile droite sur la gauche, et il s’y
+            tient un cinquième du cycle.
+          */}
           {anime && phase === 1 && (
             <animateTransform
               attributeName="transform" type="scale"
-              values="1 1; 0.06 1; 1 1"
-              dur="3s" repeatCount="indefinite" additive="sum"
+              values="1 1; 0.06 1; -1 1; -1 1; 0.06 1; 1 1"
+              keyTimes="0; 0.2; 0.4; 0.6; 0.8; 1"
+              dur="4s" repeatCount="indefinite" additive="sum"
             />
           )}
         </g>

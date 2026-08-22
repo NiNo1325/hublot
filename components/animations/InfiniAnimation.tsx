@@ -85,9 +85,35 @@ export function InfiniAnimation({
 
       {/* Des infinis plus grands que d'autres */}
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
-        <text x="28" y="226" fill="#c4b5fd" fontSize="14" fontFamily="var(--font-atkinson), sans-serif">
+        <text x="13" y="126" fill="#c4b5fd" fontSize="14" fontFamily="var(--font-atkinson), sans-serif">
           {legende.plusGrands}
         </text>
+
+        {/*
+          Un peigne dyadique entre 1 et 2.
+
+          « Entre deux nombres tout proches, il y en a encore une infinité qui
+          se cachent » se lisait au-dessus d’une file d’entiers séparés par du
+          vide : la phase énonçait sa conclusion sans jamais la montrer. Chaque
+          division en coupe une autre en deux, et la hauteur du trait dit à
+          quel rang il est apparu.
+        */}
+        <text x="18" y="228" fill="#c4b5fd" fontSize="16" fontFamily="var(--font-atkinson), monospace">1</text>
+        <text x="368" y="228" fill="#c4b5fd" fontSize="16" fontFamily="var(--font-atkinson), monospace">2</text>
+        <line x1="40" y1="222" x2="360" y2="222" stroke="#c4b5fd" strokeWidth="2" />
+        {Array.from({ length: 63 }).map((_, k) => {
+          const i = k + 1;
+          const rang = i % 32 === 0 ? 5 : i % 16 === 0 ? 4 : i % 8 === 0 ? 3 : i % 4 === 0 ? 2 : i % 2 === 0 ? 1 : 0;
+          const demi = 2.5 + rang * 1.6;
+          const x = 40 + (i * 320) / 64;
+          return (
+            <line
+              key={`decimal-${i}`}
+              x1={x} y1={222 - demi} x2={x} y2={222 + demi}
+              stroke="#c4b5fd" strokeWidth="1.6" opacity={0.35 + rang * 0.13}
+            />
+          );
+        })}
       </g>
     </svg>
   );

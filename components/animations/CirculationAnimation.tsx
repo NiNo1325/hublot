@@ -69,8 +69,17 @@ export function CirculationAnimation({
         <path d="M186 132 q-52 6 -60 62" stroke="#ef4444" strokeWidth="5" fill="none" strokeLinecap="round" />
         <path d="M214 132 q52 6 60 62" stroke="#ef4444" strokeWidth="5" fill="none" strokeLinecap="round" />
         <path d="M200 160 q-8 40 -12 74" stroke="#ef4444" strokeWidth="5" fill="none" strokeLinecap="round" />
-        {[0, 1, 2].map((i) => (
-          <circle key={i} r="4.5" fill="#fca5a5">
+        {/*
+          Position de repos sur la trajectoire.
+
+          Sans `cx`/`cy`, un cercle mû par `animateMotion` retombe en 0,0 dès que
+          l'animation ne joue pas — lecture en pause, ou réglage système
+          « mouvement réduit ». On les pose donc sur leur parcours, et seulement
+          alors : `animateMotion` s'ajoute à la position propre au lieu de la
+          remplacer.
+        */}
+        {[[179, 138], [155, 153], [140, 177]].map(([x, y], i) => (
+          <circle key={x} r="4.5" fill="#fca5a5" cx={anime ? 0 : x} cy={anime ? 0 : y}>
             {anime && (
               <animateMotion
                 dur="2.6s" begin={`${i * 0.85}s`} repeatCount="indefinite"
@@ -102,8 +111,8 @@ export function CirculationAnimation({
       <g style={{ opacity: opacite(3), transition: 'opacity 600ms ease' }}>
         <path d="M136 190 q40 -30 56 -58" stroke="#7f1d1d" strokeWidth="5" fill="none" strokeLinecap="round" />
         <path d="M264 190 q-40 -30 -56 -58" stroke="#7f1d1d" strokeWidth="5" fill="none" strokeLinecap="round" />
-        {[0, 1].map((i) => (
-          <circle key={i} r="4.5" fill="#991b1b">
+        {[[155, 174], [180, 150]].map(([x, y], i) => (
+          <circle key={x} r="4.5" fill="#991b1b" cx={anime ? 0 : x} cy={anime ? 0 : y}>
             {anime && (
               <animateMotion
                 dur="2.4s" begin={`${i * 1.2}s`} repeatCount="indefinite"

@@ -80,7 +80,16 @@ export function PourquoiOnAMalAnimation({
 
       {/* Phase 3 : le signal file vers le cerveau */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
-        <circle r="4" fill="#38bdf8">
+        {/*
+          Position de repos sur la trajectoire.
+
+          Sans `cx`/`cy`, un cercle mû par `animateMotion` retombe en 0,0 dès que
+          l'animation ne joue pas — lecture en pause, ou réglage système
+          « mouvement réduit ». On les pose donc sur leur parcours, et seulement
+          alors : `animateMotion` s'ajoute à la position propre au lieu de la
+          remplacer.
+        */}
+        <circle r="4" fill="#38bdf8" cx={anime ? 0 : 161} cy={anime ? 0 : 118}>
           {anime && (
             <animateMotion path="M264 128 Q160 130 60 82" dur="1s" repeatCount="indefinite" />
           )}

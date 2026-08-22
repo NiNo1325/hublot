@@ -74,12 +74,21 @@ export function InternetAnimation({
           </g>
         ))}
         {/* Deux paquets, deux routes, même destination. */}
-        <circle r="5" fill="#a5f3fc">
+        {/*
+          Position de repos sur la trajectoire.
+
+          Sans `cx`/`cy`, un cercle mû par `animateMotion` retombe en 0,0 dès que
+          l'animation ne joue pas — lecture en pause, ou réglage système
+          « mouvement réduit ». On les pose donc sur leur parcours, et seulement
+          alors : `animateMotion` s'ajoute à la position propre au lieu de la
+          remplacer.
+        */}
+        <circle r="5" fill="#a5f3fc" cx={anime ? 0 : 138} cy={anime ? 0 : 62}>
           {anime && (
             <animateMotion dur="2.6s" repeatCount="indefinite" path="M78 82 q60 -40 120 0 q60 40 120 0" />
           )}
         </circle>
-        <circle r="5" fill="#67e8f9">
+        <circle r="5" fill="#67e8f9" cx={anime ? 0 : 138} cy={anime ? 0 : 127}>
           {anime && (
             <animateMotion dur="3.2s" begin="0.5s" repeatCount="indefinite" path="M78 92 q60 60 120 20 q60 -40 120 10" />
           )}

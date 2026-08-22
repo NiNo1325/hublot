@@ -76,8 +76,17 @@ export function PourquoiLoignonFaitPleurerAnimation({
       {/* Phase 3 : le gaz monte jusqu'au visage */}
       <g style={{ opacity: opacite(2), transition: 'opacity 500ms ease' }}>
         <path d="M110 130 Q200 60 292 122" stroke="#86efac" strokeWidth="2" strokeDasharray="6 5" fill="none" />
-        {[0, 1, 2].map((i) => (
-          <circle key={i} r="4" fill="#86efac">
+        {/*
+          Position de repos sur la trajectoire.
+
+          Sans `cx`/`cy`, un cercle mû par `animateMotion` retombe en 0,0 dès que
+          l'animation ne joue pas — lecture en pause, ou réglage système
+          « mouvement réduit ». On les pose donc sur leur parcours, et seulement
+          alors : `animateMotion` s'ajoute à la position propre au lieu de la
+          remplacer.
+        */}
+        {[[146, 107], [200, 93], [255, 102]].map(([x, y], i) => (
+          <circle key={x} r="4" fill="#86efac" cx={anime ? 0 : x} cy={anime ? 0 : y}>
             {anime && (
               <animateMotion path="M110 130 Q200 60 292 122" dur="2.2s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
             )}

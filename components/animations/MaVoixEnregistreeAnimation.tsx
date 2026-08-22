@@ -56,7 +56,16 @@ export function MaVoixEnregistreeAnimation({
       <g style={{ opacity: opacite(0), transition: 'opacity 500ms ease' }}>
         <path d="M128 132 Q90 150 70 190" stroke="#38bdf8" strokeWidth="2" fill="none" strokeDasharray="4 4" />
         <path d="M70 190 Q170 220 226 108" stroke="#38bdf8" strokeWidth="2" fill="none" strokeDasharray="4 4" />
-        <circle r="4" fill="#38bdf8">
+        {/*
+          Position de repos sur la trajectoire.
+
+          Sans `cx`/`cy`, un cercle mû par `animateMotion` retombe en 0,0 dès que
+          l'animation ne joue pas — lecture en pause, ou réglage système
+          « mouvement réduit ». On les pose donc sur leur parcours, et seulement
+          alors : `animateMotion` s'ajoute à la position propre au lieu de la
+          remplacer.
+        */}
+        <circle r="4" fill="#38bdf8" cx={anime ? 0 : 94} cy={anime ? 0 : 156}>
           {anime && (
             <animateMotion
               dur="2.2s"
@@ -71,7 +80,7 @@ export function MaVoixEnregistreeAnimation({
       {/* Phase 2 : il traverse aussi les os du crâne */}
       <g style={{ opacity: opacite(1), transition: 'opacity 500ms ease' }}>
         <path d="M132 128 Q170 150 222 110" stroke="#e879f9" strokeWidth="2.5" fill="none" strokeDasharray="2 5" />
-        <circle r="4" fill="#e879f9">
+        <circle r="4" fill="#e879f9" cx={anime ? 0 : 174} cy={anime ? 0 : 134}>
           {anime && <animateMotion dur="1s" repeatCount="indefinite" path="M132 128 Q170 150 222 110" />}
         </circle>
         <text x="16" y="46" fill="#e879f9" fontSize="15" fontFamily={police} style={{ opacity: phase === 1 ? 1 : 0, transition: 'opacity 300ms ease' }}>{legende.os}</text>

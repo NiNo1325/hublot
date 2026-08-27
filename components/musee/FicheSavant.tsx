@@ -49,8 +49,11 @@ export function FicheSavant({
   const { locale } = useLocale();
   const { ageRange } = useAgeRange();
   const t = useT();
-  const { presenter, arreter, enLecture } = useLienAudio();
+  const { presenter, direPortrait, arreter, enLecture } = useLienAudio();
   const prix = prixSavant(savant);
+  /* Le portrait a sa propre marque de lecture, sans quoi il partagerait celle
+     d'une carte et les deux boutons s'allumeraient ensemble. */
+  const ditPortrait = enLecture === `portrait-${savant.id}`;
 
   const dates =
     savant.mort === null
@@ -94,6 +97,34 @@ export function FicheSavant({
 
         {libere ? (
           <>
+            {/*
+              Qui il est, avant ce qu'il a fait ici.
+
+              La fiche n'apprenait de Newton que la chute des corps et les
+              marées — jamais qu'il a aussi décomposé la lumière et inventé le
+              calcul infinitésimal. Elle donnait le détail sans jamais donner la
+              mesure de l'homme, et le musée finissait par ne parler que de
+              lui-même. Ce paragraphe vient donc en premier, et les cartes
+              après : on présente quelqu'un avant de dire ce qu'il a fait pour
+              nous.
+            */}
+            <div className="flex flex-col gap-3 rounded-2xl border-2 border-encre-bord bg-encre/40 p-4">
+              <p className="text-sm leading-relaxed text-craie">
+                {localise(savant.portrait, locale)}
+              </p>
+              <button
+                type="button"
+                onClick={() =>
+                  ditPortrait ? arreter() : direPortrait(savant.id)
+                }
+                aria-label={ditPortrait ? t('quizz.arreter') : t('musee.ecouter-portrait')}
+                className="flex min-h-11 cursor-pointer items-center gap-2 self-start rounded-full border-2 border-encre-bord px-4 text-sm text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
+              >
+                <span aria-hidden="true">{ditPortrait ? '⏸' : '🔊'}</span>
+                {ditPortrait ? t('quizz.arreter') : t('musee.ecouter-portrait')}
+              </button>
+            </div>
+
             {/*
               Ce qu'il a fait, carte par carte, et surtout : écoutable sur place.
               Ces lignes renvoyaient vers la liste de son monde, ce qui laissait

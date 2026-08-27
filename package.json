@@ -19,6 +19,7 @@
     "audio:histoire": "tsx --env-file=.env.local scripts/generer-audio-histoire.mjs",
     "audio:noms": "tsx --env-file=.env.local scripts/generer-audio-noms.mjs",
     "audio:liens": "tsx --env-file=.env.local scripts/generer-audio-liens.mjs",
+    "audio:portraits": "tsx --env-file=.env.local scripts/generer-audio-portraits.mjs",
     "audio:titres": "tsx --env-file=.env.local scripts/generer-audio-titres.mjs",
     "audio:affirmations": "tsx --env-file=.env.local scripts/generer-audio-affirmations.mjs",
     "audio:attente": "tsx scripts/maj-attente-audio.mjs",

@@ -63,6 +63,25 @@ describe('les savants et leurs cartes', () => {
   });
 
   /*
+    Le portrait dit qui est le savant, là où le lien dit ce qu'il a fait sur une
+    carte. Les bornes de longueur ne sont pas cosmétiques : trop court, il
+    retombe sur « un grand savant » et n'apprend rien ; trop long, il dépasse la
+    fiche et la voix de Lumi le débite en une tirade qu'aucun enfant n'écoute
+    jusqu'au bout.
+  */
+  it('donne à chaque savant un portrait dans les deux langues', () => {
+    for (const s of savantsPrisonniers) {
+      for (const langue of LOCALES) {
+        const texte = s.portrait[langue];
+        expect(texte, `${s.nom} / ${langue}`).toBeDefined();
+        expect(texte!.length, `${s.nom} / ${langue}`).toBeGreaterThan(199);
+        expect(texte!.length, `${s.nom} / ${langue}`).toBeLessThan(481);
+        expect(texte!.endsWith('.'), `${s.nom} / ${langue}`).toBe(true);
+      }
+    }
+  });
+
+  /*
     Le lien s'écrit dans les deux langues. Il n'existait qu'en français, si bien
     que la fiche restait française en anglais — et que la voix anglaise, produite
     à partir du français, disait autre chose que l'écran.

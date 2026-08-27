@@ -77,6 +77,19 @@ export function useLienAudio() {
     [lancer],
   );
 
+  /**
+   * Le nom du savant, puis qui il est.
+   *
+   * Même enchaînement que `presenter`, et pour la même raison : on se nomme
+   * avant de se raconter. Le portrait commence souvent par « Il a montré
+   * que… », qui ne veut rien dire si l'on n'a pas entendu de qui il s'agit.
+   */
+  const direPortrait = useCallback(
+    (savantId: string) =>
+      lancer(`savants/${savantId}/nom.mp3`, `savants/${savantId}/portrait.mp3`, `portrait-${savantId}`),
+    [lancer],
+  );
+
   /** Le nom seul — pour le jeu des liens, où l'explication viendrait trop tôt. */
   const direNom = useCallback(
     (savantId: string) => lancer(`savants/${savantId}/nom.mp3`, null, savantId),
@@ -98,5 +111,5 @@ export function useLienAudio() {
 
   usePauseEnArrierePlan(arreter);
 
-  return { presenter, direNom, direTitre, arreter, enLecture };
+  return { presenter, direPortrait, direNom, direTitre, arreter, enLecture };
 }

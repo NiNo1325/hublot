@@ -15,6 +15,8 @@ import {
 } from '@/lib/cles';
 import { savantsPrisonniers } from '@/content/savants-cartes';
 import { cards } from '@/content/cards';
+import { questionsDe } from '@/content/quiz';
+import { AGE_RANGES, LOCALES } from '@/lib/types';
 
 const archimede = savantsPrisonniers.find((s) => s.id === 'archimede')!;
 const tazieff = savantsPrisonniers.find((s) => s.id === 'haroun-tazieff')!;
@@ -136,6 +138,61 @@ describe('savant d’une carte', () => {
     for (const carte of cards) {
       expect(savantDeLaCarte(carte.id), carte.id).not.toBeNull();
     }
+  });
+});
+
+/**
+ * Le mur doit rester franchissable, à chaque niveau et dans chaque langue.
+ *
+ * Trois règles se rencontrent ici, et le budget qu'elles dessinent est juste à
+ * la clé près : une clé se gagne en maîtrisant une carte, **la première fois
+ * seulement** ; le prix d'un savant est le nombre de cartes qu'il tient, donc
+ * la somme des prix vaut exactement le nombre de cartes ; et une carte n'est
+ * interrogeable que si elle porte une question **à l'âge de l'enfant**.
+ *
+ * Une seule carte sans question à un niveau retire donc une clé au total
+ * gagnable sans rien retirer au prix à payer, et le dernier savant reste
+ * enfermé pour toujours — sans que rien, à l'écran, n'explique pourquoi. C'est
+ * la panne la plus silencieuse de l'application, et elle s'introduirait en
+ * ajoutant une carte sans écrire ses trois questions.
+ *
+ * `npx tsx scripts/economie-cles.mjs` en donne le détail chiffré.
+ */
+describe('économie des clés', () => {
+  const prixTotal = savantsPrisonniers.reduce((n, s) => n + prixSavant(s), 0);
+
+  it('fait payer exactement le catalogue', () => {
+    expect(prixTotal).toBe(cards.length);
+  });
+
+  it.each(
+    LOCALES.flatMap((locale) =>
+      AGE_RANGES.map((age) => [`${locale} — ${age}`, locale, age] as const),
+    ),
+  )('%s permet de gagner de quoi tout délivrer', (_libelle, locale, age) => {
+    const muettes = cards.filter((c) => questionsDe(c.id, age, locale).length === 0);
+    expect(
+      muettes.map((c) => c.id),
+      'ces cartes n’ont pas de question à cet âge : leur clé est ingagnable',
+    ).toEqual([]);
+    expect(cards.length - muettes.length).toBeGreaterThanOrEqual(prixTotal);
+  });
+
+  /*
+    Les clés sont fongibles, mais un savant dont toutes les cartes seraient
+    muettes resterait inatteignable même avec un trésor : l'enfant paierait son
+    prix avec les clés des autres, et il en manquerait autant à la fin. C'est
+    une panne d'un autre genre que le solde, d'où un test séparé.
+  */
+  it.each(
+    LOCALES.flatMap((locale) =>
+      AGE_RANGES.map((age) => [`${locale} — ${age}`, locale, age] as const),
+    ),
+  )('%s laisse chaque savant atteignable', (_libelle, locale, age) => {
+    const muets = savantsPrisonniers.filter((s) =>
+      s.cartes.every((c) => questionsDe(c.id, age, locale).length === 0),
+    );
+    expect(muets.map((s) => s.id)).toEqual([]);
   });
 });
 

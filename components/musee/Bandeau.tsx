@@ -34,6 +34,12 @@ interface BandeauProps {
  * il devient alors un **état des lieux** : les deux monnaies, le compte de
  * délivrés, et une seule chose à faire.
  *
+ * Ce qui ne change pas, c'est l'action : elle s'affiche des deux côtés. Elle
+ * n'apparaissait qu'après la première délivrance, si bien qu'il fallait une clé
+ * pour découvrir comment gagner des clés — et le musée, qui est la porte
+ * d'entrée du jeu, présentait cent treize cellules tarifées sans dire d'où
+ * vient une clé.
+ *
  * Une action, jamais trois. C'est ce qui distingue un guide d'un menu, et c'est
  * la leçon des écrans qu'on a supprimés ici : proposer trois chemins à un enfant
  * de cinq ans, c'est lui demander d'arbitrer au lieu de l'emmener.
@@ -64,6 +70,35 @@ export function Bandeau({
     </button>
   );
 
+  /* L'action proposée, et ce qu'elle déclenche. */
+  const libelle =
+    action.type === 'delivrer'
+      ? t('action.delivrer')(action.savant.nom, prixSavant(action.savant))
+      : action.type === 'repondre'
+        ? t('action.repondre')(action.combien)
+        : action.type === 'ecouter'
+          ? t('action.ecouter')(action.combien)
+          : t('action.complet');
+
+  const aller = () => {
+    if (action.type === 'delivrer') onAllerAuSavant(action.savant.id);
+    else if (action.type === 'repondre') router.push('/joue/quizz');
+    else if (action.type === 'ecouter') router.push('/decouvrir');
+  };
+
+  const boutonAction =
+    action.type === 'complet' ? (
+      <p className="text-center font-display text-base text-soleil">{libelle}</p>
+    ) : (
+      <button
+        type="button"
+        onClick={aller}
+        className="min-h-14 w-full cursor-pointer rounded-2xl border-2 border-soleil bg-soleil/10 px-5 py-3 font-display text-base leading-snug text-soleil transition-transform hover:scale-[1.02] active:scale-95"
+      >
+        {libelle}
+      </button>
+    );
+
   if (raconter) {
     return (
       <div className="flex w-full max-w-md flex-col items-center gap-3 rounded-3xl border-2 border-soleil/40 bg-soleil/5 p-4">
@@ -72,6 +107,17 @@ export function Bandeau({
         </p>
         <div className="flex w-full flex-col items-stretch gap-2">
           {boutonEcoute}
+          {/*
+            L'action, dès le premier écran.
+
+            Elle n'apparaissait qu'une fois quelqu'un délivré. Or c'est
+            exactement avant la première délivrance que l'enfant ne sait pas quoi
+            faire : il lui fallait une clé pour découvrir comment gagner des
+            clés. Le récit dit pourquoi les savants sont enfermés, l'action dit
+            par où commencer — ce sont deux questions différentes, et la seconde
+            ne peut pas attendre la fin de la première.
+          */}
+          {boutonAction}
           {/*
             Ici, le lien ne promet pas une explication de plus : le bandeau vient
             d'en proposer une, et la page d'histoire ouvre le même récit, lu par
@@ -89,22 +135,6 @@ export function Bandeau({
     );
   }
 
-  /* L'action proposée, et ce qu'elle déclenche. */
-  const libelle =
-    action.type === 'delivrer'
-      ? t('action.delivrer')(action.savant.nom, prixSavant(action.savant))
-      : action.type === 'repondre'
-        ? t('action.repondre')(action.combien)
-        : action.type === 'ecouter'
-          ? t('action.ecouter')(action.combien)
-          : t('action.complet');
-
-  const aller = () => {
-    if (action.type === 'delivrer') onAllerAuSavant(action.savant.id);
-    else if (action.type === 'repondre') router.push('/joue/quizz');
-    else if (action.type === 'ecouter') router.push('/decouvrir');
-  };
-
   return (
     <div className="flex w-full max-w-md flex-col items-center gap-3 rounded-3xl border-2 border-encre-bord bg-encre-clair p-4">
       {/* Les deux monnaies et le compte : tout l'état en une ligne. */}
@@ -115,17 +145,7 @@ export function Bandeau({
         <span className="text-craie">{t('musee.compte')(delivres, total)}</span>
       </div>
 
-      {action.type === 'complet' ? (
-        <p className="text-center font-display text-base text-soleil">{libelle}</p>
-      ) : (
-        <button
-          type="button"
-          onClick={aller}
-          className="min-h-14 w-full cursor-pointer rounded-2xl border-2 border-soleil bg-soleil/10 px-5 py-3 font-display text-base leading-snug text-soleil transition-transform hover:scale-[1.02] active:scale-95"
-        >
-          {libelle}
-        </button>
-      )}
+      {boutonAction}
 
       {/*
         L'histoire de Lumi, en grand et non plus en petits caractères. Il n'y a

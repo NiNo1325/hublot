@@ -118,12 +118,30 @@ const fr = {
     « Lumi t'explique tout » redevient exact.
   */
   'musee.lire-histoire': 'Lire toute l’histoire',
-  'musee.legende': 'Au quizz, chaque bonne réponse te donne une clé. Une cellule coûte autant de clés que le savant a de cartes.',
+  /*
+    La règle du jeu tient en deux phrases, et la première manquait : le quizz
+    n'interroge que sur les cartes déjà écoutées. C'était la seule dépendance de
+    la boucle, et elle n'était écrite nulle part ailleurs que sur l'écran de
+    quizz vide — qu'on ne voit qu'en allant au quizz sans rien avoir écouté.
+  */
+  'musee.legende':
+    'Le quizz t’interroge sur les cartes que tu as écoutées, et chaque bonne réponse donne une clé. Une cellule coûte autant de clés que le savant a de cartes.',
   'musee.cellule-libre': (nom: string) => `${nom}, délivré`,
   'musee.cellule-fermee': (prix: number) => `Cellule fermée, ${prix} clés`,
   'musee.inconnu': 'Qui est-ce ?',
+  /*
+    La cellule fermée est le seul écran où l'enfant se demande activement d'où
+    viennent les clés — et le seul qui ne le disait pas. Elle annonçait un prix
+    et un manque, jamais le moyen.
+
+    Le rapport qu'elle tait est pourtant exact : le prix d'une cellule est le
+    nombre de cartes que le savant a inspirées. On peut donc remplacer la notice
+    par un ordre de marche, vrai à la clé près.
+  */
   'musee.enferme': (n: number) =>
-    `Ce savant a inspiré ${n} carte${n > 1 ? 's' : ''}. Ouvre sa cellule pour découvrir qui il est.`,
+    n > 1
+      ? `Ce savant a inspiré ${n} cartes. Écoute-les et réponds à leurs questions : tu auras de quoi ouvrir sa cellule.`
+      : 'Ce savant a inspiré une carte. Écoute-la et réponds à sa question : tu auras de quoi ouvrir sa cellule.',
   'musee.liberer': 'Délivrer',
   'musee.delivre': 'Délivré !',
   'musee.manque': (n: number) => `Il te manque ${n} 🔑`,
@@ -522,12 +540,15 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'musee.compte': (n: number, total: number) => `${n} freed of ${total}`,
     'musee.vers-histoire': 'Lumi explains it all',
     'musee.lire-histoire': 'Read the whole story',
-    'musee.legende': 'In the quiz, every right answer gives you a key. A cell costs as many keys as the scientist has cards.',
+    'musee.legende':
+      'The quiz asks you about the cards you have listened to, and every right answer gives a key. A cell costs as many keys as the scientist has cards.',
     'musee.cellule-libre': (nom: string) => `${nom}, freed`,
     'musee.cellule-fermee': (prix: number) => `Locked cell, ${prix} keys`,
     'musee.inconnu': 'Who is this?',
     'musee.enferme': (n: number) =>
-      `This scientist inspired ${n} card${n > 1 ? 's' : ''}. Open the cell to find out who they are.`,
+      n > 1
+        ? `This scientist inspired ${n} cards. Listen to them and answer their questions: that will be enough to open the cell.`
+        : 'This scientist inspired one card. Listen to it and answer its question: that will be enough to open the cell.',
     'musee.liberer': 'Set free',
     'musee.delivre': 'Freed!',
     'musee.manque': (n: number) => `You need ${n} more 🔑`,

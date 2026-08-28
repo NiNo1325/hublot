@@ -169,7 +169,7 @@ export function MuseeView({ cards }: MuseeViewProps) {
           après cent treize cellules : personne n'y descendait, et c'est pourtant la
           seule phrase qui dise ce que coûte une cellule.
         */}
-        <p className="max-w-md px-2 text-center text-xs leading-relaxed text-craie-douce/80">
+        <p className="max-w-md px-2 text-center text-sm leading-relaxed text-craie-douce">
           {t('musee.legende')}
         </p>
       </header>

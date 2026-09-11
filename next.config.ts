@@ -33,6 +33,34 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [{ source: '/quizz', destination: '/joue/quizz', permanent: true }];
   },
+
+  /*
+    L'audio est servi depuis un stockage objet, mais sous une URL de ce domaine.
+
+    Les 639 Mo de mp3 faisaient 99 % du poids de chaque déploiement, et Vercel
+    conserve chaque déploiement : cent cinquante poussées plus tard, le quota de
+    stockage était plein. C'est du contenu généré, reproductible depuis
+    `content/` et les scripts — il n'a pas plus sa place dans le dépôt que
+    `node_modules`.
+
+    Réécriture et non URL directe : le service worker refuse tout ce qui n'est
+    pas de même origine (`public/sw.js`), si bien qu'une adresse externe le
+    ferait sortir de son champ et emporterait avec elle la mise en cache à
+    l'écoute **et** le téléchargement hors ligne — la fonction même qui fait
+    l'intérêt de l'application en voiture. Ici, le navigateur continue de voir
+    `/audio/…` : ni le worker, ni `cheminAudio`, ni le téléchargeur ne changent
+    d'une ligne.
+
+    Le repli est gratuit : une réécriture rendue sous forme de tableau est
+    consultée **après** le système de fichiers. Tant que `public/audio` est
+    déployé, il gagne et cette règle dort ; c'est `.vercelignore` qui l'active,
+    et le retirer suffit à revenir en arrière.
+  */
+  async rewrites() {
+    const base = process.env.NEXT_PUBLIC_AUDIO_BASE;
+    if (!base) return [];
+    return [{ source: '/audio/:chemin*', destination: `${base}/:chemin*` }];
+  },
 };
 
 export default nextConfig;

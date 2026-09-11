@@ -1,0 +1,15 @@
+# L'audio ne monte plus dans le déploiement.
+#
+# 639 Mo de mp3 pour 6 Mo de tout le reste : ils faisaient 99 % du poids de
+# chaque déploiement, et Vercel conserve chaque déploiement — le quota de
+# stockage se remplissait en une dizaine de poussées. Les fichiers vivent
+# désormais dans un bucket R2, et `next.config.ts` y renvoie `/audio/*` par
+# réécriture, sous une URL de ce domaine pour que le service worker continue de
+# les voir.
+#
+# Ils restent sur le disque et se régénèrent avec `npm run audio:*` ; ce qui
+# les met en ligne, c'est `npm run audio:envoyer`, jamais un déploiement.
+#
+# Retirer cette ligne remet l'audio dans le déploiement, où il reprend la
+# priorité sur la réécriture : c'est le chemin de retour, s'il en faut un.
+public/audio

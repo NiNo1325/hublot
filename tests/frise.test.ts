@@ -13,7 +13,7 @@ const naissanceDe = (id: string) =>
  * ne pourrait plus le trouver — et deux savants nés la même décennie, dont rien
  * à l'écran ne permettrait de dire lequel vient avant.
  */
-describe('la frise du temps', () => {
+describe('la frise des savants', () => {
   it.each(AGE_RANGES)('propose le bon nombre de savants à %s', (age) => {
     const { tirage, ordre } = construireFrise(AUCUN, [], age);
     expect(tirage).toHaveLength(SAVANTS_PAR_AGE[age]);

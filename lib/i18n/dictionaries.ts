@@ -171,9 +171,9 @@ const fr = {
   'liens.rejouer': 'Rejouer',
   'liens.retour': 'Retour aux jeux',
 
-  'jeu.frise.titre': 'La frise du temps',
+  'jeu.frise.titre': 'La frise des savants',
   'jeu.frise.texte': 'Range les savants du plus ancien au plus récent.',
-  'frise.titre': 'La frise du temps',
+  'frise.titre': 'La frise des savants',
   'frise.regle':
     'Qui a vécu en premier ? Touche les savants du plus ancien au plus récent. La date apparaît quand tu as trouvé.',
   'frise.demarrer': 'Commencer',
@@ -578,7 +578,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'liens.rejouer': 'Play again',
     'liens.retour': 'Back to the games',
 
-    'jeu.frise.titre': 'The timeline',
+    'jeu.frise.titre': 'The scientists timeline',
     'jeu.frise.texte': 'Put the scientists in order, oldest first.',
     'jeu.decouvertes.titre': 'The discovery timeline',
     'jeu.decouvertes.texte': 'Put the discoveries in order, oldest first.',
@@ -586,7 +586,7 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'decouvertes.regle':
       'Here are things scientists understood or invented. Guess which came first. The date only appears once the card is placed.',
     'decouvertes.consigne': 'Tap the oldest one left',
-    'frise.titre': 'The timeline',
+    'frise.titre': 'The scientists timeline',
     'frise.regle':
       'Who lived first? Tap the scientists from the oldest to the most recent. The date shows up once you get it right.',
     'frise.demarrer': 'Start',

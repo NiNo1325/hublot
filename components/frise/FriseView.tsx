@@ -18,7 +18,7 @@ import { useT } from '@/components/i18n/useT';
 import { jouerSonPaire, jouerSonRate, jouerSonRecompense } from '@/lib/sonRecompense';
 
 /**
- * La frise du temps : ranger les savants du plus ancien au plus récent.
+ * La frise des savants : les ranger du plus ancien au plus récent.
  *
  * Le musée range déjà les savants par époque, mais il le fait à la place de
  * l'enfant. Ici, c'est lui qui décide qui est venu avant — et rien à l'écran ne

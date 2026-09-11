@@ -3,7 +3,7 @@ import { melanger } from './melanger';
 import { savantsPrisonniers, type SavantPrisonnier } from '@/content/savants-cartes';
 
 /**
- * La frise du temps : ranger les savants du plus ancien au plus récent.
+ * La frise des savants : les ranger du plus ancien au plus récent.
  *
  * C'est le seul exercice de l'application qui fasse manipuler les siècles. Le
  * musée range déjà les savants par époque, mais il le fait à la place de

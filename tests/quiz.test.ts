@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { quizCartes } from '@/content/quiz';
 import { cards } from '@/content/cards';
 import { AGE_RANGES, LOCALES } from '@/lib/types';
+import { AUDIO_SUR_DISQUE } from './audio-sur-disque';
 
 /**
  * Cartes livrées avant l'audio de leur quizz, en attente de quota TTS.
@@ -140,7 +141,7 @@ describe('intégrité du quizz', () => {
     ),
   );
 
-  it.each(fichiersAudio)('audio %s présent', (_libelle, chemin) => {
+  it.skipIf(!AUDIO_SUR_DISQUE).each(fichiersAudio)('audio %s présent', (_libelle, chemin) => {
     expect(existsSync(chemin), `manquant : ${chemin} — lance « npm run audio:quiz »`).toBe(
       true,
     );

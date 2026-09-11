@@ -2,6 +2,7 @@ import { existsSync, statSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { cards } from '@/content/cards';
 import { AGE_RANGES } from '@/lib/types';
+import { AUDIO_SUR_DISQUE } from './audio-sur-disque';
 
 /**
  * L'audio est généré hors ligne par `npm run audio` et commité. Rien à
@@ -35,13 +36,13 @@ const cas = cards
   );
 
 describe('couverture audio du catalogue', () => {
-  it.each(cas)('%s a son fichier audio', (_libelle, chemin) => {
+  it.skipIf(!AUDIO_SUR_DISQUE).each(cas)('%s a son fichier audio', (_libelle, chemin) => {
     expect(existsSync(chemin), `manquant : ${chemin} — lance « npm run audio »`).toBe(
       true,
     );
   });
 
-  it.each(cas)('%s a un fichier audio non vide', (_libelle, chemin) => {
+  it.skipIf(!AUDIO_SUR_DISQUE).each(cas)('%s a un fichier audio non vide', (_libelle, chemin) => {
     if (!existsSync(chemin)) return;
     // Un mp3 tronqué se lit comme un silence : la taille est le seul signal
     // simple qu'on ait sans décoder le flux.
@@ -53,7 +54,7 @@ describe('couverture audio du catalogue', () => {
     l'audio a été généré doit en sortir, sinon elle ne serait plus jamais
     vérifiée.
   */
-  it("ne garde en attente que des cartes réellement dépourvues d'audio", () => {
+  it.skipIf(!AUDIO_SUR_DISQUE)("ne garde en attente que des cartes réellement dépourvues d'audio", () => {
     const aTortEnAttente = [...EN_ATTENTE_AUDIO].filter((id) => {
       const carte = cards.find((c) => c.id === id);
       if (!carte) return false;

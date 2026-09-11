@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { domains } from '@/content/domains';
+import { AUDIO_SUR_DISQUE } from './audio-sur-disque';
 
 /*
   Domaines livrés avant l'audio de leur accroche, en attente de quota TTS.
@@ -23,7 +24,7 @@ describe('accroches de domaine', () => {
     .filter((d) => !EN_ATTENTE_ACCROCHES.has(d.id))
     .map((d) => [d.id, `public/audio/accroches/${d.id}.mp3`] as const);
 
-  it.each(cas)('audio %s présent', (_id, chemin) => {
+  it.skipIf(!AUDIO_SUR_DISQUE).each(cas)('audio %s présent', (_id, chemin) => {
     expect(existsSync(chemin), `manquant : ${chemin} — lance « npm run audio:accroches »`).toBe(
       true,
     );

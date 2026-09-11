@@ -1,5 +1,6 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { AUDIO_SUR_DISQUE } from './audio-sur-disque';
 
 interface EntreeCatalogue {
   chemin: string;
@@ -21,30 +22,41 @@ interface EntreeCatalogue {
  */
 const CHEMIN = 'public/audio/catalogue.json';
 
-describe('catalogue audio', () => {
+describe.skipIf(!AUDIO_SUR_DISQUE)('catalogue audio', () => {
   it('existe', () => {
     expect(existsSync(CHEMIN), `manquant — lance « npm run audio:catalogue »`).toBe(
       true,
     );
   });
 
-  const catalogue = JSON.parse(readFileSync(CHEMIN, 'utf8')) as {
-    fichiers: EntreeCatalogue[];
-    octets: number;
-  };
+  /*
+    Lu à l'exécution, jamais à la collecte.
 
-  const surDisque = readdirSync('public/audio', { recursive: true })
-    .map((entree) => String(entree).replaceAll('\\', '/'))
-    .filter((nom) => nom.endsWith('.mp3'))
-    .map((nom) => `/audio/${nom}`)
-    .sort();
+    `describe.skipIf` marque les tests à sauter mais évalue quand même le corps
+    du bloc pour les recenser : un `readFileSync` posé ici s'exécuterait donc
+    sur un clone dépourvu d'audio, et ferait échouer le fichier entier avant
+    qu'aucun test n'ait la chance d'être sauté. Le garde-fou ne tient que si
+    rien ne touche le disque hors d'un `it`.
+  */
+  const lireCatalogue = () =>
+    JSON.parse(readFileSync(CHEMIN, 'utf8')) as {
+      fichiers: EntreeCatalogue[];
+      octets: number;
+    };
+
+  const lireDisque = () =>
+    readdirSync('public/audio', { recursive: true })
+      .map((entree) => String(entree).replaceAll('\\', '/'))
+      .filter((nom) => nom.endsWith('.mp3'))
+      .map((nom) => `/audio/${nom}`)
+      .sort();
 
   it('couvre exactement les fichiers présents sur le disque', () => {
-    expect(catalogue.fichiers.map((f) => f.chemin).sort()).toEqual(surDisque);
+    expect(lireCatalogue().fichiers.map((f) => f.chemin).sort()).toEqual(lireDisque());
   });
 
   it('annonce les bonnes tailles', () => {
-    for (const fichier of catalogue.fichiers) {
+    for (const fichier of lireCatalogue().fichiers) {
       expect(fichier.octets, fichier.chemin).toBe(
         statSync(`public${fichier.chemin}`).size,
       );
@@ -52,6 +64,7 @@ describe('catalogue audio', () => {
   });
 
   it('totalise le poids annoncé', () => {
+    const catalogue = lireCatalogue();
     const somme = catalogue.fichiers.reduce((n, f) => n + f.octets, 0);
     expect(catalogue.octets).toBe(somme);
   });

@@ -4,6 +4,7 @@ import { quizCartes } from '@/content/quiz';
 import { ordreLecture } from '@/content/quiz/ordre';
 import { VERDICTS, cheminVerdict } from '@/content/quiz/verdicts';
 import { AGE_RANGES, LOCALES } from '@/lib/types';
+import { AUDIO_SUR_DISQUE } from './audio-sur-disque';
 
 /**
  * Deux défauts remontés par des utilisateurs, et leurs garde-fous.
@@ -86,7 +87,7 @@ describe('audio des verdicts', () => {
     },
   );
 
-  it.each(cas)('%s a son fichier audio', (_libelle, chemin) => {
+  it.skipIf(!AUDIO_SUR_DISQUE).each(cas)('%s a son fichier audio', (_libelle, chemin) => {
     expect(existsSync(chemin), `manquant : ${chemin} — lance « npm run audio:quiz »`).toBe(
       true,
     );

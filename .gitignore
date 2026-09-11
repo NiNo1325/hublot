@@ -94,3 +94,14 @@ planches/
 
 # Captures d’audit des illustrations (régénérables)
 audit-illustrations/
+
+# L'audio généré : 8305 mp3, 639 Mo.
+#
+# C'est du contenu reproductible — `npm run audio:*` le refabrique depuis
+# `content/`, et les manifestes d'empreintes rendent la régénération
+# incrémentale. Versionné, il alourdissait l'historique à chaque passage, sans
+# retour possible : un objet git ne se supprime pas.
+#
+# Il vit maintenant dans le bucket R2, d'où `next.config.ts` le sert par
+# réécriture. Pour le publier : `npm run audio:envoyer`.
+/public/audio/

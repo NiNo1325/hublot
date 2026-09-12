@@ -89,17 +89,25 @@ s'arrêter là aussi longtemps qu'on veut.
 
 ---
 
-## Phase 2 — prévenir les testeurs
+## Phase 2 — la progression de ceux qui en ont
 
-Leur demander de **lier un compte Google** dans Réglages **avant** la bascule.
+Qui a une progression qui compte, aujourd'hui ? Leur demander de **lier un
+compte Google** dans Réglages **avant** la bascule.
 
-Ce n'est pas une formalité : c'est le seul moyen de ne pas leur faire perdre
-leur progression. La synchronisation existe déjà et fait exactement cela —
-elle remonte l'état sur le serveur, et le redescend sur le nouveau domaine.
-Sans compte lié, la progression reste prisonnière de l'ancienne origine, et
-aucune astuce ne contourne proprement la règle du navigateur.
+Ce n'est pas une formalité : c'est le seul moyen de ne pas la perdre. La
+synchronisation existe déjà et fait exactement cela — elle remonte l'état sur le
+serveur, et le redescend sur le nouveau domaine. Sans compte lié, la progression
+reste prisonnière de l'ancienne origine, et aucune astuce ne contourne proprement
+la règle du navigateur.
 
-Laisser quelques jours entre l'annonce et la phase 3.
+**Si le recrutement des testeurs vient après la bascule, cette phase est
+vide** — ils arriveront directement sur `hublot.science` et n'auront jamais rien
+eu à perdre. C'est d'ailleurs l'ordre à préférer : recruter avant obligerait à
+republier une version pendant leur période d'observation, et à leur faire voir
+l'application changer d'adresse en cours de route.
+
+Ne pas oublier sa propre installation : cent treize savants délivrés ne se
+refont pas.
 
 ---
 

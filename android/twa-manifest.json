@@ -20,8 +20,8 @@
     "path": "C:\\Applications\\science\\android\\android.keystore",
     "alias": "android"
   },
-  "appVersionName": "6",
-  "appVersionCode": 6,
+  "appVersionName": "8",
+  "appVersionCode": 8,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://hublot.science/manifest.webmanifest",
@@ -42,12 +42,12 @@
   "orientation": "portrait",
   "fingerprints": [],
   "additionalTrustedOrigins": [
-    "https://hublot-ruby.vercel.app"
+    "hublot-ruby.vercel.app"
   ],
   "retainedBundles": [],
   "protocolHandlers": [],
   "fileHandlers": [],
   "launchHandlerClientMode": "",
   "displayOverride": [],
-  "appVersion": "6"
+  "appVersion": "8"
 }

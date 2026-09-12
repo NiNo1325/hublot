@@ -1,6 +1,6 @@
 {
   "packageId": "com.hublot.app",
-  "host": "hublot-ruby.vercel.app",
+  "host": "lehublot.app",
   "name": "Hublot — les sciences pour les curieux",
   "launcherName": "Hublot",
   "display": "standalone",
@@ -13,18 +13,18 @@
   "backgroundColor": "#0F1B33",
   "enableNotifications": true,
   "startUrl": "/",
-  "iconUrl": "https://hublot-ruby.vercel.app/icones/icone-512.png",
-  "maskableIconUrl": "https://hublot-ruby.vercel.app/icones/icone-512.png",
+  "iconUrl": "https://lehublot.app/icones/icone-512.png",
+  "maskableIconUrl": "https://lehublot.app/icones/icone-512.png",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "C:\\Applications\\science\\android\\android.keystore",
     "alias": "android"
   },
-  "appVersionName": "5",
-  "appVersionCode": 5,
+  "appVersionName": "6",
+  "appVersionCode": 6,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
-  "webManifestUrl": "https://hublot-ruby.vercel.app/manifest.webmanifest",
+  "webManifestUrl": "https://lehublot.app/manifest.webmanifest",
   "fallbackType": "customtabs",
   "features": {
     "playBilling": {
@@ -37,15 +37,17 @@
   "enableSiteSettingsShortcut": true,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
-  "fullScopeUrl": "https://hublot-ruby.vercel.app/",
+  "fullScopeUrl": "https://lehublot.app/",
   "minSdkVersion": 23,
   "orientation": "portrait",
   "fingerprints": [],
-  "additionalTrustedOrigins": [],
+  "additionalTrustedOrigins": [
+    "https://hublot-ruby.vercel.app"
+  ],
   "retainedBundles": [],
   "protocolHandlers": [],
   "fileHandlers": [],
   "launchHandlerClientMode": "",
   "displayOverride": [],
-  "appVersion": "5"
+  "appVersion": "6"
 }

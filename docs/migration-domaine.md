@@ -1,4 +1,4 @@
-# Migration vers `lehublot.app`
+# Migration vers `hublot.science`
 
 Feuille de route de la bascule depuis `hublot-ruby.vercel.app`. À suivre dans
 l'ordre : chaque phase doit laisser l'application en état de marche, y compris
@@ -20,8 +20,8 @@ plus.
 
 Le choix du nom : `hublot.app`, `hublot.be`, `hublot.fr` et `monhublot.com`
 sont pris, motif qui ressemble à du dépôt défensif par l'horloger suisse.
-L'article distingue sans s'éloigner, et le `.app` impose HTTPS — ce qui était
-déjà le cas.
+C'est donc l'extension qui distingue — et elle dit le sujet : `hublot.science`
+se lit comme une phrase, et éloigne le nom de l'horlogerie sans le déformer.
 
 ## Repères
 
@@ -38,10 +38,10 @@ déjà le cas.
 
 ## Phase 1 — le domaine répond, rien ne casse
 
-### 1.1 Acheter `lehublot.app` chez Cloudflare
+### 1.1 Acheter `hublot.science`
 
-Registrar → *Register domain*. Environ 10 $/an, au coût réel et sans hausse au
-renouvellement.
+Registrar → *Register domain*. Environ 25 $/an pour un `.science`, au coût réel
+et sans hausse au renouvellement.
 
 **Chez Cloudflare et pas chez Vercel**, pour deux raisons. D'abord parce qu'un
 registrar ne doit pas être son hébergeur : on prend un domaine précisément pour
@@ -53,7 +53,7 @@ débloque.
 ### 1.2 Rattacher le domaine au projet Vercel
 
 ```
-vercel domains add lehublot.app hublot
+vercel domains add hublot.science hublot
 ```
 
 Vercel affiche alors l'enregistrement DNS à créer. Le poser chez Cloudflare,
@@ -61,12 +61,12 @@ Vercel affiche alors l'enregistrement DNS à créer. Le poser chez Cloudflare,
 devant celui de Vercel donne un cache imprévisible et des en-têtes réécrits,
 pour un bénéfice nul.
 
-Prévoir aussi `www.lehublot.app`, en redirection vers l'apex.
+Prévoir aussi `www.hublot.science`, en redirection vers l'apex.
 
 ### 1.3 Autoriser la nouvelle origine chez Google
 
 Console Google Cloud → projet `hublot-506119` → *Identifiants* → le client OAuth
-→ **Origines JavaScript autorisées** → ajouter `https://lehublot.app`.
+→ **Origines JavaScript autorisées** → ajouter `https://hublot.science`.
 
 **Garder l'ancienne origine.** Pendant toute la migration, les deux domaines
 doivent fonctionner : une installation Android non mise à jour continuera de
@@ -77,10 +77,10 @@ la sauvegarde ne veut pas dire que la configuration est fausse.
 
 ### 1.4 Vérifier
 
-- `https://lehublot.app/musee` répond ;
-- l'audio arrive : `https://lehublot.app/audio/savants/isaac-newton/portrait.mp3` ;
+- `https://hublot.science/musee` répond ;
+- l'audio arrive : `https://hublot.science/audio/savants/isaac-newton/portrait.mp3` ;
 - la connexion Google fonctionne **sur le nouveau domaine** ;
-- `https://lehublot.app/.well-known/assetlinks.json` est servi — c'est lui que
+- `https://hublot.science/.well-known/assetlinks.json` est servi — c'est lui que
   Google ira lire à la phase 3, et il n'a besoin d'aucune modification : il ne
   contient que le nom du paquet et les empreintes de signature.
 
@@ -108,7 +108,7 @@ Laisser quelques jours entre l'annonce et la phase 3.
 ### 3.1 Reconstruire le bundle
 
 `android/twa-manifest.json` est **déjà à jour** (commit « L'application Android
-vise lehublot.app ») : nouvel hôte, version 6, et l'ancienne adresse conservée
+vise hublot.science ») : nouvel hôte, version 6, et l'ancienne adresse conservée
 dans `additionalTrustedOrigins` pour que les liens déjà diffusés s'ouvrent en
 plein écran au lieu d'un onglet Chrome avec barre d'adresse.
 
@@ -133,7 +133,7 @@ les Asset Links sont validés.
 
 ### 3.3 Mettre à jour la fiche
 
-Trois URL à reprendre, toutes en `lehublot.app` :
+Trois URL à reprendre, toutes en `hublot.science` :
 
 - site web de l'application ;
 - politique de confidentialité → `/confidentialite` ;
@@ -154,7 +154,7 @@ une version antérieure à la 6 — ce que les statistiques du Play Store diront
 
 ## Phase 5 — facultative, plus tard
 
-Basculer l'audio de `pub-949768de….r2.dev` vers `audio.lehublot.app`.
+Basculer l'audio de `pub-949768de….r2.dev` vers `audio.hublot.science`.
 
 Le `r2.dev` est limité en débit par Cloudflare et déconseillé en production ;
 aujourd'hui la réécriture Vercel absorbe l'essentiel, donc rien ne presse. Le
@@ -163,7 +163,7 @@ le proxy, contrairement aux enregistrements de la phase 1.2 — puis une seule
 variable à changer :
 
 ```
-NEXT_PUBLIC_AUDIO_BASE=https://audio.lehublot.app
+NEXT_PUBLIC_AUDIO_BASE=https://audio.hublot.science
 ```
 
 Aucune ligne de code : la variable existe déjà, et `next.config.ts` la lit.

@@ -1,6 +1,6 @@
 {
   "packageId": "com.hublot.app",
-  "host": "lehublot.app",
+  "host": "hublot.science",
   "name": "Hublot — les sciences pour les curieux",
   "launcherName": "Hublot",
   "display": "standalone",
@@ -13,8 +13,8 @@
   "backgroundColor": "#0F1B33",
   "enableNotifications": true,
   "startUrl": "/",
-  "iconUrl": "https://lehublot.app/icones/icone-512.png",
-  "maskableIconUrl": "https://lehublot.app/icones/icone-512.png",
+  "iconUrl": "https://hublot.science/icones/icone-512.png",
+  "maskableIconUrl": "https://hublot.science/icones/icone-512.png",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "C:\\Applications\\science\\android\\android.keystore",
@@ -24,7 +24,7 @@
   "appVersionCode": 6,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
-  "webManifestUrl": "https://lehublot.app/manifest.webmanifest",
+  "webManifestUrl": "https://hublot.science/manifest.webmanifest",
   "fallbackType": "customtabs",
   "features": {
     "playBilling": {
@@ -37,7 +37,7 @@
   "enableSiteSettingsShortcut": true,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
-  "fullScopeUrl": "https://lehublot.app/",
+  "fullScopeUrl": "https://hublot.science/",
   "minSdkVersion": 23,
   "orientation": "portrait",
   "fingerprints": [],

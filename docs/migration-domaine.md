@@ -4,6 +4,20 @@ Feuille de route de la bascule depuis `hublot-ruby.vercel.app`. À suivre dans
 l'ordre : chaque phase doit laisser l'application en état de marche, y compris
 si l'on s'arrête entre deux.
 
+## État au 14/09/2026
+
+| | |
+|---|---|
+| `hublot.science` sert l'application | fait |
+| L'audio arrive de R2 par la réécriture | fait |
+| `assetlinks.json` servi, et validé par l'API de Google sur les deux domaines | fait |
+| La connexion Google se dessine sur le nouveau domaine | fait |
+| Bundle signé en version 8, visant `hublot.science` | fait |
+| L'empreinte de signature locale figure dans `assetlinks.json` | fait |
+| Envoi du `.aab` en test fermé | **à faire** |
+| Les trois URL de la fiche Play Store | **à faire** |
+| Recrutement des testeurs | **à faire, après les deux précédentes** |
+
 ## Pourquoi maintenant
 
 `hublot-ruby.vercel.app` n'est pas une adresse à nous. On ne peut ni la
@@ -116,7 +130,7 @@ refont pas.
 ### 3.1 Reconstruire le bundle
 
 `android/twa-manifest.json` est **déjà à jour** (commit « L'application Android
-vise hublot.science ») : nouvel hôte, version 6, et l'ancienne adresse conservée
+vise hublot.science ») : nouvel hôte, et l'ancienne adresse conservée
 dans `additionalTrustedOrigins` pour que les liens déjà diffusés s'ouvrent en
 plein écran au lieu d'un onglet Chrome avec barre d'adresse.
 
@@ -135,7 +149,7 @@ avec Billing 8, l'application plante au démarrage.
 
 ### 3.2 Publier
 
-Play Console → nouvelle version en test fermé, version 6. Vérifier sur un vrai
+Play Console → nouvelle version en test fermé, version 8 — `bubblewrap update` incrémente à chaque passage, et il en a fallu deux. Vérifier sur un vrai
 appareil que l'application s'ouvre **sans barre d'adresse** : c'est le signe que
 les Asset Links sont validés.
 
@@ -156,7 +170,7 @@ Trois URL à reprendre, toutes en `hublot.science` :
 C'est délibéré. Une redirection ferait sortir les installations non mises à jour
 de leur périmètre vérifié, et l'application s'ouvrirait avec une barre
 d'adresse. On ne coupe l'ancienne adresse que lorsque plus personne n'est sur
-une version antérieure à la 6 — ce que les statistiques du Play Store diront.
+une version antérieure à la 8 — ce que les statistiques du Play Store diront.
 
 ---
 

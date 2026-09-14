@@ -55,8 +55,8 @@ export const ecransTuto: EcranTuto[] = [
     emoji: '🎮',
     titre: { fr: 'Joue', en: 'Play' },
     texte: {
-      fr: 'Ici, on joue avec ce que tu as appris. Au quizz, chaque bonne réponse te donne une clé. Les autres jeux, c’est juste pour s’amuser.',
-      en: 'Here we play with what you have learnt. In the quiz, every right answer wins you a key. The other games are just for fun.',
+      fr: 'Ici, on joue avec ce que tu as appris. Au quizz, je te pose des questions sur les cartes que tu as écoutées, et chaque bonne réponse te donne une clé. Les autres jeux, c’est juste pour s’amuser.',
+      en: 'Here we play with what you have learnt. In the quiz, I ask you about the cards you have listened to, and every right answer wins you a key. The other games are just for fun.',
     },
   },
   {

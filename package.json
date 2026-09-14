@@ -25,6 +25,7 @@
     "audio:attente": "tsx scripts/maj-attente-audio.mjs",
     "audio:catalogue": "tsx scripts/catalogue-audio.mjs",
     "audio:envoyer": "tsx --env-file=.env.local scripts/envoyer-audio-r2.mjs",
+    "android:corriger": "tsx scripts/corriger-android.mjs",
     "push": "node --env-file=.env.local scripts/push.mjs",
     "voix:echantillons": "tsx --env-file=.env.local scripts/echantillons-voix.mjs",
     "voix:modeles": "tsx --env-file=.env.local scripts/comparer-modeles.mjs",

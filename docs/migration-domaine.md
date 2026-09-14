@@ -12,7 +12,7 @@ si l'on s'arrête entre deux.
 | L'audio arrive de R2 par la réécriture | fait |
 | `assetlinks.json` servi, et validé par l'API de Google sur les deux domaines | fait |
 | La connexion Google se dessine sur le nouveau domaine | fait |
-| Bundle signé en version 8, visant `hublot.science` | fait |
+| Bundle signé en version 9, visant `hublot.science` | fait |
 | L'empreinte de signature locale figure dans `assetlinks.json` | fait |
 | Envoi du `.aab` en test fermé | **à faire** |
 | Les trois URL de la fiche Play Store | **à faire** |
@@ -144,12 +144,29 @@ bubblewrap build
 validation des Asset Links échouerait, et l'application s'ouvrirait en
 navigateur au lieu du mode plein écran.
 
-Rappel de la migration Play Billing : ne jamais revenir au pont `billing:1.1.0`
-avec Billing 8, l'application plante au démarrage.
+**`bubblewrap update` réécrit `android/app/build.gradle`, qui n'est pas suivi
+par git.** Tout ce qu'on y avait corrigé à la main disparaît sans un mot — c'est
+ainsi que la migration Play Billing de la version 5 a été perdue, et que le
+Play Store a refusé le bundle suivant avec deux erreurs : Billing 7.1.1 au lieu
+de 8.0.0 minimum, et API 35 au lieu de 36.
+
+D'où la règle : **après chaque `bubblewrap update`, lancer**
+
+```
+npm run android:corriger
+```
+
+qui repose le pont `billing:1.2.0` — lequel entraîne Play Billing 8.3.0, couple
+vérifié — et `targetSdkVersion 36`. Le script est idempotent et dit ce qu'il a
+fait.
+
+Et quand `bubblewrap build` demande « There are changes in twa-manifest.json,
+apply them? », **répondre non** si les correctifs viennent d'être posés :
+répondre oui relance la regénération et les efface à nouveau.
 
 ### 3.2 Publier
 
-Play Console → nouvelle version en test fermé, version 8 — `bubblewrap update` incrémente à chaque passage, et il en a fallu deux. Vérifier sur un vrai
+Play Console → nouvelle version en test fermé, version 9 — `bubblewrap update` incrémente à chaque passage, et la 8 a été refusée par le Play Store. Vérifier sur un vrai
 appareil que l'application s'ouvre **sans barre d'adresse** : c'est le signe que
 les Asset Links sont validés.
 
@@ -170,7 +187,7 @@ Trois URL à reprendre, toutes en `hublot.science` :
 C'est délibéré. Une redirection ferait sortir les installations non mises à jour
 de leur périmètre vérifié, et l'application s'ouvrirait avec une barre
 d'adresse. On ne coupe l'ancienne adresse que lorsque plus personne n'est sur
-une version antérieure à la 8 — ce que les statistiques du Play Store diront.
+une version antérieure à la 9 — ce que les statistiques du Play Store diront.
 
 ---
 

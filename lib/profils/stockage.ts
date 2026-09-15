@@ -45,6 +45,20 @@ export const CLE_MAJ = 'maj.v1';
  */
 export const CLE_RAZ = 'raz.v1';
 
+/**
+ * Les profils supprimés, et quand.
+ *
+ * Propre à l'appareil et non à un profil — un profil supprimé n'a plus de clés
+ * à lui. Sans cette liste, la fusion, qui unit et ne retranche jamais, faisait
+ * revenir du serveur l'enfant qu'un parent venait d'effacer : il suffisait de
+ * recharger l'application pour le voir réapparaître.
+ *
+ * Les identifiants viennent de `crypto.randomUUID` et ne sont jamais réemployés
+ * — une pierre tombale ne peut donc désigner que le profil qu'on a voulu
+ * supprimer, et il est sûr de l'écarter sans autre condition.
+ */
+export const CLE_SUPPRIMES = `${PREFIXE}.supprimes.v1`;
+
 /** Tout ce qu'il faut effacer quand un profil est supprimé. */
 export const CLES_A_EFFACER = [...CLES_PROFIL, CLE_MAJ, CLE_RAZ];
 

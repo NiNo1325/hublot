@@ -31,10 +31,22 @@ export interface ProgressionProfil {
 export interface BlocProgression {
   v: 1;
   profils: Record<string, ProgressionProfil>;
+  /**
+   * Les profils supprimés, et l'horodatage de leur suppression.
+   *
+   * Deuxième opération décroissante de l'édifice, après `raz` — et pour la même
+   * raison : l'union sait ajouter, jamais retirer. Sans ces pierres tombales,
+   * supprimer un enfant puis se synchroniser le faisait revenir intact.
+   *
+   * `raz` vide un profil, ceci le fait disparaître. Les deux coexistent parce
+   * qu'ils ne disent pas la même chose : on remet à zéro un enfant qui continue
+   * de jouer, on supprime celui qui n'utilise plus l'application.
+   */
+  supprimes: Record<string, number>;
 }
 
 export function blocVide(): BlocProgression {
-  return { v: 1, profils: {} };
+  return { v: 1, profils: {}, supprimes: {} };
 }
 
 /**
@@ -48,17 +60,48 @@ export function blocVide(): BlocProgression {
  * remplir.
  */
 export function fusionner(a: BlocProgression, b: BlocProgression): BlocProgression {
+  /*
+    Les pierres tombales d'abord : elles décident qui a le droit d'exister.
+
+    L'union des deux listes, en gardant l'horodatage le plus ancien pour une
+    même suppression vue deux fois — la date exacte importe peu, sa stabilité
+    beaucoup : c'est elle qui rend la fusion idempotente.
+  */
+  const supprimes = fusionnerSupprimes(a.supprimes, b.supprimes);
+
   const profils: Record<string, ProgressionProfil> = {};
   const ids = new Set([...Object.keys(a.profils), ...Object.keys(b.profils)]);
 
   for (const id of [...ids].sort()) {
+    if (supprimes[id] !== undefined) continue;
     const gauche = a.profils[id];
     const droite = b.profils[id];
     if (gauche && droite) profils[id] = fusionnerProfil(gauche, droite);
     else profils[id] = normaliser(gauche ?? droite);
   }
 
-  return { v: 1, profils };
+  return { v: 1, profils, supprimes };
+}
+
+/**
+ * L'union des suppressions, horodatage le plus ancien retenu.
+ *
+ * Prendre le minimum plutôt que le maximum n'a pas d'incidence pratique — le
+ * profil disparaît dans les deux cas — mais rend le repli commutatif et
+ * idempotent comme le reste, ce qui est la seule propriété dont dépend
+ * l'absence d'écran « quelle version garder ? ».
+ */
+function fusionnerSupprimes(
+  a: Record<string, number>,
+  b: Record<string, number>,
+): Record<string, number> {
+  const sortie: Record<string, number> = {};
+  for (const id of [...new Set([...Object.keys(a), ...Object.keys(b)])].sort()) {
+    const gauche = a[id];
+    const droite = b[id];
+    sortie[id] = gauche === undefined ? droite : droite === undefined ? gauche : Math.min(gauche, droite);
+  }
+  return sortie;
 }
 
 function fusionnerProfil(a: ProgressionProfil, b: ProgressionProfil): ProgressionProfil {

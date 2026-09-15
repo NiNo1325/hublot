@@ -2,6 +2,7 @@
 
 import { readStored, removeStored, writeStored } from '@/lib/storage';
 import { actifApres, ajouter, renommer, supprimer } from './operations';
+import { marquerSupprime } from '@/lib/sync/local';
 import { ecrireProfils, lireProfils, type Profil } from './serialisation';
 import { CLE_PROFILS, CLE_PROFIL_ACTIF, CLES_A_EFFACER, cle } from './stockage';
 import { migrer } from './migration';
@@ -125,6 +126,14 @@ export function supprimerProfil(id: string): void {
   const liste = assurer();
   const restants = supprimer(liste, id);
   if (restants.length === liste.length) return;
+  /*
+    La pierre tombale avant l'effacement : c'est elle qui empêche le profil de
+    revenir du serveur à la synchronisation suivante, la fusion ne sachant
+    qu'unir. Posée en premier pour qu'un arrêt du navigateur au mauvais moment
+    laisse au pire une marque sans profil — inoffensive — plutôt qu'un profil
+    effacé qui ressusciterait.
+  */
+  marquerSupprime(id);
   for (const nom of CLES_A_EFFACER) removeStored(cle(nom, id));
   publierListe(restants);
 }

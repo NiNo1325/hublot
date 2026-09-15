@@ -27,9 +27,60 @@ function profil(p: Partial<ProgressionProfil> = {}): ProgressionProfil {
   };
 }
 
-function bloc(profils: Record<string, ProgressionProfil>): BlocProgression {
-  return { v: 1, profils };
+function bloc(
+  profils: Record<string, ProgressionProfil>,
+  supprimes: Record<string, number> = {},
+): BlocProgression {
+  return { v: 1, profils, supprimes };
 }
+
+/**
+ * La suppression d'un profil, seconde opération décroissante après `raz`.
+ *
+ * Sans pierre tombale, supprimer un enfant puis recharger l'application le
+ * faisait revenir intact : la fusion unit et ne retranche pas. Le parent le
+ * supprimait, l'enfant réapparaissait, et rien à l'écran n'expliquait pourquoi.
+ */
+describe('suppression d’un profil', () => {
+  it('ne laisse pas le profil revenir de l’autre appareil', () => {
+    const telephone = bloc({ a: profil({ vues: ['les-os'] }) });
+    const tablette = bloc({}, { a: 1000 });
+    expect(Object.keys(fusionner(telephone, tablette).profils)).toEqual([]);
+  });
+
+  it('emporte le profil quel que soit le sens de la fusion', () => {
+    const telephone = bloc({ a: profil({ vues: ['les-os'] }) });
+    const tablette = bloc({}, { a: 1000 });
+    expect(fusionner(tablette, telephone)).toEqual(fusionner(telephone, tablette));
+  });
+
+  it('laisse vivre les autres enfants', () => {
+    const avant = bloc({ a: profil(), b: profil({ vues: ['le-wifi'] }) });
+    const apres = bloc({}, { a: 1000 });
+    const sortie = fusionner(avant, apres);
+    expect(Object.keys(sortie.profils)).toEqual(['b']);
+    expect(sortie.profils.b.vues).toEqual(['le-wifi']);
+  });
+
+  /* Rejouer une fusion ne doit rien changer : c'est ce qui permet au client et
+     au serveur de fusionner chacun de leur côté sans se coordonner. */
+  it('est idempotente', () => {
+    const une = fusionner(bloc({ a: profil() }), bloc({}, { a: 1000 }));
+    expect(fusionner(une, une)).toEqual(une);
+  });
+
+  it('garde la pierre tombale dans le résultat, pour les appareils en retard', () => {
+    const sortie = fusionner(bloc({ a: profil() }), bloc({}, { a: 1000 }));
+    expect(sortie.supprimes).toEqual({ a: 1000 });
+  });
+
+  /* Deux appareils peuvent avoir vu la même suppression à des instants
+     différents ; retenir toujours le même des deux rend le repli associatif. */
+  it('retient un horodatage stable quand les deux l’ont vue', () => {
+    const sortie = fusionner(bloc({}, { a: 2000 }), bloc({}, { a: 1000 }));
+    expect(sortie.supprimes.a).toBe(1000);
+  });
+});
 
 describe('fusion de deux appareils', () => {
   it('fait l’union des cartes vues', () => {

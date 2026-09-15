@@ -2,10 +2,11 @@
 
 import { lireLiberes, ecrireLiberes } from '@/lib/cles';
 import { ecrireScores, lireScores } from '@/lib/scores';
-import { readStored, writeStored } from '@/lib/storage';
+import { readStored, removeStored, writeStored } from '@/lib/storage';
 import { ecrireProfils, lireProfils, type Profil } from '@/lib/profils/serialisation';
-import { CLE_MAJ, CLE_PROFILS, CLE_RAZ, cle } from '@/lib/profils/stockage';
+import { CLE_MAJ, CLE_PROFILS, CLE_PROFIL_ACTIF, CLE_RAZ, CLE_SUPPRIMES, CLES_A_EFFACER, cle } from '@/lib/profils/stockage';
 import { profilActif } from '@/lib/profils/store';
+import { actifApres } from '@/lib/profils/operations';
 import { blocVide, type BlocProgression, type ProgressionProfil } from './fusion';
 
 /**
@@ -72,13 +73,43 @@ function progressionDe(profil: Profil): ProgressionProfil {
   };
 }
 
+/*
+  Les pierres tombales, sérialisées comme le reste du stockage : une chaîne
+  plate, `id:horodatage` séparés par des virgules. Pas de JSON, pour rester
+  lisible dans l'inspecteur du navigateur quand il faut comprendre ce qui se
+  passe chez quelqu'un.
+*/
+export function lireSupprimes(brut: string | null): Record<string, number> {
+  const sortie: Record<string, number> = {};
+  for (const entree of (brut ?? '').split(',').filter(Boolean)) {
+    const coupure = entree.lastIndexOf(':');
+    if (coupure <= 0) continue;
+    const quand = Number(entree.slice(coupure + 1));
+    if (Number.isFinite(quand) && quand > 0) sortie[entree.slice(0, coupure)] = quand;
+  }
+  return sortie;
+}
+
+export function ecrireSupprimes(supprimes: Record<string, number>): string {
+  return Object.entries(supprimes)
+    .map(([id, quand]) => `${id}:${quand}`)
+    .join(',');
+}
+
 /** Tout ce que cet appareil sait, prêt à partir. Ni prénom ni âge n'y figurent. */
 export function blocLocal(): BlocProgression {
+  const supprimes = lireSupprimes(readStored(CLE_SUPPRIMES));
   const profils = lireProfils(readStored(CLE_PROFILS));
-  if (profils.length === 0) return blocVide();
+  /*
+    Un appareil sans profil a pourtant quelque chose à dire s'il vient d'en
+    supprimer un : rendre le bloc vide ici perdrait la pierre tombale, et le
+    profil reviendrait du serveur à la synchronisation suivante.
+  */
+  if (profils.length === 0 && Object.keys(supprimes).length === 0) return blocVide();
   return {
     v: 1,
     profils: Object.fromEntries(profils.map((p) => [p.id, progressionDe(p)])),
+    supprimes,
   };
 }
 
@@ -91,7 +122,21 @@ export function blocLocal(): BlocProgression {
  * reconnaît le renard et lui redonne son nom.
  */
 export function appliquerBloc(bloc: BlocProgression): void {
-  const locaux = lireProfils(readStored(CLE_PROFILS));
+  writeStored(CLE_SUPPRIMES, ecrireSupprimes(bloc.supprimes));
+
+  /*
+    Un profil supprimé sur un autre appareil disparaît aussi de celui-ci, avec
+    ses sept clés. `fusionner` l'a déjà retiré de `bloc.profils` ; il reste à le
+    retirer d'ici, sans quoi il survivrait localement et repartirait au prochain
+    dépôt.
+  */
+  const tousLocaux = lireProfils(readStored(CLE_PROFILS));
+  const locaux = tousLocaux.filter((p) => bloc.supprimes[p.id] === undefined);
+  for (const parti of tousLocaux) {
+    if (bloc.supprimes[parti.id] === undefined) continue;
+    for (const nom of CLES_A_EFFACER) removeStored(cle(nom, parti.id));
+  }
+
   const connus = new Set(locaux.map((p) => p.id));
   const ajoutes: Profil[] = [];
 
@@ -120,8 +165,18 @@ export function appliquerBloc(bloc: BlocProgression): void {
   });
 
   const liste = [...majOurs, ...ajoutes];
-  if (ajoutes.length > 0 || liste.some((p, i) => p.avatar !== locaux[i]?.avatar)) {
+  const aChange =
+    ajoutes.length > 0 ||
+    liste.length !== tousLocaux.length ||
+    liste.some((p, i) => p.avatar !== locaux[i]?.avatar);
+  if (aChange) {
     writeStored(CLE_PROFILS, ecrireProfils(liste));
+    /*
+      L'enfant actif peut être celui qui vient de disparaître : sans ce
+      réalignement, l'application resterait pointée sur un identifiant mort et
+      n'afficherait plus aucune progression.
+    */
+    writeStored(CLE_PROFIL_ACTIF, actifApres(liste, readStored(CLE_PROFIL_ACTIF) ?? ''));
   }
 }
 
@@ -139,4 +194,18 @@ function ecrire(id: string, nom: string, valeur: string): void {
  */
 export function marquerRemiseAZero(): void {
   writeStored(cle(CLE_RAZ, profilActif()), String(Date.now()));
+}
+
+/**
+ * Note qu'un profil vient d'être supprimé.
+ *
+ * Même rôle que `marquerRemiseAZero`, un cran plus loin : la remise à zéro vide
+ * un enfant qui continue de jouer, la suppression le fait disparaître. Sans
+ * cette marque, recharger l'application le ramenait du serveur — la fusion unit
+ * et ne retranche pas.
+ */
+export function marquerSupprime(id: string): void {
+  const supprimes = lireSupprimes(readStored(CLE_SUPPRIMES));
+  supprimes[id] = Date.now();
+  writeStored(CLE_SUPPRIMES, ecrireSupprimes(supprimes));
 }

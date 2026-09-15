@@ -74,4 +74,36 @@ describe('lecture d’un bloc venu du réseau', () => {
     const recu = lireBloc({ profils: { a: { vues: ['y', 'x'] } } });
     expect(fusionner(recu, blocVide()).profils.a.vues).toEqual(['x', 'y']);
   });
+
+  /*
+    Les pierres tombales franchissent le réseau comme le reste, et avec la même
+    défiance : c'est par elles qu'une suppression survit à la synchronisation,
+    mais c'est aussi par elles qu'un client malveillant ferait disparaître des
+    profils. D'où le plafond, et le rejet de tout ce qui n'est pas un
+    horodatage.
+  */
+  it('retient les suppressions reçues', () => {
+    expect(lireBloc({ profils: {}, supprimes: { a: 1000 } }).supprimes).toEqual({ a: 1000 });
+  });
+
+  it('tolère un bloc sans suppressions', () => {
+    expect(lireBloc({ profils: {} }).supprimes).toEqual({});
+  });
+
+  it('écarte un horodatage qui n’en est pas un', () => {
+    const recu = lireBloc({ profils: {}, supprimes: { a: 'hier', b: -5, c: 1000 } });
+    expect(recu.supprimes).toEqual({ c: 1000 });
+  });
+
+  it('plafonne le nombre de suppressions', () => {
+    const supprimes = Object.fromEntries(
+      Array.from({ length: 400 }, (_, i) => [`p${i}`, 1000]),
+    );
+    expect(Object.keys(lireBloc({ profils: {}, supprimes }).supprimes).length).toBeLessThanOrEqual(100);
+  });
+
+  it('fait disparaître un profil que le bloc reçu déclare supprimé', () => {
+    const recu = lireBloc({ profils: { a: { vues: ['x'] } }, supprimes: { a: 1000 } });
+    expect(Object.keys(fusionner(recu, blocVide()).profils)).toEqual([]);
+  });
 });

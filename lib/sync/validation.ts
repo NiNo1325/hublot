@@ -12,6 +12,12 @@ import { blocVide, type BlocProgression, type ProgressionProfil } from './fusion
 const MAX_PROFILS = 12;
 const MAX_ENTREES = 2000;
 const MAX_LONGUEUR_ID = 120;
+/*
+  Les pierres tombales s'accumulent sans jamais être purgées : les oublier
+  ferait revenir le profil au premier appareil resté en arrière. Le plafond est
+  large — une famille qui supprimerait un profil par mois pendant huit ans.
+*/
+const MAX_SUPPRIMES = 100;
 
 /**
  * Transforme une valeur inconnue en bloc de progression exploitable.
@@ -32,7 +38,18 @@ export function lireBloc(inconnu: unknown): BlocProgression {
     profils[id] = lireProfil(valeur as Record<string, unknown>);
   }
 
-  return { v: 1, profils };
+  return { v: 1, profils, supprimes: lireSupprimes((inconnu as { supprimes?: unknown }).supprimes) };
+}
+
+function lireSupprimes(v: unknown): Record<string, number> {
+  if (!estObjet(v)) return {};
+  const sortie: Record<string, number> = {};
+  for (const [id, valeur] of Object.entries(v).slice(0, MAX_SUPPRIMES)) {
+    if (!id || id.length > MAX_LONGUEUR_ID) continue;
+    const quand = entierPositif(valeur);
+    if (quand !== null) sortie[id] = quand;
+  }
+  return sortie;
 }
 
 function lireProfil(p: Record<string, unknown>): ProgressionProfil {

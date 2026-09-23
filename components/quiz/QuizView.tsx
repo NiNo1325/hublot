@@ -25,6 +25,34 @@ import { useLocale } from '@/components/i18n/useLocale';
 import { localise } from '@/lib/i18n/localise';
 import { useT } from '@/components/i18n/useT';
 
+/**
+ * Ce qu'un sujet peut encore rapporter, ou le fait qu'il n'ait plus rien.
+ *
+ * Le menu disait combien de cartes un sujet contient, jamais ce qu'il reste à
+ * y gagner : on ne pouvait pas savoir lequel valait encore le détour sans le
+ * jouer. Un sujet épuisé porte une coche plutôt qu'un « 0 🔑 » — il se rejoue
+ * toujours, simplement il ne paie plus, et c'est une bonne nouvelle à annoncer
+ * comme telle.
+ */
+function BadgeCles({ cles, t }: { cles: number; t: ReturnType<typeof useT> }) {
+  if (cles === 0) {
+    return (
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-encre text-craie-douce">
+        <span aria-hidden="true">✓</span>
+        <span className="sr-only">{t('quizz.menu.cles-finies')}</span>
+      </span>
+    );
+  }
+  return (
+    <span className="flex shrink-0 items-center gap-1 rounded-full bg-soleil/15 px-3 py-1.5 font-display text-base tabular-nums text-soleil">
+      <span aria-hidden="true">
+        {cles} 🔑
+      </span>
+      <span className="sr-only">{t('quizz.menu.cles')(cles)}</span>
+    </span>
+  );
+}
+
 interface QuizViewProps {
   cards: ScienceCard[];
   domains: DomainDefinition[];
@@ -53,7 +81,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
   const [nouvelles, setNouvelles] = useState(0);
   const { etoiles } = useEtoiles();
   const { solde: clesRestantes } = useMusee();
-  const { marquerMaitrisee } = useCartesMaitrisees();
+  const { cartesMaitrisees, marquerMaitrisee } = useCartesMaitrisees();
   // Bonnes réponses consécutives, pour un encouragement positif (jamais négatif).
   const [dAffilee, setDAffilee] = useState(0);
   const celebrer = useCelebration();
@@ -98,13 +126,30 @@ export function QuizView({ cards, domains }: QuizViewProps) {
 
   const eligibles = cartesEligibles(cards, cartesVues, ageRange, locale);
 
+  /*
+    Ce qu'un sujet peut encore rapporter.
+
+    Une clé par carte comprise pour la première fois : les cartes de ce monde
+    qu'on a écoutées, moins celles dont la question est déjà tombée juste. Le
+    compte passe par `clesAGagner` plutôt que par une soustraction écrite ici,
+    pour que la règle « la première fois seulement » ne vive qu'à un seul
+    endroit — c'est elle qui empêche le Défi chrono d'ouvrir toutes les
+    cellules.
+
+    Ce sont bien les clés atteignables *maintenant*, et non celles du monde
+    entier : le quizz n'interroge que sur les cartes écoutées, et annoncer des
+    clés que l'écran ne peut pas donner serait une promesse en l'air.
+  */
+  const clesDuLot = (lot: ScienceCard[]) =>
+    lot.reduce((t, c) => t + clesAGagner(c.id, cartesMaitrisees), 0);
+
   // Mondes réellement jouables : au moins une carte écoutée qui a une question à
   // cet âge. On ne propose jamais un monde qui donnerait un quizz vide.
   const mondesJouables = domains
-    .map((domain) => ({
-      domain,
-      n: eligibles.reduce((t, c) => (c.domainId === domain.id ? t + 1 : t), 0),
-    }))
+    .map((domain) => {
+      const dedans = eligibles.filter((c) => c.domainId === domain.id);
+      return { domain, n: dedans.length, cles: clesDuLot(dedans) };
+    })
     .filter((m) => m.n > 0);
 
   const lancer = (domainId: DomainId | null, accueil = false) => {
@@ -191,15 +236,16 @@ export function QuizView({ cards, domains }: QuizViewProps) {
             className="flex min-h-16 cursor-pointer items-center gap-4 rounded-2xl border-2 border-soleil bg-soleil/10 px-5 font-display text-lg text-soleil transition-transform hover:scale-[1.02] active:scale-95 sm:col-span-2"
           >
             <span className="text-3xl" aria-hidden="true">🎲</span>
-            <span className="flex flex-col text-left">
+            <span className="flex min-w-0 flex-1 flex-col text-left">
               <span>{t('quizz.tout')}</span>
               <span className="text-sm font-normal text-craie-douce">
                 {t('quizz.menu.total')(eligibles.length)}
               </span>
             </span>
+            <BadgeCles cles={clesDuLot(eligibles)} t={t} />
           </button>
 
-          {mondesJouables.map(({ domain, n }) => {
+          {mondesJouables.map(({ domain, n, cles }) => {
             const style = domainStyles[domain.id];
             return (
               <button
@@ -210,7 +256,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                 style={{ boxShadow: `0 0 18px ${style.halo}` }}
               >
                 <span className="text-3xl" aria-hidden="true">{domain.icon}</span>
-                <span className="flex flex-col">
+                <span className="flex min-w-0 flex-1 flex-col">
                   <span className="font-display text-lg text-craie">
                     {localise(domain.labels, locale)}
                   </span>
@@ -218,6 +264,7 @@ export function QuizView({ cards, domains }: QuizViewProps) {
                     {t('quizz.menu.cartes')(n)}
                   </span>
                 </span>
+                <BadgeCles cles={cles} t={t} />
               </button>
             );
           })}

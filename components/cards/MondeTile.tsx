@@ -17,8 +17,17 @@ interface MondeTileProps {
   enLecture: boolean;
 }
 
-// Rayon et circonférence de l'anneau de progression (viewBox 100×100).
-const R = 46;
+/*
+  L'anneau de progression, en unités du viewBox 100×100.
+
+  Le trait faisait six unités, soit moins de six pixels une fois le hublot rendu
+  à 96 px sur un téléphone : les testeurs l'ont trouvé trop discret, et ils ont
+  raison — c'est le seul endroit qui dise où en est un monde. Il passe à huit,
+  et le rayon recule d'autant pour que l'anneau épaissi ne déborde pas du
+  viewBox : à `R + TRAIT / 2 > 50`, le bord extérieur serait rogné.
+*/
+const R = 44;
+const TRAIT = 8;
 const C = 2 * Math.PI * R;
 
 /**
@@ -61,14 +70,14 @@ export function MondeTile({
         <span className="relative flex h-24 w-24 items-center justify-center sm:h-32 sm:w-32 lg:h-36 lg:w-36">
           {/* Anneau de progression */}
           <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full -rotate-90" aria-hidden="true">
-            <circle cx="50" cy="50" r={R} fill="none" stroke="var(--color-encre-bord)" strokeWidth="6" />
+            <circle cx="50" cy="50" r={R} fill="none" stroke="var(--color-encre-bord)" strokeWidth={TRAIT} />
             <circle
               cx="50"
               cy="50"
               r={R}
               fill="none"
               stroke={style.teinte}
-              strokeWidth="6"
+              strokeWidth={TRAIT}
               strokeLinecap="round"
               strokeDasharray={`${fraction * C} ${C}`}
               style={{ transition: 'stroke-dasharray 500ms ease' }}
@@ -108,7 +117,16 @@ export function MondeTile({
         <span className="text-center font-display text-base font-medium text-craie">
           {nom}
         </span>
-        <span aria-hidden="true" className="text-sm text-craie-douce">
+        {/*
+          Le compteur prend la couleur de son anneau plutôt que le gris de
+          service : les deux disent la même chose, et rien ne les reliait. En
+          gris sur fond encre, il se lisait comme une mention légale.
+        */}
+        <span
+          aria-hidden="true"
+          className="rounded-full bg-encre px-2.5 py-0.5 font-display text-sm tabular-nums sm:text-base"
+          style={{ color: style.teinte }}
+        >
           {vues}/{total}
         </span>
         <span className="sr-only">
@@ -126,7 +144,7 @@ export function MondeTile({
           href={`/decouvrir/${domain.id}`}
           className="flex-1 cursor-pointer rounded-2xl px-1 transition-colors hover:text-craie"
         >
-          <p className="text-center text-xs italic leading-snug text-craie-douce sm:text-sm">
+          <p className="text-center text-sm italic leading-snug text-craie-douce sm:text-base">
             {accroche}
           </p>
         </Link>

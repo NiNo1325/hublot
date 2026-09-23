@@ -41,6 +41,9 @@ const fr = {
   'carte.fermer': 'Fermer la carte',
 
   'narration.precedente': 'Étape précédente',
+  'narration.suivante': 'Étape suivante',
+  'narration.etape': (rang: number, total: number, enCours: boolean) =>
+    `Étape ${rang} sur ${total}${enCours ? ' (en cours)' : ''}`,
   'narration.pause': 'Pause',
   'narration.reprendre': 'Reprendre',
   'narration.ecouter': 'Écouter',
@@ -147,6 +150,8 @@ const fr = {
   'musee.manque': (n: number) => `Il te manque ${n} 🔑`,
   'musee.fermer': 'Fermer',
   'musee.vivant': (n: number) => `né en ${n}`,
+  'musee.epoque-etat': (nom: string, libres: number, total: number) =>
+    `${nom} : ${libres} délivrés sur ${total}`,
   'musee.epoque.antiquite': 'L’Antiquité',
   'musee.epoque.moyen-age': 'Le Moyen Âge',
   'musee.epoque.renaissance': 'La Renaissance',
@@ -289,8 +294,10 @@ const fr = {
   'reglages.enregistrer-niveau': 'Enregistrer le niveau',
   'reglages.niveau-enregistre': 'Enregistré ✓',
   'reglages.langue': 'Langue',
-  'reglages.ecoute': 'Écoute & alertes',
-  'reglages.aide': 'Aide',
+  'reglages.niveau-ligne': 'Niveau',
+  'reglages.entend': 'Ce que l’enfant entend',
+  'reglages.appli': 'L’application',
+  'reglages.retour': 'Retour aux réglages',
   'reglages.hors-ligne': 'Écouter sans internet',
   'reglages.hors-ligne.maj': 'Mise à jour',
   'reglages.hors-ligne.pret': 'Prêt ✓',
@@ -338,7 +345,15 @@ const fr = {
   'tuto.arreter': 'Arrêter la lecture',
   'tuto.ecouter': 'Écouter',
   'tuto.suivant': 'Suivant',
+  'tuto.retour': 'Retour',
   'tuto.commencer': 'C’est parti !',
+  /* Les quatre temps du jeu, en quatre mots. Voir `chaine` dans le tutoriel. */
+  'tuto.chaine.ecouter': 'Écoute',
+  'tuto.chaine.repondre': 'Réponds',
+  'tuto.chaine.cle': 'Une clé',
+  'tuto.chaine.delivrer': 'Délivre',
+  'tuto.chaine.aria':
+    'Écoute une carte, réponds à sa question, gagne une clé, ouvre une cellule.',
 
   'narration.etapes': 'Étapes de l’explication',
   'parcours.une-question': 'Une question sur cette carte',
@@ -348,8 +363,20 @@ const fr = {
 
   'hl.mo': (n: number) => `${n} Mo`,
   'hl.titre': 'Écouter sans internet',
+  /*
+    Ce qu'on emporte, dit avant de le télécharger.
+
+    L'écran annonçait un poids sans jamais dire à quoi il correspondait — et
+    trois cents mégaoctets, sans objet, ressemblent à une erreur. Ce sont bien
+    toutes les voix : les trois niveaux d'explication de chaque carte, parce que
+    le niveau se change en cours de route et qu'un téléchargement qui ne couvre
+    que le niveau du jour se révélerait incomplet au pire moment.
+  */
   'hl.texte':
-    'En voiture, en avion, ou quand le réseau ne suit pas. Une fois les cartes téléchargées, tout fonctionne sans connexion.',
+    'En voiture, en avion, ou quand le réseau ne suit pas. Une fois les cartes téléchargées, tout fonctionne sans connexion. Hublot emporte alors toutes ses voix dans ta langue : chaque carte dans ses trois niveaux, les quizz et les savants.',
+  'hl.barre': 'Cartes téléchargées',
+  'hl.maj-texte':
+    'Les cartes déjà téléchargées restent utilisables. La mise à jour ne récupère que ce qui a changé.',
   'hl.indisponible':
     'Ce navigateur ne permet pas le téléchargement hors connexion. L’application reste utilisable en ligne.',
   'hl.detail': (e: string) => `Détail : ${e}`,
@@ -357,7 +384,6 @@ const fr = {
   'hl.pret': (taille: string) => `Prêt hors connexion — ${taille}`,
   'hl.en-cours': (fait: string, total: string) => `Téléchargement… ${fait} sur ${total}`,
   'hl.incomplet': (fait: string, total: string) => `Incomplet — ${fait} sur ${total}`,
-  'hl.a-telecharger': (taille: string) => `À télécharger — ${taille}`,
   'hl.telechargement': 'Téléchargement en cours…',
   'hl.mettre-a-jour': 'Mettre à jour',
   'hl.reprendre': 'Reprendre le téléchargement',
@@ -470,6 +496,9 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'carte.fermer': 'Close the card',
 
     'narration.precedente': 'Previous step',
+    'narration.suivante': 'Next step',
+    'narration.etape': (rang: number, total: number, enCours: boolean) =>
+      `Step ${rang} of ${total}${enCours ? ' (current)' : ''}`,
     'narration.pause': 'Pause',
     'narration.reprendre': 'Resume',
     'narration.ecouter': 'Listen',
@@ -554,6 +583,8 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'musee.manque': (n: number) => `You need ${n} more 🔑`,
     'musee.fermer': 'Close',
     'musee.vivant': (n: number) => `born in ${n}`,
+    'musee.epoque-etat': (nom: string, libres: number, total: number) =>
+      `${nom}: ${libres} freed of ${total}`,
     'musee.epoque.antiquite': 'Antiquity',
     'musee.epoque.moyen-age': 'The Middle Ages',
     'musee.epoque.renaissance': 'The Renaissance',
@@ -695,8 +726,10 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'reglages.enregistrer-niveau': 'Save level',
     'reglages.niveau-enregistre': 'Saved ✓',
     'reglages.langue': 'Language',
-    'reglages.ecoute': 'Listening & alerts',
-    'reglages.aide': 'Help',
+    'reglages.niveau-ligne': 'Level',
+    'reglages.entend': 'What the child hears',
+    'reglages.appli': 'The app',
+    'reglages.retour': 'Back to settings',
     'reglages.hors-ligne': 'Listen without internet',
     'reglages.hors-ligne.maj': 'Updating',
     'reglages.hors-ligne.pret': 'Ready ✓',
@@ -744,7 +777,14 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'tuto.arreter': 'Stop playing',
     'tuto.ecouter': 'Listen',
     'tuto.suivant': 'Next',
+    'tuto.retour': 'Back',
     'tuto.commencer': 'Let’s go!',
+    'tuto.chaine.ecouter': 'Listen',
+    'tuto.chaine.repondre': 'Answer',
+    'tuto.chaine.cle': 'A key',
+    'tuto.chaine.delivrer': 'Set free',
+    'tuto.chaine.aria':
+      'Listen to a card, answer its question, win a key, open a cell.',
 
     'narration.etapes': 'Steps of the explanation',
     'parcours.une-question': 'A question about this card',
@@ -755,7 +795,10 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'hl.mo': (n: number) => `${n} MB`,
     'hl.titre': 'Listen without internet',
     'hl.texte':
-      'In the car, on a plane, or when the signal gives up. Once the cards are downloaded, everything works with no connection.',
+      'In the car, on a plane, or when the signal gives up. Once the cards are downloaded, everything works with no connection. Hublot then carries all its voices in your language: every card at its three levels, the quizzes and the scientists.',
+    'hl.barre': 'Cards downloaded',
+    'hl.maj-texte':
+      'The cards already downloaded stay usable. The update only fetches what has changed.',
     'hl.indisponible':
       'This browser cannot download for offline use. The app still works online.',
     'hl.detail': (e: string) => `Details: ${e}`,
@@ -763,7 +806,6 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'hl.pret': (taille: string) => `Ready offline — ${taille}`,
     'hl.en-cours': (fait: string, total: string) => `Downloading… ${fait} of ${total}`,
     'hl.incomplet': (fait: string, total: string) => `Incomplete — ${fait} of ${total}`,
-    'hl.a-telecharger': (taille: string) => `To download — ${taille}`,
     'hl.telechargement': 'Downloading…',
     'hl.mettre-a-jour': 'Update',
     'hl.reprendre': 'Resume the download',

@@ -9,6 +9,8 @@ import {
   lireLiberes,
   peutLiberer,
   prixSavant,
+  epoqueAOuvrir,
+  epoqueDuSavant,
   savantDeLaCarte,
   savantsDeLEpoque,
   soldeCles,
@@ -121,6 +123,49 @@ describe('le mur par époques', () => {
       const annees = savantsDeLEpoque(e).map((s) => s.naissance);
       expect(annees, e.id).toEqual([...annees].sort((a, b) => a - b));
     }
+  });
+
+  /*
+    Le mur n'ouvre qu'une galerie : `epoqueDuSavant` est ce qui permet au
+    bandeau d'emmener vers une cellule qui n'est pas encore rendue. Une réponse
+    fausse et le bouton « Délivre X » ne mènerait nulle part.
+  */
+  it('rend l’époque qui contient effectivement le savant', () => {
+    for (const e of EPOQUES) {
+      for (const s of savantsDeLEpoque(e)) expect(epoqueDuSavant(s.id), s.id).toBe(e.id);
+    }
+  });
+
+  it('ne rend rien pour un savant qui n’existe pas', () => {
+    expect(epoqueDuSavant('nicolas-bourbaki')).toBeNull();
+  });
+});
+
+describe('l’époque que le mur ouvre', () => {
+  const tous = savantsPrisonniers.map((s) => s.id);
+
+  it('ouvre la première tant que rien n’est délivré', () => {
+    expect(epoqueAOuvrir([])).toBe(EPOQUES[0].id);
+  });
+
+  /*
+    Elle doit suivre la progression sans rien stocker : une époque entièrement
+    délivrée s'efface au profit de la suivante, et l'enfant retrouve le mur là
+    où il en était.
+  */
+  it('passe à la suivante dès qu’une époque est complète', () => {
+    const premiere = savantsDeLEpoque(EPOQUES[0]).map((s) => s.id);
+    expect(epoqueAOuvrir(premiere)).toBe(EPOQUES[1].id);
+  });
+
+  it('n’avance pas tant qu’il reste un seul enfermé', () => {
+    const premiere = savantsDeLEpoque(EPOQUES[0]).map((s) => s.id);
+    expect(epoqueAOuvrir(premiere.slice(1))).toBe(EPOQUES[0].id);
+  });
+
+  /* Mur entièrement éclairé : il n'y a plus de « suivante », on revient au début. */
+  it('revient à la première quand tout est délivré', () => {
+    expect(epoqueAOuvrir(tous)).toBe(EPOQUES[0].id);
   });
 });
 

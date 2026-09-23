@@ -264,6 +264,23 @@ export function useNarration(
     [allerA, activeIndex],
   );
 
+  /**
+   * L'étape suivante — et la première si rien n'a encore commencé.
+   *
+   * Le pendant exact de `reculer`, avec la même clémence aux bords : sur la
+   * dernière étape, `allerA` ramène à la dernière et la rejoue, plutôt que de
+   * laisser un bouton sans effet.
+   *
+   * Le cas « pas encore commencé » mérite son test. La modale calculait jusqu'ici
+   * `Math.max(0, activeIndex) + 1` pour le balayage, ce qui vaut 1 avant le
+   * démarrage : glisser le doigt sur une carte qu'on venait d'ouvrir sautait la
+   * première étape sans qu'on puisse deviner pourquoi.
+   */
+  const avancer = useCallback(
+    () => allerA(activeIndex < 0 ? 0 : activeIndex + 1),
+    [allerA, activeIndex],
+  );
+
   const isSilent = status === 'silencieux';
   const state: NarrationState = {
     status,
@@ -276,5 +293,5 @@ export function useNarration(
     isSilent,
   };
 
-  return { state, play, pause, resume, replay, allerA, reculer, stop };
+  return { state, play, pause, resume, replay, allerA, reculer, avancer, stop };
 }

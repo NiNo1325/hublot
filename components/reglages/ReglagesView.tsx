@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { SelecteurNiveau } from '@/components/niveau/SelecteurNiveau';
 import { useNiveau } from '@/components/niveau/useNiveau';
+import { LumiNiveau } from '@/components/mascotte/LumiNiveau';
 import { useCartesVues } from '@/components/cards/useCartesVues';
 import { useCartesMaitrisees } from '@/components/cards/useCartesMaitrisees';
 import { useHorsLigne } from '@/components/hors-ligne/useHorsLigne';
@@ -27,14 +27,23 @@ const LANGUES: { code: Locale; nom: string; drapeau: string }[] = [
 ];
 
 /**
- * Réglages, rangés par intention plutôt qu'en vrac : le niveau, la famille, l'écoute
- * et les alertes (hors-ligne, notifications), l'aide (revoir la présentation),
- * puis en pied de page, à l'écart, le geste rare de réinitialisation et la
- * version. Chaque groupe est une carte de rangées cohérentes.
+ * Réglages, rangés par intention plutôt qu'en vrac.
+ *
+ * Quatre groupes, et une seule forme : une carte de rangées. Ce que l'enfant
+ * entend — le niveau des mots, la langue —, la famille qui partage l'appareil,
+ * l'application elle-même (écoute hors ligne, alertes, présentation), puis la
+ * sauvegarde. En pied de page, à l'écart, le geste rare de réinitialisation et
+ * la version.
+ *
+ * Six intitulés le découpaient auparavant, dont deux ne surmontaient qu'une
+ * seule ligne, et le choix du niveau s'y étalait déplié sur une demi-page. Les
+ * testeurs ont trouvé l'écran chargé. Il ne l'est plus : le niveau est une
+ * rangée qui mène à son écran, et les groupes d'une ligne ont rejoint celui
+ * auquel ils appartenaient déjà.
  */
 export function ReglagesView() {
   const router = useRouter();
-  const { niveau, status, choisirNiveau } = useNiveau();
+  const { niveau, status } = useNiveau();
   const { cartesVues, oublierToutesLesVues } = useCartesVues();
   const { oublierMaitrisees } = useCartesMaitrisees();
   const { oublierLiberes } = useMusee();
@@ -43,7 +52,6 @@ export function ReglagesView() {
   const t = useT();
 
   const [confirmation, setConfirmation] = useState(false);
-  const [niveauEnregistre, setNiveauEnregistre] = useState(false);
 
   // Accès direct sans niveau choisi : retour à la première entrée.
   useEffect(() => {
@@ -57,12 +65,6 @@ export function ReglagesView() {
     const minuterie = setTimeout(() => setConfirmation(false), 4000);
     return () => clearTimeout(minuterie);
   }, [confirmation]);
-
-  useEffect(() => {
-    if (!niveauEnregistre) return;
-    const minuterie = setTimeout(() => setNiveauEnregistre(false), 2000);
-    return () => clearTimeout(minuterie);
-  }, [niveauEnregistre]);
 
   if (status === 'chargement' || !niveau) return null;
 
@@ -86,46 +88,62 @@ export function ReglagesView() {
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-8 px-6 py-10">
       <h1 className="text-center font-display text-3xl font-semibold sm:text-4xl">{t('reglages.titre')}</h1>
 
-      {/* Niveau de difficulté */}
+      {/*
+        Ce que l'enfant entend : le niveau des mots, et la langue dans laquelle
+        on les lui dit. Deux réglages qui ne se ressemblent pas mais répondent à
+        la même question, et qu'il n'y avait aucune raison de séparer par un
+        intitulé.
+      */}
       <section className="flex flex-col gap-3">
-        <Intitule>{t('reglages.niveau')}</Intitule>
-        <div className="flex flex-col items-center gap-5 rounded-3xl border-2 border-encre-bord bg-encre-clair p-4">
-          <SelecteurNiveau
-            niveauInitial={niveau}
-            onChoisir={(choisi) => {
-              choisirNiveau(choisi);
-              setNiveauEnregistre(true);
-            }}
-          />
-          {/* Une confirmation qui s'efface, plutôt qu'un bouton à ne pas oublier. */}
-          <p aria-live="polite" className="min-h-5 text-sm text-soleil">
-            {niveauEnregistre ? t('reglages.niveau-enregistre') : ''}
-          </p>
-        </div>
-      </section>
+        <Intitule>{t('reglages.entend')}</Intitule>
+        <div className="divide-y divide-encre-bord overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
+          {/*
+            La Lumi du niveau en cours tient lieu d'icône : un enfant reconnaît
+            la petite, la jeune ou la grande sans lire le nom à côté.
+          */}
+          <button
+            type="button"
+            onClick={() => router.push('/reglages/niveau')}
+            className={rangeeNav}
+          >
+            <span aria-hidden="true" className="flex h-9 w-9 shrink-0 items-end justify-center">
+              <LumiNiveau variante={niveau.variante} taille={34} />
+            </span>
+            <span className="flex-1 text-craie">{t('reglages.niveau-ligne')}</span>
+            <span className="text-sm text-craie-douce">{niveau.nom[locale] ?? niveau.nom.fr}</span>
+            <span aria-hidden="true" className="text-lg leading-none text-craie-douce">
+              ›
+            </span>
+          </button>
 
-      {/* Langue */}
-      <section className="flex flex-col gap-3">
-        <Intitule>{t('reglages.langue')}</Intitule>
-        <div className="grid grid-cols-2 gap-3">
-          {LANGUES.map((l) => {
-            const actif = locale === l.code;
-            return (
-              <button
-                key={l.code}
-                type="button"
-                onClick={() => choisirLocale(l.code)}
-                aria-pressed={actif}
-                className={`flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-3xl border-2 text-craie transition-colors ${
-                  actif
-                    ? 'border-soleil bg-soleil/10 text-soleil'
-                    : 'border-encre-bord bg-encre-clair hover:border-soleil'
-                }`}
-              >
-                <span aria-hidden="true">{l.drapeau}</span> {l.nom}
-              </button>
-            );
-          })}
+          {/*
+            La langue reste dépliée : avec deux valeurs, une rangée qui mène
+            ailleurs coûterait deux gestes là où les deux boutons en demandent
+            un, et l'enfant anglophone doit pouvoir la retrouver sans lire.
+          */}
+          <div className="flex flex-col gap-3 px-5 py-4">
+            <span className="text-craie">{t('reglages.langue')}</span>
+            <div className="grid grid-cols-2 gap-3">
+              {LANGUES.map((l) => {
+                const actif = locale === l.code;
+                return (
+                  <button
+                    key={l.code}
+                    type="button"
+                    onClick={() => choisirLocale(l.code)}
+                    aria-pressed={actif}
+                    className={`flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-3xl border-2 text-craie transition-colors ${
+                      actif
+                        ? 'border-soleil bg-soleil/10 text-soleil'
+                        : 'border-encre-bord bg-encre hover:border-soleil'
+                    }`}
+                  >
+                    <span aria-hidden="true">{l.drapeau}</span> {l.nom}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -135,9 +153,9 @@ export function ReglagesView() {
         <SectionFamille />
       </section>
 
-      {/* Écoute & alertes */}
+      {/* L'application : l'écoute hors ligne, les alertes, la présentation. */}
       <section className="flex flex-col gap-3">
-        <Intitule>{t('reglages.ecoute')}</Intitule>
+        <Intitule>{t('reglages.appli')}</Intitule>
         <div className="divide-y divide-encre-bord overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
           <button type="button" onClick={() => router.push('/hors-ligne')} className={rangeeNav}>
             <span aria-hidden="true">🚗</span>
@@ -150,13 +168,7 @@ export function ReglagesView() {
 
           {/* Notifications push (n'apparaît que si l'infra est branchée). */}
           <NotificationsToggle />
-        </div>
-      </section>
 
-      {/* Aide */}
-      <section className="flex flex-col gap-3">
-        <Intitule>{t('reglages.aide')}</Intitule>
-        <div className="overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
           <button type="button" onClick={() => ouvrirTutoriel()} className={rangeeNav}>
             <span aria-hidden="true">🌟</span>
             <span className="flex-1 text-craie">{t('reglages.tutoriel')}</span>

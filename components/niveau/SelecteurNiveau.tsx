@@ -49,7 +49,7 @@ export function SelecteurNiveau({
     <div className="flex w-full flex-col items-center gap-6">
       {/* La présentation : trois niveaux, le quizz suit, et on peut changer d'avis. */}
       <div className="flex w-full max-w-md items-start gap-3 rounded-3xl border-2 border-encre-bord bg-encre-clair p-4">
-        <p className="flex-1 text-sm leading-relaxed text-craie-douce">
+        <p className="flex-1 text-base leading-relaxed text-craie-douce">
           {presentationNiveaux.texte[locale] ?? presentationNiveaux.texte.fr}
         </p>
         <button
@@ -79,14 +79,45 @@ export function SelecteurNiveau({
                   jouer(niveau.id);
                 }}
                 aria-pressed={actif}
-                className={`flex w-full cursor-pointer items-center gap-3 rounded-3xl border-2 p-3 text-left transition-colors ${
+                /*
+                  Le choix devait se voir, et il ne se voyait pas.
+
+                  Une bordure orange et un nom orange, c'était tout — et le
+                  fond, lui, jouait contre : `bg-soleil/10` posé sur l'encre
+                  donne un ton plus **sombre** que le `bg-encre-clair` des deux
+                  autres cartes, si bien que la carte choisie était la plus
+                  discrète des trois. Les non-choisies reculent donc, la choisie
+                  se réchauffe et s'auréole, et sa Lumi porte une coche.
+
+                  Trois signaux redondants plutôt qu'un seul : la couleur ne
+                  suffit jamais, et le halo ne survit pas à « animation
+                  réduite ».
+                */
+                className={`relative flex w-full cursor-pointer items-center gap-3 rounded-3xl border-2 p-3 text-left transition-colors ${
                   actif
-                    ? 'border-soleil bg-soleil/10'
-                    : 'border-encre-bord bg-encre-clair hover:border-soleil'
+                    ? 'border-soleil bg-soleil/15 shadow-[0_0_24px_rgba(255,182,39,0.22)]'
+                    : 'border-encre-bord bg-encre-clair/40 hover:border-soleil'
                 }`}
               >
-                <span className="flex h-24 w-20 shrink-0 items-end justify-center">
+                <span className="relative flex h-24 w-20 shrink-0 items-end justify-center">
                   <LumiNiveau variante={niveau.variante} taille={72} />
+                  {actif && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full border-[3px] border-encre bg-soleil"
+                    >
+                      <svg viewBox="0 0 24 24" className="h-4 w-4">
+                        <path
+                          d="M5 13l4.5 4.5L19 7"
+                          fill="none"
+                          stroke="var(--color-encre)"
+                          strokeWidth="3.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  )}
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col gap-1">
                   <span
@@ -94,7 +125,7 @@ export function SelecteurNiveau({
                   >
                     {niveau.nom[locale] ?? niveau.nom.fr}
                   </span>
-                  <span className="text-sm leading-snug text-craie-douce">
+                  <span className="text-base leading-snug text-craie-douce">
                     {niveau.texte[locale] ?? niveau.texte.fr}
                   </span>
                 </span>

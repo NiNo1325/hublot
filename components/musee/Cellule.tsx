@@ -1,5 +1,6 @@
 'use client';
 
+import type { Ref } from 'react';
 import Image from 'next/image';
 import type { SavantPrisonnier } from '@/content/savants-cartes';
 import { prixSavant } from '@/lib/cles';
@@ -11,6 +12,17 @@ interface CelluleProps {
   /** Le trousseau suffit-il à ouvrir cette cellule ? */
   abordable: boolean;
   onOuvrir: (savant: SavantPrisonnier) => void;
+  /*
+    Le mur s'en sert pour emmener vers une cellule nommée par le bandeau.
+
+    Il porte sur le `<li>` lui-même et non sur un enrobage : le premier essai
+    passait par un `<span class="contents">` glissé entre la grille et la
+    cellule, pour ne pas casser la relation `ul > li`. Un élément en
+    `display: contents` n'a pas de boîte — son rectangle est nul et
+    `scrollIntoView` ne fait rien du tout, sans erreur ni avertissement. Le
+    bouton « Tu peux délivrer quelqu'un ! » ne menait donc nulle part.
+  */
+  ref?: Ref<HTMLLIElement>;
 }
 
 /** Positions des barreaux verticaux, en pourcentage de la largeur. */
@@ -33,19 +45,19 @@ const BARREAUX = [18, 39, 61, 82];
  * Délivré, tout change d'un coup : la grille disparaît, la lumière entre, et le
  * portrait se retrouve encadré d'or avec son nom sur une plaque, comme au musée.
  */
-export function Cellule({ savant, libere, abordable, onOuvrir }: CelluleProps) {
+export function Cellule({ savant, libere, abordable, onOuvrir, ref }: CelluleProps) {
   const t = useT();
   const prix = prixSavant(savant);
 
   return (
-    <li>
+    <li ref={ref} className="scroll-mt-24">
       <button
         type="button"
         onClick={() => onOuvrir(savant)}
         aria-label={
           libere ? t('musee.cellule-libre')(savant.nom) : t('musee.cellule-fermee')(prix)
         }
-        className={`flex w-full cursor-pointer flex-col items-center gap-1 transition-transform hover:scale-105 active:scale-95 ${
+        className={`flex w-full cursor-pointer flex-col items-center gap-1.5 transition-transform hover:scale-105 active:scale-95 ${
           libere || abordable ? '' : 'opacity-60'
         }`}
       >
@@ -136,7 +148,7 @@ export function Cellule({ savant, libere, abordable, onOuvrir }: CelluleProps) {
           {!libere && (
             <span
               aria-hidden="true"
-              className={`absolute bottom-[6%] left-1/2 -translate-x-1/2 text-[13px] leading-none ${
+              className={`absolute bottom-[6%] left-1/2 -translate-x-1/2 text-[15px] leading-none ${
                 abordable
                   ? 'opacity-100 drop-shadow-[0_0_5px_rgba(255,182,39,0.9)]'
                   : 'opacity-45 grayscale'
@@ -149,7 +161,7 @@ export function Cellule({ savant, libere, abordable, onOuvrir }: CelluleProps) {
 
         {/* La plaque : le nom une fois délivré, le prix tant qu'il est enfermé. */}
         <span
-          className={`w-full rounded-md px-1 py-0.5 text-center text-[10px] leading-tight ${
+          className={`w-full rounded-md px-1 py-1 text-center text-xs leading-tight ${
             libere
               ? 'bg-soleil/15 text-craie'
               : abordable

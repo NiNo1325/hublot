@@ -117,11 +117,47 @@ export const EPOQUES: Epoque[] = [
   { id: 'aujourdhui', debut: 1940, fin: 3000 },
 ];
 
+/*
+  L'appartenance à une époque, écrite une fois : la borne haute est exclue, si
+  bien qu'un savant né pile à la charnière tombe dans l'époque qui commence et
+  jamais dans les deux. Deux copies de ce test finiraient par diverger, et un
+  savant apparaîtrait deux fois sur le mur.
+*/
+function dansLEpoque(savant: SavantPrisonnier, epoque: Epoque): boolean {
+  return savant.naissance >= epoque.debut && savant.naissance < epoque.fin;
+}
+
 /** Les savants d'une époque, du plus ancien au plus récent. */
 export function savantsDeLEpoque(epoque: Epoque): SavantPrisonnier[] {
   return savantsPrisonniers
-    .filter((s) => s.naissance >= epoque.debut && s.naissance < epoque.fin)
+    .filter((s) => dansLEpoque(s, epoque))
     .sort((a, b) => a.naissance - b.naissance);
+}
+
+/** L'époque où se trouve la cellule d'un savant. */
+export function epoqueDuSavant(id: string): IdEpoque | null {
+  const savant = savantsPrisonniers.find((s) => s.id === id);
+  if (!savant) return null;
+  return EPOQUES.find((e) => dansLEpoque(savant, e))?.id ?? null;
+}
+
+/**
+ * L'époque que le mur ouvre de lui-même : la première qui garde encore
+ * quelqu'un enfermé.
+ *
+ * Le mur ne montre qu'une galerie à la fois, et il faut donc choisir laquelle
+ * sans rien demander. La première inachevée est la seule réponse qui vaille à
+ * la fois au premier lancement — l'Antiquité, là où le récit commence — et cent
+ * délivrances plus tard, où elle désigne exactement ce qui reste à faire.
+ *
+ * Tout délivré, elle rend la première : un mur entièrement éclairé se regarde
+ * depuis le début.
+ */
+export function epoqueAOuvrir(liberes: string[]): IdEpoque {
+  const restante = EPOQUES.find((e) =>
+    savantsDeLEpoque(e).some((s) => !liberes.includes(s.id)),
+  );
+  return (restante ?? EPOQUES[0]).id;
 }
 
 /** Le savant qui tient une carte donnée, s'il existe. */

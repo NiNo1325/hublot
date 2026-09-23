@@ -48,7 +48,7 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
   const t = useT();
   const contenu = localise(card.content, locale);
   const beats = contenu.explanation[ageRange].beats;
-  const { state, play, pause, resume, replay, allerA, reculer } = useNarration(
+  const { state, play, pause, resume, replay, allerA, reculer, avancer } = useNarration(
     card.id,
     ageRange,
     beats,
@@ -62,10 +62,7 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
     droite pour la précédente. On réutilise `allerA`/`reculer`, exactement comme
     un appui sur les points de progression — la narration reprend au beat visé.
   */
-  const swipe = useSwipeHorizontal({
-    onLeft: () => allerA(Math.max(0, state.activeIndex) + 1),
-    onRight: reculer,
-  });
+  const swipe = useSwipeHorizontal({ onLeft: avancer, onRight: reculer });
 
   /*
     `showModal()` plutôt qu'un focus trap maison : le dialog natif piège le
@@ -163,13 +160,16 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
           et incohérent avec une narration qui progresse phrase après phrase.
           `aria-live` annonce chaque changement aux lecteurs d'écran.
 
-          Le texte est volontairement plus discret que l'illustration : il
-          accompagne la narration, il ne la remplace pas. Sur mobile, un texte
-          à la même échelle que sur grand écran reléguait l'animation au rang
-          de vignette.
+          Le texte accompagne la narration, il ne la remplace pas — mais il a
+          longtemps été rendu *discret* pour cela : seize pixels ternis, contre
+          vingt clairs sur grand écran. Les testeurs l'ont relevé en premier, et
+          ils ont raison : c'est un écran de lecture avant d'être une vignette,
+          et l'enfant qui suit des yeux ce qu'il entend a besoin de le voir. Le
+          rapport de force avec l'illustration se règle par la place qu'elle
+          occupe, pas en affaiblissant le texte.
         */}
         <div aria-live="polite" className="min-h-20 sm:min-h-24">
-          <p className="text-base leading-relaxed text-craie/90 sm:text-xl sm:text-craie">
+          <p className="text-lg leading-relaxed text-craie sm:text-xl">
             {beats[Math.max(0, state.activeIndex)].text}
           </p>
         </div>
@@ -187,6 +187,7 @@ export function CardModal({ card, ageRange, onClose }: CardModalProps) {
           onResume={resume}
           onReplay={replay}
           onReculer={reculer}
+          onAvancer={avancer}
         />
       </div>
     </dialog>

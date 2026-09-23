@@ -26,6 +26,15 @@ export interface EcranTuto {
   emoji: string | null;
   titre: Localise<string>;
   texte: Localise<string>;
+  /**
+   * Afficher la chaîne du jeu — écouter, répondre, une clé, délivrer.
+   *
+   * Réservée au premier écran, et volontairement **hors du texte lu** : quatre
+   * mots sous quatre emprunts aux onglets se retiennent mieux qu'une phrase de
+   * plus, et l'enfant qui ne lit pas encore y reconnaît la longue-vue et la
+   * manette qu'il va retrouver en bas de l'écran.
+   */
+  chaine?: true;
 }
 
 export const ecransTuto: EcranTuto[] = [
@@ -34,10 +43,19 @@ export const ecransTuto: EcranTuto[] = [
     rang: 0,
     emoji: null,
     titre: { fr: 'Le musée', en: 'The museum' },
+    /*
+      La règle du jeu dès la première phrase.
+
+      Elle s'arrêtait à « on va les délivrer » : l'enfant savait ce qu'on
+      cherchait, jamais avec quoi. Trois écrans plus loin le quizz lui donnait
+      une clé sans dire ce qu'elle ouvre, et les deux moitiés de la boucle ne se
+      rejoignaient nulle part. Les testeurs l'ont relevé.
+    */
     texte: {
-      fr: "Coucou, moi c'est Lumi ! Regarde tous ces savants derrière les barreaux : on les a oubliés, et l'oubli les a enfermés. Ensemble, on va les délivrer.",
-      en: 'Hello, I’m Lumi! Look at all these scientists behind bars: they were forgotten, and forgetting locked them up. Together, we are going to set them free.',
+      fr: "Coucou, moi c'est Lumi ! Regarde tous ces savants derrière les barreaux : on les a oubliés, et l'oubli les a enfermés. Ensemble, on va les délivrer — leurs cellules s'ouvrent avec des clés.",
+      en: 'Hello, I’m Lumi! Look at all these scientists behind bars: they were forgotten, and forgetting locked them up. Together, we are going to set them free — their cells open with keys.',
     },
+    chaine: true,
   },
   {
     id: 'decouvrir',
@@ -55,8 +73,8 @@ export const ecransTuto: EcranTuto[] = [
     emoji: '🎮',
     titre: { fr: 'Joue', en: 'Play' },
     texte: {
-      fr: 'Ici, on joue avec ce que tu as appris. Au quizz, je te pose des questions sur les cartes que tu as écoutées, et chaque bonne réponse te donne une clé. Les autres jeux, c’est juste pour s’amuser.',
-      en: 'Here we play with what you have learnt. In the quiz, I ask you about the cards you have listened to, and every right answer wins you a key. The other games are just for fun.',
+      fr: 'Ici, on joue avec ce que tu as appris. Au quizz, je te pose des questions sur les cartes que tu as écoutées, et chaque bonne réponse te donne une clé pour ouvrir une cellule. Les autres jeux, c’est juste pour s’amuser.',
+      en: 'Here we play with what you have learnt. In the quiz, I ask you about the cards you have listened to, and every right answer wins you a key to open a cell. The other games are just for fun.',
     },
   },
   {

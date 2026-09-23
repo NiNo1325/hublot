@@ -11,7 +11,8 @@ interface JalonEpoqueProps {
   dernier: boolean;
   libres: number;
   total: number;
-  active: boolean;
+  /** Sa galerie est-elle ouverte ? C'est elle qui donne sa hauteur à la ligne. */
+  deplie: boolean;
 }
 
 /*
@@ -50,7 +51,7 @@ const FIL = 13;
  * Les dates restent à l'horizontale, sous la pastille : quatre chiffres tiennent
  * partout, et ce sont eux qu'on vient chercher du regard.
  */
-export function JalonEpoque({ epoque, rang, dernier, libres, total, active }: JalonEpoqueProps) {
+export function JalonEpoque({ epoque, rang, dernier, libres, total, deplie }: JalonEpoqueProps) {
   const t = useT();
   const complet = total > 0 && libres >= total;
   const entame = libres > 0;
@@ -82,7 +83,7 @@ export function JalonEpoque({ epoque, rang, dernier, libres, total, active }: Ja
             : entame
               ? 'border-soleil bg-encre text-soleil'
               : 'border-encre-bord bg-encre text-craie-douce/50'
-        } ${active ? 'ring-2 ring-soleil/40 ring-offset-2 ring-offset-encre' : ''}`}
+        } ${deplie ? 'ring-2 ring-soleil/40 ring-offset-2 ring-offset-encre' : ''}`}
       >
         {libres}
       </span>
@@ -98,17 +99,21 @@ export function JalonEpoque({ epoque, rang, dernier, libres, total, active }: Ja
         époque. `min-h-0` autorise le bloc à se comprimer sous sa taille de
         contenu : sans lui, une époque de trois cellules serait poussée plus haut
         que sa galerie et la grille se décalerait.
+
+        Il ne s'écrit que sur une galerie dépliée. Repliée, la ligne fait quatre
+        vingts pixels : le nom vertical s'y serait réduit à deux lettres coupées,
+        et il est de toute façon écrit en toutes lettres sur le bouton d'à côté.
       */}
-      <span
-        className={`relative z-10 flex min-h-0 flex-1 items-center justify-center overflow-hidden text-[11px] font-semibold uppercase tracking-wide sm:text-xs ${
-          active ? 'text-craie' : 'text-craie-douce/70'
-        }`}
-        style={{ paddingLeft: FIL + 6 }}
-      >
-        <span style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
-          {t(CLE_EPOQUE[epoque.id])}
+      {deplie && (
+        <span
+          className="relative z-10 flex min-h-0 flex-1 items-center justify-center overflow-hidden text-[11px] font-semibold uppercase tracking-wide text-craie sm:text-xs"
+          style={{ paddingLeft: FIL + 6 }}
+        >
+          <span style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+            {t(CLE_EPOQUE[epoque.id])}
+          </span>
         </span>
-      </span>
+      )}
 
       {/* La pointe : c'est elle qui fait de la colonne une flèche, et qui dit
           dans quel sens le temps coule. */}

@@ -5,12 +5,18 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { ScienceCard } from '@/lib/types';
 import type { SavantPrisonnier } from '@/content/savants-cartes';
-import { EPOQUES, peutLiberer, savantsDeLEpoque, type IdEpoque } from '@/lib/cles';
+import {
+  EPOQUES,
+  epoqueAOuvrir,
+  epoqueDuSavant,
+  peutLiberer,
+  savantsDeLEpoque,
+  type IdEpoque,
+} from '@/lib/cles';
 import { prochaineAction } from '@/lib/prochaine-action';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
 import { histoire } from '@/content/histoire';
 import { Lumi } from '@/components/mascotte/Lumi';
-import { Intitule } from '@/components/ui/Intitule';
 import { useAgeRange } from '@/components/age/useAgeRange';
 import { useEtoiles } from '@/components/quiz/useEtoiles';
 import { useCartesVues } from '@/components/cards/useCartesVues';
@@ -54,11 +60,18 @@ const CLE_EPOQUE = {
  * jouer deviennent alors le moyen de les délivrer, au lieu d'être des fins en
  * soi.
  *
- * Le mur est aussi la carte de progression, et non un écran de plus : cent
- * treize niches, on voit d'un coup ce qui est éclairé et ce qui reste dans le
- * noir, sans qu'aucun pourcentage ait à le dire. Il se lit par époques, seul
- * découpage qui partitionne proprement — un savant a une date de naissance
- * unique, mais tient souvent des cartes de plusieurs mondes.
+ * Le mur est aussi la carte de progression, et non un écran de plus : on voit
+ * ce qui est éclairé et ce qui reste dans le noir, sans qu'aucun pourcentage ait
+ * à le dire. Il se lit par époques, seul découpage qui partitionne proprement —
+ * un savant a une date de naissance unique, mais tient souvent des cartes de
+ * plusieurs mondes.
+ *
+ * **Une galerie ouverte à la fois.** Les cent treize niches déployées d'un seul
+ * tenant faisaient un mur de vignettes où le regard ne se posait nulle part —
+ * les testeurs l'ont dit ainsi : « encombré ». Repliée, une époque garde
+ * pourtant tout ce qu'elle disait : son nom, son compte, et une jauge qui montre
+ * d'un coup d'œil ce qui y reste enfermé. On perd le panorama, on gagne de
+ * pouvoir le lire.
  */
 export function MuseeView({ cards }: MuseeViewProps) {
   const router = useRouter();
@@ -74,8 +87,24 @@ export function MuseeView({ cards }: MuseeViewProps) {
   /* La carte qu'on écoute depuis la fiche d'un savant, sans quitter le musée. */
   const [carteEcoutee, setCarteEcoutee] = useState<ScienceCard | null>(null);
   const cellules = useRef(new Map<string, HTMLElement>());
-  const [active, setActive] = useState<IdEpoque | null>(null);
-  const galeries = useRef(new Map<IdEpoque, HTMLElement>());
+  /*
+    La galerie ouverte.
+
+    `null` tant que l'enfant n'a touché à rien : le mur s'ouvre alors de lui-même
+    sur la première époque encore incomplète, et suit la progression sans qu'on
+    ait à l'enregistrer nulle part. Dès le premier geste, son choix prime — y
+    compris « tout replié », qui doit rester atteignable sous peine d'un chevron
+    qui ne referme rien.
+  */
+  const [choix, setChoix] = useState<IdEpoque | 'aucune' | null>(null);
+  /*
+    Le savant que le bandeau désigne, gardé le temps que son époque s'ouvre.
+
+    Une référence et non un état : rien ne s'affiche à partir de lui, et le
+    remettre à zéro depuis l'effet imposerait un rendu de plus pour une valeur
+    que personne ne lit.
+  */
+  const aRejoindre = useRef<string | null>(null);
 
   const apres = (id: string) => {
     const i = histoire.findIndex((h) => h.id === id);
@@ -83,26 +112,31 @@ export function MuseeView({ cards }: MuseeViewProps) {
   };
   const { jouer, arreter, enLecture } = useHistoireAudio(apres);
 
+  /* L'époque dépliée : le choix de l'enfant, ou la première encore incomplète. */
+  const ouverte = choix === null ? epoqueAOuvrir(liberes) : choix === 'aucune' ? null : choix;
+
   useEffect(() => {
     if (status === 'pret' && !ageRange) router.replace('/');
   }, [status, ageRange, router]);
 
   /*
-    L'époque qu'on regarde suit le défilement : c'est ce qui fait de la ligne du
-    temps une position, et pas seulement un menu. On observe une bande haute de
-    l'écran, là où l'œil se pose.
+    Rejoindre le savant que le bandeau propose de délivrer.
+
+    Il dort peut-être dans une époque repliée, dont les cellules ne sont même pas
+    rendues : on ouvre d'abord, on défile ensuite. D'où ce report plutôt qu'un
+    `scrollIntoView` immédiat — l'effet ne s'exécute qu'après le rendu qui a fait
+    exister la cellule.
+
+    Cet aller-vers remplace l'observateur de défilement qui marquait autrefois
+    l'époque « regardée » : avec une seule galerie ouverte, l'époque regardée est
+    celle qui est ouverte, et il n'y a plus rien à déduire de la position.
   */
   useEffect(() => {
-    const observateur = new IntersectionObserver(
-      (entrees) => {
-        const visible = entrees.find((e) => e.isIntersecting);
-        if (visible) setActive(visible.target.getAttribute('data-epoque') as IdEpoque);
-      },
-      { rootMargin: '-10% 0px -70% 0px' },
-    );
-    for (const element of galeries.current.values()) observateur.observe(element);
-    return () => observateur.disconnect();
-  }, [status, ageRange]);
+    const id = aRejoindre.current;
+    if (!id) return;
+    aRejoindre.current = null;
+    cellules.current.get(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [ouverte]);
 
   if (status === 'chargement' || !ageRange) return null;
 
@@ -120,6 +154,17 @@ export function MuseeView({ cards }: MuseeViewProps) {
   ) as Record<IdEpoque, { libres: number; total: number }>;
 
   const indexDit = enLecture ? histoire.findIndex((h) => h.id === enLecture) : 0;
+
+  const allerAuSavant = (id: string) => {
+    const epoque = epoqueDuSavant(id);
+    /* Époque déjà ouverte : la cellule existe, on y va sans attendre un rendu. */
+    if (!epoque || epoque === ouverte) {
+      cellules.current.get(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    aRejoindre.current = id;
+    setChoix(epoque);
+  };
 
   const delivrer = (savant: SavantPrisonnier) => {
     liberer(savant.id);
@@ -159,9 +204,7 @@ export function MuseeView({ cards }: MuseeViewProps) {
           delivres={liberes.length}
           total={total}
           action={prochaineAction(cards, cartesVues, cartesMaitrisees, liberes, gagnees, depensees)}
-          onAllerAuSavant={(id) =>
-            cellules.current.get(id)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-          }
+          onAllerAuSavant={allerAuSavant}
         />
 
         {/*
@@ -169,7 +212,7 @@ export function MuseeView({ cards }: MuseeViewProps) {
           après cent treize cellules : personne n'y descendait, et c'est pourtant la
           seule phrase qui dise ce que coûte une cellule.
         */}
-        <p className="max-w-md px-2 text-center text-sm leading-relaxed text-craie-douce">
+        <p className="max-w-md px-2 text-center text-base leading-relaxed text-craie-douce">
           {t('musee.legende')}
         </p>
       </header>
@@ -186,50 +229,88 @@ export function MuseeView({ cards }: MuseeViewProps) {
         {EPOQUES.map((epoque, rang) => {
           const dedans = savantsDeLEpoque(epoque);
           if (dedans.length === 0) return null;
+          const { libres } = compte[epoque.id];
+          const deplie = ouverte === epoque.id;
+          const nom = t(CLE_EPOQUE[epoque.id]);
           return (
             <Fragment key={epoque.id}>
               <JalonEpoque
                 epoque={epoque}
                 rang={rang}
                 dernier={rang === EPOQUES.length - 1}
-                libres={compte[epoque.id].libres}
-                total={compte[epoque.id].total}
-                active={active === epoque.id}
+                libres={libres}
+                total={dedans.length}
+                deplie={deplie}
               />
 
-              <section
-                data-epoque={epoque.id}
-                ref={(el) => {
-                  if (el) galeries.current.set(epoque.id, el);
-                  else galeries.current.delete(epoque.id);
-                }}
-                className="flex min-w-0 scroll-mt-4 flex-col gap-2 pb-5"
-              >
-                <div className="flex items-baseline justify-between px-1">
-                  <Intitule>{t(CLE_EPOQUE[epoque.id])}</Intitule>
-                  <span className="text-xs tabular-nums text-craie-douce">
-                    {compte[epoque.id].libres}/{dedans.length}
-                  </span>
-                </div>
-                <ul className="grid grid-cols-3 gap-2 rounded-3xl border-2 border-encre-bord bg-[#0d1424] p-2.5 sm:grid-cols-4 sm:gap-3 sm:p-4">
-                  {dedans.map((s) => (
-                    <span
-                      key={s.id}
-                      ref={(el) => {
-                        if (el) cellules.current.set(s.id, el);
-                        else cellules.current.delete(s.id);
-                      }}
-                      className="contents"
-                    >
-                    <Cellule
-                      savant={s}
-                      libere={liberes.includes(s.id)}
-                      abordable={abordable(s)}
-                      onOuvrir={setOuvert}
-                    />
+              <section className="flex min-w-0 scroll-mt-4 flex-col gap-2 pb-5">
+                {/*
+                  L'intitulé est devenu la poignée de l'époque. Il porte tout ce
+                  qu'il faut pour décider d'ouvrir sans ouvrir : le nom, le
+                  compte, et la jauge — la forme courte du mur qu'elle cache.
+                */}
+                <h2>
+                  <button
+                    type="button"
+                    onClick={() => setChoix(deplie ? 'aucune' : epoque.id)}
+                    aria-expanded={deplie}
+                    aria-controls={`galerie-${epoque.id}`}
+                    aria-label={t('musee.epoque-etat')(nom, libres, dedans.length)}
+                    className={`flex min-h-[4.5rem] w-full cursor-pointer items-center gap-3 rounded-3xl border-2 px-4 py-3 text-left transition-colors ${
+                      deplie
+                        ? 'border-soleil/50 bg-soleil/5'
+                        : 'border-encre-bord bg-encre-clair/40 hover:border-soleil/50'
+                    }`}
+                  >
+                    <span aria-hidden="true" className="flex min-w-0 flex-1 flex-col gap-2">
+                      <span className="font-display text-sm font-semibold uppercase tracking-[0.12em] text-craie">
+                        {nom}
+                      </span>
+                      <span className="h-1.5 w-full overflow-hidden rounded-full bg-encre">
+                        <span
+                          className="block h-full rounded-full bg-soleil transition-[width] duration-500"
+                          style={{ width: `${(libres / dedans.length) * 100}%` }}
+                        />
+                      </span>
                     </span>
-                  ))}
-                </ul>
+                    <span
+                      aria-hidden="true"
+                      className="shrink-0 font-display text-base tabular-nums text-craie"
+                    >
+                      {libres}
+                      <span className="text-craie-douce/60">/{dedans.length}</span>
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className={`shrink-0 text-xl leading-none text-craie-douce transition-transform duration-200 ${
+                        deplie ? 'rotate-90' : ''
+                      }`}
+                    >
+                      ›
+                    </span>
+                  </button>
+                </h2>
+
+                {deplie && (
+                  <ul
+                    id={`galerie-${epoque.id}`}
+                    className="grid grid-cols-3 gap-3 rounded-3xl border-2 border-encre-bord bg-[#0d1424] p-3 sm:grid-cols-4 sm:gap-4 sm:p-4"
+                  >
+                    {dedans.map((s) => (
+                      <Cellule
+                        key={s.id}
+                        ref={(el) => {
+                          if (el) cellules.current.set(s.id, el);
+                          else cellules.current.delete(s.id);
+                        }}
+                        savant={s}
+                        libere={liberes.includes(s.id)}
+                        abordable={abordable(s)}
+                        onOuvrir={setOuvert}
+                      />
+                    ))}
+                  </ul>
+                )}
               </section>
             </Fragment>
           );

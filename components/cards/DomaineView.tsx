@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { DomainDefinition, QuizQuestion, ScienceCard } from '@/lib/types';
 import { questionsDe } from '@/content/quiz';
+import { domainStyles } from '@/lib/domain-styles';
 import { QuestionUnique } from '@/components/parcours/QuestionUnique';
 import { InvitationQuestion } from './InvitationQuestion';
 import { useCartesMaitrisees } from './useCartesMaitrisees';
@@ -13,6 +14,7 @@ import { premiumActif } from '@/lib/premium/flag';
 import { useEntitlement } from '@/components/premium/useEntitlement';
 import { Paywall } from '@/components/premium/Paywall';
 import { useLocale } from '@/components/i18n/useLocale';
+import { useT } from '@/components/i18n/useT';
 import { localise } from '@/lib/i18n/localise';
 import { CardGrid } from './CardGrid';
 import { CardModal } from './CardModal';
@@ -33,6 +35,7 @@ export function DomaineView({ domain, cards }: DomaineViewProps) {
   const { cartesMaitrisees } = useCartesMaitrisees();
   const { premium } = useEntitlement();
   const { locale } = useLocale();
+  const t = useT();
   const [paywallOuvert, setPaywallOuvert] = useState(false);
   const [carteOuverte, setCarteOuverte] = useState<ScienceCard | null>(null);
   /* La carte qu'on vient d'écouter, et sa question — proposée, jamais imposée. */
@@ -118,6 +121,40 @@ export function DomaineView({ domain, cards }: DomaineViewProps) {
           <span aria-hidden="true">{domain.icon}</span>{' '}
           {localise(domain.labels, locale)}
         </h1>
+
+        {/*
+          Où l'on en est dans ce monde.
+
+          Il n'y avait rien : l'anneau de la grille des mondes disparaissait au
+          moment précis où l'on entrait, et la seule trace de progression
+          devenait les coches semées dans la grille — qu'il faut compter soi-même
+          pour savoir s'il reste beaucoup. La barre reprend la teinte du domaine,
+          comme l'anneau dont elle prend le relais.
+        */}
+        <div className="flex w-full max-w-xs items-center gap-3">
+          <span
+            aria-hidden="true"
+            className="h-2.5 flex-1 overflow-hidden rounded-full bg-encre-clair"
+          >
+            <span
+              className="block h-full rounded-full transition-[width] duration-500"
+              style={{
+                width: `${cards.length > 0 ? (vuesIci / cards.length) * 100 : 0}%`,
+                backgroundColor: domainStyles[domain.id].teinte,
+              }}
+            />
+          </span>
+          <span
+            aria-hidden="true"
+            className="font-display text-base tabular-nums"
+            style={{ color: domainStyles[domain.id].teinte }}
+          >
+            {vuesIci}/{cards.length}
+          </span>
+          <span className="sr-only">
+            {t('monde.progression')(localise(domain.labels, locale), vuesIci, cards.length)}
+          </span>
+        </div>
       </header>
 
       <CardGrid

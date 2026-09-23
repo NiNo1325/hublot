@@ -10,6 +10,19 @@ import { useSwipeHorizontal } from '@/lib/useSwipeHorizontal';
 import { useTutorielAudio } from './useTutorielAudio';
 
 /*
+  Les quatre temps du jeu, dans l'ordre où l'enfant les vivra.
+
+  Les deux premiers emojis sont ceux des onglets « Découvrir » et « Joue » : la
+  chaîne dit donc aussi où aller, et pas seulement quoi faire.
+*/
+const CHAINE = [
+  { emoji: '🔭', cle: 'tuto.chaine.ecouter' },
+  { emoji: '🎮', cle: 'tuto.chaine.repondre' },
+  { emoji: '🔑', cle: 'tuto.chaine.cle' },
+  { emoji: '🔓', cle: 'tuto.chaine.delivrer' },
+] as const;
+
+/*
   Lumi présente l'application, un écran par onglet. Elle parle à la première
   personne, grandit d'un écran à l'autre, et chaque écran a une explication
   vocale (bouton d'écoute), comme les accroches de Découvrir.
@@ -61,6 +74,35 @@ export function Tutoriel({ onFermer }: { onFermer: () => void }) {
         <div aria-live="polite" className="flex flex-col items-center gap-3">
           <h2 className="font-display text-2xl text-soleil sm:text-3xl">{localise(ecran.titre, locale)}</h2>
           <p className="max-w-xs text-base leading-relaxed text-craie">{localise(ecran.texte, locale)}</p>
+
+          {/*
+            La chaîne, sur le seul écran du musée. Elle n'est pas lue à voix
+            haute : le texte dit déjà la règle, elle la rend mémorisable.
+          */}
+          {ecran.chaine && (
+            <ol
+              aria-label={t('tuto.chaine.aria')}
+              className="mt-1 flex max-w-xs items-start justify-center gap-1"
+            >
+              {CHAINE.map((etape, k) => (
+                <li key={etape.cle} className="flex items-start gap-1">
+                  {k > 0 && (
+                    <span aria-hidden="true" className="mt-4 text-sm text-craie-douce/50">
+                      ›
+                    </span>
+                  )}
+                  <span className="flex w-14 flex-col items-center gap-1">
+                    <span aria-hidden="true" className="text-2xl leading-none">
+                      {etape.emoji}
+                    </span>
+                    <span aria-hidden="true" className="text-xs leading-tight text-craie-douce">
+                      {t(etape.cle)}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          )}
           {/* Explication vocale, comme les cartes de Découvrir. */}
           <button
             type="button"
@@ -91,7 +133,7 @@ export function Tutoriel({ onFermer }: { onFermer: () => void }) {
             onClick={precedent}
             className="min-h-12 cursor-pointer rounded-full border-2 border-encre-bord px-6 font-display text-base text-craie-douce transition-colors hover:border-soleil hover:text-soleil"
           >
-            Retour
+            {t('tuto.retour')}
           </button>
         )}
         <button

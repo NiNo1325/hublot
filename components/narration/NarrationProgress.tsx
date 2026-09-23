@@ -49,8 +49,7 @@ export function NarrationProgress({
                 phrase ne ferait que répéter ce qui va être lu.
               */}
               <span className="sr-only">
-                Étape {index + 1} sur {beats.length}
-                {enCours ? ' (en cours)' : ''}
+                {t('narration.etape')(index + 1, beats.length, enCours)}
               </span>
               <span
                 aria-hidden="true"

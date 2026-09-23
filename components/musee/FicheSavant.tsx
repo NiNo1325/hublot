@@ -109,7 +109,7 @@ export function FicheSavant({
               nous.
             */}
             <div className="flex flex-col gap-3 rounded-2xl border-2 border-encre-bord bg-encre/40 p-4">
-              <p className="text-sm leading-relaxed text-craie">
+              <p className="text-base leading-relaxed text-craie">
                 {localise(savant.portrait, locale)}
               </p>
               <button
@@ -174,7 +174,7 @@ export function FicheSavant({
                           {localise(carte.content, locale).title[ageRange]}
                         </span>
                       )}
-                      <span className="text-sm leading-relaxed text-craie-douce">{localise(c.lien, locale)}</span>
+                      <span className="text-base leading-relaxed text-craie-douce">{localise(c.lien, locale)}</span>
                     </span>
 
                     {/*

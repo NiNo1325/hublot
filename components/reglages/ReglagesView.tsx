@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useNiveau } from '@/components/niveau/useNiveau';
 import { LumiNiveau } from '@/components/mascotte/LumiNiveau';
@@ -191,30 +190,6 @@ export function ReglagesView() {
           </div>
         </section>
       )}
-
-      {/* Vie privée. Google Play exige que la politique de confidentialité —
-          et, dès qu'un compte existe, la marche à suivre pour le supprimer —
-          soient accessibles depuis l'application elle-même, pas seulement
-          depuis la fiche du Store. */}
-      <section className="flex flex-col gap-3">
-        <Intitule>{t('reglages.infos')}</Intitule>
-        <div className="divide-y divide-encre-bord overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
-          <Link href="/confidentialite" className={rangeeNav}>
-            <span aria-hidden="true">🔒</span>
-            <span className="flex-1 text-craie">{t('reglages.confidentialite')}</span>
-            <span aria-hidden="true" className="text-lg leading-none text-craie-douce">
-              ›
-            </span>
-          </Link>
-          <Link href="/suppression" className={rangeeNav}>
-            <span aria-hidden="true">🗑️</span>
-            <span className="flex-1 text-craie">{t('reglages.suppression')}</span>
-            <span aria-hidden="true" className="text-lg leading-none text-craie-douce">
-              ›
-            </span>
-          </Link>
-        </div>
-      </section>
 
       {/* Pied de page : le geste rare de réinitialisation, à l'écart, et les
           versions (app Google Play + build web) en tout petit, pour lever tout

@@ -16,11 +16,6 @@ import { useT } from '@/components/i18n/useT';
  * et clé VAPID configurée) : tant que l'infra n'est pas branchée, rien
  * n'apparaît, plutôt qu'un bouton qui échouerait. L'état de vérité est
  * l'abonnement réel du navigateur, pas une préférence stockée à part.
- *
- * L'activation passe par la même question que l'espace parent : s'abonner
- * envoie une adresse technique de l'appareil à notre serveur, et dans une
- * application pour enfants ce choix revient à un adulte. La désactivation
- * reste libre — on ne verrouille jamais une sortie.
  */
 export function NotificationsToggle() {
   const t = useT();
@@ -28,9 +23,6 @@ export function NotificationsToggle() {
   const [actif, setActif] = useState(false);
   const [occupe, setOccupe] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
-  const [question, setQuestion] = useState<{ a: number; b: number } | null>(null);
-  const [saisie, setSaisie] = useState('');
-  const [rate, setRate] = useState(false);
 
   useEffect(() => {
     if (!pushSupporte()) return;
@@ -64,45 +56,25 @@ export function NotificationsToggle() {
 
   if (!supporte) return null;
 
-  const activer = async () => {
-    setOccupe(true);
-    setMessage(null);
-    try {
-      const resultat = await activerNotifications();
-      if (resultat === 'ok') {
-        setActif(true);
-      } else if (resultat === 'refuse') {
-        setMessage(t('notifications.refuse'));
-      } else {
-        setMessage(t('notifications.indisponible'));
-      }
-    } finally {
-      setOccupe(false);
-    }
-  };
-
   const basculer = async () => {
-    setMessage(null);
-    if (!actif) {
-      /*
-        Activation : la question d'abord, l'abonnement ensuite. Tirée ici, dans
-        le gestionnaire de clic, pour la même raison que dans `PorteParentale` :
-        un tirage au rendu changerait la question sous les doigts du parent.
-        Un second appui sur l'interrupteur referme la question.
-      */
-      setQuestion(
-        question
-          ? null
-          : { a: 6 + Math.floor(Math.random() * 4), b: 6 + Math.floor(Math.random() * 4) },
-      );
-      setSaisie('');
-      setRate(false);
-      return;
-    }
     setOccupe(true);
+    setMessage(null);
     try {
-      await desactiverNotifications();
-      setActif(false);
+      if (actif) {
+        await desactiverNotifications();
+        setActif(false);
+      } else {
+        const resultat = await activerNotifications();
+        if (resultat === 'ok') {
+          setActif(true);
+        } else if (resultat === 'refuse') {
+          setMessage(
+            'Autorisation refusée. Tu peux l’activer pour Hublot dans les réglages du téléphone.',
+          );
+        } else {
+          setMessage('Notifications indisponibles pour le moment.');
+        }
+      }
     } finally {
       setOccupe(false);
     }
@@ -137,57 +109,6 @@ export function NotificationsToggle() {
       <p className="mt-1 pl-9 text-xs text-craie-douce">
         {message ?? t('notifications.texte')}
       </p>
-      {question && (
-        <form
-          className="mt-3 flex flex-col gap-3 pl-9"
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (Number(saisie) === question.a * question.b) {
-              setQuestion(null);
-              void activer();
-              return;
-            }
-            setRate(true);
-            setSaisie('');
-          }}
-        >
-          <label className="text-sm text-craie-douce" htmlFor="porte-notifications">
-            {t('compte.porte.consigne')(question.a, question.b)}
-          </label>
-          <div className="flex flex-wrap gap-2">
-            <input
-              id="porte-notifications"
-              type="number"
-              inputMode="numeric"
-              autoFocus
-              value={saisie}
-              onChange={(e) => {
-                setSaisie(e.target.value);
-                setRate(false);
-              }}
-              className="min-h-12 w-28 rounded-2xl border-2 border-encre-bord bg-encre-clair px-4 text-craie"
-            />
-            <button
-              type="submit"
-              className="min-h-12 cursor-pointer rounded-2xl border-2 border-encre-bord bg-encre-clair px-5 text-craie transition-colors hover:border-soleil"
-            >
-              {t('compte.porte.valider')}
-            </button>
-            <button
-              type="button"
-              onClick={() => setQuestion(null)}
-              className="min-h-12 cursor-pointer px-3 text-sm text-craie-douce transition-colors hover:text-craie"
-            >
-              {t('notifications.annuler')}
-            </button>
-          </div>
-          {rate && (
-            <p role="alert" className="text-sm text-soleil">
-              {t('compte.porte.rate')}
-            </p>
-          )}
-        </form>
-      )}
     </div>
   );
 }

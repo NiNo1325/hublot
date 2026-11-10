@@ -1,8 +1,15 @@
 # Hublot — Fiche Play Store & réponses de conformité
 
 Contenu prêt à copier-coller dans la Google Play Console. Tout en français.
-Rappel : public 3-12 ans ⇒ **Politique Familles** ; Hublot **ne collecte aucune
-donnée**, ce qui simplifie tout.
+Rappel : public 3-12 ans ⇒ **Politique Familles**. Hublot ne demande aucun
+compte et n'a ni publicité ni outil de suivi ; **une seule donnée quitte
+l'appareil** : l'identifiant technique de notification, et seulement si un
+parent active les notifications (voir §3).
+
+> **Règle de cohérence.** La fiche, la section « Sécurité des données » et la
+> page `/confidentialite` doivent dire la même chose que le code. Toute
+> fonctionnalité qui envoie quelque chose à un serveur se répercute dans les
+> trois, dans la même version.
 
 ---
 
@@ -27,22 +34,27 @@ Hublot — les sciences pour les curieux
 > carte se raconte avec des mots simples pour les petits, puis plus en détail à
 > mesure que la curiosité grandit.
 >
-> **Plus de 80 cartes, dans huit domaines**
-> L'espace, le vivant, le corps humain, la physique, la chimie, la Terre, les
-> mathématiques et le numérique. Pourquoi tout tombe, comment poussent les plantes,
-> ce qu'est un pixel, pourquoi le ciel est bleu, comment compte un ordinateur…
+> **150 cartes, dans quinze domaines**
+> L'espace, le vivant, le corps humain, les animaux, les dinosaures, les océans,
+> la météo, la Terre, la physique, la chimie, le son, la cuisine, l'ingénierie,
+> les mathématiques et le numérique. Pourquoi tout tombe, comment poussent les
+> plantes, ce qu'est un pixel, pourquoi le ciel est bleu…
 >
 > **Écouter, puis jouer**
-> Après avoir écouté les cartes, l'enfant peut tester ce qu'il a retenu avec des
-> quiz à choix multiple, eux aussi racontés à voix haute.
+> Après avoir écouté les cartes, l'enfant teste ce qu'il a retenu : quiz racontés
+> à voix haute, défi chrono, mémo. Les étoiles gagnées font grandir Lumi, la
+> mascotte, et remplissent un cabinet de curiosités.
+>
+> **En français et en anglais**
+> Toute l'application, voix comprise, existe dans les deux langues.
 >
 > **Fonctionne hors ligne**
 > Les cartes et les sons s'enregistrent sur l'appareil : idéal en voiture, en train
 > ou partout sans connexion.
 >
 > **Respectueux des familles**
-> Aucune publicité. Aucun compte. Aucune collecte de données. Rien qui suive votre
-> enfant. Juste des sciences, racontées avec soin.
+> Aucune publicité. Aucun compte. Aucun outil de suivi. La progression reste sur
+> l'appareil. Les notifications sont facultatives et réservées aux parents.
 >
 > Hublot, c'est la curiosité qui s'émerveille — une carte à la fois.
 
@@ -76,17 +88,31 @@ Hublot — les sciences pour les curieux
 
 ## 3. Section « Sécurité des données »
 
-- **Votre application collecte-t-elle ou partage-t-elle des données utilisateur ?**
-  → **Non.**
-- Aucun type de donnée à déclarer (ni identifiants, ni localisation, ni contacts,
-  ni données d'utilisation, ni identifiants d'appareil).
-- **Les données sont-elles chiffrées en transit ?** → Sans objet (aucune donnée
-  transmise).
-- **L'utilisateur peut-il demander la suppression de ses données ?** → Sans objet
-  (aucune donnée collectée).
+Depuis l'ajout des notifications (v5, 12/08/2026), la réponse « aucune donnée »
+n'est **plus exacte** : activer les notifications envoie l'abonnement push de
+l'appareil à `/api/push/subscribe`, qui le range dans Upstash Redis
+(`lib/push/store.ts`).
 
-> Cohérent avec la page de confidentialité en ligne. Vérité technique : pas de
-> compte, pas de back-end, pas d'outil de suivi.
+- **Votre application collecte-t-elle ou partage-t-elle des données utilisateur ?**
+  → **Oui** (collecte), **aucun partage** avec des tiers.
+- **Type de donnée** : *Appareil ou autres identifiants* (l'abonnement push :
+  adresse du service de notifications + clés de chiffrement).
+  - Collectée : oui. Partagée : non.
+  - Traitement éphémère : non (elle est conservée tant que les notifications
+    sont actives).
+  - Obligatoire ou facultative : **facultative** (désactivée par défaut,
+    activée par un parent dans Réglages).
+  - Finalité : **Fonctionnalités de l'application** (annoncer de nouvelles
+    cartes ou une mise à jour). Ni publicité, ni analyse, ni personnalisation.
+- Aucun autre type de donnée (ni nom, ni e-mail, ni localisation, ni contacts,
+  ni données d'utilisation : la progression reste sur l'appareil).
+- **Les données sont-elles chiffrées en transit ?** → **Oui** (HTTPS).
+- **L'utilisateur peut-il demander la suppression de ses données ?** → **Oui** :
+  en désactivant les notifications dans Réglages (suppression immédiate), ou par
+  e-mail à l'adresse de contact.
+
+> Vérité technique : pas de compte, pas de publicité, pas d'outil de suivi. Un
+> seul point de collecte : l'abonnement push, opt-in derrière le verrou parental.
 
 ---
 
@@ -94,8 +120,10 @@ Hublot — les sciences pour les curieux
 
 - Catégorie d'application : Application (Éducation / Référence).
 - Violence, contenu sexuel, langage grossier, substances, jeux d'argent : **Aucun**.
-- Interaction entre utilisateurs, partage de position, achats : **Aucun** (au
-  chantier A ; à mettre à jour quand l'abonnement du chantier B arrivera).
+- Interaction entre utilisateurs, partage de position, achats : **Aucun** tant
+  que `NEXT_PUBLIC_PREMIUM_ACTIF` est éteint. **À mettre à jour avant d'allumer
+  le freemium** (achats intégrés : oui), en même temps que la fiche, la page de
+  confidentialité et la déclaration de statut professionnel.
 - Classement attendu : **Tout public / PEGI 3**.
 
 ---
@@ -103,8 +131,34 @@ Hublot — les sciences pour les curieux
 ## 5. Rappels de publication
 
 1. Déployer d'abord le site (assetlinks.json + /confidentialite en ligne).
-2. Téléverser `app-release-bundle.aab` sur la piste **Test interne**.
+2. Téléverser l'AAB sur la piste de **test fermé**.
 3. Récupérer dans **Intégrité de l'application** la SHA-256 de la **clé de
    signature Google**, l'ajouter à `assetlinks.json`, redéployer.
 4. Tester (plein écran sans barre d'URL, hors-ligne, audio, bouton retour).
-5. Promouvoir en **Production**.
+
+---
+
+## 6. Obtenir l'accès à la production (compte personnel)
+
+Google a refusé l'accès à la production les 11/09 et 29/09/2026 (« More testing
+required ») : testeurs pas assez actifs, et aucun retour pris en compte par des
+mises à jour. Aucune version n'avait été publiée entre la v5 (12/08) et ces
+demandes.
+
+**Piège propre à une TWA** : les améliorations déployées sur Vercel arrivent
+chez les testeurs sans passer par Google Play. Google ne voit que les **AAB
+téléversés**. Sans nouvelle version sur la piste fermée, le test paraît inerte,
+quoi qu'on ait amélioré côté web.
+
+Pendant les 14 jours de test fermé :
+
+1. Garder **au moins 12 testeurs inscrits en continu** (viser 15-20), qui
+   ouvrent réellement l'application plusieurs jours.
+2. Téléverser **2 à 3 AAB** (incrémenter `appVersionCode`), chacun avec des
+   notes de version qui nomment le retour traité (« suite aux retours des
+   testeurs : … »).
+3. Consigner chaque retour dans `docs/retours-beta/` : qui (sans nom), quand,
+   quoi, et ce qui a été changé.
+4. Dans le formulaire de demande, répondre **concrètement** : comment les
+   testeurs ont été recrutés, ce qu'ils ont dit, ce qui a été modifié en
+   conséquence, et pourquoi l'application est prête.

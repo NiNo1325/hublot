@@ -8,6 +8,11 @@ import {
   desactiverNotifications,
 } from '@/lib/push/client';
 import { useT } from '@/components/i18n/useT';
+import {
+  genererDefi,
+  verifierDefi,
+  type DefiParent,
+} from '@/components/premium/portailParent';
 
 /**
  * Interrupteur « Recevoir les nouveautés » (côté parent).
@@ -16,6 +21,11 @@ import { useT } from '@/components/i18n/useT';
  * et clé VAPID configurée) : tant que l'infra n'est pas branchée, rien
  * n'apparaît, plutôt qu'un bouton qui échouerait. L'état de vérité est
  * l'abonnement réel du navigateur, pas une préférence stockée à part.
+ *
+ * L'activation passe par le verrou parental (la même multiplication que devant
+ * un achat) : s'abonner envoie un identifiant technique de l'appareil à notre
+ * serveur, et dans une application pour enfants ce choix revient à un adulte.
+ * La désactivation, elle, reste libre — on ne verrouille jamais une sortie.
  */
 export function NotificationsToggle() {
   const t = useT();
@@ -23,6 +33,9 @@ export function NotificationsToggle() {
   const [actif, setActif] = useState(false);
   const [occupe, setOccupe] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [defi, setDefi] = useState<DefiParent | null>(null);
+  const [saisie, setSaisie] = useState('');
+  const [erreurDefi, setErreurDefi] = useState(false);
 
   useEffect(() => {
     if (!pushSupporte()) return;
@@ -56,28 +69,49 @@ export function NotificationsToggle() {
 
   if (!supporte) return null;
 
-  const basculer = async () => {
+  const activer = async () => {
     setOccupe(true);
     setMessage(null);
     try {
-      if (actif) {
-        await desactiverNotifications();
-        setActif(false);
+      const resultat = await activerNotifications();
+      if (resultat === 'ok') {
+        setActif(true);
+      } else if (resultat === 'refuse') {
+        setMessage(t('notifications.refuse'));
       } else {
-        const resultat = await activerNotifications();
-        if (resultat === 'ok') {
-          setActif(true);
-        } else if (resultat === 'refuse') {
-          setMessage(
-            'Autorisation refusée. Tu peux l’activer pour Hublot dans les réglages du téléphone.',
-          );
-        } else {
-          setMessage('Notifications indisponibles pour le moment.');
-        }
+        setMessage(t('notifications.indisponible'));
       }
     } finally {
       setOccupe(false);
     }
+  };
+
+  const basculer = async () => {
+    setMessage(null);
+    if (!actif) {
+      // Activation : d'abord le verrou parental, l'abonnement ensuite.
+      setDefi(defi ? null : genererDefi());
+      setSaisie('');
+      setErreurDefi(false);
+      return;
+    }
+    setOccupe(true);
+    try {
+      await desactiverNotifications();
+      setActif(false);
+    } finally {
+      setOccupe(false);
+    }
+  };
+
+  const validerDefi = async () => {
+    if (!defi) return;
+    if (!verifierDefi(defi, saisie)) {
+      setErreurDefi(true);
+      return;
+    }
+    setDefi(null);
+    await activer();
   };
 
   // Rangée pour la carte « Écoute & alertes » : libellé à gauche, interrupteur
@@ -109,6 +143,50 @@ export function NotificationsToggle() {
       <p className="mt-1 pl-9 text-xs text-craie-douce">
         {message ?? t('notifications.texte')}
       </p>
+      {defi && (
+        <form
+          className="mt-3 flex flex-col gap-2 pl-9"
+          onSubmit={(e) => {
+            e.preventDefault();
+            void validerDefi();
+          }}
+        >
+          <label className="text-sm text-craie" htmlFor="verrou-notifications">
+            {t('parent.question')(defi.a, defi.b)}
+          </label>
+          <input
+            id="verrou-notifications"
+            inputMode="numeric"
+            autoComplete="off"
+            value={saisie}
+            onChange={(e) => {
+              setSaisie(e.target.value);
+              setErreurDefi(false);
+            }}
+            className="min-h-12 rounded-2xl border-2 border-encre-bord bg-encre px-4 text-center text-xl text-craie focus:border-soleil focus:outline-none"
+          />
+          {erreurDefi && (
+            <p role="alert" className="text-xs text-craie-douce">
+              {t('parent.erreur')}
+            </p>
+          )}
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => setDefi(null)}
+              className="min-h-11 flex-1 cursor-pointer rounded-2xl border-2 border-encre-bord px-4 text-sm text-craie-douce transition-colors hover:border-craie-douce"
+            >
+              {t('parent.annuler')}
+            </button>
+            <button
+              type="submit"
+              className="min-h-11 flex-1 cursor-pointer rounded-2xl border-2 border-soleil bg-soleil/10 px-4 text-sm text-soleil"
+            >
+              {t('parent.continuer')}
+            </button>
+          </div>
+        </form>
+      )}
     </div>
   );
 }

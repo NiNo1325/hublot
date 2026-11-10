@@ -361,6 +361,13 @@ const fr = {
   'parcours.une-question': 'Une question sur cette carte',
   'notifications.aria': 'Recevoir les notifications',
   'notifications.texte': 'Nouvelles cartes et mises à jour de l’application.',
+  'notifications.refuse':
+    'Autorisation refusée. Tu peux l’activer pour Hublot dans les réglages du téléphone.',
+  'notifications.indisponible': 'Notifications indisponibles pour le moment.',
+  'notifications.annuler': 'Annuler',
+  'reglages.infos': 'Vie privée',
+  'reglages.confidentialite': 'Confidentialité',
+  'reglages.suppression': 'Supprimer le compte et les données',
   'parcours.quitter': 'Quitter le parcours',
 
   'hl.mo': (n: number) => `${n} Mo`,
@@ -794,6 +801,13 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'parcours.une-question': 'A question about this card',
     'notifications.aria': 'Receive notifications',
     'notifications.texte': 'New cards and app updates.',
+    'notifications.refuse':
+      'Permission denied. You can turn it on for Hublot in the phone’s settings.',
+    'notifications.indisponible': 'Notifications are unavailable right now.',
+    'notifications.annuler': 'Cancel',
+    'reglages.infos': 'Privacy',
+    'reglages.confidentialite': 'Privacy policy',
+    'reglages.suppression': 'Delete account and data',
     'parcours.quitter': 'Leave the journey',
 
     'hl.mo': (n: number) => `${n} MB`,

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SelecteurAge } from '@/components/age/SelecteurAge';
 import { rangDepuisEtoiles } from '@/lib/etoiles';
@@ -148,7 +147,7 @@ export function ReglagesView() {
       {/* Aide */}
       <section className="flex flex-col gap-3">
         <Intitule>{t('reglages.aide')}</Intitule>
-        <div className="divide-y divide-encre-bord overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
+        <div className="overflow-hidden rounded-3xl border-2 border-encre-bord bg-encre-clair">
           <button type="button" onClick={() => ouvrirTutoriel()} className={rangeeNav}>
             <span aria-hidden="true">🌟</span>
             <span className="flex-1 text-craie">{t('reglages.tutoriel')}</span>
@@ -156,16 +155,6 @@ export function ReglagesView() {
               ›
             </span>
           </button>
-          {/* Google Play exige que la politique de confidentialité soit
-              accessible depuis l'application elle-même, pas seulement depuis
-              la fiche du Store. */}
-          <Link href="/confidentialite" className={rangeeNav}>
-            <span aria-hidden="true">🔒</span>
-            <span className="flex-1 text-craie">{t('reglages.confidentialite')}</span>
-            <span aria-hidden="true" className="text-lg leading-none text-craie-douce">
-              ›
-            </span>
-          </Link>
         </div>
       </section>
 

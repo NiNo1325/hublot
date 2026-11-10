@@ -164,14 +164,6 @@ const fr = {
   'parcours.une-question': 'Une question sur cette carte',
   'notifications.aria': 'Recevoir les notifications',
   'notifications.texte': 'Nouvelles cartes et mises à jour de l’application.',
-  'notifications.refuse':
-    'Autorisation refusée. Tu peux l’activer pour Hublot dans les réglages du téléphone.',
-  'notifications.indisponible': 'Notifications indisponibles pour le moment.',
-  'parent.question': (a: number, b: number) => `Pour les parents : combien font ${a} × ${b} ?`,
-  'parent.erreur': 'Ce n’est pas la bonne réponse.',
-  'parent.continuer': 'Continuer',
-  'parent.annuler': 'Annuler',
-  'reglages.confidentialite': 'Confidentialité',
   'parcours.quitter': 'Quitter le parcours',
 
   'hl.mo': (n: number) => `${n} Mo`,
@@ -426,14 +418,6 @@ const traductions: Record<Locale, Partial<typeof fr>> = {
     'parcours.une-question': 'A question about this card',
     'notifications.aria': 'Receive notifications',
     'notifications.texte': 'New cards and app updates.',
-    'notifications.refuse':
-      'Permission denied. You can turn it on for Hublot in the phone’s settings.',
-    'notifications.indisponible': 'Notifications are unavailable right now.',
-    'parent.question': (a: number, b: number) => `For parents: what is ${a} × ${b}?`,
-    'parent.erreur': 'That is not the right answer.',
-    'parent.continuer': 'Continue',
-    'parent.annuler': 'Cancel',
-    'reglages.confidentialite': 'Privacy',
     'parcours.quitter': 'Leave the journey',
 
     'hl.mo': (n: number) => `${n} MB`,
